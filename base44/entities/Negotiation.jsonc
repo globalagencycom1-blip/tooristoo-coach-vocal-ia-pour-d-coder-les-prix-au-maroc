@@ -1,0 +1,83 @@
+{
+  "name": "Negotiation",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "taxi",
+        "hotel",
+        "riad",
+        "restaurant",
+        "excursion",
+        "shopping",
+        "transport",
+        "guide",
+        "spa",
+        "other"
+      ]
+    },
+    "location": {
+      "type": "string"
+    },
+    "price_asked": {
+      "type": "number"
+    },
+    "price_estimated_min": {
+      "type": "number"
+    },
+    "price_estimated_max": {
+      "type": "number"
+    },
+    "price_negotiated": {
+      "type": "number"
+    },
+    "savings": {
+      "type": "number"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "scam_detected": {
+      "type": "boolean"
+    },
+    "ai_analysis": {
+      "type": "string"
+    },
+    "recommended_phrase": {
+      "type": "string"
+    },
+    "strategy": {
+      "type": "string"
+    },
+    "vendor_trust_score": {
+      "type": "number"
+    },
+    "transcript": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "provider_name": {
+      "type": "string"
+    },
+    "provider_url": {
+      "type": "string"
+    },
+    "provider_rating": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "category"
+  ]
+}

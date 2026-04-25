@@ -1,0 +1,53 @@
+{
+  "name": "UserProfile",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string"
+    },
+    "plan": {
+      "type": "string",
+      "enum": [
+        "free",
+        "voyageur",
+        "pro"
+      ],
+      "default": "free"
+    },
+    "language": {
+      "type": "string",
+      "enum": [
+        "fr",
+        "en",
+        "es",
+        "de",
+        "ar",
+        "darija"
+      ],
+      "default": "fr"
+    },
+    "total_savings": {
+      "type": "number",
+      "default": 0
+    },
+    "total_negotiations": {
+      "type": "number",
+      "default": 0
+    },
+    "scams_avoided": {
+      "type": "number",
+      "default": 0
+    },
+    "monthly_analyses_used": {
+      "type": "number",
+      "default": 0
+    },
+    "destination": {
+      "type": "string",
+      "default": "Maroc"
+    }
+  },
+  "required": [
+    "user_email"
+  ]
+}
