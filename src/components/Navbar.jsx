@@ -23,7 +23,9 @@ export default function Navbar() {
   const navLinks = [
     { href: '/', label: t('nav_home') },
     { href: '/app', label: t('nav_app') },
-    { href: '/#pricing', label: t('nav_pricing') },
+    { href: '/providers', label: 'Prestataires' },
+    { href: '/about', label: 'À propos' },
+    { href: '/faq', label: 'FAQ' },
   ];
 
   return (
