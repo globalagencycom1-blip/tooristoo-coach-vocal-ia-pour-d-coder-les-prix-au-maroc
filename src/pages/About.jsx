@@ -13,10 +13,10 @@ const TEAM = [
 ];
 
 const VALUES = [
-  { icon: Shield, title: 'Protection', desc: 'Chaque touriste mérite d'être protégé. Notre mission est de vous donner les outils pour voyager en toute confiance.', color: 'text-shield-green', bg: 'bg-shield-green/10' },
-  { icon: Heart, title: 'Respect', desc: 'Nous respectons la culture marocaine et aidons les touristes à interagir avec respect et connaissance des codes locaux.', color: 'text-red-400', bg: 'bg-red-500/10' },
-  { icon: Zap, title: 'Innovation', desc: 'Nous utilisons l'IA de pointe pour fournir des analyses précises, en temps réel, dans 6 langues différentes.', color: 'text-shield-gold', bg: 'bg-shield-gold/10' },
-  { icon: Globe, title: 'Accessibilité', desc: 'NegoShield est conçu pour être simple, intuitif et utilisable par n\'importe qui, même sans compétences techniques.', color: 'text-blue-400', bg: 'bg-blue-500/10' },
+  { icon: Shield, title: 'Protection', desc: "Chaque touriste mérite d'être protégé. Notre mission est de vous donner les outils pour voyager en toute confiance.", color: 'text-shield-green', bg: 'bg-shield-green/10' },
+  { icon: Heart, title: 'Respect', desc: "Nous respectons la culture marocaine et aidons les touristes à interagir avec respect et connaissance des codes locaux.", color: 'text-red-400', bg: 'bg-red-500/10' },
+  { icon: Zap, title: 'Innovation', desc: "Nous utilisons l'IA de pointe pour fournir des analyses précises, en temps réel, dans 6 langues différentes.", color: 'text-shield-gold', bg: 'bg-shield-gold/10' },
+  { icon: Globe, title: 'Accessibilité', desc: "NegoShield est conçu pour être simple, intuitif et utilisable par n'importe qui, même sans compétences techniques.", color: 'text-blue-400', bg: 'bg-blue-500/10' },
 ];
 
 const STATS = [
