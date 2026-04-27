@@ -6,7 +6,7 @@ import { useLang } from '../lib/LanguageContext';
 import { Link } from 'react-router-dom';
 
 const TEAM = [
-  { name: 'Youssef Benali', role: 'CEO & Fondateur', flag: '🇲🇦', bio: 'Ex-guide touristique à Marrakech, il a vécu des centaines de situations d'arnaques. Il a créé NegoShield pour que plus aucun touriste ne se fasse surfacturer.' },
+  { name: 'Youssef Benali', role: 'CEO & Fondateur', flag: '🇲🇦', bio: "Ex-guide touristique à Marrakech, il a vécu des centaines de situations d'arnaques. Il a créé NegoShield pour que plus aucun touriste ne se fasse surfacturer." },
   { name: 'Sophie Martin', role: 'CTO', flag: '🇫🇷', bio: 'Ingénieure IA spécialisée en NLP. Passionnée par l\'usage de la technologie pour résoudre des problèmes réels du quotidien.' },
   { name: 'Carlos Ruiz', role: 'Head of Product', flag: '🇪🇸', bio: 'Designer UX & product manager. A voyagé dans 40 pays et compris l\'importance d\'un outil de protection pour les voyageurs.' },
   { name: 'Amina Ouzzani', role: 'Responsable Partenariats', flag: '🇲🇦', bio: 'Développe le réseau de prestataires certifiés partout au Maroc, garantissant prix justes et qualité de service.' },
