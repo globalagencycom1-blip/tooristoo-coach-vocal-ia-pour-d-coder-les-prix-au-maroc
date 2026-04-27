@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Mic, LayoutDashboard, History, User, ChevronRight } from 'lucide-react';
+import { Shield, Mic, LayoutDashboard, History, ChevronRight } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
@@ -8,6 +8,8 @@ import VoiceCoach from '../components/app/VoiceCoach';
 import NegotiationForm from '../components/app/NegotiationForm';
 import AnalysisResult from '../components/app/AnalysisResult';
 import Dashboard from '../components/app/Dashboard';
+import OfflineBanner from '../components/app/OfflineBanner';
+import { useOfflineStorage } from '../lib/useOfflineStorage';
 
 const TABS = [
   { id: 'coach', icon: Mic, labelKey: 'nav_app' },
@@ -27,20 +29,37 @@ export default function AppPage() {
   const [location, setLocation] = useState('Marrakech');
   const [priceAsked, setPriceAsked] = useState('');
 
+  const { isOnline, isSyncing, pendingCount, saveNegotiation, loadLocalNegotiations } = useOfflineStorage();
+
   useEffect(() => {
     loadData();
   }, []);
 
+  // Reload local negotiations whenever we come back online or syncing ends
+  useEffect(() => {
+    loadLocalNegotiations().then(local => {
+      if (local.length > 0) setNegotiations(local);
+    });
+  }, [isSyncing, isOnline]);
+
   const loadData = async () => {
+    // Always load local first (instant, works offline)
+    const local = await loadLocalNegotiations();
+    if (local.length > 0) setNegotiations(local);
+
     const user = await base44.auth.me().catch(() => null);
     if (!user) return;
-    const negs = await base44.entities.Negotiation.filter({ user_email: user.email }, '-created_date', 50);
-    setNegotiations(negs);
 
-    const profiles = await base44.entities.UserProfile.filter({ user_email: user.email });
+    // If online, also fetch server records and merge
+    if (navigator.onLine) {
+      const serverNegs = await base44.entities.Negotiation.filter({ user_email: user.email }, '-created_date', 50).catch(() => []);
+      if (serverNegs.length > 0) setNegotiations(serverNegs);
+    }
+
+    const profiles = await base44.entities.UserProfile.filter({ user_email: user.email }).catch(() => []);
     if (profiles.length > 0) {
       setProfile(profiles[0]);
-    } else {
+    } else if (navigator.onLine) {
       const newProfile = await base44.entities.UserProfile.create({ user_email: user.email, plan: 'free', language: lang });
       setProfile(newProfile);
     }
@@ -53,21 +72,17 @@ export default function AppPage() {
     const user = await base44.auth.me().catch(() => null);
     if (!user) return;
 
-    const newNeg = await base44.entities.Negotiation.create({
-      user_email: user.email,
-      ...result,
-      language: lang,
-    });
-    setNegotiations(prev => [newNeg, ...prev]);
+    // Save via offline-aware storage (IndexedDB + server sync)
+    const saved = await saveNegotiation(result, user.email, lang);
+    setNegotiations(prev => [saved, ...prev]);
 
-    // Update profile stats
-    if (profile) {
+    // Update profile stats (only online)
+    if (profile && navigator.onLine) {
       await base44.entities.UserProfile.update(profile.id, {
         total_negotiations: (profile.total_negotiations || 0) + 1,
         total_savings: (profile.total_savings || 0) + (result.savings || 0),
         scams_avoided: (profile.scams_avoided || 0) + (result.scam_detected ? 1 : 0),
-      });
-      await loadData();
+      }).catch(() => {});
     }
   };
 
@@ -86,6 +101,9 @@ export default function AppPage() {
           </div>
           <p className="text-shield-green text-sm">{t('app_page_subtitle')}</p>
         </div>
+
+        {/* Offline / Sync banner */}
+        <OfflineBanner isOnline={isOnline} isSyncing={isSyncing} pendingCount={pendingCount} />
 
         {/* Tab Navigation */}
         <div className="flex gap-1 bg-shield-card border border-shield-border rounded-2xl p-1 mb-6">
