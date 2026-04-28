@@ -346,6 +346,17 @@ export const translations = {
     faq_cta_subtitle: "Notre équipe est disponible pour vous aider",
     faq_cta_btn: "Contacter le support",
 
+    // Coverage section
+    coverage_title: "Partout au Maroc",
+    city_tanger: "Tanger",
+    city_casablanca: "Casablanca",
+    city_marrakech: "Marrakech",
+    city_fès: "Fès",
+    city_agadir: "Agadir",
+    city_meknès: "Meknès",
+    city_essaouira: "Essaouira",
+    city_ouarzazate: "Ouarzazate",
+
     // Language names
     lang_fr: "Français",
     lang_en: "English",
@@ -656,6 +667,10 @@ export const translations = {
     city_chefchaouen: "Chefchaouen",
     city_agadir: "Agadir",
     city_tanger: "Tangier",
+    city_meknès: "Meknes",
+    city_essaouira: "Essaouira",
+    city_ouarzazate: "Ouarzazate",
+    coverage_title: "Everywhere in Morocco",
     lang_fr: "Français",
     lang_en: "English",
     lang_es: "Español",
@@ -962,6 +977,10 @@ export const translations = {
     city_chefchaouen: "Chefchaouen",
     city_agadir: "Agadir",
     city_tanger: "Tanger",
+    city_meknès: "Meknès",
+    city_essaouira: "Essaouira",
+    city_ouarzazate: "Ouarzazate",
+    coverage_title: "Partout au Maroc",
     lang_fr: "Français",
     lang_en: "English",
     lang_es: "Español",
@@ -1259,6 +1278,10 @@ export const translations = {
     city_chefchaouen: "Chefchaouen",
     city_agadir: "Agadir",
     city_tanger: "Tanger",
+    city_meknès: "Meknès",
+    city_essaouira: "Essaouira",
+    city_ouarzazate: "Ouarzazate",
+    coverage_title: "En todas partes de Marruecos",
     lang_fr: "Français",
     lang_en: "English",
     lang_es: "Español",
@@ -1301,8 +1324,9 @@ export const translations = {
     prov_desc8: "Offizielles Fernbus- und Verkehrsnetz",
     prov_desc9: "Typisches Riad in der blauen Stadt, transparente Preise",
     prov_desc10: "Authentische marokkanische Küche, Festpreismenü angezeigt",
-  },
-  ar: {
+    coverage_title: "Überall in Marokko",
+    },
+    ar: {
     nav_home: "الرئيسية",
     nav_app: "التطبيق",
     nav_pricing: "الأسعار",
@@ -1604,8 +1628,9 @@ export const translations = {
     prov_desc8: "شبكة رسمية للحافلات والنقل بين المدن",
     prov_desc9: "رياض نموذجي في المدينة الزرقاء، أثمان شفافة",
     prov_desc10: "أكل مغربي أصيل، مينو بثمن ثابت معروض",
-  },
-  darija: {
+    coverage_title: "في كل مكان بالمغرب",
+    },
+    darija: {
     nav_home: "الصفحة الرئيسية",
     nav_app: "التطبيق",
     nav_pricing: "الأثمان",
@@ -1928,8 +1953,9 @@ export const translations = {
     form_situation_label: "الوضعية",
     form_help_text: "💡 وصف السياق والخدمة وشنو لي كيبان غريب",
     form_example_placeholder: "مثال: الطاكسي كيطلب 300 درهم للمطار",
-  }
-};
+    coverage_title: "فأي بلاصة فالمغرب",
+    }
+    };
 
 export const useT = (lang) => {
   return (key) => {
