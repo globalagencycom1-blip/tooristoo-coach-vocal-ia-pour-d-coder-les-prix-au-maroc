@@ -199,3 +199,27 @@ export const dashboardTranslations = {
 export const getDashboardT = (key, lang) => {
   return dashboardTranslations[lang]?.[key] || dashboardTranslations['fr']?.[key] || key;
 };
+
+export const getCategoryName = (category, lang) => {
+  const categories = {
+    fr: { taxi: 'Taxi', hotel: 'Hôtel', riad: 'Riad', restaurant: 'Restaurant', excursion: 'Excursion', shopping: 'Shopping', transport: 'Transport', guide: 'Guide', spa: 'Spa', other: 'Autre' },
+    en: { taxi: 'Taxi', hotel: 'Hotel', riad: 'Riad', restaurant: 'Restaurant', excursion: 'Excursion', shopping: 'Shopping', transport: 'Transport', guide: 'Guide', spa: 'Spa', other: 'Other' },
+    es: { taxi: 'Taxi', hotel: 'Hotel', riad: 'Riad', restaurant: 'Restaurante', excursion: 'Excursión', shopping: 'Compras', transport: 'Transporte', guide: 'Guía', spa: 'Spa', other: 'Otro' },
+    de: { taxi: 'Taxi', hotel: 'Hotel', riad: 'Riad', restaurant: 'Restaurant', excursion: 'Ausflug', shopping: 'Shopping', transport: 'Transport', guide: 'Führer', spa: 'Spa', other: 'Sonstige' },
+    ar: { taxi: 'طاكسي', hotel: 'فندق', riad: 'رياض', restaurant: 'مطعم', excursion: 'نزهة', shopping: 'تسوق', transport: 'نقل', guide: 'مرشد', spa: 'سبا', other: 'أخرى' },
+    darija: { taxi: 'طاكسي', hotel: 'فندق', riad: 'رياض', restaurant: 'مطعم', excursion: 'نزهة', shopping: 'تسوق', transport: 'نقل', guide: 'مرشد', spa: 'سبا', other: 'أخرى' },
+  };
+  return categories[lang]?.[category] || categories['fr']?.[category] || category;
+};
+
+export const getCityName = (city, lang) => {
+  const cities = {
+    fr: { 'Marrakech': 'Marrakech', 'Casablanca': 'Casablanca', 'Fès': 'Fès', 'Chefchaouen': 'Chefchaouen', 'Agadir': 'Agadir', 'Tanger': 'Tanger', 'Rabat': 'Rabat', 'Essaouira': 'Essaouira', 'Meknès': 'Meknès', 'Ouarzazate': 'Ouarzazate', 'El Jadida': 'El Jadida' },
+    en: { 'Marrakech': 'Marrakech', 'Casablanca': 'Casablanca', 'Fès': 'Fez', 'Chefchaouen': 'Chefchaouen', 'Agadir': 'Agadir', 'Tanger': 'Tangier', 'Rabat': 'Rabat', 'Essaouira': 'Essaouira', 'Meknès': 'Meknes', 'Ouarzazate': 'Ouarzazate', 'El Jadida': 'El Jadida' },
+    es: { 'Marrakech': 'Marrakech', 'Casablanca': 'Casablanca', 'Fès': 'Fez', 'Chefchaouen': 'Chefchaouen', 'Agadir': 'Agadir', 'Tanger': 'Tánger', 'Rabat': 'Rabat', 'Essaouira': 'Essaouira', 'Meknès': 'Meknés', 'Ouarzazate': 'Ouarzazate', 'El Jadida': 'El Jadida' },
+    de: { 'Marrakech': 'Marrakesch', 'Casablanca': 'Casablanca', 'Fès': 'Fes', 'Chefchaouen': 'Schefschauen', 'Agadir': 'Agadir', 'Tanger': 'Tanger', 'Rabat': 'Rabat', 'Essaouira': 'Essaouira', 'Meknès': 'Meknès', 'Ouarzazate': 'Ouarzazate', 'El Jadida': 'El Jadida' },
+    ar: { 'Marrakech': 'مراكش', 'Casablanca': 'الدار البيضاء', 'Fès': 'فاس', 'Chefchaouen': 'شفشاون', 'Agadir': 'أكادير', 'Tanger': 'طنجة', 'Rabat': 'الرباط', 'Essaouira': 'الصويرة', 'Meknès': 'مكناس', 'Ouarzazate': 'ورزازات', 'El Jadida': 'الجديدة' },
+    darija: { 'Marrakech': 'مراكش', 'Casablanca': 'الدار البيضاء', 'Fès': 'فاس', 'Chefchaouen': 'شفشاون', 'Agadir': 'أكادير', 'Tanger': 'طنجة', 'Rabat': 'الرباط', 'Essaouira': 'الصويرة', 'Meknès': 'مكناس', 'Ouarzazate': 'ورزازات', 'El Jadida': 'الجديدة' },
+  };
+  return cities[lang]?.[city] || cities['fr']?.[city] || city;
+};

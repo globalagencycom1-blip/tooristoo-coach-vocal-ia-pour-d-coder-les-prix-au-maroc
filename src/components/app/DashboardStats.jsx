@@ -1,7 +1,7 @@
 import React from 'react';
 import { TrendingDown, AlertTriangle, History, MapPin, Tag, Shield } from 'lucide-react';
 import { useT } from '../../lib/i18n';
-import { getDashboardT } from '../../lib/dashboard-translations';
+import { getDashboardT, getCategoryName, getCityName } from '../../lib/dashboard-translations';
 
 export default function DashboardStats({ lang, profile, negotiations }) {
   const t = useT(lang);
@@ -110,7 +110,7 @@ export default function DashboardStats({ lang, profile, negotiations }) {
               <div className="space-y-2">
                 {topCategories.map(([cat, count]) => (
                   <div key={cat} className="flex items-center justify-between">
-                    <span className="text-sm text-white capitalize">{cat}</span>
+                    <span className="text-sm text-white capitalize">{getCategoryName(cat, lang)}</span>
                     <div className="flex items-center gap-2">
                       <div className="h-1.5 bg-shield-green/30 rounded-full overflow-hidden w-20">
                         <div
@@ -136,7 +136,7 @@ export default function DashboardStats({ lang, profile, negotiations }) {
               <div className="grid grid-cols-2 gap-2">
                 {topCities.map(([city, count]) => (
                   <div key={city} className="flex items-center justify-between bg-shield-dark border border-shield-border rounded-lg px-3 py-2">
-                    <span className="text-sm text-white">{city}</span>
+                    <span className="text-sm text-white">{getCityName(city, lang)}</span>
                     <span className="text-xs text-shield-green font-bold">{count}</span>
                   </div>
                 ))}
