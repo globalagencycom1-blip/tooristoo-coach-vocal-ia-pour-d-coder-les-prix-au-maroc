@@ -46,7 +46,7 @@ export const CATEGORIES = [
   { key: 'transport', label: 'Transport' }
 ];
 
-export const CITIES = ['Marrakech', 'Fès', 'Chefchaouen', 'Casablanca', 'Agadir', 'Tanger'];
+export const CITIES = ['Marrakech', 'Fès', 'Chefchaouen', 'Casablanca', 'Agadir', 'Tanger', 'Rabat', 'Meknès', 'Ouarzazate', 'Merzouga', 'Dakhla', 'El Jadida', 'Essaouira'];
 
 export function getArticleById(id, lang = 'fr') {
   const articles = getBlogArticles(lang);

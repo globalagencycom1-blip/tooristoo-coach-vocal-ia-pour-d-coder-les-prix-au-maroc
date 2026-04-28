@@ -5,7 +5,7 @@ import { useT } from '../../lib/i18n';
 import { formatPricingPrompt, getAllCitiesPricingContext } from '../../lib/pricing-knowledge-base';
 
 const CATEGORIES = ['taxi', 'hotel', 'riad', 'restaurant', 'excursion', 'shopping', 'transport', 'guide', 'spa', 'artisanat', 'bus', 'train', 'other'];
-const CITIES = ['Marrakech', 'Casablanca', 'Fès', 'Chefchaouen', 'Agadir', 'Tanger', 'Rabat', 'Meknès', 'Essaouira', 'Ouarzazate'];
+const CITIES = ['Marrakech', 'Casablanca', 'Fès', 'Chefchaouen', 'Agadir', 'Tanger', 'Rabat', 'Meknès', 'Essaouira', 'Ouarzazate', 'Merzouga', 'Dakhla', 'El Jadida'];
 
 export default function NegotiationForm({ lang, onAnalysisComplete }) {
   const t = useT(lang);
