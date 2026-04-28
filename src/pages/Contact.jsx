@@ -27,7 +27,7 @@ export default function Contact() {
     {
       icon: MapPin,
       label: lang === 'fr' ? 'Adresse' : lang === 'en' ? 'Address' : lang === 'es' ? 'Dirección' : lang === 'de' ? 'Adresse' : lang === 'ar' ? 'العنوان' : 'العنوان',
-      value: lang === 'fr' ? 'Marrakech, Maroc' : lang === 'en' ? 'Marrakech, Morocco' : lang === 'es' ? 'Marrakech, Marruecos' : lang === 'de' ? 'Marrakesch, Marokko' : lang === 'ar' ? 'مراكش، المغرب' : 'مراكش، المغرب',
+      value: '10 rue du Colisée, 75008 Paris',
     },
     {
       icon: Phone,
