@@ -124,7 +124,7 @@ export default function Providers() {
               className="flex-1 bg-shield-card border border-shield-border text-white rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-shield-green appearance-none cursor-pointer"
             >
               <option value="all">{t('providers_all_cities')}</option>
-              {CITIES_KEYS.map(c => <option key={c} value={c}>{t('city_' + c.toLowerCase().replace(/\s+/g, '_'))}</option>)}
+              {CITIES_KEYS.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
             <select
               value={category}
