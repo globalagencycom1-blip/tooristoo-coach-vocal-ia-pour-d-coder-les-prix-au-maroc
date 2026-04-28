@@ -1,20 +1,6 @@
 import React from 'react';
-import { CheckCircle, XCircle, AlertTriangle, Star, ExternalLink, RefreshCw, Shield } from 'lucide-react';
+import { CheckCircle, XCircle, AlertTriangle, Star, ExternalLink, RefreshCw, Shield, ChevronLeft, TrendingDown } from 'lucide-react';
 import { useT } from '../../lib/i18n';
-
-const RiskBadge = ({ level, t }) => {
-  const config = {
-    low: { label: t('risk_low'), color: 'text-shield-green bg-shield-green/10 border-shield-green/30' },
-    medium: { label: t('risk_medium'), color: 'text-shield-gold bg-shield-gold/10 border-shield-gold/30' },
-    high: { label: t('risk_high'), color: 'text-red-400 bg-red-500/10 border-red-500/30' },
-  };
-  const c = config[level] || config.medium;
-  return (
-    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border ${c.color}`}>
-      {c.label}
-    </span>
-  );
-};
 
 export default function AnalysisResult({ analysis, lang, onReset }) {
   const t = useT(lang);
@@ -23,106 +9,198 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
     ? Math.max(0, analysis.price_asked - analysis.price_estimated_max)
     : analysis.savings || 0;
 
+  const overchargePercent = analysis.price_asked && analysis.price_estimated_max
+    ? Math.round(((analysis.price_asked - analysis.price_estimated_max) / analysis.price_estimated_max) * 100)
+    : null;
+
+  const riskConfig = {
+    low: { label: 'FAIBLE', color: 'text-shield-green', bg: 'bg-shield-green/10', border: 'border-shield-green/30', icon: '🟢' },
+    medium: { label: 'MOYEN', color: 'text-shield-gold', bg: 'bg-shield-gold/10', border: 'border-shield-gold/30', icon: '🟡' },
+    high: { label: 'ÉLEVÉ', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/30', icon: '🔴' },
+  };
+  const risk = riskConfig[analysis.risk_level] || riskConfig.medium;
+
+  // Parse strategy into bullet points
+  const strategyPoints = analysis.strategy
+    ? analysis.strategy.split(/[.\n]/).map(s => s.trim()).filter(s => s.length > 10)
+    : [];
+
+  // Parse ai_analysis for anomaly detection
+  const isAnomaly = analysis.scam_detected || (overchargePercent && overchargePercent > 15);
+
   return (
-    <div className="space-y-4">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <h3 className="font-poppins font-bold text-white text-lg">{t('analysis_ai')}</h3>
-        <button onClick={onReset} className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-shield-green transition-colors">
-          <RefreshCw className="w-3.5 h-3.5" />
-          Recommencer
-        </button>
+    <div className="space-y-3">
+      {/* Back button */}
+      <button
+        onClick={onReset}
+        className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors mb-2"
+      >
+        <ChevronLeft className="w-4 h-4" />
+        Retour
+      </button>
+
+      {/* Section 1: Situation */}
+      <div className="bg-shield-card border border-shield-border rounded-2xl p-4">
+        <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">Analyse en temps réel</h3>
+        {analysis.transcript && (
+          <p className="text-sm text-gray-300 mb-2">
+            <span className="text-gray-500">Situation : </span>{analysis.transcript}
+          </p>
+        )}
+        {analysis.price_asked > 0 && (
+          <p className="text-sm text-gray-300">
+            <span className="text-gray-500">Prix demandé : </span>
+            <span className="text-white font-bold">{analysis.price_asked} MAD</span>
+          </p>
+        )}
+        {analysis.category && (
+          <p className="text-sm text-gray-300 mt-1">
+            <span className="text-gray-500">Catégorie : </span>
+            <span className="text-white capitalize">{analysis.category}</span>
+            {analysis.location && <span className="text-gray-500"> · {analysis.location}</span>}
+          </p>
+        )}
       </div>
 
-      {/* Savings banner */}
-      {savings > 0 && (
-        <div className="p-4 bg-shield-green/10 border border-shield-green/30 rounded-xl flex items-center gap-3">
-          <span className="text-3xl">💰</span>
+      {/* Section 2: AI Analysis */}
+      <div className="bg-shield-card border border-shield-border rounded-2xl p-4 space-y-3">
+        <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">Analyse IA</h3>
+
+        {/* Real price */}
+        <div className="flex items-start gap-2">
+          <CheckCircle className="w-4 h-4 text-shield-green flex-shrink-0 mt-0.5" />
           <div>
-            <div className="text-shield-green font-bold text-lg">-{savings} MAD</div>
-            <div className="text-xs text-gray-400">Économie potentielle</div>
+            <p className="text-xs text-gray-400">Prix réel estimé au Maroc :</p>
+            <p className="text-shield-green font-black text-lg font-poppins">
+              {analysis.price_estimated_min} – {analysis.price_estimated_max} MAD
+            </p>
           </div>
         </div>
-      )}
 
-      {/* Scam alert */}
-      {analysis.scam_detected && (
-        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl flex items-center gap-3">
-          <XCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-          <p className="text-red-400 text-sm font-semibold">🚨 Arnaque détectée !</p>
-        </div>
-      )}
-
-      {/* Price analysis */}
-      <div className="bg-shield-card border border-shield-border rounded-xl p-5 space-y-3">
-        <div className="flex justify-between items-center">
-          <span className="text-xs text-gray-400">{t('analysis_real_price')}</span>
-          <span className="text-white font-bold">{analysis.price_estimated_min} – {analysis.price_estimated_max} MAD</span>
-        </div>
-        {analysis.price_asked > 0 && (
-          <div className="flex justify-between items-center">
-            <span className="text-xs text-gray-400">{t('analysis_price_asked')}</span>
-            <span className="text-red-400 font-bold">{analysis.price_asked} MAD</span>
+        {/* Anomaly */}
+        {isAnomaly && (
+          <div className="flex items-start gap-2">
+            <XCircle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-xs text-red-400 font-semibold">Anomalie détectée :</p>
+              <p className="text-xs text-gray-300 leading-relaxed">{analysis.ai_analysis}</p>
+            </div>
           </div>
         )}
-        <div className="flex justify-between items-center">
-          <span className="text-xs text-gray-400">{t('analysis_risk')}</span>
-          <RiskBadge level={analysis.risk_level} t={t} />
+
+        {/* Overcharge % */}
+        {overchargePercent && overchargePercent > 0 && (
+          <div className="flex items-start gap-2">
+            <XCircle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
+            <p className="text-xs text-red-400 font-semibold">
+              Prix {overchargePercent}% au-dessus du marché
+            </p>
+          </div>
+        )}
+
+        {/* AI analysis text (if no anomaly showed it) */}
+        {!isAnomaly && analysis.ai_analysis && (
+          <div className="flex items-start gap-2">
+            <CheckCircle className="w-4 h-4 text-shield-green flex-shrink-0 mt-0.5" />
+            <p className="text-xs text-gray-300 leading-relaxed">{analysis.ai_analysis}</p>
+          </div>
+        )}
+      </div>
+
+      {/* Section 3: Risk + Trust */}
+      <div className={`${risk.bg} border ${risk.border} rounded-2xl p-4 flex items-center justify-between`}>
+        <div>
+          <p className="text-xs text-gray-400 mb-1">Niveau de risque</p>
+          <div className="flex items-center gap-2">
+            <span className="text-base">{risk.icon}</span>
+            <span className={`font-black text-lg font-poppins ${risk.color}`}>{risk.label}</span>
+          </div>
         </div>
-        <div className="flex justify-between items-center">
-          <span className="text-xs text-gray-400">{t('analysis_trust')}</span>
-          <div className="flex gap-0.5">
+        <div className="text-right">
+          <p className="text-xs text-gray-400 mb-1">Confiance vendeur</p>
+          <div className="flex gap-0.5 justify-end">
             {[1,2,3,4,5].map(i => (
               <Star key={i} className={`w-3.5 h-3.5 ${i <= (analysis.vendor_trust_score || 3) ? 'text-shield-gold fill-shield-gold' : 'text-gray-600'}`} />
             ))}
           </div>
+          <p className="text-xs text-gray-500 mt-0.5">({analysis.vendor_trust_score || 3}/5)</p>
         </div>
       </div>
 
-      {/* AI Analysis text */}
-      {analysis.ai_analysis && (
-        <div className="bg-shield-card border border-shield-border rounded-xl p-5">
-          <h4 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">Analyse</h4>
-          <p className="text-sm text-gray-300 leading-relaxed">{analysis.ai_analysis}</p>
+      {/* Section 4: Strategy */}
+      {strategyPoints.length > 0 && (
+        <div className="bg-shield-card border border-shield-border rounded-2xl p-4">
+          <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">Stratégie recommandée</h3>
+          <ul className="space-y-2">
+            {strategyPoints.map((point, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <CheckCircle className="w-3.5 h-3.5 text-shield-green flex-shrink-0 mt-0.5" />
+                <span className="text-xs text-gray-300 leading-relaxed">{point}.</span>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 
-      {/* Strategy */}
-      {analysis.strategy && (
-        <div className="bg-shield-card border border-shield-border rounded-xl p-5">
-          <h4 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">{t('analysis_strategy')}</h4>
-          <p className="text-sm text-gray-300 leading-relaxed">{analysis.strategy}</p>
-        </div>
-      )}
-
-      {/* Exact phrase */}
+      {/* Section 5: Exact phrase */}
       {analysis.recommended_phrase && (
-        <div className="bg-shield-dark border border-shield-green/40 rounded-xl p-5 card-glow">
-          <h4 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">💬 {t('analysis_phrase')}</h4>
-          <blockquote className="text-gray-100 text-sm leading-relaxed italic border-l-2 border-shield-green pl-4 mb-3">
-            "{analysis.recommended_phrase}"
-          </blockquote>
+        <div className="bg-shield-card border border-shield-border rounded-2xl p-4">
+          <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">Phrase exacte à dire</h3>
+          <div className="relative pl-6">
+            <span className="absolute left-0 top-0 text-3xl text-shield-green/30 font-serif leading-none">"</span>
+            <p className="text-sm text-gray-200 leading-relaxed italic">
+              {analysis.recommended_phrase}"
+            </p>
+          </div>
           {analysis.recommended_phrase_darija && (
             <div className="mt-3 pt-3 border-t border-shield-border">
               <span className="text-xs text-shield-gold font-semibold">🇲🇦 En Darija : </span>
               <span className="text-xs text-gray-300 italic">"{analysis.recommended_phrase_darija}"</span>
             </div>
           )}
-          {savings > 0 && (
-            <div className="mt-3 pt-3 border-t border-shield-border flex items-center gap-2">
-              <span className="text-xs text-gray-400">💸 Économie potentielle :</span>
-              <span className="text-xs font-bold text-shield-green">{savings} – {analysis.price_asked - (analysis.price_estimated_min || 0)} MAD</span>
-            </div>
-          )}
         </div>
       )}
 
-      {/* Provider redirect */}
+      {/* Section 6: Anti-scam alerts */}
+      {analysis.scam_detected && (
+        <div className="bg-red-950/30 border border-red-500/30 rounded-2xl p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-xs font-bold text-red-400 uppercase tracking-wider">Alertes anti-arnaque</h3>
+            <span className="text-xs text-shield-green flex items-center gap-1">
+              <Shield className="w-3 h-3" /> Protection 24/7
+            </span>
+          </div>
+          <ul className="space-y-2">
+            {[
+              "Vérifiez que le prix inclut toutes les dépenses.",
+              "Évitez de payer tout le montant à l'avance.",
+              "Méfiez-vous des offres qui semblent trop belles pour être vraies.",
+              "Demandez un reçu ou une confirmation écrite.",
+            ].map((alert, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <AlertTriangle className="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5" />
+                <span className="text-xs text-gray-300">{alert}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Section 7: Savings banner */}
+      {savings > 0 && (
+        <div className="bg-shield-card border border-shield-green/20 rounded-2xl p-5 text-center">
+          <p className="text-xs text-shield-green uppercase tracking-wider mb-1">Économie potentielle</p>
+          <p className="font-black text-4xl font-poppins text-white">{savings} MAD</p>
+          <p className="text-xs text-gray-500 mt-1">Estimation sur cette transaction</p>
+        </div>
+      )}
+
+      {/* Section 8: Provider */}
       {analysis.provider_name && (
-        <div className="bg-shield-card border border-shield-gold/20 rounded-xl p-5 card-glow-gold">
+        <div className="bg-shield-card border border-shield-gold/20 rounded-2xl p-4">
           <div className="flex items-center gap-2 mb-3">
             <Shield className="w-4 h-4 text-shield-gold" />
-            <h4 className="text-xs font-bold text-shield-gold uppercase tracking-wider">{t('recommended_providers')}</h4>
+            <h3 className="text-xs font-bold text-shield-gold uppercase tracking-wider">{t('recommended_providers')}</h3>
           </div>
           <div className="flex items-center justify-between">
             <div>
