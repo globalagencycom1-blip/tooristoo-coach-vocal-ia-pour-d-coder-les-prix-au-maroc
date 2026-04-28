@@ -60,6 +60,7 @@ export const translations = {
 
     // Analysis
     analysis_title: "Exemple d'Analyse Touristique",
+    analysis_subtitle: "Situation réelle et recommandations",
     analysis_situation: "Situation",
     analysis_price_asked: "Prix demandé",
     analysis_ai: "Analyse IA",
@@ -423,6 +424,7 @@ export const translations = {
     app_start: "Start coaching",
     app_greeting: "Hello! I'm your AI coach. I negotiate for you and help you avoid all scams during your stay in Morocco.",
     analysis_title: "Tourist Analysis Example",
+    analysis_subtitle: "Real situation and recommendations",
     analysis_situation: "Situation",
     analysis_price_asked: "Price asked",
     analysis_ai: "AI Analysis",
@@ -736,6 +738,7 @@ export const translations = {
     app_start: "Iniciar coaching",
     app_greeting: "¡Hola! Soy tu coach IA. Negocio por ti y te ayudo a evitar todas las estafas durante tu estancia en Marruecos.",
     analysis_title: "Ejemplo de Análisis Turístico",
+    analysis_subtitle: "Situación real y recomendaciones",
     analysis_situation: "Situación",
     analysis_price_asked: "Precio pedido",
     analysis_ai: "Análisis IA",
@@ -1046,6 +1049,7 @@ export const translations = {
     app_start: "Coaching starten",
     app_greeting: "Hallo! Ich bin Ihr KI-Coach. Ich verhandle für Sie und helfe Ihnen, während Ihres Aufenthalts in Marokko Betrug zu vermeiden.",
     analysis_title: "Touristenanalyse-Beispiel",
+    analysis_subtitle: "Echte Situation und Empfehlungen",
     analysis_situation: "Situation",
     analysis_price_asked: "Geforderter Preis",
     analysis_ai: "KI-Analyse",
@@ -1376,6 +1380,7 @@ export const translations = {
     app_start: "بدء التدريب",
     app_greeting: "مرحباً! أنا مدربك بالذكاء الاصطناعي. أتفاوض بدلاً عنك وأساعدك على تجنب جميع عمليات الاحتيال خلال إقامتك في المغرب.",
     analysis_title: "مثال على التحليل السياحي",
+    analysis_subtitle: "وضعية حقيقية وتوصيات",
     analysis_situation: "الوضع",
     analysis_price_asked: "السعر المطلوب",
     analysis_ai: "تحليل الذكاء الاصطناعي",
@@ -1385,6 +1390,7 @@ export const translations = {
     analysis_trust: "ثقة البائع",
     analysis_strategy: "الاستراتيجية الموصى بها",
     analysis_phrase: "العبارة الدقيقة للقول",
+    analysis_subtitle_darija: "وضعية حقيقية وتوصيات",
     risk_low: "منخفض",
     risk_medium: "متوسط",
     risk_high: "عالٍ",
@@ -1954,6 +1960,7 @@ export const translations = {
     form_help_text: "💡 وصف السياق والخدمة وشنو لي كيبان غريب",
     form_example_placeholder: "مثال: الطاكسي كيطلب 300 درهم للمطار",
     coverage_title: "فأي بلاصة فالمغرب",
+    coverage_subtitle: "التغطية فكل المدن السياحية",
     }
     };
 
