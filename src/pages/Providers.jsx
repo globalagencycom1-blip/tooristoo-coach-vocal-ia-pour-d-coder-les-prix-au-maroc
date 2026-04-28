@@ -83,7 +83,7 @@ export default function Providers() {
   const filtered = PROVIDERS.filter(p => {
     const cityMatch = city === 'all' || p.city === city;
     const catMatch = category === 'all' || p.categoryKey === category;
-    const desc = PROV_DESCS[p.descKey] || '';
+    const desc = t(p.descKey) || '';
     const searchMatch = !search || p.name.toLowerCase().includes(search.toLowerCase()) || desc.toLowerCase().includes(search.toLowerCase());
     return cityMatch && catMatch && searchMatch;
   });
