@@ -40,7 +40,7 @@ export const translations = {
 
     // Categories
     categories_title: "Pour tous vos besoins",
-    cat_taxi: "Taxis & Transport",
+    cat_taxi: "Taxi",
     cat_hotel: "Hôtels & Riads",
     cat_restaurant: "Restaurants & Cafés",
     cat_shopping: "Shopping & Souks",
@@ -220,7 +220,7 @@ export const translations = {
     // Categories & Providers (ES)
     cat_riad: "Riad & Alojamiento",
     cat_hotel: "Hotel & Hospedaje",
-    cat_taxi: "Taxi & Transporte",
+    cat_taxi: "Taxi",
     cat_restaurant: "Restaurante & Gastronomía",
     cat_excursion: "Excursión & Actividad",
     cat_guide: "Guía & Servicio",
@@ -248,7 +248,7 @@ export const translations = {
     // Categories & Providers (FR)
     cat_riad: "Riad & Logement",
     cat_hotel: "Hôtel & Séjour",
-    cat_taxi: "Taxi & Transport",
+    cat_taxi: "Taxi",
     cat_restaurant: "Restaurant & Gastronomie",
     cat_excursion: "Excursion & Activité",
     cat_guide: "Guide & Service",
