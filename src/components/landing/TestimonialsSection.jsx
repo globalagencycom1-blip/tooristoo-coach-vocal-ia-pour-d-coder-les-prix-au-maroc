@@ -3,16 +3,16 @@ import { Star, Quote } from 'lucide-react';
 import { useT } from '../../lib/i18n';
 
 const cities = [
-  { name: 'Marrakech', img: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=400&h=300&fit=crop' },
-  { name: 'Fès', img: 'https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?w=400&h=300&fit=crop' },
-  { name: 'Chefchaouen', img: 'https://images.unsplash.com/photo-1553603227-2358aabe821e?w=400&h=300&fit=crop' },
-  { name: 'Casablanca', img: 'https://images.unsplash.com/photo-1580745277745-e6e5ad2a9a51?w=400&h=300&fit=crop' },
-  { name: 'Rabat', img: 'https://images.unsplash.com/photo-1587974928442-77dc3e0dba72?w=400&h=300&fit=crop' },
-  { name: 'Meknès', img: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=400&h=300&fit=crop' },
-  { name: 'Agadir', img: 'https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?w=400&h=300&fit=crop' },
-  { name: 'Tanger', img: 'https://images.unsplash.com/photo-1548607398-476e5f6f0248?w=400&h=300&fit=crop' },
-  { name: 'Essaouira', img: 'https://images.unsplash.com/photo-1570164571235-7b24159cc610?w=400&h=300&fit=crop' },
-  { name: 'Ouarzazate', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop' },
+  { name: 'Marrakech', img: 'https://images.unsplash.com/photo-1597212618440-806262de4f6b?w=400&h=300&fit=crop' },
+  { name: 'Fès', img: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=400&h=300&fit=crop' },
+  { name: 'Chefchaouen', img: 'https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?w=400&h=300&fit=crop' },
+  { name: 'Casablanca', img: 'https://images.unsplash.com/photo-1577948000111-9c970dfe3743?w=400&h=300&fit=crop' },
+  { name: 'Rabat', img: 'https://images.unsplash.com/photo-1551887373-6edba6dacbb1?w=400&h=300&fit=crop' },
+  { name: 'Meknès', img: 'https://images.unsplash.com/photo-1554254464-7d3f7c0e0a0f?w=400&h=300&fit=crop' },
+  { name: 'Agadir', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop' },
+  { name: 'Tanger', img: 'https://images.unsplash.com/photo-1539650116574-75c0c6d33d08?w=400&h=300&fit=crop' },
+  { name: 'Essaouira', img: 'https://images.unsplash.com/photo-1553603227-2358aabe821e?w=400&h=300&fit=crop' },
+  { name: 'Ouarzazate', img: 'https://images.unsplash.com/photo-1534270804882-6b5048b1c1fc?w=400&h=300&fit=crop' },
   { name: 'Merzouga', img: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&h=300&fit=crop' },
   { name: 'Dakhla', img: 'https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&h=300&fit=crop' },
 ];
