@@ -26,11 +26,18 @@ export default function DashboardStats({ lang, profile, negotiations }) {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 4);
 
-  // Risk distribution — normalize to lowercase
+  // Risk distribution — normalize various formats (French, English, mixed case)
+  const normalizeRisk = (val) => {
+    const v = (val || '').toLowerCase().trim();
+    if (['high', 'élevé', 'eleve', 'elevé', 'haut'].includes(v)) return 'high';
+    if (['medium', 'moyen', 'modéré', 'modere', 'moderate'].includes(v)) return 'medium';
+    if (['low', 'faible', 'bas'].includes(v)) return 'low';
+    return null;
+  };
   const riskCounts = {
-    high: negotiations.filter(n => (n.risk_level || '').toLowerCase() === 'high').length,
-    medium: negotiations.filter(n => (n.risk_level || '').toLowerCase() === 'medium').length,
-    low: negotiations.filter(n => (n.risk_level || '').toLowerCase() === 'low').length,
+    high: negotiations.filter(n => normalizeRisk(n.risk_level) === 'high').length,
+    medium: negotiations.filter(n => normalizeRisk(n.risk_level) === 'medium').length,
+    low: negotiations.filter(n => normalizeRisk(n.risk_level) === 'low').length,
   };
   const riskTotal = riskCounts.high + riskCounts.medium + riskCounts.low || 1;
   const total = negotiations.length || 1;
