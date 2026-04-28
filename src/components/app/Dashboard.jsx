@@ -97,11 +97,12 @@ export default function Dashboard({ lang, profile, negotiations }) {
             ))}
           </div>
 
-          {selected && (
-            <NegotiationDetailModal neg={selected} lang={lang} onClose={() => setSelected(null)} />
-          )}
         )}
       </div>
+
+      {selected && (
+        <NegotiationDetailModal neg={selected} lang={lang} onClose={() => setSelected(null)} />
+      )}
     </div>
   );
 }
