@@ -4,6 +4,7 @@ import { ChevronLeft, Calendar, MapPin, Tag } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { getArticleById, getArticlesByFilters, PILLARS, CATEGORIES } from '../lib/blog-articles';
+import { getBlogArticleT } from '../lib/blog-article-translations';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 
@@ -19,10 +20,10 @@ export default function BlogArticle() {
         <Navbar />
         <div className="max-w-3xl mx-auto px-4 pt-28 pb-20 text-center">
           <h1 className="text-2xl font-bold text-white mb-4">
-            {lang === 'fr' ? 'Article non trouvé' : 'Article not found'}
+            {getBlogArticleT('article_not_found', lang)}
           </h1>
           <Link to="/blog" className="text-shield-green hover:underline">
-            {lang === 'fr' ? 'Retour au blog' : 'Back to blog'}
+            {getBlogArticleT('back_to_blog', lang)}
           </Link>
         </div>
         <Footer lang={lang} />
@@ -51,7 +52,7 @@ export default function BlogArticle() {
           className="inline-flex items-center gap-2 text-shield-green hover:text-shield-gold transition-colors mb-8"
         >
           <ChevronLeft className="w-4 h-4" />
-          {lang === 'fr' ? 'Retour au blog' : 'Back to blog'}
+          {getBlogArticleT('back_to_blog', lang)}
         </Link>
 
         {/* Hero image */}
@@ -127,7 +128,7 @@ export default function BlogArticle() {
         {related.length > 0 && (
           <div className="border-t border-shield-border pt-12">
             <h3 className="text-2xl font-bold text-white mb-6">
-              {lang === 'fr' ? 'Articles connexes' : 'Related articles'}
+              {getBlogArticleT('related_articles', lang)}
             </h3>
             <div className="grid md:grid-cols-3 gap-4">
               {related.map(art => (
@@ -153,18 +154,16 @@ export default function BlogArticle() {
         <div className="mt-12 p-8 bg-shield-card border border-shield-gold/20 rounded-2xl text-center card-glow-gold">
           <span className="text-4xl mb-4 block">🎓</span>
           <h3 className="font-bold text-white text-xl mb-2">
-            {lang === 'fr' ? 'Besoin d\'aide pour négocier?' : 'Need help negotiating?'}
+            {getBlogArticleT('need_help_negotiating', lang)}
           </h3>
           <p className="text-gray-400 text-sm mb-6">
-            {lang === 'fr'
-              ? 'Notre coach IA vous guide en temps réel lors de vos négociations au Maroc.'
-              : 'Our AI coach guides you in real-time during your negotiations in Morocco.'}
+            {getBlogArticleT('ai_coach_desc', lang)}
           </p>
           <Link
             to="/app"
             className="inline-flex items-center gap-2 px-6 py-3 bg-shield-green text-black font-bold rounded-xl hover:bg-green-400 transition-all"
           >
-            {lang === 'fr' ? 'Essayer maintenant' : 'Try now'}
+            {getBlogArticleT('try_now', lang)}
           </Link>
         </div>
       </div>
