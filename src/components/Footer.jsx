@@ -29,6 +29,9 @@ export default function Footer({ lang }) {
                 <a href="/privacy" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_privacy')}</a>
               </li>
               <li>
+                <a href="/legal" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_legal')}</a>
+              </li>
+              <li>
                 <a href="/terms" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_terms')}</a>
               </li>
               <li>
