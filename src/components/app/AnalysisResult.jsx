@@ -119,17 +119,21 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
         <div className="text-right">
           <p className="text-xs text-gray-400 mb-1">Confiance vendeur</p>
           {(() => {
-            const raw = analysis.vendor_trust_score || 3;
-            const score = raw > 5 ? Math.round(raw / 20) : Math.round(raw);
-            const clamped = Math.min(5, Math.max(1, score));
+            // Map risk level to trust score: low=5 stars, medium=3 stars, high=1 star
+            const riskToTrust = {
+              low: 5,
+              medium: 3,
+              high: 1,
+            };
+            const trustScore = riskToTrust[analysis.risk_level] || 3;
             return (
               <>
                 <div className="flex gap-0.5 justify-end">
                   {[1,2,3,4,5].map(i => (
-                    <Star key={i} className={`w-3.5 h-3.5 ${i <= clamped ? 'text-shield-gold fill-shield-gold' : 'text-gray-600'}`} />
+                    <Star key={i} className={`w-3.5 h-3.5 ${i <= trustScore ? 'text-shield-gold fill-shield-gold' : 'text-gray-600'}`} />
                   ))}
                 </div>
-                <p className="text-xs text-gray-500 mt-0.5">({clamped}/5)</p>
+                <p className="text-xs text-gray-500 mt-0.5">({trustScore}/5)</p>
               </>
             );
           })()}
