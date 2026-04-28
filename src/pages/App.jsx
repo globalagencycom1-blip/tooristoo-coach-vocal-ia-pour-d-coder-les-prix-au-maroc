@@ -6,12 +6,14 @@ import { useT } from '../lib/i18n';
 import Navbar from '../components/Navbar';
 import VoiceCoach from '../components/app/VoiceCoach';
 import NegotiationForm from '../components/app/NegotiationForm';
+import NegotiationRecorder from '../components/app/NegotiationRecorder';
 import AnalysisResult from '../components/app/AnalysisResult';
 import Dashboard from '../components/app/Dashboard';
 import DashboardStats from '../components/app/DashboardStats';
 
 const TABS = [
   { id: 'coach', icon: Mic, labelKey: 'nav_app' },
+  { id: 'recorder', icon: Mic, labelKey: 'recorder_tab', label: 'Enregistrer' },
   { id: 'dashboard', icon: LayoutDashboard, labelKey: 'dashboard_title' },
   { id: 'history', icon: History, labelKey: 'history_title' },
 ];
@@ -148,6 +150,21 @@ export default function AppPage() {
                   <NegotiationForm lang={lang} onAnalysisComplete={handleAnalysisComplete} />
                 )}
               </>
+            )}
+          </div>
+        )}
+
+        {activeTab === 'recorder' && (
+          <div className="bg-shield-card border border-shield-border rounded-2xl p-6">
+            {analysis ? (
+              <AnalysisResult analysis={analysis} lang={lang} onReset={handleReset} />
+            ) : (
+              <NegotiationRecorder
+                category={category}
+                location={location}
+                lang={lang}
+                onAnalysisComplete={handleAnalysisComplete}
+              />
             )}
           </div>
         )}
