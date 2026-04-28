@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Mic, MicOff, Square, Shield, Loader2, Zap } from 'lucide-react';
+import { Mic, Square, Shield, Loader2, Zap } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
 
@@ -123,7 +123,7 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category, locatio
             {isListening ? (
               <Square className="w-10 h-10 text-white" />
             ) : (
-              <MicOff className="w-12 h-12 text-black" />
+              <Mic className="w-12 h-12 text-black" />
             )}
           </button>
         </div>
