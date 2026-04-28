@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { getBlogArticles, PILLARS, CATEGORIES, CITIES } from '../lib/blog-articles';
 import { getBlogPageT } from '../lib/blog-page-translations';
+import { getPillarLabel, getCategoryLabel, getCityLabel } from '../lib/blog-labels-translations';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 
@@ -23,14 +24,13 @@ export default function Blog() {
     return pillarMatch && cityMatch && categoryMatch;
   });
 
-  const getPillarLabel = (key) => {
+  const getPillarLabelWithIcon = (key) => {
     const pillarObj = PILLARS.find(p => p.key === key);
-    return pillarObj ? `${pillarObj.icon} ${pillarObj.label}` : '';
+    return pillarObj ? `${pillarObj.icon} ${getPillarLabel(key, lang)}` : '';
   };
 
-  const getCategoryLabel = (key) => {
-    const catObj = CATEGORIES.find(c => c.key === key);
-    return catObj ? catObj.label : '';
+  const getCategoryLabelTranslated = (key) => {
+    return getCategoryLabel(key, lang);
   };
 
   return (
@@ -69,17 +69,17 @@ export default function Blog() {
                 {getBlogPageT('all', lang)}
               </button>
               {PILLARS.map(p => (
-                <button
-                  key={p.key}
-                  onClick={() => setPillar(p.key)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    pillar === p.key
-                      ? 'bg-shield-green text-black'
-                      : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
-                  }`}
-                >
-                  {p.icon} {p.label}
-                </button>
+               <button
+                 key={p.key}
+                 onClick={() => setPillar(p.key)}
+                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                   pillar === p.key
+                     ? 'bg-shield-green text-black'
+                     : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
+                 }`}
+               >
+                 {p.icon} {getPillarLabel(p.key, lang)}
+               </button>
               ))}
             </div>
           </div>
@@ -99,17 +99,17 @@ export default function Blog() {
                 {getBlogPageT('all_fem', lang)}
               </button>
               {CITIES.map(c => (
-                <button
-                  key={c}
-                  onClick={() => setCity(c)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    city === c
-                      ? 'bg-shield-gold text-black'
-                      : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
-                  }`}
-                >
-                  {c}
-                </button>
+               <button
+                 key={c}
+                 onClick={() => setCity(c)}
+                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                   city === c
+                     ? 'bg-shield-gold text-black'
+                     : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
+                 }`}
+               >
+                 {getCityLabel(c, lang)}
+               </button>
               ))}
             </div>
           </div>
@@ -129,17 +129,17 @@ export default function Blog() {
                 {getBlogPageT('all_fem', lang)}
               </button>
               {CATEGORIES.map(c => (
-                <button
-                  key={c.key}
-                  onClick={() => setCategory(c.key)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    category === c.key
-                      ? 'bg-shield-green/20 text-shield-green border border-shield-green/50'
-                      : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
-                  }`}
-                >
-                  {c.label}
-                </button>
+               <button
+                 key={c.key}
+                 onClick={() => setCategory(c.key)}
+                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                   category === c.key
+                     ? 'bg-shield-green/20 text-shield-green border border-shield-green/50'
+                     : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
+                 }`}
+               >
+                 {getCategoryLabel(c.key, lang)}
+               </button>
               ))}
             </div>
           </div>
@@ -185,9 +185,9 @@ export default function Blog() {
 
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                      <span>{article.city}</span>
+                      <span>{getCityLabel(article.city, lang)}</span>
                       <span>•</span>
-                      <span>{getCategoryLabel(article.category)}</span>
+                      <span>{getCategoryLabel(article.category, lang)}</span>
                     </div>
                     <span className="text-xs text-gray-600">{new Date(article.date).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US')}</span>
                   </div>

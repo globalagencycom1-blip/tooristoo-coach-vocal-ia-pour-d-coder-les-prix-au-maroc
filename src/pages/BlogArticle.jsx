@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { getArticleById, getArticlesByFilters, PILLARS, CATEGORIES } from '../lib/blog-articles';
 import { getBlogArticleT } from '../lib/blog-article-translations';
+import { getPillarLabel, getCategoryLabel, getCityLabel } from '../lib/blog-labels-translations';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 
@@ -68,10 +69,10 @@ export default function BlogArticle() {
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-4 flex-wrap">
             <span className="px-3 py-1 bg-shield-green/20 border border-shield-green/40 text-shield-green text-xs font-bold rounded-full">
-              {pillarInfo?.icon} {pillarInfo?.label}
+              {pillarInfo?.icon} {getPillarLabel(article.pillar, lang)}
             </span>
             <span className="px-3 py-1 bg-shield-gold/20 border border-shield-gold/40 text-shield-gold text-xs font-bold rounded-full">
-              {categoryInfo?.label}
+              {getCategoryLabel(article.category, lang)}
             </span>
           </div>
 
@@ -87,7 +88,7 @@ export default function BlogArticle() {
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
-              {article.city}
+              {getCityLabel(article.city, lang)}
             </div>
             <div className="flex items-center gap-2">
               <Tag className="w-4 h-4" />
@@ -133,11 +134,11 @@ export default function BlogArticle() {
             <div className="grid md:grid-cols-3 gap-4">
               {related.map(art => (
                 <Link
-                  key={art.id}
-                  to={`/blog/${art.id}`}
-                  className="group bg-shield-card border border-shield-border rounded-xl p-4 hover:border-shield-green/50 transition-all"
-                >
-                  <p className="text-sm text-gray-400 mb-2">{art.city}</p>
+                    key={art.id}
+                    to={`/blog/${art.id}`}
+                    className="group bg-shield-card border border-shield-border rounded-xl p-4 hover:border-shield-green/50 transition-all"
+                  >
+                    <p className="text-sm text-gray-400 mb-2">{getCityLabel(art.city, lang)}</p>
                   <h4 className="font-bold text-white text-sm leading-snug group-hover:text-shield-green transition-colors mb-3">
                     {art.title}
                   </h4>
