@@ -3,7 +3,7 @@ import { BookOpen, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { BLOG_ARTICLES, PILLARS, CATEGORIES, CITIES } from '../lib/blog-articles';
+import { getBlogArticles, PILLARS, CATEGORIES, CITIES } from '../lib/blog-articles';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 
@@ -14,7 +14,8 @@ export default function Blog() {
   const [city, setCity] = useState(null);
   const [category, setCategory] = useState(null);
 
-  const filtered = BLOG_ARTICLES.filter(article => {
+  const articles = getBlogArticles(lang);
+  const filtered = articles.filter(article => {
     const pillarMatch = !pillar || article.pillar === pillar;
     const cityMatch = !city || article.city === city;
     const categoryMatch = !category || article.category === category;

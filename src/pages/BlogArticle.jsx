@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ChevronLeft, Calendar, MapPin, Tag } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { getArticleById, PILLARS, CATEGORIES, BLOG_ARTICLES } from '../lib/blog-articles';
+import { getArticleById, getArticlesByFilters, PILLARS, CATEGORIES } from '../lib/blog-articles';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 
@@ -11,7 +11,7 @@ export default function BlogArticle() {
   const { id } = useParams();
   const { lang } = useLang();
   const t = useT(lang);
-  const article = getArticleById(id);
+  const article = getArticleById(id, lang);
 
   if (!article) {
     return (
@@ -36,7 +36,8 @@ export default function BlogArticle() {
   const categoryInfo = getCategoryInfo(article.category);
 
   // Get related articles (same pillar or city)
-  const related = BLOG_ARTICLES.filter(
+  const allArticles = getArticlesByFilters(null, null, null, lang);
+  const related = allArticles.filter(
     a => a.id !== id && (a.pillar === article.pillar || a.city === article.city)
   ).slice(0, 3);
 
