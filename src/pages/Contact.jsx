@@ -32,7 +32,7 @@ export default function Contact() {
     {
       icon: Phone,
       label: lang === 'fr' ? 'Téléphone' : lang === 'en' ? 'Phone' : lang === 'es' ? 'Teléfono' : lang === 'de' ? 'Telefon' : lang === 'ar' ? 'الهاتف' : 'الهاتف',
-      value: '+212 5XX XXX XXX',
+      value: '+33 7 55 85 52 54',
     },
   ];
 
