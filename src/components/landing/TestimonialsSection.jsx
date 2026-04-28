@@ -20,6 +20,10 @@ const cities = [
 export default function TestimonialsSection({ lang }) {
   const t = useT(lang);
 
+  // Get coverage translations, fallback to main i18n if not available
+  const getCoverageTitle = () => t('coverage_title') || 'Partout au Maroc';
+  const getCoverageSubtitle = () => t('coverage_subtitle_text') || 'Couverture dans toutes les villes touristiques';
+
   const testimonials = [
     { textKey: 'test1_text', nameKey: 'test1_name', originKey: 'test1_origin', rating: 5, flag: '🇫🇷' },
     { textKey: 'test2_text', nameKey: 'test2_name', originKey: 'test2_origin', rating: 5, flag: '🇬🇧' },
@@ -33,9 +37,9 @@ export default function TestimonialsSection({ lang }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="font-poppins font-black text-3xl text-white mb-2">
-              Partout au Maroc <span className="text-shield-green text-lg align-middle">🇲🇦</span>
+              {getCoverageTitle()} <span className="text-shield-green text-lg align-middle">🇲🇦</span>
             </h2>
-            <p className="text-gray-500 text-sm">Couverture dans toutes les villes touristiques</p>
+            <p className="text-gray-500 text-sm">{getCoverageSubtitle()}</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {cities.map((city) => (
