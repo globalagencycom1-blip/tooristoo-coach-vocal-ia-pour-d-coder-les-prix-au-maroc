@@ -18,6 +18,7 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import BlogArticle from './pages/BlogArticle';
 import LegalNotice from './pages/LegalNotice';
+import Profile from './pages/Profile';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -57,6 +58,7 @@ const AuthenticatedApp = () => {
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:id" element={<BlogArticle />} />
       <Route path="/legal" element={<LegalNotice />} />
+      <Route path="/profile" element={<Profile />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Shield, Menu, X, Globe } from 'lucide-react';
+import { Shield, Menu, X, Globe, UserCircle } from 'lucide-react';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 
@@ -90,6 +90,12 @@ export default function Navbar() {
               )}
             </div>
 
+            <Link
+              to="/profile"
+              className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-shield-border/50 hover:bg-shield-border text-gray-300 hover:text-white text-sm transition-all"
+            >
+              <UserCircle className="w-4 h-4" />
+            </Link>
             <Link
               to="/app"
               className="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-shield-green text-black font-semibold text-sm rounded-xl hover:bg-green-400 transition-all btn-glow"
