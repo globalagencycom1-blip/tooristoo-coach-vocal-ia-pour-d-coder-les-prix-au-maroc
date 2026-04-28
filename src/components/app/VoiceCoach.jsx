@@ -67,7 +67,8 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category, locatio
     - vendor_trust_score (number 1-5)
     - provider_name (string): nom d'un prestataire alternatif recommandé
     - provider_url (string): lien Google Maps ou site pour ce prestataire à ${location || 'Marrakech'}
-    - savings (number): économies potentielles si prix MAD demandé est connu, sinon 0`;
+    - savings (number): économies potentielles si prix MAD demandé est connu, sinon 0
+    - recommended_phrase_darija (string): TOUJOURS la phrase recommandée traduite en Darija marocaine (langue parlée)`;
 
     const result = await base44.integrations.Core.InvokeLLM({
       prompt,
@@ -85,6 +86,7 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category, locatio
           provider_name: { type: 'string' },
           provider_url: { type: 'string' },
           savings: { type: 'number' },
+          recommended_phrase_darija: { type: 'string' },
         }
       }
     });

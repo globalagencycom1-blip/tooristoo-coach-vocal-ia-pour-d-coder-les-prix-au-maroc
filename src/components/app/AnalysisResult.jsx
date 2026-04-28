@@ -97,11 +97,23 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
 
       {/* Exact phrase */}
       {analysis.recommended_phrase && (
-        <div className="bg-shield-card border border-shield-green/30 rounded-xl p-5 card-glow">
-          <h4 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">{t('analysis_phrase')}</h4>
-          <blockquote className="text-gray-200 text-sm leading-relaxed italic border-l-2 border-shield-green pl-4">
+        <div className="bg-shield-dark border border-shield-green/40 rounded-xl p-5 card-glow">
+          <h4 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">💬 {t('analysis_phrase')}</h4>
+          <blockquote className="text-gray-100 text-sm leading-relaxed italic border-l-2 border-shield-green pl-4 mb-3">
             "{analysis.recommended_phrase}"
           </blockquote>
+          {analysis.recommended_phrase_darija && (
+            <div className="mt-3 pt-3 border-t border-shield-border">
+              <span className="text-xs text-shield-gold font-semibold">🇲🇦 En Darija : </span>
+              <span className="text-xs text-gray-300 italic">"{analysis.recommended_phrase_darija}"</span>
+            </div>
+          )}
+          {savings > 0 && (
+            <div className="mt-3 pt-3 border-t border-shield-border flex items-center gap-2">
+              <span className="text-xs text-gray-400">💸 Économie potentielle :</span>
+              <span className="text-xs font-bold text-shield-green">{savings} – {analysis.price_asked - (analysis.price_estimated_min || 0)} MAD</span>
+            </div>
+          )}
         </div>
       )}
 

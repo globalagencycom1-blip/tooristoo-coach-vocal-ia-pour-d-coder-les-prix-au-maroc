@@ -21,25 +21,27 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
     Prix demandé: ${form.price_asked} MAD
     Description: ${form.description}
     
-    Analyse et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.`;
+    Analyse et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.
+    IMPORTANT: Le champ recommended_phrase_darija doit TOUJOURS contenir la phrase à dire au vendeur traduite en Darija marocaine (langue parlée, pas arabe classique).`;
 
     const result = await base44.integrations.Core.InvokeLLM({
       prompt,
       response_json_schema: {
-        type: 'object',
-        properties: {
-          price_estimated_min: { type: 'number' },
-          price_estimated_max: { type: 'number' },
-          risk_level: { type: 'string' },
-          scam_detected: { type: 'boolean' },
-          ai_analysis: { type: 'string' },
-          recommended_phrase: { type: 'string' },
-          strategy: { type: 'string' },
-          vendor_trust_score: { type: 'number' },
-          provider_name: { type: 'string' },
-          provider_url: { type: 'string' },
-          savings: { type: 'number' },
-        }
+      type: 'object',
+      properties: {
+      price_estimated_min: { type: 'number' },
+      price_estimated_max: { type: 'number' },
+      risk_level: { type: 'string' },
+      scam_detected: { type: 'boolean' },
+      ai_analysis: { type: 'string' },
+      recommended_phrase: { type: 'string' },
+      recommended_phrase_darija: { type: 'string' },
+      strategy: { type: 'string' },
+      vendor_trust_score: { type: 'number' },
+      provider_name: { type: 'string' },
+      provider_url: { type: 'string' },
+      savings: { type: 'number' },
+      }
       }
     });
 

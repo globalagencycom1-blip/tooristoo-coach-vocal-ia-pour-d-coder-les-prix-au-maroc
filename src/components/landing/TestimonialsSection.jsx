@@ -25,16 +25,27 @@ export default function TestimonialsSection({ lang }) {
       {/* Cities */}
       <section className="py-16 bg-[#0a1628]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-500 text-sm font-semibold uppercase tracking-wider mb-8">
-            Partout au Maroc
-          </p>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
-            {cities.map(city => (
-              <div key={city.name} className="relative rounded-xl overflow-hidden group cursor-pointer">
-                <img src={city.img} alt={city.name} className="w-full h-20 object-cover group-hover:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                <div className="absolute bottom-2 left-0 right-0 text-center">
-                  <span className="text-white text-xs font-bold">{city.name}</span>
+          <div className="text-center mb-10">
+            <h2 className="font-poppins font-black text-3xl text-white mb-2">
+              Partout au Maroc <span className="text-shield-green text-lg align-middle">🇲🇦</span>
+            </h2>
+            <p className="text-gray-500 text-sm">Couverture dans toutes les villes touristiques</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {cities.map((city, i) => (
+              <div
+                key={city.name}
+                className={`relative rounded-2xl overflow-hidden group cursor-pointer ${i === 0 ? 'md:col-span-1 row-span-2' : ''}`}
+              >
+                <img
+                  src={city.img}
+                  alt={city.name}
+                  className={`w-full object-cover group-hover:scale-105 transition-transform duration-500 ${i === 0 ? 'h-52 md:h-full' : 'h-36'}`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-shield-green"></div>
+                  <span className="text-white text-sm font-bold capitalize">{city.name.charAt(0) + city.name.slice(1).toLowerCase()}</span>
                 </div>
               </div>
             ))}
