@@ -66,10 +66,7 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
 
       {/* Section 2: AI Analysis */}
       <div className="bg-shield-card border border-shield-border rounded-2xl p-4 space-y-3">
-        <div className="flex items-center justify-between">
-          <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">Analyse IA</h3>
-          <VoiceOutput text={analysis.ai_analysis || ''} lang={lang} label="🔊 Écouter" />
-        </div>
+        <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">Analyse IA</h3>
 
         {/* Real price */}
         <div className="flex items-start gap-2">
@@ -148,10 +145,7 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
       {/* Section 4: Strategy */}
       {strategyPoints.length > 0 && (
         <div className="bg-shield-card border border-shield-border rounded-2xl p-4">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">Stratégie recommandée</h3>
-            <VoiceOutput text={analysis.strategy || ''} lang={lang} label="🔊 Écouter" />
-          </div>
+          <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">Stratégie recommandée</h3>
           <ul className="space-y-2">
             {strategyPoints.map((point, i) => (
               <li key={i} className="flex items-start gap-2">
