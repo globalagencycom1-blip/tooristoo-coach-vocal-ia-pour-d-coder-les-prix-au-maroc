@@ -66,27 +66,23 @@ export default function AppPage() {
   };
 
   const handleAnalysisComplete = async (result) => {
-    // Afficher le résultat immédiatement
     setAnalysis(result);
     setActiveTab('coach');
 
-    // Sauvegarder en arrière-plan sans bloquer l'affichage
-    try {
-      const user = await base44.auth.me().catch(() => null);
-      if (!user) return;
+    const user = await base44.auth.me().catch(() => null);
+    if (!user) return;
 
-      const saved = await saveNegotiation(result, user.email, lang).catch(() => ({ ...result, id: Date.now() }));
-      setNegotiations(prev => [saved, ...prev]);
+    // Save via offline-aware storage (IndexedDB + server sync)
+    const saved = await saveNegotiation(result, user.email, lang);
+    setNegotiations(prev => [saved, ...prev]);
 
-      if (profile && navigator.onLine) {
-        await base44.entities.UserProfile.update(profile.id, {
-          total_negotiations: (profile.total_negotiations || 0) + 1,
-          total_savings: (profile.total_savings || 0) + (result.savings || 0),
-          scams_avoided: (profile.scams_avoided || 0) + (result.scam_detected ? 1 : 0),
-        }).catch(() => {});
-      }
-    } catch (_) {
-      // Silently ignore background save errors
+    // Update profile stats (only online)
+    if (profile && navigator.onLine) {
+      await base44.entities.UserProfile.update(profile.id, {
+        total_negotiations: (profile.total_negotiations || 0) + 1,
+        total_savings: (profile.total_savings || 0) + (result.savings || 0),
+        scams_avoided: (profile.scams_avoided || 0) + (result.scam_detected ? 1 : 0),
+      }).catch(() => {});
     }
   };
 

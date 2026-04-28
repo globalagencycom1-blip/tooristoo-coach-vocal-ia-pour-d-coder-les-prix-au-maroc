@@ -47,46 +47,50 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category, locatio
     setIsListening(false);
   };
 
-  const [error, setError] = useState(null);
-
   const analyzeWithAI = async (text) => {
     setIsAnalyzing(true);
-    setError(null);
-    const langLabel = lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabic' : lang === 'darija' ? 'Moroccan Darija' : 'French';
-    const prompt = `You are NegoShield AI, an expert in tourist prices in Morocco. Analyze this negotiation situation and return a JSON response.
-Category: ${category || 'taxi'}
-City: ${location || 'Marrakech'}
-Price asked: ${priceAsked || 'unknown'} MAD
-Description: ${text}
-Response language: ${langLabel}
-Provide realistic price ranges, risk assessment, negotiation strategy, a recommended phrase to say to the vendor, and suggest a trusted alternative provider.`;
+    const prompt = `Tu es NegoShield AI, un expert en prix touristiques au Maroc. 
+    Analyse cette situation de négociation:
+    Catégorie: ${category || 'taxi'}
+    Ville: ${location || 'Marrakech'}
+    Prix demandé: ${priceAsked || 'non spécifié'} MAD
+    Description: ${text}
+    
+    Réponds en JSON avec:
+    - price_estimated_min (number): prix minimum réel du marché en MAD
+    - price_estimated_max (number): prix maximum réel du marché en MAD
+    - risk_level: "low" | "medium" | "high"
+    - scam_detected (boolean)
+    - ai_analysis (string): analyse détaillée en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}
+    - recommended_phrase (string): phrase exacte à dire au vendeur en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija' : 'Français'}
+    - strategy (string): stratégie recommandée en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija' : 'Français'}
+    - vendor_trust_score (number 1-5)
+    - provider_name (string): nom d'un prestataire alternatif recommandé
+    - provider_url (string): lien Google Maps ou site pour ce prestataire à ${location || 'Marrakech'}
+    - savings (number): économies potentielles si prix MAD demandé est connu, sinon 0`;
 
-    try {
-      const result = await base44.integrations.Core.InvokeLLM({
-        prompt,
-        response_json_schema: {
-          type: 'object',
-          properties: {
-            price_estimated_min: { type: 'number' },
-            price_estimated_max: { type: 'number' },
-            risk_level: { type: 'string' },
-            scam_detected: { type: 'boolean' },
-            ai_analysis: { type: 'string' },
-            recommended_phrase: { type: 'string' },
-            strategy: { type: 'string' },
-            vendor_trust_score: { type: 'number' },
-            provider_name: { type: 'string' },
-            provider_url: { type: 'string' },
-            savings: { type: 'number' },
-          }
+    const result = await base44.integrations.Core.InvokeLLM({
+      prompt,
+      response_json_schema: {
+        type: 'object',
+        properties: {
+          price_estimated_min: { type: 'number' },
+          price_estimated_max: { type: 'number' },
+          risk_level: { type: 'string' },
+          scam_detected: { type: 'boolean' },
+          ai_analysis: { type: 'string' },
+          recommended_phrase: { type: 'string' },
+          strategy: { type: 'string' },
+          vendor_trust_score: { type: 'number' },
+          provider_name: { type: 'string' },
+          provider_url: { type: 'string' },
+          savings: { type: 'number' },
         }
-      });
-      onAnalysisComplete({ ...result, transcript: text, category, location, price_asked: priceAsked ? Number(priceAsked) : 0 });
-    } catch (err) {
-      setError("Une erreur s'est produite. Veuillez réessayer.");
-    } finally {
-      setIsAnalyzing(false);
-    }
+      }
+    });
+    
+    setIsAnalyzing(false);
+    onAnalysisComplete({ ...result, transcript: text, category, location, price_asked: priceAsked ? Number(priceAsked) : 0 });
   };
 
   const handleAnalyze = () => {
@@ -170,10 +174,6 @@ Provide realistic price ranges, risk assessment, negotiation strategy, a recomme
             </>
           )}
         </button>
-      )}
-
-      {error && (
-        <p className="text-red-400 text-sm text-center bg-red-500/10 border border-red-500/20 rounded-xl px-3 py-2">{error}</p>
       )}
 
       {/* AI greeting */}
