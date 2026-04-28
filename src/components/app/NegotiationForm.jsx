@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Loader2, Zap } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
+import { formatPricingPrompt, getAllCitiesPricingContext } from '../../lib/pricing-knowledge-base';
 
-const CATEGORIES = ['taxi', 'hotel', 'riad', 'restaurant', 'excursion', 'shopping', 'transport', 'guide', 'spa', 'other'];
+const CATEGORIES = ['taxi', 'hotel', 'riad', 'restaurant', 'excursion', 'shopping', 'transport', 'guide', 'spa', 'artisanat', 'bus', 'train', 'other'];
 const CITIES = ['Marrakech', 'Casablanca', 'Fès', 'Chefchaouen', 'Agadir', 'Tanger', 'Rabat', 'Meknès', 'Essaouira', 'Ouarzazate'];
 
 export default function NegotiationForm({ lang, onAnalysisComplete }) {
@@ -26,16 +27,28 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
     
     setIsAnalyzing(true);
 
+    const pricingInfo = formatPricingPrompt(form.location, form.category);
+    const pricingContext = getAllCitiesPricingContext();
+
     const prompt = `Tu es NegoShield AI, expert en prix touristiques au Maroc.
-    Catégorie: ${form.category}
-    Ville: ${form.location}
-    Prix demandé: ${form.price_asked} MAD
-    Description: ${form.description}
-    
-    Analyse et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.
-    IMPORTANT: 
-    - Le champ recommended_phrase_darija doit TOUJOURS contenir la phrase traduite en Darija marocaine (langue parlée, pas arabe classique).
-    - Le champ risk_level doit OBLIGATOIREMENT être l'une de ces valeurs exactes en anglais: "low", "medium", ou "high". Ne jamais utiliser d'autres valeurs.`;
+
+${pricingContext}
+
+SITUATION ACTUELLE:
+- Catégorie: ${form.category}
+- Ville: ${form.location}
+- Prix demandé: ${form.price_asked} MAD
+- Description: ${form.description}
+
+INFORMATIONS SPÉCIFIQUES:
+${pricingInfo}
+
+Analyse cette demande de négociation et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.
+
+IMPORTANT: 
+- Le champ recommended_phrase_darija doit TOUJOURS contenir la phrase traduite en Darija marocaine (langue parlée, pas arabe classique).
+- Le champ risk_level doit OBLIGATOIREMENT être l'une de ces valeurs exactes en anglais: "low", "medium", ou "high". Ne jamais utiliser d'autres valeurs.
+- Utiliser la base de connaissances pour évaluer si le prix demandé est juste, raisonnable ou abusif.`;
 
     const result = await base44.integrations.Core.InvokeLLM({
       prompt,
