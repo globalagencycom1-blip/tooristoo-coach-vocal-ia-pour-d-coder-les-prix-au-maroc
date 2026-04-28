@@ -23,11 +23,13 @@ export default function Navbar() {
   const handleAnchorClick = (e, href) => {
     if (href.startsWith('#')) {
       e.preventDefault();
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        setMobileOpen(false);
-      }
+      setMobileOpen(false);
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     }
   };
 
