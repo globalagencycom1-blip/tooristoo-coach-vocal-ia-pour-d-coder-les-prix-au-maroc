@@ -61,7 +61,7 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="text-xs text-gray-400 mb-1.5 block font-semibold uppercase tracking-wide">Catégories</label>
+          <label className="text-xs text-gray-400 mb-1.5 block font-semibold uppercase tracking-wide">{t('form_categories')}</label>
           <select
             value={form.category}
             onChange={e => setForm({ ...form, category: e.target.value })}
@@ -71,7 +71,7 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
           </select>
         </div>
         <div>
-          <label className="text-xs text-gray-400 mb-1.5 block font-semibold uppercase tracking-wide">Villes</label>
+          <label className="text-xs text-gray-400 mb-1.5 block font-semibold uppercase tracking-wide">{t('form_cities')}</label>
           <select
             value={form.location}
             onChange={e => setForm({ ...form, location: e.target.value })}
@@ -83,7 +83,7 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
       </div>
 
       <div>
-        <label className="text-xs text-gray-400 mb-1.5 block font-semibold uppercase tracking-wide">Prix Demandé (MAD)</label>
+        <label className="text-xs text-gray-400 mb-1.5 block font-semibold uppercase tracking-wide">{t('form_price_label')}</label>
         <input
           type="number"
           value={form.price_asked}
@@ -94,15 +94,15 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
       </div>
 
       <div>
-        <label className="text-xs text-gray-400 mb-1.5 block font-semibold uppercase tracking-wide">Situation</label>
+        <label className="text-xs text-gray-400 mb-1.5 block font-semibold uppercase tracking-wide">{t('form_situation_label')}</label>
         <textarea
           value={form.description}
           onChange={e => setForm({ ...form, description: e.target.value })}
-          placeholder="Ex: Le taxi demande 300 MAD pour l'aéroport"
+          placeholder={t('form_example_placeholder')}
           rows={3}
           className="w-full bg-shield-card border border-shield-border text-white rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-shield-green placeholder-gray-500 resize-none"
         />
-        <p className="text-xs text-gray-500 mt-1.5">💡 Décrivez le contexte, le service et ce qui vous semble suspect</p>
+        <p className="text-xs text-gray-500 mt-1.5">{t('form_help_text')}</p>
       </div>
 
       <button

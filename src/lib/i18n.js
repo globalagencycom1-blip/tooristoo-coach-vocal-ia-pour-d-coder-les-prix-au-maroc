@@ -203,6 +203,14 @@ export const translations = {
     strategy4: "Gardez le sourire et restez calme",
     strategy5: "Ne payez jamais le premier prix",
 
+    // Form labels & help
+    form_categories: "Categoría",
+    form_cities: "Ciudades",
+    form_price_label: "Precio Solicitado (MAD)",
+    form_situation_label: "Situación",
+    form_help_text: "💡 Describe el contexto, el servicio y lo que te parece sospechoso",
+    form_example_placeholder: "Ej: El taxi pide 300 MAD al aeropuerto",
+
     // Categories & Providers (ES)
     cat_riad: "Riad & Alojamiento",
     cat_hotel: "Hotel & Hospedaje",
@@ -223,6 +231,14 @@ export const translations = {
     prov_desc8: "Red oficial de autobuses y transporte entre ciudades",
     prov_desc9: "Riad típico en la ciudad azul, tarifas transparentes",
     prov_desc10: "Cocina marroquí auténtica, menú a precio fijo mostrado",
+    // Form labels & help
+    form_categories: "Catégories",
+    form_cities: "Villes",
+    form_price_label: "Prix Demandé (MAD)",
+    form_situation_label: "Situation",
+    form_help_text: "💡 Décrivez le contexte, le service et ce qui vous semble suspect",
+    form_example_placeholder: "Ex: Le taxi demande 300 MAD pour l'aéroport",
+
     // Categories & Providers (FR)
     cat_riad: "Riad & Logement",
     cat_hotel: "Hôtel & Séjour",
@@ -602,6 +618,14 @@ export const translations = {
     faq_cta_title: "Didn't find your answer?",
     faq_cta_subtitle: "Our team is available to help you",
     faq_cta_btn: "Contact support",
+    // Form labels & help
+    form_categories: "Categories",
+    form_cities: "Cities",
+    form_price_label: "Price Asked (MAD)",
+    form_situation_label: "Situation",
+    form_help_text: "💡 Describe the context, service and what seems suspicious",
+    form_example_placeholder: "Ex: The taxi asks 300 MAD for the airport",
+
     // Categories & Providers
     cat_riad: "Riad & Accommodation",
     cat_hotel: "Hotel & Stay",
@@ -1241,6 +1265,14 @@ export const translations = {
     team_bio2: "KI-Ingenieurin spezialisiert auf NLP. Leidenschaftlich daran interessiert, Technologie zur Lösung echter alltäglicher Probleme einzusetzen.",
     team_bio3: "UX-Designerin & Produktmanagerin. Hat in 40 Ländern gereist und versteht die Bedeutung eines Schutzwerkzeugs für Reisende.",
     team_bio4: "Entwickelt das Netzwerk zertifizierter Anbieter in ganz Marokko und garantiert faire Preise und Servicequalität.",
+    // Form labels & help
+    form_categories: "Kategorien",
+    form_cities: "Städte",
+    form_price_label: "Geforderte Preis (MAD)",
+    form_situation_label: "Situation",
+    form_help_text: "💡 Beschreiben Sie den Kontext, die Dienstleistung und was verdächtig wirkt",
+    form_example_placeholder: "Beispiel: Das Taxi fordert 300 MAD zum Flughafen",
+
     // Categories & Providers (DE)
     cat_riad: "Riad & Unterkunft",
     cat_hotel: "Hotel & Logis",
@@ -1522,6 +1554,12 @@ export const translations = {
     city_chefchaouen: "شفشاون",
     city_agadir: "أكادير",
     city_tanger: "طنجة",
+    form_categories: "الفئات",
+    form_cities: "المدن",
+    form_price_label: "السعر المطلوب (درهم)",
+    form_situation_label: "الوضعية",
+    form_help_text: "💡 صف السياق والخدمة وما يبدو غريباً",
+    form_example_placeholder: "مثال: الطاكسي يطلب 300 درهم للمطار",
     lang_fr: "Français",
     lang_en: "English",
     lang_es: "Español",
@@ -1872,6 +1910,12 @@ export const translations = {
     prov_desc8: "شبكة رسمية للحافلات والنقل بين المدن",
     prov_desc9: "رياض نموذجي فالمدينة الزرقاء، أثمان شفافة",
     prov_desc10: "أكل مغربي أصيل، مينو بثمن ثابت معروض",
+    form_categories: "الفئات",
+    form_cities: "المدن",
+    form_price_label: "الثمن المطلوب (درهم)",
+    form_situation_label: "الوضعية",
+    form_help_text: "💡 وصف السياق والخدمة وشنو لي كيبان غريب",
+    form_example_placeholder: "مثال: الطاكسي كيطلب 300 درهم للمطار",
   }
 };
 
