@@ -15,42 +15,48 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
     e.preventDefault();
     setIsAnalyzing(true);
 
-    const prompt = `Tu es NegoShield AI, expert en prix touristiques au Maroc.
-    Catégorie: ${form.category}
-    Ville: ${form.location}
-    Prix demandé: ${form.price_asked} MAD
-    Description: ${form.description}
-    
-    Analyse et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.`;
+    try {
+      const prompt = `Tu es NegoShield AI, expert en prix touristiques au Maroc.
+      Catégorie: ${form.category}
+      Ville: ${form.location}
+      Prix demandé: ${form.price_asked} MAD
+      Description: ${form.description}
+      
+      Analyse et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.`;
 
-    const result = await base44.integrations.Core.InvokeLLM({
-      prompt,
-      response_json_schema: {
-        type: 'object',
-        properties: {
-          price_estimated_min: { type: 'number' },
-          price_estimated_max: { type: 'number' },
-          risk_level: { type: 'string' },
-          scam_detected: { type: 'boolean' },
-          ai_analysis: { type: 'string' },
-          recommended_phrase: { type: 'string' },
-          strategy: { type: 'string' },
-          vendor_trust_score: { type: 'number' },
-          provider_name: { type: 'string' },
-          provider_url: { type: 'string' },
-          savings: { type: 'number' },
+      const result = await base44.integrations.Core.InvokeLLM({
+        prompt,
+        response_json_schema: {
+          type: 'object',
+          properties: {
+            price_estimated_min: { type: 'number' },
+            price_estimated_max: { type: 'number' },
+            risk_level: { type: 'string' },
+            scam_detected: { type: 'boolean' },
+            ai_analysis: { type: 'string' },
+            recommended_phrase: { type: 'string' },
+            strategy: { type: 'string' },
+            vendor_trust_score: { type: 'number' },
+            provider_name: { type: 'string' },
+            provider_url: { type: 'string' },
+            savings: { type: 'number' },
+          }
         }
-      }
-    });
+      });
 
-    setIsAnalyzing(false);
-    onAnalysisComplete({
-      ...result,
-      category: form.category,
-      location: form.location,
-      price_asked: Number(form.price_asked),
-      transcript: form.description,
-    });
+      onAnalysisComplete({
+        ...result,
+        category: form.category,
+        location: form.location,
+        price_asked: Number(form.price_asked),
+        transcript: form.description,
+      });
+    } catch (err) {
+      console.error('Analyse échouée:', err);
+      alert("L'analyse a échoué. Veuillez réessayer.");
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
 
   return (
