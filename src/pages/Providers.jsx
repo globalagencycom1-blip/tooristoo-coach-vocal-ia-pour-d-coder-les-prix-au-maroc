@@ -20,7 +20,7 @@ const PROVIDERS = [
 
 
 
-const CITIES_KEYS = ['Marrakech', 'Fès', 'Casablanca', 'Chefchaouen', 'Agadir', 'Tanger'];
+const CITIES_KEYS = ['Marrakech', 'Fès', 'Casablanca', 'Chefchaouen', 'Agadir', 'Tanger', 'Rabat', 'Meknès', 'Ouarzazate', 'Merzouga', 'Dakhla', 'El Jadida', 'Essaouira'];
 const CAT_KEYS = ['riad', 'restaurant', 'taxi', 'guide', 'shopping', 'excursion', 'spa', 'transport'];
 
 function ProviderCard({ p, t, lang }) {
