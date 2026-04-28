@@ -80,59 +80,45 @@ export default function AppPage() {
       <Navbar />
 
       <div className="max-w-2xl mx-auto px-4 pt-20 pb-24">
-        {/* App Header */}
-        <div className="text-center py-6">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <Shield className="w-6 h-6 text-shield-green" />
-            <h1 className="font-poppins font-bold text-white text-xl">{t('app_page_title')}</h1>
-          </div>
-          <p className="text-shield-green text-sm">{t('app_page_subtitle')}</p>
-        </div>
-
-
-
-        {/* Tab Navigation */}
-        <div className="flex gap-1 bg-shield-card border border-shield-border rounded-2xl p-1 mb-6">
-          {TABS.map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold transition-all ${
-                activeTab === tab.id
-                  ? 'bg-shield-green text-black'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              <tab.icon className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{t(tab.labelKey)}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Content */}
         {activeTab === 'coach' && (
-          <div className="bg-shield-card border border-shield-border rounded-2xl p-6">
+          <>
+            {/* Coach Header */}
+            <div className="text-center mb-8">
+              <h1 className="font-poppins font-bold text-white text-2xl mb-3">{t('app_page_title')}</h1>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-lg mx-auto">
+                {t('app_greeting')}
+              </p>
+
+              {/* Analyses remaining */}
+              {profile && profile.plan === 'free' && (
+                <div className="inline-block bg-shield-border/30 text-gray-300 text-xs font-medium px-4 py-2 rounded-full">
+                  3 {t('analysis_title')}
+                </div>
+              )}
+            </div>
+
+            {/* Content */}
             {analysis ? (
               <AnalysisResult analysis={analysis} lang={lang} onReset={handleReset} />
             ) : (
-              <>
+              <div className="bg-shield-card border border-shield-border rounded-2xl p-6">
                 {/* Input mode toggle */}
                 <div className="flex gap-2 mb-6">
                   <button
                     onClick={() => setInputMode('voice')}
-                    className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      inputMode === 'voice' ? 'bg-shield-green text-black' : 'bg-shield-border/30 text-gray-400'
+                    className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-2 ${
+                      inputMode === 'voice' ? 'bg-shield-green text-black' : 'bg-shield-border/40 text-gray-300 hover:text-white'
                     }`}
                   >
-                    🎤 Vocal
+                    🎤 {t('analysis_title')}
                   </button>
                   <button
                     onClick={() => setInputMode('form')}
-                    className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      inputMode === 'form' ? 'bg-shield-green text-black' : 'bg-shield-border/30 text-gray-400'
+                    className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-2 ${
+                      inputMode === 'form' ? 'bg-shield-green text-black' : 'bg-shield-border/40 text-gray-300 hover:text-white'
                     }`}
                   >
-                    📝 Formulaire
+                    ✓ {t('analysis_ai')}
                   </button>
                 </div>
 
@@ -147,9 +133,9 @@ export default function AppPage() {
                 ) : (
                   <NegotiationForm lang={lang} onAnalysisComplete={handleAnalysisComplete} />
                 )}
-              </>
+              </div>
             )}
-          </div>
+          </>
         )}
 
         {activeTab === 'dashboard' && (
@@ -158,6 +144,26 @@ export default function AppPage() {
 
         {activeTab === 'history' && (
           <Dashboard lang={lang} profile={profile} negotiations={negotiations} />
+        )}
+
+        {/* Tab Navigation Bottom */}
+        {activeTab !== 'coach' && (
+          <div className="flex gap-1 bg-shield-card border border-shield-border rounded-2xl p-1 mt-6">
+            {TABS.map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                  activeTab === tab.id
+                    ? 'bg-shield-green text-black'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                <tab.icon className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{t(tab.labelKey)}</span>
+              </button>
+            ))}
+          </div>
         )}
 
         {/* Plan badge */}
