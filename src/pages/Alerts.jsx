@@ -100,27 +100,6 @@ export default function Alerts() {
           <p className="text-gray-400 text-sm">Protégez-vous pendant votre séjour 🇲🇦</p>
         </div>
 
-        {/* Quick alerts summary */}
-        <div className="bg-shield-card border border-shield-border rounded-2xl p-5 mb-6">
-          <div className="flex items-center gap-2 mb-4">
-            <AlertTriangle className="w-4 h-4 text-shield-gold" />
-            <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Restez vigilant pendant votre séjour</p>
-          </div>
-          <div className="space-y-2">
-            {QUICK_ALERTS.map((alert, i) => (
-              <div key={i} className="flex items-center gap-3 p-3 bg-shield-dark border border-shield-border rounded-xl">
-                <div className="w-5 h-5 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
-                  <X className="w-3 h-3 text-red-400" />
-                </div>
-                <span className="text-sm text-gray-300">{alert}</span>
-              </div>
-            ))}
-          </div>
-          <a href="#details" className="mt-4 inline-block text-shield-green text-sm font-semibold hover:text-green-400 transition-colors">
-            Voir toutes les alertes →
-          </a>
-        </div>
-
         {/* Detailed alerts */}
         <div id="details" className="space-y-4">
           {ALERTS.map((alert, i) => (
