@@ -3,12 +3,18 @@ import { Star, Quote } from 'lucide-react';
 import { useT } from '../../lib/i18n';
 
 const cities = [
-  { name: 'MARRAKECH', img: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=200&h=120&fit=crop' },
-  { name: 'CASABLANCA', img: 'https://images.unsplash.com/photo-1599946347371-68eb71b16afc?w=200&h=120&fit=crop' },
-  { name: 'FÈS', img: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=200&h=120&fit=crop' },
-  { name: 'CHEFCHAOUEN', img: 'https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?w=200&h=120&fit=crop' },
-  { name: 'AGADIR', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=200&h=120&fit=crop' },
-  { name: 'TANGER', img: 'https://images.unsplash.com/photo-1539650116574-75c0c6d33d08?w=200&h=120&fit=crop' },
+  { name: 'Marrakech', img: 'https://images.unsplash.com/photo-1597212618440-806262de4f6b?w=400&h=300&fit=crop' },
+  { name: 'Fès', img: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=400&h=300&fit=crop' },
+  { name: 'Chefchaouen', img: 'https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?w=400&h=300&fit=crop' },
+  { name: 'Casablanca', img: 'https://images.unsplash.com/photo-1577948000111-9c970dfe3743?w=400&h=300&fit=crop' },
+  { name: 'Rabat', img: 'https://images.unsplash.com/photo-1551887373-6edba6dacbb1?w=400&h=300&fit=crop' },
+  { name: 'Meknès', img: 'https://images.unsplash.com/photo-1554254464-7d3f7c0e0a0f?w=400&h=300&fit=crop' },
+  { name: 'Agadir', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop' },
+  { name: 'Tanger', img: 'https://images.unsplash.com/photo-1539650116574-75c0c6d33d08?w=400&h=300&fit=crop' },
+  { name: 'Essaouira', img: 'https://images.unsplash.com/photo-1553603227-2358aabe821e?w=400&h=300&fit=crop' },
+  { name: 'Ouarzazate', img: 'https://images.unsplash.com/photo-1534270804882-6b5048b1c1fc?w=400&h=300&fit=crop' },
+  { name: 'Merzouga', img: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&h=300&fit=crop' },
+  { name: 'Dakhla', img: 'https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&h=300&fit=crop' },
 ];
 
 export default function TestimonialsSection({ lang }) {
@@ -31,21 +37,21 @@ export default function TestimonialsSection({ lang }) {
             </h2>
             <p className="text-gray-500 text-sm">Couverture dans toutes les villes touristiques</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {cities.map((city, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {cities.map((city) => (
               <div
                 key={city.name}
-                className={`relative rounded-2xl overflow-hidden group cursor-pointer ${i === 0 ? 'md:col-span-1 row-span-2' : ''}`}
+                className="relative rounded-2xl overflow-hidden group cursor-pointer"
               >
                 <img
                   src={city.img}
                   alt={city.name}
-                  className={`w-full object-cover group-hover:scale-105 transition-transform duration-500 ${i === 0 ? 'h-52 md:h-full' : 'h-36'}`}
+                  className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-shield-green"></div>
-                  <span className="text-white text-sm font-bold capitalize">{city.name.charAt(0) + city.name.slice(1).toLowerCase()}</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-shield-green flex-shrink-0"></div>
+                  <span className="text-white text-xs font-bold">{city.name}</span>
                 </div>
               </div>
             ))}
