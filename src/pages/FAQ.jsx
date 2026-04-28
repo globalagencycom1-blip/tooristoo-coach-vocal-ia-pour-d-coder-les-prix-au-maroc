@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useLang } from '../lib/LanguageContext';
@@ -105,12 +106,12 @@ export default function FAQ() {
           <Shield className="w-10 h-10 text-shield-green mx-auto mb-4" />
           <h3 className="font-poppins font-bold text-white text-xl mb-2">{t('faq_cta_title')}</h3>
           <p className="text-gray-400 text-sm mb-6">{t('faq_cta_subtitle')}</p>
-          <a
-            href="mailto:support@negoshield.ai"
+          <Link
+            to="/contact"
             className="inline-flex items-center gap-2 px-6 py-3 bg-shield-green text-black font-bold rounded-xl hover:bg-green-400 transition-all btn-glow"
           >
             {t('faq_cta_btn')}
-          </a>
+          </Link>
         </div>
       </div>
       <Footer lang={lang} />
