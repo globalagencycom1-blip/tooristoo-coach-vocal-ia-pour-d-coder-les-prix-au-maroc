@@ -316,6 +316,280 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_max: 400,
       tips: 'Médina et patrimoine à découvrir'
     }
+  },
+
+  Ouarzazate: {
+    taxi: {
+      description: 'Trajet intra-ville',
+      fair_price_min: 8,
+      fair_price_max: 12,
+      tourist_reasonable_min: 12,
+      tourist_reasonable_max: 18,
+      tips: 'Ville du cinéma, distances modérées'
+    },
+    hotel: {
+      description: 'Hôtel ou guesthouse',
+      fair_price_min: 200,
+      fair_price_max: 400,
+      tourist_reasonable_min: 300,
+      tourist_reasonable_max: 600,
+      tips: 'Porte du désert, prix très compétitifs'
+    },
+    restaurant: {
+      description: 'Repas',
+      fair_price_min: 50,
+      fair_price_max: 100,
+      tourist_reasonable_min: 70,
+      tourist_reasonable_max: 130,
+      tips: 'Petite ville, prix raisonnables'
+    },
+    excursion: {
+      description: 'Excursion Vallée du Dades/Todra',
+      fair_price_min: 300,
+      fair_price_max: 500,
+      tourist_reasonable_min: 400,
+      tourist_reasonable_max: 700,
+      tips: 'Paysages spectaculaires, 1-2h de route'
+    },
+    guide: {
+      description: 'Guide studios/village',
+      fair_price_min: 80,
+      fair_price_max: 200,
+      tourist_reasonable_min: 120,
+      tourist_reasonable_max: 300,
+      tips: 'Studios de cinéma réputés à visiter'
+    },
+    artisanat: {
+      description: 'Tapis, poterie, bijoux',
+      fair_price_min: 150,
+      fair_price_max: 400,
+      tourist_reasonable_min: 250,
+      tourist_reasonable_max: 600,
+      tips: 'Artisanat local de qualité'
+    }
+  },
+
+  Meknès: {
+    taxi: {
+      description: 'Trajet intra-ville',
+      fair_price_min: 8,
+      fair_price_max: 12,
+      tourist_reasonable_min: 12,
+      tourist_reasonable_max: 18,
+      tips: 'Ville impériale bien organisée'
+    },
+    riad: {
+      description: 'Nuit dans un riad',
+      fair_price_min: 200,
+      fair_price_max: 400,
+      tourist_reasonable_min: 300,
+      tourist_reasonable_max: 600,
+      tips: 'Moins cher que Fès et Marrakech'
+    },
+    restaurant: {
+      description: 'Repas',
+      fair_price_min: 60,
+      fair_price_max: 120,
+      tourist_reasonable_min: 80,
+      tourist_reasonable_max: 150,
+      tips: 'Cuisine rifaine authentique'
+    },
+    guide: {
+      description: 'Guide médina impériale',
+      fair_price_min: 120,
+      fair_price_max: 280,
+      tourist_reasonable_min: 150,
+      tourist_reasonable_max: 380,
+      tips: 'Médina grande et complexe'
+    },
+    excursion: {
+      description: 'Visite Volubilis + Moulay Idriss',
+      fair_price_min: 250,
+      fair_price_max: 400,
+      tourist_reasonable_min: 350,
+      tourist_reasonable_max: 550,
+      tips: 'Ruines romaines à proximité'
+    }
+  },
+
+  Merzouga: {
+    taxi: {
+      description: 'Trajet intra-village',
+      fair_price_min: 5,
+      fair_price_max: 10,
+      tourist_reasonable_min: 10,
+      tourist_reasonable_max: 15,
+      tips: 'Petit village du désert'
+    },
+    guesthouse: {
+      description: 'Nuit en guesthouse/riad',
+      fair_price_min: 150,
+      fair_price_max: 300,
+      tourist_reasonable_min: 200,
+      tourist_reasonable_max: 500,
+      tips: 'Options simples ou luxe disponibles'
+    },
+    restaurant: {
+      description: 'Repas',
+      fair_price_min: 40,
+      fair_price_max: 80,
+      tourist_reasonable_min: 60,
+      tourist_reasonable_max: 120,
+      tips: 'Petit village, choix limités'
+    },
+    excursion: {
+      description: 'Excursion dunes (chameau, 4x4)',
+      fair_price_min: 200,
+      fair_price_max: 400,
+      tourist_reasonable_min: 300,
+      tourist_reasonable_max: 600,
+      tips: 'Erg Chebbi, lever/coucher de soleil spectaculaire'
+    },
+    bivouac: {
+      description: 'Nuit en bivouac dans le désert',
+      fair_price_min: 200,
+      fair_price_max: 350,
+      tourist_reasonable_min: 300,
+      tourist_reasonable_max: 500,
+      tips: 'Expérience authentique, repas inclus'
+    }
+  },
+
+  Dakhla: {
+    taxi: {
+      description: 'Trajet intra-ville',
+      fair_price_min: 10,
+      fair_price_max: 15,
+      tourist_reasonable_min: 15,
+      tourist_reasonable_max: 20,
+      tips: 'Ville côtière au sud, bien organisée'
+    },
+    hotel: {
+      description: 'Hôtel bord de mer',
+      fair_price_min: 300,
+      fair_price_max: 600,
+      tourist_reasonable_min: 400,
+      tourist_reasonable_max: 800,
+      tips: 'Destination kitesurfing, prix compétitifs'
+    },
+    restaurant: {
+      description: 'Fruits de mer/poisson',
+      fair_price_min: 80,
+      fair_price_max: 150,
+      tourist_reasonable_min: 100,
+      tourist_reasonable_max: 200,
+      tips: 'Port de pêche actif, poisson frais'
+    },
+    excursion: {
+      description: 'Lagon/Îles Gandaous',
+      fair_price_min: 250,
+      fair_price_max: 450,
+      tourist_reasonable_min: 350,
+      tourist_reasonable_max: 600,
+      tips: 'Paysages désertiques et maritimes'
+    },
+    activite: {
+      description: 'Kitesurfing leçon (2h)',
+      fair_price_min: 250,
+      fair_price_max: 450,
+      tourist_reasonable_min: 300,
+      tourist_reasonable_max: 550,
+      tips: 'Spot renommé mondialement'
+    }
+  },
+
+  'El Jadida': {
+    taxi: {
+      description: 'Trajet intra-ville',
+      fair_price_min: 8,
+      fair_price_max: 12,
+      tourist_reasonable_min: 12,
+      tourist_reasonable_max: 18,
+      tips: 'Petite ville côtière, bien organisée'
+    },
+    hotel: {
+      description: 'Hôtel côtier',
+      fair_price_min: 250,
+      fair_price_max: 500,
+      tourist_reasonable_min: 350,
+      tourist_reasonable_max: 700,
+      tips: 'Destination balnéaire moins chère que Agadir'
+    },
+    restaurant: {
+      description: 'Repas fruits de mer',
+      fair_price_min: 70,
+      fair_price_max: 130,
+      tourist_reasonable_min: 90,
+      tourist_reasonable_max: 160,
+      tips: 'Spécialité: huîtres et poisson'
+    },
+    guide: {
+      description: 'Guide ville fortifiée',
+      fair_price_min: 80,
+      fair_price_max: 200,
+      tourist_reasonable_min: 120,
+      tourist_reasonable_max: 280,
+      tips: 'Cité côtière historique'
+    },
+    excursion: {
+      description: 'Plages/Cité portugaise',
+      fair_price_min: 150,
+      fair_price_max: 300,
+      tourist_reasonable_min: 200,
+      tourist_reasonable_max: 400,
+      tips: 'Architecture historique'
+    }
+  },
+
+  Essaouira: {
+    taxi: {
+      description: 'Trajet intra-ville',
+      fair_price_min: 10,
+      fair_price_max: 15,
+      tourist_reasonable_min: 15,
+      tourist_reasonable_max: 20,
+      tips: 'Port touristique balnéaire'
+    },
+    hotel: {
+      description: 'Hôtel côtier',
+      fair_price_min: 300,
+      fair_price_max: 600,
+      tourist_reasonable_min: 400,
+      tourist_reasonable_max: 800,
+      tips: 'Destination plage, prix raisonnables'
+    },
+    restaurant: {
+      description: 'Fruits de mer/poisson grillé',
+      fair_price_min: 80,
+      fair_price_max: 150,
+      tourist_reasonable_min: 100,
+      tourist_reasonable_max: 200,
+      tips: 'Port de pêche actif, poisson excellent'
+    },
+    guide: {
+      description: 'Guide médina/port',
+      fair_price_min: 100,
+      fair_price_max: 250,
+      tourist_reasonable_min: 150,
+      tourist_reasonable_max: 350,
+      tips: 'Ville bohème, architecture unique'
+    },
+    excursion: {
+      description: 'Visite Îles Purpuraires',
+      fair_price_min: 200,
+      fair_price_max: 400,
+      tourist_reasonable_min: 300,
+      tourist_reasonable_max: 500,
+      tips: 'Réserve ornithologique'
+    },
+    artisanat: {
+      description: 'Bois thuya, arganeraie',
+      fair_price_min: 100,
+      fair_price_max: 350,
+      tourist_reasonable_min: 150,
+      tourist_reasonable_max: 500,
+      tips: 'Bois thuya rare et travaillé localement'
+    }
   }
 };
 
