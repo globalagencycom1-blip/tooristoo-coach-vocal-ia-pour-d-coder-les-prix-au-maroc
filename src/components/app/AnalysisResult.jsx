@@ -2,6 +2,7 @@ import React from 'react';
 import { CheckCircle, XCircle, AlertTriangle, Star, ExternalLink, RefreshCw, Shield, ChevronLeft, TrendingDown } from 'lucide-react';
 import { useT } from '../../lib/i18n';
 import ScamReportingPanel from './ScamReportingPanel';
+import VoiceOutput from './VoiceOutput';
 
 export default function AnalysisResult({ analysis, lang, onReset }) {
   const t = useT(lang);
@@ -65,7 +66,10 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
 
       {/* Section 2: AI Analysis */}
       <div className="bg-shield-card border border-shield-border rounded-2xl p-4 space-y-3">
-        <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">Analyse IA</h3>
+        <div className="flex items-center justify-between">
+          <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">Analyse IA</h3>
+          <VoiceOutput text={analysis.ai_analysis || ''} lang={lang} label="🔊 Écouter" />
+        </div>
 
         {/* Real price */}
         <div className="flex items-start gap-2">
@@ -144,7 +148,10 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
       {/* Section 4: Strategy */}
       {strategyPoints.length > 0 && (
         <div className="bg-shield-card border border-shield-border rounded-2xl p-4">
-          <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">Stratégie recommandée</h3>
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">Stratégie recommandée</h3>
+            <VoiceOutput text={analysis.strategy || ''} lang={lang} label="🔊 Écouter" />
+          </div>
           <ul className="space-y-2">
             {strategyPoints.map((point, i) => (
               <li key={i} className="flex items-start gap-2">
@@ -159,7 +166,10 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
       {/* Section 5: Exact phrase */}
       {analysis.recommended_phrase && (
         <div className="bg-shield-card border border-shield-border rounded-2xl p-4">
-          <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">Phrase exacte à dire</h3>
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">Phrase exacte à dire</h3>
+            <VoiceOutput text={analysis.recommended_phrase} lang={lang} label="🔊 Écouter" />
+          </div>
           <div className="relative pl-6">
             <span className="absolute left-0 top-0 text-3xl text-shield-green/30 font-serif leading-none">"</span>
             <p className="text-sm text-gray-200 leading-relaxed italic">
@@ -170,6 +180,9 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
             <div className="mt-3 pt-3 border-t border-shield-border">
               <span className="text-xs text-shield-gold font-semibold">🇲🇦 En Darija : </span>
               <span className="text-xs text-gray-300 italic">"{analysis.recommended_phrase_darija}"</span>
+              <div className="mt-1">
+                <VoiceOutput text={analysis.recommended_phrase_darija} lang="darija" label="🔊 Darija" />
+              </div>
             </div>
           )}
         </div>
