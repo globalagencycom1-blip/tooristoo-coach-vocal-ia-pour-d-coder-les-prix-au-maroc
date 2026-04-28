@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mic2, MicOff, Loader2, Copy, Send } from 'lucide-react';
+import { Mic, MicOff, Loader2, Play, Copy, Send } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
 
@@ -145,7 +145,7 @@ Réponds en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 
     <div className="space-y-4 p-4 bg-shield-card border border-shield-border rounded-2xl">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-sm font-bold text-white flex items-center gap-2">
-          <Mic2 className="w-4 h-4 text-shield-green" />
+          <Mic className="w-4 h-4 text-shield-green" />
           Enregistrer la négociation
         </h3>
         <div className="flex items-center gap-2">
@@ -176,7 +176,7 @@ Réponds en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 
           </>
         ) : (
           <>
-            <Mic2 className="w-5 h-5" />
+            <Mic className="w-5 h-5" />
             Démarrer l'enregistrement
           </>
         )}
