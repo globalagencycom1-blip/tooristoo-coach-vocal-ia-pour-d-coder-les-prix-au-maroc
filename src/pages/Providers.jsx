@@ -26,7 +26,6 @@ const CAT_KEYS = ['riad', 'restaurant', 'taxi', 'guide', 'shopping', 'excursion'
 function ProviderCard({ p, t, lang }) {
   const catLabel = t('cat_' + p.categoryKey);
   const desc = t(p.descKey) || '';
-  const cityLabel = t('city_' + p.city.toLowerCase().replace(/\s+/g, '_'));
 
   return (
     <div className="bg-shield-card border border-shield-border rounded-2xl p-5 hover:border-shield-green/30 transition-all">
@@ -48,7 +47,7 @@ function ProviderCard({ p, t, lang }) {
 
       <div className="flex items-center gap-2 mb-3">
         <MapPin className="w-3 h-3 text-gray-500" />
-        <span className="text-xs text-gray-500">{cityLabel} · {catLabel}</span>
+        <span className="text-xs text-gray-500">{p.city} · {catLabel}</span>
       </div>
 
       <p className="text-gray-400 text-sm leading-relaxed mb-3">{desc}</p>
