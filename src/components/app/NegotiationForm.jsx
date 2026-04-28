@@ -10,47 +10,56 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
   const t = useT(lang);
   const [form, setForm] = useState({ category: 'taxi', location: 'Marrakech', price_asked: '', description: '' });
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsAnalyzing(true);
+    setError(null);
+
+    const langLabel = lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français';
 
     const prompt = `Tu es NegoShield AI, expert en prix touristiques au Maroc.
-    Catégorie: ${form.category}
-    Ville: ${form.location}
-    Prix demandé: ${form.price_asked} MAD
-    Description: ${form.description}
-    
-    Analyse et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.`;
+Analyse cette situation de négociation et retourne UNIQUEMENT un JSON valide avec les champs demandés.
+Catégorie: ${form.category}
+Ville: ${form.location}
+Prix demandé: ${form.price_asked || 'non spécifié'} MAD
+Description: ${form.description || 'Pas de description fournie, estime les prix du marché pour cette catégorie et ville.'}
+Réponds en ${langLabel}.`;
 
-    const result = await base44.integrations.Core.InvokeLLM({
-      prompt,
-      response_json_schema: {
-        type: 'object',
-        properties: {
-          price_estimated_min: { type: 'number' },
-          price_estimated_max: { type: 'number' },
-          risk_level: { type: 'string' },
-          scam_detected: { type: 'boolean' },
-          ai_analysis: { type: 'string' },
-          recommended_phrase: { type: 'string' },
-          strategy: { type: 'string' },
-          vendor_trust_score: { type: 'number' },
-          provider_name: { type: 'string' },
-          provider_url: { type: 'string' },
-          savings: { type: 'number' },
+    try {
+      const result = await base44.integrations.Core.InvokeLLM({
+        prompt,
+        response_json_schema: {
+          type: 'object',
+          properties: {
+            price_estimated_min: { type: 'number' },
+            price_estimated_max: { type: 'number' },
+            risk_level: { type: 'string' },
+            scam_detected: { type: 'boolean' },
+            ai_analysis: { type: 'string' },
+            recommended_phrase: { type: 'string' },
+            strategy: { type: 'string' },
+            vendor_trust_score: { type: 'number' },
+            provider_name: { type: 'string' },
+            provider_url: { type: 'string' },
+            savings: { type: 'number' },
+          }
         }
-      }
-    });
+      });
 
-    setIsAnalyzing(false);
-    onAnalysisComplete({
-      ...result,
-      category: form.category,
-      location: form.location,
-      price_asked: Number(form.price_asked),
-      transcript: form.description,
-    });
+      onAnalysisComplete({
+        ...result,
+        category: form.category,
+        location: form.location,
+        price_asked: Number(form.price_asked),
+        transcript: form.description,
+      });
+    } catch (err) {
+      setError("Une erreur s'est produite. Veuillez réessayer.");
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
 
   return (
@@ -99,6 +108,10 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
           className="w-full bg-shield-card border border-shield-border text-white rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-shield-green placeholder-gray-600 resize-none"
         />
       </div>
+
+      {error && (
+        <p className="text-red-400 text-sm text-center bg-red-500/10 border border-red-500/20 rounded-xl px-3 py-2">{error}</p>
+      )}
 
       <button
         type="submit"
