@@ -1,9 +1,11 @@
 import React from 'react';
 import { TrendingDown, AlertTriangle, History, MapPin, Tag, Shield } from 'lucide-react';
 import { useT } from '../../lib/i18n';
+import { getDashboardT } from '../../lib/dashboard-translations';
 
 export default function DashboardStats({ lang, profile, negotiations }) {
   const t = useT(lang);
+  const dt = (key) => getDashboardT(key, lang);
 
   const totalSavings = negotiations.reduce((acc, n) => acc + (n.savings || 0), 0);
   const scamsAvoided = negotiations.filter(n => n.scam_detected).length;
@@ -78,9 +80,9 @@ export default function DashboardStats({ lang, profile, negotiations }) {
             <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">{t('risk_distribution')}</h3>
             <div className="space-y-3">
               {[
-                { key: 'high', label: t('high'), color: 'bg-red-500', textColor: 'text-red-400', count: riskCounts.high },
-                { key: 'medium', label: t('medium'), color: 'bg-shield-gold', textColor: 'text-shield-gold', count: riskCounts.medium },
-                { key: 'low', label: t('low'), color: 'bg-shield-green', textColor: 'text-shield-green', count: riskCounts.low },
+                { key: 'high', label: dt('high'), color: 'bg-red-500', textColor: 'text-red-400', count: riskCounts.high },
+                { key: 'medium', label: dt('medium'), color: 'bg-shield-gold', textColor: 'text-shield-gold', count: riskCounts.medium },
+                { key: 'low', label: dt('low'), color: 'bg-shield-green', textColor: 'text-shield-green', count: riskCounts.low },
               ].map(({ key, label, color, textColor, count }) => (
                 <div key={key}>
                   <div className="flex justify-between text-xs mb-1">

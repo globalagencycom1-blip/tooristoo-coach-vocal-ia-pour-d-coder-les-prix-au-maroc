@@ -28,6 +28,9 @@ export const dashboardTranslations = {
     listen: "Écouter",
     city: "Ville",
     category: "Catégorie",
+    high: "Élevé",
+    medium: "Moyen",
+    low: "Faible",
   },
   en: {
     ai_coach: "ARTIFICIAL INTELLIGENCE",
@@ -58,6 +61,9 @@ export const dashboardTranslations = {
     listen: "Listen",
     city: "City",
     category: "Category",
+    high: "High",
+    medium: "Medium",
+    low: "Low",
   },
   es: {
     ai_coach: "INTELIGENCIA ARTIFICIAL",
@@ -88,6 +94,9 @@ export const dashboardTranslations = {
     listen: "Escuchar",
     city: "Ciudad",
     category: "Categoría",
+    high: "Alto",
+    medium: "Medio",
+    low: "Bajo",
   },
   de: {
     ai_coach: "KÜNSTLICHE INTELLIGENZ",
@@ -118,6 +127,9 @@ export const dashboardTranslations = {
     listen: "Anhören",
     city: "Stadt",
     category: "Kategorie",
+    high: "Hoch",
+    medium: "Mittel",
+    low: "Niedrig",
   },
   ar: {
     ai_coach: "الذكاء الاصطناعي",
@@ -178,6 +190,9 @@ export const dashboardTranslations = {
     listen: "استمع",
     city: "المدينة",
     category: "الفئة",
+    high: "عالي",
+    medium: "متوسط",
+    low: "خفيف",
   },
 };
 
