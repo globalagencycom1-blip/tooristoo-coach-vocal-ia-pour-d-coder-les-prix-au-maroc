@@ -8,6 +8,7 @@ import VoiceCoach from '../components/app/VoiceCoach';
 import NegotiationForm from '../components/app/NegotiationForm';
 import AnalysisResult from '../components/app/AnalysisResult';
 import Dashboard from '../components/app/Dashboard';
+import DashboardStats from '../components/app/DashboardStats';
 
 const TABS = [
   { id: 'coach', icon: Mic, labelKey: 'nav_app' },
@@ -150,7 +151,7 @@ export default function AppPage() {
         )}
 
         {activeTab === 'dashboard' && (
-          <Dashboard lang={lang} profile={profile} negotiations={negotiations} />
+          <DashboardStats lang={lang} profile={profile} negotiations={negotiations} />
         )}
 
         {activeTab === 'history' && (
