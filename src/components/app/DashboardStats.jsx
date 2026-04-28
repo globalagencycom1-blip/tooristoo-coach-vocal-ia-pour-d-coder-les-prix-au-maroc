@@ -26,11 +26,13 @@ export default function DashboardStats({ lang, profile, negotiations }) {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 4);
 
-  // Risk distribution — normalize various formats (French, English, mixed case)
+  // Risk distribution — normalize various formats (French, English, mixed case, accents)
   const normalizeRisk = (val) => {
-    const v = (val || '').toLowerCase().trim();
-    if (['high', 'élevé', 'eleve', 'elevé', 'haut'].includes(v)) return 'high';
-    if (['medium', 'moyen', 'modéré', 'modere', 'moderate'].includes(v)) return 'medium';
+    if (!val) return null;
+    // Remove accents and lowercase
+    const v = val.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+    if (['high', 'eleve', 'haut'].includes(v)) return 'high';
+    if (['medium', 'moyen', 'modere', 'moderate'].includes(v)) return 'medium';
     if (['low', 'faible', 'bas'].includes(v)) return 'low';
     return null;
   };
