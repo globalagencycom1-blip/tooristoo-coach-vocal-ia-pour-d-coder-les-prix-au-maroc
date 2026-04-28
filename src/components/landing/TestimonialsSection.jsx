@@ -1,6 +1,7 @@
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
 import { useT } from '../../lib/i18n';
+import { coverageTranslations } from '../../lib/i18n-coverage';
 
 const cities = [
   { name: 'Marrakech', img: 'https://images.unsplash.com/photo-1597212618440-806262de4f6b?w=400&h=300&fit=crop' },
@@ -19,10 +20,10 @@ const cities = [
 
 export default function TestimonialsSection({ lang }) {
   const t = useT(lang);
+  const coverage = coverageTranslations[lang] || coverageTranslations.fr;
 
-  // Get coverage translations, fallback to main i18n if not available
-  const getCoverageTitle = () => t('coverage_title') || 'Partout au Maroc';
-  const getCoverageSubtitle = () => t('coverage_subtitle_text') || 'Couverture dans toutes les villes touristiques';
+  const getCoverageTitle = () => coverage.coverage_title;
+  const getCoverageSubtitle = () => coverage.coverage_subtitle_text;
 
   const testimonials = [
     { textKey: 'test1_text', nameKey: 'test1_name', originKey: 'test1_origin', rating: 5, flag: '🇫🇷' },
