@@ -1,82 +1,8 @@
 import React from 'react';
-import { AlertTriangle, CheckCircle, Shield, X } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Shield } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { useLang } from '../lib/LanguageContext';
-
-const ALERTS = [
-  {
-    color: 'yellow',
-    title: 'Prix gonflés pour les étrangers',
-    badge: 'FRÉQUENT',
-    badgeColor: 'red',
-    description: 'Dans les souks et les taxis, les prix peuvent être 2 à 5 fois plus élevés que le tarif local. Demandez toujours le prix avant d\'acheter ou de monter.',
-    tip: 'Demandez le prix à plusieurs vendeurs avant d\'acheter pour comparer.',
-  },
-  {
-    color: 'yellow',
-    title: 'Faux guides dans la Médina',
-    badge: 'ATTENTION',
-    badgeColor: 'orange',
-    description: 'Ces personnes se présentent comme guides officiels mais ne le sont pas. Ils vous emmènent vers des boutiques partenaires et prennent une commission.',
-    tip: 'Demandez la carte officielle du guide ou réservez via votre hôtel.',
-  },
-  {
-    color: 'yellow',
-    title: 'Taxis sans compteur',
-    badge: 'FRÉQUENT',
-    badgeColor: 'red',
-    description: 'Certains taxis refusent d\'utiliser le compteur et proposent un tarif fixe très élevé. Le compteur est obligatoire en ville.',
-    tip: 'Insistez pour le compteur ou négociez le prix avant de monter.',
-  },
-  {
-    color: 'yellow',
-    title: 'Restaurants avec carte sans prix',
-    badge: 'ATTENTION',
-    badgeColor: 'orange',
-    description: 'Certains restaurants ne montrent pas les prix ou apportent une carte différente aux touristes avec des prix gonflés.',
-    tip: 'Demandez toujours une carte avec les prix affichés avant de commander.',
-  },
-  {
-    color: 'red',
-    title: 'Faux sites de réservation',
-    badge: 'DANGER',
-    badgeColor: 'red',
-    description: 'Des sites web imitent les plateformes officielles pour voler vos données bancaires et votre argent.',
-    tip: 'Réservez uniquement sur des plateformes connues et vérifiez l\'URL.',
-  },
-  {
-    color: 'red',
-    title: 'Acomptes sans confirmation',
-    badge: 'DANGER',
-    badgeColor: 'red',
-    description: 'On vous demande un acompte en espèces pour une excursion ou un service sans aucun reçu ou confirmation écrite.',
-    tip: 'Ne payez jamais sans confirmation écrite. Privilégiez le paiement à l\'arrivée.',
-  },
-  {
-    color: 'yellow',
-    title: 'Change de monnaie informel',
-    badge: 'ATTENTION',
-    badgeColor: 'orange',
-    description: 'Des personnes proposent de changer votre argent dans la rue à un taux avantageux, souvent avec des billets contrefaits.',
-    tip: 'Changez uniquement dans les bureaux de change officiels ou les banques.',
-  },
-  {
-    color: 'yellow',
-    title: 'Prix au poids trompeur',
-    badge: 'ATTENTION',
-    badgeColor: 'orange',
-    description: 'Dans les marchés, le poids affiché sur la balance peut être manipulé pour gonfler le prix.',
-    tip: 'Pesez sur votre propre balance de voyage si possible.',
-  },
-];
-
-const QUICK_ALERTS = [
-  'Méfiez-vous des prix trop élevés pour les étrangers',
-  'Vérifiez toujours le prix avant de monter / acheter',
-  'Évitez les guides non officiels dans la rue',
-  'Ne donnez jamais d\'acompte sans confirmation',
-  'Faites attention aux faux sites de réservation',
-];
+import { useT } from '../lib/i18n';
 
 const badgeColors = {
   red: 'bg-red-500/20 text-red-400 border border-red-500/30',
@@ -85,6 +11,18 @@ const badgeColors = {
 
 export default function Alerts() {
   const { lang } = useLang();
+  const t = useT(lang);
+
+  const ALERTS = [
+    { color: 'yellow', badgeColor: 'red', badgeKey: 'badge_frequent', titleKey: 'alert_title1', descKey: 'alert_desc1', tipKey: 'alert_tip1' },
+    { color: 'yellow', badgeColor: 'orange', badgeKey: 'badge_attention', titleKey: 'alert_title2', descKey: 'alert_desc2', tipKey: 'alert_tip2' },
+    { color: 'yellow', badgeColor: 'red', badgeKey: 'badge_frequent', titleKey: 'alert_title3', descKey: 'alert_desc3', tipKey: 'alert_tip3' },
+    { color: 'yellow', badgeColor: 'orange', badgeKey: 'badge_attention', titleKey: 'alert_title4', descKey: 'alert_desc4', tipKey: 'alert_tip4' },
+    { color: 'red', badgeColor: 'red', badgeKey: 'badge_danger', titleKey: 'alert_title5', descKey: 'alert_desc5', tipKey: 'alert_tip5' },
+    { color: 'red', badgeColor: 'red', badgeKey: 'badge_danger', titleKey: 'alert_title6', descKey: 'alert_desc6', tipKey: 'alert_tip6' },
+    { color: 'yellow', badgeColor: 'orange', badgeKey: 'badge_attention', titleKey: 'alert_title7', descKey: 'alert_desc7', tipKey: 'alert_tip7' },
+    { color: 'yellow', badgeColor: 'orange', badgeKey: 'badge_attention', titleKey: 'alert_title8', descKey: 'alert_desc8', tipKey: 'alert_tip8' },
+  ];
 
   return (
     <div className="min-h-screen bg-shield-dark">
@@ -95,9 +33,9 @@ export default function Alerts() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-2">
             <Shield className="w-6 h-6 text-red-400" />
-            <h1 className="font-poppins font-black text-2xl text-white">Alertes Anti-Arnaques</h1>
+            <h1 className="font-poppins font-black text-2xl text-white">{t('alerts_page_title')}</h1>
           </div>
-          <p className="text-gray-400 text-sm">Protégez-vous pendant votre séjour 🇲🇦</p>
+          <p className="text-gray-400 text-sm">{t('alerts_page_subtitle')}</p>
         </div>
 
         {/* Detailed alerts */}
@@ -111,16 +49,16 @@ export default function Alerts() {
                   }`}>
                     <AlertTriangle className={`w-4 h-4 ${alert.color === 'red' ? 'text-red-400' : 'text-yellow-400'}`} />
                   </div>
-                  <h3 className="font-poppins font-bold text-white text-sm">{alert.title}</h3>
+                  <h3 className="font-poppins font-bold text-white text-sm">{t(alert.titleKey)}</h3>
                 </div>
                 <span className={`text-xs font-bold px-2 py-1 rounded-lg flex-shrink-0 ml-2 ${badgeColors[alert.badgeColor]}`}>
-                  {alert.badge}
+                  {t(alert.badgeKey)}
                 </span>
               </div>
-              <p className="text-xs text-gray-400 leading-relaxed mb-3 pl-12">{alert.description}</p>
+              <p className="text-xs text-gray-400 leading-relaxed mb-3 pl-12">{t(alert.descKey)}</p>
               <div className="flex items-start gap-2 pl-12">
                 <CheckCircle className="w-3.5 h-3.5 text-shield-green flex-shrink-0 mt-0.5" />
-                <p className="text-xs text-shield-green leading-relaxed">{alert.tip}</p>
+                <p className="text-xs text-shield-green leading-relaxed">{t(alert.tipKey)}</p>
               </div>
             </div>
           ))}
@@ -129,10 +67,10 @@ export default function Alerts() {
         {/* Bottom CTA */}
         <div className="mt-8 p-5 bg-shield-green/10 border border-shield-green/20 rounded-2xl text-center">
           <Shield className="w-8 h-8 text-shield-green mx-auto mb-2" />
-          <p className="text-white font-semibold text-sm mb-1">Utilisez NegoShield AI</p>
-          <p className="text-gray-400 text-xs mb-4">Analysez chaque situation en temps réel pour éviter les arnaques</p>
+          <p className="text-white font-semibold text-sm mb-1">{t('alerts_cta_use')}</p>
+          <p className="text-gray-400 text-xs mb-4">{t('alerts_cta_desc')}</p>
           <a href="/app" className="inline-flex items-center gap-2 px-6 py-2.5 bg-shield-green text-black font-bold text-sm rounded-xl hover:bg-green-400 transition-all btn-glow">
-            Analyser maintenant
+            {t('alerts_cta_btn')}
           </a>
         </div>
 

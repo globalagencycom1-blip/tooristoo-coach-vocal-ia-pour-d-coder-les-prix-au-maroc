@@ -5,17 +5,8 @@ import { useT } from '../../lib/i18n';
 export default function AnalysisSection({ lang }) {
   const t = useT(lang);
 
-  const strategies = [
-    "Proposez un prix juste et ferme",
-    "Mentionnez le prix habituel",
-    "Soyez prêt à partir si refus",
-    "Gardez le sourire et restez calme",
-    "Ne payez jamais le premier prix",
-  ];
-
-  const alerts = [
-    t('alert1'), t('alert2'), t('alert3'), t('alert4'), t('alert5')
-  ];
+  const strategyKeys = ['strategy1', 'strategy2', 'strategy3', 'strategy4', 'strategy5'];
+  const alertKeys = ['alert1', 'alert2', 'alert3', 'alert4', 'alert5'];
 
   return (
     <section className="py-24 bg-[#0a1628]">
@@ -87,10 +78,10 @@ export default function AnalysisSection({ lang }) {
             <div className="bg-shield-card border border-shield-border rounded-2xl p-5">
               <h4 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-4">{t('analysis_strategy')}</h4>
               <div className="space-y-2">
-                {strategies.map((s, i) => (
+                {strategyKeys.map((key, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <CheckCircle className="w-3.5 h-3.5 text-shield-green flex-shrink-0" />
-                    <span className="text-sm text-gray-300">{s}</span>
+                    <span className="text-sm text-gray-300">{t(key)}</span>
                   </div>
                 ))}
               </div>
@@ -117,10 +108,10 @@ export default function AnalysisSection({ lang }) {
                 </div>
               </div>
               <div className="space-y-2">
-                {alerts.map((alert, i) => (
+                {alertKeys.map((key, i) => (
                   <div key={i} className="flex items-start gap-2">
                     <AlertTriangle className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${i === 0 ? 'text-red-400' : i === 1 ? 'text-shield-gold' : 'text-red-400'}`} />
-                    <span className="text-xs text-gray-400">{alert}</span>
+                    <span className="text-xs text-gray-400">{t(key)}</span>
                   </div>
                 ))}
               </div>
