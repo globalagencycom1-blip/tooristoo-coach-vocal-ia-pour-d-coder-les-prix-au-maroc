@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mic, MicOff, Loader2, Play, Copy, Send } from 'lucide-react';
+import { Mic, MicOff, Loader2, Copy, Send } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
+import { getRecorderT } from '../../lib/recorder-translations';
 
 export default function NegotiationRecorder({ category, location, onAnalysisComplete, lang }) {
   const t = useT(lang);
@@ -146,11 +147,11 @@ Réponds en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-sm font-bold text-white flex items-center gap-2">
           <Mic className="w-4 h-4 text-shield-green" />
-          Enregistrer la négociation
+          {getRecorderT('recorder_tab', lang)} la négociation
         </h3>
         <div className="flex items-center gap-2">
           <span className={`text-xs font-semibold ${isRecording ? 'text-red-400' : 'text-gray-400'}`}>
-            {isRecording ? '🔴 En cours' : 'Arrêté'}
+            {isRecording ? getRecorderT('recording_on', lang) : getRecorderT('recording_off', lang)}
           </span>
           {confidence > 0 && (
             <span className="text-xs text-gray-500">
@@ -172,12 +173,12 @@ Réponds en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 
         {isRecording ? (
           <>
             <MicOff className="w-5 h-5" />
-            Arrêter l'enregistrement
+            {getRecorderT('stop_recording', lang)}
           </>
         ) : (
           <>
             <Mic className="w-5 h-5" />
-            Démarrer l'enregistrement
+            {getRecorderT('start_recording', lang)}
           </>
         )}
       </button>
@@ -207,7 +208,7 @@ Réponds en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 
               }}
               className="flex-1 px-3 py-2 bg-shield-border hover:bg-shield-border/80 text-gray-300 text-sm font-semibold rounded-lg transition-all"
             >
-              Effacer
+              {getRecorderT('clear_transcript', lang)}
             </button>
             <button
               onClick={handleAnalyze}
@@ -215,15 +216,15 @@ Réponds en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 
               className="flex-1 px-3 py-2 bg-shield-green hover:bg-green-400 disabled:opacity-50 text-black text-sm font-semibold rounded-lg flex items-center justify-center gap-2 transition-all"
             >
               {isAnalyzing ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Analyse...
-                </>
+               <>
+                 <Loader2 className="w-4 h-4 animate-spin" />
+                 {t('analyzing')}
+               </>
               ) : (
-                <>
-                  <Send className="w-4 h-4" />
-                  Analyser
-                </>
+               <>
+                 <Send className="w-4 h-4" />
+                 {t('analyze_btn')}
+               </>
               )}
             </button>
           </div>
@@ -233,8 +234,8 @@ Réponds en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 
       {/* Info Text */}
       <p className="text-xs text-gray-500 text-center">
         {isRecording
-          ? 'Parlez naturellement avec le vendeur. La transcription se fait en temps réel.'
-          : 'Appuyez sur le bouton pour commencer à enregistrer votre conversation.'}
+          ? getRecorderT('record_help_text', lang)
+          : getRecorderT('record_help_text_idle', lang)}
       </p>
     </div>
   );

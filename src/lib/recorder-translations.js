@@ -1,0 +1,66 @@
+export const recorderTranslations = {
+  fr: {
+    recorder_tab: "Enregistrer",
+    recording_on: "🔴 En cours",
+    recording_off: "Arrêté",
+    start_recording: "Démarrer l'enregistrement",
+    stop_recording: "Arrêter l'enregistrement",
+    clear_transcript: "Effacer",
+    record_help_text: "Parlez naturellement avec le vendeur. La transcription se fait en temps réel.",
+    record_help_text_idle: "Appuyez sur le bouton pour commencer à enregistrer votre conversation.",
+  },
+  en: {
+    recorder_tab: "Record",
+    recording_on: "🔴 Recording",
+    recording_off: "Stopped",
+    start_recording: "Start recording",
+    stop_recording: "Stop recording",
+    clear_transcript: "Clear",
+    record_help_text: "Speak naturally with the vendor. Transcription happens in real-time.",
+    record_help_text_idle: "Press the button to start recording your conversation.",
+  },
+  es: {
+    recorder_tab: "Grabar",
+    recording_on: "🔴 Grabando",
+    recording_off: "Detenido",
+    start_recording: "Iniciar grabación",
+    stop_recording: "Detener grabación",
+    clear_transcript: "Limpiar",
+    record_help_text: "Habla naturalmente con el vendedor. La transcripción se realiza en tiempo real.",
+    record_help_text_idle: "Presiona el botón para comenzar a grabar tu conversación.",
+  },
+  de: {
+    recorder_tab: "Aufnahme",
+    recording_on: "🔴 Aufnahme läuft",
+    recording_off: "Gestoppt",
+    start_recording: "Aufnahme starten",
+    stop_recording: "Aufnahme stoppen",
+    clear_transcript: "Löschen",
+    record_help_text: "Sprechen Sie natürlich mit dem Verkäufer. Die Transkription erfolgt in Echtzeit.",
+    record_help_text_idle: "Drücken Sie die Schaltfläche, um Ihr Gespräch aufzunehmen.",
+  },
+  ar: {
+    recorder_tab: "تسجيل",
+    recording_on: "🔴 جاري التسجيل",
+    recording_off: "موقوف",
+    start_recording: "بدء التسجيل",
+    stop_recording: "إيقاف التسجيل",
+    clear_transcript: "مسح",
+    record_help_text: "تحدث بشكل طبيعي مع البائع. النقل يتم في الوقت الفعلي.",
+    record_help_text_idle: "اضغط على الزر لبدء تسجيل محادثتك.",
+  },
+  darija: {
+    recorder_tab: "تسجيل",
+    recording_on: "🔴 كيسجل",
+    recording_off: "وقفت",
+    start_recording: "بدا التسجيل",
+    stop_recording: "وقف التسجيل",
+    clear_transcript: "صفي",
+    record_help_text: "هضر بالطبيعي مع البائع. التنقيل كيتم فالوقت الحقيقي.",
+    record_help_text_idle: "دوز على الزر باش تبدا تسجل المحادثة ديالك.",
+  },
+};
+
+export const getRecorderT = (key, lang) => {
+  return recorderTranslations[lang]?.[key] || recorderTranslations['fr']?.[key] || key;
+};
