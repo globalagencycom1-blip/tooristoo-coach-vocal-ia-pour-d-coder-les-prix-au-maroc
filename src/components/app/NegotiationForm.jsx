@@ -19,13 +19,13 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
 
     const langLabel = lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français';
 
-    const prompt = `Tu es NegoShield AI, expert en prix touristiques au Maroc.
-Analyse cette situation de négociation et retourne UNIQUEMENT un JSON valide avec les champs demandés.
-Catégorie: ${form.category}
-Ville: ${form.location}
-Prix demandé: ${form.price_asked || 'non spécifié'} MAD
-Description: ${form.description || 'Pas de description fournie, estime les prix du marché pour cette catégorie et ville.'}
-Réponds en ${langLabel}.`;
+    const prompt = `You are NegoShield AI, an expert in tourist prices in Morocco. Analyze this negotiation situation and return a JSON response.
+Category: ${form.category}
+City: ${form.location}
+Price asked: ${form.price_asked || 'unknown'} MAD
+Description: ${form.description || 'No description, estimate typical market prices for this category and city.'}
+Response language: ${langLabel}
+Provide realistic price ranges, risk assessment, negotiation strategy, and a recommended phrase to say to the vendor.`;
 
     try {
       const result = await base44.integrations.Core.InvokeLLM({
