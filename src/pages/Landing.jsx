@@ -7,6 +7,7 @@ import AnalysisSection from '../components/landing/AnalysisSection';
 import PricingSection from '../components/landing/PricingSection';
 import TestimonialsSection from '../components/landing/TestimonialsSection';
 import CTASection from '../components/landing/CTASection';
+import AlertsBanner from '../components/landing/AlertsBanner';
 import Footer from '../components/Footer';
 
 export default function Landing() {
@@ -19,6 +20,7 @@ export default function Landing() {
       <FeaturesSection lang={lang} />
       <AnalysisSection lang={lang} />
       <TestimonialsSection lang={lang} />
+      <AlertsBanner />
       <PricingSection lang={lang} />
       <CTASection lang={lang} />
       <Footer lang={lang} />
