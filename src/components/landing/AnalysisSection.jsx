@@ -104,7 +104,7 @@ export default function AnalysisSection({ lang }) {
               </blockquote>
               <div className="mt-3 pt-3 border-t border-shield-border">
                 <span className="text-xs text-shield-gold font-semibold">🇲🇦 En Darija : </span>
-                <span className="text-xs text-gray-300 italic">"Salam, t-taman dyal had course bin 120 w 150 MAD. Ila mzyan lik, nmchiw, wella شكرا."</span>
+                <span className="text-xs text-gray-300 italic">"Salam, t-taman dyal had course bin 120 w 150 MAD. Ila mzyan lik, nmchiw, wella shukran."</span>
               </div>
             </div>
 
