@@ -20,7 +20,7 @@ export default function NegotiationRecorder({ category, location, onAnalysisComp
     const recognition = new SpeechRecognition();
     recognition.continuous = true;
     recognition.interimResults = true;
-    recognition.lang = lang === 'fr' ? 'fr-FR' : lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : lang === 'de' ? 'de-DE' : lang === 'ar' ? 'ar-SA' : 'fr-FR';
+    recognition.lang = lang === 'fr' ? 'fr-FR' : lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : lang === 'de' ? 'de-DE' : lang === 'ar' ? 'ar-SA' : lang === 'darija' ? 'ar-MA' : 'fr-FR';
 
     recognition.onstart = () => {
       setIsRecording(true);
@@ -97,7 +97,7 @@ Extrais les informations suivantes de cette conversation:
 3. Identifie tout signe d'arnaque potentiel
 4. Fournir une analyse et des recommandations
 
-Réponds en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : 'Français'}.`;
+Réponds en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.`;
 
       const result = await base44.integrations.Core.InvokeLLM({
         prompt,
