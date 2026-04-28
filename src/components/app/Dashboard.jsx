@@ -63,7 +63,7 @@ export default function Dashboard({ lang, profile, negotiations }) {
                   <div className="flex flex-col items-end gap-1">
                     {neg.scam_detected && (
                       <span className="text-xs bg-red-500/10 text-red-400 border border-red-500/20 px-2 py-0.5 rounded-full">
-                        🚨 Arnaque
+                        🚨 {t('scam_detected')}
                       </span>
                     )}
                     {neg.risk_level && (

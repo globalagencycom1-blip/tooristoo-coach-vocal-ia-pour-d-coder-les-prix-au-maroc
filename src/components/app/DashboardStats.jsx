@@ -75,12 +75,12 @@ export default function DashboardStats({ lang, profile, negotiations }) {
         <>
           {/* Risk distribution */}
           <div className="bg-shield-card border border-shield-border rounded-xl p-5">
-            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Répartition des risques</h3>
+            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">{t('risk_distribution')}</h3>
             <div className="space-y-3">
               {[
-                { key: 'high', label: 'Élevé', color: 'bg-red-500', textColor: 'text-red-400', count: riskCounts.high },
-                { key: 'medium', label: 'Moyen', color: 'bg-shield-gold', textColor: 'text-shield-gold', count: riskCounts.medium },
-                { key: 'low', label: 'Faible', color: 'bg-shield-green', textColor: 'text-shield-green', count: riskCounts.low },
+                { key: 'high', label: t('high'), color: 'bg-red-500', textColor: 'text-red-400', count: riskCounts.high },
+                { key: 'medium', label: t('medium'), color: 'bg-shield-gold', textColor: 'text-shield-gold', count: riskCounts.medium },
+                { key: 'low', label: t('low'), color: 'bg-shield-green', textColor: 'text-shield-green', count: riskCounts.low },
               ].map(({ key, label, color, textColor, count }) => (
                 <div key={key}>
                   <div className="flex justify-between text-xs mb-1">
@@ -103,7 +103,7 @@ export default function DashboardStats({ lang, profile, negotiations }) {
             <div className="bg-shield-card border border-shield-border rounded-xl p-5">
               <div className="flex items-center gap-2 mb-4">
                 <Tag className="w-4 h-4 text-gray-400" />
-                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Catégories fréquentes</h3>
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t('frequent_categories')}</h3>
               </div>
               <div className="space-y-2">
                 {topCategories.map(([cat, count]) => (
@@ -129,7 +129,7 @@ export default function DashboardStats({ lang, profile, negotiations }) {
             <div className="bg-shield-card border border-shield-border rounded-xl p-5">
               <div className="flex items-center gap-2 mb-4">
                 <MapPin className="w-4 h-4 text-gray-400" />
-                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Villes visitées</h3>
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t('visited_cities')}</h3>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 {topCities.map(([city, count]) => (
@@ -148,9 +148,9 @@ export default function DashboardStats({ lang, profile, negotiations }) {
               <span className="text-4xl">💰</span>
               <div>
                 <div className="text-shield-green font-black text-2xl font-poppins">{totalSavings} MAD</div>
-                <div className="text-xs text-gray-400">économisés au total</div>
+                <div className="text-xs text-gray-400">{t('saved_total')}</div>
                 <div className="text-xs text-shield-green/70 mt-0.5">
-                  ~{Math.round(totalSavings / negotiations.length)} MAD en moyenne par négociation
+                  ~{Math.round(totalSavings / negotiations.length)} {t('average_per_negotiation')}
                 </div>
               </div>
             </div>
