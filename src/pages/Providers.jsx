@@ -18,26 +18,14 @@ const PROVIDERS = [
   { name: 'Restaurant Le Mechoui du Prince', city: 'Marrakech', categoryKey: 'restaurant', descKey: 'prov_desc10', price: '80-180 MAD', rating: 4.6, phone: '+212 524-903-060', url: 'https://maps.google.com/?q=Le+Mechoui+du+Prince+Marrakech', certified: true },
 ];
 
-// Static French descriptions as fallback (non-translated provider descriptions)
-const PROV_DESCS = {
-  prov_desc1: 'Riad authentique au cœur de la médina avec service 5 étoiles',
-  prov_desc2: 'Cuisine traditionnelle fassi dans un cadre magnifique',
-  prov_desc3: 'Service de taxi officiel avec compteur et tarifs réglementés',
-  prov_desc4: 'Guide agréé par le Ministère du Tourisme',
-  prov_desc5: "Coopérative d'artisans avec prix justes et transparents",
-  prov_desc6: "Excursions certifiées dans l'Atlas et le désert",
-  prov_desc7: 'Hammam traditionnel certifié avec tarifs affichés',
-  prov_desc8: 'Réseau officiel de cars et transport inter-villes',
-  prov_desc9: 'Riad typique dans la ville bleue, tarifs transparents',
-  prov_desc10: 'Cuisine marocaine authentique, menu à prix fixe affiché',
-};
+
 
 const CITIES_KEYS = ['Marrakech', 'Fès', 'Casablanca', 'Chefchaouen', 'Agadir', 'Tanger'];
 const CAT_KEYS = ['riad', 'restaurant', 'taxi', 'guide', 'shopping', 'excursion', 'spa', 'transport'];
 
 function ProviderCard({ p, t }) {
   const catLabel = t('cat_' + p.categoryKey);
-  const desc = PROV_DESCS[p.descKey] || '';
+  const desc = t(p.descKey) || '';
 
   return (
     <div className="bg-shield-card border border-shield-border rounded-2xl p-5 hover:border-shield-green/30 transition-all">
