@@ -1,9 +1,11 @@
-import React from 'react';
-import { TrendingDown, Shield, AlertTriangle, History, ExternalLink, Star } from 'lucide-react';
+import React, { useState } from 'react';
+import { TrendingDown, Shield, AlertTriangle, History, ExternalLink, ChevronRight } from 'lucide-react';
 import { useT } from '../../lib/i18n';
+import NegotiationDetailModal from './NegotiationDetailModal';
 
 export default function Dashboard({ lang, profile, negotiations }) {
   const t = useT(lang);
+  const [selected, setSelected] = useState(null);
   const totalSavings = negotiations.reduce((acc, n) => acc + (n.savings || 0), 0);
   const scamsAvoided = negotiations.filter(n => n.scam_detected).length;
 
@@ -38,7 +40,11 @@ export default function Dashboard({ lang, profile, negotiations }) {
         ) : (
           <div className="space-y-3">
             {negotiations.slice().reverse().map(neg => (
-              <div key={neg.id} className="bg-shield-card border border-shield-border rounded-xl p-4">
+              <button
+                key={neg.id}
+                onClick={() => setSelected(neg)}
+                className="w-full text-left bg-shield-card border border-shield-border rounded-xl p-4 hover:border-shield-green/40 hover:bg-shield-card/80 transition-all group"
+              >
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
@@ -69,6 +75,7 @@ export default function Dashboard({ lang, profile, negotiations }) {
                         {neg.risk_level}
                       </span>
                     )}
+                    <ChevronRight className="w-3.5 h-3.5 text-gray-600 group-hover:text-shield-green mt-1 transition-colors" />
                   </div>
                 </div>
 
@@ -80,16 +87,19 @@ export default function Dashboard({ lang, profile, negotiations }) {
                       <span className="text-xs text-gray-400">{neg.provider_name}</span>
                     </div>
                     {neg.provider_url && (
-                      <a href={neg.provider_url} target="_blank" rel="noopener noreferrer"
-                        className="text-xs text-shield-gold hover:text-yellow-300 flex items-center gap-1">
+                      <span className="text-xs text-shield-gold flex items-center gap-1">
                         {t('view_provider')} <ExternalLink className="w-3 h-3" />
-                      </a>
+                      </span>
                     )}
                   </div>
                 )}
-              </div>
+              </button>
             ))}
           </div>
+
+          {selected && (
+            <NegotiationDetailModal neg={selected} lang={lang} onClose={() => setSelected(null)} />
+          )}
         )}
       </div>
     </div>
