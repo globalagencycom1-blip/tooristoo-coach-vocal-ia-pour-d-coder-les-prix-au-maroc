@@ -22,7 +22,9 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
     Description: ${form.description}
     
     Analyse et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.
-    IMPORTANT: Le champ recommended_phrase_darija doit TOUJOURS contenir la phrase à dire au vendeur traduite en Darija marocaine (langue parlée, pas arabe classique).`;
+    IMPORTANT: 
+    - Le champ recommended_phrase_darija doit TOUJOURS contenir la phrase traduite en Darija marocaine (langue parlée, pas arabe classique).
+    - Le champ risk_level doit OBLIGATOIREMENT être l'une de ces valeurs exactes en anglais: "low", "medium", ou "high". Ne jamais utiliser d'autres valeurs.`;
 
     const result = await base44.integrations.Core.InvokeLLM({
       prompt,
@@ -31,7 +33,7 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
       properties: {
       price_estimated_min: { type: 'number' },
       price_estimated_max: { type: 'number' },
-      risk_level: { type: 'string' },
+      risk_level: { type: 'string', enum: ['low', 'medium', 'high'] },
       scam_detected: { type: 'boolean' },
       ai_analysis: { type: 'string' },
       recommended_phrase: { type: 'string' },

@@ -68,7 +68,8 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category, locatio
     - provider_name (string): nom d'un prestataire alternatif recommandé
     - provider_url (string): lien Google Maps ou site pour ce prestataire à ${location || 'Marrakech'}
     - savings (number): économies potentielles si prix MAD demandé est connu, sinon 0
-    - recommended_phrase_darija (string): TOUJOURS la phrase recommandée traduite en Darija marocaine (langue parlée)`;
+    - recommended_phrase_darija (string): TOUJOURS la phrase recommandée traduite en Darija marocaine (langue parlée)
+    IMPORTANT: risk_level doit OBLIGATOIREMENT être exactement "low", "medium", ou "high" en anglais, rien d'autre.`;
 
     const result = await base44.integrations.Core.InvokeLLM({
       prompt,
@@ -77,7 +78,7 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category, locatio
         properties: {
           price_estimated_min: { type: 'number' },
           price_estimated_max: { type: 'number' },
-          risk_level: { type: 'string' },
+          risk_level: { type: 'string', enum: ['low', 'medium', 'high'] },
           scam_detected: { type: 'boolean' },
           ai_analysis: { type: 'string' },
           recommended_phrase: { type: 'string' },
