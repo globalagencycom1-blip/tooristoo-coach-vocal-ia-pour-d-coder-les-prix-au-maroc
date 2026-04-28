@@ -117,24 +117,30 @@ export default function AppPage() {
             ) : (
               <>
                 {/* Input mode toggle */}
-                <div className="flex gap-2 mb-6">
-                  <button
-                    onClick={() => setInputMode('voice')}
-                    className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      inputMode === 'voice' ? 'bg-shield-green text-black' : 'bg-shield-border/30 text-gray-400'
-                    }`}
-                  >
-                    🎤 Vocal
-                  </button>
-                  <button
-                    onClick={() => setInputMode('form')}
-                    className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      inputMode === 'form' ? 'bg-shield-green text-black' : 'bg-shield-border/30 text-gray-400'
-                    }`}
-                  >
-                    📝 Formulaire
-                  </button>
-                </div>
+                 <div className="flex gap-3 mb-6 p-1 bg-shield-border/20 rounded-xl">
+                   <button
+                     onClick={() => setInputMode('voice')}
+                     className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all ${
+                       inputMode === 'voice'
+                         ? 'bg-shield-green text-black shadow-lg shadow-shield-green/30'
+                         : 'text-gray-400 hover:text-gray-200'
+                     }`}
+                   >
+                     <span className="text-lg">🎤</span>
+                     Vocal
+                   </button>
+                   <button
+                     onClick={() => setInputMode('form')}
+                     className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all ${
+                       inputMode === 'form'
+                         ? 'bg-shield-green text-black shadow-lg shadow-shield-green/30'
+                         : 'text-gray-400 hover:text-gray-200'
+                     }`}
+                   >
+                     <span className="text-lg">📝</span>
+                     Formulaire
+                   </button>
+                 </div>
 
                 {inputMode === 'voice' ? (
                   <VoiceCoach
