@@ -124,7 +124,7 @@ export default function AppPage() {
                       inputMode === 'voice' ? 'bg-shield-green text-black' : 'bg-shield-border/30 text-gray-400'
                     }`}
                   >
-                    🎤 Vocal
+                    🎤 {t('input_mode_voice')}
                   </button>
                   <button
                     onClick={() => setInputMode('form')}
@@ -132,7 +132,7 @@ export default function AppPage() {
                       inputMode === 'form' ? 'bg-shield-green text-black' : 'bg-shield-border/30 text-gray-400'
                     }`}
                   >
-                    📝 Texte
+                    📝 {t('input_mode_text')}
                   </button>
                 </div>
 
