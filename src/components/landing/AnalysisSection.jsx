@@ -102,6 +102,10 @@ export default function AnalysisSection({ lang }) {
               <blockquote className="text-gray-300 text-sm leading-relaxed italic border-l-2 border-shield-green pl-4">
                 "Bonjour, le prix normal pour cette course est entre 120 et 150 MAD. Si c'est possible pour vous, on y va, sinon merci."
               </blockquote>
+              <div className="mt-3 pt-3 border-t border-shield-border">
+                <span className="text-xs text-shield-gold font-semibold">🇲🇦 En Darija : </span>
+                <span className="text-xs text-gray-300 italic">"Salam, t-taman dyal had course bin 120 w 150 MAD. Ila mzyan lik, nmchiw, wella شكرا."</span>
+              </div>
             </div>
 
             {/* Alerts */}
