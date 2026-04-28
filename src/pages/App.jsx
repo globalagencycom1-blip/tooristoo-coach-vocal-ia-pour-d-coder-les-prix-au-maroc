@@ -37,7 +37,9 @@ export default function AppPage() {
     if (!user) return;
 
     const serverNegs = await base44.entities.Negotiation.filter({ user_email: user.email }, '-created_date', 50).catch(() => []);
-    setNegotiations(serverNegs);
+    // Flatten data field if present (SDK returns { id, data: {...} } structure)
+    const flatNegs = serverNegs.map(n => n.data ? { id: n.id, created_date: n.created_date, ...n.data } : n);
+    setNegotiations(flatNegs);
 
     const profiles = await base44.entities.UserProfile.filter({ user_email: user.email }).catch(() => []);
     if (profiles.length > 0) {
