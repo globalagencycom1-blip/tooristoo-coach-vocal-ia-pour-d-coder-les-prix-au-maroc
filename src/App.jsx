@@ -12,6 +12,9 @@ import FAQ from './pages/FAQ';
 import About from './pages/About';
 import Providers from './pages/Providers';
 import Alerts from './pages/Alerts';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Terms from './pages/Terms';
+import Contact from './pages/Contact';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -45,6 +48,9 @@ const AuthenticatedApp = () => {
       <Route path="/about" element={<About />} />
       <Route path="/providers" element={<Providers />} />
       <Route path="/alerts" element={<Alerts />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

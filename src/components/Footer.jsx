@@ -34,11 +34,15 @@ export default function Footer({ lang }) {
           <div>
             <h4 className="text-white font-semibold text-sm mb-4">{t('footer_legal')}</h4>
             <ul className="space-y-2">
-              {['footer_privacy', 'footer_terms', 'footer_contact'].map(key => (
-                <li key={key}>
-                  <a href="#" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t(key)}</a>
-                </li>
-              ))}
+              <li>
+                <a href="/privacy" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_privacy')}</a>
+              </li>
+              <li>
+                <a href="/terms" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_terms')}</a>
+              </li>
+              <li>
+                <a href="/contact" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_contact')}</a>
+              </li>
             </ul>
           </div>
         </div>
