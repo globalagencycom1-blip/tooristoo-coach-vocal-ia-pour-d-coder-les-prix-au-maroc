@@ -23,9 +23,10 @@ const PROVIDERS = [
 const CITIES_KEYS = ['Marrakech', 'Fès', 'Casablanca', 'Chefchaouen', 'Agadir', 'Tanger'];
 const CAT_KEYS = ['riad', 'restaurant', 'taxi', 'guide', 'shopping', 'excursion', 'spa', 'transport'];
 
-function ProviderCard({ p, t }) {
+function ProviderCard({ p, t, lang }) {
   const catLabel = t('cat_' + p.categoryKey);
   const desc = t(p.descKey) || '';
+  const cityLabel = t('city_' + p.city.toLowerCase().replace(/\s+/g, '_'));
 
   return (
     <div className="bg-shield-card border border-shield-border rounded-2xl p-5 hover:border-shield-green/30 transition-all">
@@ -47,7 +48,7 @@ function ProviderCard({ p, t }) {
 
       <div className="flex items-center gap-2 mb-3">
         <MapPin className="w-3 h-3 text-gray-500" />
-        <span className="text-xs text-gray-500">{t('city_' + p.city.toLowerCase().replace(/\s+/g, '_'))} · {catLabel}</span>
+        <span className="text-xs text-gray-500">{cityLabel} · {catLabel}</span>
       </div>
 
       <p className="text-gray-400 text-sm leading-relaxed mb-3">{desc}</p>
@@ -146,7 +147,7 @@ export default function Providers() {
         {/* Cards */}
         <div className="space-y-4">
           {filtered.length > 0
-            ? filtered.map((p, i) => <ProviderCard key={i} p={p} t={t} />)
+            ? filtered.map((p, i) => <ProviderCard key={i} p={p} t={t} lang={lang} />)
             : (
               <div className="text-center py-16 bg-shield-card border border-shield-border rounded-2xl">
                 <Shield className="w-12 h-12 text-gray-600 mx-auto mb-3" />
