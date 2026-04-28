@@ -164,7 +164,7 @@ export default function Blog() {
                 <div className="relative h-48 overflow-hidden">
                   <img src="https://media.base44.com/images/public/69ed4bfa0b2ad942f71c6837/6a9de69f5_moroccan-souvenirs-from-marrakech-main-detail-crop.jpg"
 
-              alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 hidden" />
 
               
                   <div className="absolute top-4 left-4 flex items-center gap-2">
