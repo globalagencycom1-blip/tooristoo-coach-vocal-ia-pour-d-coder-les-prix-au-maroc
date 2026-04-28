@@ -2,12 +2,12 @@ import React, { useState, useRef } from 'react';
 import { Volume2, VolumeX, Loader2 } from 'lucide-react';
 
 const LANGUAGE_CONFIG = {
-  fr: { code: 'fr-FR', name: 'Français' },
-  en: { code: 'en-US', name: 'English' },
-  es: { code: 'es-ES', name: 'Español' },
-  de: { code: 'de-DE', name: 'Deutsch' },
-  ar: { code: 'ar-SA', name: 'العربية' },
-  darija: { code: 'fr-MA', name: 'Darija' },
+  fr: { code: 'fr-FR', name: 'Français', messages: { loading: 'Chargement...', stop: 'Arrêter', title: 'Arrêter' } },
+  en: { code: 'en-US', name: 'English', messages: { loading: 'Loading...', stop: 'Stop', title: 'Stop' } },
+  es: { code: 'es-ES', name: 'Español', messages: { loading: 'Cargando...', stop: 'Detener', title: 'Detener' } },
+  de: { code: 'de-DE', name: 'Deutsch', messages: { loading: 'Wird geladen...', stop: 'Stoppen', title: 'Stoppen' } },
+  ar: { code: 'ar-SA', name: 'العربية', messages: { loading: 'جاري التحميل...', stop: 'إيقاف', title: 'إيقاف' } },
+  darija: { code: 'fr-MA', name: 'Darija', messages: { loading: 'كيتحمل...', stop: 'وقف', title: 'وقف' } },
 };
 
 export default function VoiceOutput({ text, lang = 'fr', label = 'Écouter' }) {
@@ -79,17 +79,17 @@ export default function VoiceOutput({ text, lang = 'fr', label = 'Écouter' }) {
           ? 'bg-shield-green/20 text-shield-green border border-shield-green'
           : 'bg-shield-gold/10 text-shield-gold border border-shield-gold/30 hover:bg-shield-gold/20'
       } disabled:opacity-50`}
-      title={isSpeaking ? 'Arrêter' : label}
+      title={isSpeaking ? LANGUAGE_CONFIG[lang]?.messages.title || 'Stop' : label}
     >
       {isLoading ? (
         <>
           <Loader2 className="w-4 h-4 animate-spin" />
-          Chargement...
+          {LANGUAGE_CONFIG[lang]?.messages.loading || 'Loading...'}
         </>
       ) : isSpeaking ? (
         <>
           <VolumeX className="w-4 h-4" />
-          Arrêter
+          {LANGUAGE_CONFIG[lang]?.messages.stop || 'Stop'}
         </>
       ) : (
         <>
