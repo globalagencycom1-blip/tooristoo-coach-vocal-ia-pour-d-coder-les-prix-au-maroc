@@ -20,26 +20,13 @@ export default function Navbar() {
   const [langOpen, setLangOpen] = useState(false);
   const location = useLocation();
 
-  const handleAnchorClick = (e, href) => {
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      setMobileOpen(false);
-      setTimeout(() => {
-        const element = document.querySelector(href);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
-  };
-
   const navLinks = [
-    { href: '#home', label: t('nav_home'), isAnchor: true },
-    { href: '/app', label: t('nav_app'), isAnchor: false },
-    { href: '/alerts', label: t('nav_alerts'), isAnchor: false },
-    { href: '/providers', label: t('nav_providers'), isAnchor: false },
-    { href: '/about', label: t('nav_about'), isAnchor: false },
-    { href: '/faq', label: t('nav_faq'), isAnchor: false },
+    { href: '/', label: t('nav_home') },
+    { href: '/app', label: t('nav_app') },
+    { href: '/alerts', label: t('nav_alerts') },
+    { href: '/providers', label: t('nav_providers') },
+    { href: '/about', label: t('nav_about') },
+    { href: '/faq', label: t('nav_faq') },
   ];
 
   return (
@@ -66,9 +53,8 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => link.isAnchor && handleAnchorClick(e, link.href)}
                 className={`text-sm font-medium transition-colors hover:text-shield-green ${
-                  (link.isAnchor && location.pathname === '/') || location.pathname === link.href ? 'text-shield-green' : 'text-gray-300'
+                  location.pathname === link.href ? 'text-shield-green' : 'text-gray-300'
                 }`}
               >
                 {link.label}
@@ -120,17 +106,17 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-       <div className="md:hidden bg-shield-card border-t border-shield-border px-4 py-4 space-y-3">
-         {navLinks.map(link => (
-           <a
-             key={link.href}
-             href={link.href}
-             onClick={(e) => link.isAnchor ? handleAnchorClick(e, link.href) : setMobileOpen(false)}
-             className="block text-gray-300 hover:text-shield-green py-2 text-sm font-medium"
-           >
-             {link.label}
-           </a>
-         ))}
+        <div className="md:hidden bg-shield-card border-t border-shield-border px-4 py-4 space-y-3">
+          {navLinks.map(link => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="block text-gray-300 hover:text-shield-green py-2 text-sm font-medium"
+            >
+              {link.label}
+            </a>
+          ))}
           <Link
             to="/app"
             className="block w-full text-center px-4 py-2.5 bg-shield-green text-black font-semibold rounded-xl"
