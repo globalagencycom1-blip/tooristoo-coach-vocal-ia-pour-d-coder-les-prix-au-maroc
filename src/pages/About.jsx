@@ -13,18 +13,6 @@ const TEAM = [
   { name: 'Amina Ouzzani', roleKey: 'team_role4', flag: '🇲🇦', bioKey: 'team_bio4' },
 ];
 
-// Static team data (not easily translatable — roles/bios kept in French as reference)
-const TEAM_DATA = {
-  team_role1: 'CEO & Fondateur',
-  team_role2: 'CTO',
-  team_role3: 'Head of Product',
-  team_role4: 'Responsable Partenariats',
-  team_bio1: "Ex-guide touristique à Marrakech, il a vécu des centaines de situations d'arnaques. Il a créé NegoShield pour que plus aucun touriste ne se fasse surfacturer.",
-  team_bio2: "Ingénieure IA spécialisée en NLP. Passionnée par l'usage de la technologie pour résoudre des problèmes réels du quotidien.",
-  team_bio3: "Designer UX & product manager. A voyagé dans 40 pays et compris l'importance d'un outil de protection pour les voyageurs.",
-  team_bio4: "Développe le réseau de prestataires certifiés partout au Maroc, garantissant prix justes et qualité de service.",
-};
-
 export default function About() {
   const { lang } = useLang();
   const t = useT(lang);
@@ -140,8 +128,8 @@ export default function About() {
                     {member.flag}
                   </div>
                   <h3 className="font-poppins font-bold text-white text-sm">{member.name}</h3>
-                  <p className="text-shield-green text-xs font-medium mt-1 mb-3">{TEAM_DATA[member.roleKey]}</p>
-                  <p className="text-gray-500 text-xs leading-relaxed">{TEAM_DATA[member.bioKey]}</p>
+                  <p className="text-shield-green text-xs font-medium mt-1 mb-3">{t(member.roleKey)}</p>
+                  <p className="text-gray-500 text-xs leading-relaxed">{t(member.bioKey)}</p>
                 </div>
               ))}
             </div>
