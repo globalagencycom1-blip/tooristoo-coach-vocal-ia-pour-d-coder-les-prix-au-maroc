@@ -11,7 +11,7 @@ export default function NegotiationDetailModal({ neg, lang, onClose }) {
     : neg.savings || 0;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center px-4 pb-4 sm:pb-0">
+    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center px-4 pb-4 sm:pb-0">
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
 
@@ -101,9 +101,21 @@ export default function NegotiationDetailModal({ neg, lang, onClose }) {
           {neg.recommended_phrase && (
             <div className="bg-shield-dark border border-shield-green/30 rounded-xl p-4 card-glow">
               <h4 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">{t('analysis_phrase')}</h4>
-              <blockquote className="text-gray-200 text-sm leading-relaxed italic border-l-2 border-shield-green pl-4">
+              <blockquote className="text-gray-200 text-sm leading-relaxed italic border-l-2 border-shield-green pl-4 mb-3">
                 "{neg.recommended_phrase}"
               </blockquote>
+              {neg.recommended_phrase_darija && (
+                <div className="mt-2 pt-2 border-t border-shield-border">
+                  <span className="text-xs text-shield-gold font-semibold">🇲🇦 En Darija : </span>
+                  <span className="text-xs text-gray-300 italic">"{neg.recommended_phrase_darija}"</span>
+                </div>
+              )}
+              {savings > 0 && (
+                <div className="mt-2 pt-2 border-t border-shield-border flex items-center gap-2">
+                  <span className="text-xs text-gray-400">💸 Économie potentielle :</span>
+                  <span className="text-xs font-bold text-shield-green">{savings} MAD</span>
+                </div>
+              )}
             </div>
           )}
 

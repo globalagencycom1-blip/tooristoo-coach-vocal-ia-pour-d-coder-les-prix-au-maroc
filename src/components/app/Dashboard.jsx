@@ -39,7 +39,7 @@ export default function Dashboard({ lang, profile, negotiations }) {
           </div>
         ) : (
           <div className="space-y-3">
-            {negotiations.slice().reverse().map(neg => (
+            {negotiations.map(neg => (
               <button
                 key={neg.id}
                 onClick={() => setSelected(neg)}
