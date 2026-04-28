@@ -79,60 +79,51 @@ export default function AppPage() {
     <div className="min-h-screen bg-shield-dark">
       <Navbar />
 
-      <div className="max-w-2xl mx-auto px-4 pt-20 pb-24">
-        {/* App Header */}
-        <div className="text-center py-6">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <Shield className="w-6 h-6 text-shield-green" />
-            <h1 className="font-poppins font-bold text-white text-xl">{t('app_page_title')}</h1>
-          </div>
-          <p className="text-shield-green text-sm">{t('app_page_subtitle')}</p>
-        </div>
-
-
-
-        {/* Tab Navigation */}
-        <div className="flex gap-1 bg-shield-card border border-shield-border rounded-2xl p-1 mb-6">
+      <div className="max-w-2xl mx-auto px-4 pt-24 pb-24">
+        {/* Tab Navigation - Top */}
+        <div className="flex gap-2 mb-8 justify-center">
           {TABS.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === tab.id
                   ? 'bg-shield-green text-black'
                   : 'text-gray-400 hover:text-white'
               }`}
             >
-              <tab.icon className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{t(tab.labelKey)}</span>
+              <tab.icon className="w-4 h-4" />
+              {t(tab.labelKey)}
             </button>
           ))}
         </div>
 
         {/* Content */}
         {activeTab === 'coach' && (
-          <div className="bg-shield-card border border-shield-border rounded-2xl p-6">
+          <div>
             {analysis ? (
               <AnalysisResult analysis={analysis} lang={lang} onReset={handleReset} />
             ) : (
               <>
                 {/* Input mode toggle */}
-                <div className="flex gap-2 mb-6">
+                <div className="flex gap-3 mb-8 justify-center">
                   <button
                     onClick={() => setInputMode('voice')}
-                    className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      inputMode === 'voice' ? 'bg-shield-green text-black' : 'bg-shield-border/30 text-gray-400'
+                    className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                      inputMode === 'voice' ? 'bg-shield-border text-gray-300' : 'bg-transparent text-gray-500 hover:text-gray-300'
                     }`}
                   >
-                    🎤 Vocal
+                    <Mic className="w-4 h-4" />
+                    Chant
                   </button>
                   <button
                     onClick={() => setInputMode('form')}
-                    className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      inputMode === 'form' ? 'bg-shield-green text-black' : 'bg-shield-border/30 text-gray-400'
+                    className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                      inputMode === 'form' ? 'bg-shield-green text-black' : 'bg-transparent text-gray-500 hover:text-gray-300'
                     }`}
                   >
-                    📝 Formulaire
+                    <span>✓</span>
+                    Texte
                   </button>
                 </div>
 
