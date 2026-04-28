@@ -3,6 +3,7 @@ import { Shield, Mic, LayoutDashboard, History, ChevronRight } from 'lucide-reac
 import { base44 } from '@/api/base44Client';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
+import { getDashboardT } from '../lib/dashboard-translations';
 import Navbar from '../components/Navbar';
 import VoiceCoach from '../components/app/VoiceCoach';
 import NegotiationForm from '../components/app/NegotiationForm';
@@ -13,7 +14,7 @@ import DashboardStats from '../components/app/DashboardStats';
 
 const TABS = [
   { id: 'coach', icon: Mic, labelKey: 'nav_app' },
-  { id: 'recorder', icon: Mic, labelKey: 'recorder_tab', label: 'Enregistrer' },
+  { id: 'recorder', icon: Mic, labelKey: 'recorder_tab' },
   { id: 'dashboard', icon: LayoutDashboard, labelKey: 'dashboard_title' },
   { id: 'history', icon: History, labelKey: 'history_title' },
 ];
@@ -21,6 +22,7 @@ const TABS = [
 export default function AppPage() {
   const { lang } = useLang();
   const t = useT(lang);
+  const dt = (key) => getDashboardT(key, lang);
   const [activeTab, setActiveTab] = useState('coach');
   const [inputMode, setInputMode] = useState('voice');
   const [analysis, setAnalysis] = useState(null);
@@ -106,7 +108,7 @@ export default function AppPage() {
               }`}
             >
               <tab.icon className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{t(tab.labelKey)}</span>
+              <span className="hidden sm:inline">{tab.labelKey === 'recorder_tab' ? dt(tab.labelKey) : t(tab.labelKey)}</span>
             </button>
           ))}
         </div>

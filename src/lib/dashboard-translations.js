@@ -31,6 +31,7 @@ export const dashboardTranslations = {
     high: "Élevé",
     medium: "Moyen",
     low: "Faible",
+    recorder_tab: "Enregistrer",
   },
   en: {
     ai_coach: "ARTIFICIAL INTELLIGENCE",
@@ -64,6 +65,7 @@ export const dashboardTranslations = {
     high: "High",
     medium: "Medium",
     low: "Low",
+    recorder_tab: "Record",
   },
   es: {
     ai_coach: "INTELIGENCIA ARTIFICIAL",
@@ -97,6 +99,7 @@ export const dashboardTranslations = {
     high: "Alto",
     medium: "Medio",
     low: "Bajo",
+    recorder_tab: "Grabar",
   },
   de: {
     ai_coach: "KÜNSTLICHE INTELLIGENZ",
@@ -130,6 +133,7 @@ export const dashboardTranslations = {
     high: "Hoch",
     medium: "Mittel",
     low: "Niedrig",
+    recorder_tab: "Aufnehmen",
   },
   ar: {
     ai_coach: "الذكاء الاصطناعي",
@@ -160,6 +164,7 @@ export const dashboardTranslations = {
     listen: "استمع",
     city: "المدينة",
     category: "الفئة",
+    recorder_tab: "تسجيل",
   },
   darija: {
     ai_coach: "الذكاء الاصطناعي",
@@ -193,6 +198,7 @@ export const dashboardTranslations = {
     high: "عالي",
     medium: "متوسط",
     low: "خفيف",
+    recorder_tab: "تسجيل",
   },
 };
 
