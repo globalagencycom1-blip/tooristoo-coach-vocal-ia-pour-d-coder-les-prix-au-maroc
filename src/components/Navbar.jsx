@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Shield, Menu, X, Globe, UserCircle } from 'lucide-react';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
+import { getNavbarT } from '../lib/navbar-translations';
 
 const LANGS = [
   { code: 'fr', label: 'FR', name: 'Français' },
@@ -23,11 +24,11 @@ export default function Navbar() {
   const navLinks = [
     { href: '/', label: t('nav_home') },
     { href: '/app', label: t('nav_app') },
-    { href: '/blog', label: lang === 'fr' ? 'Blog' : 'Blog' },
+    { href: '/blog', label: getNavbarT('nav_blog', lang) },
     { href: '/alerts', label: t('nav_alerts') },
     { href: '/providers', label: t('nav_providers') },
     { href: '/about', label: t('nav_about') },
-    { href: '/faq', label: t('nav_faq') },
+    { href: '/faq', label: getNavbarT('nav_faq', lang) },
   ];
 
   return (
