@@ -11,6 +11,7 @@ import AppPage from './pages/App';
 import FAQ from './pages/FAQ';
 import About from './pages/About';
 import Providers from './pages/Providers';
+import Alerts from './pages/Alerts';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -43,6 +44,7 @@ const AuthenticatedApp = () => {
       <Route path="/faq" element={<FAQ />} />
       <Route path="/about" element={<About />} />
       <Route path="/providers" element={<Providers />} />
+      <Route path="/alerts" element={<Alerts />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
