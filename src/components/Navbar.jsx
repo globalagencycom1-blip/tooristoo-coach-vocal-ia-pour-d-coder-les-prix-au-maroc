@@ -20,9 +20,19 @@ export default function Navbar() {
   const [langOpen, setLangOpen] = useState(false);
   const location = useLocation();
 
+  const handlePricingClick = (e) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = '/#pricing';
+    }
+  };
+
   const navLinks = [
     { href: '/', label: t('nav_home') },
     { href: '/app', label: t('nav_app') },
+    { href: '#pricing', label: t('nav_pricing'), onClick: handlePricingClick },
     { href: '/alerts', label: t('nav_alerts') },
     { href: '/providers', label: t('nav_providers') },
     { href: '/about', label: t('nav_about') },
@@ -49,17 +59,27 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">
-            {navLinks.map(link => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className={`text-sm font-medium transition-colors hover:text-shield-green ${
-                  location.pathname === link.href ? 'text-shield-green' : 'text-gray-300'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map(link => 
+              link.onClick ? (
+                <button
+                  key={link.href}
+                  onClick={link.onClick}
+                  className="text-sm font-medium transition-colors hover:text-shield-green text-gray-300"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`text-sm font-medium transition-colors hover:text-shield-green ${
+                    location.pathname === link.href ? 'text-shield-green' : 'text-gray-300'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </div>
 
           {/* Right side */}
@@ -107,16 +127,29 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-shield-card border-t border-shield-border px-4 py-4 space-y-3">
-          {navLinks.map(link => (
-            <Link
-              key={link.href}
-              to={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="block text-gray-300 hover:text-shield-green py-2 text-sm font-medium"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map(link => 
+            link.onClick ? (
+              <button
+                key={link.href}
+                onClick={(e) => {
+                  link.onClick(e);
+                  setMobileOpen(false);
+                }}
+                className="block w-full text-left text-gray-300 hover:text-shield-green py-2 text-sm font-medium"
+              >
+                {link.label}
+              </button>
+            ) : (
+              <Link
+                key={link.href}
+                to={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="block text-gray-300 hover:text-shield-green py-2 text-sm font-medium"
+              >
+                {link.label}
+              </Link>
+            )
+          )}
           <Link
             to="/app"
             className="block w-full text-center px-4 py-2.5 bg-shield-green text-black font-semibold rounded-xl"
