@@ -27,7 +27,7 @@ export default function AnalysisSection({ lang }) {
               <div className="flex justify-between items-center mb-3">
                 <span className="text-xs font-bold text-shield-gold uppercase tracking-wider">{t('analysis_situation')}</span>
               </div>
-              <p className="text-gray-300 text-sm">Taxi Aéroport → Marrakech</p>
+              <p className="text-gray-300 text-sm">{examples.example_situation}</p>
               <div className="mt-3 flex items-center justify-between">
                 <span className="text-xs text-gray-500">{t('analysis_price_asked')}</span>
                 <span className="text-xl font-bold text-red-400">300 MAD</span>
