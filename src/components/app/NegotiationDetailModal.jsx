@@ -63,18 +63,13 @@ export default function NegotiationDetailModal({ neg, lang, onClose }) {
             )}
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-400">{t('analysis_risk')}</span>
-              <div className="flex items-center gap-1.5">
-                <span className="text-sm">
-                  {neg.risk_level === 'high' ? '🔴' : neg.risk_level === 'medium' ? '🟡' : '🟢'}
-                </span>
-                <span className={`text-sm font-black font-poppins ${
-                  neg.risk_level === 'high' ? 'text-red-400' :
-                  neg.risk_level === 'medium' ? 'text-shield-gold' :
-                  'text-shield-green'
-                }`}>
-                  {neg.risk_level === 'high' ? 'ÉLEVÉ' : neg.risk_level === 'medium' ? 'MOYEN' : 'FAIBLE'}
-                </span>
-              </div>
+              <span className={`text-xs px-2 py-0.5 rounded-full border font-bold ${
+                neg.risk_level === 'high' ? 'text-red-400 bg-red-500/10 border-red-500/20' :
+                neg.risk_level === 'medium' ? 'text-shield-gold bg-shield-gold/10 border-shield-gold/20' :
+                'text-shield-green bg-shield-green/10 border-shield-green/20'
+              }`}>
+                {neg.risk_level === 'high' ? t('risk_high') : neg.risk_level === 'medium' ? t('risk_medium') : t('risk_low')}
+              </span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-400">{t('analysis_trust')}</span>

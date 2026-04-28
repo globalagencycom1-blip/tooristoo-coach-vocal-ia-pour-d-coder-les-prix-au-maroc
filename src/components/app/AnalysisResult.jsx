@@ -108,16 +108,16 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
       </div>
 
       {/* Section 3: Risk + Trust */}
-      <div className="bg-shield-card border border-shield-border rounded-2xl p-4 flex items-center justify-between">
+      <div className={`${risk.bg} border ${risk.border} rounded-2xl p-4 flex items-center justify-between`}>
         <div>
-          <p className="text-xs text-gray-500 mb-1.5">Niveau de risque</p>
+          <p className="text-xs text-gray-400 mb-1">Niveau de risque</p>
           <div className="flex items-center gap-2">
-            <span className="text-sm">{risk.icon}</span>
-            <span className={`font-black text-base font-poppins ${risk.color}`}>{risk.label}</span>
+            <span className="text-base">{risk.icon}</span>
+            <span className={`font-black text-lg font-poppins ${risk.color}`}>{risk.label}</span>
           </div>
         </div>
         <div className="text-right">
-          <p className="text-xs text-gray-500 mb-1.5">Confiance vendeur</p>
+          <p className="text-xs text-gray-400 mb-1">Confiance vendeur</p>
           <div className="flex gap-0.5 justify-end">
             {[1,2,3,4,5].map(i => (
               <Star key={i} className={`w-3.5 h-3.5 ${i <= (analysis.vendor_trust_score || 3) ? 'text-shield-gold fill-shield-gold' : 'text-gray-600'}`} />
