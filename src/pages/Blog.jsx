@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { getBlogArticles, PILLARS, CATEGORIES, CITIES } from '../lib/blog-articles';
+import { getBlogPageT } from '../lib/blog-page-translations';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 
@@ -40,14 +41,14 @@ export default function Blog() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-shield-green/10 border border-shield-green/30 rounded-full text-shield-green text-sm font-medium mb-6">
             <BookOpen className="w-4 h-4" />
-            {lang === 'fr' ? 'Blog Négociation' : lang === 'en' ? 'Negotiation Blog' : 'Blog Negociación'}
+            {getBlogPageT('blog_badge', lang)}
           </div>
           <h1 className="font-poppins font-black text-4xl md:text-5xl text-white mb-4">
-            {lang === 'fr' ? 'Guides Négo' : lang === 'en' ? 'Negotiation Guides' : 'Guías Negociación'}
-            <span className="text-gradient-green"> au Maroc</span>
+            {getBlogPageT('guides_title', lang)}
+            <span className="text-gradient-green"> {getBlogPageT('guides_title_highlight', lang)}</span>
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            {lang === 'fr' ? 'Découvrez nos guides complets sur les prix réels, les arnaques et la préparation de voyage.' : lang === 'en' ? 'Discover our comprehensive guides on real prices, scams, and travel preparation.' : 'Descubre nuestras guías sobre precios reales, estafas y preparación de viajes.'}
+            {getBlogPageT('guides_subtitle', lang)}
           </p>
         </div>
 
@@ -55,7 +56,7 @@ export default function Blog() {
         <div className="space-y-4 mb-10">
           {/* Pillars */}
           <div>
-            <p className="text-xs font-bold text-gray-400 uppercase mb-3">{lang === 'fr' ? 'Piliers' : 'Pillars'}</p>
+            <p className="text-xs font-bold text-gray-400 uppercase mb-3">{getBlogPageT('pillars_label', lang)}</p>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setPillar(null)}
@@ -65,7 +66,7 @@ export default function Blog() {
                     : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
                 }`}
               >
-                {lang === 'fr' ? 'Tous' : 'All'}
+                {getBlogPageT('all', lang)}
               </button>
               {PILLARS.map(p => (
                 <button
@@ -85,7 +86,7 @@ export default function Blog() {
 
           {/* Cities */}
           <div>
-            <p className="text-xs font-bold text-gray-400 uppercase mb-3">{lang === 'fr' ? 'Villes' : 'Cities'}</p>
+            <p className="text-xs font-bold text-gray-400 uppercase mb-3">{getBlogPageT('cities_label', lang)}</p>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setCity(null)}
@@ -95,7 +96,7 @@ export default function Blog() {
                     : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
                 }`}
               >
-                {lang === 'fr' ? 'Toutes' : 'All'}
+                {getBlogPageT('all_fem', lang)}
               </button>
               {CITIES.map(c => (
                 <button
@@ -115,7 +116,7 @@ export default function Blog() {
 
           {/* Categories */}
           <div>
-            <p className="text-xs font-bold text-gray-400 uppercase mb-3">{lang === 'fr' ? 'Catégories' : 'Categories'}</p>
+            <p className="text-xs font-bold text-gray-400 uppercase mb-3">{getBlogPageT('categories_label', lang)}</p>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setCategory(null)}
@@ -125,7 +126,7 @@ export default function Blog() {
                     : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
                 }`}
               >
-                {lang === 'fr' ? 'Toutes' : 'All'}
+                {getBlogPageT('all_fem', lang)}
               </button>
               {CATEGORIES.map(c => (
                 <button
@@ -147,7 +148,7 @@ export default function Blog() {
         {/* Results count */}
         <div className="mb-6">
           <p className="text-sm text-gray-400">
-            {lang === 'fr' ? `${filtered.length} article${filtered.length > 1 ? 's' : ''}` : `${filtered.length} article${filtered.length > 1 ? 's' : ''}`}
+            {getBlogPageT('article_count', lang, filtered.length)}
           </p>
         </div>
 
@@ -192,7 +193,7 @@ export default function Blog() {
                   </div>
 
                   <div className="flex items-center gap-2 text-shield-green text-sm font-semibold group-hover:gap-3 transition-all">
-                    {lang === 'fr' ? 'Lire' : 'Read'}
+                    {getBlogPageT('read', lang)}
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -203,7 +204,7 @@ export default function Blog() {
           <div className="text-center py-16 bg-shield-card border border-shield-border rounded-2xl">
             <BookOpen className="w-12 h-12 text-gray-600 mx-auto mb-3" />
             <p className="text-gray-400">
-              {lang === 'fr' ? 'Aucun article ne correspond à vos filtres.' : 'No articles match your filters.'}
+              {getBlogPageT('no_articles', lang)}
             </p>
           </div>
         )}
