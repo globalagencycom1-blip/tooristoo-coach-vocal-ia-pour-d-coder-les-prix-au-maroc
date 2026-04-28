@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckCircle, XCircle, AlertTriangle, Star, ExternalLink, RefreshCw, Shield, ChevronLeft, TrendingDown } from 'lucide-react';
 import { useT } from '../../lib/i18n';
+import ScamReportingPanel from './ScamReportingPanel';
 
 export default function AnalysisResult({ analysis, lang, onReset }) {
   const t = useT(lang);
@@ -234,6 +235,9 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
           </div>
         </div>
       )}
+
+      {/* Section 9: Community Scam Reporting */}
+      <ScamReportingPanel analysis={analysis} lang={lang} />
     </div>
   );
 }
