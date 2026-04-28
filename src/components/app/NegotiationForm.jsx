@@ -13,6 +13,17 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Vérification des demandes non acceptables
+    const prohibitedKeywords = ['prostitution', 'escort', 'call girl', 'fille', 'services sexuels', 'sexuel', 'pute', 'femme legère'];
+    const combined = `${form.category} ${form.description}`.toLowerCase();
+    const isProhibited = prohibitedKeywords.some(keyword => combined.includes(keyword));
+    
+    if (isProhibited) {
+      alert('Je ne peux pas analyser ce type de demande. NegoShield AI est spécialisée en négociation pour les services et biens touristiques légitimes.');
+      return;
+    }
+    
     setIsAnalyzing(true);
 
     const prompt = `Tu es NegoShield AI, expert en prix touristiques au Maroc.
