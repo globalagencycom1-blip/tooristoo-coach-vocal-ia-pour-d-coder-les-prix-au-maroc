@@ -21,16 +21,7 @@ export default function Footer({ lang }) {
               <span className="text-xs text-gray-600">Made for Morocco</span>
             </div>
           </div>
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4">{t('footer_links')}</h4>
-            <ul className="space-y-2">
-              {['nav_home', 'nav_app', 'nav_pricing'].map(key => (
-                <li key={key}>
-                  <a href="#" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t(key)}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+
           <div>
             <h4 className="text-white font-semibold text-sm mb-4">{t('footer_legal')}</h4>
             <ul className="space-y-2">
