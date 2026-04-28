@@ -7,11 +7,9 @@ import { getBlogArticles, PILLARS, CATEGORIES, CITIES } from '../lib/blog-articl
 import { getBlogPageT } from '../lib/blog-page-translations';
 import { getPillarLabel, getCategoryLabel, getCityLabel } from '../lib/blog-labels-translations';
 import { useLang } from '../lib/LanguageContext';
-import { useT } from '../lib/i18n';
 
 export default function Blog() {
   const { lang } = useLang();
-  const t = useT(lang);
   const [pillar, setPillar] = useState(null);
   const [city, setCity] = useState(null);
   const [category, setCategory] = useState(null);
@@ -27,10 +25,6 @@ export default function Blog() {
   const getPillarLabelWithIcon = (key) => {
     const pillarObj = PILLARS.find((p) => p.key === key);
     return pillarObj ? `${pillarObj.icon} ${getPillarLabel(key, lang)}` : '';
-  };
-
-  const getCategoryLabelTranslated = (key) => {
-    return getCategoryLabel(key, lang);
   };
 
   return (
@@ -61,26 +55,22 @@ export default function Blog() {
               <button
                 onClick={() => setPillar(null)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                !pillar ?
-                'bg-shield-green text-black' :
-                'bg-shield-border text-gray-300 hover:bg-shield-border/80'}`
-                }>
-                
+                  !pillar ? 'bg-shield-green text-black' : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
+                }`}
+              >
                 {getBlogPageT('all', lang)}
               </button>
-              {PILLARS.map((p) =>
-              <button
-                key={p.key}
-                onClick={() => setPillar(p.key)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                pillar === p.key ?
-                'bg-shield-green text-black' :
-                'bg-shield-border text-gray-300 hover:bg-shield-border/80'}`
-                }>
-                
-                 {p.icon} {getPillarLabel(p.key, lang)}
-               </button>
-              )}
+              {PILLARS.map((p) => (
+                <button
+                  key={p.key}
+                  onClick={() => setPillar(p.key)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    pillar === p.key ? 'bg-shield-green text-black' : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
+                  }`}
+                >
+                  {p.icon} {getPillarLabel(p.key, lang)}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -91,26 +81,22 @@ export default function Blog() {
               <button
                 onClick={() => setCity(null)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                !city ?
-                'bg-shield-gold text-black' :
-                'bg-shield-border text-gray-300 hover:bg-shield-border/80'}`
-                }>
-                
+                  !city ? 'bg-shield-gold text-black' : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
+                }`}
+              >
                 {getBlogPageT('all_fem', lang)}
               </button>
-              {CITIES.map((c) =>
-              <button
-                key={c}
-                onClick={() => setCity(c)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                city === c ?
-                'bg-shield-gold text-black' :
-                'bg-shield-border text-gray-300 hover:bg-shield-border/80'}`
-                }>
-                
-                 {getCityLabel(c, lang)}
-               </button>
-              )}
+              {CITIES.map((c) => (
+                <button
+                  key={c}
+                  onClick={() => setCity(c)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    city === c ? 'bg-shield-gold text-black' : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
+                  }`}
+                >
+                  {getCityLabel(c, lang)}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -121,26 +107,26 @@ export default function Blog() {
               <button
                 onClick={() => setCategory(null)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                !category ?
-                'bg-shield-green/20 text-shield-green border border-shield-green/50' :
-                'bg-shield-border text-gray-300 hover:bg-shield-border/80'}`
-                }>
-                
+                  !category
+                    ? 'bg-shield-green/20 text-shield-green border border-shield-green/50'
+                    : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
+                }`}
+              >
                 {getBlogPageT('all_fem', lang)}
               </button>
-              {CATEGORIES.map((c) =>
-              <button
-                key={c.key}
-                onClick={() => setCategory(c.key)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                category === c.key ?
-                'bg-shield-green/20 text-shield-green border border-shield-green/50' :
-                'bg-shield-border text-gray-300 hover:bg-shield-border/80'}`
-                }>
-                
-                 {getCategoryLabel(c.key, lang)}
-               </button>
-              )}
+              {CATEGORIES.map((c) => (
+                <button
+                  key={c.key}
+                  onClick={() => setCategory(c.key)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    category === c.key
+                      ? 'bg-shield-green/20 text-shield-green border border-shield-green/50'
+                      : 'bg-shield-border text-gray-300 hover:bg-shield-border/80'
+                  }`}
+                >
+                  {getCategoryLabel(c.key, lang)}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -153,20 +139,15 @@ export default function Blog() {
         </div>
 
         {/* Articles Grid */}
-        {filtered.length > 0 ?
-        <div className="grid md:grid-cols-2 gap-6">
-            {filtered.map((article) =>
-          <Link
-            key={article.id}
-            to={`/blog/${article.id}`}
-            className="group bg-shield-card border border-shield-border rounded-2xl overflow-hidden hover:border-shield-green/50 transition-all hover:shadow-lg hover:shadow-shield-green/10">
-            
-                <div className="relative h-48 overflow-hidden">
-                  
-
-              
-
-              
+        {filtered.length > 0 ? (
+          <div className="grid md:grid-cols-2 gap-6">
+            {filtered.map((article) => (
+              <Link
+                key={article.id}
+                to={`/blog/${article.id}`}
+                className="group bg-shield-card border border-shield-border rounded-2xl overflow-hidden hover:border-shield-green/50 transition-all hover:shadow-lg hover:shadow-shield-green/10"
+              >
+                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-shield-green/20 to-shield-gold/20">
                   <div className="absolute top-4 left-4 flex items-center gap-2">
                     <span className="px-3 py-1 bg-shield-green/90 text-black text-xs font-bold rounded-full">
                       {getPillarLabel(article.pillar).split(' ')[0]}
@@ -198,18 +179,18 @@ export default function Blog() {
                   </div>
                 </div>
               </Link>
-          )}
-          </div> :
-
-        <div className="text-center py-16 bg-shield-card border border-shield-border rounded-2xl">
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16 bg-shield-card border border-shield-border rounded-2xl">
             <BookOpen className="w-12 h-12 text-gray-600 mx-auto mb-3" />
             <p className="text-gray-400">
               {getBlogPageT('no_articles', lang)}
             </p>
           </div>
-        }
+        )}
       </div>
       <Footer lang={lang} />
-    </div>);
-
+    </div>
+  );
 }

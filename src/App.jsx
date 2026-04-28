@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
-import { LanguageProvider } from './lib/LanguageContext';
+import { LanguageProvider, useLang } from './lib/LanguageContext';
 import Landing from './pages/Landing';
 import AppPage from './pages/App';
 import FAQ from './pages/FAQ';
@@ -19,9 +19,11 @@ import Blog from './pages/Blog';
 import BlogArticle from './pages/BlogArticle';
 import LegalNotice from './pages/LegalNotice';
 import Profile from './pages/Profile';
+import ChatBot from './components/ChatBot';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
+  const { lang } = useLang();
 
   // Show loading spinner while checking app public settings or auth
   if (isLoadingPublicSettings || isLoadingAuth) {
@@ -45,22 +47,25 @@ const AuthenticatedApp = () => {
 
   // Render the main app
   return (
-    <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/app" element={<AppPage />} />
-      <Route path="/faq" element={<FAQ />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/providers" element={<Providers />} />
-      <Route path="/alerts" element={<Alerts />} />
-      <Route path="/privacy" element={<PrivacyPolicy />} />
-      <Route path="/terms" element={<Terms />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/blog" element={<Blog />} />
-      <Route path="/blog/:id" element={<BlogArticle />} />
-      <Route path="/legal" element={<LegalNotice />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/app" element={<AppPage />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/providers" element={<Providers />} />
+        <Route path="/alerts" element={<Alerts />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogArticle />} />
+        <Route path="/legal" element={<LegalNotice />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+      <ChatBot lang={lang} />
+    </>
   );
 };
 
