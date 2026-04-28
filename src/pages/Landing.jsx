@@ -16,12 +16,16 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-shield-dark">
       <Navbar />
-      <HeroSection lang={lang} />
+      <section id="home">
+        <HeroSection lang={lang} />
+      </section>
       <FeaturesSection lang={lang} />
       <AnalysisSection lang={lang} />
       <TestimonialsSection lang={lang} />
       <AlertsBanner />
-      <PricingSection lang={lang} />
+      <section id="pricing">
+        <PricingSection lang={lang} />
+      </section>
       <CTASection lang={lang} />
       <Footer lang={lang} />
     </div>

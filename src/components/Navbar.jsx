@@ -21,7 +21,7 @@ export default function Navbar() {
   const location = useLocation();
 
   const navLinks = [
-    { href: '/', label: t('nav_home') },
+    { href: '#home', label: t('nav_home') },
     { href: '/app', label: t('nav_app') },
     { href: '/alerts', label: t('nav_alerts') },
     { href: '/providers', label: t('nav_providers') },
@@ -54,7 +54,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium transition-colors hover:text-shield-green ${
-                  location.pathname === link.href ? 'text-shield-green' : 'text-gray-300'
+                  (link.href.startsWith('#') && location.pathname === '/') || location.pathname === link.href ? 'text-shield-green' : 'text-gray-300'
                 }`}
               >
                 {link.label}
