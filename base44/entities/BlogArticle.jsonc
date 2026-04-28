@@ -1,0 +1,115 @@
+{
+  "name": "BlogArticle",
+  "type": "object",
+  "properties": {
+    "title_fr": {
+      "type": "string",
+      "description": "Titre de l'article en fran\u00e7ais"
+    },
+    "title_en": {
+      "type": "string",
+      "description": "Titre de l'article en anglais"
+    },
+    "title_es": {
+      "type": "string",
+      "description": "Titre de l'article en espagnol"
+    },
+    "title_de": {
+      "type": "string",
+      "description": "Titre de l'article en allemand"
+    },
+    "title_ar": {
+      "type": "string",
+      "description": "Titre de l'article en arabe"
+    },
+    "title_darija": {
+      "type": "string",
+      "description": "Titre de l'article en darija"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly identifier"
+    },
+    "excerpt_fr": {
+      "type": "string",
+      "description": "R\u00e9sum\u00e9 court en fran\u00e7ais"
+    },
+    "excerpt_en": {
+      "type": "string",
+      "description": "R\u00e9sum\u00e9 court en anglais"
+    },
+    "excerpt_es": {
+      "type": "string",
+      "description": "R\u00e9sum\u00e9 court en espagnol"
+    },
+    "excerpt_de": {
+      "type": "string",
+      "description": "R\u00e9sum\u00e9 court en allemand"
+    },
+    "excerpt_ar": {
+      "type": "string",
+      "description": "R\u00e9sum\u00e9 court en arabe"
+    },
+    "excerpt_darija": {
+      "type": "string",
+      "description": "R\u00e9sum\u00e9 court en darija"
+    },
+    "content_fr": {
+      "type": "string",
+      "description": "Contenu complet en fran\u00e7ais"
+    },
+    "content_en": {
+      "type": "string",
+      "description": "Contenu complet en anglais"
+    },
+    "content_es": {
+      "type": "string",
+      "description": "Contenu complet en espagnol"
+    },
+    "content_de": {
+      "type": "string",
+      "description": "Contenu complet en allemand"
+    },
+    "content_ar": {
+      "type": "string",
+      "description": "Contenu complet en arabe"
+    },
+    "content_darija": {
+      "type": "string",
+      "description": "Contenu complet en darija"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "negotiation",
+        "tips",
+        "market",
+        "safety"
+      ],
+      "description": "Cat\u00e9gorie de l'article"
+    },
+    "featured_image": {
+      "type": "string",
+      "description": "URL de l'image principale"
+    },
+    "read_time": {
+      "type": "number",
+      "description": "Temps de lecture en minutes"
+    },
+    "published": {
+      "type": "boolean",
+      "default": true,
+      "description": "Statut de publication"
+    },
+    "order": {
+      "type": "number",
+      "default": 0,
+      "description": "Ordre d'affichage"
+    }
+  },
+  "required": [
+    "slug",
+    "title_fr",
+    "content_fr"
+  ]
+}

@@ -15,6 +15,8 @@ import Alerts from './pages/Alerts';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
 import Contact from './pages/Contact';
+import Blog from './pages/Blog';
+import BlogDetail from './pages/BlogDetail';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -44,6 +46,8 @@ const AuthenticatedApp = () => {
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/app" element={<AppPage />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:slug" element={<BlogDetail />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/about" element={<About />} />
       <Route path="/providers" element={<Providers />} />
