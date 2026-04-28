@@ -1,9 +1,11 @@
 import React from 'react';
 import { CheckCircle, XCircle, AlertTriangle, Star } from 'lucide-react';
 import { useT } from '../../lib/i18n';
+import { exampleTranslations } from '../../lib/i18n-examples';
 
 export default function AnalysisSection({ lang }) {
   const t = useT(lang);
+  const examples = exampleTranslations[lang] || exampleTranslations.fr;
 
   const strategyKeys = ['strategy1', 'strategy2', 'strategy3', 'strategy4', 'strategy5'];
   const alertKeys = ['alert1', 'alert2', 'alert3', 'alert4', 'alert5'];
@@ -47,7 +49,7 @@ export default function AnalysisSection({ lang }) {
                   <XCircle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
                   <div>
                     <span className="text-xs text-gray-400">{t('analysis_anomaly')} : </span>
-                    <span className="text-sm text-red-400 font-medium">Prix 100% au-dessus du marché</span>
+                    <span className="text-sm text-red-400 font-medium">{examples.example_anomaly}</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -91,11 +93,11 @@ export default function AnalysisSection({ lang }) {
             <div className="bg-shield-card border border-shield-green/30 rounded-2xl p-5 card-glow">
               <h4 className="text-xs font-bold text-shield-green uppercase tracking-wider mb-3">{t('analysis_phrase')}</h4>
               <blockquote className="text-gray-300 text-sm leading-relaxed italic border-l-2 border-shield-green pl-4">
-                "Bonjour, le prix normal pour cette course est entre 120 et 150 MAD. Si c'est possible pour vous, on y va, sinon merci."
+                "{examples.example_phrase_intro}"
               </blockquote>
               <div className="mt-3 pt-3 border-t border-shield-border">
-                <span className="text-xs text-shield-gold font-semibold">🇲🇦 En Darija : </span>
-                <span className="text-xs text-gray-300 italic">"Salam, t-taman dyal had course bin 120 w 150 MAD. Ila mzyan lik, nmchiw, wella shukran."</span>
+                <span className="text-xs text-shield-gold font-semibold">🇲🇦 {t('in_darija')} </span>
+                <span className="text-xs text-gray-300 italic">"{examples.example_phrase_darija}"</span>
               </div>
             </div>
 
