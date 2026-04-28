@@ -55,6 +55,9 @@
     "recommended_phrase": {
       "type": "string"
     },
+    "recommended_phrase_darija": {
+      "type": "string"
+    },
     "strategy": {
       "type": "string"
     },
