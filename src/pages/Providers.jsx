@@ -48,7 +48,7 @@ function ProviderCard({ p, t, lang }) {
 
       <div className="flex items-center gap-2 mb-3">
         <MapPin className="w-3 h-3 text-gray-500" />
-        <span className="text-xs text-gray-500">{cityLabel} · {catLabel}</span>
+        <span className="text-xs text-gray-500">{catLabel}</span>
       </div>
 
       <p className="text-gray-400 text-sm leading-relaxed mb-3">{desc}</p>
