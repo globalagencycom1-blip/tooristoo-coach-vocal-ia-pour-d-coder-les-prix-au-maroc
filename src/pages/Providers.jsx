@@ -47,7 +47,7 @@ function ProviderCard({ p, t }) {
 
       <div className="flex items-center gap-2 mb-3">
         <MapPin className="w-3 h-3 text-gray-500" />
-        <span className="text-xs text-gray-500">{p.city} · {catLabel}</span>
+        <span className="text-xs text-gray-500">{t('city_' + p.city.toLowerCase().replace(/\s+/g, '_'))} · {catLabel}</span>
       </div>
 
       <p className="text-gray-400 text-sm leading-relaxed mb-3">{desc}</p>
