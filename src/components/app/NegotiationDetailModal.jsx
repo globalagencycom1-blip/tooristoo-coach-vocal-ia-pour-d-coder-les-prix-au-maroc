@@ -74,9 +74,14 @@ export default function NegotiationDetailModal({ neg, lang, onClose }) {
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-400">{t('analysis_trust')}</span>
               <div className="flex gap-0.5">
-                {[1,2,3,4,5].map(i => (
-                  <Star key={i} className={`w-3.5 h-3.5 ${i <= (neg.vendor_trust_score || 3) ? 'text-shield-gold fill-shield-gold' : 'text-gray-600'}`} />
-                ))}
+                {(() => {
+                  const raw = neg.vendor_trust_score || 3;
+                  const score = raw > 5 ? Math.round(raw / 20) : Math.round(raw);
+                  const clamped = Math.min(5, Math.max(1, score));
+                  return [1,2,3,4,5].map(i => (
+                    <Star key={i} className={`w-3.5 h-3.5 ${i <= clamped ? 'text-shield-gold fill-shield-gold' : 'text-gray-600'}`} />
+                  ));
+                })()}
               </div>
             </div>
           </div>

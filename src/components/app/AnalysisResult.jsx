@@ -118,12 +118,21 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
         </div>
         <div className="text-right">
           <p className="text-xs text-gray-400 mb-1">Confiance vendeur</p>
-          <div className="flex gap-0.5 justify-end">
-            {[1,2,3,4,5].map(i => (
-              <Star key={i} className={`w-3.5 h-3.5 ${i <= (analysis.vendor_trust_score || 3) ? 'text-shield-gold fill-shield-gold' : 'text-gray-600'}`} />
-            ))}
-          </div>
-          <p className="text-xs text-gray-500 mt-0.5">({analysis.vendor_trust_score || 3}/5)</p>
+          {(() => {
+            const raw = analysis.vendor_trust_score || 3;
+            const score = raw > 5 ? Math.round(raw / 20) : Math.round(raw);
+            const clamped = Math.min(5, Math.max(1, score));
+            return (
+              <>
+                <div className="flex gap-0.5 justify-end">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className={`w-3.5 h-3.5 ${i <= clamped ? 'text-shield-gold fill-shield-gold' : 'text-gray-600'}`} />
+                  ))}
+                </div>
+                <p className="text-xs text-gray-500 mt-0.5">({clamped}/5)</p>
+              </>
+            );
+          })()}
         </div>
       </div>
 
