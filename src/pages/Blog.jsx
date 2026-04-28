@@ -148,6 +148,14 @@ export default function Blog() {
                 className="group bg-shield-card border border-shield-border rounded-2xl overflow-hidden hover:border-shield-green/50 transition-all hover:shadow-lg hover:shadow-shield-green/10"
               >
                 <div className="relative h-48 overflow-hidden bg-gradient-to-br from-shield-green/20 to-shield-gold/20">
+                  {article.image && (
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
                   <div className="absolute top-4 left-4 flex items-center gap-2">
                     <span className="px-3 py-1 bg-shield-green/90 text-black text-xs font-bold rounded-full">
                       {getPillarLabel(article.pillar).split(' ')[0]}
