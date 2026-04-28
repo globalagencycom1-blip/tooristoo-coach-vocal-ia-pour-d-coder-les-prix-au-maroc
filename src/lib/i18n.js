@@ -959,7 +959,7 @@ export const translations = {
     // Categories & Providers
     cat_riad: "Riad & Alojamiento",
     cat_hotel: "Hotel & Hospedaje",
-    cat_taxi: "Taxi & Transporte",
+    cat_taxi: "Taxi",
     cat_restaurant: "Restaurante & Gastronomía",
     cat_excursion: "Excursión & Actividad",
     cat_guide: "Guía & Servicio",
@@ -968,7 +968,7 @@ export const translations = {
     cat_shopping: "Shopping & Zoco",
     cat_riad: "Riad & Alojamiento",
     cat_hotel: "Hotel & Hospedaje",
-    cat_taxi: "Taxi & Transporte",
+    cat_taxi: "Taxi",
     cat_restaurant: "Restaurante & Gastronomía",
     cat_excursion: "Excursión & Actividad",
     cat_guide: "Guía & Servicio",
@@ -1273,7 +1273,7 @@ export const translations = {
     // Categories & Providers
     cat_riad: "Riad & Unterkunft",
     cat_hotel: "Hotel & Logis",
-    cat_taxi: "Taxi & Transport",
+    cat_taxi: "Taxi",
     cat_restaurant: "Restaurant & Gastronomie",
     cat_excursion: "Ausflug & Aktivität",
     cat_guide: "Führer & Service",
@@ -1325,7 +1325,7 @@ export const translations = {
     // Categories & Providers (DE)
     cat_riad: "Riad & Unterkunft",
     cat_hotel: "Hotel & Logis",
-    cat_taxi: "Taxi & Transport",
+    cat_taxi: "Taxi",
     cat_restaurant: "Restaurant & Gastronomie",
     cat_excursion: "Ausflug & Aktivität",
     cat_guide: "Führer & Service",
@@ -1634,7 +1634,7 @@ export const translations = {
     // Categories & Providers (AR)
     cat_riad: "رياض والإقامة",
     cat_hotel: "فندق والسكن",
-    cat_taxi: "طاكسي والنقل",
+    cat_taxi: "طاكسي",
     cat_restaurant: "مطعم والأكل",
     cat_excursion: "نزهة والنشاطات",
     cat_guide: "مرشد والخدمة",
@@ -1921,7 +1921,7 @@ export const translations = {
     // Categories & Providers
     cat_riad: "رياض والإقامة",
     cat_hotel: "فندق والسكن",
-    cat_taxi: "طاكسي والنقل",
+    cat_taxi: "طاكسي",
     cat_restaurant: "مطعم والأكل",
     cat_excursion: "نزهة والنشاطات",
     cat_guide: "مرشد والخدمة",
@@ -1955,7 +1955,7 @@ export const translations = {
     // Categories & Providers (DRJ)
     cat_riad: "رياض والإقامة",
     cat_hotel: "فندق والسكن",
-    cat_taxi: "طاكسي والنقل",
+    cat_taxi: "طاكسي",
     cat_restaurant: "مطعم والأكل",
     cat_excursion: "نزهة والنشاطات",
     cat_guide: "مرشد والخدمة",
