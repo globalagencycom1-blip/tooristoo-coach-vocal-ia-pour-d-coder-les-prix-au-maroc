@@ -26,12 +26,13 @@ export default function DashboardStats({ lang, profile, negotiations }) {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 4);
 
-  // Risk distribution
+  // Risk distribution - normalize to lowercase for comparison
   const riskCounts = {
-    high: negotiations.filter(n => n.risk_level === 'high').length,
-    medium: negotiations.filter(n => n.risk_level === 'medium').length,
-    low: negotiations.filter(n => n.risk_level === 'low').length,
+    high: negotiations.filter(n => n.risk_level?.toLowerCase() === 'high').length,
+    medium: negotiations.filter(n => n.risk_level?.toLowerCase() === 'medium').length,
+    low: negotiations.filter(n => n.risk_level?.toLowerCase() === 'low').length,
   };
+  const riskTotal = riskCounts.high + riskCounts.medium + riskCounts.low || 1;
   const total = negotiations.length || 1;
 
   const stats = [
@@ -80,7 +81,7 @@ export default function DashboardStats({ lang, profile, negotiations }) {
                   <div className="h-2 bg-shield-border rounded-full overflow-hidden">
                     <div
                       className={`h-full ${color} rounded-full transition-all`}
-                      style={{ width: `${(count / total) * 100}%` }}
+                      style={{ width: `${(count / (riskTotal)) * 100}%` }}
                     />
                   </div>
                 </div>
