@@ -164,16 +164,16 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">{t('exact_phrase')}</h3>
           </div>
-          <div className="relative pl-6">
-            <span className="absolute left-0 top-0 text-3xl text-shield-green/30 font-serif leading-none">"</span>
-            <p className="text-sm text-gray-200 leading-relaxed italic">
-              {analysis.recommended_phrase}"
+          <div className="relative pr-6 text-right">
+            <span className="absolute right-0 top-0 text-3xl text-shield-green/30 font-serif leading-none">"</span>
+            <p className="text-sm text-gray-200 leading-relaxed italic" dir="rtl">
+              "{analysis.recommended_phrase}
             </p>
           </div>
           {analysis.recommended_phrase_darija && (
             <div className="mt-3 pt-3 border-t border-shield-border">
               <span className="text-xs text-shield-gold font-semibold">🇲🇦 {t('in_darija')} </span>
-              <span className="text-xs text-gray-300 italic">"{analysis.recommended_phrase_darija}"</span>
+              <p className="text-xs text-gray-300 italic mt-1" dir="rtl">"{analysis.recommended_phrase_darija}"</p>
               <div className="mt-1">
                 <VoiceOutput text={analysis.recommended_phrase_darija} lang="darija" label="🔊 Darija" />
               </div>

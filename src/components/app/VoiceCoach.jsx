@@ -66,13 +66,13 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
     - risk_level: "low" | "medium" | "high"
     - scam_detected (boolean)
     - ai_analysis (string): analyse détaillée en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}
-    - recommended_phrase (string): phrase exacte à dire au vendeur en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija' : 'Français'}
+    - recommended_phrase (string): phrase exacte en ARABE STANDARD (caractères arabes uniquement, JAMAIS en lettres latines) à dire au vendeur
     - strategy (string): stratégie recommandée en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija' : 'Français'}
     - vendor_trust_score (number 1-5)
     - provider_name (string): nom d'un prestataire alternatif recommandé
     - provider_url (string): lien Google Maps ou site pour ce prestataire à ${location || 'Marrakech'}
     - savings (number): économies potentielles si prix MAD demandé est connu, sinon 0
-    - recommended_phrase_darija (string): TOUJOURS la phrase recommandée traduite en Darija marocaine (langue parlée)
+    - recommended_phrase_darija (string): OBLIGATOIREMENT la phrase en Darija marocaine écrite en CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines ni translittération). Exemple: "أنا غادي نعطيك 150 درهم، واش مقبول؟"
     IMPORTANT: risk_level doit OBLIGATOIREMENT être exactement "low", "medium", ou "high" en anglais, rien d'autre.`;
 
     const result = await base44.integrations.Core.InvokeLLM({

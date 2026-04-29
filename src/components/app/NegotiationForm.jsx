@@ -45,14 +45,13 @@ ${pricingInfo}
 Analyse cette demande de négociation et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.
 
 IMPORTANT: 
-- Le champ recommended_phrase doit être une phrase EXACTE, ASSERTIVE et NATURELLE que le client peut dire directement au vendeur. Elle doit:
+- Le champ recommended_phrase doit OBLIGATOIREMENT être rédigé en arabe standard (caractères arabes uniquement, JAMAIS en lettres latines ni en translittération), une phrase EXACTE, ASSERTIVE et NATURELLE que le client peut dire directement au vendeur. Elle doit:
   1. Être spécifique à cette situation exacte (pas générique)
   2. Référencer les prix réels estimés ou le tarif du marché local
   3. Proposer un prix alternatif réaliste si applicable
   4. Être respectueuse de la culture marocaine mais ferme
   5. Correspondre exactement à la stratégie recommandée ci-dessus
-  Exemple format: "Je sais que le prix normal pour [service] à [ville] est [prix]. Pouvez-vous faire [prix proposé]?"
-- Le champ recommended_phrase_darija doit TOUJOURS contenir la phrase traduite en Darija marocaine (langue parlée naturelle, pas arabe classique).
+- Le champ recommended_phrase_darija doit OBLIGATOIREMENT contenir la phrase en Darija marocaine écrite en CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines ni translittération). Exemple: "أنا غادي نعطيك 150 درهم، واش مقبول؟"
 - Le champ risk_level doit OBLIGATOIREMENT être l'une de ces valeurs exactes en anglais: "low", "medium", ou "high". Ne jamais utiliser d'autres valeurs.
 - Utiliser la base de connaissances pour évaluer si le prix demandé est juste, raisonnable ou abusif.`;
 
