@@ -163,7 +163,6 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
         <div className="bg-shield-card border border-shield-border rounded-2xl p-4">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">{t('exact_phrase')}</h3>
-            <VoiceOutput text={analysis.recommended_phrase} lang={lang} label={`🔊 ${t('listen')}`} />
           </div>
           <div className="relative pl-6">
             <span className="absolute left-0 top-0 text-3xl text-shield-green/30 font-serif leading-none">"</span>
