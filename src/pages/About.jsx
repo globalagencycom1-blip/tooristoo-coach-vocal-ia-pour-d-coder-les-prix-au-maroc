@@ -7,7 +7,7 @@ import { useT } from '../lib/i18n';
 import { Link } from 'react-router-dom';
 
 const TEAM = [
-{ name: "Azeddine Ma", roleKey: 'team_role1', flag: '🇲🇦', bioKey: 'team_bio1' },
+{ name: "Azeddine Maghraoui", roleKey: 'team_role1', flag: '🇲🇦', bioKey: 'team_bio1' },
 { name: 'Sophie Martin', roleKey: 'team_role2', flag: '🇫🇷', bioKey: 'team_bio2' },
 { name: 'Carlos Ruiz', roleKey: 'team_role3', flag: '🇪🇸', bioKey: 'team_bio3' },
 { name: 'Amina Ouzzani', roleKey: 'team_role4', flag: '🇲🇦', bioKey: 'team_bio4' }];
