@@ -2,26 +2,11 @@ import React, { useState, useRef } from 'react';
 import { Mic, Square, Shield, Loader2, Zap } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
-
-const CATEGORIES = [
-  { value: 'taxi', label: 'Taxi' },
-  { value: 'hotel', label: 'Hôtel & Séjour' },
-  { value: 'riad', label: 'Riad & Logement' },
-  { value: 'restaurant', label: 'Restaurant & Gastronomie' },
-  { value: 'excursion', label: 'Excursion & Activité' },
-  { value: 'shopping', label: 'Shopping & Souk' },
-  { value: 'transport', label: 'Transport & Navette' },
-  { value: 'guide', label: 'Guide & Service' },
-  { value: 'spa', label: 'Spa & Relaxation' },
-  { value: 'artisanat', label: 'Artisanat & Souvenirs' },
-  { value: 'bus', label: 'Bus & Intercités' },
-  { value: 'train', label: 'Train & ONCF' },
-  { value: 'other', label: 'Autre service' },
-];
-const CITIES = ['Marrakech', 'Casablanca', 'Fès', 'Chefchaouen', 'Agadir', 'Tanger', 'Rabat', 'Essaouira', 'Meknès', 'Ouarzazate'];
+import { CATEGORIES_DATA, CITIES_DATA } from '../../lib/categories-cities-translations';
 
 export default function VoiceCoach({ lang, onAnalysisComplete, category: defaultCategory, location: defaultLocation, priceAsked }) {
   const t = useT(lang);
+  const l = lang || 'fr';
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -131,8 +116,8 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
             onChange={e => setCategory(e.target.value)}
             className="w-full bg-shield-dark border border-shield-border text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:border-shield-green"
           >
-            {CATEGORIES.map(cat => (
-              <option key={cat.value} value={cat.value}>{cat.label}</option>
+            {CATEGORIES_DATA.map(cat => (
+              <option key={cat.value} value={cat.value}>{cat[l] || cat.fr}</option>
             ))}
           </select>
         </div>
@@ -143,8 +128,8 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
             onChange={e => setLocation(e.target.value)}
             className="w-full bg-shield-dark border border-shield-border text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:border-shield-green"
           >
-            {CITIES.map(city => (
-              <option key={city} value={city}>{city}</option>
+            {CITIES_DATA.map(city => (
+              <option key={city.value} value={city.value}>{city[l] || city.fr}</option>
             ))}
           </select>
         </div>

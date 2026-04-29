@@ -3,26 +3,11 @@ import { Loader2, Zap } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
 import { formatPricingPrompt, getAllCitiesPricingContext } from '../../lib/pricing-knowledge-base';
-
-const CATEGORIES = [
-  { value: 'taxi', label: 'Taxi' },
-  { value: 'hotel', label: 'Hôtel & Séjour' },
-  { value: 'riad', label: 'Riad & Logement' },
-  { value: 'restaurant', label: 'Restaurant & Gastronomie' },
-  { value: 'excursion', label: 'Excursion & Activité' },
-  { value: 'shopping', label: 'Shopping & Souk' },
-  { value: 'transport', label: 'Transport & Navette' },
-  { value: 'guide', label: 'Guide & Service' },
-  { value: 'spa', label: 'Spa & Relaxation' },
-  { value: 'artisanat', label: 'Artisanat & Souvenirs' },
-  { value: 'bus', label: 'Bus & Intercités' },
-  { value: 'train', label: 'Train & ONCF' },
-  { value: 'other', label: 'Autre service' },
-];
-const CITIES = ['Marrakech', 'Casablanca', 'Fès', 'Chefchaouen', 'Agadir', 'Tanger', 'Rabat', 'Meknès', 'Essaouira', 'Ouarzazate', 'Merzouga', 'Dakhla', 'El Jadida'];
+import { CATEGORIES_DATA, CITIES_DATA } from '../../lib/categories-cities-translations';
 
 export default function NegotiationForm({ lang, onAnalysisComplete }) {
   const t = useT(lang);
+  const l = lang || 'fr';
   const [form, setForm] = useState({ category: 'taxi', location: 'Marrakech', price_asked: '', description: '' });
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
@@ -112,7 +97,7 @@ IMPORTANT:
             onChange={e => setForm({ ...form, category: e.target.value })}
             className="w-full bg-shield-card border border-shield-border text-white rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-shield-green"
           >
-            {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
+            {CATEGORIES_DATA.map(c => <option key={c.value} value={c.value}>{c[l] || c.fr}</option>)}
           </select>
         </div>
         <div>
@@ -122,7 +107,7 @@ IMPORTANT:
             onChange={e => setForm({ ...form, location: e.target.value })}
             className="w-full bg-shield-card border border-shield-border text-white rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-shield-green"
           >
-            {CITIES.map(c => <option key={c} value={c}>{c}</option>)}
+            {CITIES_DATA.map(c => <option key={c.value} value={c.value}>{c[l] || c.fr}</option>)}
           </select>
         </div>
       </div>
