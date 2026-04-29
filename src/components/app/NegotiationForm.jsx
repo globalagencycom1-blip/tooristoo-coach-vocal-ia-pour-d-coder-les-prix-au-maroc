@@ -45,7 +45,7 @@ ${pricingInfo}
 Analyse cette demande de négociation et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.
 
 IMPORTANT: 
-- Le champ recommended_phrase doit OBLIGATOIREMENT être rédigé en arabe standard (caractères arabes uniquement, JAMAIS en lettres latines ni en translittération), une phrase EXACTE, ASSERTIVE et NATURELLE que le client peut dire directement au vendeur. Elle doit:
+- Le champ recommended_phrase doit être une phrase EXACTE, ASSERTIVE et NATURELLE en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'arabe (caractères arabes)' : lang === 'darija' ? 'Darija (caractères arabes)' : 'Français'} que le client peut dire directement au vendeur. Elle doit:
   1. Être spécifique à cette situation exacte (pas générique)
   2. Référencer les prix réels estimés ou le tarif du marché local
   3. Proposer un prix alternatif réaliste si applicable

@@ -66,7 +66,7 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
     - risk_level: "low" | "medium" | "high"
     - scam_detected (boolean)
     - ai_analysis (string): analyse détaillée en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}
-    - recommended_phrase (string): phrase exacte en ARABE STANDARD (caractères arabes uniquement, JAMAIS en lettres latines) à dire au vendeur
+    - recommended_phrase (string): phrase exacte en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'arabe (caractères arabes)' : lang === 'darija' ? 'Darija (caractères arabes)' : 'Français'} à dire au vendeur
     - strategy (string): stratégie recommandée en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija' : 'Français'}
     - vendor_trust_score (number 1-5)
     - provider_name (string): nom d'un prestataire alternatif recommandé

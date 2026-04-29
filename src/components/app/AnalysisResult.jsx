@@ -164,10 +164,10 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">{t('exact_phrase')}</h3>
           </div>
-          <div className="relative pr-6 text-right">
-            <span className="absolute right-0 top-0 text-3xl text-shield-green/30 font-serif leading-none">"</span>
-            <p className="text-sm text-gray-200 leading-relaxed italic" dir="rtl">
-              "{analysis.recommended_phrase}
+          <div className={`relative ${['ar','darija'].includes(lang) ? 'pr-6 text-right' : 'pl-6'}`}>
+            <span className={`absolute ${['ar','darija'].includes(lang) ? 'right-0' : 'left-0'} top-0 text-3xl text-shield-green/30 font-serif leading-none`}>"</span>
+            <p className="text-sm text-gray-200 leading-relaxed italic" dir={['ar','darija'].includes(lang) ? 'rtl' : 'ltr'}>
+              {['ar','darija'].includes(lang) ? `"${analysis.recommended_phrase}` : `${analysis.recommended_phrase}"`}
             </p>
           </div>
           {analysis.recommended_phrase_darija && (
