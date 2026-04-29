@@ -4,7 +4,6 @@ import { useT } from '../../lib/i18n';
 import { getCategoryLabel, getCityLabel } from '../../lib/categories-cities-translations';
 import ScamReportingPanel from './ScamReportingPanel';
 import VoiceOutput from './VoiceOutput';
-import ContinueNegotiation from './ContinueNegotiation';
 
 export default function AnalysisResult({ analysis, lang, onReset }) {
   const t = useT(lang);
@@ -244,10 +243,7 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
         </div>
       )}
 
-      {/* Section 9: Continue Negotiation */}
-      <ContinueNegotiation analysis={analysis} lang={lang} />
-
-      {/* Section 10: Community Scam Reporting */}
+      {/* Section 9: Community Scam Reporting */}
       <ScamReportingPanel analysis={analysis} lang={lang} />
     </div>
   );
