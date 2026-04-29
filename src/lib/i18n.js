@@ -288,7 +288,7 @@ export const translations = {
     about_title2: "pour le monde entier",
     about_subtitle: "NegoShield AI est né d'une frustration réelle : trop de touristes quittent le Maroc avec le sentiment de s'être fait arnaquer. Nous avons décidé de changer ça.",
     about_story_title: "Notre histoire",
-    about_story1: "En 2023, Youssef Benali, ex-guide touristique à Marrakech, constate que des milliers de touristes paient chaque jour 2 à 5 fois le prix réel pour des taxis, des riads ou des excursions.",
+    about_story1: "Azeddine Maghraoui, habitant à Marrakech, constate que des milliers de touristes paient chaque jour 2 à 5 fois le prix réel pour des taxis, des riads ou des excursions.",
     about_story2: "Il s'associe avec Sophie Martin, ingénieure en IA, pour créer un assistant vocal capable d'analyser les prix en temps réel et de guider les voyageurs avec des stratégies de négociation adaptées à la culture locale.",
     about_story3_pre: "Après 18 mois de développement et des milliers de données collectées sur le terrain,",
     about_story3_post: "est lancé en 2024 et protège aujourd'hui plus de 50 000 voyageurs.",
