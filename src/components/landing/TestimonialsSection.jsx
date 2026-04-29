@@ -4,18 +4,18 @@ import { useT } from '../../lib/i18n';
 import { coverageTranslations } from '../../lib/i18n-coverage';
 
 const cities = [
-  { name: 'Marrakech', img: 'https://images.unsplash.com/photo-1597212618440-806262de4f6b?w=400&h=300&fit=crop' },
-  { name: 'Fès', img: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=400&h=300&fit=crop' },
-  { name: 'Chefchaouen', img: 'https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?w=400&h=300&fit=crop' },
-  { name: 'Casablanca', img: 'https://images.unsplash.com/photo-1577948000111-9c970dfe3743?w=400&h=300&fit=crop' },
-  { name: 'Rabat', img: 'https://images.unsplash.com/photo-1551887373-6edba6dacbb1?w=400&h=300&fit=crop' },
-  { name: 'Meknès', img: 'https://images.unsplash.com/photo-1554254464-7d3f7c0e0a0f?w=400&h=300&fit=crop' },
-  { name: 'Agadir', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop' },
-  { name: 'Tanger', img: 'https://images.unsplash.com/photo-1539650116574-75c0c6d33d08?w=400&h=300&fit=crop' },
-  { name: 'Essaouira', img: 'https://images.unsplash.com/photo-1553603227-2358aabe821e?w=400&h=300&fit=crop' },
-  { name: 'Ouarzazate', img: 'https://images.unsplash.com/photo-1534270804882-6b5048b1c1fc?w=400&h=300&fit=crop' },
-  { name: 'Merzouga', img: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&h=300&fit=crop' },
-  { name: 'Dakhla', img: 'https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&h=300&fit=crop' },
+  { name: 'Marrakech', img: 'https://images.openai.com/static-rsc-4/YX5HSRyuyYgpkIU8q4zhO8Pq05-jdCIiavAFRbk-CugFqz9ZdUP7G3qwAEjXGciTt8LSkx_wom44HiZqtKDNN8fRXLZZT1Gg1ZrqpY5P0xG0fADhLEzfg5lnnN2L_s5aGQqdkrnGyZFnd-slZWIb-tYEn037rRdoF3RLM-U-savYUFj_PSHN7JyAlqSBf7h-?purpose=fullsize' },
+  { name: 'Fès', img: 'https://images.openai.com/static-rsc-4/zS_f3d1VfZFmapvnyX6j2lruvMXaGbf6gOYbp-CRa8FKxLy-gQytY9dlIv9Vdwx3xF1jliH-nASvEBk7j1Cc_1RUErZF5w8HVFJFpKswqDqkP1GQJ8lCIOwUctVqPE3hKS7lyiKOpmYAifgxw59jhdgPCww_mfH55fDMkz6r4cmmN-pqq3Feqvw5tcBh4Diq?purpose=fullsize' },
+  { name: 'Chefchaouen', img: 'https://images.openai.com/static-rsc-4/NP_p3STNKytrxQJC5mXl45gsVoYbG4G06Vr4ZdFrcXwnVBEKcuHhFmNTTOPVIYC_U-aGtashiL6dqjerMTy-_g6QzPQQQqXQ7uoZbd5sr4XQMdIcCryqA9r9EzwJaLuvCZowPIz_vhaSO-37DVPzdcwGcjZWHq9-Yrlh1k1Gg9yvJuhS9idA86Xd1vCMfFWT?purpose=fullsize' },
+  { name: 'Casablanca', img: 'https://images.openai.com/static-rsc-4/Tdj-oF3JSUyXk95QAFZGV7lAAp91i7SSnQSquPYpKeaVeBZXKhqf7e3sq0sRuu-PTGNgGBZAsd7tWFpuRp0WvXjyXULwNHQHUGa6cgOPtRsclxNhtr84P7MY6GjNX9HJ1rtyE36FcM3i_7OEVyNudHoe2ONYpsILhFgXPf1fc-YoQrgdF_WT6W6BY2Ca93Cr?purpose=fullsize' },
+  { name: 'Rabat', img: 'https://images.openai.com/static-rsc-4/24bb3Xy0XScs6fWSDaDNUzMaMxvHOXi7R3ZU48b8AqTKs3VhRrUZW5pcT6VZCFU2bobUxgTUBKG8t_y0gikHTSJU8_V7UIB5akme3hgA3nbIkQymp3OU_EEXvY8cV9RDXBdF1uLOdQlwm-THxhb7Pa2tgqUltmPkPQkKfmZ922zct4u1cTvjrwclSMqrRVpH?purpose=fullsize' },
+  { name: 'Meknès', img: 'https://images.openai.com/static-rsc-4/OUV2WxcWbAvCUxGbq44Q8hjdYlkwf0S6oYJkFpCn2332_Vr0DUr3KZixUbvXemaPMS4riWA83D0ddfpm6V5dV9ZD2Yv2QlOHS03ctYPVZ4N-l65-9uQYOKyNr9WPE5wAIbHIwRMVbCnY98f8seMK4B5a3DP9MF7zKOdopdYiOUYeOpRrWGtLmFECa83grF9t?purpose=fullsize' },
+  { name: 'Agadir', img: 'https://images.openai.com/static-rsc-4/Zo1cPxMHOk7Q39VPtNKvG5jletF1PEo4QEdy-FY-7JUhBGzWKmdQLMHfrA80FueztEVtKqJyeHMeka9dLRY22KqAtUv6aLDGzrmUNz3-MtszkCIQL7XoE-zKTUphOKma8FgaMOxZHV3h7HX7VtVcWtxR-qz7H6voPbTfZyHcZF4RKB6IPwk67usWJILPT4bt?purpose=fullsize' },
+  { name: 'Tanger', img: 'https://images.openai.com/static-rsc-4/lXSe49UcKHzC08zuj0x6Rh0ssP922hlWKNQdGrh7YrRc_6HvQ2I6Y40o6Ov7FLrRmxo1rBPOhxK_Vx0SLxqUps0SIRHCFe42SBtwtCo3hwoeczLzHRptfqAvG1vYVRWhUnarqRdWb_1dc6pitqohEA5M4eamUUWqZwZb7rO4QuR1ZYLxljFlun40Ts4uVfyV?purpose=fullsize' },
+  { name: 'Essaouira', img: 'https://images.openai.com/static-rsc-4/67cphEse5ftCx5uwK5t-kfLCQ9EaW8p5wJeBOBnT9AMHT4xsVfHysH8hVyhVng-9o5HX4GzDbxlQhPq7AbrKAm7Hwwqb71HMwjxlpRFtFm4AKkCCbParNv0g_FZyaGg0aYMp-eN_cPQrEXjnqaZrM9WaCTaZi7ygTVfaS-KdH1iMCuznQI2Tt7x7hK1ZBfbZ?purpose=fullsize' },
+  { name: 'Ouarzazate', img: 'https://images.openai.com/static-rsc-4/H5QIbYIaWIuplHVPW9rZ3Cp20Rth45EmAtCaeIlAXrJwTaMRGo7ZNLO_5keE_L2ix3j7k2faJa928Tn3X5ghCboRlVVgQwz_GNpM7Y491sdmgE5plQAgg1LOzeoE4285Ede-LBp6ebDbPQAsWivWPyjwwpN47TZAnnjMBTg_cdHikPoPwS8rEQDXpoHaHUl3?purpose=fullsize' },
+  { name: 'Merzouga', img: 'https://images.openai.com/static-rsc-4/WQ8-O0AGq7Mdhufk3nuAv3Wkm7Jwv1rqqduce_aS2oZv2sTtksPS9nGs9ey8Kk2vg0rIZlUi1Q-tSV0CsQT7Tmh0iUurJ520YmGKHfaXuppAyN09cdnr8V33wru6bAC1Dl4so1u6licFKXEe1_YaehpQworKYfdRimcso3_VYMxo3LZkhS6dbRKf8Jr-wk29?purpose=fullsize' },
+  { name: 'Dakhla', img: 'https://images.openai.com/static-rsc-4/L6BRc8lh_QlsoM9npsnLjUuXJc5MxrxYfuWGo-BeX6O7mEtw4vj1vfW_ztEkuGv0cdi2TcwKipS4Wm94_RpO8V0UVt2-LrIJWVRx-xlck-qv_hmHlPTkg6dYw0MtbLa5vhoAvkXv6GXvlaRWxqMaco15s2YH63h-NNCfeFYHQ7G9TgU3t4WsNpMlLy_7kKud?purpose=fullsize' },
 ];
 
 export default function TestimonialsSection({ lang }) {
