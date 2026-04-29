@@ -73,7 +73,8 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
     - provider_url (string): lien Google Maps ou site pour ce prestataire à ${location || 'Marrakech'}
     - savings (number): économies potentielles si prix MAD demandé est connu, sinon 0
     - recommended_phrase_darija (string): OBLIGATOIREMENT la phrase en Darija marocaine écrite en CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines ni translittération). Exemple: "أنا غادي نعطيك 150 درهم، واش مقبول؟"
-    IMPORTANT: risk_level doit OBLIGATOIREMENT être exactement "low", "medium", ou "high" en anglais, rien d'autre.`;
+    IMPORTANT: risk_level doit OBLIGATOIREMENT être exactement "low", "medium", ou "high" en anglais, rien d'autre.
+    IMPORTANT: Utilise TOUJOURS "DH" (jamais "MAD") pour mentionner les prix dans tous les champs texte (ai_analysis, strategy, recommended_phrase, recommended_phrase_darija).`;
 
     const result = await base44.integrations.Core.InvokeLLM({
       prompt,

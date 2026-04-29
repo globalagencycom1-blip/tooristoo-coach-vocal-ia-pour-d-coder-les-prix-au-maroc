@@ -44,7 +44,8 @@ ${pricingInfo}
 
 Analyse cette demande de négociation et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.
 
-IMPORTANT: 
+IMPORTANT:
+- Utilise TOUJOURS "DH" (et jamais "MAD") pour mentionner les prix dans tous les champs texte (ai_analysis, strategy, recommended_phrase, recommended_phrase_darija).
 - Le champ recommended_phrase doit être une phrase EXACTE, ASSERTIVE et NATURELLE en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'arabe (caractères arabes)' : lang === 'darija' ? 'Darija (caractères arabes)' : 'Français'} que le client peut dire directement au vendeur. Elle doit:
   1. Être spécifique à cette situation exacte (pas générique)
   2. Référencer les prix réels estimés ou le tarif du marché local
