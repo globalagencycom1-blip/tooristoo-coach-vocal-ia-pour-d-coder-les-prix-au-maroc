@@ -3,11 +3,16 @@ import { Mic, Square, Shield, Loader2, Zap } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
 
-export default function VoiceCoach({ lang, onAnalysisComplete, category, location, priceAsked }) {
+const CATEGORIES = ['taxi', 'hotel', 'riad', 'restaurant', 'excursion', 'shopping', 'transport', 'guide', 'spa', 'other'];
+const CITIES = ['Marrakech', 'Casablanca', 'Fès', 'Chefchaouen', 'Agadir', 'Tanger', 'Rabat', 'Essaouira', 'Meknès', 'Ouarzazate'];
+
+export default function VoiceCoach({ lang, onAnalysisComplete, category: defaultCategory, location: defaultLocation, priceAsked }) {
   const t = useT(lang);
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [category, setCategory] = useState(defaultCategory || 'taxi');
+  const [location, setLocation] = useState(defaultLocation || 'Marrakech');
   const recognitionRef = useRef(null);
 
   const startListening = () => {
@@ -103,6 +108,34 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category, locatio
 
   return (
     <div className="space-y-6">
+      {/* Category & City selectors */}
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className="text-xs text-gray-400 mb-1 block">{t('select_category')}</label>
+          <select
+            value={category}
+            onChange={e => setCategory(e.target.value)}
+            className="w-full bg-shield-dark border border-shield-border text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:border-shield-green"
+          >
+            {CATEGORIES.map(cat => (
+              <option key={cat} value={cat}>{t(`cat_${cat}`) || cat}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="text-xs text-gray-400 mb-1 block">{t('select_location')}</label>
+          <select
+            value={location}
+            onChange={e => setLocation(e.target.value)}
+            className="w-full bg-shield-dark border border-shield-border text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:border-shield-green"
+          >
+            {CITIES.map(city => (
+              <option key={city} value={city}>{city}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       {/* Mic Button */}
       <div className="flex flex-col items-center py-8">
         <div className="relative mb-6">
