@@ -42,6 +42,8 @@ export const analysisResultTranslations = {
     severity_low: "Faible",
     severity_medium: "Moyen",
     severity_high: "Élevé",
+    transcript_label: "Transcription",
+    upgrade_btn: "Passer Pro",
   },
   en: {
     back: "Back",
@@ -85,6 +87,8 @@ export const analysisResultTranslations = {
     severity_low: "Low",
     severity_medium: "Medium",
     severity_high: "High",
+    transcript_label: "Transcript",
+    upgrade_btn: "Upgrade",
   },
   es: {
     back: "Atrás",
@@ -128,6 +132,8 @@ export const analysisResultTranslations = {
     severity_low: "Bajo",
     severity_medium: "Medio",
     severity_high: "Alto",
+    transcript_label: "Transcripción",
+    upgrade_btn: "Mejorar plan",
   },
   de: {
     back: "Zurück",
@@ -171,6 +177,8 @@ export const analysisResultTranslations = {
     severity_low: "Niedrig",
     severity_medium: "Mittel",
     severity_high: "Hoch",
+    transcript_label: "Transkript",
+    upgrade_btn: "Upgraden",
   },
   ar: {
     back: "رجوع",
@@ -214,6 +222,8 @@ export const analysisResultTranslations = {
     severity_low: "منخفض",
     severity_medium: "متوسط",
     severity_high: "عالٍ",
+    transcript_label: "النص المكتوب",
+    upgrade_btn: "ترقية الخطة",
   },
   darija: {
     back: "ارجع",
@@ -257,6 +267,8 @@ export const analysisResultTranslations = {
     severity_low: "خفيف",
     severity_medium: "متوسط",
     severity_high: "عالي",
+    transcript_label: "النص المكتوب",
+    upgrade_btn: "عدل الفورمول",
   },
 };
 

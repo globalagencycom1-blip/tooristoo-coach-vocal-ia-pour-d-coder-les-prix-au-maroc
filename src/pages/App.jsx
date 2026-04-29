@@ -172,7 +172,7 @@ export default function AppPage() {
             </div>
             {profile.plan === 'free' && (
               <a href="/#pricing" className="flex items-center gap-1 text-xs text-shield-gold hover:text-yellow-300">
-                Upgrader <ChevronRight className="w-3 h-3" />
+                {t('upgrade_btn')} <ChevronRight className="w-3 h-3" />
               </a>
             )}
           </div>

@@ -184,7 +184,7 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
         <div className="bg-shield-card border border-shield-border rounded-xl p-4">
           <div className="flex items-center gap-2 mb-2">
             <Shield className="w-4 h-4 text-shield-green" />
-            <span className="text-xs text-shield-green font-semibold">Transcript</span>
+            <span className="text-xs text-shield-green font-semibold">{t('transcript_label')}</span>
           </div>
           <textarea
             value={transcript}

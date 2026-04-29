@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckCircle, XCircle, AlertTriangle, Star, ExternalLink, RefreshCw, Shield, ChevronLeft, TrendingDown } from 'lucide-react';
 import { useT } from '../../lib/i18n';
+import { getCategoryLabel, getCityLabel } from '../../lib/categories-cities-translations';
 import ScamReportingPanel from './ScamReportingPanel';
 import VoiceOutput from './VoiceOutput';
 
@@ -58,8 +59,8 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
         {analysis.category && (
           <p className="text-sm text-gray-300 mt-1">
             <span className="text-gray-500">{t('category_label')} </span>
-            <span className="text-white capitalize">{analysis.category}</span>
-            {analysis.location && <span className="text-gray-500"> · {analysis.location}</span>}
+            <span className="text-white capitalize">{getCategoryLabel(analysis.category, lang)}</span>
+            {analysis.location && <span className="text-gray-500"> · {getCityLabel(analysis.location, lang)}</span>}
           </p>
         )}
       </div>
