@@ -90,21 +90,28 @@ export default function NegotiationContinue({ analysis, lang }) {
 
     const prompt = `Tu es NegoShield AI, expert en négociation touristique au Maroc.
 
-Contexte de la négociation initiale :
-- Catégorie : ${analysis.category}
+CONTEXTE DE LA NÉGOCIATION :
+- Catégorie de service : ${analysis.category}
 - Ville : ${analysis.location}
-- Prix initialement demandé : ${analysis.price_asked} DH
-- Fourchette prix estimé : ${analysis.price_estimated_min}–${analysis.price_estimated_max} DH
-- Niveau de risque : ${analysis.risk_level}
+- Prix initialement demandé par le vendeur : ${analysis.price_asked} DH
+- Fourchette de prix RÉELS du marché local : ${analysis.price_estimated_min}–${analysis.price_estimated_max} DH
+- Niveau de risque arnaque : ${analysis.risk_level}
+- Stratégie initiale : ${analysis.strategy || ''}
 
-Nouvelle situation / contre-offre du vendeur :
+NOUVELLE SITUATION / CONTRE-OFFRE DU VENDEUR :
 "${input}"
 
-Génère :
-1. reply_phrase : une réponse EXACTE et ASSERTIVE en ${langLabel} que le client peut dire directement au vendeur.
-2. reply_phrase_darija : OBLIGATOIREMENT la même réponse en Darija marocaine écrite en CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines). Exemple: "أنا غادي نعطيك 150 درهم، واش مقبول؟"
+RÈGLES ABSOLUES pour générer la réponse :
+1. Le CLIENT veut PAYER MOINS. La réponse doit TOUJOURS proposer un prix INFÉRIEUR à ce que demande le vendeur.
+2. Si le vendeur demande X DH, proposer entre ${analysis.price_estimated_min} et ${analysis.price_estimated_max} DH (fourchette marché réel).
+3. Si le vendeur a déjà baissé son prix, reconnaître l'effort mais proposer encore moins.
+4. Ne JAMAIS proposer un prix SUPÉRIEUR à ce que demande le vendeur — c'est une erreur grave.
+5. La réponse doit être ferme, respectueuse, courte (1-2 phrases max), et culturellement adaptée au Maroc.
+6. Utilise TOUJOURS "DH" (jamais "MAD").
 
-IMPORTANT : Utilise TOUJOURS "DH" (jamais "MAD") dans la réponse. Courte, directe, culturellement adaptée au Maroc.`;
+Génère :
+1. reply_phrase : réponse exacte en ${langLabel} que le client dit au vendeur, avec un prix précis inférieur à la demande du vendeur.
+2. reply_phrase_darija : la MÊME réponse en Darija marocaine en CARACTÈRES ARABES UNIQUEMENT. Exemple: "أنا غادي نعطيك 150 درهم، واش مقبول؟"`;
 
     const result = await base44.integrations.Core.InvokeLLM({
       prompt,
