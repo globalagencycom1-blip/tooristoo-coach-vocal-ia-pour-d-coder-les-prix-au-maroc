@@ -6,12 +6,12 @@ import { useT } from '../lib/i18n';
 import { getNavbarT } from '../lib/navbar-translations';
 
 const LANGS = [
-  { code: 'fr', label: 'FR', name: 'Français' },
-  { code: 'en', label: 'EN', name: 'English' },
-  { code: 'es', label: 'ES', name: 'Español' },
-  { code: 'de', label: 'DE', name: 'Deutsch' },
-  { code: 'ar', label: 'AR', name: 'العربية' },
-  { code: 'darija', label: 'DRJ', name: 'Darija' },
+  { code: 'fr', label: 'FR', name: 'Français', flag: '🇫🇷' },
+  { code: 'en', label: 'EN', name: 'English', flag: '🇬🇧' },
+  { code: 'es', label: 'ES', name: 'Español', flag: '🇪🇸' },
+  { code: 'de', label: 'DE', name: 'Deutsch', flag: '🇩🇪' },
+  { code: 'ar', label: 'AR', name: 'العربية', flag: '🇸🇦' },
+  { code: 'darija', label: 'DRJ', name: 'Darija', flag: '🇲🇦' },
 ];
 
 export default function Navbar() {
@@ -72,7 +72,7 @@ export default function Navbar() {
                 onClick={() => setLangOpen(!langOpen)}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-shield-border/50 hover:bg-shield-border text-gray-300 hover:text-white text-sm transition-all"
               >
-                <Globe className="w-3.5 h-3.5" />
+                <span className="text-base leading-none">{LANGS.find(l => l.code === lang)?.flag || '🇫🇷'}</span>
                 <span>{LANGS.find(l => l.code === lang)?.label || 'FR'}</span>
               </button>
               {langOpen && (
@@ -83,7 +83,7 @@ export default function Navbar() {
                       onClick={() => { setLang(l.code); setLangOpen(false); }}
                       className={`w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-shield-border flex items-center gap-3 ${lang === l.code ? 'text-shield-green bg-shield-border/50' : 'text-gray-300'}`}
                     >
-                      <span className="font-mono text-xs font-bold w-8">{l.label}</span>
+                      <span className="text-base">{l.flag}</span>
                       <span>{l.name}</span>
                     </button>
                   ))}
@@ -125,6 +125,14 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <Link
+            to="/profile"
+            onClick={() => setMobileOpen(false)}
+            className="flex items-center gap-2 text-gray-300 hover:text-shield-green py-2 text-sm font-medium"
+          >
+            <UserCircle className="w-4 h-4" />
+            Profil
+          </Link>
           <Link
             to="/app"
             className="block w-full text-center px-4 py-2.5 bg-shield-green text-black font-semibold rounded-xl"

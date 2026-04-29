@@ -23,14 +23,6 @@ export default function PricingSection({ lang }) {
       popular: true,
       cta: '/app',
     },
-    {
-      key: 'pro',
-      nameKey: 'plan_pro',
-      priceKey: 'plan_pro_price',
-      features: ['plan_pro_feat1', 'plan_pro_feat2', 'plan_pro_feat3', 'plan_pro_feat4', 'plan_pro_feat5'],
-      popular: false,
-      cta: '/app',
-    },
   ];
 
   return (
@@ -41,7 +33,7 @@ export default function PricingSection({ lang }) {
           <p className="mt-4 text-gray-400 text-lg">{t('pricing_subtitle')}</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {plans.map(plan => (
             <div
               key={plan.key}

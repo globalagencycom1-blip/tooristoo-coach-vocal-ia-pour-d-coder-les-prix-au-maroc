@@ -134,7 +134,7 @@ export default function AppPage() {
                       inputMode === 'form' ? 'bg-shield-green text-black' : 'bg-shield-border/30 text-gray-400'
                     }`}
                   >
-                    📝 {t('input_mode_text')}
+                    ✏️ {t('input_mode_text')}
                   </button>
                 </div>
 
