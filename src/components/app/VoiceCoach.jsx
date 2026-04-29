@@ -186,7 +186,12 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
             <Shield className="w-4 h-4 text-shield-green" />
             <span className="text-xs text-shield-green font-semibold">Transcript</span>
           </div>
-          <p className="text-sm text-gray-300 leading-relaxed">{transcript}</p>
+          <textarea
+            value={transcript}
+            onChange={e => setTranscript(e.target.value)}
+            rows={3}
+            className="w-full bg-transparent text-sm text-gray-300 leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-shield-green/40 rounded-lg p-1 -m-1"
+          />
         </div>
       )}
 
