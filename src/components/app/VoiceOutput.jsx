@@ -33,20 +33,18 @@ export default function VoiceOutput({ text, lang = 'fr', label = 'Écouter' }) {
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
-    const langConfig = LANGUAGE_CONFIG[lang] || LANGUAGE_CONFIG.fr;
     
-    utterance.lang = langConfig.code;
-    utterance.rate = 0.9; // Slightly slower for clarity
-    utterance.pitch = 0.9; // Slightly lower for masculine tone
+    // Always use Arabic for audio output regardless of selected language
+    utterance.lang = 'ar-MA';
+    utterance.rate = 0.9;
+    utterance.pitch = 0.9;
     utterance.volume = 1;
 
-    // Select voice - prefer male voice if available
+    // Select Arabic voice if available
     const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(v => {
-      const voiceLang = v.lang.split('-')[0];
-      const targetLang = langConfig.code.split('-')[0];
-      return voiceLang === targetLang && (v.name.includes('male') || v.name.includes('Male') || v.name.includes('man'));
-    }) || voices.find(v => v.lang.startsWith(langConfig.code.split('-')[0]));
+    const preferredVoice = voices.find(v => v.lang === 'ar-MA') ||
+      voices.find(v => v.lang === 'ar-SA') ||
+      voices.find(v => v.lang.startsWith('ar'));
 
     if (preferredVoice) {
       utterance.voice = preferredVoice;
