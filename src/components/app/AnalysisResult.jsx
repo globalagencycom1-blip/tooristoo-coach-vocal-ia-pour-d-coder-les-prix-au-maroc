@@ -183,7 +183,10 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
         </div>
       )}
 
-      {/* Section 6: Anti-scam alerts */}
+      {/* Section 6: Continue Negotiation */}
+      <NegotiationContinue analysis={analysis} lang={lang} />
+
+      {/* Section 7b: Anti-scam alerts */}
       {analysis.scam_detected && (
         <div className="bg-red-950/30 border border-red-500/30 rounded-2xl p-4">
           <div className="flex items-center justify-between mb-3">
@@ -243,9 +246,6 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
           </div>
         </div>
       )}
-
-      {/* Section 9: Continue Negotiation */}
-      <NegotiationContinue analysis={analysis} lang={lang} />
 
       {/* Section 10: Community Scam Reporting */}
       <ScamReportingPanel analysis={analysis} lang={lang} />
