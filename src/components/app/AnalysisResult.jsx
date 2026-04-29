@@ -53,7 +53,7 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
         {analysis.price_asked > 0 && (
           <p className="text-sm text-gray-300">
             <span className="text-gray-500">{t('price_asked')} </span>
-            <span className="text-white font-bold">{analysis.price_asked} MAD</span>
+            <span className="text-white font-bold">{analysis.price_asked} DH</span>
           </p>
         )}
         {analysis.category && (
@@ -75,7 +75,7 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
           <div>
             <p className="text-xs text-gray-400">{t('estimated_price')} :</p>
             <p className="text-shield-green font-black text-lg font-poppins">
-              {analysis.price_estimated_min} – {analysis.price_estimated_max} MAD
+              {analysis.price_estimated_min} – {analysis.price_estimated_max} DH
             </p>
           </div>
         </div>
@@ -211,7 +211,7 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
       {savings > 0 && (
         <div className="bg-shield-card border border-shield-green/20 rounded-2xl p-5 text-center">
           <p className="text-xs text-shield-green uppercase tracking-wider mb-1">{t('potential_savings')}</p>
-          <p className="font-black text-4xl font-poppins text-white">{savings} MAD</p>
+          <p className="font-black text-4xl font-poppins text-white">{savings} DH</p>
           <p className="text-xs text-gray-500 mt-1">{t('estimation_on_transaction')}</p>
         </div>
       )}
