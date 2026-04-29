@@ -1985,10 +1985,13 @@ export const translations = {
     }
     };
 
+import { analysisResultTranslations } from './analysis-result-translations.js';
+
 export const useT = (lang) => {
   return (key) => {
     const t = translations[lang] || translations['fr'];
-    return t[key] || translations['fr'][key] || key;
+    const ar = analysisResultTranslations[lang] || analysisResultTranslations['fr'];
+    return t[key] || translations['fr'][key] || ar[key] || analysisResultTranslations['fr'][key] || key;
   };
 };
 

@@ -3,16 +3,17 @@ import { AlertTriangle, CheckCircle, Flag, Loader2, Plus, Users } from 'lucide-r
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
 
-const SCAM_TYPES = {
-  overpricing: 'Surfacturé (overpricing)',
-  fake_service: 'Faux service',
-  quality_mismatch: 'Qualité non conforme',
-  hidden_charges: 'Frais cachés',
-  other: 'Autre',
-};
+const getScamTypes = (t) => ({
+  overpricing: t('scam_type_overpricing'),
+  fake_service: t('scam_type_fake_service'),
+  quality_mismatch: t('scam_type_quality_mismatch'),
+  hidden_charges: t('scam_type_hidden_charges'),
+  other: t('scam_type_other'),
+});
 
 export default function ScamReportingPanel({ analysis, lang, onReportSuccess }) {
   const t = useT(lang);
+  const SCAM_TYPES = getScamTypes(t);
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [existingReports, setExistingReports] = useState([]);
@@ -94,16 +95,16 @@ export default function ScamReportingPanel({ analysis, lang, onReportSuccess }) 
         <div>
           <h3 className="text-xs font-bold text-red-400 uppercase tracking-wider flex items-center gap-2">
             <Flag className="w-4 h-4" />
-            Signalements communautaires
+            {t('community_reports')}
           </h3>
-          <p className="text-xs text-gray-400 mt-1">Aidez la communauté à identifier les arnaqueurs</p>
+          <p className="text-xs text-gray-400 mt-1">{t('community_reports_desc')}</p>
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="px-3 py-1.5 bg-red-500/20 hover:bg-red-500/30 text-red-400 text-xs font-semibold rounded-lg transition-all flex items-center gap-1"
         >
           <Plus className="w-3 h-3" />
-          Signaler
+          {t('report_btn')}
         </button>
       </div>
 
@@ -128,7 +129,7 @@ export default function ScamReportingPanel({ analysis, lang, onReportSuccess }) 
                   report.severity === 'medium' ? 'bg-yellow-600/40 text-yellow-200' :
                   'bg-orange-600/40 text-orange-200'
                 }`}>
-                  {report.severity}
+                  {report.severity === 'high' ? t('severity_high') : report.severity === 'medium' ? t('severity_medium') : t('severity_low')}
                 </span>
               </div>
               <div className="flex items-center justify-between">
@@ -140,7 +141,7 @@ export default function ScamReportingPanel({ analysis, lang, onReportSuccess }) 
                     onClick={() => handleConfirmReport(report.id)}
                     className="px-2 py-1 bg-red-500/30 hover:bg-red-500/50 text-red-300 text-xs rounded transition-all"
                   >
-                    Confirmer
+                    {t('confirm_btn')}
                   </button>
                 )}
               </div>
@@ -153,7 +154,7 @@ export default function ScamReportingPanel({ analysis, lang, onReportSuccess }) 
       {isOpen && (
         <div className="pt-3 border-t border-red-500/20 space-y-3">
           <div>
-            <label className="text-xs text-gray-400 mb-1.5 block">Type d'arnaque</label>
+            <label className="text-xs text-gray-400 mb-1.5 block">{t('scam_type_label')}</label>
             <select
               value={formData.scam_type}
               onChange={(e) => setFormData({ ...formData, scam_type: e.target.value })}
@@ -166,24 +167,24 @@ export default function ScamReportingPanel({ analysis, lang, onReportSuccess }) 
           </div>
 
           <div>
-            <label className="text-xs text-gray-400 mb-1.5 block">Sévérité</label>
+            <label className="text-xs text-gray-400 mb-1.5 block">{t('severity_label')}</label>
             <select
               value={formData.severity}
               onChange={(e) => setFormData({ ...formData, severity: e.target.value })}
               className="w-full bg-shield-dark border border-red-500/30 text-white rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-red-400"
             >
-              <option value="low">Faible</option>
-              <option value="medium">Moyen</option>
-              <option value="high">Élevé</option>
+              <option value="low">{t('severity_low')}</option>
+              <option value="medium">{t('severity_medium')}</option>
+              <option value="high">{t('severity_high')}</option>
             </select>
           </div>
 
           <div>
-            <label className="text-xs text-gray-400 mb-1.5 block">Description</label>
+            <label className="text-xs text-gray-400 mb-1.5 block">{t('description_label')}</label>
             <textarea
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              placeholder="Décrivez la tentative d'escroquerie en détail..."
+              placeholder={t('description_placeholder')}
               rows={3}
               className="w-full bg-shield-dark border border-red-500/30 text-white rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-red-400 resize-none placeholder-gray-600"
             />
@@ -194,7 +195,7 @@ export default function ScamReportingPanel({ analysis, lang, onReportSuccess }) 
               onClick={() => setIsOpen(false)}
               className="flex-1 px-3 py-2 bg-shield-border text-gray-300 text-xs font-semibold rounded-lg hover:bg-shield-border/80 transition-all"
             >
-              Annuler
+              {t('cancel_btn')}
             </button>
             <button
               onClick={handleSubmitReport}
@@ -204,12 +205,12 @@ export default function ScamReportingPanel({ analysis, lang, onReportSuccess }) 
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-3 h-3 animate-spin" />
-                  Envoi...
+                  {t('sending')}
                 </>
               ) : (
                 <>
                   <Flag className="w-3 h-3" />
-                  Signaler
+                  {t('report_btn')}
                 </>
               )}
             </button>
