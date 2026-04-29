@@ -3,7 +3,21 @@ import { Mic, Square, Shield, Loader2, Zap } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
 
-const CATEGORIES = ['taxi', 'hotel', 'riad', 'restaurant', 'excursion', 'shopping', 'transport', 'guide', 'spa', 'other'];
+const CATEGORIES = [
+  { value: 'taxi', label: 'Taxi' },
+  { value: 'hotel', label: 'Hôtel & Séjour' },
+  { value: 'riad', label: 'Riad & Logement' },
+  { value: 'restaurant', label: 'Restaurant & Gastronomie' },
+  { value: 'excursion', label: 'Excursion & Activité' },
+  { value: 'shopping', label: 'Shopping & Souk' },
+  { value: 'transport', label: 'Transport & Navette' },
+  { value: 'guide', label: 'Guide & Service' },
+  { value: 'spa', label: 'Spa & Relaxation' },
+  { value: 'artisanat', label: 'Artisanat & Souvenirs' },
+  { value: 'bus', label: 'Bus & Intercités' },
+  { value: 'train', label: 'Train & ONCF' },
+  { value: 'other', label: 'Autre service' },
+];
 const CITIES = ['Marrakech', 'Casablanca', 'Fès', 'Chefchaouen', 'Agadir', 'Tanger', 'Rabat', 'Essaouira', 'Meknès', 'Ouarzazate'];
 
 export default function VoiceCoach({ lang, onAnalysisComplete, category: defaultCategory, location: defaultLocation, priceAsked }) {
@@ -118,7 +132,7 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
             className="w-full bg-shield-dark border border-shield-border text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:border-shield-green"
           >
             {CATEGORIES.map(cat => (
-              <option key={cat} value={cat}>{t(`cat_${cat}`) || cat}</option>
+              <option key={cat.value} value={cat.value}>{cat.label}</option>
             ))}
           </select>
         </div>

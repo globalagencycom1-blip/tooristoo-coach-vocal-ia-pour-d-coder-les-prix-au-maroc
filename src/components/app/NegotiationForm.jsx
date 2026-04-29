@@ -4,7 +4,21 @@ import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
 import { formatPricingPrompt, getAllCitiesPricingContext } from '../../lib/pricing-knowledge-base';
 
-const CATEGORIES = ['taxi', 'hotel', 'riad', 'restaurant', 'excursion', 'shopping', 'transport', 'guide', 'spa', 'artisanat', 'bus', 'train', 'other'];
+const CATEGORIES = [
+  { value: 'taxi', label: 'Taxi' },
+  { value: 'hotel', label: 'Hôtel & Séjour' },
+  { value: 'riad', label: 'Riad & Logement' },
+  { value: 'restaurant', label: 'Restaurant & Gastronomie' },
+  { value: 'excursion', label: 'Excursion & Activité' },
+  { value: 'shopping', label: 'Shopping & Souk' },
+  { value: 'transport', label: 'Transport & Navette' },
+  { value: 'guide', label: 'Guide & Service' },
+  { value: 'spa', label: 'Spa & Relaxation' },
+  { value: 'artisanat', label: 'Artisanat & Souvenirs' },
+  { value: 'bus', label: 'Bus & Intercités' },
+  { value: 'train', label: 'Train & ONCF' },
+  { value: 'other', label: 'Autre service' },
+];
 const CITIES = ['Marrakech', 'Casablanca', 'Fès', 'Chefchaouen', 'Agadir', 'Tanger', 'Rabat', 'Meknès', 'Essaouira', 'Ouarzazate', 'Merzouga', 'Dakhla', 'El Jadida'];
 
 export default function NegotiationForm({ lang, onAnalysisComplete }) {
@@ -98,7 +112,7 @@ IMPORTANT:
             onChange={e => setForm({ ...form, category: e.target.value })}
             className="w-full bg-shield-card border border-shield-border text-white rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-shield-green"
           >
-            {CATEGORIES.map(c => <option key={c} value={c}>{c.charAt(0).toUpperCase() + c.slice(1)}</option>)}
+            {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
           </select>
         </div>
         <div>
