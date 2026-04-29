@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Loader2, MessageCircle, Zap, ChevronDown, ChevronUp } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
+import VoiceOutput from './VoiceOutput';
 
 const CONTINUE_LABELS = {
   fr: {
@@ -101,7 +102,8 @@ Nouvelle situation / contre-offre du vendeur :
 
 Génère une réponse EXACTE et ASSERTIVE en ${langLabel} que le client peut dire directement au vendeur pour continuer la négociation et obtenir un meilleur prix. 
 IMPORTANT : Utilise TOUJOURS "DH" (jamais "MAD") dans la réponse.
-La réponse doit être courte, directe, culturellement adaptée au Maroc.`;
+La réponse doit être courte, directe, culturellement adaptée au Maroc.
+Génère aussi reply_phrase_darija : la même phrase en Darija marocaine écrite en CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines). Exemple: "أنا غادي نعطيك 150 درهم، واش مقبول؟"`;
 
     const result = await base44.integrations.Core.InvokeLLM({
       prompt,
@@ -109,11 +111,12 @@ La réponse doit être courte, directe, culturellement adaptée au Maroc.`;
         type: 'object',
         properties: {
           reply_phrase: { type: 'string' },
+          reply_phrase_darija: { type: 'string' },
         }
       }
     });
 
-    setReply(result.reply_phrase);
+    setReply(result);
     setIsAnalyzing(false);
   };
 
@@ -157,14 +160,23 @@ La réponse doit être courte, directe, culturellement adaptée au Maroc.`;
           </button>
 
           {reply && (
-            <div className="bg-shield-green/10 border border-shield-green/30 rounded-xl p-4">
-              <p className="text-xs text-shield-green font-semibold mb-2">{l.your_reply}</p>
+            <div className="bg-shield-green/10 border border-shield-green/30 rounded-xl p-4 space-y-3">
+              <p className="text-xs text-shield-green font-semibold">{l.your_reply}</p>
               <p
                 className="text-sm text-gray-200 leading-relaxed italic font-medium"
                 dir={isRTL ? 'rtl' : 'ltr'}
               >
-                "{reply}"
+                "{reply.reply_phrase}"
               </p>
+              {reply.reply_phrase_darija && (
+                <div className="pt-3 border-t border-shield-green/20">
+                  <span className="text-xs text-shield-gold font-semibold">🇲🇦 En Darija :</span>
+                  <p className="text-xs text-gray-300 italic mt-1" dir="rtl">"{reply.reply_phrase_darija}"</p>
+                  <div className="mt-2">
+                    <VoiceOutput text={reply.reply_phrase_darija} lang="darija" label="🔊 Darija" />
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
