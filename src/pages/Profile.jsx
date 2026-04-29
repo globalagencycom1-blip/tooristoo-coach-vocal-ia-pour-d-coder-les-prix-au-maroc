@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { User, Mail, Globe, CreditCard, History, Settings, LogOut, Edit2, Check, Zap, LogIn } from 'lucide-react';
+import { User, Mail, Globe, CreditCard, History, Settings, LogOut, Edit2, Check, Zap } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
@@ -89,29 +89,6 @@ export default function Profile() {
     return (
       <div className="min-h-screen bg-shield-dark flex items-center justify-center">
         <div className="w-8 h-8 border-4 border-shield-green border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <div className="min-h-screen bg-shield-dark">
-        <Navbar />
-        <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-shield-green/10 border border-shield-green/30 mb-6">
-            <User className="w-10 h-10 text-shield-green" />
-          </div>
-          <h1 className="font-poppins font-bold text-3xl text-white mb-3">Mon Profil</h1>
-          <p className="text-gray-400 mb-8 max-w-sm">Connectez-vous pour accéder à votre profil, historique et paramètres.</p>
-          <button
-            onClick={() => base44.auth.redirectToLogin(window.location.pathname)}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-shield-green text-black font-bold text-lg rounded-2xl hover:bg-green-400 transition-all btn-glow"
-          >
-            <LogIn className="w-5 h-5" />
-            S'inscrire / Se connecter
-          </button>
-        </div>
-        <Footer lang={lang} />
       </div>
     );
   }
