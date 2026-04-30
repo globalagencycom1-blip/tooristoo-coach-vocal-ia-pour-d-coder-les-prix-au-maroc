@@ -44,8 +44,7 @@ export default function Navbar() {
               </div>
             </div>
             <div>
-              <span className="font-poppins font-bold text-white text-lg">NegoShield</span>
-              <span className="font-poppins font-bold text-shield-green text-lg ml-1">AI</span>
+              <span className="font-poppins font-bold text-white text-lg">Tooristoo</span>
             </div>
           </Link>
 

@@ -4,7 +4,7 @@ import { base44 } from '@/api/base44Client';
 
 const NL = {
   fr: {
-    badge: '📬 Newsletter NegoShield',
+    badge: '📬 Newsletter Tooristoo',
     title: 'Voyagez plus malin,',
     title2: 'restez toujours protégé',
     subtitle: 'Recevez chaque semaine les alertes arnaques, prix réels du marché et conseils exclusifs de négociation directement dans votre boîte mail.',
@@ -42,7 +42,7 @@ const NL = {
     count: '+12,400 travelers subscribed',
   },
   es: {
-    badge: '📬 Newsletter NegoShield',
+    badge: '📬 Newsletter Tooristoo',
     title: 'Viaja más inteligente,',
     title2: 'mantente siempre protegido',
     subtitle: 'Recibe cada semana alertas de estafas, precios reales del mercado y consejos exclusivos de negociación directamente en tu bandeja de entrada.',
@@ -136,9 +136,9 @@ export default function NewsletterSection({ lang }) {
     setError('');
     setLoading(true);
     await base44.integrations.Core.SendEmail({
-      to: 'newsletter@negoshield.ai',
+      to: 'newsletter@tooristoo.com',
       subject: `Nouvel abonné newsletter: ${email} [${lang}]`,
-      body: `Nouvel inscrit à la newsletter NegoShield AI\nEmail: ${email}\nLangue: ${lang}\nDate: ${new Date().toISOString()}`,
+      body: `Nouvel inscrit à la newsletter Tooristoo\nEmail: ${email}\nLangue: ${lang}\nDate: ${new Date().toISOString()}`,
     });
     setLoading(false);
     setSuccess(true);
@@ -211,7 +211,7 @@ export default function NewsletterSection({ lang }) {
                       <Shield className="w-6 h-6 text-shield-green" />
                     </div>
                     <div>
-                      <p className="text-white font-bold text-sm">NegoShield Alert</p>
+                      <p className="text-white font-bold text-sm">Tooristoo Alert</p>
                       <p className="text-gray-500 text-xs">Weekly · Free · Trusted</p>
                     </div>
                   </div>

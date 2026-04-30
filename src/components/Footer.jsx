@@ -13,7 +13,7 @@ export default function Footer({ lang }) {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <Shield className="w-6 h-6 text-shield-green" />
-              <span className="font-poppins font-bold text-white">NegoShield <span className="text-shield-green">AI</span></span>
+              <span className="font-poppins font-bold text-white">Tooristoo</span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">{t('footer_desc')}</p>
             <div className="flex items-center gap-2 mt-4">

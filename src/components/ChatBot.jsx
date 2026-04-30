@@ -5,7 +5,7 @@ import { useT } from '../lib/i18n';
 
 const CHATBOT_RESPONSES = {
   fr: {
-    greeting: 'Bonjour! Je suis l\'assistant NegoShield. Comment puis-je vous aider?',
+    greeting: 'Bonjour! Je suis l\'assistant Tooristoo. Comment puis-je vous aider?',
     faq: 'Vous pouvez consulter notre FAQ pour plus de détails.',
     blog: 'Vous trouverez des guides utiles dans notre blog.',
     app: 'Voulez-vous essayer notre application IA?',
@@ -13,7 +13,7 @@ const CHATBOT_RESPONSES = {
     help: 'Je peux vous aider avec des questions sur les prix, les arnaques, ou vous guider dans l\'app.',
   },
   en: {
-    greeting: 'Hello! I\'m the NegoShield assistant. How can I help you?',
+    greeting: 'Hello! I\'m the Tooristoo assistant. How can I help you?',
     faq: 'You can check our FAQ for more details.',
     blog: 'You\'ll find helpful guides on our blog.',
     app: 'Would you like to try our AI application?',
@@ -21,7 +21,7 @@ const CHATBOT_RESPONSES = {
     help: 'I can help you with questions about prices, scams, or guide you through the app.',
   },
   es: {
-    greeting: '¡Hola! Soy el asistente de NegoShield. ¿Cómo puedo ayudarte?',
+    greeting: '¡Hola! Soy el asistente de Tooristoo. ¿Cómo puedo ayudarte?',
     faq: 'Puedes consultar nuestras preguntas frecuentes para más detalles.',
     blog: 'Encontrarás guías útiles en nuestro blog.',
     app: '¿Te gustaría probar nuestra aplicación de IA?',
@@ -29,7 +29,7 @@ const CHATBOT_RESPONSES = {
     help: 'Puedo ayudarte con preguntas sobre precios, estafas, o guiarte en la app.',
   },
   de: {
-    greeting: 'Hallo! Ich bin der NegoShield-Assistent. Wie kann ich dir helfen?',
+    greeting: 'Hallo! Ich bin der Tooristoo-Assistent. Wie kann ich dir helfen?',
     faq: 'Sie können unsere FAQ für weitere Details konsultieren.',
     blog: 'Nützliche Leitfäden finden Sie in unserem Blog.',
     app: 'Möchten Sie unsere KI-Anwendung ausprobieren?',
@@ -37,7 +37,7 @@ const CHATBOT_RESPONSES = {
     help: 'Ich kann dir bei Fragen zu Preisen, Betrügereien helfen oder dich durch die App führen.',
   },
   ar: {
-    greeting: 'مرحبا! أنا مساعد NegoShield. كيف يمكنني مساعدتك؟',
+    greeting: 'مرحبا! أنا مساعد Tooristoo. كيف يمكنني مساعدتك؟',
     faq: 'يمكنك مراجعة الأسئلة الشائعة للمزيد من التفاصيل.',
     blog: 'ستجد أدلة مفيدة في مدونتنا.',
     app: 'هل تريد تجربة تطبيقنا الذي يعمل بالذكاء الاصطناعي؟',
@@ -45,7 +45,7 @@ const CHATBOT_RESPONSES = {
     help: 'يمكنني مساعدتك في الأسئلة حول الأسعار والاحتيالات أو إرشادك في التطبيق.',
   },
   darija: {
-    greeting: 'السلام! أنا الكوتش ديال NegoShield. واش كنقدم لك مساعدة؟',
+    greeting: 'السلام! أنا الكوتش ديال Tooristoo. واش كنقدم لك مساعدة؟',
     faq: 'تقدر تشوف الأسيلة الشائعة باش تعرف كتر.',
     blog: 'غادي تحصل على الأدلة المفيدة فالمدونة ديالنا.',
     app: 'واش بغيت تجرب التطبيق ديالنا؟',
@@ -94,7 +94,7 @@ export default function ChatBot({ lang = 'fr' }) {
     // Use AI for general questions
     try {
       const response = await base44.integrations.Core.InvokeLLM({
-        prompt: `Tu es l'assistant NegoShield AI. L'utilisateur a écrit: "${userMessage}". 
+        prompt: `Tu es l'assistant Tooristoo AI. L'utilisateur a écrit: "${userMessage}". 
 Réponds en ${lang === 'fr' ? 'français' : lang === 'en' ? 'anglais' : lang === 'es' ? 'espagnol' : lang === 'de' ? 'allemand' : 'arabe'} (1-2 phrases max).
 Si c'est une question sur les prix, les arnaques, ou l'app, aide l'utilisateur. Sinon, redirige poliment vers nos ressources.`,
       });
@@ -134,7 +134,7 @@ Si c'est une question sur les prix, les arnaques, ou l'app, aide l'utilisateur. 
         <div className="fixed bottom-6 right-6 z-50 w-80 h-96 bg-shield-card border border-shield-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-shield-green text-black p-4 flex items-center justify-between">
-            <span className="font-bold">NegoShield Assistant</span>
+            <span className="font-bold">Tooristoo Assistant</span>
             <button
               onClick={() => setIsOpen(false)}
               className="hover:opacity-70"
