@@ -1,11 +1,11 @@
 export const BLOG_PAGE_TRANSLATIONS = {
   blog_badge: {
-    fr: 'Blog Négociation',
-    en: 'Negotiation Blog',
-    es: 'Blog Negociación',
-    de: 'Verhandlungs-Blog',
-    ar: 'مدونة التفاوض',
-    darija: 'بلوج الفاوضة'
+    fr: 'Blog Tooristoo',
+    en: 'Tooristoo Blog',
+    es: 'Blog Tooristoo',
+    de: 'Tooristoo Blog',
+    ar: 'مدونة Tooristoo',
+    darija: 'بلوج Tooristoo'
   },
   guides_title: {
     fr: 'Guides Négo',

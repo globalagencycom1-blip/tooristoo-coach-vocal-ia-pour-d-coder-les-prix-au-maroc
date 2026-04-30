@@ -93,7 +93,7 @@ export default function HeroSection({ lang }) {
                   <div className="flex items-center gap-2">
                     <Shield className="w-5 h-5 text-shield-green" />
                     <div>
-                      <div className="font-poppins font-bold text-white text-sm">NegoShield AI</div>
+                      <div className="font-poppins font-bold text-white text-sm">Tooristoo</div>
                       <div className="text-xs text-shield-green">{t('app_page_subtitle')}</div>
                     </div>
                   </div>

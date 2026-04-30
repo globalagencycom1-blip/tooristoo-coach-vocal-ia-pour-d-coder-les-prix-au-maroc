@@ -41,7 +41,7 @@ export default function Footer({ lang }) {
           </div>
         </div>
         <div className="border-t border-shield-border pt-8 text-center">
-          <p className="text-gray-600 text-sm">© {year} NegoShield AI. {t('footer_rights')}</p>
+          <p className="text-gray-600 text-sm">© {year} Tooristoo. {t('footer_rights')}</p>
         </div>
       </div>
     </footer>

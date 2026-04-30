@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Loader2, Zap } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
-import { formatPricingPrompt, getAllCitiesPricingContext } from '../../lib/pricing-knowledge-base';
+import { formatPricingPrompt, getAllCitiesPricingContext, isProhibitedRequest, getProhibitedResponse } from '../../lib/pricing-knowledge-base';
 import { CATEGORIES_DATA, CITIES_DATA } from '../../lib/categories-cities-translations';
 
 export default function NegotiationForm({ lang, onAnalysisComplete }) {
@@ -14,13 +14,10 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Vérification des demandes non acceptables
-    const prohibitedKeywords = ['prostitution', 'escort', 'call girl', 'fille', 'services sexuels', 'sexuel', 'pute', 'femme legère'];
-    const combined = `${form.category} ${form.description}`.toLowerCase();
-    const isProhibited = prohibitedKeywords.some(keyword => combined.includes(keyword));
-    
-    if (isProhibited) {
-      alert('Je ne peux pas analyser ce type de demande. NegoShield AI est spécialisée en négociation pour les services et biens touristiques légitimes.');
+    // Vérification des demandes non acceptables (toutes langues)
+    const combined = `${form.category} ${form.description}`;
+    if (isProhibitedRequest(combined, lang)) {
+      alert(getProhibitedResponse(lang));
       return;
     }
     
@@ -29,7 +26,9 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
     const pricingInfo = formatPricingPrompt(form.location, form.category);
     const pricingContext = getAllCitiesPricingContext();
 
-    const prompt = `Tu es NegoShield AI, expert en prix touristiques au Maroc.
+    const prompt = `Tu es Tooristoo, expert en prix touristiques au Maroc. Tu REFUSES catégoriquement toute demande illégale (drogues, prostitution, armes, trafic, blanchiment, contrefaçon). Si la demande est illégale, réponds uniquement: "DEMANDE_REFUSEE".
+
+Tu es NegoShield AI, expert en prix touristiques au Maroc.
 
 ${pricingContext}
 

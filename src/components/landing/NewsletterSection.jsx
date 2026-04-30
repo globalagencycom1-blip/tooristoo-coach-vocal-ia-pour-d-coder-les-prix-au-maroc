@@ -23,7 +23,7 @@ const NL = {
     count: '+12 400 voyageurs abonnés',
   },
   en: {
-    badge: '📬 NegoShield Newsletter',
+    badge: '📬 Tooristoo Newsletter',
     title: 'Travel smarter,',
     title2: 'stay always protected',
     subtitle: 'Get weekly scam alerts, real market prices and exclusive negotiation tips delivered straight to your inbox.',
@@ -61,7 +61,7 @@ const NL = {
     count: '+12.400 viajeros suscritos',
   },
   de: {
-    badge: '📬 NegoShield Newsletter',
+    badge: '📬 Tooristoo Newsletter',
     title: 'Reisen Sie klüger,',
     title2: 'bleiben Sie immer geschützt',
     subtitle: 'Erhalten Sie wöchentlich Betrugsalarme, aktuelle Marktpreise und exklusive Verhandlungstipps direkt in Ihr Postfach.',
@@ -80,7 +80,7 @@ const NL = {
     count: '+12.400 Reisende abonniert',
   },
   ar: {
-    badge: '📬 نشرة NegoShield',
+    badge: '📬 نشرة Tooristoo',
     title: 'سافر بذكاء أكثر،',
     title2: 'ابقَ محمياً دائماً',
     subtitle: 'احصل أسبوعياً على تنبيهات الاحتيال وأسعار السوق الحقيقية ونصائح التفاوض الحصرية مباشرة في بريدك.',
@@ -99,7 +99,7 @@ const NL = {
     count: '+12,400 مسافر مشترك',
   },
   darija: {
-    badge: '📬 نيوزليتر NegoShield',
+    badge: '📬 نيوزليتر Tooristoo',
     title: 'سافر بذكاء أكثر،',
     title2: 'بقا محمي دايما',
     subtitle: 'احصل كل أسبوع على تنبيهات النصب والأثمان الحقيقية ونصايح التفاوض الحصرية مباشرة فإيميلك.',
@@ -222,7 +222,7 @@ export default function NewsletterSection({ lang }) {
                       <div className="w-2 h-2 rounded-full bg-red-500" />
                       <div className="w-2 h-2 rounded-full bg-shield-gold" />
                       <div className="w-2 h-2 rounded-full bg-shield-green" />
-                      <span className="text-xs text-gray-600 ml-2">negoshield.ai · Alerte Semaine</span>
+                      <span className="text-xs text-gray-600 ml-2">tooristoo.com · Alerte Semaine</span>
                     </div>
                     <div className="space-y-2">
                       <div className="flex items-start gap-2">
