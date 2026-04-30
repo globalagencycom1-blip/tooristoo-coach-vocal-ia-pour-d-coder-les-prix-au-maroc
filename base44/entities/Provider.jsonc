@@ -1,0 +1,99 @@
+{
+  "name": "Provider",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nom du prestataire"
+    },
+    "city": {
+      "type": "string",
+      "enum": [
+        "Marrakech",
+        "F\u00e8s",
+        "Casablanca",
+        "Chefchaouen",
+        "Agadir",
+        "Tanger",
+        "Rabat",
+        "Mekn\u00e8s",
+        "Ouarzazate",
+        "Merzouga",
+        "Essaouira",
+        "Dakhla",
+        "El Jadida"
+      ],
+      "description": "Ville du prestataire"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "taxi",
+        "hotel",
+        "riad",
+        "restaurant",
+        "excursion",
+        "shopping",
+        "transport",
+        "guide",
+        "spa"
+      ],
+      "description": "Cat\u00e9gorie du service"
+    },
+    "desc_fr": {
+      "type": "string",
+      "description": "Description en fran\u00e7ais"
+    },
+    "desc_en": {
+      "type": "string",
+      "description": "Description en anglais"
+    },
+    "desc_es": {
+      "type": "string",
+      "description": "Description en espagnol"
+    },
+    "desc_de": {
+      "type": "string",
+      "description": "Description en allemand"
+    },
+    "desc_ar": {
+      "type": "string",
+      "description": "Description en arabe"
+    },
+    "desc_darija": {
+      "type": "string",
+      "description": "Description en darija"
+    },
+    "price": {
+      "type": "string",
+      "description": "Fourchette de prix officielle (ex: 120-150 MAD)"
+    },
+    "rating": {
+      "type": "number",
+      "description": "Note sur 5"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Num\u00e9ro de t\u00e9l\u00e9phone"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL Google Maps ou site web"
+    },
+    "certified": {
+      "type": "boolean",
+      "default": true,
+      "description": "Prestataire certifi\u00e9 Tooristoo"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Prestataire actif / visible"
+    }
+  },
+  "required": [
+    "name",
+    "city",
+    "category"
+  ]
+}

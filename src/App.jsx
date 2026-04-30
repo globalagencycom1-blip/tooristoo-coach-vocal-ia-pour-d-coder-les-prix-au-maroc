@@ -19,6 +19,7 @@ import Blog from './pages/Blog';
 import BlogArticle from './pages/BlogArticle';
 import LegalNotice from './pages/LegalNotice';
 import Profile from './pages/Profile';
+import AdminProviders from './pages/AdminProviders';
 import ChatBot from './components/ChatBot';
 
 const AuthenticatedApp = () => {
@@ -62,6 +63,7 @@ const AuthenticatedApp = () => {
         <Route path="/blog/:id" element={<BlogArticle />} />
         <Route path="/legal" element={<LegalNotice />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/admin/providers" element={<AdminProviders />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ChatBot lang={lang} />
