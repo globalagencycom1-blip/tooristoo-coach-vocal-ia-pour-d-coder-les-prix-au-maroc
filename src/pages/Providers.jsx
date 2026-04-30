@@ -21,7 +21,44 @@ const PROVIDERS = [
 
 
 const CITIES_KEYS = ['Marrakech', 'Fès', 'Casablanca', 'Chefchaouen', 'Agadir', 'Tanger', 'Rabat', 'Meknès', 'Ouarzazate', 'Merzouga', 'Dakhla', 'El Jadida', 'Essaouira'];
-const CAT_KEYS = ['taxi', 'hotel', 'riad', 'restaurant', 'excursion', 'shopping', 'transport', 'guide', 'spa'];
+const CATEGORIES = [
+  {
+    key: 'taxi',
+    labels: { fr: 'Taxi', en: 'Taxi', es: 'Taxi', de: 'Taxi', ar: 'تاكسي', darija: 'طاكسي' }
+  },
+  {
+    key: 'hotel',
+    labels: { fr: 'Hôtel & Séjour', en: 'Hotel & Stay', es: 'Hotel & Estancia', de: 'Hotel & Aufenthalt', ar: 'فندق وإقامة', darija: 'فندق وسكن' }
+  },
+  {
+    key: 'riad',
+    labels: { fr: 'Riad & Logement', en: 'Riad & Accommodation', es: 'Riad & Alojamiento', de: 'Riad & Unterkunft', ar: 'رياض وإيواء', darija: 'رياض وسكن' }
+  },
+  {
+    key: 'restaurant',
+    labels: { fr: 'Restaurant & Gastronomie', en: 'Restaurant & Gastronomy', es: 'Restaurante & Gastronomía', de: 'Restaurant & Gastronomie', ar: 'مطعم وأكل', darija: 'ريسطو وماكلة' }
+  },
+  {
+    key: 'excursion',
+    labels: { fr: 'Excursion & Activité', en: 'Excursion & Activity', es: 'Excursión & Actividad', de: 'Ausflug & Aktivität', ar: 'رحلة ونشاط', darija: 'نزهة ونشاط' }
+  },
+  {
+    key: 'shopping',
+    labels: { fr: 'Shopping & Souk', en: 'Shopping & Souk', es: 'Compras & Zoco', de: 'Einkaufen & Souk', ar: 'تسوق وسوق', darija: 'شوبينغ وسوق' }
+  },
+  {
+    key: 'transport',
+    labels: { fr: 'Transport & Navette', en: 'Transport & Shuttle', es: 'Transporte & Lanzadera', de: 'Transport & Shuttle', ar: 'نقل وحافلة', darija: 'تراسبور وناڤيت' }
+  },
+  {
+    key: 'guide',
+    labels: { fr: 'Guide & Service', en: 'Guide & Service', es: 'Guía & Servicio', de: 'Reiseführer & Service', ar: 'مرشد وخدمة', darija: 'ڭيد وخدمة' }
+  },
+  {
+    key: 'spa',
+    labels: { fr: 'Spa & Relaxation', en: 'Spa & Relaxation', es: 'Spa & Relajación', de: 'Spa & Entspannung', ar: 'سبا واسترخاء', darija: 'سبا وراحة' }
+  },
+];
 
 function ProviderCard({ p, t, lang }) {
   const catLabel = t('cat_' + p.categoryKey);
@@ -132,7 +169,7 @@ export default function Providers() {
               className="flex-1 bg-shield-card border border-shield-border text-white rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-shield-green appearance-none cursor-pointer"
             >
               <option value="all">{t('providers_all_cats')}</option>
-              {CAT_KEYS.map(c => <option key={c} value={c}>{t('cat_' + c)}</option>)}
+              {CATEGORIES.map(c => <option key={c.key} value={c.key}>{c.labels[lang] || c.labels.fr}</option>)}
             </select>
           </div>
         </div>
