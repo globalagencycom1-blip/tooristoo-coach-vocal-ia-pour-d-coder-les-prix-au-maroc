@@ -9,6 +9,7 @@ import TestimonialsSection from '../components/landing/TestimonialsSection';
 import CTASection from '../components/landing/CTASection';
 import AlertsBanner from '../components/landing/AlertsBanner';
 import NewsletterSection from '../components/landing/NewsletterSection';
+import VoiceHeroSection from '../components/landing/VoiceHeroSection';
 import Footer from '../components/Footer';
 
 export default function Landing() {
@@ -18,6 +19,7 @@ export default function Landing() {
     <div className="min-h-screen bg-shield-dark">
       <Navbar />
       <HeroSection lang={lang} />
+      <VoiceHeroSection lang={lang} />
       <FeaturesSection lang={lang} />
       <AnalysisSection lang={lang} />
       <TestimonialsSection lang={lang} />
