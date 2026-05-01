@@ -48,10 +48,26 @@ export default function HeroSection({ lang }) {
               </Link>
               <a
                 href="#how-it-works"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-shield-border text-gray-300 font-semibold rounded-2xl hover:border-shield-green/50 hover:text-shield-green transition-all"
+                className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-bold text-white transition-all overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%)', border: '1px solid rgba(255,255,255,0.12)', backdropFilter: 'blur(10px)' }}
               >
-                {t('hero_cta2')}
-                <ChevronRight className="w-4 h-4" />
+                {/* Play icon circle */}
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/15 group-hover:bg-shield-green/30 transition-colors flex-shrink-0">
+                  <svg className="w-3.5 h-3.5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </span>
+                <span className="flex flex-col items-start leading-tight">
+                  <span className="text-sm font-bold">{t('hero_cta2')}</span>
+                  <span className="text-xs text-gray-400 font-normal group-hover:text-gray-300 transition-colors">
+                    {lang === 'fr' ? 'Cliquez sur le micro' :
+                     lang === 'en' ? 'Click the mic' :
+                     lang === 'es' ? 'Haz clic en el mic' :
+                     lang === 'de' ? 'Klicken Sie das Mikro' :
+                     lang === 'ar' ? 'انقر على الميكروفون' :
+                     'نقر على الميكروفون'}
+                  </span>
+                </span>
               </a>
             </div>
 
