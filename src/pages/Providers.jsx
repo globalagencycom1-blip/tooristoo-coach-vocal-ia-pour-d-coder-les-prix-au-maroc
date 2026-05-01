@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { base44 } from '@/api/base44Client';
 import { Shield, Star, Phone, ExternalLink, MapPin, CheckCircle, Search, Loader2 } from 'lucide-react';
 import Navbar from '../components/Navbar';
@@ -102,8 +103,17 @@ export default function Providers() {
     return cityMatch && catMatch && searchMatch;
   });
 
+  const pageTitle = lang === 'fr' ? 'Prestataires Certifiés Tooristoo - Hôtels, Taxis, Restaurants Maroc' : lang === 'en' ? 'Certified Tooristoo Providers - Hotels, Taxis, Restaurants Morocco' : lang === 'es' ? 'Proveedores Certificados Tooristoo - Hoteles, Taxis, Restaurantes Marruecos' : lang === 'de' ? 'Zertifizierte Tooristoo-Anbieter - Hotels, Taxis, Restaurants Marokko' : 'مزودو Tooristoo المعتمدون - فنادق وتاكسي مطاعم المغرب';
+  const pageDesc = lang === 'fr' ? 'Répertoire complet de prestataires vérifiés au Maroc: hôtels, taxis, restaurants, guides, riads avec prix officiels transparents.' : lang === 'en' ? 'Complete directory of verified providers in Morocco: hotels, taxis, restaurants, guides, riads with transparent official prices.' : lang === 'es' ? 'Directorio completo de proveedores verificados en Marruecos: hoteles, taxis, restaurantes, guías, riads con precios oficiales transparentes.' : lang === 'de' ? 'Vollständiges Verzeichnis geprüfter Anbieter in Marokko: Hotels, Taxis, Restaurants, Reiseführer, Riads mit transparenten offiziellen Preisen.' : 'دليل شامل لمزودي الخدمات الموثوقين في المغرب: فنادق وتاكسي ومطاعم وأدلة ورياضات بأسعار رسمية شفافة.';
+
   return (
     <div className="min-h-screen bg-shield-dark">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDesc} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDesc} />
+      </Helmet>
       <Navbar />
       <div className="max-w-3xl mx-auto px-4 pt-28 pb-20">
 

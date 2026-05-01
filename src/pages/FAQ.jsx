@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useLang } from '../lib/LanguageContext';
@@ -34,6 +35,32 @@ function FAQItem({ q, a }) {
 export default function FAQ() {
   const { lang } = useLang();
   const t = useT(lang);
+
+  useEffect(() => {
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": t('faq_q1'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a1') } },
+        { "@type": "Question", "name": t('faq_q2'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a2') } },
+        { "@type": "Question", "name": t('faq_q3'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a3') } },
+        { "@type": "Question", "name": t('faq_q4'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a4') } },
+        { "@type": "Question", "name": t('faq_q5'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a5') } },
+        { "@type": "Question", "name": t('faq_q6'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a6') } },
+        { "@type": "Question", "name": t('faq_q7'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a7') } },
+        { "@type": "Question", "name": t('faq_q8'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a8') } },
+        { "@type": "Question", "name": t('faq_q9'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a9') } },
+        { "@type": "Question", "name": t('faq_q10'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a10') } },
+        { "@type": "Question", "name": t('faq_q11'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a11') } },
+        { "@type": "Question", "name": t('faq_q12'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a12') } },
+      ]
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(script);
+    return () => document.head.removeChild(script);
+  }, [lang, t]);
 
   const FAQS = [
     {
@@ -70,8 +97,17 @@ export default function FAQ() {
     },
   ];
 
+  const pageTitle = lang === 'fr' ? 'FAQ - Questions Fréquentes | Tooristoo' : lang === 'en' ? 'FAQ - Frequently Asked Questions | Tooristoo' : lang === 'es' ? 'FAQ - Preguntas Frecuentes | Tooristoo' : lang === 'de' ? 'FAQ - Häufig gestellte Fragen | Tooristoo' : 'الأسئلة الشائعة | Tooristoo';
+  const pageDesc = lang === 'fr' ? 'Trouvez réponses aux questions sur Tooristoo, l\'app IA pour négocier au Maroc.' : lang === 'en' ? 'Find answers to questions about Tooristoo, the AI app for negotiating in Morocco.' : lang === 'es' ? 'Encuentra respuestas a preguntas sobre Tooristoo, la app IA para negociar en Marruecos.' : lang === 'de' ? 'Finden Sie Antworten auf Fragen zu Tooristoo, der KI-App zum Verhandeln in Marokko.' : 'اجد إجابات أسئلة عن Tooristoo، تطبيق الذكاء الاصطناعي للتفاوض في المغرب.';
+
   return (
     <div className="min-h-screen bg-shield-dark">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDesc} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDesc} />
+      </Helmet>
       <Navbar />
       <div className="max-w-3xl mx-auto px-4 pt-28 pb-20">
         {/* Header */}
