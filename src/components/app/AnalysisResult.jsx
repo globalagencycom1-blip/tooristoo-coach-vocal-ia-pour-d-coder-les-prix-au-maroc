@@ -209,16 +209,7 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
               </div>
             )}
 
-            {/* Also speak main phrase in user's language */}
-            {!['ar','darija'].includes(lang) && (
-              <div className="flex justify-end">
-                <VoiceOutput
-                  text={analysis.recommended_phrase}
-                  lang={lang}
-                  label={lang === 'fr' ? '🔊 Écouter' : lang === 'en' ? '🔊 Listen' : lang === 'es' ? '🔊 Escuchar' : '🔊 Anhören'}
-                />
-              </div>
-            )}
+
           </div>
         </div>
       )}
