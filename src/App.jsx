@@ -21,6 +21,7 @@ import LegalNotice from './pages/LegalNotice';
 import Profile from './pages/Profile';
 import AdminProviders from './pages/AdminProviders';
 import ChatBot from './components/ChatBot';
+import CookieBanner from './components/CookieBanner';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -67,6 +68,7 @@ const AuthenticatedApp = () => {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ChatBot lang={lang} />
+      <CookieBanner lang={lang} />
     </>
   );
 };

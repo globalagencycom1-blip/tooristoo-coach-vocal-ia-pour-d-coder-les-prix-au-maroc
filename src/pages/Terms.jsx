@@ -1,47 +1,228 @@
 import React from 'react';
-import { Shield } from 'lucide-react';
+import { Shield, FileText, AlertTriangle, Scale, UserCheck, CreditCard, Ban, Gavel, Phone, RefreshCw } from 'lucide-react';
 import { useLang } from '../lib/LanguageContext';
-import { useT } from '../lib/i18n';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+const SECTIONS_FR = [
+  {
+    icon: Shield,
+    title: "1. Présentation du service",
+    content: `**Éditeur :** HCEE, société basée en France
+**Directeur de publication :** Azeddine M.
+**Adresse :** 10 rue du Colisée, 75008 Paris, France
+**Email :** contact@tooristoo.com
+**Hébergement :** Union européenne
+
+Tooristoo est un service d'aide à la décision pour touristes au Maroc. Il fournit des analyses de prix par intelligence artificielle, des conseils de négociation et des alertes anti-arnaques. Ce service est fourni à titre indicatif uniquement.`
+  },
+  {
+    icon: UserCheck,
+    title: "2. Acceptation des conditions et capacité juridique",
+    content: `L'utilisation du service Tooristoo implique l'acceptation pleine et entière des présentes Conditions Générales d'Utilisation (CGU).
+
+**Conditions d'accès :**
+• Être âgé d'au moins 18 ans (ou avoir l'autorisation parentale)
+• Posséder la pleine capacité juridique pour contracter
+• Ne pas être interdit d'accès au service suite à une violation antérieure des CGU
+• Disposer d'un accès internet valide
+
+Ces CGU peuvent être modifiées à tout moment. Les utilisateurs seront informés de toute modification substantielle par email ou notification in-app, avec un préavis de 15 jours. L'utilisation continue du service après modification vaut acceptation.`
+  },
+  {
+    icon: FileText,
+    title: "3. Description du service et limites",
+    content: `Tooristoo propose les fonctionnalités suivantes selon le plan souscrit :
+
+**Plan Gratuit :** 3 analyses IA par mois, détection d'arnaques de base, 1 langue
+**Plan Voyageur (5€/mois) :** analyses illimitées, coach vocal, 6 langues, prestataires certifiés, historique 30 jours
+**Plan Pro (12€/mois) :** tout le plan Voyageur + analytics avancés, support prioritaire, accès API, historique illimité
+
+**AVERTISSEMENT IMPORTANT :** Les analyses fournies par Tooristoo sont basées sur des données statistiques de marché et de l'intelligence artificielle. Elles constituent une aide à la décision, non une garantie. Tooristoo ne peut être tenu responsable des résultats de vos négociations. Les prix peuvent varier selon la saison, la localisation précise et de nombreux autres facteurs.`
+  },
+  {
+    icon: Ban,
+    title: "4. Utilisations interdites",
+    content: `Il est strictement interdit d'utiliser Tooristoo pour :
+
+**Activités illégales :**
+• Négociation de produits ou services illégaux (drogues, armes, contrefaçons, etc.)
+• Blanchiment d'argent ou financement d'activités criminelles
+• Toute activité contraire à la législation marocaine, française ou internationale
+
+**Utilisation abusive du service :**
+• Tentative de contournement des mesures de sécurité ou d'authentification
+• Extraction massive de données (scraping) par des moyens automatisés
+• Revente ou redistribution non autorisée du contenu ou des analyses
+• Usurpation d'identité ou fourniture de fausses informations
+• Soumission de signalements d'arnaques malveillants ou délibérément faux
+• Utilisation du service à des fins de harcèlement envers des prestataires
+
+Le non-respect de ces interdictions entraîne la suspension immédiate du compte, sans remboursement, et peut faire l'objet de poursuites judiciaires.`
+  },
+  {
+    icon: CreditCard,
+    title: "5. Conditions financières et abonnements",
+    content: `**Facturation :** Les abonnements sont facturés mensuellement par avance. Les prix s'entendent TTC.
+
+**Renouvellement automatique :** Les abonnements se renouvellent automatiquement à échéance. Vous serez notifié 7 jours avant chaque renouvellement.
+
+**Résiliation :** Vous pouvez résilier votre abonnement à tout moment depuis votre espace compte. La résiliation prend effet à la fin de la période en cours, sans remboursement au prorata pour la période restante, sauf en cas de manquement de notre part.
+
+**Droit de rétractation (Art. L221-18 Code de la consommation) :** Pour tout abonnement souscrit en ligne, vous disposez d'un délai de 14 jours pour exercer votre droit de rétractation, sauf si vous avez expressément demandé l'exécution du service avant l'expiration du délai.
+
+**Modification tarifaire :** Toute modification de prix sera communiquée 30 jours à l'avance. Vous pourrez résilier sans frais si vous refusez le nouveau tarif.`
+  },
+  {
+    icon: Scale,
+    title: "6. Responsabilité et garanties",
+    content: `**Limitation de responsabilité :**
+Tooristoo fournit ses analyses "en l'état" et ne garantit pas leur exactitude ou leur adéquation à une situation particulière. La responsabilité de Tooristoo est limitée au montant payé par l'utilisateur au cours des 12 derniers mois.
+
+**Force majeure :** Tooristoo ne saurait être tenu responsable en cas d'interruption du service due à un cas de force majeure (panne générale d'internet, catastrophe naturelle, actes de gouvernement, etc.).
+
+**Disponibilité du service :** Nous nous engageons à maintenir une disponibilité de 99% par mois (hors maintenance planifiée), sans toutefois garantir un service ininterrompu. Les maintenances planifiées seront annoncées 48h à l'avance.
+
+**Propriété intellectuelle :** Le contenu de Tooristoo (textes, algorithmes, bases de données de prix, interface) est protégé par le droit d'auteur. Toute reproduction non autorisée est interdite.`
+  },
+  {
+    icon: UserCheck,
+    title: "7. Comptes utilisateurs",
+    content: `**Création de compte :** Vous êtes responsable de l'exactitude des informations fournies lors de l'inscription et de la confidentialité de vos identifiants.
+
+**Sécurité :** Tout accès à votre compte avec vos identifiants est réputé effectué par vous. En cas de suspicion d'accès non autorisé, contactez-nous immédiatement à contact@tooristoo.com.
+
+**Compte inactif :** Tout compte sans connexion pendant 24 mois consécutifs pourra être clôturé après notification préalable de 30 jours par email.
+
+**Suspension et résiliation de compte :** Nous nous réservons le droit de suspendre ou résilier tout compte en cas de violation des présentes CGU, de comportement abusif, ou de fraude, après notification (sauf urgence ou fraude grave).`
+  },
+  {
+    icon: AlertTriangle,
+    title: "8. Signalements et contenu utilisateur",
+    content: `Les signalements d'arnaques soumis par les utilisateurs constituent du contenu généré par l'utilisateur. En soumettant un signalement, vous déclarez que :
+
+• Les informations sont véridiques à votre connaissance
+• Vous n'avez pas l'intention de nuire à un prestataire de manière malveillante
+• Vous acceptez que ce signalement soit modéré et potentiellement publié de façon anonymisée
+
+Tooristoo se réserve le droit de supprimer tout contenu inapproprié, inexact ou abusif sans préavis. La soumission de faux signalements délibérés constitue une faute grave pouvant entraîner des poursuites civiles.`
+  },
+  {
+    icon: RefreshCw,
+    title: "9. Modifications du service",
+    content: `Tooristoo se réserve le droit de modifier, suspendre ou interrompre tout ou partie du service :
+
+• **Modifications mineures :** sans préavis (corrections de bugs, améliorations UX)
+• **Modifications substantielles :** avec préavis de 15 jours minimum
+• **Arrêt du service :** avec préavis de 3 mois minimum pour les abonnés payants, incluant un remboursement au prorata
+
+En cas d'interruption non programmée dépassant 72 heures, les abonnés payants seront indemnisés par un crédit équivalent sur leur prochain mois.`
+  },
+  {
+    icon: Gavel,
+    title: "10. Droit applicable et résolution des litiges",
+    content: `**Droit applicable :** Les présentes CGU sont régies par le droit français.
+
+**Médiation (obligatoire avant toute action judiciaire) :** En cas de litige, vous pouvez recourir gratuitement à la médiation de la consommation. Nous sommes adhérents à un service de médiation conformément à l'Art. L612-1 du Code de la consommation. Contact : contact@tooristoo.com
+
+**Plateforme de règlement en ligne des litiges (RLL) :** Conformément au règlement (UE) n°524/2013, vous pouvez soumettre votre litige sur la plateforme européenne : https://ec.europa.eu/consumers/odr
+
+**Juridiction compétente :** En l'absence de résolution amiable, le Tribunal de Commerce de Paris sera compétent pour tout litige entre professionnels. Pour les consommateurs, la juridiction compétente est celle du domicile du défendeur.
+
+**Dernière mise à jour :** Mai 2026 — Version 2.0`
+  },
+  {
+    icon: Phone,
+    title: "11. Contact",
+    content: `Pour toute question relative aux présentes CGU :
+
+**Email :** contact@tooristoo.com
+**Courrier :** HCEE — Service juridique, 10 rue du Colisée, 75008 Paris, France
+
+Nous nous engageons à répondre à toute demande dans un délai de 5 jours ouvrés.`
+  }
+];
+
 export default function Terms() {
   const { lang } = useLang();
-  const t = useT(lang);
+
+  const renderContent = (content) => {
+    return content.split('\n\n').map((block, i) => (
+      <div key={i} className="mb-3">
+        {block.split('\n').map((line, j) => {
+          if (line.startsWith('**') && line.endsWith('**')) {
+            return <p key={j} className="font-semibold text-white mt-3 mb-1">{line.replace(/\*\*/g, '')}</p>;
+          }
+          if (line.startsWith('• ')) {
+            return <div key={j} className="flex gap-2 ml-2 mb-1"><span className="text-shield-green flex-shrink-0">•</span><span>{formatInline(line.slice(2))}</span></div>;
+          }
+          if (line.trim() === '') return null;
+          return <p key={j}>{formatInline(line)}</p>;
+        })}
+      </div>
+    ));
+  };
+
+  const formatInline = (text) => {
+    const parts = text.split(/(\*\*[^*]+\*\*)/g);
+    return parts.map((part, i) =>
+      part.startsWith('**') && part.endsWith('**')
+        ? <strong key={i} className="text-white font-semibold">{part.slice(2, -2)}</strong>
+        : part
+    );
+  };
 
   return (
     <div className="min-h-screen bg-shield-dark">
       <Navbar />
-      <div className="max-w-4xl mx-auto px-4 pt-24 pb-12">
-        <div className="flex items-center gap-3 mb-8">
-          <Shield className="w-8 h-8 text-shield-green" />
-          <h1 className="font-poppins font-bold text-3xl text-white">{t('footer_terms')}</h1>
+      <div className="max-w-4xl mx-auto px-4 pt-28 pb-16">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-shield-green/10 border border-shield-green/30 rounded-full text-shield-green text-sm font-medium mb-4">
+            <FileText className="w-4 h-4" />
+            Conditions Générales d'Utilisation
+          </div>
+          <h1 className="font-poppins font-black text-4xl md:text-5xl text-white mb-4">
+            CGU — Tooristoo
+          </h1>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Version 2.0 — Mai 2026 — Conformes au droit français et européen
+          </p>
         </div>
 
-        <div className="bg-shield-card border border-shield-border rounded-2xl p-8 space-y-6 text-gray-300 text-sm leading-relaxed">
-          <section>
-            <h2 className="text-xl font-bold text-white mb-3">1. {lang === 'fr' ? 'Acceptation des conditions' : lang === 'en' ? 'Acceptance of Terms' : lang === 'es' ? 'Aceptación de los términos' : lang === 'de' ? 'Bedingungen' : lang === 'ar' ? 'قبول الشروط' : 'قبول الشروط'}</h2>
-            <p>{lang === 'fr' ? 'En utilisant Tooristoo, vous acceptez ces conditions d\'utilisation. Si vous n\'êtes pas d\'accord avec l\'une de ces conditions, veuillez ne pas utiliser l\'application.' : lang === 'en' ? 'By using Tooristoo, you accept these terms of use. If you do not agree with any of these terms, please do not use the application.' : lang === 'es' ? 'Al usar Tooristoo, acepta estos términos de uso. Si no está de acuerdo con alguno de estos términos, no use la aplicación.' : lang === 'de' ? 'Durch die Nutzung von Tooristoo akzeptieren Sie diese Nutzungsbedingungen. Wenn Sie diesen Bedingungen nicht zustimmen, verwenden Sie die Anwendung nicht.' : lang === 'ar' ? 'باستخدام Tooristoo، تقبل هذه الشروط. إذا كنت لا توافق على أي من هذه الشروط، يرجى عدم استخدام التطبيق.' : 'بالاستخدام ديال Tooristoo، تقبل الشروط ديال. إلا كنت ما توافقش على شي شرط، ما تستخدمش التطبيق.'}</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-white mb-3">2. {lang === 'fr' ? 'Utilisation appropriée' : lang === 'en' ? 'Appropriate Use' : lang === 'es' ? 'Uso apropiado' : lang === 'de' ? 'Ordnungsgemäße Nutzung' : lang === 'ar' ? 'الاستخدام المناسب' : 'الاستخدام المناسب'}</h2>
-            <p>{lang === 'fr' ? 'Vous acceptez d\'utiliser Tooristoo uniquement pour des fins légales et conformes à la loi française. Vous ne devez pas utiliser l\'application pour des activités illégales ou nuisibles.' : lang === 'en' ? 'You agree to use Tooristoo only for legal purposes and in compliance with French law. You must not use the application for illegal or harmful activities.' : lang === 'es' ? 'Usted acepta usar Tooristoo solo para fines legales y de conformidad con la ley francesa. No debe usar la aplicación para actividades ilegales o perjudiciales.' : lang === 'de' ? 'Sie erklären sich damit einverstanden, Tooristoo nur für legale Zwecke und in Übereinstimmung mit dem französischen Recht zu nutzen. Sie dürfen die Anwendung nicht für illegale oder schädliche Aktivitäten verwenden.' : lang === 'ar' ? 'توافق على استخدام Tooristoo فقط لأغراض قانونية وامتثالاً للقانون الفرنسي. يجب عدم استخدام التطبيق للأنشطة غير القانونية أو الضارة.' : 'توافق على استخدام Tooristoo غير قانوني وتحت التزام بالقانون الفرنسي. ما تستخدمش التطبيق لنشاطات غير قانونية.'}</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-white mb-3">3. {lang === 'fr' ? 'Responsabilité' : lang === 'en' ? 'Liability' : lang === 'es' ? 'Responsabilidad' : lang === 'de' ? 'Haftung' : lang === 'ar' ? 'المسؤولية' : 'المسؤولية'}</h2>
-            <p>{lang === 'fr' ? 'Tooristoo fournit des analyses et recommandations basées sur l\'intelligence artificielle. Nous ne garantissons pas que les recommandations seront toujours précises ou conduiront à un résultat spécifique.' : lang === 'en' ? 'Tooristoo provides analysis and recommendations based on artificial intelligence. We do not guarantee that the recommendations will always be accurate or lead to a specific outcome.' : lang === 'es' ? 'Tooristoo proporciona análisis y recomendaciones basadas en inteligencia artificial. No garantizamos que las recomendaciones siempre sean precisas o conduzcan a un resultado específico.' : lang === 'de' ? 'Tooristoo bietet Analysen und Empfehlungen auf Basis künstlicher Intelligenz. Wir garantieren nicht, dass die Empfehlungen immer genau sind oder zu einem bestimmten Ergebnis führen.' : lang === 'ar' ? 'يوفر Tooristoo تحليلات وتوصيات بناءً على الذكاء الاصطناعي. لا نضمن أن التوصيات ستكون دائماً دقيقة أو تؤدي إلى نتيجة معينة.' : 'يقدم Tooristoo تحليلات وتوصيات بناء على AI. ما تضمنش أن التوصيات كتكون دقيقة دايما.'}</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-white mb-3">4. {lang === 'fr' ? 'Modification des conditions' : lang === 'en' ? 'Changes to Terms' : lang === 'es' ? 'Cambios en los términos' : lang === 'de' ? 'Änderungen der Bedingungen' : lang === 'ar' ? 'تعديلات الشروط' : 'تعديلات الشروط'}</h2>
-            <p>{lang === 'fr' ? 'Nous nous réservons le droit de modifier ces conditions à tout moment. Les modifications seront effectives immédiatement après leur publication. Votre utilisation continue de l\'application implique votre acceptation des modifications.' : lang === 'en' ? 'We reserve the right to modify these terms at any time. Changes will be effective immediately upon publication. Your continued use of the application implies acceptance of the changes.' : lang === 'es' ? 'Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán efectivos inmediatamente después de su publicación. Su uso continuo de la aplicación implica la aceptación de los cambios.' : lang === 'de' ? 'Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Änderungen werden sofort nach ihrer Veröffentlichung wirksam. Ihre weitere Nutzung der Anwendung impliziert die Akzeptanz der Änderungen.' : lang === 'ar' ? 'نحتفظ بالحق في تعديل هذه الشروط في أي وقت. ستكون التعديلات سارية المفعول فوراً بعد نشرها. يشير استخدامك المستمر للتطبيق إلى قبول التعديلات.' : 'نحتفظ الحق نبدلو الشروط فأي وقت. التعديلات تكون نافذة على طول. الاستخدام ديالك ديال التطبيق يعني قبولك لتعديلات.'}</p>
-          </section>
-
-          <div className="border-t border-shield-border pt-6 mt-6">
-            <p className="text-xs text-gray-500">{lang === 'fr' ? 'Dernière mise à jour: Avril 2026' : lang === 'en' ? 'Last updated: April 2026' : lang === 'es' ? 'Última actualización: Abril 2026' : lang === 'de' ? 'Zuletzt aktualisiert: April 2026' : lang === 'ar' ? 'آخر تحديث: أبريل 2026' : 'آخر تحديث: أبريل 2026'}</p>
+        {/* Warning box */}
+        <div className="bg-yellow-900/20 border border-yellow-600/30 rounded-2xl p-6 mb-8 flex items-start gap-4">
+          <AlertTriangle className="w-6 h-6 text-yellow-500 flex-shrink-0 mt-1" />
+          <div>
+            <p className="text-yellow-400 font-semibold mb-1">Service d'aide à la décision — non contraignant</p>
+            <p className="text-gray-400 text-sm">Les analyses de Tooristoo sont fournies à titre indicatif. Elles ne constituent pas un conseil juridique ou financier. Vous restez seul responsable de vos décisions de négociation.</p>
           </div>
+        </div>
+
+        {/* Sections */}
+        <div className="space-y-6">
+          {SECTIONS_FR.map((section, idx) => {
+            const Icon = section.icon;
+            return (
+              <div key={idx} className="bg-shield-card border border-shield-border rounded-2xl p-8 hover:border-shield-green/30 transition-all">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-shield-green/10 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-5 h-5 text-shield-green" />
+                  </div>
+                  <h2 className="font-poppins font-bold text-xl text-white pt-1">{section.title}</h2>
+                </div>
+                <div className="text-gray-300 text-sm leading-relaxed ml-14">
+                  {renderContent(section.content)}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Footer */}
+        <div className="text-center mt-12 pt-8 border-t border-shield-border">
+          <p className="text-gray-500 text-xs">Dernière mise à jour : Mai 2026 — Version 2.0</p>
+          <p className="text-gray-600 text-sm mt-2">Questions : <a href="mailto:contact@tooristoo.com" className="text-shield-green hover:underline">contact@tooristoo.com</a></p>
         </div>
       </div>
       <Footer lang={lang} />
