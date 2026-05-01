@@ -134,8 +134,8 @@ export default function AppPage() {
                     onClick={() => setInputMode('voice')}
                     className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
                       inputMode === 'voice'
-                        ? 'bg-white/10 text-white border border-white/20'
-                        : 'text-gray-500 hover:text-gray-300'
+                        ? 'bg-shield-green/20 text-shield-green border border-shield-green/50'
+                        : 'text-gray-500 hover:text-gray-300 border border-transparent'
                     }`}
                   >
                     <Mic className="w-4 h-4" />
@@ -145,8 +145,8 @@ export default function AppPage() {
                     onClick={() => setInputMode('form')}
                     className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
                       inputMode === 'form'
-                        ? 'bg-white/10 text-white border border-white/20'
-                        : 'text-gray-500 hover:text-gray-300'
+                        ? 'bg-shield-green/20 text-shield-green border border-shield-green/50'
+                        : 'text-gray-500 hover:text-gray-300 border border-transparent'
                     }`}
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
