@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Shield } from 'lucide-react';
 import { useT } from '../lib/i18n';
 
@@ -27,16 +26,16 @@ export default function Footer({ lang }) {
             <h4 className="text-white font-semibold text-sm mb-4">{t('footer_legal')}</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/privacy" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_privacy')}</Link>
+                <a href="/privacy" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_privacy')}</a>
               </li>
               <li>
-                <Link to="/legal" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_legal')}</Link>
+                <a href="/legal" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_legal')}</a>
               </li>
               <li>
-                <Link to="/terms" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_terms')}</Link>
+                <a href="/terms" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_terms')}</a>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_contact')}</Link>
+                <a href="/contact" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{t('footer_contact')}</a>
               </li>
             </ul>
           </div>

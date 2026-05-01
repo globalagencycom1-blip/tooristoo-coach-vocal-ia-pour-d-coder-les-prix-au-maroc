@@ -31,8 +31,6 @@ export default function Navbar() {
     { href: '/faq', label: getNavbarT('nav_faq', lang) },
   ];
 
-
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-shield-dark/95 backdrop-blur-md border-b border-shield-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,15 +51,15 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">
             {navLinks.map(link => (
-              <Link
+              <a
                 key={link.href}
-                to={link.href}
+                href={link.href}
                 className={`text-sm font-medium transition-colors hover:text-shield-green ${
                   location.pathname === link.href ? 'text-shield-green' : 'text-gray-300'
                 }`}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </div>
 
@@ -73,7 +71,7 @@ export default function Navbar() {
                 onClick={() => setLangOpen(!langOpen)}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-shield-border/50 hover:bg-shield-border text-gray-300 hover:text-white text-sm transition-all"
               >
-                <Globe className="w-4 h-4" />
+                <span className="text-base leading-none">{LANGS.find(l => l.code === lang)?.flag || '🇫🇷'}</span>
                 <span>{LANGS.find(l => l.code === lang)?.label || 'FR'}</span>
               </button>
               {langOpen && (
@@ -117,14 +115,14 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="md:hidden bg-shield-card border-t border-shield-border px-4 py-4 space-y-3">
           {navLinks.map(link => (
-            <Link
+            <a
               key={link.href}
-              to={link.href}
+              href={link.href}
               onClick={() => setMobileOpen(false)}
               className="block text-gray-300 hover:text-shield-green py-2 text-sm font-medium"
             >
               {link.label}
-            </Link>
+            </a>
           ))}
           <Link
             to="/profile"
