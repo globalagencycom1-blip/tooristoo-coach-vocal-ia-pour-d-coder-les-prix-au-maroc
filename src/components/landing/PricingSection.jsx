@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Check, Zap } from 'lucide-react';
-import { useT } from '../../lib/i18n';
+import { getPricingT } from '../../lib/pricing-translations';
 
 export default function PricingSection({ lang }) {
-  const t = useT(lang);
+  const t = (key) => getPricingT(key, lang);
 
   const plans = [
     {
       key: 'free',
       nameKey: 'plan_free',
       priceKey: 'plan_free_price',
-      features: ['plan_free_feat1', 'plan_free_feat2', 'plan_free_feat3'],
+      features: ['plan_free_feat1', 'plan_free_feat2', 'plan_free_feat3', 'plan_free_feat4', 'plan_free_feat5'],
       popular: false,
       cta: '#',
     },
@@ -21,6 +21,14 @@ export default function PricingSection({ lang }) {
       priceKey: 'plan_voyageur_price',
       features: ['plan_voyageur_feat1', 'plan_voyageur_feat2', 'plan_voyageur_feat3', 'plan_voyageur_feat4', 'plan_voyageur_feat5'],
       popular: true,
+      cta: '/app',
+    },
+    {
+      key: 'pro',
+      nameKey: 'plan_pro',
+      priceKey: 'plan_pro_price',
+      features: ['plan_pro_feat1', 'plan_pro_feat2', 'plan_pro_feat3', 'plan_pro_feat4', 'plan_pro_feat5'],
+      popular: false,
       cta: '/app',
     },
   ];
@@ -33,7 +41,7 @@ export default function PricingSection({ lang }) {
           <p className="mt-4 text-gray-400 text-lg">Commencez gratuitement, passez au plan Voyageur quand vous en avez besoin</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {plans.map(plan => (
             <div
               key={plan.key}
