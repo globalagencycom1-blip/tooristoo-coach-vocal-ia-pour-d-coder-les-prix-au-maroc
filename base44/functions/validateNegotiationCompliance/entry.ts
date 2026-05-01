@@ -37,7 +37,7 @@ Deno.serve(async (req) => {
     if (isProhibited) {
       return Response.json({
         compliant: false,
-        message: 'Cette demande viole les conditions d\'utilisation. NegoShield AI ne doit être utilisé que pour des fins légales et conformes à la loi marocaine.',
+        message: 'Cette demande viole les conditions d\'utilisation. Tooristoo ne doit être utilisé que pour des fins légales et conformes à la loi marocaine.',
         error: 'Non-compliant with legal requirements'
       }, { status: 403 });
     }

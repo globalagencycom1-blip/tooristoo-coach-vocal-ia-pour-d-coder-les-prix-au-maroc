@@ -21,12 +21,12 @@ export default function LegalDisclaimerBanner({ lang }) {
            '⚠️ إشعار الامتثال القانوني'}
         </h4>
         <p className="text-yellow-200/80 text-xs leading-relaxed">
-          {lang === 'fr' ? 'NegoShield AI ne doit être utilisé que pour des fins légales et conformes à la loi marocaine. Toute utilisation pour des activités illégales ou nuisibles est strictement interdite. Nous nous réservons le droit de suspendre tout compte en violation de ces conditions.' :
-           lang === 'en' ? 'NegoShield AI must only be used for legal purposes and in compliance with Moroccan law. Any use for illegal or harmful activities is strictly prohibited. We reserve the right to suspend any account in violation of these conditions.' :
-           lang === 'es' ? 'NegoShield AI debe usarse solo para fines legales y en cumplimiento con la ley marroquí. Está estrictamente prohibido usar para actividades ilegales o perjudiciales. Nos reservamos el derecho de suspender cualquier cuenta que viole estas condiciones.' :
-           lang === 'de' ? 'NegoShield AI darf nur für rechtmäßige Zwecke und in Übereinstimmung mit dem marokkanischen Recht verwendet werden. Die Verwendung für illegale oder schädliche Aktivitäten ist streng verboten. Wir behalten uns das Recht vor, jedes Konto zu sperren, das gegen diese Bedingungen verstößt.' :
-           lang === 'ar' ? 'يجب استخدام NegoShield AI فقط لأغراض قانونية وامتثالاً للقانون المغربي. يُحظر تماماً استخدامه لأي أنشطة غير قانونية أو ضارة. نحتفظ بالحق في إيقاف أي حساب ينتهك هذه الشروط.' :
-           'يجب استخدام NegoShield AI فقط لأغراض قانونية وتحت التزام بالقانون المغربي. ممنوع نهائياً استخدام التطبيق لنشاطات غير قانونية. نحتفظ الحق في إيقاف أي حساب ينتهك الشروط ديال.'}
+          {lang === 'fr' ? 'Tooristoo ne doit être utilisé que pour des fins légales et conformes à la loi marocaine. Toute utilisation pour des activités illégales ou nuisibles est strictement interdite. Nous nous réservons le droit de suspendre tout compte en violation de ces conditions.' :
+           lang === 'en' ? 'Tooristoo must only be used for legal purposes and in compliance with Moroccan law. Any use for illegal or harmful activities is strictly prohibited. We reserve the right to suspend any account in violation of these conditions.' :
+           lang === 'es' ? 'Tooristoo debe usarse solo para fines legales y en cumplimiento con la ley marroquí. Está estrictamente prohibido usar para actividades ilegales o perjudiciales. Nos reservamos el derecho de suspender cualquier cuenta que viole estas condiciones.' :
+           lang === 'de' ? 'Tooristoo darf nur für rechtmäßige Zwecke und in Übereinstimmung mit dem marokkanischen Recht verwendet werden. Die Verwendung für illegale oder schädliche Aktivitäten ist streng verboten. Wir behalten uns das Recht vor, jedes Konto zu sperren, das gegen diese Bedingungen verstößt.' :
+           lang === 'ar' ? 'يجب استخدام Tooristoo فقط لأغراض قانونية وامتثالاً للقانون المغربي. يُحظر تماماً استخدامه لأي أنشطة غير قانونية أو ضارة. نحتفظ بالحق في إيقاف أي حساب ينتهك هذه الشروط.' :
+           'يجب استخدام Tooristoo فقط لأغراض قانونية وتحت التزام بالقانون المغربي. ممنوع نهائياً استخدام التطبيق لنشاطات غير قانونية. نحتفظ الحق في إيقاف أي حساب ينتهك الشروط ديال.'}
         </p>
       </div>
       <button

@@ -53,7 +53,7 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
 
   const analyzeWithAI = async (text) => {
     setIsAnalyzing(true);
-    const prompt = `Tu es NegoShield AI, un expert en prix touristiques au Maroc. 
+    const prompt = `Tu es Tooristoo, un expert en prix touristiques au Maroc. 
     Analyse cette situation de négociation:
     Catégorie: ${category || 'taxi'}
     Ville: ${location || 'Marrakech'}
