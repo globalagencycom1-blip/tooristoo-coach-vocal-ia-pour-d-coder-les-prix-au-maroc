@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AlertTriangle, X } from 'lucide-react';
 import { useLang } from '../../lib/LanguageContext';
 import { useT } from '../../lib/i18n';
@@ -27,9 +28,9 @@ export default function AlertsBanner() {
               </div>
             ))}
           </div>
-          <a href="/alerts" className="mt-4 inline-block text-shield-green text-sm font-semibold hover:text-green-400 transition-colors">
+          <Link to="/alerts" className="mt-4 inline-block text-shield-green text-sm font-semibold hover:text-green-400 transition-colors">
             {t('banner_see_all')}
-          </a>
+          </Link>
         </div>
       </div>
     </section>
