@@ -115,26 +115,26 @@ export default function About() {
         </section>
 
         {/* Team */}
-        <section className="py-16 px-4 hidden">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="font-poppins font-bold text-3xl text-white mb-3">{t('about_team_title')}</h2>
-              <p className="text-gray-400">{t('about_team_subtitle')}</p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {TEAM.map((member) =>
-              <div key={member.name} className="bg-shield-card border border-shield-border rounded-2xl p-6 text-center hover:border-shield-green/20 transition-all">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-shield-green/10 border border-shield-green/20 flex items-center justify-center text-3xl">
-                    {member.flag}
-                  </div>
-                  <h3 className="font-poppins font-bold text-white text-sm">{member.name}</h3>
-                  <p className="text-shield-green text-xs font-medium mt-1 mb-3">{t(member.roleKey)}</p>
-                  <p className="text-gray-500 text-xs leading-relaxed">{t(member.bioKey)}</p>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
         {/* CTA */}
         <section className="py-16 px-4 bg-[#0a1628]">
