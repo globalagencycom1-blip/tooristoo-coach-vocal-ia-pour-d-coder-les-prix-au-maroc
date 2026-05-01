@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AlertTriangle, CheckCircle, Shield } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 
@@ -69,12 +71,13 @@ export default function Alerts() {
           <Shield className="w-8 h-8 text-shield-green mx-auto mb-2" />
           <p className="text-white font-semibold text-sm mb-1">{t('alerts_cta_use')}</p>
           <p className="text-gray-400 text-xs mb-4">{t('alerts_cta_desc')}</p>
-          <a href="/app" className="inline-flex items-center gap-2 px-6 py-2.5 bg-shield-green text-black font-bold text-sm rounded-xl hover:bg-green-400 transition-all btn-glow">
+          <Link to="/app" className="inline-flex items-center gap-2 px-6 py-2.5 bg-shield-green text-black font-bold text-sm rounded-xl hover:bg-green-400 transition-all btn-glow">
             {t('alerts_cta_btn')}
-          </a>
+          </Link>
         </div>
 
       </div>
+      <Footer lang={lang} />
     </div>
   );
 }
