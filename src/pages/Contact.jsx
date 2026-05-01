@@ -22,7 +22,7 @@ export default function Contact() {
     {
       icon: Mail,
       label: lang === 'fr' ? 'Email' : lang === 'en' ? 'Email' : lang === 'es' ? 'Correo' : lang === 'de' ? 'E-Mail' : lang === 'ar' ? 'البريد' : 'البريد',
-      value: 'contact@negoshield.com',
+      value: 'contact@tooristoo.com',
     },
     {
       icon: MapPin,
