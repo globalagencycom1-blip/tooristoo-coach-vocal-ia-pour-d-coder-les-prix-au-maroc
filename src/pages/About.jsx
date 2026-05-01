@@ -60,7 +60,7 @@ export default function About() {
                 <div className="space-y-4 text-gray-400 leading-relaxed">
                   <p>{t('about_story1')}</p>
                   <p>{t('about_story2')}</p>
-                  <p>{t('about_story3_pre')} <span className="text-shield-green font-semibold">NegoShield AI</span> {t('about_story3_post')}</p>
+                  <p>{t('about_story3_pre')} <span className="text-shield-green font-semibold">Tooristoo</span> {t('about_story3_post')}</p>
                 </div>
               </div>
               <div className="relative">
