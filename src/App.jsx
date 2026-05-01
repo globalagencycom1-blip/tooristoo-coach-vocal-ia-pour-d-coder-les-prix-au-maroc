@@ -27,11 +27,17 @@ const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
   const { lang } = useLang();
 
-  // Show loading spinner while checking app public settings or auth
+  // Show minimal loading state while checking app public settings or auth
   if (isLoadingPublicSettings || isLoadingAuth) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin"></div>
+      <div className="min-h-screen bg-shield-dark">
+        <div className="max-w-7xl mx-auto px-4 py-20 space-y-6">
+          <div className="h-12 bg-shield-border/30 rounded-xl animate-pulse"></div>
+          <div className="space-y-3">
+            <div className="h-6 bg-shield-border/30 rounded w-3/4 animate-pulse"></div>
+            <div className="h-6 bg-shield-border/30 rounded w-1/2 animate-pulse"></div>
+          </div>
+        </div>
       </div>
     );
   }
