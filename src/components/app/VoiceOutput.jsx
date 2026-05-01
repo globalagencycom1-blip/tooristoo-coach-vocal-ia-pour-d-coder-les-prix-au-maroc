@@ -72,27 +72,27 @@ export default function VoiceOutput({ text, lang = 'fr', label = 'Écouter' }) {
     <button
       onClick={handleSpeak}
       disabled={isLoading}
-      className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
+      className={`inline-flex items-center gap-2 px-4 py-3 rounded-xl font-bold transition-all text-sm ${
         isSpeaking
-          ? 'bg-shield-green/20 text-shield-green border border-shield-green'
-          : 'bg-shield-gold/10 text-shield-gold border border-shield-gold/30 hover:bg-shield-gold/20'
+          ? 'bg-shield-green text-black shadow-lg scale-95'
+          : 'bg-shield-gold text-black hover:bg-yellow-400 hover:scale-105 shadow-md'
       } disabled:opacity-50`}
       title={isSpeaking ? LANGUAGE_CONFIG[lang]?.messages.title || 'Stop' : label}
     >
       {isLoading ? (
         <>
           <Loader2 className="w-4 h-4 animate-spin" />
-          {LANGUAGE_CONFIG[lang]?.messages.loading || 'Loading...'}
+          <span>{LANGUAGE_CONFIG[lang]?.messages.loading || '...'}</span>
         </>
       ) : isSpeaking ? (
         <>
           <VolumeX className="w-4 h-4" />
-          {LANGUAGE_CONFIG[lang]?.messages.stop || 'Stop'}
+          <span>{LANGUAGE_CONFIG[lang]?.messages.stop || 'Stop'}</span>
         </>
       ) : (
         <>
-          <Volume2 className="w-4 h-4" />
-          {label}
+          <Volume2 className="w-5 h-5" />
+          <span>{label}</span>
         </>
       )}
     </button>

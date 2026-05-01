@@ -159,27 +159,67 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
         </div>
       )}
 
-      {/* Section 5: Exact phrase */}
+      {/* Section 5: Exact phrase — HERO CARD */}
       {analysis.recommended_phrase && (
-        <div className="bg-shield-card border border-shield-border rounded-2xl p-4">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xs font-bold text-shield-green uppercase tracking-wider">{t('exact_phrase')}</h3>
-          </div>
-          <div className={`relative ${['ar','darija'].includes(lang) ? 'pr-6 text-right' : 'pl-6'}`}>
-            <span className={`absolute ${['ar','darija'].includes(lang) ? 'right-0' : 'left-0'} top-0 text-3xl text-shield-green/30 font-serif leading-none`}>"</span>
-            <p className="text-sm text-gray-200 leading-relaxed italic" dir={['ar','darija'].includes(lang) ? 'rtl' : 'ltr'}>
-              {['ar','darija'].includes(lang) ? `"${analysis.recommended_phrase}` : `${analysis.recommended_phrase}"`}
-            </p>
-          </div>
-          {analysis.recommended_phrase_darija && (
-            <div className="mt-3 pt-3 border-t border-shield-border">
-              <span className="text-xs text-shield-gold font-semibold">🇲🇦 {t('in_darija')} </span>
-              <p className="text-xs text-gray-300 italic mt-1" dir="rtl">"{analysis.recommended_phrase_darija}"</p>
-              <div className="mt-1">
-                <VoiceOutput text={analysis.recommended_phrase_darija} lang="darija" label="🔊 Darija" />
-              </div>
+        <div className="rounded-2xl overflow-hidden border-2 border-shield-green/60 card-glow"
+          style={{ background: 'linear-gradient(135deg, #0a1f14 0%, #0d2218 60%, #081a10 100%)' }}>
+          {/* Header strip */}
+          <div className="flex items-center justify-between px-4 py-3 bg-shield-green/10 border-b border-shield-green/20">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-shield-green opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-shield-green"></span>
+              </span>
+              <h3 className="text-xs font-bold text-shield-green uppercase tracking-widest">{t('exact_phrase')}</h3>
             </div>
-          )}
+            <span className="text-xs bg-shield-green/20 text-shield-green px-2 py-0.5 rounded-full font-semibold">
+              💬 {lang === 'fr' ? 'Dites exactement' : lang === 'en' ? 'Say exactly' : lang === 'es' ? 'Diga exactamente' : lang === 'de' ? 'Sagen Sie' : 'قل بالضبط'}
+            </span>
+          </div>
+
+          <div className="p-5 space-y-4">
+            {/* Main phrase */}
+            <p className="text-base text-white leading-relaxed font-medium italic"
+              dir={['ar','darija'].includes(lang) ? 'rtl' : 'ltr'}>
+              "{analysis.recommended_phrase}"
+            </p>
+
+            {/* Darija audio hero */}
+            {analysis.recommended_phrase_darija && (
+              <div className="bg-shield-dark/60 rounded-xl p-4 border border-shield-green/20">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-base">🇲🇦</span>
+                      <span className="text-xs font-bold text-shield-gold uppercase tracking-wider">{t('in_darija')}</span>
+                    </div>
+                    <p className="text-sm text-gray-200 leading-relaxed" dir="rtl">
+                      "{analysis.recommended_phrase_darija}"
+                    </p>
+                  </div>
+                  {/* BIG audio button */}
+                  <div className="flex-shrink-0">
+                    <VoiceOutput
+                      text={analysis.recommended_phrase_darija}
+                      lang="darija"
+                      label="Darija"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Also speak main phrase in user's language */}
+            {!['ar','darija'].includes(lang) && (
+              <div className="flex justify-end">
+                <VoiceOutput
+                  text={analysis.recommended_phrase}
+                  lang={lang}
+                  label={lang === 'fr' ? '🔊 Écouter' : lang === 'en' ? '🔊 Listen' : lang === 'es' ? '🔊 Escuchar' : '🔊 Anhören'}
+                />
+              </div>
+            )}
+          </div>
         </div>
       )}
 
