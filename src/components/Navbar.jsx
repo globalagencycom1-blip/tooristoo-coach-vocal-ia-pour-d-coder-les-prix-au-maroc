@@ -73,7 +73,7 @@ export default function Navbar() {
                 onClick={() => setLangOpen(!langOpen)}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-shield-border/50 hover:bg-shield-border text-gray-300 hover:text-white text-sm transition-all"
               >
-                <span className="text-base leading-none">{LANGS.find(l => l.code === lang)?.flag || '🇫🇷'}</span>
+                <Globe className="w-4 h-4" />
                 <span>{LANGS.find(l => l.code === lang)?.label || 'FR'}</span>
               </button>
               {langOpen && (
