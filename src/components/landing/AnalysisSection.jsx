@@ -1,14 +1,36 @@
-import React from 'react';
-import { CheckCircle, XCircle, AlertTriangle, Star } from 'lucide-react';
+import React, { useState } from 'react';
+import { CheckCircle, XCircle, AlertTriangle, Star, Volume2, VolumeX } from 'lucide-react';
 import { useT } from '../../lib/i18n';
 import { exampleTranslations } from '../../lib/i18n-examples';
 
 export default function AnalysisSection({ lang }) {
   const t = useT(lang);
   const examples = exampleTranslations[lang] || exampleTranslations.fr;
+  const [speaking, setSpeaking] = useState(false);
 
   const strategyKeys = ['strategy1', 'strategy2', 'strategy3', 'strategy4', 'strategy5'];
   const alertKeys = ['alert1', 'alert2', 'alert3', 'alert4', 'alert5'];
+
+  const speakDarija = () => {
+    if (!window.speechSynthesis) return;
+    if (speaking) {
+      window.speechSynthesis.cancel();
+      setSpeaking(false);
+      return;
+    }
+    const text = examples.example_phrase_darija;
+    const utterance = new SpeechSynthesisUtterance(text);
+    // Prefer Arabic voice for Darija
+    const voices = window.speechSynthesis.getVoices();
+    const arabicVoice = voices.find(v => v.lang.startsWith('ar'));
+    if (arabicVoice) utterance.voice = arabicVoice;
+    utterance.lang = 'ar-MA';
+    utterance.rate = 0.85;
+    utterance.onend = () => setSpeaking(false);
+    utterance.onerror = () => setSpeaking(false);
+    setSpeaking(true);
+    window.speechSynthesis.speak(utterance);
+  };
 
   return (
     <section className="py-24 bg-[#0a1628]">
@@ -96,7 +118,20 @@ export default function AnalysisSection({ lang }) {
                 "{examples.example_phrase_intro}"
               </blockquote>
               <div className="mt-3 pt-3 border-t border-shield-border">
-                <span className="text-xs text-shield-gold font-semibold">🇲🇦 {t('in_darija')} </span>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs text-shield-gold font-semibold">🇲🇦 {t('in_darija')}</span>
+                  <button
+                    onClick={speakDarija}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                      speaking
+                        ? 'bg-shield-gold/20 border border-shield-gold text-shield-gold'
+                        : 'bg-shield-green/10 border border-shield-green/40 text-shield-green hover:bg-shield-green/20'
+                    }`}
+                  >
+                    {speaking ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+                    Darija
+                  </button>
+                </div>
                 <span className="text-xs text-gray-300 italic">"{examples.example_phrase_darija}"</span>
               </div>
             </div>

@@ -25,15 +25,15 @@ export const exampleTranslations = {
     example_anomaly: "Preis 100% über dem Markt",
   },
   ar: {
-    example_situation: "سيارة أجرة المطار → مراكش",
-    example_phrase_intro: "السلام عليكم، السعر الطبيعي لهذه الرحلة بين 120 و150 درهم. إذا كان مناسباً لك، نذهب، وإلا شكراً.",
-    example_phrase_darija: "Salam, t-taman dyal had course bin 120 w 150 MAD. Ila mzyan lik, nmchiw, wella shukran.",
+    example_situation: "طاكسي المطار ← مراكش",
+    example_phrase_intro: "السلام عليكم، السعر العادي لهاد الرحلة بين 120 و150 درهم. إذا كان مناسباً ليك، نمشيو، وإلا شكراً.",
+    example_phrase_darija: "سلام، التمن ديال هاد الكورس بين 120 و150 درهم. إلا كان مزيان ليك، نمشيو، ولا شكراً.",
     example_anomaly: "السعر أعلى من السوق بنسبة 100%",
   },
   darija: {
-    example_situation: "طاكسي المطار → مراكش",
-    example_phrase_intro: "السلام، الثمن الطبيعي لهاد الرحلة بين 120 و150 درهم. إلا كان مزيان ليك، نمشيو، وإلا شكراً.",
-    example_phrase_darija: "Salam, t-taman dyal had course bin 120 w 150 MAD. Ila mzyan lik, nmchiw, wella shukran.",
+    example_situation: "طاكسي المطار ← مراكش",
+    example_phrase_intro: "سلام، التمن ديال هاد الكورس بين 120 و150 درهم. إلا كان مزيان ليك، نمشيو، ولا شكراً.",
+    example_phrase_darija: "سلام، التمن ديال هاد الكورس بين 120 و150 درهم. إلا كان مزيان ليك، نمشيو، ولا شكراً.",
     example_anomaly: "الثمن أعلى من السوق بـ 100%",
   },
 };
