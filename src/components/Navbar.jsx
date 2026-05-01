@@ -53,15 +53,15 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">
             {navLinks.map(link => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 className={`text-sm font-medium transition-colors hover:text-shield-green ${
                   location.pathname === link.href ? 'text-shield-green' : 'text-gray-300'
                 }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -117,14 +117,14 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="md:hidden bg-shield-card border-t border-shield-border px-4 py-4 space-y-3">
           {navLinks.map(link => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               onClick={() => setMobileOpen(false)}
               className="block text-gray-300 hover:text-shield-green py-2 text-sm font-medium"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <Link
             to="/profile"
