@@ -118,23 +118,39 @@ export default function AppPage() {
               <AnalysisResult analysis={analysis} lang={lang} onReset={handleReset} />
             ) : (
               <>
+                {/* Analyses restantes */}
+                <div className="flex justify-center mb-6">
+                  <div className="px-5 py-2.5 rounded-full text-sm text-gray-300 font-medium"
+                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    {profile?.plan === 'free'
+                      ? `${Math.max(0, 3 - (profile?.monthly_analyses_used || 0))} ${t('analyses_remaining') || 'analyses restantes aujourd\'hui'}`
+                      : t('unlimited_analyses') || '∞ analyses illimitées'}
+                  </div>
+                </div>
+
                 {/* Input mode toggle */}
-                <div className="flex gap-2 mb-6">
+                <div className="flex items-center justify-center gap-6 mb-6">
                   <button
                     onClick={() => setInputMode('voice')}
-                    className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      inputMode === 'voice' ? 'bg-shield-green text-black' : 'bg-shield-border/30 text-gray-400'
+                    className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
+                      inputMode === 'voice'
+                        ? 'bg-white/10 text-white border border-white/20'
+                        : 'text-gray-500 hover:text-gray-300'
                     }`}
                   >
-                    🎤 {t('input_mode_voice')}
+                    <Mic className="w-4 h-4" />
+                    {t('input_mode_voice')}
                   </button>
                   <button
                     onClick={() => setInputMode('form')}
-                    className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      inputMode === 'form' ? 'bg-shield-green text-black' : 'bg-shield-border/30 text-gray-400'
+                    className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
+                      inputMode === 'form'
+                        ? 'bg-white/10 text-white border border-white/20'
+                        : 'text-gray-500 hover:text-gray-300'
                     }`}
                   >
-                    ✏️ {t('input_mode_text')}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+                    {t('input_mode_text')}
                   </button>
                 </div>
 
