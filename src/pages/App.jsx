@@ -123,8 +123,8 @@ export default function AppPage() {
                   <div className="px-5 py-2.5 rounded-full text-sm text-gray-300 font-medium"
                     style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
                     {profile?.plan === 'free'
-                      ? `${Math.max(0, 3 - (profile?.monthly_analyses_used || 0))} ${t('analyses_remaining') || 'analyses restantes aujourd\'hui'}`
-                      : t('unlimited_analyses') || '∞ analyses illimitées'}
+                      ? `${Math.max(0, 3 - (profile?.monthly_analyses_used || 0))} ${lang === 'fr' ? 'analyses restantes aujourd\'hui' : lang === 'en' ? 'analyses remaining today' : lang === 'es' ? 'análisis restantes hoy' : lang === 'de' ? 'Analysen verbleibend heute' : lang === 'ar' ? 'التحليلات المتبقية اليوم' : 'تحليلات متبقية اليوم'}`
+                      : lang === 'fr' ? '∞ analyses illimitées' : '∞ unlimited analyses'}
                   </div>
                 </div>
 
