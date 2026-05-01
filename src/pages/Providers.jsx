@@ -89,7 +89,7 @@ export default function Providers() {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    base44.entities.Provider.filter({ active: true }, '-rating', 500)
+    base44.entities.Provider.list('-rating', 500)
       .then(data => { setProviders(data); setLoading(false); })
       .catch(() => setLoading(false));
   }, []);
