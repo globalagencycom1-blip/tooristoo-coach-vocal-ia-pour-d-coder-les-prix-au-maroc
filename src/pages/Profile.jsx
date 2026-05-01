@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { User, Mail, Globe, CreditCard, History, Settings, LogOut, Edit2, Check, Zap } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useLang } from '../lib/LanguageContext';
@@ -351,13 +350,13 @@ export default function Profile() {
                   <div className="bg-gradient-to-r from-shield-green/20 to-shield-gold/20 border border-shield-green/30 rounded-2xl p-8 text-center">
                     <h3 className="font-bold text-xl text-white mb-2">{t('profile_upgrade_title')}</h3>
                     <p className="text-gray-400 mb-6">{t('profile_upgrade_desc')}</p>
-                    <Link
-                      to="/#pricing"
+                    <a
+                      href="/#pricing"
                       className="inline-flex items-center gap-2 px-6 py-3 bg-shield-green text-black font-bold rounded-xl hover:bg-green-400 transition-all"
                     >
                       <Zap className="w-4 h-4" />
                       {t('profile_upgrade_btn')}
-                    </Link>
+                    </a>
                   </div>
                 )}
               </div>
