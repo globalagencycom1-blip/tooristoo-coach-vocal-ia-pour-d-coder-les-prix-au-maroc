@@ -1029,7 +1029,7 @@ export const translations = {
     hero_stat1_label: "Durchschnittliche Ersparnis pro Reisenden",
     hero_stat2: "98%",
     hero_stat2_label: "Preisgenauigkeit",
-    hero_stat3: "50k+",
+    hero_stat3: "500+",
     hero_stat3_label: "Geschützte Reisende",
     features_title: "Alles was Sie brauchen",
     features_subtitle: "um sicher in Marokko zu reisen",
