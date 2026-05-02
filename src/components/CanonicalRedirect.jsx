@@ -41,18 +41,31 @@ const REDIRECTS = {
 /**
  * - Redirects uppercase URLs to lowercase (e.g. /About → /about)
  * - Redirects French alias paths to canonical English paths (e.g. /prestataires → /providers)
+ * - Removes trailing slashes (except root)
  */
 export default function CanonicalRedirect() {
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const lower = location.pathname.toLowerCase();
+    let path = location.pathname;
+    
+    // Remove trailing slash (except for root)
+    if (path !== '/' && path.endsWith('/')) {
+      path = path.slice(0, -1);
+    }
+    
+    // Convert to lowercase
+    const lower = path.toLowerCase();
+    
+    // Apply redirects
     const canonical = REDIRECTS[lower] || lower;
+    
+    // Redirect if needed
     if (canonical !== location.pathname) {
       navigate(canonical + location.search + location.hash, { replace: true });
     }
-  }, [location.pathname]);
+  }, [location.pathname, navigate]);
 
   return null;
 }
