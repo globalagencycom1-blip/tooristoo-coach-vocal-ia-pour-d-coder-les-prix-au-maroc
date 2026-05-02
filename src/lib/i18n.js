@@ -395,7 +395,7 @@ export const translations = {
     hero_stat1_label: "Average savings per traveler",
     hero_stat2: "98%",
     hero_stat2_label: "Price accuracy rate",
-    hero_stat2_note: "across 12,000 verified analyses",
+    hero_stat2_note: "across 2,500 verified analyses",
     hero_stat3: "500+",
     hero_stat3_label: "Protected travelers",
     features_title: "Everything you need",
