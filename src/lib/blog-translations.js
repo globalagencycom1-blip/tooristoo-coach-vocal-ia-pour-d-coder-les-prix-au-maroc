@@ -324,7 +324,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
   // MARRAKECH - ARNAQUES - GUIDE
   'marrakech-arnaque-guide': {
     fr: {
-      title: 'Les arnaques guides touristiques à Marrakech',
+      title: 'Les guides touristiques à Marrakech: vrais prix & arnaqueurs',
       excerpt: 'Comment identifier et éviter les faux guides.',
       content: `Les faux guides sont l'une des plus grandes arnaques à Marrakech.
 
@@ -347,7 +347,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
 5. Refuser poliment toute visite bonus`
     },
     en: {
-      title: 'Tourist Guide Scams in Marrakech',
+      title: 'Tourist Guides in Marrakech: Real Prices & How to Avoid Scammers',
       excerpt: 'How to identify and avoid fake guides.',
       content: `Fake guides are one of the biggest scams in Marrakech.
 
@@ -370,7 +370,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
 5. Politely refuse any bonus visit`
     },
     es: {
-      title: 'Estafas de guías turísticos en Marrakech',
+      title: 'Guías Turísticos en Marrakech: Precios Reales y Cómo Evitar Estafadores',
       excerpt: 'Cómo identificar y evitar guías falsos.',
       content: `Los guías falsos son una de las mayores estafas en Marrakech.
 
@@ -393,7 +393,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
 5. Rechaza amablemente cualquier visita adicional`
     },
     de: {
-      title: 'Betrügereien durch Touristenführer in Marrakesch',
+      title: 'Touristenführer in Marrakesch: Echte Preise und So Vermeiden Sie Betrüger',
       excerpt: 'Wie man falsche Führer erkennt und vermeidet.',
       content: `Falsche Führer sind einer der größten Betrügereien in Marrakesch.
 
@@ -416,7 +416,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
 5. Lehnen Sie höflich jeden Bonusbesuch ab`
     },
     ar: {
-      title: 'عمليات احتيال الأدلاء السياحيين في مراكش',
+      title: 'الأدلاء السياحيون في مراكش: الأسعار الحقيقية وكيفية تجنب المحتالين',
       excerpt: 'كيفية تحديد وتجنب الأدلاء المزيفين.',
       content: `الأدلاء المزيفون هي واحدة من أكبر عمليات الاحتيال في مراكش.
 
@@ -439,7 +439,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
 5. رفض بأدب أي زيارة إضافية`
     },
     darija: {
-      title: 'حيل الموجهين السياحيين فمراكش',
+      title: 'الموجهين السياحيين فمراكش: الأسعار الحقيقية وواش تجنب المحتالين',
       excerpt: 'واش تحدد والموجهين الكاذبين وتجنبهم.',
       content: `الموجهين الكاذبين من أكبر الحيل فمراكش.
 
@@ -466,7 +466,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
   // MARRAKECH - ARNAQUES - SHOPPING
   'marrakech-arnaque-shopping': {
     fr: {
-      title: 'Escroqueries aux souvenirs: Marrakech',
+      title: 'Shopping à Marrakech: Les fausses antiquités et comment négocier',
       excerpt: 'Les fausses antiquités et les surfacturations courantes.',
       content: `Les souks de Marrakech brillent par leurs arnaques sophistiquées.
 
@@ -492,7 +492,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
 - Demander balance certifiée`
     },
     en: {
-      title: 'Souvenir Scams: Marrakech',
+      title: 'Shopping in Marrakech: Fake Antiques & How to Negotiate',
       excerpt: 'Fake antiques and common overcharges.',
       content: `Marrakech\'s souks shine with sophisticated scams.
 
@@ -518,7 +518,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
 - Ask for certified scale`
     },
     es: {
-      title: 'Estafas de souvenirs: Marrakech',
+      title: 'Compras en Marrakech: Antigüedades Falsas y Cómo Negociar',
       excerpt: 'Antigüedades falsas y recargos comunes.',
       content: `Los zocos de Marrakech brillan por sus estafas sofisticadas.
 
@@ -544,7 +544,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
 - Solicita balanza certificada`
     },
     de: {
-      title: 'Souvenirbetrügereien: Marrakesch',
+      title: 'Einkaufen in Marrakesch: Gefälschte Antiquitäten und Verhandlungstipps',
       excerpt: 'Gefälschte Antiquitäten und häufige Überpreisungen.',
       content: `Die Souks von Marrakesch glänzen durch raffinierte Betrügereien.
 
@@ -570,7 +570,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
 - Fragen Sie nach beglaubigter Waage`
     },
     ar: {
-      title: 'عمليات احتيال التذكارات: مراكش',
+      title: 'التسوق في مراكش: التحف المزيفة وكيفية التفاوض',
       excerpt: 'التحف المزيفة والرسوم الزائدة الشائعة.',
       content: `أسواق مراكش تتألق بعمليات احتيال متطورة.
 
@@ -596,7 +596,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
 - اطلب ميزان معتمد`
     },
     darija: {
-      title: 'حيل التذكارات: مراكش',
+      title: 'التسوق فمراكش: الحاجات المزيفة وواش تفاوت',
       excerpt: 'الحاجات المزيفة والزيادة فالأسعار.',
       content: `أسواق مراكش فيهم حيل متقدمة.
 
@@ -1275,7 +1275,7 @@ Viele sehr "Instagrammable" Riads = Preise zu 100% aufgeblasen.`
   // CHEFCHAOUEN - ARNAQUE
   'chefchaouen-arnaque-photo': {
     fr: {
-      title: 'Arnaques photo Chefchaouen: Attention!',
+      title: 'Chefchaouen: Les pièges photo et comment les éviter',
       excerpt: 'Les pièges à éviter en prenant des photos.',
       content: `Chefchaouen est magnifique, mais attention à certains pièges.
 
@@ -1305,7 +1305,7 @@ Viele sehr "Instagrammable" Riads = Preise zu 100% aufgeblasen.`
 - Poterie: 15-50 MAD`
     },
     en: {
-      title: 'Chefchaouen Photo Scams: Beware!',
+      title: 'Chefchaouen: Photo Pitfalls & How to Avoid Them',
       excerpt: 'Pitfalls to avoid when taking photos.',
       content: `Chefchaouen is beautiful, but beware of some pitfalls.
 
@@ -1335,7 +1335,7 @@ Viele sehr "Instagrammable" Riads = Preise zu 100% aufgeblasen.`
 - Pottery: 15-50 MAD`
     },
     es: {
-      title: 'Estafas de fotos de Chefchaouen: ¡Cuidado!',
+      title: 'Chefchaouen: Trampas de Fotos y Cómo Evitarlas',
       excerpt: 'Trampas a evitar al tomar fotos.',
       content: `Chefchaouen es hermoso, pero cuidado con algunos peligros.
 
@@ -1365,7 +1365,7 @@ Viele sehr "Instagrammable" Riads = Preise zu 100% aufgeblasen.`
 - Cerámica: 15-50 MAD`
     },
     de: {
-      title: 'Chefchaouen Foto-Betrügereien: Vorsicht!',
+      title: 'Chefchaouen: Foto-Fallstricke und wie Man sie Vermeidet',
       excerpt: 'Fallstricke beim Fotografieren vermeiden.',
       content: `Chefchaouen ist wunderschön, aber Vorsicht vor einigen Fallstricken.
 
@@ -1395,7 +1395,7 @@ Viele sehr "Instagrammable" Riads = Preise zu 100% aufgeblasen.`
 - Töpferei: 15-50 MAD`
     },
     ar: {
-      title: 'عمليات احتيال صور شفشاون: احذر!',
+      title: 'شفشاون: فخاخ الصور وكيفية تجنبها',
       excerpt: 'الفخاخ التي يجب تجنبها عند التقاط الصور.',
       content: `شفشاون جميلة، لكن احذر من بعض الفخاخ.
 
@@ -1425,7 +1425,7 @@ Viele sehr "Instagrammable" Riads = Preise zu 100% aufgeblasen.`
 - الفخار: 15-50 درهم`
     },
     darija: {
-      title: 'حيل الصور فشفشاون: احتاط!',
+      title: 'شفشاون: فخاخ الصور وواش تجنبها',
       excerpt: 'الحيل لي خاص تجنب وأنت كتصور.',
       content: `شفشاون جميلة، لكن احتاط من بعض الحيل.
 
