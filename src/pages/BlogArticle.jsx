@@ -49,16 +49,38 @@ export default function BlogArticle() {
   const blogPostingSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
+    '@id': `${BASE}/blog/${article.id}`,
     headline: article.title,
     description: article.excerpt,
     datePublished: article.date,
-    author: { '@type': 'Organization', name: 'Tooristoo', url: BASE },
-    publisher: { '@type': 'Organization', name: 'Tooristoo', logo: { '@type': 'ImageObject', url: `${BASE}/logo.png` } },
-    image: article.image,
+    dateModified: article.date,
+    author: {
+      '@type': 'Person',
+      name: article.author || 'Tooristoo',
+      url: BASE,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Tooristoo',
+      url: BASE,
+      logo: { '@type': 'ImageObject', url: `${BASE}/logo.png`, width: 200, height: 200 },
+    },
+    image: {
+      '@type': 'ImageObject',
+      url: article.image,
+      representativeOfPage: true,
+    },
     url: `${BASE}/blog/${article.id}`,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/blog/${article.id}` },
     inLanguage: lang,
-    about: { '@type': 'Place', name: article.city, addressCountry: 'MA' },
-    keywords: `${article.city}, ${article.category}, Maroc, arnaque, négociation, prix`,
+    about: {
+      '@type': 'Place',
+      name: article.city,
+      address: { '@type': 'PostalAddress', addressCountry: 'MA' },
+    },
+    keywords: `${article.city}, ${article.category}, Maroc, arnaque, négociation, prix, tourisme`,
+    articleSection: article.pillar,
+    isPartOf: { '@type': 'Blog', name: 'Tooristoo Blog', url: `${BASE}/blog` },
   };
 
   return (

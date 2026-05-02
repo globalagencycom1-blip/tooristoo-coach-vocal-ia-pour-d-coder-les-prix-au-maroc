@@ -99,15 +99,78 @@ const SCHEMAS = {
   about: {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${BASE}/#organization`,
     name: 'Tooristoo',
     url: BASE,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${BASE}/logo.png`,
+      width: 200,
+      height: 200,
+    },
     foundingDate: '2023',
+    foundingLocation: {
+      '@type': 'Place',
+      name: 'Marrakech, Maroc',
+      addressCountry: 'MA',
+    },
+    founder: [
+      { '@type': 'Person', name: 'Youssef Benali', jobTitle: 'Co-fondateur & CEO', nationality: 'MA' },
+      { '@type': 'Person', name: 'Sophie Martin', jobTitle: 'Co-fondatrice & CTO', nationality: 'FR' },
+    ],
     description: 'Startup franco-marocaine créée en 2023 pour protéger les touristes des arnaques au Maroc via un coach IA vocal multilingue.',
     numberOfEmployees: { '@type': 'QuantitativeValue', value: 4 },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'contact@tooristoo.com',
+      contactType: 'customer support',
+      availableLanguage: ['French', 'English', 'Spanish', 'German', 'Arabic'],
+    },
+    areaServed: { '@type': 'Country', name: 'Morocco', '@id': 'https://www.wikidata.org/wiki/Q1028' },
+    knowsAbout: ['Tourism in Morocco', 'Price negotiation', 'Scam detection', 'Artificial Intelligence'],
+    sameAs: [
+      'https://www.instagram.com/tooristoo',
+      'https://www.facebook.com/tooristoo',
+      'https://twitter.com/tooristoo',
+    ],
   },
   blog: null, // Handled per-article in BlogArticle
-  providers: null, // Dynamic — LocalBusiness injected per card if needed
-  alerts: null,
+  providers: {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Prestataires Certifiés Tooristoo au Maroc',
+    description: 'Répertoire de prestataires de services touristiques certifiés au Maroc avec prix officiels : hôtels, riads, taxis, restaurants, guides, excursions, spas.',
+    url: `${BASE}/providers`,
+    numberOfItems: 50,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Taxis certifiés à Marrakech', url: `${BASE}/providers` },
+      { '@type': 'ListItem', position: 2, name: 'Hôtels & Riads certifiés à Fès', url: `${BASE}/providers` },
+      { '@type': 'ListItem', position: 3, name: 'Guides touristiques certifiés à Chefchaouen', url: `${BASE}/providers` },
+      { '@type': 'ListItem', position: 4, name: 'Restaurants certifiés à Casablanca', url: `${BASE}/providers` },
+      { '@type': 'ListItem', position: 5, name: 'Excursions certifiées à Merzouga', url: `${BASE}/providers` },
+    ],
+  },
+  alerts: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Alertes Arnaques Touristiques au Maroc — Tooristoo',
+    url: `${BASE}/alerts`,
+    description: 'Alertes communautaires sur les arnaques touristiques les plus fréquentes au Maroc.',
+    mainEntity: {
+      '@type': 'ItemList',
+      name: 'Arnaques touristiques fréquentes au Maroc',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Taxi sans compteur à l\'aéroport' },
+        { '@type': 'ListItem', position: 2, name: 'Faux guides dans les médinas' },
+        { '@type': 'ListItem', position: 3, name: 'Surfacturation restaurants Jemaa el-Fna' },
+        { '@type': 'ListItem', position: 4, name: 'Arnaques dans les souks' },
+        { '@type': 'ListItem', position: 5, name: 'Excursions désert surdimensionnées' },
+        { '@type': 'ListItem', position: 6, name: 'Charmeurs de serpents et artistes de rue' },
+        { '@type': 'ListItem', position: 7, name: 'Faux offices de tourisme' },
+        { '@type': 'ListItem', position: 8, name: 'Change illégal dans la rue' },
+      ],
+    },
+  },
 };
 
 export default function PageHelmet({ page, lang = 'fr', extraSchema = null }) {
