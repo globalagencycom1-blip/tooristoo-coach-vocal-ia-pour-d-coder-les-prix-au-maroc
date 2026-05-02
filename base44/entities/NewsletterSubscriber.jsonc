@@ -1,0 +1,49 @@
+{
+  "name": "NewsletterSubscriber",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "description": "Email address of the subscriber"
+    },
+    "lang": {
+      "type": "string",
+      "enum": [
+        "fr",
+        "en",
+        "es",
+        "de",
+        "ar",
+        "darija"
+      ],
+      "default": "fr",
+      "description": "Preferred language"
+    },
+    "subscribed": {
+      "type": "boolean",
+      "default": true,
+      "description": "Subscription status"
+    }
+  },
+  "required": [
+    "email"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
