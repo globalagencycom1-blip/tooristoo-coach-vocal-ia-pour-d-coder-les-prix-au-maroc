@@ -113,6 +113,7 @@ export default function Providers() {
         <meta name="description" content={pageDesc} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDesc} />
+        <link rel="canonical" href="https://www.tooristoo.com/providers" />
       </Helmet>
       <Navbar />
       <div className="max-w-3xl mx-auto px-4 pt-28 pb-20">

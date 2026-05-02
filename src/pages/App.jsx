@@ -88,6 +88,7 @@ export default function AppPage() {
         <meta name="description" content={pageDesc} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDesc} />
+        <link rel="canonical" href="https://www.tooristoo.com/app" />
       </Helmet>
       <Navbar />
 

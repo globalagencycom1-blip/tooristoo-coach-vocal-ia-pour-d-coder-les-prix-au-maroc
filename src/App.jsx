@@ -23,6 +23,7 @@ import Profile from './pages/Profile';
 import AdminProviders from './pages/AdminProviders';
 import ChatBot from './components/ChatBot';
 import CookieBanner from './components/CookieBanner';
+import CanonicalRedirect from './components/CanonicalRedirect';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -57,6 +58,7 @@ const AuthenticatedApp = () => {
   // Render the main app
   return (
     <>
+      <CanonicalRedirect />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/app" element={<AppPage />} />

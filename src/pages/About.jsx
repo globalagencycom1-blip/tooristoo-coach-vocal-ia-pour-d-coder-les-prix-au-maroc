@@ -42,6 +42,7 @@ export default function About() {
         <meta name="description" content={pageDesc} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDesc} />
+        <link rel="canonical" href="https://www.tooristoo.com/about" />
       </Helmet>
       <Navbar />
       <div className="pt-20">
