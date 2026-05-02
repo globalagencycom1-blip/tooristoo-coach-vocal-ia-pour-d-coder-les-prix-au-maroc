@@ -136,15 +136,15 @@ export default function NewsletterSection({ lang }) {
     setError('');
     setLoading(true);
     try {
-      await base44.integrations.Core.SendEmail({
-        to: email,
-        subject: lang === 'fr' ? 'Bienvenue à la newsletter Tooristoo ✨' : lang === 'es' ? 'Bienvenido a la newsletter Tooristoo ✨' : lang === 'de' ? 'Willkommen zum Tooristoo Newsletter ✨' : lang === 'ar' ? 'أهلاً بك في نشرة Tooristoo ✨' : lang === 'darija' ? 'أهلاً بيك ف نيوزليتر Tooristoo ✨' : 'Welcome to Tooristoo Newsletter ✨',
-        body: lang === 'fr' ? `Merci de vous être abonné à Tooristoo Alert!\n\nVous recevrez chaque semaine:\n• Alertes abus de prix en temps réel\n• Prix du marché mis à jour\n• Phrases de négociation exclusives\n• Conseils de locaux\n\nBonne chance pour vos négociations! 🇲🇦` : 'Thank you for subscribing to Tooristoo Alert!\n\nYou will receive weekly:\n• Real-time price abuse alerts\n• Updated market prices\n• Exclusive negotiation phrases\n• Local tips',
-      });
-      setEmail('');
-      setSuccess(true);
+      const res = await base44.functions.invoke('sendNewsletterConfirmation', { email, lang });
+      if (res.data?.success) {
+        setEmail('');
+        setSuccess(true);
+      } else {
+        throw new Error(res.data?.error || 'Failed to send email');
+      }
     } catch (err) {
-      setError('Une erreur est survenue. Veuillez réessayer.');
+      setError(lang === 'ar' || lang === 'darija' ? 'حدث خطأ. حاول مجدداً.' : 'Une erreur est survenue. Veuillez réessayer.');
       console.error('Newsletter error:', err);
     } finally {
       setLoading(false);
