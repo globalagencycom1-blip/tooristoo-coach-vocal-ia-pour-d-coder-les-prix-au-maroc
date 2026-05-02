@@ -18,7 +18,7 @@ const CONTENT = {
     commitments: [
       { icon: '💶', title: 'Prix officiels affichés', desc: 'Le prix annoncé sur Tooristoo est le prix réel pratiqué. Aucune majoration pour les touristes étrangers. Tarifs vérifiés et mis à jour régulièrement par notre équipe.' },
       { icon: '📋', title: 'Pas de frais cachés', desc: 'Aucun supplément non mentionné sur la fiche. TVA incluse, pourboires non obligatoires, suppléments spécifiques clairement indiqués à l\'avance.' },
-      { icon: '✅', title: 'Vérification terrain', desc: 'Un membre de l\'équipe Tooristoo a visité et testé le service en personne avant certification. Ré-évaluation annuelle obligatoire.' },
+      { icon: '✅', title: 'Vérification terrain', desc: 'Un membre de l\'équipe Tooristoo a visité et testé le service en personne avant certification. Ré-évaluation mensuelle obligatoire.' },
       { icon: '⭐', title: 'Note minimale 3.5/5', desc: 'Seuls les prestataires maintenant une note client ≥ 3,5/5 conservent leur certification. Sous ce seuil : avertissement puis déclassement.' },
       { icon: '📞', title: 'Contact garanti', desc: 'Numéro de téléphone vérifié et opérationnel. Réponse sous 4h aux demandes clients en haute saison touristique.' },
       { icon: '🤝', title: 'Accueil identique pour tous', desc: 'Le même service, la même qualité et les mêmes tarifs affichés pour chaque client, qu\'il soit habitué local ou visiteur étranger.' },
@@ -53,7 +53,7 @@ const CONTENT = {
     commitments: [
       { icon: '💶', title: 'Official prices displayed', desc: 'The price listed on Tooristoo is the real price charged. No markup for foreign tourists. Rates verified and regularly updated by our team.' },
       { icon: '📋', title: 'No hidden fees', desc: 'No unmentioned surcharges. VAT included, tips not mandatory, specific supplements clearly stated in advance.' },
-      { icon: '✅', title: 'Field verification', desc: 'A Tooristoo team member visited and tested the service in person before certification. Mandatory annual re-evaluation.' },
+      { icon: '✅', title: 'Field verification', desc: 'A Tooristoo team member visited and tested the service in person before certification. Mandatory monthly re-evaluation.' },
       { icon: '⭐', title: 'Minimum rating 3.5/5', desc: 'Only providers maintaining a ≥ 3.5/5 customer rating keep their certification. Below this threshold: warning then downgrade.' },
       { icon: '📞', title: 'Guaranteed contact', desc: 'Verified and operational phone number. Response within 4 hours for customer requests during peak tourist season.' },
       { icon: '🤝', title: 'Equal welcome for all', desc: 'The same service, the same quality, and the same listed prices for every customer — whether a regular local or an international visitor.' },
@@ -88,7 +88,7 @@ const CONTENT = {
     commitments: [
       { icon: '💶', title: 'Precios oficiales mostrados', desc: 'El precio en Tooristoo es el precio real practicado. Sin recargo para turistas extranjeros.' },
       { icon: '📋', title: 'Sin cargos ocultos', desc: 'Sin suplementos no mencionados. IVA incluido, propinas no obligatorias.' },
-      { icon: '✅', title: 'Verificación en terreno', desc: 'Un miembro del equipo Tooristoo visitó y probó el servicio antes de la certificación.' },
+      { icon: '✅', title: 'Verificación en terreno', desc: 'Un miembro del equipo Tooristoo visitó y probó el servicio antes de la certificación. Ré-evaluación mensual obligatoria.' },
       { icon: '⭐', title: 'Puntuación mínima 3.5/5', desc: 'Solo los proveedores con nota ≥ 3,5/5 mantienen su certificación.' },
       { icon: '📞', title: 'Contacto garantizado', desc: 'Número de teléfono verificado y operacional.' },
       { icon: '🤝', title: 'Acogida igual para todos', desc: 'El mismo servicio, la misma calidad y los mismos precios para cada cliente, sea local habitual o visitante extranjero.' },
