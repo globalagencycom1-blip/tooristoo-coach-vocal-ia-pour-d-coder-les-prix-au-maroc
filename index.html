@@ -117,7 +117,24 @@
       React will mount over #root and this div is hidden via CSS once JS runs.
       Googlebot and other crawlers that do not execute JS will index this content.
     -->
-    <style>#seo-static{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
+    <style>
+      #seo-static [data-page]{display:none}
+      #seo-static{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    </style>
+    <script>
+    (function(){
+      var path = window.location.pathname.replace(/\/$/,'') || '/';
+      // Match /blog/:id as /blog
+      if(path.match(/^\/blog\/.+/)) path = '/blog';
+      document.addEventListener('DOMContentLoaded', function(){
+        var el = document.querySelector('#seo-static [data-page="'+path+'"]');
+        if(!el) el = document.querySelector('#seo-static [data-page="/"]');
+        if(el) el.style.display = 'block';
+        var title = el ? el.querySelector('h1') : null;
+        if(title) document.title = title.textContent + ' | Tooristoo';
+      });
+    })();
+    </script>
     <div id="seo-static" aria-hidden="true">
       <!-- HOME -->
       <article data-page="/">
