@@ -42,7 +42,7 @@ export const BLOG_ARTICLES = getBlogArticles('fr');
 
 export const PILLARS = [
   { key: 'prix', label: 'Guide de prix réels', icon: '💰' },
-  { key: 'arnaque', label: 'Arnaques et protection', icon: '⚠️' },
+  { key: 'arnaque', label: 'Vigilance & protection', icon: '⚠️' },
   { key: 'preparation', label: 'Préparation de voyage', icon: '✈️' },
   { key: 'negociation', label: 'Techniques de négociation', icon: '🤝' }
 ];

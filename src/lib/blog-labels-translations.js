@@ -8,12 +8,12 @@ export const PILLAR_LABELS = {
     darija: 'دليل الأسعار الحقيقية'
   },
   arnaque: {
-    fr: 'Arnaques et protection',
-    en: 'Scams & Protection',
-    es: 'Estafas y Protección',
-    de: 'Betrügereien und Schutz',
-    ar: 'الاحتيالات والحماية',
-    darija: 'الحيل والحماية'
+    fr: 'Vigilance & protection',
+    en: 'Safety & Protection',
+    es: 'Seguridad y Protección',
+    de: 'Sicherheit & Schutz',
+    ar: 'التيقظ والحماية',
+    darija: 'الحيطة والحماية'
   },
   preparation: {
     fr: 'Préparation de voyage',
