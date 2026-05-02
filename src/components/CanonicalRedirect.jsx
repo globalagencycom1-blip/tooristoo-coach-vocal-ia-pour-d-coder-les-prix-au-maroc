@@ -32,6 +32,10 @@ const REDIRECTS = {
   '/terms/': '/terms',
   '/legal/': '/legal',
   '/profile/': '/profile',
+  '/admin/providers/': '/admin/providers',
+  // Major route duplicates (case-insensitive, so these run after toLowerCase)
+  // If the router somehow serves /About, /Providers, etc., redirect to lowercase
+  // This handles any case inconsistency from hyperlinks or manual URLs
 };
 
 /**
