@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageHelmet from '../lib/seo-helmet';
@@ -37,32 +37,6 @@ export default function FAQ() {
   const { lang } = useLang();
   const t = useT(lang);
   const ext = getFaqExtended(lang);
-
-  useEffect(() => {
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": t('faq_q1'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a1') } },
-        { "@type": "Question", "name": t('faq_q2'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a2') } },
-        { "@type": "Question", "name": t('faq_q3'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a3') } },
-        { "@type": "Question", "name": t('faq_q4'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a4') } },
-        { "@type": "Question", "name": t('faq_q5'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a5') } },
-        { "@type": "Question", "name": t('faq_q6'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a6') } },
-        { "@type": "Question", "name": t('faq_q7'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a7') } },
-        { "@type": "Question", "name": t('faq_q8'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a8') } },
-        { "@type": "Question", "name": t('faq_q9'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a9') } },
-        { "@type": "Question", "name": t('faq_q10'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a10') } },
-        { "@type": "Question", "name": t('faq_q11'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a11') } },
-        { "@type": "Question", "name": t('faq_q12'), "acceptedAnswer": { "@type": "Answer", "text": t('faq_a12') } },
-      ]
-    };
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(faqSchema);
-    document.head.appendChild(script);
-    return () => document.head.removeChild(script);
-  }, [lang, t]);
 
   const FAQS = [
     {

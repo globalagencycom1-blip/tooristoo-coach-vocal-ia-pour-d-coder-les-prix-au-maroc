@@ -4,6 +4,7 @@
  * Usage: <PageHelmet page="faq" lang={lang} />
  */
 import { Helmet } from 'react-helmet-async';
+import { getFaqExtended } from './faq-extended';
 
 const BASE = 'https://www.tooristoo.com';
 // Standard BCP-47 language codes for hreflang
@@ -153,32 +154,43 @@ const buildSchemas = (page) => {
       ];
 
     case 'faq':
-      return [
-        {
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          '@id': `${BASE}/faq`,
-          name: 'FAQ Tooristoo — Questions fréquentes sur le coach IA Maroc',
-          url: `${BASE}/faq`,
-          publisher: { '@id': `${BASE}/#organization` },
-          mainEntity: [
-            { '@type': 'Question', name: 'Qu\'est-ce que Tooristoo ?', acceptedAnswer: { '@type': 'Answer', text: 'Tooristoo est un coach vocal IA qui aide les touristes à négocier les meilleurs prix au Maroc et obtenir des phrases de négociation en darija en temps réel. Disponible gratuitement sur web, iOS et Android.' } },
-            { '@type': 'Question', name: 'Est-ce que Tooristoo est gratuit ?', acceptedAnswer: { '@type': 'Answer', text: 'Oui, Tooristoo propose un plan gratuit avec 3 analyses par jour sans carte de crédit. Les plans Voyageur (5€/mois) et Pro (12€/mois) offrent des analyses illimitées et des fonctionnalités avancées.' } },
-            { '@type': 'Question', name: 'Dans quelles langues fonctionne Tooristoo ?', acceptedAnswer: { '@type': 'Answer', text: 'Tooristoo est disponible en 6 langues : français, anglais, espagnol, allemand, arabe et darija marocain.' } },
-            { '@type': 'Question', name: 'Quelles villes du Maroc sont couvertes ?', acceptedAnswer: { '@type': 'Answer', text: 'Tooristoo couvre toutes les grandes villes : Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla et El Jadida.' } },
-            { '@type': 'Question', name: 'Comment fonctionne l\'analyse de prix ?', acceptedAnswer: { '@type': 'Answer', text: 'L\'IA compare le prix demandé à une base de données de prix réels locaux. Si le prix dépasse significativement la fourchette normale, une alerte est émise avec le niveau de risque et une stratégie de négociation.' } },
-            { '@type': 'Question', name: 'Quels types de services sont analysés ?', acceptedAnswer: { '@type': 'Answer', text: 'Taxis, hôtels, riads, restaurants, excursions, shopping et souks, transport interurbain, guides touristiques, spas et hammams.' } },
-            { '@type': 'Question', name: 'Tooristoo fonctionne-t-il sur mobile ?', acceptedAnswer: { '@type': 'Answer', text: 'Oui, Tooristoo est une PWA (Progressive Web App) accessible directement depuis le navigateur sur iOS et Android, sans installation requise depuis un store.' } },
-            { '@type': 'Question', name: 'Puis-je utiliser Tooristoo hors ligne ?', acceptedAnswer: { '@type': 'Answer', text: 'L\'analyse IA nécessite une connexion internet. Cependant, toutes vos négociations sont sauvegardées localement et accessibles hors ligne.' } },
-            { '@type': 'Question', name: 'Comment signaler un prix anormal ?', acceptedAnswer: { '@type': 'Answer', text: 'Depuis l\'application, après une analyse, un bouton "Signaler" permet de soumettre un signalement communautaire avec la localisation, le type de service et le montant.' } },
-            { '@type': 'Question', name: 'Mes données sont-elles sécurisées ?', acceptedAnswer: { '@type': 'Answer', text: 'Oui. Toutes les données sont chiffrées en transit (HTTPS) et au repos. La reconnaissance vocale est traitée localement — seul le transcript textuel est envoyé à notre IA. Aucun audio n\'est stocké sur nos serveurs.' } },
-          ],
-        },
-        breadcrumb([
-          { name: 'Accueil', url: BASE },
-          { name: 'FAQ', url: `${BASE}/faq` },
-        ]),
-      ];
+      return (lang) => {
+        const ext = getFaqExtended(lang || 'fr');
+        return [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            '@id': `${BASE}/faq`,
+            name: 'FAQ Tooristoo — Questions fréquentes sur le coach IA Maroc',
+            url: `${BASE}/faq`,
+            publisher: { '@id': `${BASE}/#organization` },
+            mainEntity: [
+              { '@type': 'Question', name: 'Qu\'est-ce que Tooristoo ?', acceptedAnswer: { '@type': 'Answer', text: 'Tooristoo est un coach vocal IA qui aide les touristes à négocier les meilleurs prix au Maroc et obtenir des phrases de négociation en darija en temps réel. Disponible gratuitement sur web, iOS et Android.' } },
+              { '@type': 'Question', name: 'Est-ce que Tooristoo est gratuit ?', acceptedAnswer: { '@type': 'Answer', text: 'Oui, Tooristoo propose un plan gratuit avec 3 analyses par jour sans carte de crédit. Les plans Voyageur (5€/mois) et Pro (12€/mois) offrent des analyses illimitées et des fonctionnalités avancées.' } },
+              { '@type': 'Question', name: 'Dans quelles langues fonctionne Tooristoo ?', acceptedAnswer: { '@type': 'Answer', text: 'Tooristoo est disponible en 6 langues : français, anglais, espagnol, allemand, arabe et darija marocain.' } },
+              { '@type': 'Question', name: 'Quelles villes du Maroc sont couvertes ?', acceptedAnswer: { '@type': 'Answer', text: 'Tooristoo couvre toutes les grandes villes : Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla et El Jadida.' } },
+              { '@type': 'Question', name: 'Comment fonctionne l\'analyse de prix ?', acceptedAnswer: { '@type': 'Answer', text: 'L\'IA compare le prix demandé à une base de données de prix réels locaux. Si le prix dépasse significativement la fourchette normale, une alerte est émise avec le niveau de risque et une stratégie de négociation.' } },
+              { '@type': 'Question', name: 'Quels types de services sont analysés ?', acceptedAnswer: { '@type': 'Answer', text: 'Taxis, hôtels, riads, restaurants, excursions, shopping et souks, transport interurbain, guides touristiques, spas et hammams.' } },
+              { '@type': 'Question', name: 'Tooristoo fonctionne-t-il sur mobile ?', acceptedAnswer: { '@type': 'Answer', text: 'Oui, Tooristoo est une PWA (Progressive Web App) accessible directement depuis le navigateur sur iOS et Android, sans installation requise depuis un store.' } },
+              { '@type': 'Question', name: 'Puis-je utiliser Tooristoo hors ligne ?', acceptedAnswer: { '@type': 'Answer', text: 'L\'analyse IA nécessite une connexion internet. Cependant, toutes vos négociations sont sauvegardées localement et accessibles hors ligne.' } },
+              { '@type': 'Question', name: 'Comment signaler un prix anormal ?', acceptedAnswer: { '@type': 'Answer', text: 'Depuis l\'application, après une analyse, un bouton "Signaler" permet de soumettre un signalement communautaire avec la localisation, le type de service et le montant.' } },
+              { '@type': 'Question', name: 'Mes données sont-elles sécurisées ?', acceptedAnswer: { '@type': 'Answer', text: 'Oui. Toutes les données sont chiffrées en transit (HTTPS) et au repos. La reconnaissance vocale est traitée localement — seul le transcript textuel est envoyé à notre IA. Aucun audio n\'est stocké sur nos serveurs.' } },
+              { '@type': 'Question', name: ext.faq_q13, acceptedAnswer: { '@type': 'Answer', text: ext.faq_a13 } },
+              { '@type': 'Question', name: ext.faq_q14, acceptedAnswer: { '@type': 'Answer', text: ext.faq_a14 } },
+              { '@type': 'Question', name: ext.faq_q15, acceptedAnswer: { '@type': 'Answer', text: ext.faq_a15 } },
+              { '@type': 'Question', name: ext.faq_q16, acceptedAnswer: { '@type': 'Answer', text: ext.faq_a16 } },
+              { '@type': 'Question', name: ext.faq_q17, acceptedAnswer: { '@type': 'Answer', text: ext.faq_a17 } },
+              { '@type': 'Question', name: ext.faq_q18, acceptedAnswer: { '@type': 'Answer', text: ext.faq_a18 } },
+              { '@type': 'Question', name: ext.faq_q19, acceptedAnswer: { '@type': 'Answer', text: ext.faq_a19 } },
+              { '@type': 'Question', name: ext.faq_q20, acceptedAnswer: { '@type': 'Answer', text: ext.faq_a20 } },
+            ],
+          },
+          breadcrumb([
+            { name: 'Accueil', url: BASE },
+            { name: 'FAQ', url: `${BASE}/faq` },
+          ]),
+        ];
+      };
 
     case 'about':
       return [
@@ -406,7 +418,8 @@ export default function PageHelmet({ page, lang = 'fr', extraSchemas = null }) {
   const m = pageMeta[lang] || pageMeta['fr'];
   const path = page === 'home' ? '' : `/${page}`;
   const canonical = `${BASE}${path}`;
-  const schemas = extraSchemas || buildSchemas(page);
+  const rawSchemas = extraSchemas || buildSchemas(page);
+  const schemas = typeof rawSchemas === 'function' ? rawSchemas(lang) : rawSchemas;
 
   return (
     <Helmet>
