@@ -253,18 +253,19 @@ export default function VoiceHeroSection({ lang = 'fr' }) {
             </div>
 
             {/* CTA */}
-            <a
-              href="/#pricing"
+            <Link
+              to="/app"
               className="flex items-center justify-center gap-3 w-full py-5 bg-shield-green text-black font-bold text-lg rounded-2xl hover:bg-green-400 transition-all btn-glow group"
             >
-              {lang === 'fr' ? 'Voir les plans' :
-               lang === 'en' ? 'See plans' :
-               lang === 'es' ? 'Ver planes' :
-               lang === 'de' ? 'Pläne anzeigen' :
-               lang === 'ar' ? 'عرض الخطط' :
-               'شوف الفورمولات'}
+              <Mic className="w-6 h-6" />
+              {lang === 'fr' ? 'Activer le Coach Vocal' :
+               lang === 'en' ? 'Activate Voice Coach' :
+               lang === 'es' ? 'Activar Coach de Voz' :
+               lang === 'de' ? 'Sprach-Coach aktivieren' :
+               lang === 'ar' ? 'تفعيل المدرب الصوتي' :
+               'تفعيل المدرب الصوتي'}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
             <p className="text-center text-xs text-gray-600">
               {lang === 'fr' ? '🔒 100% gratuit · Aucune inscription requise' :
                lang === 'en' ? '🔒 100% free · No registration required' :
