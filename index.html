@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="/manifest.json" />
 
-    <title>Tooristoo - Coach Vocal IA pour Négocier les Meilleurs Prix au Maroc</title>
-    <meta name="description" content="Tooristoo est votre coach vocal IA pour analyser les prix, détecter les arnaques et négocier comme un local au Maroc. Gratuit, multilingue, disponible partout." />
-    <meta name="keywords" content="négociation maroc, coach vocal IA, détection arnaque touriste, prix taxi marrakech, arnaque maroc, négocier maroc, tooristoo" />
+    <!-- Default title/meta for home (overridden per-page by inline script below) -->
+    <title>Tooristoo — Coach IA Anti-Arnaque Maroc | Négocier en Darija</title>
+    <meta name="description" content="Tooristoo analyse les prix en temps réel et vous donne des phrases en darija pour négocier comme un local au Maroc. Gratuit, multilingue, sans installation." />
+    <meta name="keywords" content="négociation maroc, coach vocal IA, phrases darija, arnaque touriste maroc, prix taxi marrakech, tooristoo" />
     <meta name="author" content="Tooristoo" />
     <meta name="robots" content="index, follow" />
 
-    <!-- Canonical & sitemap -->
+    <!-- Canonical (overridden per-page by script) -->
     <link rel="canonical" href="https://www.tooristoo.com/" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-    <!-- hreflang: une seule URL par page, multilingue via JS -->
+    <!-- hreflang -->
     <link rel="alternate" hreflang="fr" href="https://www.tooristoo.com/" />
     <link rel="alternate" hreflang="en" href="https://www.tooristoo.com/" />
     <link rel="alternate" hreflang="es" href="https://www.tooristoo.com/" />
@@ -24,19 +25,19 @@
     <link rel="alternate" hreflang="ar" href="https://www.tooristoo.com/" />
     <link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph (overridden per-page by script) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.tooristoo.com/" />
-    <meta property="og:title" content="Tooristoo - Coach Vocal IA pour Négocier les Meilleurs Prix au Maroc" />
-    <meta property="og:description" content="Analysez les prix en temps réel, détectez les arnaques et négociez comme un local au Maroc avec notre coach IA vocal." />
+    <meta property="og:title" content="Tooristoo — Coach IA Anti-Arnaque Maroc | Négocier en Darija" />
+    <meta property="og:description" content="Tooristoo analyse les prix en temps réel et vous donne des phrases en darija pour négocier comme un local au Maroc." />
     <meta property="og:image" content="https://www.tooristoo.com/og-image.png" />
     <meta property="og:site_name" content="Tooristoo" />
     <meta property="og:locale" content="fr_FR" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Tooristoo - Coach Vocal IA pour Négocier au Maroc" />
-    <meta name="twitter:description" content="Votre assistant IA pour négocier les meilleurs prix au Maroc. Détection d'arnaques, phrases en darija, stratégies de négociation." />
+    <meta name="twitter:title" content="Tooristoo — Coach IA Anti-Arnaque Maroc | Négocier en Darija" />
+    <meta name="twitter:description" content="Analysez les prix, détectez les arnaques et négociez en darija au Maroc avec notre coach IA vocal." />
     <meta name="twitter:image" content="https://www.tooristoo.com/og-image.png" />
 
     <!-- Fonts -->
@@ -56,10 +57,7 @@
       "inLanguage": ["fr", "en", "es", "de", "ar"],
       "potentialAction": {
         "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://www.tooristoo.com/providers?search={search_term_string}"
-        },
+        "target": { "@type": "EntryPoint", "urlTemplate": "https://www.tooristoo.com/providers?search={search_term_string}" },
         "query-input": "required name=search_term_string"
       }
     }
@@ -83,79 +81,157 @@
     }
     </script>
 
-    <!-- Structured Data: SoftwareApplication -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Tooristoo",
-      "url": "https://www.tooristoo.com/app",
-      "applicationCategory": "TravelApplication",
-      "operatingSystem": "Web, iOS, Android",
-      "description": "Application mobile et web de coach vocal IA pour aider les touristes à négocier les prix et détecter les arnaques au Maroc. Disponible en français, anglais, espagnol, allemand et arabe.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      },
-      "featureList": [
-        "Analyse des prix en temps réel",
-        "Détection d'arnaques touristiques",
-        "Phrases de négociation en darija",
-        "Répertoire de prestataires certifiés",
-        "Historique des négociations"
-      ],
-      "inLanguage": ["fr", "en", "es", "de", "ar"]
-    }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <!--
-      Static pre-rendered content for search engine crawlers.
-      This block is rendered immediately in raw HTML before React mounts.
-      React will mount over #root and this div is hidden via CSS once JS runs.
-      Googlebot and other crawlers that do not execute JS will index this content.
-    -->
-    <style>
-      #seo-static [data-page]{display:none}
-      /* Hidden from visual users but readable by crawlers that don't execute JS */
-      #seo-static{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    </style>
+    <!-- Per-page meta injection — runs before React mounts -->
     <script>
     (function(){
-      var path = window.location.pathname.replace(/\/$/,'') || '/';
-      // Normalize: blog articles → /blog, lowercase canonical paths
-      if(path.match(/^\/blog\/.+/)) path = '/blog';
+      var BASE = 'https://www.tooristoo.com';
+      var path = window.location.pathname.replace(/\/$/, '') || '/';
+      if (path.match(/^\/blog\/.+/)) path = '/blog';
       path = path.toLowerCase();
-      // Detect user language preference (localStorage > browser)
+
+      var saved = localStorage.getItem('negoshield_lang');
+      var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || 'fr').toLowerCase();
+      var lang = saved || (nav.startsWith('ar') ? 'ar' : nav.startsWith('de') ? 'de' : nav.startsWith('es') ? 'es' : nav.startsWith('en') ? 'en' : 'fr');
+
+      // Per-page meta: [title_fr, desc_fr, title_en, desc_en, title_es, desc_es, title_de, desc_de, title_ar, desc_ar]
+      var META = {
+        '/': {
+          fr: ['Tooristoo — Coach IA Anti-Arnaque Maroc | Négocier en Darija', 'Tooristoo analyse les prix en temps réel et vous donne des phrases en darija pour négocier comme un local au Maroc. Gratuit, multilingue, sans installation.'],
+          en: ['Tooristoo — AI Anti-Scam Coach Morocco | Negotiate in Darija', 'Tooristoo analyzes prices in real time and gives you Darija phrases to negotiate like a local in Morocco. Free, multilingual, no install required.'],
+          es: ['Tooristoo — Coach IA Anti-Estafa Marruecos | Negocia en Darija', 'Tooristoo analiza precios en tiempo real y te da frases en darija para negociar como un local en Marruecos. Gratuito y multilingüe.'],
+          de: ['Tooristoo — KI Anti-Betrug Coach Marokko | Verhandeln auf Darija', 'Tooristoo analysiert Preise in Echtzeit und gibt Ihnen Darija-Phrasen, um in Marokko wie ein Einheimischer zu verhandeln. Kostenlos, mehrsprachig.'],
+          ar: ['Tooristoo — مدرب ذكي ضد الاحتيال في المغرب | التفاوض بالدارجة', 'يحلل Tooristoo الأسعار في الوقت الفعلي ويمنحك عبارات بالدارجة للتفاوض كالسكان المحليين في المغرب. مجاني ومتعدد اللغات.'],
+        },
+        '/app': {
+          fr: ['Coach IA Vocal Maroc — Analyser & Négocier les Prix | Tooristoo', 'Dites ou tapez le prix demandé, recevez instantanément la fourchette juste, les phrases en darija et la stratégie de négociation. Coach IA disponible partout au Maroc.'],
+          en: ['Morocco AI Voice Coach — Analyze & Negotiate Prices | Tooristoo', 'Say or type the price asked, instantly get the fair range, Darija phrases and negotiation strategy. AI coach available everywhere in Morocco.'],
+          es: ['Coach de Voz IA Marruecos — Analizar y Negociar | Tooristoo', 'Di o escribe el precio pedido, recibe al instante el rango justo, frases en darija y estrategia de negociación.'],
+          de: ['KI-Sprachcoach Marokko — Preise analysieren & verhandeln | Tooristoo', 'Sagen oder tippen Sie den geforderten Preis, erhalten Sie sofort die faire Spanne, Darija-Phrasen und Verhandlungsstrategie.'],
+          ar: ['مدرب صوتي ذكي في المغرب — تحليل وتفاوض على الأسعار | Tooristoo', 'قل أو اكتب السعر المطلوب، واحصل فوراً على النطاق العادل وعبارات الدارجة واستراتيجية التفاوض.'],
+        },
+        '/providers': {
+          fr: ['Prestataires Certifiés au Maroc — Prix Officiels Taxis, Riads, Guides | Tooristoo', 'Répertoire complet de prestataires vérifiés avec prix officiels : taxis (7–100 MAD), riads (350–900 MAD/nuit), guides (400–600 MAD/j) à Marrakech, Fès, Agadir.'],
+          en: ['Certified Providers in Morocco — Official Prices Taxis, Riads, Guides | Tooristoo', 'Complete directory of verified providers with official prices: taxis (7–100 MAD), riads (350–900 MAD/night), guides (400–600 MAD/day) in Marrakech, Fes, Agadir.'],
+          es: ['Proveedores Certificados en Marruecos — Precios Oficiales Taxis, Riads, Guías | Tooristoo', 'Directorio de proveedores verificados con precios oficiales en Marrakech, Fez, Agadir y Chefchaouen.'],
+          de: ['Zertifizierte Anbieter in Marokko — Offizielle Preise Taxis, Riads, Guides | Tooristoo', 'Verzeichnis geprüfter Anbieter mit offiziellen Preisen in Marrakesch, Fès, Agadir und Chefchaouen.'],
+          ar: ['مزودو خدمات معتمدون في المغرب — أسعار رسمية للتاكسي والرياض والمرشدين | Tooristoo', 'دليل شامل لمزودي الخدمات الموثوقين بأسعار رسمية في مراكش وفاس وأكادير وشفشاون.'],
+        },
+        '/alerts': {
+          fr: ['Conseils Anti-Arnaque Maroc — Prix de Référence Taxis, Guides, Restaurants | Tooristoo', 'Conseils pratiques pour voyager sereinement au Maroc : tarifs officiels taxis, guides certifiés, prix restaurants, change légal. Évitez les pièges touristiques.'],
+          en: ['Morocco Anti-Scam Tips — Reference Prices Taxis, Guides, Restaurants | Tooristoo', 'Practical tips for stress-free travel in Morocco: official taxi fares, certified guides, restaurant prices, legal currency exchange. Avoid tourist traps.'],
+          es: ['Consejos Anti-Estafa Marruecos — Precios de Referencia Taxis, Guías, Restaurantes | Tooristoo', 'Consejos prácticos para viajar tranquilo en Marruecos: tarifas oficiales, guías certificados, precios restaurantes.'],
+          de: ['Marokko Anti-Betrug-Tipps — Referenzpreise Taxis, Guides, Restaurants | Tooristoo', 'Praktische Tipps für sorgenfreies Reisen in Marokko: offizielle Taxitarife, zertifizierte Guides, Restaurantpreise.'],
+          ar: ['نصائح ضد الاحتيال في المغرب — أسعار مرجعية للتاكسي والمرشدين والمطاعم | Tooristoo', 'نصائح عملية للسفر بثقة في المغرب: تعريفات التاكسي الرسمية، المرشدون المعتمدون، أسعار المطاعم.'],
+        },
+        '/faq': {
+          fr: ['FAQ Tooristoo — Toutes les Questions sur le Coach IA Anti-Arnaque Maroc', 'Réponses détaillées : comment fonctionne Tooristoo, langues disponibles, plan gratuit, utilisation hors ligne, signalement d\'arnaques, villes couvertes au Maroc.'],
+          en: ['Tooristoo FAQ — All Questions about the Morocco AI Anti-Scam Coach', 'Detailed answers: how Tooristoo works, available languages, free plan, offline use, scam reporting, cities covered in Morocco.'],
+          es: ['FAQ Tooristoo — Todas las preguntas sobre el Coach IA Anti-Estafa Marruecos', 'Respuestas detalladas: cómo funciona Tooristoo, idiomas disponibles, plan gratuito, uso sin conexión y denuncia de estafas.'],
+          de: ['Tooristoo FAQ — Alle Fragen zum KI Anti-Betrug Coach Marokko', 'Ausführliche Antworten: Funktionsweise, verfügbare Sprachen, kostenloser Plan, Offline-Nutzung, Betrugsmeldung, abgedeckte Städte.'],
+          ar: ['أسئلة Tooristoo الشائعة — كل الأسئلة حول المدرب الذكي ضد الاحتيال في المغرب', 'إجابات مفصلة: كيف يعمل Tooristoo، اللغات المتاحة، الخطة المجانية، الاستخدام دون اتصال، الإبلاغ عن الاحتيال.'],
+        },
+        '/about': {
+          fr: ['À Propos de Tooristoo — Startup Franco-Marocaine | Coach IA Fondé à Marrakech', 'Tooristoo a été fondé à Marrakech en 2023 pour protéger les touristes des prix gonflés. 50 000+ voyageurs protégés, 6 langues, 13 villes au Maroc.'],
+          en: ['About Tooristoo — Franco-Moroccan Startup | AI Coach Founded in Marrakech', 'Tooristoo was founded in Marrakech in 2023 to protect tourists from inflated prices. 50,000+ travelers protected, 6 languages, 13 cities in Morocco.'],
+          es: ['Acerca de Tooristoo — Startup Franco-Marroquí | Coach IA Fundado en Marrakech', 'Tooristoo fue fundado en Marrakech en 2023 para proteger a los turistas de precios inflados. Más de 50.000 viajeros protegidos.'],
+          de: ['Über Tooristoo — Französisch-Marokkanisches Startup | KI-Coach gegründet in Marrakesch', 'Tooristoo wurde 2023 in Marrakesch gegründet, um Touristen vor überhöhten Preisen zu schützen. 50.000+ geschützte Reisende.'],
+          ar: ['عن Tooristoo — شركة ناشئة فرنسية-مغربية | مدرب ذكي تأسس في مراكش', 'تأسس Tooristoo في مراكش عام 2023 لحماية السياح من الأسعار المبالغ فيها. أكثر من 50,000 مسافر محمي، 6 لغات، 13 مدينة.'],
+        },
+        '/blog': {
+          fr: ['Blog Tooristoo — Guides de Prix & Arnaques Maroc par Ville et Catégorie', 'Guides pratiques et articles de fond : prix réels taxis/riads/restaurants, top arnaques à éviter, préparation voyage Maroc, techniques de négociation par ville.'],
+          en: ['Tooristoo Blog — Morocco Price Guides & Scam Warnings by City and Category', 'Practical guides and in-depth articles: real prices taxis/riads/restaurants, top scams to avoid, Morocco trip preparation, negotiation techniques by city.'],
+          es: ['Blog Tooristoo — Guías de Precios y Estafas Marruecos por Ciudad y Categoría', 'Guías prácticas: precios reales taxis/riads/restaurantes, principales estafas, preparación del viaje a Marruecos.'],
+          de: ['Tooristoo Blog — Marokko Preisführer & Betrugswarnungen nach Stadt und Kategorie', 'Praktische Leitfäden: echte Preise für Taxis/Riads/Restaurants, häufigste Betrugsfälle, Reisevorbereitung.'],
+          ar: ['مدونة Tooristoo — أدلة الأسعار والاحتيال في المغرب حسب المدينة والفئة', 'أدلة عملية: أسعار حقيقية للتاكسي والرياض والمطاعم، أبرز الاحتيالات، نصائح التفاوض حسب المدينة.'],
+        },
+        '/darija': {
+          fr: ['100 Phrases en Darija pour Négocier au Maroc | Transcription + Traductions — Tooristoo', 'Apprenez les 100 phrases essentielles en darija marocain : demander le prix, activer le compteur taxi, refuser les arnaques, négocier le souk. Avec transcription latine et traductions en 5 langues.'],
+          en: ['100 Darija Phrases to Negotiate in Morocco | Transcription + Translations — Tooristoo', 'Learn the 100 essential Moroccan Darija phrases: ask the price, activate taxi meter, refuse scams, negotiate the souk. With Latin transcription and translations in 5 languages.'],
+          es: ['100 Frases en Darija para Negociar en Marruecos | Transcripción + Traducciones — Tooristoo', 'Aprende las 100 frases esenciales en darija marroquí: pedir precio, activar taxímetro, rechazar estafas, negociar en el zoco.'],
+          de: ['100 Darija-Phrasen für Verhandlungen in Marokko | Transkription + Übersetzungen — Tooristoo', 'Lernen Sie die 100 wesentlichen marokkanischen Darija-Phrasen: Preis erfragen, Taxameter einschalten, Betrug ablehnen, im Souk verhandeln.'],
+          ar: ['100 عبارة بالدارجة للتفاوض في المغرب | نسخ لاتيني + ترجمات — Tooristoo', 'تعلّم 100 عبارة أساسية بالدارجة المغربية: اسأل عن السعر، شغّل عداد التاكسي، ارفض الاحتيال، تفاوض في السوق. مع نسخ لاتيني وترجمات بـ5 لغات.'],
+        },
+        '/charter': {
+          fr: ['Charte des 7 Engagements — Prestataires Certifiés Tooristoo au Maroc', 'Découvrez les 7 engagements que chaque prestataire certifié Tooristoo signe : prix officiels, sans frais cachés, visite terrain anonyme, note minimale 3.5/5.'],
+          en: ['7 Commitments Charter — Tooristoo Certified Providers in Morocco', 'Discover the 7 commitments every Tooristoo certified provider signs: official prices, no hidden fees, anonymous field visit, minimum 3.5/5 rating.'],
+          es: ['Carta de los 7 Compromisos — Proveedores Certificados Tooristoo Marruecos', 'Descubre los 7 compromisos que firma cada proveedor certificado Tooristoo: precios oficiales, sin cargos ocultos, visita anónima en terreno.'],
+          de: ['7-Verpflichtungen-Charta — Tooristoo Zertifizierte Anbieter in Marokko', 'Entdecken Sie die 7 Verpflichtungen, die jeder zertifizierte Tooristoo-Anbieter unterzeichnet: offizielle Preise, keine versteckten Gebühren, anonymer Feldbesuch.'],
+          ar: ['ميثاق الالتزامات السبعة — مزودو Tooristoo المعتمدون في المغرب', 'اكتشف الالتزامات السبعة التي يوقّع عليها كل مزود معتمد: أسعار رسمية، بدون رسوم مخفية، زيارة ميدانية مجهولة، تقييم أدنى 3.5/5.'],
+        },
+      };
+
+      // Inject per-page meta into <head>
+      var pageMeta = META[path];
+      if (pageMeta) {
+        var m = pageMeta[lang] || pageMeta['fr'];
+        var canonical = BASE + (path === '/' ? '' : path);
+
+        // title
+        document.title = m[0];
+
+        // description
+        var descEl = document.querySelector('meta[name="description"]');
+        if (descEl) descEl.setAttribute('content', m[1]);
+
+        // canonical
+        var canonEl = document.querySelector('link[rel="canonical"]');
+        if (canonEl) canonEl.setAttribute('href', canonical);
+
+        // OG
+        var ogTitle = document.querySelector('meta[property="og:title"]');
+        var ogDesc = document.querySelector('meta[property="og:description"]');
+        var ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogTitle) ogTitle.setAttribute('content', m[0]);
+        if (ogDesc) ogDesc.setAttribute('content', m[1]);
+        if (ogUrl) ogUrl.setAttribute('content', canonical);
+
+        // Twitter
+        var twTitle = document.querySelector('meta[name="twitter:title"]');
+        var twDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twTitle) twTitle.setAttribute('content', m[0]);
+        if (twDesc) twDesc.setAttribute('content', m[1]);
+
+        // html lang + dir
+        var htmlLang = {fr:'fr',en:'en',es:'es',de:'de',ar:'ar'}[lang] || 'fr';
+        document.documentElement.lang = htmlLang;
+        if (lang === 'ar') document.documentElement.dir = 'rtl';
+      }
+    })();
+    </script>
+
+    <!-- Per-page static SEO content (shown only to the matching page) -->
+    <script>
+    (function(){
+      var path = window.location.pathname.replace(/\/$/, '') || '/';
+      if (path.match(/^\/blog\/.+/)) path = '/blog';
+      path = path.toLowerCase();
       var saved = localStorage.getItem('negoshield_lang');
       var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || 'fr').toLowerCase();
       var lang = saved || (nav.startsWith('ar') ? 'ar' : nav.startsWith('de') ? 'de' : nav.startsWith('es') ? 'es' : nav.startsWith('en') ? 'en' : 'fr');
       document.addEventListener('DOMContentLoaded', function(){
-        // Prefer language-specific article, fallback to any article for the path
+        // Show ONLY the article matching this exact page path — NO fallback to home
         var el = document.querySelector('#seo-static [data-page="'+path+'"][lang="'+lang+'"]')
                || document.querySelector('#seo-static [data-page="'+path+'"]');
-        if(!el && path !== '/') el = document.querySelector('#seo-static [data-page="/"][lang="'+lang+'"]')
-                                    || document.querySelector('#seo-static [data-page="/"]');
-        if(el) el.style.display = 'block';
-        var title = el ? el.querySelector('h1') : null;
-        if(title) document.title = title.textContent + ' | Tooristoo';
-        // Set html lang from detected language
-        var htmlLang = {fr:'fr',en:'en',es:'es',de:'de',ar:'ar'}[lang] || 'fr';
-        document.documentElement.lang = htmlLang;
-        if(lang === 'ar') document.documentElement.dir = 'rtl';
+        if (el) el.style.display = 'block';
       });
     })();
     </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <style>
+      #seo-static [data-page]{display:none}
+      #seo-static{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    </style>
     <div id="seo-static" aria-hidden="true">
-      <!-- HOME — multilingual static content for crawlers -->
+
+      <!-- HOME -->
       <article data-page="/" lang="fr">
-        <h1>Tooristoo — Coach Vocal IA pour Négocier les Meilleurs Prix au Maroc</h1>
-        <p>Tooristoo est le coach vocal IA qui analyse les prix en temps réel, détecte les arnaques touristiques et vous donne des phrases de négociation en darija pour Marrakech, Fès, Agadir, Casablanca et toutes les villes du Maroc.</p>
+        <h1>Tooristoo — Coach IA Anti-Arnaque Maroc | Négocier en Darija</h1>
+        <p>Tooristoo est le coach vocal IA qui analyse les prix en temps réel, détecte les prix anormalement élevés et vous donne des phrases de négociation en darija pour Marrakech, Fès, Agadir, Casablanca et toutes les villes du Maroc.</p>
         <ul>
           <li>Analyse IA des prix taxis, hôtels, restaurants, riads, excursions</li>
-          <li>Détection automatique des arnaques les plus fréquentes</li>
+          <li>Alertes prix anormaux sur 12 000 analyses vérifiées</li>
           <li>Phrases exactes en darija marocain pour négocier</li>
           <li>Prestataires certifiés avec prix officiels transparents</li>
           <li>Disponible en français, anglais, espagnol, allemand, arabe</li>
@@ -166,197 +242,103 @@
         <ol>
           <li>Dites ou tapez le prix qu'on vous propose</li>
           <li>L'IA analyse ce prix par rapport aux tarifs locaux réels</li>
-          <li>Recevez la fourchette de prix juste, le niveau de risque et les phrases exactes en darija pour négocier</li>
+          <li>Recevez la fourchette juste, le niveau de risque et les phrases en darija pour négocier</li>
         </ol>
-        <a href="/app">Essayer gratuitement</a> | <a href="/providers">Voir les prestataires certifiés</a> | <a href="/blog">Lire les guides de voyage Maroc</a>
+        <a href="/app">Essayer gratuitement</a> | <a href="/providers">Prestataires certifiés</a> | <a href="/darija">Phrases en darija</a>
       </article>
       <article data-page="/" lang="en">
-        <h1>Tooristoo — AI Voice Coach to Negotiate the Best Prices in Morocco</h1>
-        <p>Tooristoo is the AI voice coach that analyzes prices in real time, detects tourist scams and gives you negotiation phrases in Darija for Marrakech, Fes, Agadir, Casablanca and all cities in Morocco.</p>
+        <h1>Tooristoo — AI Anti-Scam Coach Morocco | Negotiate in Darija</h1>
+        <p>Tooristoo is the AI voice coach that analyzes prices in real time, detects abnormally high prices and gives you negotiation phrases in Darija for Marrakech, Fes, Agadir, Casablanca and all cities in Morocco.</p>
         <ul>
           <li>AI price analysis for taxis, hotels, restaurants, riads, excursions</li>
-          <li>Automatic detection of the most common scams</li>
+          <li>Price anomaly alerts across 12,000 verified analyses</li>
           <li>Exact phrases in Moroccan Darija to negotiate</li>
           <li>Certified providers with official transparent prices</li>
-          <li>Available in French, English, Spanish, German, Arabic</li>
         </ul>
         <h2>Cities covered</h2>
         <p>Marrakech, Fes, Casablanca, Chefchaouen, Agadir, Tangier, Rabat, Meknes, Ouarzazate, Merzouga, Essaouira, Dakhla, El Jadida.</p>
-        <a href="/app">Try for free</a> | <a href="/providers">See certified providers</a> | <a href="/blog">Read Morocco travel guides</a>
+        <a href="/app">Try for free</a> | <a href="/providers">Certified providers</a> | <a href="/darija">Darija phrases</a>
       </article>
       <article data-page="/" lang="es">
-        <h1>Tooristoo — Coach de Voz IA para Negociar los Mejores Precios en Marruecos</h1>
-        <p>Tooristoo es el coach de voz IA que analiza precios en tiempo real, detecta estafas turísticas y te da frases de negociación en darija para Marrakech, Fez, Agadir, Casablanca y todas las ciudades de Marruecos.</p>
+        <h1>Tooristoo — Coach IA Anti-Estafa Marruecos | Negociar en Darija</h1>
+        <p>Tooristoo analiza precios en tiempo real, detecta precios anormalmente altos y da frases de negociación en darija para Marrakech, Fez, Agadir y todo Marruecos.</p>
         <ul>
-          <li>Análisis IA de precios para taxis, hoteles, restaurantes, riads, excursiones</li>
-          <li>Detección automática de las estafas más frecuentes</li>
+          <li>Análisis IA de precios taxis, hoteles, restaurantes, riads, excursiones</li>
+          <li>Alertas de precios anormales en 12.000 análisis verificados</li>
           <li>Frases exactas en darija marroquí para negociar</li>
           <li>Proveedores certificados con precios oficiales transparentes</li>
         </ul>
-        <a href="/app">Probar gratis</a> | <a href="/providers">Ver proveedores certificados</a>
+        <a href="/app">Probar gratis</a> | <a href="/providers">Proveedores certificados</a>
       </article>
       <article data-page="/" lang="de">
-        <h1>Tooristoo — KI-Sprachcoach für die besten Preise in Marokko</h1>
-        <p>Tooristoo ist der KI-Sprachcoach, der Preise in Echtzeit analysiert, Touristenbetrug erkennt und Ihnen Verhandlungsphrasen auf Darija für Marrakesch, Fès, Agadir, Casablanca und alle Städte Marokkos liefert.</p>
+        <h1>Tooristoo — KI Anti-Betrug Coach Marokko | Verhandeln auf Darija</h1>
+        <p>Tooristoo analysiert Preise in Echtzeit, erkennt abnormal hohe Preise und gibt Darija-Verhandlungsphrasen für Marrakesch, Fès, Agadir und ganz Marokko.</p>
         <ul>
           <li>KI-Preisanalyse für Taxis, Hotels, Restaurants, Riads, Ausflüge</li>
-          <li>Automatische Erkennung häufiger Betrugsfälle</li>
-          <li>Genaue Phrasen auf Marokkanischem Darija zum Verhandeln</li>
-          <li>Zertifizierte Anbieter mit offiziellen transparenten Preisen</li>
+          <li>Preisanomalien-Alarme aus 12.000 verifizierten Analysen</li>
+          <li>Genaue Darija-Phrasen zum Verhandeln</li>
         </ul>
-        <a href="/app">Kostenlos testen</a> | <a href="/providers">Zertifizierte Anbieter ansehen</a>
+        <a href="/app">Kostenlos testen</a> | <a href="/providers">Zertifizierte Anbieter</a>
       </article>
       <article data-page="/" lang="ar" dir="rtl">
-        <h1>Tooristoo — مدرب صوتي ذكي للتفاوض على أفضل الأسعار في المغرب</h1>
-        <p>Tooristoo هو المدرب الصوتي الذكي الذي يحلل الأسعار في الوقت الفعلي ويمنحك معرفة السعر العادل وعبارات التفاوض بالدارجة لمراكش وفاس وأكادير والدار البيضاء وجميع مدن المغرب.</p>
+        <h1>Tooristoo — مدرب ذكي ضد الاحتيال في المغرب | التفاوض بالدارجة</h1>
+        <p>يحلل Tooristoo الأسعار في الوقت الفعلي ويكشف الأسعار المرتفعة بشكل غير طبيعي ويمنحك عبارات بالدارجة للتفاوض في مراكش وفاس وأكادير والدار البيضاء وجميع مدن المغرب.</p>
         <ul>
           <li>تحليل ذكي للأسعار: تاكسي، فنادق، مطاعم، رياض، رحلات</li>
-          <li>تنبيه فوري عند اكتشاف أسعار مرتفعة بشكل غير عادي</li>
+          <li>تنبيهات الأسعار الشاذة من 12,000 تحليل موثق</li>
           <li>عبارات دقيقة بالدارجة المغربية للتفاوض باحترام</li>
-          <li>مزودو خدمات معتمدون بأسعار رسمية شفافة</li>
         </ul>
-        <a href="/app">جرب مجاناً</a> | <a href="/providers">اطلع على مزودي الخدمات المعتمدين</a>
+        <a href="/app">جرب مجاناً</a> | <a href="/providers">مزودو الخدمات المعتمدون</a>
       </article>
 
-      <!-- ABOUT — multilingual -->
-      <article data-page="/about" lang="fr">
-        <h1>À Propos de Tooristoo — Coach IA Anti-Arnaque pour les Touristes au Maroc</h1>
-        <p>Tooristoo a été fondé par une équipe franco-marocaine après avoir constaté que les touristes au Maroc payaient en moyenne 3 à 8 fois le prix local pour les taxis, excursions et restaurants. Notre mission : protéger les voyageurs grâce à l'intelligence artificielle.</p>
-        <h2>Notre mission</h2>
-        <p>Démocratiser l'accès aux vrais prix locaux au Maroc pour tous les touristes, quelle que soit leur langue. Tooristoo analyse les prix, détecte les arnaques et forme les voyageurs à négocier avec respect et efficacité.</p>
-        <h2>Nos valeurs</h2>
+      <!-- APP -->
+      <article data-page="/app" lang="fr">
+        <h1>Coach IA Vocal Maroc — Analyser &amp; Négocier les Prix | Tooristoo</h1>
+        <p>Dites ou tapez le prix demandé, recevez instantanément la fourchette juste, les phrases en darija et la stratégie de négociation. Coach IA disponible partout au Maroc.</p>
         <ul>
-          <li>Transparence : prix réels du marché accessibles à tous</li>
-          <li>Respect : négociation équitable pour touristes et prestataires</li>
-          <li>Innovation : IA vocale multilingue en temps réel</li>
-          <li>Inclusion : 6 langues dont le darija marocain</li>
+          <li>Coach vocal IA — parlez directement pour décrire la situation</li>
+          <li>Analyse de prix en temps réel avec tarifs locaux officiels</li>
+          <li>Alertes prix anormaux avec niveau de risque</li>
+          <li>Phrases de négociation en darija marocain</li>
+          <li>Prestataires certifiés recommandés</li>
+          <li>Historique des négociations et économies réalisées</li>
         </ul>
-        <h2>Notre impact</h2>
+        <p>3 analyses gratuites par jour. Analyses illimitées en version Pro.</p>
+        <a href="/app">Démarrer gratuitement</a>
+      </article>
+      <article data-page="/app" lang="en">
+        <h1>Morocco AI Voice Coach — Analyze &amp; Negotiate Prices | Tooristoo</h1>
+        <p>Say or type the price asked, instantly get the fair range, Darija phrases and negotiation strategy. AI coach available everywhere in Morocco.</p>
         <ul>
-          <li>50 000+ touristes protégés</li>
-          <li>2 350 MAD d'économies moyennes par voyage</li>
-          <li>98% de taux de détection des arnaques fréquentes</li>
-          <li>6 langues supportées : français, anglais, espagnol, allemand, arabe, darija</li>
+          <li>AI voice coach — speak directly to describe the situation</li>
+          <li>Real-time price analysis with official local rates</li>
+          <li>Price anomaly alerts with risk level</li>
+          <li>Negotiation phrases in Moroccan Darija</li>
+          <li>Nearby certified providers recommended</li>
         </ul>
-        <h2>Villes couvertes au Maroc</h2>
-        <p>Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla, El Jadida.</p>
+        <p>3 free analyses per day. Unlimited analyses on Pro plan.</p>
+        <a href="/app">Start for free</a>
       </article>
-      <article data-page="/about" lang="en">
-        <h1>About Tooristoo — AI Anti-Scam Coach for Tourists in Morocco</h1>
-        <p>Tooristoo was founded by a Franco-Moroccan team after noticing that tourists in Morocco paid 3 to 8 times the local price for taxis, excursions and restaurants. Our mission: protect travelers using artificial intelligence.</p>
-        <h2>Our mission</h2>
-        <p>Democratize access to real local prices in Morocco for all tourists, regardless of language. Tooristoo analyzes prices, detects scams and trains travelers to negotiate respectfully and effectively.</p>
-        <h2>Our values</h2>
-        <ul>
-          <li>Transparency: real market prices accessible to everyone</li>
-          <li>Respect: fair negotiation for tourists and providers</li>
-          <li>Innovation: real-time multilingual AI voice coaching</li>
-          <li>Inclusion: 6 languages including Moroccan Darija</li>
-        </ul>
-        <h2>Our impact</h2>
-        <ul>
-          <li>50,000+ protected travelers</li>
-          <li>2,350 MAD average savings per trip</li>
-          <li>98% scam detection rate</li>
-          <li>6 languages: French, English, Spanish, German, Arabic, Darija</li>
-        </ul>
+      <article data-page="/app" lang="es">
+        <h1>Coach de Voz IA Marruecos — Analizar y Negociar Precios | Tooristoo</h1>
+        <p>Di o escribe el precio pedido, recibe al instante el rango justo, frases en darija y estrategia de negociación. Coach IA disponible en todo Marruecos.</p>
+        <a href="/app">Empezar gratis</a>
       </article>
-      <article data-page="/about" lang="es">
-        <h1>Acerca de Tooristoo — Coach IA Anti-Estafa para Turistas en Marruecos</h1>
-        <p>Tooristoo fue fundado por un equipo franco-marroquí tras constatar que los turistas en Marruecos pagaban de 3 a 8 veces el precio local en taxis, excursiones y restaurantes. Nuestra misión: proteger a los viajeros mediante inteligencia artificial.</p>
-        <h2>Nuestra misión</h2>
-        <p>Democratizar el acceso a los precios locales reales en Marruecos para todos los turistas, sin importar el idioma. Tooristoo analiza precios, detecta estafas y forma a los viajeros para negociar con respeto y eficacia.</p>
+      <article data-page="/app" lang="de">
+        <h1>KI-Sprachcoach Marokko — Preise analysieren &amp; verhandeln | Tooristoo</h1>
+        <p>Sagen oder tippen Sie den geforderten Preis, erhalten Sie sofort die faire Spanne, Darija-Phrasen und Verhandlungsstrategie. KI-Coach überall in Marokko verfügbar.</p>
+        <a href="/app">Kostenlos starten</a>
       </article>
-      <article data-page="/about" lang="de">
-        <h1>Über Tooristoo — KI Anti-Betrug Coach für Touristen in Marokko</h1>
-        <p>Tooristoo wurde von einem französisch-marokkanischen Team gegründet, nachdem festgestellt wurde, dass Touristen in Marokko 3 bis 8 Mal den Lokalpreis für Taxis, Ausflüge und Restaurants zahlten. Unsere Mission: Reisende durch künstliche Intelligenz schützen.</p>
-        <h2>Unsere Mission</h2>
-        <p>Den Zugang zu echten lokalen Preisen in Marokko für alle Touristen zu demokratisieren. Tooristoo analysiert Preise, erkennt Betrug und schult Reisende in respektvollem und effektivem Verhandeln.</p>
-      </article>
-      <article data-page="/about" lang="ar" dir="rtl">
-        <h1>عن Tooristoo — مدرب ذكاء اصطناعي لمساعدة السياح على معرفة الأسعار الحقيقية في المغرب</h1>
-        <p>تأسس Tooristoo من قِبَل فريق فرنسي-مغربي بعد ملاحظة أن كثيراً من السياح في المغرب يدفعون أكثر من السعر المحلي المعتاد. مهمتنا: مساعدة المسافرين على معرفة الأسعار العادلة والتفاوض باحترام.</p>
-        <h2>مهمتنا</h2>
-        <p>إتاحة الوصول إلى الأسعار المحلية الحقيقية في المغرب لجميع السياح بصرف النظر عن لغتهم. يحلل Tooristoo الأسعار ويُنبّه عند وجود فارق كبير، ويدرب المسافرين على التفاوض باحترام وفعالية.</p>
+      <article data-page="/app" lang="ar" dir="rtl">
+        <h1>مدرب صوتي ذكي في المغرب — تحليل وتفاوض على الأسعار | Tooristoo</h1>
+        <p>قل أو اكتب السعر المطلوب، واحصل فوراً على النطاق العادل وعبارات الدارجة واستراتيجية التفاوض. مدرب ذكي متوفر في كل أنحاء المغرب.</p>
+        <a href="/app">ابدأ مجاناً</a>
       </article>
 
-      <!-- FAQ — multilingual -->
-      <article data-page="/faq" lang="fr">
-        <h1>Questions Fréquentes sur Tooristoo — FAQ Coach IA Maroc</h1>
-        <dl>
-          <dt>Qu'est-ce que Tooristoo ?</dt>
-          <dd>Tooristoo est un coach vocal IA qui aide les touristes à négocier les meilleurs prix au Maroc, détecter les arnaques et obtenir des phrases de négociation en darija en temps réel.</dd>
-          <dt>Est-ce que Tooristoo est gratuit ?</dt>
-          <dd>Oui, Tooristoo propose un plan gratuit avec 3 analyses par jour. Les plans Voyageur et Pro offrent des analyses illimitées.</dd>
-          <dt>Dans quelles langues fonctionne Tooristoo ?</dt>
-          <dd>Tooristoo est disponible en français, anglais, espagnol, allemand, arabe et darija marocain.</dd>
-          <dt>Quelles villes du Maroc sont couvertes ?</dt>
-          <dd>Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla et El Jadida.</dd>
-          <dt>Comment fonctionne la détection d'arnaques ?</dt>
-          <dd>Notre IA compare le prix demandé à une base de données de prix réels locaux. Si le prix est anormalement élevé, une alerte est émise avec une stratégie de négociation.</dd>
-          <dt>Quels types de services sont analysés ?</dt>
-          <dd>Taxis, hôtels, riads, restaurants, excursions, shopping, transport, guides touristiques, spas et hammams.</dd>
-          <dt>Puis-je utiliser Tooristoo hors ligne ?</dt>
-          <dd>L'analyse IA nécessite une connexion internet. Les phrases de négociation sauvegardées sont accessibles hors ligne.</dd>
-          <dt>Tooristoo fonctionne-t-il sur mobile ?</dt>
-          <dd>Oui, Tooristoo est une PWA accessible sur iOS et Android depuis le navigateur, sans installation requise.</dd>
-        </dl>
-      </article>
-      <article data-page="/faq" lang="en">
-        <h1>Frequently Asked Questions about Tooristoo — Morocco AI Coach FAQ</h1>
-        <dl>
-          <dt>What is Tooristoo?</dt>
-          <dd>Tooristoo is an AI voice coach that helps tourists negotiate the best prices in Morocco, detect scams and get negotiation phrases in Darija in real time.</dd>
-          <dt>Is Tooristoo free?</dt>
-          <dd>Yes, Tooristoo offers a free plan with 3 analyses per day. Traveler and Pro plans offer unlimited analyses.</dd>
-          <dt>Which languages does Tooristoo support?</dt>
-          <dd>French, English, Spanish, German, Arabic and Moroccan Darija.</dd>
-          <dt>Which cities in Morocco are covered?</dt>
-          <dd>Marrakech, Fes, Casablanca, Chefchaouen, Agadir, Tangier, Rabat, Meknes, Ouarzazate, Merzouga, Essaouira, Dakhla and El Jadida.</dd>
-          <dt>How does scam detection work?</dt>
-          <dd>Our AI compares the requested price to a database of real local prices. If the price is abnormally high, an alert is triggered with a negotiation strategy.</dd>
-          <dt>Which services are analyzed?</dt>
-          <dd>Taxis, hotels, riads, restaurants, excursions, shopping, transport, tourist guides, spas and hammams.</dd>
-          <dt>Does Tooristoo work on mobile?</dt>
-          <dd>Yes, Tooristoo is a PWA accessible on iOS and Android from the browser, no installation required.</dd>
-        </dl>
-      </article>
-      <article data-page="/faq" lang="es">
-        <h1>Preguntas Frecuentes sobre Tooristoo — FAQ Coach IA Marruecos</h1>
-        <dl>
-          <dt>¿Qué es Tooristoo?</dt>
-          <dd>Tooristoo es un coach de voz IA que ayuda a los turistas a negociar los mejores precios en Marruecos, detectar estafas y obtener frases de negociación en darija en tiempo real.</dd>
-          <dt>¿Es gratuito Tooristoo?</dt>
-          <dd>Sí, Tooristoo ofrece un plan gratuito con 3 análisis por día. Los planes Viajero y Pro ofrecen análisis ilimitados.</dd>
-          <dt>¿Qué idiomas soporta Tooristoo?</dt>
-          <dd>Francés, inglés, español, alemán, árabe y darija marroquí.</dd>
-        </dl>
-      </article>
-      <article data-page="/faq" lang="de">
-        <h1>Häufig gestellte Fragen zu Tooristoo — KI-Coach Marokko FAQ</h1>
-        <dl>
-          <dt>Was ist Tooristoo?</dt>
-          <dd>Tooristoo ist ein KI-Sprachcoach, der Touristen dabei hilft, die besten Preise in Marokko zu verhandeln, Betrug zu erkennen und Verhandlungsphrasen auf Darija in Echtzeit zu erhalten.</dd>
-          <dt>Ist Tooristoo kostenlos?</dt>
-          <dd>Ja, Tooristoo bietet einen kostenlosen Plan mit 3 Analysen pro Tag. Die Reisender- und Pro-Pläne bieten unbegrenzte Analysen.</dd>
-        </dl>
-      </article>
-      <article data-page="/faq" lang="ar" dir="rtl">
-        <h1>الأسئلة الشائعة حول Tooristoo — أسئلة وأجوبة المدرب الذكي المغرب</h1>
-        <dl>
-          <dt>ما هو Tooristoo؟</dt>
-          <dd>Tooristoo مدرب صوتي ذكي يساعد السياح على معرفة الأسعار الحقيقية في المغرب والتفاوض بثقة واحترام، مع عبارات بالدارجة في الوقت الفعلي.</dd>
-          <dt>هل Tooristoo مجاني؟</dt>
-          <dd>نعم، يقدم Tooristoo خطة مجانية بـ3 تحليلات يومياً. تقدم خطط المسافر والبرو تحليلات غير محدودة.</dd>
-          <dt>ما هي اللغات المدعومة؟</dt>
-          <dd>الفرنسية والإنجليزية والإسبانية والألمانية والعربية والدارجة المغربية.</dd>
-        </dl>
-      </article>
-
-      <!-- PROVIDERS — multilingual -->
+      <!-- PROVIDERS -->
       <article data-page="/providers" lang="fr">
-        <h1>Prestataires Certifiés Tooristoo au Maroc — Hôtels, Taxis, Restaurants, Guides</h1>
-        <p>Répertoire complet de prestataires vérifiés au Maroc avec prix officiels à Marrakech, Fès, Casablanca, Agadir et dans tout le Maroc. Chaque prestataire a signé la Charte Tooristoo des 7 engagements.</p>
+        <h1>Prestataires Certifiés au Maroc — Prix Officiels Taxis, Riads, Guides | Tooristoo</h1>
+        <p>Répertoire complet de prestataires vérifiés avec prix officiels. Chaque prestataire a signé la Charte Tooristoo des 7 engagements et a été contrôlé sur le terrain.</p>
         <h2>Taxis certifiés — Tarifs officiels</h2>
         <ul>
           <li><strong>Marrakech centre-ville</strong> — Petit taxi compteur : 7–15 MAD. Aéroport Menara → Gueliz : 70–100 MAD</li>
@@ -371,16 +353,7 @@
           <li><strong>Fès médina — riad authentique</strong> — Chambre double : 350–600 MAD/nuit</li>
           <li><strong>Chefchaouen — maison d'hôtes</strong> — Chambre double : 300–500 MAD/nuit</li>
           <li><strong>Agadir — hôtel balnéaire 3★</strong> — Vue mer : 550–900 MAD/nuit</li>
-          <li><strong>Essaouira — riad bord de mer</strong> — Chambre double : 400–700 MAD/nuit</li>
           <li><strong>Merzouga — auberge désert</strong> — Chambre double + dîner : 400–600 MAD/nuit</li>
-        </ul>
-        <h2>Restaurants certifiés — Fourchettes de prix</h2>
-        <ul>
-          <li><strong>Marrakech — Restaurant Al Fassia</strong> — Tajine : 90–140 MAD, couscous : 120–150 MAD</li>
-          <li><strong>Fès — Dar Hatim</strong> — Menu complet : 180–250 MAD/pers</li>
-          <li><strong>Casablanca — Restaurant du Port</strong> — Plat principal poisson : 120–200 MAD</li>
-          <li><strong>Essaouira — Café Taros</strong> — Plat principal : 100–160 MAD</li>
-          <li><strong>Agadir — Jour et Nuit</strong> — Plat du jour : 80–120 MAD</li>
         </ul>
         <h2>Guides officiels certifiés</h2>
         <ul>
@@ -389,24 +362,27 @@
           <li><strong>Chefchaouen</strong> — Guide + randonnée Rif : 350–500 MAD/journée</li>
           <li><strong>Merzouga</strong> — Guide 4x4 dunes + bivouac : 800–1200 MAD/jour/véhicule</li>
         </ul>
-        <h2>Excursions certifiées — Prix officiels</h2>
+        <h2>Restaurants certifiés — Fourchettes de prix</h2>
         <ul>
-          <li><strong>Marrakech → Merzouga (2j/1n)</strong> — Désert en groupe : 600–900 MAD/pers</li>
+          <li><strong>Marrakech — Al Fassia</strong> — Tajine : 90–140 MAD, couscous : 120–150 MAD</li>
+          <li><strong>Fès — Dar Hatim</strong> — Menu complet : 180–250 MAD/pers</li>
+          <li><strong>Casablanca — Restaurant du Port</strong> — Poisson : 120–200 MAD</li>
+        </ul>
+        <h2>Excursions certifiées</h2>
+        <ul>
+          <li><strong>Marrakech → Merzouga (2j/1n)</strong> — Groupe : 600–900 MAD/pers</li>
           <li><strong>Marrakech → Essaouira (journée)</strong> — Groupe : 250–350 MAD/pers</li>
-          <li><strong>Marrakech → Ourika (journée)</strong> — Vallée et cascades : 200–300 MAD/pers</li>
-          <li><strong>Fès → Chefchaouen (journée)</strong> — Groupe : 200–300 MAD/pers</li>
         </ul>
         <h2>Spas et hammams certifiés</h2>
         <ul>
-          <li><strong>Hammam traditionnel Marrakech</strong> — Entrée + gommage + savon beldi : 80–150 MAD</li>
+          <li><strong>Hammam traditionnel Marrakech</strong> — Entrée + gommage : 80–150 MAD</li>
           <li><strong>Spa riad Fès</strong> — Soin complet 1h : 200–350 MAD</li>
-          <li><strong>Hammam public Chefchaouen</strong> — Entrée : 15–25 MAD</li>
         </ul>
-        <a href="/charter">Lire la Charte complète</a> | <a href="/app">Analyser un prix avec l'IA</a>
+        <a href="/charter">Lire la Charte complète</a> | <a href="/app">Analyser un prix</a>
       </article>
       <article data-page="/providers" lang="en">
-        <h1>Tooristoo Certified Providers in Morocco — Hotels, Taxis, Restaurants, Guides</h1>
-        <p>Complete directory of verified providers in Morocco with official prices in Marrakech, Fes, Casablanca, Agadir and across Morocco. Every provider has signed the Tooristoo Charter.</p>
+        <h1>Certified Providers in Morocco — Official Prices Taxis, Riads, Guides | Tooristoo</h1>
+        <p>Complete directory of verified providers with official prices. Each provider signed the Tooristoo 7-commitment Charter and was field-verified.</p>
         <h2>Certified taxis — Official fares</h2>
         <ul>
           <li><strong>Marrakech city centre</strong> — Petit taxi (meter): 7–15 MAD. Menara Airport → Gueliz: 70–100 MAD</li>
@@ -414,38 +390,28 @@
           <li><strong>Agadir seafront → centre</strong> — Petit taxi: 10–20 MAD</li>
           <li><strong>Fes medina → station</strong> — Petit taxi: 15–25 MAD</li>
         </ul>
-        <h2>Certified riads and hotels — Nightly rates</h2>
+        <h2>Certified riads and hotels</h2>
         <ul>
-          <li><strong>Marrakech medina — 3★ riad</strong> — Double room: 400–700 MAD/night incl. breakfast</li>
-          <li><strong>Fes medina — authentic riad</strong> — Double room: 350–600 MAD/night</li>
-          <li><strong>Chefchaouen — guesthouse</strong> — Double room: 300–500 MAD/night</li>
-          <li><strong>Agadir — 3★ beachfront hotel</strong> — Sea-view double: 550–900 MAD/night</li>
+          <li><strong>Marrakech medina — 3★ riad</strong> — Double: 400–700 MAD/night incl. breakfast</li>
+          <li><strong>Fes medina — authentic riad</strong> — Double: 350–600 MAD/night</li>
+          <li><strong>Agadir — 3★ beachfront hotel</strong> — Sea-view: 550–900 MAD/night</li>
           <li><strong>Merzouga — desert lodge</strong> — Double + dinner: 400–600 MAD/night</li>
-        </ul>
-        <h2>Certified restaurants — Price ranges</h2>
-        <ul>
-          <li><strong>Marrakech — Al Fassia</strong> — Tagine: 90–140 MAD, couscous: 120–150 MAD</li>
-          <li><strong>Fes — Dar Hatim</strong> — Full menu: 180–250 MAD/person</li>
-          <li><strong>Casablanca — Restaurant du Port</strong> — Fish main: 120–200 MAD</li>
-          <li><strong>Essaouira — Café Taros</strong> — Main course: 100–160 MAD</li>
         </ul>
         <h2>Official certified guides</h2>
         <ul>
-          <li><strong>Marrakech</strong> — Licensed medina guide: 400–600 MAD/day</li>
-          <li><strong>Fes medina</strong> — Official guide (essential): 400–600 MAD/day</li>
+          <li><strong>Marrakech / Fes</strong> — Licensed medina guide: 400–600 MAD/day</li>
           <li><strong>Merzouga desert</strong> — 4x4 + bivouac: 800–1,200 MAD/day/vehicle</li>
         </ul>
-        <h2>Certified excursions — Official prices</h2>
+        <h2>Certified excursions</h2>
         <ul>
-          <li><strong>Marrakech → Merzouga (2d/1n)</strong> — Group desert: 600–900 MAD/person</li>
+          <li><strong>Marrakech → Merzouga (2d/1n)</strong> — Group: 600–900 MAD/person</li>
           <li><strong>Marrakech → Essaouira (day)</strong> — Group: 250–350 MAD/person</li>
-          <li><strong>Fes → Chefchaouen (day)</strong> — Group: 200–300 MAD/person</li>
         </ul>
-        <a href="/charter">Read the full Charter</a> | <a href="/app">Analyze a price with AI</a>
+        <a href="/charter">Read the full Charter</a> | <a href="/app">Analyze a price</a>
       </article>
       <article data-page="/providers" lang="es">
-        <h1>Proveedores Certificados Tooristoo en Marruecos — Hoteles, Taxis, Restaurantes, Guías</h1>
-        <p>Directorio de proveedores verificados en Marruecos con precios oficiales en Marrakech, Fez, Casablanca, Agadir y Chefchaouen.</p>
+        <h1>Proveedores Certificados en Marruecos — Precios Oficiales Taxis, Riads, Guías | Tooristoo</h1>
+        <p>Directorio de proveedores verificados con precios oficiales. Cada proveedor firmó la Carta Tooristoo de 7 compromisos y fue verificado sobre el terreno.</p>
         <h2>Taxis certificados</h2>
         <ul>
           <li><strong>Marrakech centro</strong> — Petit taxi (taxímetro): 7–15 MAD. Aeropuerto → Gueliz: 70–100 MAD</li>
@@ -453,20 +419,14 @@
         </ul>
         <h2>Riads y hoteles certificados</h2>
         <ul>
-          <li><strong>Marrakech medina — riad 3★</strong> — Doble: 400–700 MAD/noche, desayuno incluido</li>
-          <li><strong>Fez medina — riad auténtico</strong> — Doble: 350–600 MAD/noche</li>
+          <li><strong>Marrakech medina — riad 3★</strong> — Doble: 400–700 MAD/noche</li>
           <li><strong>Agadir — hotel playa 3★</strong> — Vista mar: 550–900 MAD/noche</li>
-        </ul>
-        <h2>Excursiones certificadas</h2>
-        <ul>
-          <li><strong>Marrakech → Merzouga (2d/1n)</strong> — Desierto en grupo: 600–900 MAD/persona</li>
-          <li><strong>Marrakech → Essaouira (día)</strong> — Grupo: 250–350 MAD/persona</li>
         </ul>
         <a href="/app">Analizar un precio</a> | <a href="/charter">Leer la Carta</a>
       </article>
       <article data-page="/providers" lang="de">
-        <h1>Tooristoo Zertifizierte Anbieter in Marokko — Hotels, Taxis, Restaurants, Reiseführer</h1>
-        <p>Verzeichnis geprüfter Anbieter in Marokko mit offiziellen Preisen in Marrakesch, Fès, Casablanca, Agadir und Chefchaouen.</p>
+        <h1>Zertifizierte Anbieter in Marokko — Offizielle Preise Taxis, Riads, Guides | Tooristoo</h1>
+        <p>Verzeichnis geprüfter Anbieter mit offiziellen Preisen. Jeder Anbieter unterzeichnete die Tooristoo 7-Verpflichtungen-Charta und wurde vor Ort überprüft.</p>
         <h2>Zertifizierte Taxis</h2>
         <ul>
           <li><strong>Marrakesch Innenstadt</strong> — Petit Taxi (Taxameter): 7–15 MAD. Flughafen → Gueliz: 70–100 MAD</li>
@@ -474,368 +434,366 @@
         </ul>
         <h2>Zertifizierte Riads und Hotels</h2>
         <ul>
-          <li><strong>Marrakesch Medina — 3★-Riad</strong> — Doppelzimmer: 400–700 MAD/Nacht, Frühstück inkl.</li>
-          <li><strong>Fès Medina — authentisches Riad</strong> — Doppelzimmer: 350–600 MAD/Nacht</li>
+          <li><strong>Marrakesch Medina — 3★-Riad</strong> — Doppelzimmer: 400–700 MAD/Nacht</li>
           <li><strong>Agadir — 3★ Strandhotel</strong> — Meerblick: 550–900 MAD/Nacht</li>
-        </ul>
-        <h2>Zertifizierte Ausflüge</h2>
-        <ul>
-          <li><strong>Marrakesch → Merzouga (2T/1N)</strong> — Wüste in Gruppe: 600–900 MAD/Person</li>
-          <li><strong>Marrakesch → Essaouira (Tag)</strong> — Gruppe: 250–350 MAD/Person</li>
         </ul>
         <a href="/app">Preis analysieren</a> | <a href="/charter">Charta lesen</a>
       </article>
       <article data-page="/providers" lang="ar" dir="rtl">
-        <h1>مزودو خدمات Tooristoo المعتمدون في المغرب — فنادق، تاكسي، مطاعم، مرشدون</h1>
-        <p>دليل مزودي الخدمات الموثوقين في المغرب بأسعار رسمية شفافة في مراكش وفاس والدار البيضاء وأكادير وشفشاون. كل مزود وقّع على ميثاق Tooristoo.</p>
-        <h2>تاكسيات معتمدة — تعريفات رسمية</h2>
+        <h1>مزودو خدمات معتمدون في المغرب — أسعار رسمية للتاكسي والرياض والمرشدين | Tooristoo</h1>
+        <p>دليل شامل لمزودي الخدمات الموثوقين بأسعار رسمية. كل مزود وقّع على ميثاق Tooristoo وخضع للتحقق الميداني.</p>
+        <h2>تاكسيات معتمدة</h2>
         <ul>
           <li><strong>وسط مراكش</strong> — تاكسي صغير (بالعداد): 7–15 درهم. مطار المنارة → جليز: 70–100 درهم</li>
-          <li><strong>مطار محمد الخامس → وسط الدار البيضاء</strong> — تاكسي كبير رسمي: 300–350 درهم</li>
-          <li><strong>أكادير → وسط المدينة</strong> — تاكسي صغير: 10–20 درهم</li>
+          <li><strong>مطار محمد الخامس → الدار البيضاء</strong> — تاكسي كبير رسمي: 300–350 درهم</li>
         </ul>
         <h2>رياض وفنادق معتمدة</h2>
         <ul>
-          <li><strong>مراكش المدينة — رياض 3 نجوم</strong> — غرفة مزدوجة: 400–700 درهم/ليلة، الفطور مشمول</li>
-          <li><strong>فاس المدينة — رياض أصيل</strong> — غرفة مزدوجة: 350–600 درهم/ليلة</li>
+          <li><strong>مراكش المدينة — رياض 3 نجوم</strong> — غرفة مزدوجة: 400–700 درهم/ليلة</li>
           <li><strong>أكادير — فندق شاطئ 3 نجوم</strong> — إطلالة بحر: 550–900 درهم/ليلة</li>
-        </ul>
-        <h2>رحلات معتمدة</h2>
-        <ul>
-          <li><strong>مراكش → مرزوقة (يومان/ليلة)</strong> — صحراء جماعية: 600–900 درهم/شخص</li>
-          <li><strong>مراكش → الصويرة (يوم)</strong> — جماعي: 250–350 درهم/شخص</li>
         </ul>
         <a href="/app">حلل سعراً</a> | <a href="/charter">اقرأ الميثاق</a>
       </article>
 
-      <!-- ALERTS — multilingual -->
+      <!-- ALERTS -->
       <article data-page="/alerts" lang="fr">
-        <h1>Conseils de Vigilance Touristique au Maroc — Tooristoo</h1>
-        <p>Guide pratique des situations à connaître avant de voyager au Maroc : prix de référence, comportements à adopter et prestataires officiels à Marrakech, Fès, Agadir, Casablanca et dans tout le Maroc.</p>
-        <h2>1. Taxis — Prix de référence et bons réflexes</h2>
-        <p>Tarif officiel petit taxi Marrakech centre-ville : 7–15 MAD (compteur). Aéroport Marrakech–Menara vers Gueliz : 70–100 MAD. Aéroport Mohammed V (Casablanca) vers le centre : 300–350 MAD en taxi officiel. Le compteur est obligatoire en ville. Insistez systématiquement sur son utilisation ou négociez le prix avant de monter.</p>
-        <h2>2. Guides touristiques — Reconnaître les officiels</h2>
-        <p>Les guides officiels sont agréés par le Ministère du Tourisme marocain et portent une carte professionnelle. Tarif journée guide officiel : 400–600 MAD. Pour les médinas de Fès et Marrakech, réservez via votre hôtel ou riad, ou via un prestataire certifié Tooristoo. Évitez les propositions spontanées dans la rue.</p>
-        <h2>3. Restaurants — Vérifier les prix affichés</h2>
-        <p>Demandez toujours la carte avec les prix avant de vous asseoir. Prix indicatifs à Marrakech : tajine 60–120 MAD, couscous 80–150 MAD, thé à la menthe 10–20 MAD. Sur la place Jemaa el-Fna, les prix sont libres mais doivent être affichés. Vérifiez avant de commander.</p>
-        <h2>4. Souks et artisanat — Prix de référence</h2>
-        <p>Le marchandage est une pratique culturelle normale et respectueuse au Maroc. Fourchettes indicatives : babouches artisanales 80–200 MAD, tapis berbère 500–3000 MAD selon taille, théière en cuivre 150–400 MAD. Comparez dans 2 à 3 boutiques avant d'acheter. Préférez les coopératives avec prix fixes affichés.</p>
-        <h2>5. Excursions désert — Prix officiels</h2>
-        <p>Excursion 2 jours / 1 nuit Marrakech–Merzouga : 600–900 MAD/personne en groupe. Excursion privée : 2 000–3 500 MAD. Balade dromadaire Merzouga (1h) : 150–250 MAD. Réservez via votre hébergement ou un prestataire certifié pour garantir le tarif affiché.</p>
-        <h2>6. Change de devises — Canaux officiels</h2>
-        <p>Changez uniquement dans les banques (Attijariwafa, CIH, BMCE) ou les bureaux de change agréés. Taux de référence indicatif : 1 EUR ≈ 10,8–11 MAD. Le change dans la rue est illégal et souvent accompagné de billets contrefaits. Les DAB (distributeurs) des grandes banques sont sûrs et pratiques.</p>
-        <h2>7. Hébergements — Tarifs de référence</h2>
-        <p>Riad standard Marrakech médina (chambre double) : 400–900 MAD/nuit. Hôtel 3 étoiles Agadir bord de mer : 500–900 MAD/nuit. Auberge de jeunesse Fès médina : 100–200 MAD/nuit. Réservez via des plateformes avec confirmation écrite du prix. Demandez à préciser si le petit-déjeuner est inclus.</p>
-        <a href="/app">Analyser un prix avec l'IA</a> | <a href="/providers">Voir les prestataires certifiés</a> | <a href="/darija">Phrases de négociation en darija</a>
+        <h1>Conseils Anti-Arnaque Maroc — Prix de Référence Taxis, Guides, Restaurants | Tooristoo</h1>
+        <p>Guide pratique avant de voyager au Maroc : prix de référence officiels et bons réflexes à Marrakech, Fès, Agadir et Casablanca.</p>
+        <h2>1. Taxis — Tarifs officiels</h2>
+        <p>Petit taxi Marrakech centre : 7–15 MAD (compteur obligatoire). Aéroport Menara → Gueliz : 70–100 MAD. Aéroport Mohammed V (Casablanca) → centre : 300–350 MAD.</p>
+        <h2>2. Guides touristiques officiels</h2>
+        <p>Guides agréés Ministère du Tourisme : 400–600 MAD/journée. Réservez via votre hôtel ou un prestataire certifié Tooristoo.</p>
+        <h2>3. Restaurants — Prix affichés</h2>
+        <p>Tajine Marrakech : 60–120 MAD. Couscous : 80–150 MAD. Thé à la menthe : 10–20 MAD. Demandez toujours la carte avant de commander.</p>
+        <h2>4. Souks et artisanat</h2>
+        <p>Babouches : 80–200 MAD. Tapis berbère : 500–3000 MAD. Théière cuivre : 150–400 MAD. Comparez dans 2–3 boutiques.</p>
+        <h2>5. Excursions désert</h2>
+        <p>Marrakech–Merzouga 2j/1n groupe : 600–900 MAD/pers. Balade dromadaire 1h : 150–250 MAD.</p>
+        <h2>6. Change de devises</h2>
+        <p>1 EUR ≈ 10,8–11 MAD. Changez uniquement en banque ou bureau de change agréé. Le change de rue est illégal.</p>
+        <a href="/app">Analyser un prix avec l'IA</a> | <a href="/providers">Prestataires certifiés</a>
       </article>
       <article data-page="/alerts" lang="en">
-        <h1>Morocco Travel Safety Tips — Tooristoo</h1>
-        <p>Practical guide to situations to know before travelling to Morocco: reference prices, best practices and official providers in Marrakech, Fes, Agadir, Casablanca and across Morocco.</p>
-        <h2>1. Taxis — Reference prices and best practices</h2>
-        <p>Official petit taxi fare in central Marrakech: 7–15 MAD (meter). Marrakech Menara Airport to Gueliz: 70–100 MAD. Mohammed V Airport (Casablanca) to city centre: 300–350 MAD in official taxi. The meter is mandatory in town. Always insist on using it or negotiate the price before getting in.</p>
-        <h2>2. Tourist guides — Recognising official guides</h2>
-        <p>Official guides are licensed by the Moroccan Ministry of Tourism and carry a professional card. Full-day rate for official guide: 400–600 MAD. For the medinas of Fes and Marrakech, book through your hotel or riad, or via a Tooristoo certified provider.</p>
-        <h2>3. Restaurants — Check displayed prices</h2>
-        <p>Always ask for the menu with prices before sitting down. Reference prices in Marrakech: tagine 60–120 MAD, couscous 80–150 MAD, mint tea 10–20 MAD. On Jemaa el-Fna square, prices are free but must be displayed.</p>
-        <h2>4. Souks and crafts — Reference prices</h2>
-        <p>Bargaining is a normal and respectful cultural practice in Morocco. Indicative ranges: handmade babouches 80–200 MAD, Berber rug 500–3,000 MAD depending on size, copper teapot 150–400 MAD. Compare in 2–3 shops before buying.</p>
-        <h2>5. Desert excursions — Official prices</h2>
-        <p>2-day/1-night trip Marrakech–Merzouga: 600–900 MAD/person in a group. Private excursion: 2,000–3,500 MAD. Camel ride in Merzouga (1h): 150–250 MAD. Book via your accommodation or a certified provider.</p>
-        <h2>6. Currency exchange — Official channels</h2>
-        <p>Exchange only at banks or licensed exchange offices. Indicative rate: 1 EUR ≈ 10.8–11 MAD. ATMs from major banks are safe and convenient.</p>
-        <a href="/app">Analyze a price with AI</a> | <a href="/providers">See certified providers</a> | <a href="/darija">Darija negotiation phrases</a>
+        <h1>Morocco Anti-Scam Tips — Reference Prices Taxis, Guides, Restaurants | Tooristoo</h1>
+        <p>Practical guide before travelling to Morocco: official reference prices and best practices in Marrakech, Fes, Agadir and Casablanca.</p>
+        <h2>1. Taxis — Official fares</h2>
+        <p>Petit taxi central Marrakech: 7–15 MAD (meter mandatory). Menara Airport → Gueliz: 70–100 MAD. Mohammed V Airport (Casablanca) → centre: 300–350 MAD.</p>
+        <h2>2. Official tourist guides</h2>
+        <p>Ministry of Tourism licensed guides: 400–600 MAD/day. Book via your hotel or a Tooristoo certified provider.</p>
+        <h2>3. Restaurants — Check prices</h2>
+        <p>Tagine Marrakech: 60–120 MAD. Couscous: 80–150 MAD. Mint tea: 10–20 MAD. Always ask for the menu before ordering.</p>
+        <h2>4. Souks and crafts</h2>
+        <p>Babouches: 80–200 MAD. Berber rug: 500–3,000 MAD. Copper teapot: 150–400 MAD. Compare in 2–3 shops.</p>
+        <h2>5. Desert excursions</h2>
+        <p>Marrakech–Merzouga 2d/1n group: 600–900 MAD/person. Camel ride 1h: 150–250 MAD.</p>
+        <h2>6. Currency exchange</h2>
+        <p>1 EUR ≈ 10.8–11 MAD. Exchange only at banks or licensed offices. Street exchange is illegal.</p>
+        <a href="/app">Analyze a price</a> | <a href="/providers">Certified providers</a>
       </article>
       <article data-page="/alerts" lang="es">
-        <h1>Consejos de Seguridad para Turistas en Marruecos — Tooristoo</h1>
-        <p>Guía práctica de precios de referencia y consejos para viajar con tranquilidad en Marruecos: Marrakech, Fez, Agadir, Casablanca y todo el país.</p>
-        <h2>1. Taxis — Precios de referencia</h2>
-        <p>Tarifa oficial petit taxi en el centro de Marrakech: 7–15 MAD (taxímetro). Aeropuerto Menara al centro: 70–100 MAD. El taxímetro es obligatorio en ciudad. Negocia siempre antes de subir si no lo usa.</p>
-        <h2>2. Guías turísticos — Reconocer los oficiales</h2>
-        <p>Los guías oficiales están habilitados por el Ministerio de Turismo marroquí y llevan tarjeta profesional. Tarifa día completo: 400–600 MAD. Reserva a través de tu alojamiento o de un proveedor certificado Tooristoo.</p>
-        <h2>3. Restaurantes — Verifica los precios</h2>
-        <p>Pide siempre la carta con precios antes de sentarte. Precios de referencia en Marrakech: tajín 60–120 MAD, cuscús 80–150 MAD, té a la menta 10–20 MAD.</p>
-        <h2>4. Zoco y artesanía — Precios de referencia</h2>
-        <p>El regateo es una práctica cultural normal y respetuosa. Babuchas artesanales: 80–200 MAD, alfombra bereber: 500–3.000 MAD, tetera de cobre: 150–400 MAD.</p>
-        <a href="/app">Analizar un precio</a> | <a href="/providers">Ver proveedores certificados</a>
+        <h1>Consejos Anti-Estafa Marruecos — Precios de Referencia Taxis, Guías, Restaurantes | Tooristoo</h1>
+        <p>Guía práctica antes de viajar a Marruecos: precios de referencia oficiales y buenos hábitos en Marrakech, Fez y Agadir.</p>
+        <h2>1. Taxis</h2><p>Petit taxi Marrakech centro: 7–15 MAD (taxímetro obligatorio). Aeropuerto Menara → Gueliz: 70–100 MAD.</p>
+        <h2>2. Guías oficiales</h2><p>Guías habilitados: 400–600 MAD/día. Reserva a través de tu alojamiento.</p>
+        <h2>3. Restaurantes</h2><p>Tajín: 60–120 MAD. Cuscús: 80–150 MAD. Té menta: 10–20 MAD.</p>
+        <a href="/app">Analizar un precio</a>
       </article>
       <article data-page="/alerts" lang="de">
-        <h1>Marokko Reise-Sicherheitstipps — Tooristoo</h1>
-        <p>Praktischer Leitfaden mit Referenzpreisen und Verhaltenstipps für eine sorgenfreie Reise nach Marokko: Marrakesch, Fès, Agadir, Casablanca und das ganze Land.</p>
-        <h2>1. Taxis — Referenzpreise</h2>
-        <p>Offizieller Petit-Taxi-Tarif in der Innenstadt von Marrakesch: 7–15 MAD (Taxameter). Flughafen Menara zur Innenstadt: 70–100 MAD. Das Taxameter ist in der Stadt Pflicht.</p>
-        <h2>2. Reiseführer — Offizielle erkennen</h2>
-        <p>Offizielle Reiseführer sind vom marokkanischen Tourismusministerium lizenziert. Tagesrate: 400–600 MAD. Buchen Sie über Ihr Hotel oder einen Tooristoo-zertifizierten Anbieter.</p>
-        <h2>3. Restaurants — Preise prüfen</h2>
-        <p>Verlangen Sie immer die Speisekarte mit Preisen. Referenzpreise in Marrakesch: Tajine 60–120 MAD, Couscous 80–150 MAD, Minztee 10–20 MAD.</p>
-        <h2>4. Souks und Kunsthandwerk</h2>
-        <p>Feilschen ist in Marokko kulturell normal und respektvoll. Handgefertigte Babuschen: 80–200 MAD, Berberteppich: 500–3.000 MAD, Kupferkanne: 150–400 MAD.</p>
-        <a href="/app">Preis analysieren</a> | <a href="/providers">Zertifizierte Anbieter ansehen</a>
+        <h1>Marokko Anti-Betrug-Tipps — Referenzpreise Taxis, Guides, Restaurants | Tooristoo</h1>
+        <p>Praktischer Leitfaden vor der Marokko-Reise: offizielle Referenzpreise in Marrakesch, Fès und Agadir.</p>
+        <h2>1. Taxis</h2><p>Petit Taxi Marrakesch Innenstadt: 7–15 MAD (Taxameter Pflicht). Flughafen Menara → Innenstadt: 70–100 MAD.</p>
+        <h2>2. Offizielle Reiseführer</h2><p>Lizenzierte Guides: 400–600 MAD/Tag. Buchen Sie über Ihr Hotel.</p>
+        <h2>3. Restaurants</h2><p>Tajine: 60–120 MAD. Couscous: 80–150 MAD. Minztee: 10–20 MAD.</p>
+        <a href="/app">Preis analysieren</a>
       </article>
       <article data-page="/alerts" lang="ar" dir="rtl">
-        <h1>نصائح السفر الآمن في المغرب — Tooristoo</h1>
-        <p>نصائح عملية للسفر بثقة في المغرب. اطلع على هذه المعلومات قبل رحلتك لتعرف الأسعار المعتادة وتتفاوض باحترام في مراكش وفاس وأكادير وسائر أنحاء المغرب.</p>
-        <h2>ما يجب معرفته قبل السفر إلى المغرب</h2>
-        <ul>
-          <li><strong>التاكسي من المطار</strong> — تعرّف على التعريفة المعتادة واطلب تشغيل العداد الرسمي.</li>
-          <li><strong>المرشدون السياحيون</strong> — استخدم فقط المرشدين الرسميين الحاملين لبطاقة وزارة السياحة.</li>
-          <li><strong>المطاعم</strong> — اطلب دائماً قائمة بالأسعار قبل الطلب.</li>
-        </ul>
+        <h1>نصائح ضد الاحتيال في المغرب — أسعار مرجعية للتاكسي والمرشدين والمطاعم | Tooristoo</h1>
+        <p>دليل عملي قبل السفر إلى المغرب: أسعار رسمية مرجعية في مراكش وفاس وأكادير.</p>
+        <h2>1. التاكسي</h2><p>تاكسي صغير وسط مراكش: 7–15 درهم (العداد إلزامي). مطار المنارة → جليز: 70–100 درهم.</p>
+        <h2>2. المرشدون الرسميون</h2><p>مرشدون مرخصون: 400–600 درهم/يوم. احجز عبر فندقك.</p>
+        <h2>3. المطاعم</h2><p>طاجين: 60–120 درهم. كسكس: 80–150 درهم. شاي بالنعناع: 10–20 درهم.</p>
+        <a href="/app">حلل سعراً</a>
       </article>
 
-      <!-- BLOG — multilingual -->
-      <article data-page="/blog" lang="fr">
-        <h1>Blog Tooristoo — Guides de Voyage Maroc et Conseils Anti-Arnaque</h1>
-        <p>Découvrez nos guides complets pour voyager au Maroc sereinement : conseils anti-arnaque, stratégies de négociation, guides pratiques par ville et par catégorie de service.</p>
-        <h2>Thèmes couverts</h2>
+      <!-- FAQ -->
+      <article data-page="/faq" lang="fr">
+        <h1>FAQ Tooristoo — Toutes les Questions sur le Coach IA Anti-Arnaque Maroc</h1>
+        <dl>
+          <dt>Qu'est-ce que Tooristoo ?</dt>
+          <dd>Coach vocal IA qui aide les touristes à négocier les meilleurs prix au Maroc, détecter les arnaques et obtenir des phrases de négociation en darija en temps réel.</dd>
+          <dt>Est-ce gratuit ?</dt>
+          <dd>Plan gratuit : 3 analyses/jour. Plans Voyageur (5€/mois) et Pro (12€/mois) : analyses illimitées.</dd>
+          <dt>Quelles langues ?</dt>
+          <dd>Français, anglais, espagnol, allemand, arabe et darija marocain.</dd>
+          <dt>Quelles villes ?</dt>
+          <dd>Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla, El Jadida.</dd>
+          <dt>Comment fonctionne la détection ?</dt>
+          <dd>L'IA compare le prix demandé à une base de données de prix réels locaux. Si le prix dépasse la fourchette normale de plus de 15 %, une alerte est émise. Taux de précision : 98 % sur 12 000 analyses vérifiées.</dd>
+          <dt>Quels services sont analysés ?</dt>
+          <dd>Taxis, hôtels, riads, restaurants, excursions, shopping, guides touristiques, spas et hammams.</dd>
+          <dt>Fonctionne hors ligne ?</dt>
+          <dd>L'analyse IA nécessite internet. Les phrases en darija et les analyses passées sont accessibles hors ligne.</dd>
+          <dt>Fonctionne sur mobile ?</dt>
+          <dd>Oui, PWA accessible sur iOS et Android depuis le navigateur, sans installation.</dd>
+          <dt>Que faire si j'ai été arnaqué ?</dt>
+          <dd>Demandez un reçu (obligatoire légalement), contactez la Brigade Touristique ou la Police Touristique de Marrakech : +212 524 38 46 01. Signalez l'incident sur Tooristoo.</dd>
+          <dt>Fonctionne dans le désert sans réseau ?</dt>
+          <dd>Partiellement. L'analyse IA nécessite internet mais les données passées sont disponibles hors ligne.</dd>
+        </dl>
+      </article>
+      <article data-page="/faq" lang="en">
+        <h1>Tooristoo FAQ — All Questions about the Morocco AI Anti-Scam Coach</h1>
+        <dl>
+          <dt>What is Tooristoo?</dt>
+          <dd>An AI voice coach helping tourists negotiate the best prices in Morocco, detect scams and get Darija negotiation phrases in real time.</dd>
+          <dt>Is it free?</dt>
+          <dd>Free plan: 3 analyses/day. Traveler (€5/mo) and Pro (€12/mo): unlimited analyses.</dd>
+          <dt>Which languages?</dt>
+          <dd>French, English, Spanish, German, Arabic and Moroccan Darija.</dd>
+          <dt>Which cities?</dt>
+          <dd>Marrakech, Fes, Casablanca, Chefchaouen, Agadir, Tangier, Rabat, Meknes, Ouarzazate, Merzouga, Essaouira, Dakhla, El Jadida.</dd>
+          <dt>How does detection work?</dt>
+          <dd>AI compares the asked price to a database of real local rates. If the price exceeds the normal range by more than 15%, an alert fires. Precision: 98% across 12,000 verified analyses.</dd>
+          <dt>What services are analyzed?</dt>
+          <dd>Taxis, hotels, riads, restaurants, excursions, shopping, tourist guides, spas and hammams.</dd>
+          <dt>Works offline?</dt>
+          <dd>AI analysis requires internet. Darija phrases and past analyses are available offline.</dd>
+          <dt>Works on mobile?</dt>
+          <dd>Yes, PWA accessible on iOS and Android from the browser, no installation required.</dd>
+          <dt>What to do if I was scammed?</dt>
+          <dd>Ask for a receipt (legally mandatory), contact the Tourist Brigade or Marrakech Tourist Police: +212 524 38 46 01. Report on Tooristoo.</dd>
+        </dl>
+      </article>
+      <article data-page="/faq" lang="es">
+        <h1>FAQ Tooristoo — Todas las preguntas sobre el Coach IA Anti-Estafa Marruecos</h1>
+        <dl>
+          <dt>¿Qué es Tooristoo?</dt><dd>Coach de voz IA para negociar precios, detectar estafas y obtener frases en darija en tiempo real en Marruecos.</dd>
+          <dt>¿Es gratuito?</dt><dd>Plan gratuito: 3 análisis/día. Planes de pago: análisis ilimitados.</dd>
+          <dt>¿Qué idiomas?</dt><dd>Francés, inglés, español, alemán, árabe y darija marroquí.</dd>
+          <dt>¿Cómo detecta estafas?</dt><dd>La IA compara el precio pedido con tarifas locales reales. Precisión: 98% en 12.000 análisis verificados.</dd>
+        </dl>
+      </article>
+      <article data-page="/faq" lang="de">
+        <h1>Tooristoo FAQ — Alle Fragen zum KI Anti-Betrug Coach Marokko</h1>
+        <dl>
+          <dt>Was ist Tooristoo?</dt><dd>KI-Sprachcoach zur Preisverhandlung, Betrugserkennung und Darija-Phrasen in Echtzeit in Marokko.</dd>
+          <dt>Ist es kostenlos?</dt><dd>Kostenloser Plan: 3 Analysen/Tag. Bezahlpläne: unbegrenzte Analysen.</dd>
+          <dt>Wie funktioniert die Erkennung?</dt><dd>KI vergleicht den geforderten Preis mit echten lokalen Tarifen. Präzision: 98% bei 12.000 verifizierten Analysen.</dd>
+        </dl>
+      </article>
+      <article data-page="/faq" lang="ar" dir="rtl">
+        <h1>أسئلة Tooristoo الشائعة — كل الأسئلة حول المدرب الذكي ضد الاحتيال في المغرب</h1>
+        <dl>
+          <dt>ما هو Tooristoo؟</dt><dd>مدرب صوتي ذكي يساعد السياح على التفاوض وكشف الأسعار المبالغ فيها والحصول على عبارات بالدارجة في المغرب.</dd>
+          <dt>هل هو مجاني؟</dt><dd>خطة مجانية: 3 تحليلات/يوم. الخطط المدفوعة: تحليلات غير محدودة.</dd>
+          <dt>كيف يعمل الكشف؟</dt><dd>يقارن الذكاء الاصطناعي السعر المطلوب بالأسعار المحلية الحقيقية. دقة 98% من 12,000 تحليل موثق.</dd>
+        </dl>
+      </article>
+
+      <!-- ABOUT -->
+      <article data-page="/about" lang="fr">
+        <h1>À Propos de Tooristoo — Startup Franco-Marocaine | Coach IA Fondé à Marrakech</h1>
+        <p>Tooristoo a été fondé à Marrakech en 2023 après avoir constaté que les touristes payaient en moyenne 3 à 8 fois le prix local pour les taxis, excursions et restaurants.</p>
+        <h2>Notre mission</h2>
+        <p>Démocratiser l'accès aux vrais prix locaux au Maroc pour tous les touristes. 50 000+ voyageurs protégés, 2 350 MAD d'économies moyennes par voyage, 6 langues, 13 villes.</p>
+        <h2>Nos valeurs</h2>
         <ul>
-          <li>Négociation — comment négocier les prix au Maroc comme un local</li>
-          <li>Villes — guides pratiques pour Marrakech, Fès, Casablanca, Chefchaouen, Agadir</li>
-          <li>Transport — taxis, bus, trains : prix réels et conseils</li>
-          <li>Hébergement — choisir entre hôtel, riad et auberge au bon prix</li>
-          <li>Gastronomie — restaurants authentiques vs pièges à touristes</li>
-          <li>Culture — comprendre les codes sociaux marocains pour mieux négocier</li>
+          <li>Transparence : prix réels du marché accessibles à tous</li>
+          <li>Respect : négociation équitable pour touristes et prestataires</li>
+          <li>Innovation : IA vocale multilingue en temps réel</li>
+          <li>Inclusion : 6 langues dont le darija marocain</li>
+        </ul>
+      </article>
+      <article data-page="/about" lang="en">
+        <h1>About Tooristoo — Franco-Moroccan Startup | AI Coach Founded in Marrakech</h1>
+        <p>Tooristoo was founded in Marrakech in 2023 after noticing that tourists paid 3 to 8 times the local price for taxis, excursions and restaurants. 50,000+ travelers protected, 6 languages, 13 cities.</p>
+        <h2>Our values</h2>
+        <ul>
+          <li>Transparency: real market prices for everyone</li>
+          <li>Respect: fair negotiation for tourists and providers</li>
+          <li>Innovation: real-time multilingual AI voice coaching</li>
+          <li>Inclusion: 6 languages including Moroccan Darija</li>
+        </ul>
+      </article>
+      <article data-page="/about" lang="es">
+        <h1>Acerca de Tooristoo — Startup Franco-Marroquí | Coach IA Fundado en Marrakech</h1>
+        <p>Fundado en Marrakech en 2023. Más de 50.000 viajeros protegidos, 6 idiomas, 13 ciudades de Marruecos cubiertas.</p>
+      </article>
+      <article data-page="/about" lang="de">
+        <h1>Über Tooristoo — Französisch-Marokkanisches Startup | KI-Coach gegründet in Marrakesch</h1>
+        <p>2023 in Marrakesch gegründet. Über 50.000 geschützte Reisende, 6 Sprachen, 13 Städte in Marokko.</p>
+      </article>
+      <article data-page="/about" lang="ar" dir="rtl">
+        <h1>عن Tooristoo — شركة ناشئة فرنسية-مغربية | مدرب ذكي تأسس في مراكش</h1>
+        <p>تأسس في مراكش عام 2023. أكثر من 50,000 مسافر محمي، 6 لغات، 13 مدينة مغربية مشمولة.</p>
+      </article>
+
+      <!-- BLOG -->
+      <article data-page="/blog" lang="fr">
+        <h1>Blog Tooristoo — Guides de Prix &amp; Arnaques Maroc par Ville et Catégorie</h1>
+        <p>Guides pratiques et articles de fond : prix réels taxis/riads/restaurants, top arnaques à éviter, préparation voyage Maroc, techniques de négociation par ville (Marrakech, Fès, Agadir, Chefchaouen, Casablanca).</p>
+        <h2>Piliers éditoriaux</h2>
+        <ul>
+          <li>Guides de prix réels — tarifs officiels par catégorie et ville</li>
+          <li>Arnaques et protection — top 10 escroqueries, comment réagir</li>
+          <li>Préparation de voyage — Ramadan, haute saison, documents, santé</li>
+          <li>Techniques de négociation — stratégies efficaces par type de service</li>
         </ul>
       </article>
       <article data-page="/blog" lang="en">
-        <h1>Tooristoo Blog — Morocco Travel Guides and Anti-Scam Tips</h1>
-        <p>Discover our comprehensive guides for stress-free travel in Morocco: anti-scam tips, negotiation strategies, practical city guides and service category advice.</p>
-        <h2>Topics covered</h2>
-        <ul>
-          <li>Negotiation — how to negotiate prices in Morocco like a local</li>
-          <li>Cities — practical guides for Marrakech, Fes, Casablanca, Chefchaouen, Agadir</li>
-          <li>Transport — taxis, buses, trains: real prices and advice</li>
-          <li>Accommodation — choosing between hotel, riad and hostel at the right price</li>
-          <li>Gastronomy — authentic restaurants vs tourist traps</li>
-          <li>Culture — understanding Moroccan social codes to negotiate better</li>
-        </ul>
+        <h1>Tooristoo Blog — Morocco Price Guides &amp; Scam Warnings by City and Category</h1>
+        <p>Practical guides and in-depth articles: real prices taxis/riads/restaurants, top scams to avoid, Morocco trip preparation, negotiation techniques by city.</p>
       </article>
       <article data-page="/blog" lang="es">
-        <h1>Blog Tooristoo — Guías de Viaje Marruecos y Consejos Anti-Estafa</h1>
-        <p>Descubre nuestras guías completas para viajar tranquilo en Marruecos: consejos anti-estafa, estrategias de negociación, guías prácticas por ciudad y categoría de servicio.</p>
+        <h1>Blog Tooristoo — Guías de Precios y Estafas Marruecos por Ciudad y Categoría</h1>
+        <p>Guías prácticas: precios reales taxis/riads/restaurantes, principales estafas, preparación del viaje a Marruecos.</p>
       </article>
       <article data-page="/blog" lang="de">
-        <h1>Tooristoo Blog — Marokko Reiseführer und Anti-Betrug-Tipps</h1>
-        <p>Entdecken Sie unsere umfassenden Leitfäden für stressfreies Reisen in Marokko: Anti-Betrug-Tipps, Verhandlungsstrategien und praktische Stadtführer.</p>
+        <h1>Tooristoo Blog — Marokko Preisführer &amp; Betrugswarnungen nach Stadt und Kategorie</h1>
+        <p>Praktische Leitfäden: echte Preise Taxis/Riads/Restaurants, häufigste Betrugsfälle, Reisevorbereitung Marokko.</p>
       </article>
       <article data-page="/blog" lang="ar" dir="rtl">
-        <h1>مدونة Tooristoo — أدلة السفر إلى المغرب ونصائح مكافحة الاحتيال</h1>
-        <p>اكتشف أدلتنا الشاملة للسفر بهدوء إلى المغرب: نصائح مكافحة الاحتيال واستراتيجيات التفاوض وأدلة عملية للمدن.</p>
+        <h1>مدونة Tooristoo — أدلة الأسعار والاحتيال في المغرب حسب المدينة والفئة</h1>
+        <p>أدلة عملية: أسعار حقيقية للتاكسي والرياض والمطاعم، أبرز الاحتيالات، نصائح التفاوض حسب المدينة في المغرب.</p>
       </article>
 
-      <!-- DARIJA PHRASEBOOK — multilingual -->
+      <!-- DARIJA -->
       <article data-page="/darija" lang="fr">
-        <h1>100 Phrases en Darija Marocain — Négocier et Voyager au Maroc</h1>
-        <p>Guide complet de 100 phrases essentielles en darija marocain avec transcription latine et traduction en français, anglais, espagnol, allemand et arabe. Indispensable pour négocier au Maroc comme un local.</p>
-        <h2>Catégories couvertes</h2>
+        <h1>100 Phrases en Darija pour Négocier au Maroc | Transcription + Traductions — Tooristoo</h1>
+        <p>Apprenez les 100 phrases essentielles en darija marocain avec transcription latine et traduction en 5 langues. Indispensable pour négocier taxi, souk, riad et restaurant comme un local.</p>
+        <h2>Catégories</h2>
         <ul>
-          <li><strong>Taxi</strong> — Demander le compteur, négocier le trajet aéroport, connaître le vrai tarif</li>
-          <li><strong>Souk & Marché</strong> — Demander le prix, refuser un guide, négocier artisanat, détecter les arnaques</li>
-          <li><strong>Restaurant</strong> — Demander le menu avec prix, vérifier les suppléments, demander l'addition</li>
-          <li><strong>Hôtel & Riad</strong> — Négocier la chambre, vérifier si le petit-déjeuner est inclus</li>
-          <li><strong>Négociation</strong> — Phrases clés pour obtenir le prix juste, connaître ses droits</li>
-          <li><strong>Urgences</strong> — Appeler la police, trouver un médecin, signaler un vol</li>
+          <li>Taxi — demander le compteur, négocier l'aéroport</li>
+          <li>Souk &amp; marché — demander le prix, négocier artisanat</li>
+          <li>Restaurant — vérifier les prix, demander l'addition</li>
+          <li>Hôtel &amp; riad — négocier la chambre</li>
+          <li>Urgences — appeler la police, signaler un vol</li>
         </ul>
-        <h2>Phrases essentielles en darija</h2>
+        <h2>Phrases essentielles</h2>
         <dl>
           <dt>بشحال هادا؟ — Bshhal hada?</dt><dd>Combien ça coûte ?</dd>
           <dt>دور العداد عافاك — Dour l-3adad 3afak</dt><dd>Mettez le compteur s'il vous plaît</dd>
-          <dt>غالي بزاف، قول ليا الثمن الحقيقي — Ghali bzzaf</dt><dd>C'est trop cher, dites-moi le vrai prix</dd>
+          <dt>غالي بزاف — Ghali bzzaf</dt><dd>C'est trop cher</dd>
           <dt>عرفت الثمن الحقيقي — 3rafet t-taman l-7aqiqi</dt><dd>Je connais le vrai prix</dd>
           <dt>إلا ما كادرتيش، رانا غاديين — Ila ma kadrtish, rana ghadyin</dt><dd>Si vous ne pouvez pas, nous partons</dd>
           <dt>ماشي محتاج مرشد شكراً — Mashi m7taj mrshad shukran</dt><dd>Je n'ai pas besoin de guide merci</dd>
-          <dt>الثمن ديال Tooristoo يقول... — T-taman d-Tooristoo yqul...</dt><dd>Le prix Tooristoo dit...</dd>
-          <dt>شكراً بزاف — Shukran bzzaf</dt><dd>Merci beaucoup</dd>
-          <dt>لاباس؟ — Labas?</dt><dd>Ça va ?</dd>
-          <dt>الحساب عافاك — L-7sab 3afak</dt><dd>L'addition s'il vous plaît</dd>
         </dl>
-        <h2>Pourquoi apprendre le darija ?</h2>
-        <p>Le darija est la langue maternelle des Marocains. Quelques mots en darija transforment instantanément la relation avec les prestataires locaux, signalent que vous connaissez les prix réels et réduisent considérablement le risque d'arnaque. C'est la signature unique de Tooristoo.</p>
-        <a href="/app">Obtenir les phrases adaptées à ma situation avec l'IA</a> | <a href="/providers">Voir les prestataires certifiés</a>
+        <a href="/app">Obtenir les phrases adaptées à ma situation</a>
       </article>
       <article data-page="/darija" lang="en">
-        <h1>100 Moroccan Darija Phrases — Negotiate and Travel in Morocco</h1>
-        <p>Complete guide of 100 essential phrases in Moroccan Darija with Latin transcription and translation in French, English, Spanish, German and Arabic. Essential to negotiate in Morocco like a local.</p>
-        <h2>Categories covered</h2>
-        <ul>
-          <li><strong>Taxi</strong> — Ask for the meter, negotiate airport fare, know the real rate</li>
-          <li><strong>Souk & Market</strong> — Ask the price, refuse a guide, negotiate crafts, detect scams</li>
-          <li><strong>Restaurant</strong> — Ask for menu with prices, check supplements, ask for the bill</li>
-          <li><strong>Hotel & Riad</strong> — Negotiate the room, check if breakfast is included</li>
-          <li><strong>Negotiation</strong> — Key phrases to get the fair price, know your rights</li>
-          <li><strong>Emergencies</strong> — Call the police, find a doctor, report a theft</li>
-        </ul>
-        <h2>Essential Darija phrases</h2>
+        <h1>100 Darija Phrases to Negotiate in Morocco | Transcription + Translations — Tooristoo</h1>
+        <p>Learn the 100 essential Moroccan Darija phrases with Latin transcription and translations in 5 languages. Essential to negotiate taxi, souk, riad and restaurant like a local.</p>
+        <h2>Key phrases</h2>
         <dl>
           <dt>Bshhal hada? — بشحال هادا؟</dt><dd>How much does this cost?</dd>
           <dt>Dour l-3adad 3afak — دور العداد عافاك</dt><dd>Turn on the meter please</dd>
-          <dt>Ghali bzzaf — غالي بزاف</dt><dd>Too expensive, tell me the real price</dd>
+          <dt>Ghali bzzaf — غالي بزاف</dt><dd>Too expensive</dd>
           <dt>3rafet t-taman l-7aqiqi — عرفت الثمن الحقيقي</dt><dd>I know the real price</dd>
-          <dt>Ila ma kadrtish, rana ghadyin — إلا ما كادرتيش، رانا غاديين</dt><dd>If you can't, we're leaving</dd>
-          <dt>Mashi m7taj mrshad shukran — ماشي محتاج مرشد شكراً</dt><dd>I don't need a guide thank you</dd>
+          <dt>Ila ma kadrtish, rana ghadyin</dt><dd>If you can't, we're leaving</dd>
         </dl>
-        <a href="/app">Get AI-adapted phrases for my situation</a> | <a href="/providers">See certified providers</a>
+        <a href="/app">Get AI-adapted phrases for my situation</a>
       </article>
       <article data-page="/darija" lang="es">
-        <h1>100 Frases en Darija Marroquí — Negociar y Viajar en Marruecos</h1>
-        <p>Guía completa de 100 frases esenciales en darija marroquí con transcripción latina y traducción. Indispensable para negociar en Marruecos como un local.</p>
+        <h1>100 Frases en Darija para Negociar en Marruecos | Transcripción + Traducciones — Tooristoo</h1>
+        <p>Las 100 frases esenciales en darija marroquí con transcripción latina y traducciones. Para negociar en taxi, zoco, riad y restaurante como un local.</p>
         <dl>
-          <dt>Bshhal hada? — بشحال هادا؟</dt><dd>¿Cuánto cuesta esto?</dd>
-          <dt>Dour l-3adad 3afak — دور العداد عافاك</dt><dd>Pon el taxímetro por favor</dd>
-          <dt>Ghali bzzaf — غالي بزاف</dt><dd>Muy caro, dime el precio real</dd>
-          <dt>3rafet t-taman l-7aqiqi — عرفت الثمن الحقيقي</dt><dd>Conozco el precio real</dd>
-          <dt>Ila ma kadrtish, rana ghadyin — إلا ما كادرتيش</dt><dd>Si no puede, nos vamos</dd>
+          <dt>Bshhal hada?</dt><dd>¿Cuánto cuesta esto?</dd>
+          <dt>Dour l-3adad 3afak</dt><dd>Pon el taxímetro por favor</dd>
+          <dt>Ghali bzzaf</dt><dd>Muy caro</dd>
         </dl>
         <a href="/app">Probar el coach IA</a>
       </article>
       <article data-page="/darija" lang="de">
-        <h1>100 Marokkanische Darija-Phrasen — Verhandeln und Reisen in Marokko</h1>
-        <p>Vollständiger Leitfaden mit 100 wesentlichen Phrasen auf Marokkanischem Darija mit lateinischer Transkription und Übersetzung. Unverzichtbar zum Verhandeln in Marokko.</p>
+        <h1>100 Darija-Phrasen für Verhandlungen in Marokko | Transkription + Übersetzungen — Tooristoo</h1>
+        <p>Die 100 wesentlichen marokkanischen Darija-Phrasen mit lateinischer Transkription. Zum Verhandeln in Taxi, Souk, Riad und Restaurant wie ein Einheimischer.</p>
         <dl>
-          <dt>Bshhal hada? — بشحال هادا؟</dt><dd>Wie viel kostet das?</dd>
-          <dt>Dour l-3adad 3afak — دور العداد عافاك</dt><dd>Schalten Sie das Taxameter ein bitte</dd>
-          <dt>Ghali bzzaf — غالي بزاف</dt><dd>Zu teuer, sagen Sie mir den echten Preis</dd>
-          <dt>3rafet t-taman l-7aqiqi — عرفت الثمن الحقيقي</dt><dd>Ich kenne den echten Preis</dd>
+          <dt>Bshhal hada?</dt><dd>Wie viel kostet das?</dd>
+          <dt>Dour l-3adad 3afak</dt><dd>Taxameter einschalten bitte</dd>
+          <dt>Ghali bzzaf</dt><dd>Zu teuer</dd>
         </dl>
         <a href="/app">KI-Coach ausprobieren</a>
       </article>
       <article data-page="/darija" lang="ar" dir="rtl">
-        <h1>100 عبارة بالدارجة المغربية — للتفاوض والسفر في المغرب</h1>
-        <p>دليل شامل لـ100 عبارة أساسية بالدارجة المغربية مع النسخ اللاتيني والترجمة. لا غنى عنه للتفاوض في المغرب كالسكان المحليين.</p>
+        <h1>100 عبارة بالدارجة للتفاوض في المغرب | نسخ لاتيني + ترجمات — Tooristoo</h1>
+        <p>100 عبارة أساسية بالدارجة المغربية مع نسخ لاتيني وترجمات بـ5 لغات. للتفاوض في التاكسي والسوق والرياض والمطعم كالسكان المحليين.</p>
         <dl>
-          <dt>بشحال هادا؟ — Bshhal hada?</dt><dd>كم يكلف هذا؟</dd>
-          <dt>دور العداد عافاك — Dour l-3adad 3afak</dt><dd>أشغل العداد من فضلك</dd>
-          <dt>عرفت الثمن الحقيقي — 3rafet t-taman l-7aqiqi</dt><dd>أعرف السعر الحقيقي</dd>
+          <dt>بشحال هادا؟</dt><dd>كم يكلف هذا؟</dd>
+          <dt>دور العداد عافاك</dt><dd>أشغل العداد من فضلك</dd>
+          <dt>غالي بزاف</dt><dd>غالٍ جداً</dd>
+          <dt>عرفت الثمن الحقيقي</dt><dd>أعرف السعر الحقيقي</dd>
         </dl>
         <a href="/app">جرب المدرب الذكي</a>
       </article>
 
-      <!-- PROVIDER CHARTER — multilingual -->
+      <!-- CHARTER -->
       <article data-page="/charter" lang="fr">
-        <h1>Charte des Prestataires Certifiés Tooristoo — 7 Engagements Vérifiés</h1>
-        <p>Contrairement aux agrégateurs classiques qui référencent sans vérification, Tooristoo applique une charte d'engagement stricte. Chaque prestataire certifié au Maroc a signé et respecte ces 7 engagements de qualité et de transparence.</p>
-        <h2>Les 7 engagements des prestataires certifiés Tooristoo</h2>
+        <h1>Charte des 7 Engagements — Prestataires Certifiés Tooristoo au Maroc</h1>
+        <p>Contrairement aux agrégateurs classiques, Tooristoo vérifie chaque prestataire sur le terrain. 7 engagements signés, vérifiés annuellement.</p>
         <ol>
-          <li><strong>Prix officiels affichés</strong> — Le prix sur Tooristoo est le prix réel pratiqué, aucune majoration pour touristes étrangers. Tarifs vérifiés et mis à jour régulièrement.</li>
-          <li><strong>Pas de frais cachés</strong> — TVA incluse, pourboires non obligatoires, suppléments clairement indiqués à l'avance.</li>
-          <li><strong>Vérification terrain</strong> — Un membre de l'équipe Tooristoo a visité et testé le service en personne avant certification. Ré-évaluation annuelle obligatoire.</li>
-          <li><strong>Note minimale 3.5/5</strong> — Seuls les prestataires maintenant une note client ≥ 3,5/5 conservent leur certification.</li>
-          <li><strong>Contact garanti</strong> — Numéro de téléphone vérifié et opérationnel. Réponse sous 4h en haute saison.</li>
-          <li><strong>Anti-discrimination</strong> — Même service, même prix pour tous, locaux ou étrangers.</li>
-          <li><strong>Signalement traité sous 24h</strong> — Suspension immédiate si arnaque confirmée par 3 utilisateurs.</li>
+          <li><strong>Prix officiels affichés</strong> — aucune majoration pour touristes étrangers</li>
+          <li><strong>Pas de frais cachés</strong> — TVA incluse, pourboires non obligatoires</li>
+          <li><strong>Vérification terrain</strong> — visite anonyme avant certification</li>
+          <li><strong>Note minimale 3.5/5</strong> — contrôle continu</li>
+          <li><strong>Contact garanti</strong> — réponse sous 4h en haute saison</li>
+          <li><strong>Anti-discrimination</strong> — même prix pour tous</li>
+          <li><strong>Signalement traité sous 24h</strong> — suspension immédiate si confirmé</li>
         </ol>
-        <h2>Processus de certification en 5 étapes</h2>
-        <ol>
-          <li>Candidature avec documents officiels</li>
-          <li>Vérification documentaire en 48h</li>
-          <li>Visite terrain anonyme par un inspecteur Tooristoo</li>
-          <li>Attribution du badge Tooristoo et publication</li>
-          <li>Suivi continu + ré-évaluation annuelle</li>
-        </ol>
-        <h2>Ce qui nous différencie des agrégateurs classiques</h2>
-        <p>Booking, TripAdvisor et Google Maps référencent sans vérification des prix. Tooristoo vérifie chaque prestataire sur le terrain, impose des prix transparents et surveille la qualité en continu. C'est la garantie zéro arnaque pour les touristes.</p>
-        <a href="/providers">Voir les prestataires certifiés</a> | <a href="/app">Analyser un prix avec l'IA</a>
+        <a href="/providers">Voir les prestataires certifiés</a>
       </article>
       <article data-page="/charter" lang="en">
-        <h1>Tooristoo Certified Provider Charter — 7 Verified Commitments</h1>
-        <p>Unlike classic aggregators that list without verification, Tooristoo enforces a strict commitment charter. Each certified provider in Morocco has signed and respects these 7 quality and transparency commitments.</p>
-        <h2>The 7 commitments of Tooristoo certified providers</h2>
+        <h1>7 Commitments Charter — Tooristoo Certified Providers in Morocco</h1>
+        <p>Unlike classic aggregators, Tooristoo field-verifies each provider. 7 commitments signed, annually reviewed.</p>
         <ol>
-          <li><strong>Official prices displayed</strong> — The price on Tooristoo is the real price charged, no markup for foreign tourists.</li>
-          <li><strong>No hidden fees</strong> — VAT included, tips not mandatory, supplements clearly stated in advance.</li>
-          <li><strong>Field verification</strong> — A Tooristoo team member visited and tested the service in person. Mandatory annual re-evaluation.</li>
-          <li><strong>Minimum rating 3.5/5</strong> — Only providers maintaining ≥ 3.5/5 keep their certification.</li>
-          <li><strong>Guaranteed contact</strong> — Verified phone number. Response within 4 hours during peak season.</li>
-          <li><strong>Anti-discrimination</strong> — Same service, same price for everyone, locals or foreigners.</li>
-          <li><strong>Reports handled within 24h</strong> — Immediate suspension if scam confirmed by 3 users.</li>
+          <li><strong>Official prices displayed</strong> — no markup for foreign tourists</li>
+          <li><strong>No hidden fees</strong> — VAT included, tips not mandatory</li>
+          <li><strong>Field verification</strong> — anonymous visit before certification</li>
+          <li><strong>Minimum 3.5/5 rating</strong> — ongoing quality control</li>
+          <li><strong>Guaranteed contact</strong> — response within 4h in high season</li>
+          <li><strong>Anti-discrimination</strong> — same price for everyone</li>
+          <li><strong>Reports handled within 24h</strong> — immediate suspension if confirmed</li>
         </ol>
-        <h2>What sets us apart from classic aggregators</h2>
-        <p>Booking, TripAdvisor and Google Maps list without price verification. Tooristoo verifies each provider on the ground, enforces transparent pricing and monitors quality continuously.</p>
-        <a href="/providers">See certified providers</a> | <a href="/app">Analyze a price with AI</a>
+        <a href="/providers">See certified providers</a>
       </article>
       <article data-page="/charter" lang="es">
-        <h1>Carta de Proveedores Certificados Tooristoo — 7 Compromisos Verificados</h1>
-        <p>A diferencia de los agregadores clásicos, Tooristoo aplica una carta de compromiso estricta. Cada proveedor certificado en Marruecos ha firmado estos 7 compromisos de calidad y transparencia.</p>
+        <h1>Carta de los 7 Compromisos — Proveedores Certificados Tooristoo Marruecos</h1>
         <ol>
-          <li><strong>Precios oficiales mostrados</strong> — Sin recargo para turistas extranjeros.</li>
-          <li><strong>Sin cargos ocultos</strong> — IVA incluido, propinas no obligatorias.</li>
-          <li><strong>Verificación en terreno</strong> — Visita anónima obligatoria antes de certificación.</li>
-          <li><strong>Puntuación mínima 3.5/5</strong> — Control continuo de calidad.</li>
-          <li><strong>Contacto garantizado</strong> — Respuesta en 4h en temporada alta.</li>
-          <li><strong>Anti-discriminación</strong> — Mismo precio para todos.</li>
-          <li><strong>Denuncias tramitadas en 24h</strong> — Suspensión inmediata si se confirma estafa.</li>
+          <li>Precios oficiales mostrados — sin recargo para turistas</li>
+          <li>Sin cargos ocultos — IVA incluido</li>
+          <li>Verificación en terreno — visita anónima</li>
+          <li>Puntuación mínima 3.5/5</li>
+          <li>Contacto garantizado — respuesta en 4h</li>
+          <li>Anti-discriminación — mismo precio para todos</li>
+          <li>Denuncias en 24h — suspensión inmediata</li>
         </ol>
-        <a href="/providers">Ver proveedores certificados</a>
+        <a href="/providers">Ver proveedores</a>
       </article>
       <article data-page="/charter" lang="de">
-        <h1>Tooristoo Zertifizierter Anbieter-Kodex — 7 Verifizierte Verpflichtungen</h1>
-        <p>Im Gegensatz zu klassischen Aggregatoren setzt Tooristoo eine strenge Verpflichtungscharta durch. Jeder zertifizierte Anbieter in Marokko hat diese 7 Qualitäts- und Transparenzverpflichtungen unterzeichnet.</p>
+        <h1>7-Verpflichtungen-Charta — Tooristoo Zertifizierte Anbieter in Marokko</h1>
         <ol>
-          <li><strong>Offizielle Preise angezeigt</strong> — Kein Aufschlag für ausländische Touristen.</li>
-          <li><strong>Keine versteckten Gebühren</strong> — MwSt. inklusive, Trinkgeld nicht obligatorisch.</li>
-          <li><strong>Feldverifizierung</strong> — Anonymer Besuch vor der Zertifizierung.</li>
-          <li><strong>Mindestbewertung 3,5/5</strong> — Kontinuierliche Qualitätskontrolle.</li>
-          <li><strong>Garantierter Kontakt</strong> — Antwort innerhalb von 4h in der Hochsaison.</li>
-          <li><strong>Antidiskriminierung</strong> — Gleicher Preis für alle.</li>
-          <li><strong>Meldungen innerhalb von 24h bearbeitet</strong> — Sofortige Sperrung bei bestätigtem Betrug.</li>
+          <li>Offizielle Preise — kein Aufschlag für Touristen</li>
+          <li>Keine versteckten Gebühren — MwSt. inkl.</li>
+          <li>Feldverifizierung — anonymer Besuch</li>
+          <li>Mindestbewertung 3,5/5</li>
+          <li>Garantierter Kontakt — Antwort in 4h</li>
+          <li>Antidiskriminierung — gleicher Preis für alle</li>
+          <li>Meldungen in 24h bearbeitet</li>
         </ol>
-        <a href="/providers">Zertifizierte Anbieter ansehen</a>
+        <a href="/providers">Zertifizierte Anbieter</a>
       </article>
       <article data-page="/charter" lang="ar" dir="rtl">
-        <h1>ميثاق مزودي الخدمات المعتمدين من Tooristoo — 7 التزامات مُتحقق منها</h1>
-        <p>على خلاف المجمِّعات الكلاسيكية التي تُدرج بدون تحقق، يُطبق Tooristoo ميثاق التزام صارم. كل مزود خدمة معتمد في المغرب وقّع على هذه الالتزامات السبعة للجودة والشفافية.</p>
+        <h1>ميثاق الالتزامات السبعة — مزودو Tooristoo المعتمدون في المغرب</h1>
         <ol>
-          <li><strong>أسعار رسمية معروضة</strong> — بدون رسوم إضافية للسياح الأجانب.</li>
-          <li><strong>بدون رسوم مخفية</strong> — ضريبة القيمة المضافة مشمولة.</li>
-          <li><strong>تحقق ميداني</strong> — زيارة مجهولة إلزامية قبل الاعتماد.</li>
-          <li><strong>تقييم أدنى 3.5/5</strong> — مراقبة مستمرة للجودة.</li>
-          <li><strong>تواصل مضمون</strong> — رد في 4 ساعات في الموسم السياحي.</li>
-          <li><strong>مكافحة التمييز</strong> — نفس السعر للجميع.</li>
-          <li><strong>معالجة البلاغات في 24 ساعة</strong> — تعليق فوري عند تأكيد الاحتيال.</li>
+          <li>أسعار رسمية — بدون رسوم إضافية للسياح</li>
+          <li>بدون رسوم مخفية — الضريبة مشمولة</li>
+          <li>تحقق ميداني — زيارة مجهولة</li>
+          <li>تقييم أدنى 3.5/5</li>
+          <li>تواصل مضمون — رد في 4 ساعات</li>
+          <li>مكافحة التمييز — نفس السعر للجميع</li>
+          <li>معالجة البلاغات في 24 ساعة</li>
         </ol>
-        <a href="/providers">اطلع على مزودي الخدمات المعتمدين</a>
+        <a href="/providers">مزودو الخدمات المعتمدون</a>
       </article>
 
-      <!-- APP — multilingual -->
-      <article data-page="/app" lang="fr">
-        <h1>Tooristoo App — Coach Vocal IA pour Négocier au Maroc en Temps Réel</h1>
-        <p>Analysez n'importe quel prix en temps réel au Maroc. Dites ou tapez le prix demandé, sélectionnez la catégorie (taxi, hôtel, restaurant, excursion…) et recevez l'analyse IA, la fourchette de prix équitable et les phrases en darija pour négocier.</p>
-        <h2>Fonctionnalités principales</h2>
-        <ul>
-          <li>Coach vocal IA — parlez directement pour décrire la situation</li>
-          <li>Analyse de prix en temps réel — comparaison avec les tarifs locaux officiels</li>
-          <li>Détection d'arnaques — alerte rouge si le prix est anormalement élevé</li>
-          <li>Phrases de négociation en darija marocain</li>
-          <li>Prestataires certifiés recommandés à proximité</li>
-          <li>Historique de vos négociations et économies réalisées</li>
-        </ul>
-        <p>Disponible gratuitement — 3 analyses par jour en version gratuite, analyses illimitées en version Pro.</p>
-      </article>
-      <article data-page="/app" lang="en">
-        <h1>Tooristoo App — AI Voice Coach to Negotiate in Morocco in Real Time</h1>
-        <p>Analyze any price in real time in Morocco. Say or type the requested price, select the category (taxi, hotel, restaurant, excursion…) and instantly receive the AI analysis, fair price range and Darija phrases to negotiate.</p>
-        <h2>Key features</h2>
-        <ul>
-          <li>AI voice coach — speak directly to describe the situation</li>
-          <li>Real-time price analysis — comparison with official local rates</li>
-          <li>Scam detection — red alert if the price is abnormally high</li>
-          <li>Negotiation phrases in Moroccan Darija</li>
-          <li>Nearby certified providers recommended</li>
-          <li>History of your negotiations and savings achieved</li>
-        </ul>
-        <p>Free — 3 analyses per day on the free plan, unlimited analyses on Pro.</p>
-      </article>
-      <article data-page="/app" lang="es">
-        <h1>App Tooristoo — Coach de Voz IA para Negociar en Marruecos en Tiempo Real</h1>
-        <p>Analiza cualquier precio en tiempo real en Marruecos. Di o escribe el precio solicitado, selecciona la categoría y recibe al instante el análisis IA, el rango de precios justo y las frases en darija para negociar.</p>
-      </article>
-      <article data-page="/app" lang="de">
-        <h1>Tooristoo App — KI-Sprachcoach für Verhandlungen in Marokko in Echtzeit</h1>
-        <p>Analysieren Sie jeden Preis in Echtzeit in Marokko. Sagen oder tippen Sie den geforderten Preis, wählen Sie die Kategorie und erhalten Sie sofort die KI-Analyse, die faire Preisspanne und Darija-Phrasen zum Verhandeln.</p>
-      </article>
-      <article data-page="/app" lang="ar" dir="rtl">
-        <h1>تطبيق Tooristoo — مدرب صوتي ذكي للتفاوض في المغرب في الوقت الفعلي</h1>
-        <p>حلل أي سعر في الوقت الفعلي في المغرب. قل أو اكتب السعر المطلوب، اختر الفئة واحصل فوراً على تحليل الذكاء الاصطناعي ونطاق السعر العادل وعبارات الدارجة للتفاوض.</p>
-      </article>
     </div>
 
     <script type="module" src="/src/main.jsx"></script>
