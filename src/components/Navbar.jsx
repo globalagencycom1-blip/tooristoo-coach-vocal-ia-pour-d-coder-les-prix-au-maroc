@@ -27,6 +27,7 @@ export default function Navbar() {
     { href: '/blog', label: getNavbarT('nav_blog', lang) },
     { href: '/alerts', label: t('nav_alerts') },
     { href: '/providers', label: t('nav_providers') },
+    { href: '/darija', label: '🇲🇦 Darija' },
     { href: '/about', label: t('nav_about') },
     { href: '/faq', label: getNavbarT('nav_faq', lang) },
   ];

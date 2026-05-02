@@ -37,6 +37,12 @@ export default function Footer({ lang }) {
               <li>
                 <a href="/providers" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{lang === 'fr' ? 'Prestataires' : 'Providers'}</a>
               </li>
+              <li>
+                <a href="/darija" className="text-gray-500 hover:text-shield-green text-sm transition-colors">🇲🇦 {lang === 'fr' ? 'Phrases Darija' : 'Darija Phrases'}</a>
+              </li>
+              <li>
+                <a href="/charter" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{lang === 'fr' ? 'Charte prestataires' : 'Provider Charter'}</a>
+              </li>
             </ul>
           </div>
 

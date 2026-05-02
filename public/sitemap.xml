@@ -132,6 +132,34 @@
     <priority>0.4</priority>
   </url>
 
+  <!-- Darija Phrasebook — high SEO potential -->
+  <url>
+    <loc>https://www.tooristoo.com/darija</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://www.tooristoo.com/darija"/>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://www.tooristoo.com/darija"/>
+    <xhtml:link rel="alternate" hreflang="es"      href="https://www.tooristoo.com/darija"/>
+    <xhtml:link rel="alternate" hreflang="de"      href="https://www.tooristoo.com/darija"/>
+    <xhtml:link rel="alternate" hreflang="ar"      href="https://www.tooristoo.com/darija"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/darija"/>
+  </url>
+
+  <!-- Provider Charter — differentiator content -->
+  <url>
+    <loc>https://www.tooristoo.com/charter</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://www.tooristoo.com/charter"/>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://www.tooristoo.com/charter"/>
+    <xhtml:link rel="alternate" hreflang="es"      href="https://www.tooristoo.com/charter"/>
+    <xhtml:link rel="alternate" hreflang="de"      href="https://www.tooristoo.com/charter"/>
+    <xhtml:link rel="alternate" hreflang="ar"      href="https://www.tooristoo.com/charter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/charter"/>
+  </url>
+
   <!-- Legal Notice -->
   <url>
     <loc>https://www.tooristoo.com/legal</loc>
