@@ -140,7 +140,7 @@ export const translations = {
     nav_faq: "FAQ",
 
     // Alerts page
-    alerts_page_title: "Alertes Anti-Arnaques",
+    alerts_page_title: "Protection Touristique",
     alerts_page_subtitle: "Protégez-vous pendant votre séjour 🇲🇦",
     alerts_cta_use: "Utilisez Tooristoo",
     alerts_cta_desc: "Analysez chaque situation en temps réel pour éviter les arnaques",
@@ -471,7 +471,7 @@ export const translations = {
     nav_providers: "Providers",
     nav_faq: "FAQ",
     // Alerts page
-    alerts_page_title: "Anti-Scam Alerts",
+    alerts_page_title: "Tourist Protection",
     alerts_page_subtitle: "Stay safe during your stay 🇲🇦",
     alerts_cta_use: "Use Tooristoo",
     alerts_cta_desc: "Analyze every situation in real-time to avoid scams",
@@ -767,7 +767,7 @@ export const translations = {
     nav_providers: "Proveedores",
     nav_faq: "FAQ",
     // Alerts page
-    alerts_page_title: "Alertas Anti-Estafa",
+    alerts_page_title: "Protección Turística",
     alerts_page_subtitle: "Protégete durante tu estancia 🇲🇦",
     alerts_cta_use: "Usa Tooristoo",
     alerts_cta_desc: "Analiza cada situación en tiempo real para evitar estafas",
@@ -1058,7 +1058,7 @@ export const translations = {
     nav_providers: "Anbieter",
     nav_faq: "FAQ",
     // Alerts page
-    alerts_page_title: "Anti-Betrug-Warnungen",
+    alerts_page_title: "Touristenschutz",
     alerts_page_subtitle: "Schützen Sie sich während Ihres Aufenthalts 🇲🇦",
     alerts_cta_use: "Tooristoo nutzen",
     alerts_cta_desc: "Analysieren Sie jede Situation in Echtzeit, um Betrug zu vermeiden",
@@ -1370,7 +1370,7 @@ export const translations = {
     nav_providers: "مزودو الخدمات",
     nav_faq: "FAQ",
     // Alerts page
-    alerts_page_title: "تنبيهات إساءة استخدام الأسعار",
+    alerts_page_title: "حماية السياح",
     alerts_page_subtitle: "احمِ نفسك أثناء إقامتك 🇲🇦",
     alerts_cta_use: "استخدم Tooristoo",
     alerts_cta_desc: "حلل كل موقف في الوقت الفعلي لتجنب إساءة استخدام الأسعار",
@@ -1652,7 +1652,7 @@ export const translations = {
     nav_providers: "الخدامة",
     nav_faq: "FAQ",
     // Alerts page
-    alerts_page_title: "تنبيهات ضد الأثمان الغالية",
+    alerts_page_title: "حماية السائح",
     alerts_page_subtitle: "حمي راسك فالإقامة 🇲🇦",
     alerts_cta_use: "استخدم Tooristoo",
     alerts_cta_desc: "حلل كل وضعية فالوقت الحقيقي باش تدير بلا أثمان غالية",
