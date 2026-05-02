@@ -1,8 +1,11 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { AlertTriangle, CheckCircle, Shield } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
+
+const BASE = 'https://www.tooristoo.com';
 
 const badgeColors = {
   red: 'bg-red-500/20 text-red-400 border border-red-500/30',
@@ -24,8 +27,24 @@ export default function Alerts() {
     { color: 'yellow', badgeColor: 'orange', badgeKey: 'badge_attention', titleKey: 'alert_title8', descKey: 'alert_desc8', tipKey: 'alert_tip8' },
   ];
 
+  const pageTitle = lang === 'fr' ? 'Alertes Arnaques Maroc | Tooristoo' : lang === 'en' ? 'Morocco Scam Alerts | Tooristoo' : lang === 'es' ? 'Alertas de Estafas Marruecos | Tooristoo' : lang === 'de' ? 'Marokko Betrug-Warnungen | Tooristoo' : 'تنبيهات الاحتيال في المغرب | Tooristoo';
+  const pageDesc = lang === 'fr' ? 'Alertes en temps réel sur les arnaques touristiques au Maroc : taxis, guides, souks et hôtels.' : lang === 'en' ? 'Real-time alerts on tourist scams in Morocco: taxis, guides, souks and hotels.' : lang === 'es' ? 'Alertas en tiempo real sobre estafas turísticas en Marruecos.' : lang === 'de' ? 'Echtzeit-Warnungen zu touristischen Betrugsmaschen in Marokko.' : 'تنبيهات فورية حول عمليات الاحتيال السياحي في المغرب.';
+
   return (
     <div className="min-h-screen bg-shield-dark">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDesc} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDesc} />
+        <link rel="canonical" href={`${BASE}/alerts`} />
+        <link rel="alternate" hreflang="fr" href={`${BASE}/alerts`} />
+        <link rel="alternate" hreflang="en" href={`${BASE}/alerts`} />
+        <link rel="alternate" hreflang="es" href={`${BASE}/alerts`} />
+        <link rel="alternate" hreflang="de" href={`${BASE}/alerts`} />
+        <link rel="alternate" hreflang="ar" href={`${BASE}/alerts`} />
+        <link rel="alternate" hreflang="x-default" href={`${BASE}/alerts`} />
+      </Helmet>
       <Navbar />
       <div className="max-w-2xl mx-auto px-4 pt-24 pb-20">
 
