@@ -16,7 +16,6 @@ const REDIRECTS = {
   '/negotiate': '/app',
   '/coach': '/app',
   '/phrasebook': '/darija',
-  '/charter': '/charter',
   // Ghost / phantom routes — redirect to home
   '/landing': '/',
   // Trailing slash normalization (except root)
@@ -27,6 +26,12 @@ const REDIRECTS = {
   '/blog/': '/blog',
   '/darija/': '/darija',
   '/charter/': '/charter',
+  '/app/': '/app',
+  '/contact/': '/contact',
+  '/privacy/': '/privacy',
+  '/terms/': '/terms',
+  '/legal/': '/legal',
+  '/profile/': '/profile',
 };
 
 /**

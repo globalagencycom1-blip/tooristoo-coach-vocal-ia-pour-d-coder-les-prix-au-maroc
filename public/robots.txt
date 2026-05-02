@@ -1,30 +1,45 @@
 User-agent: *
 Allow: /
 
-# Private / dynamic pages — no indexing value
-Disallow: /admin
+# Block admin / private routes
 Disallow: /admin/
 Disallow: /profile
 Disallow: /profile/
 
-# Legacy French aliases — 301 redirects in place, exclude originals
+# Block uppercase URL variants — canonical is always lowercase
+Disallow: /About
+Disallow: /About/
+Disallow: /FAQ
+Disallow: /FAQ/
+Disallow: /Providers
+Disallow: /Providers/
+Disallow: /Alerts
+Disallow: /Alerts/
+Disallow: /Blog
+Disallow: /Blog/
+Disallow: /Darija
+Disallow: /Darija/
+Disallow: /Charter
+Disallow: /Charter/
+Disallow: /App
+Disallow: /App/
+Disallow: /Contact
+Disallow: /Contact/
+Disallow: /Privacy
+Disallow: /Privacy/
+Disallow: /Terms
+Disallow: /Terms/
+Disallow: /Legal
+Disallow: /Legal/
+
+# Block French alias paths (redirected to canonical English)
 Disallow: /prestataires
 Disallow: /alertes
-
-# Ghost/phantom route (component name leaked as URL)
+Disallow: /a-propos
+Disallow: /apropos
 Disallow: /landing
-Disallow: /Landing
-
-# Block uppercase variants explicitly (lowercase canonical is used everywhere)
-Disallow: /About
-Disallow: /App
-Disallow: /FAQ
-Disallow: /Blog
-Disallow: /Providers
-Disallow: /Alerts
-Disallow: /Contact
-Disallow: /Privacy
-Disallow: /Terms
-Disallow: /Legal
+Disallow: /home
+Disallow: /negotiate
+Disallow: /coach
 
 Sitemap: https://www.tooristoo.com/sitemap.xml
