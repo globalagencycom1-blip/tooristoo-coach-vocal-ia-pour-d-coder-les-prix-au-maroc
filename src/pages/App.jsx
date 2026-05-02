@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Mic, LayoutDashboard, History, ChevronRight } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import PageHelmet from '../lib/seo-helmet';
 import { base44 } from '@/api/base44Client';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
@@ -78,18 +78,9 @@ export default function AppPage() {
 
   const handleReset = () => setAnalysis(null);
 
-  const pageTitle = lang === 'fr' ? 'Coach IA Vocal | Analysez & Négociez les Meilleurs Prix au Maroc' : lang === 'en' ? 'AI Voice Coach | Analyze & Negotiate Best Prices in Morocco' : lang === 'es' ? 'Coach de Voz IA | Analiza y Negocia los Mejores Precios en Marruecos' : lang === 'de' ? 'KI-Sprachcoach | Analysieren & Verhandeln Sie die besten Preise in Marokko' : 'مدرب صوتي ذكي | حلل والتفاوض على أفضل الأسعار في المغرب';
-  const pageDesc = lang === 'fr' ? 'Coach vocal IA en temps réel pour analyser les prix, détecter les arnaques et négocier comme un local au Maroc.' : lang === 'en' ? 'Real-time AI voice coach to analyze prices, detect scams and negotiate like a local in Morocco.' : lang === 'es' ? 'Coach de voz IA en tiempo real para analizar precios, detectar estafas y negociar como local en Marruecos.' : lang === 'de' ? 'KI-Sprachcoach in Echtzeit zum Analysieren von Preisen, Erkennen von Betrug und Verhandeln wie ein Einheimischer in Marokko.' : 'مدرب صوتي ذكي في الوقت الفعلي لتحليل الأسعار واكتشاف الاحتيال والتفاوض كالسكان المحليين في المغرب.';
-
   return (
     <div className="min-h-screen bg-shield-dark">
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDesc} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDesc} />
-        <link rel="canonical" href="https://www.tooristoo.com/app" />
-      </Helmet>
+      <PageHelmet page="app" lang={lang} />
       <Navbar />
 
       <div className="max-w-2xl mx-auto px-4 pt-20 pb-24">

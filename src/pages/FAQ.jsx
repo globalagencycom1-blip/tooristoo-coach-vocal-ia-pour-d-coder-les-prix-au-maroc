@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import PageHelmet from '../lib/seo-helmet';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useLang } from '../lib/LanguageContext';
@@ -97,18 +97,11 @@ export default function FAQ() {
     },
   ];
 
-  const pageTitle = lang === 'fr' ? 'FAQ - Questions Fréquentes | Tooristoo' : lang === 'en' ? 'FAQ - Frequently Asked Questions | Tooristoo' : lang === 'es' ? 'FAQ - Preguntas Frecuentes | Tooristoo' : lang === 'de' ? 'FAQ - Häufig gestellte Fragen | Tooristoo' : 'الأسئلة الشائعة | Tooristoo';
-  const pageDesc = lang === 'fr' ? 'Trouvez réponses aux questions sur Tooristoo, l\'app IA pour négocier au Maroc.' : lang === 'en' ? 'Find answers to questions about Tooristoo, the AI app for negotiating in Morocco.' : lang === 'es' ? 'Encuentra respuestas a preguntas sobre Tooristoo, la app IA para negociar en Marruecos.' : lang === 'de' ? 'Finden Sie Antworten auf Fragen zu Tooristoo, der KI-App zum Verhandeln in Marokko.' : 'اجد إجابات أسئلة عن Tooristoo، تطبيق الذكاء الاصطناعي للتفاوض في المغرب.';
+
 
   return (
     <div className="min-h-screen bg-shield-dark">
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDesc} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDesc} />
-        <link rel="canonical" href="https://www.tooristoo.com/faq" />
-      </Helmet>
+      <PageHelmet page="faq" lang={lang} />
       <noscript>
         <article style={{padding:'2rem',fontFamily:'sans-serif'}}>
           <h1>Questions Fréquentes sur Tooristoo</h1>

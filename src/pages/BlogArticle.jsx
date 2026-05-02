@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ChevronLeft, Calendar, MapPin, Tag } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -8,6 +9,8 @@ import { getBlogArticleT } from '../lib/blog-article-translations';
 import { getPillarLabel, getCategoryLabel, getCityLabel } from '../lib/blog-labels-translations';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
+
+const BASE = 'https://www.tooristoo.com';
 
 export default function BlogArticle() {
   const { id } = useParams();
@@ -43,8 +46,39 @@ export default function BlogArticle() {
     a => a.id !== id && (a.pillar === article.pillar || a.city === article.city)
   ).slice(0, 3);
 
+  const blogPostingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.date,
+    author: { '@type': 'Organization', name: 'Tooristoo', url: BASE },
+    publisher: { '@type': 'Organization', name: 'Tooristoo', logo: { '@type': 'ImageObject', url: `${BASE}/logo.png` } },
+    image: article.image,
+    url: `${BASE}/blog/${article.id}`,
+    inLanguage: lang,
+    about: { '@type': 'Place', name: article.city, addressCountry: 'MA' },
+    keywords: `${article.city}, ${article.category}, Maroc, arnaque, négociation, prix`,
+  };
+
   return (
     <div className="min-h-screen bg-shield-dark">
+      <Helmet>
+        <title>{article.title} | Tooristoo</title>
+        <meta name="description" content={article.excerpt} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`${BASE}/blog/${article.id}`} />
+        <meta property="og:title" content={article.title} />
+        <meta property="og:description" content={article.excerpt} />
+        <meta property="og:image" content={article.image} />
+        <meta property="article:published_time" content={article.date} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={article.title} />
+        <meta name="twitter:description" content={article.excerpt} />
+        <meta name="twitter:image" content={article.image} />
+        <link rel="canonical" href={`${BASE}/blog/${article.id}`} />
+        <script type="application/ld+json">{JSON.stringify(blogPostingSchema)}</script>
+      </Helmet>
       <Navbar />
       <div className="max-w-3xl mx-auto px-4 pt-24 pb-20">
         {/* Back button */}

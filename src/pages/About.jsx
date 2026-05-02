@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import PageHelmet from '../lib/seo-helmet';
 import { Shield, Target, Heart, Users, Zap, Globe, Award, TrendingDown } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -32,18 +32,11 @@ export default function About() {
   { icon: Globe, value: '6', labelKey: 'about_stats_languages', color: 'text-purple-400' }];
 
 
-  const pageTitle = lang === 'fr' ? 'À Propos de Tooristoo | Coach IA pour Négocier au Maroc' : lang === 'en' ? 'About Tooristoo | AI Coach for Negotiating in Morocco' : lang === 'es' ? 'Acerca de Tooristoo | Coach IA para Negociar en Marruecos' : lang === 'de' ? 'Über Tooristoo | KI-Coach zum Verhandeln in Marokko' : 'عن Tooristoo | مدرب ذكي اصطناعي للتفاوض في المغرب';
-  const pageDesc = lang === 'fr' ? 'Découvrez l\'histoire, la mission et l\'équipe derrière Tooristoo, l\'app IA qui protège les touristes des arnaqueurs au Maroc.' : lang === 'en' ? 'Discover the story, mission and team behind Tooristoo, the AI app protecting tourists from scams in Morocco.' : lang === 'es' ? 'Descubre la historia, misión y equipo detrás de Tooristoo, la app IA que protege a los turistas del fraude en Marruecos.' : lang === 'de' ? 'Entdecken Sie die Geschichte, Mission und das Team hinter Tooristoo, der KI-App zum Schutz von Touristen vor Betrug in Marokko.' : 'اكتشف قصة وسهمية وفريق Tooristoo، تطبيق الذكاء الاصطناعي الذي يحمي السياح من الاحتيال في المغرب.';
+
 
   return (
     <div className="min-h-screen bg-shield-dark">
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDesc} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDesc} />
-        <link rel="canonical" href="https://www.tooristoo.com/about" />
-      </Helmet>
+      <PageHelmet page="about" lang={lang} />
       <noscript>
         <article style={{padding:'2rem',fontFamily:'sans-serif'}}>
           <h1>À Propos de Tooristoo</h1>

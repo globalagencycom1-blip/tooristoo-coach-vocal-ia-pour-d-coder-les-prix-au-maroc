@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BookOpen, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import PageHelmet from '../lib/seo-helmet';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { getBlogArticles, PILLARS, CATEGORIES, CITIES } from '../lib/blog-articles';
@@ -28,20 +28,13 @@ export default function Blog() {
     return pillarObj ? `${pillarObj.icon} ${getPillarLabel(key, lang)}` : '';
   };
 
-  const pageTitle = lang === 'fr' ? 'Blog Tooristoo - Guides de Voyage Maroc | Conseils Anti-Arnaque' : lang === 'en' ? 'Tooristoo Blog - Morocco Travel Guides | Anti-Scam Tips' : lang === 'es' ? 'Blog Tooristoo - Guías de Viaje Marruecos | Consejos Anti-Estafa' : lang === 'de' ? 'Tooristoo Blog - Marokko Reiseführer | Anti-Betrug Tipps' : 'مدونة Tooristoo - أدلة السفر إلى المغرب | نصائح مكافحة الاحتيال';
-  const pageDesc = lang === 'fr' ? 'Découvrez guides complets, conseils de voyage et stratégies anti-arnaque pour explorer le Maroc sereinement.' : lang === 'en' ? 'Discover comprehensive guides, travel tips and anti-scam strategies to explore Morocco safely.' : lang === 'es' ? 'Descubre guías completas, consejos de viaje y estrategias anti-estafa para explorar Marruecos con seguridad.' : lang === 'de' ? 'Entdecken Sie umfassende Leitfäden, Reisetipps und Anti-Betrug-Strategien zur sicheren Erkundung Marokkos.' : 'اكتشف أدلة شاملة ونصائح سفر واستراتيجيات مكافحة الاحتيال لاستكشاف المغرب بأمان.';
+
 
   const allArticlesFr = getBlogArticles('fr');
 
   return (
     <div className="min-h-screen bg-shield-dark">
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDesc} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDesc} />
-        <link rel="canonical" href="https://www.tooristoo.com/blog" />
-      </Helmet>
+      <PageHelmet page="blog" lang={lang} />
       <noscript>
         <article style={{padding:'2rem',fontFamily:'sans-serif'}}>
           <h1>Blog Tooristoo — Guides de Voyage Maroc et Conseils Anti-Arnaque</h1>
