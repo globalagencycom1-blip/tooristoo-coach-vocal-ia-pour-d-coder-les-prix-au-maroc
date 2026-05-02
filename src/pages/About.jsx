@@ -98,6 +98,7 @@ export default function About() {
                   className="rounded-2xl w-full object-cover h-64" />
                 
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-shield-dark/60 to-transparent" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-shield-dark/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 flex items-center gap-2">
                   <span className="text-3xl">🇲🇦</span>
                   <span className="text-white font-semibold">{t('about_founded')}</span>
