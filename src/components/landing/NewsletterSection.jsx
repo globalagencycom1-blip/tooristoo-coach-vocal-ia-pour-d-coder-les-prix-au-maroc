@@ -7,9 +7,9 @@ const NL = {
     badge: '📬 Newsletter Tooristoo',
     title: 'Voyagez plus malin,',
     title2: 'restez toujours protégé',
-    subtitle: 'Recevez chaque semaine les alertes arnaques, prix réels du marché et conseils exclusifs de négociation directement dans votre boîte mail.',
+    subtitle: 'Recevez chaque semaine les alertes abus de prix, prix réels du marché et conseils exclusifs de négociation directement dans votre boîte mail.',
     perks: [
-      '🚨 Alertes arnaques en temps réel',
+      '🚨 Alertes abus de prix en temps réel',
       '💰 Prix du marché mis à jour chaque semaine',
       '🧠 Phrases de négociation exclusives',
       '🇲🇦 Conseils de locaux et d\'experts',
