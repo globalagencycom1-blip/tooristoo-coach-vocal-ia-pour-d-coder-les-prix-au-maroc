@@ -10,6 +10,17 @@ export const BLOG_ARTICLES_BASE = [
   { id: 'fes-restaurant-prix', city: 'Fès', category: 'restaurant', pillar: 'prix', image: 'https://images.openai.com/static-rsc-4/Tr8d33BCIqGq_B8fmbBT2QC0TYBCYaw2NfUHkhQhSDgEDqjpGHh8CIbJ6odI6mHNUDVvX9RwF4kNZzBEqnpSKE5N0U_CG_WR1_zHvWJ3D5LGw-PNpG5Dh4o-wXy0wqy6xOPYmXrvzGYlyO5lY1QgOM7bdqJ8-6SBvt90xE_c5i_Ky4u-I8_OJHOOYP-L9YB4?purpose=fullsize', author: 'NegoShield AI', date: '2026-04-12' },
   { id: 'fes-guide-prix', city: 'Fès', category: 'guide', pillar: 'prix', image: 'https://images.openai.com/static-rsc-4/ikxtDiPoqzTe1I-XDO9F-CnsDtiSx9a9SQCbEpZBf-_MWzEswAQsv-_o829d6l6WsuESEhaLGLwMA8l-04o8q_sNiaRn00IiSaSZQ7ZEF8SD_pOf_faypsO3NCHVk9-1HnOHgH69rh1Lmpv5QIxOaL4WNeSnoosTfyvtcgwNsZDzlaiW7zjqzkVa8Y_N-xzD?purpose=fullsize', author: 'NegoShield AI', date: '2026-04-08' },
   { id: 'chefchaouen-riad-prix', city: 'Chefchaouen', category: 'riad', pillar: 'prix', image: 'https://images.openai.com/static-rsc-4/ew86bFbiXZpBAluKNgQNgLyigDa65m_TS2zSnftIDdyT_LX87BWeVUeVOCJZbBwWNGvktCHLSpyilxIqqheKVgVuuPsuh_wMrO3WobMtRwuY_Gwzc-ZGWn-wLQBKO1tJnb7vRCFazQdrIJpwQWTZK_PlKe9IkNXB5sfPkPnvuN0?purpose=inline', author: 'NegoShield AI', date: '2026-04-06' },
+  { id: 'marrakech-top10-arnaques', city: 'Marrakech', category: 'guide', pillar: 'arnaque', image: 'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=800&q=80', author: 'Tooristoo', date: '2026-04-20' },
+  { id: 'marrakech-negocier-souk', city: 'Marrakech', category: 'shopping', pillar: 'negociation', image: 'https://images.unsplash.com/photo-1548199569-8e8a91d17441?w=800&q=80', author: 'Tooristoo', date: '2026-04-18' },
+  { id: 'casablanca-taxi-aeroport', city: 'Casablanca', category: 'taxi', pillar: 'prix', image: 'https://images.unsplash.com/photo-1577086664693-894d8405334a?w=800&q=80', author: 'Tooristoo', date: '2026-04-16' },
+  { id: 'fes-riad-vs-hotel', city: 'Fès', category: 'riad', pillar: 'prix', image: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80', author: 'Tooristoo', date: '2026-04-14' },
+  { id: 'maroc-ramadan-voyage', city: 'Marrakech', category: 'excursion', pillar: 'preparation', image: 'https://images.unsplash.com/photo-1547489432-cf93fa6c71ee?w=800&q=80', author: 'Tooristoo', date: '2026-04-12' },
+  { id: 'merzouga-excursion-prix', city: 'Merzouga', category: 'excursion', pillar: 'prix', image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=80', author: 'Tooristoo', date: '2026-04-10' },
+  { id: 'agadir-arnaque-plage', city: 'Agadir', category: 'shopping', pillar: 'arnaque', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80', author: 'Tooristoo', date: '2026-04-08' },
+  { id: 'maroc-hammam-prix', city: 'Marrakech', category: 'spa', pillar: 'prix', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80', author: 'Tooristoo', date: '2026-04-06' },
+  { id: 'marrakech-si-arnaque', city: 'Marrakech', category: 'guide', pillar: 'arnaque', image: 'https://images.unsplash.com/photo-1523978591478-c753949ff840?w=800&q=80', author: 'Tooristoo', date: '2026-04-04' },
+  { id: 'tanger-arnaque-port', city: 'Tanger', category: 'transport', pillar: 'arnaque', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', author: 'Tooristoo', date: '2026-04-02' },
+  { id: 'maroc-haute-saison-prix', city: 'Marrakech', category: 'riad', pillar: 'preparation', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80', author: 'Tooristoo', date: '2026-03-30' },
   { id: 'chefchaouen-arnaque-photo', city: 'Chefchaouen', category: 'shopping', pillar: 'arnaque', image: 'https://images.openai.com/static-rsc-4/K4l5bKHxFCYT9hQsy4371M3rctO9xc7AEGZxwzQnZz3xQ48jAYT9DcF4hf2Fpzimx9pmqjx1dJ31Ijy80Rd-JCvIQXbpgT6UKcWfHWpRLIJeoamJI7XU2WiGqq59oF14itIAujULXxkl7jlQSfCWVPCE7cAUcBsKPjbTjzNgS87jtK50m2y6JnK9LTAKgVL8?purpose=fullsize', author: 'NegoShield AI', date: '2026-03-25' }
 ];
 
@@ -32,7 +43,8 @@ export const BLOG_ARTICLES = getBlogArticles('fr');
 export const PILLARS = [
   { key: 'prix', label: 'Guide de prix réels', icon: '💰' },
   { key: 'arnaque', label: 'Arnaques et protection', icon: '⚠️' },
-  { key: 'preparation', label: 'Préparation de voyage', icon: '✈️' }
+  { key: 'preparation', label: 'Préparation de voyage', icon: '✈️' },
+  { key: 'negociation', label: 'Techniques de négociation', icon: '🤝' }
 ];
 
 export const CATEGORIES = [

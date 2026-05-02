@@ -75,12 +75,13 @@ export default function HeroSection({ lang }) {
             <div className="grid grid-cols-3 gap-6 pt-4">
               {[
                 { value: t('hero_stat1'), label: t('hero_stat1_label') },
-                { value: t('hero_stat2'), label: t('hero_stat2_label') },
+                { value: t('hero_stat2'), label: t('hero_stat2_label'), note: t('hero_stat2_note') },
                 { value: t('hero_stat3'), label: t('hero_stat3_label') },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
                   <div className="font-poppins font-black text-2xl text-shield-green">{stat.value}</div>
                   <div className="text-xs text-gray-500 mt-1">{stat.label}</div>
+                  {stat.note && <div className="text-xs text-gray-600 mt-0.5 italic">{stat.note}</div>}
                 </div>
               ))}
             </div>

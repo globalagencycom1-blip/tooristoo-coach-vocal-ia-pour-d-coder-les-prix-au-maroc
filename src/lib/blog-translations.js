@@ -1,3 +1,5 @@
+import { NEW_BLOG_ARTICLES_TRANSLATIONS } from './blog-translations-new';
+
 export const BLOG_ARTICLES_TRANSLATIONS = {
   // MARRAKECH - GUIDE DE PRIX - TAXI
   'marrakech-taxi-prix': {
@@ -1266,6 +1268,9 @@ Viele sehr "Instagrammable" Riads = Preise zu 100% aufgeblasen.`
 بزاف من الدور "Instagrammable" جدا = الأسعار منفوخة 100%.`
     }
   },
+
+  // NEW PILLAR ARTICLES — imported from blog-translations-new.js
+  ...NEW_BLOG_ARTICLES_TRANSLATIONS,
 
   // CHEFCHAOUEN - ARNAQUE
   'chefchaouen-arnaque-photo': {

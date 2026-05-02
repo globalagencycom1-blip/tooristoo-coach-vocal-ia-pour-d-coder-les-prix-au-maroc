@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
+import { getFaqExtended } from '../lib/faq-extended';
 
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false);
@@ -35,6 +36,7 @@ function FAQItem({ q, a }) {
 export default function FAQ() {
   const { lang } = useLang();
   const t = useT(lang);
+  const ext = getFaqExtended(lang);
 
   useEffect(() => {
     const faqSchema = {
@@ -93,6 +95,24 @@ export default function FAQ() {
       items: [
         { q: t('faq_q11'), a: t('faq_a11') },
         { q: t('faq_q12'), a: t('faq_a12') },
+        { q: ext.faq_q20, a: ext.faq_a20 },
+      ],
+    },
+    {
+      cat: lang === 'fr' ? 'En cas de problème' : lang === 'en' ? 'If Something Goes Wrong' : lang === 'es' ? 'En caso de problemas' : lang === 'de' ? 'Bei Problemen' : lang === 'ar' ? 'في حالة وجود مشكلة' : 'إلا وقعت مشكلة',
+      items: [
+        { q: ext.faq_q13, a: ext.faq_a13 },
+        { q: ext.faq_q14, a: ext.faq_a14 },
+        { q: ext.faq_q17, a: ext.faq_a17 },
+      ],
+    },
+    {
+      cat: lang === 'fr' ? 'Questions pratiques avancées' : lang === 'en' ? 'Advanced practical questions' : lang === 'es' ? 'Preguntas prácticas avanzadas' : lang === 'de' ? 'Erweiterte praktische Fragen' : lang === 'ar' ? 'أسئلة عملية متقدمة' : 'أسيلة عملية متقدمة',
+      items: [
+        { q: ext.faq_q15, a: ext.faq_a15 },
+        { q: ext.faq_q16, a: ext.faq_a16 },
+        { q: ext.faq_q18, a: ext.faq_a18 },
+        { q: ext.faq_q19, a: ext.faq_a19 },
       ],
     },
   ];
