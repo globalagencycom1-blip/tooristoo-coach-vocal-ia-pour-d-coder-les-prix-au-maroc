@@ -125,7 +125,9 @@
     <script>
     (function(){
       var path = window.location.pathname.replace(/\/$/,'') || '/';
+      // Normalize: blog articles → /blog, lowercase canonical paths
       if(path.match(/^\/blog\/.+/)) path = '/blog';
+      path = path.toLowerCase();
       // Detect user language preference (localStorage > browser)
       var saved = localStorage.getItem('negoshield_lang');
       var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || 'fr').toLowerCase();
@@ -498,6 +500,179 @@
       <article data-page="/blog" lang="ar" dir="rtl">
         <h1>مدونة Tooristoo — أدلة السفر إلى المغرب ونصائح مكافحة الاحتيال</h1>
         <p>اكتشف أدلتنا الشاملة للسفر بهدوء إلى المغرب: نصائح مكافحة الاحتيال واستراتيجيات التفاوض وأدلة عملية للمدن.</p>
+      </article>
+
+      <!-- DARIJA PHRASEBOOK — multilingual -->
+      <article data-page="/darija" lang="fr">
+        <h1>100 Phrases en Darija Marocain — Négocier et Voyager au Maroc</h1>
+        <p>Guide complet de 100 phrases essentielles en darija marocain avec transcription latine et traduction en français, anglais, espagnol, allemand et arabe. Indispensable pour négocier au Maroc comme un local.</p>
+        <h2>Catégories couvertes</h2>
+        <ul>
+          <li><strong>Taxi</strong> — Demander le compteur, négocier le trajet aéroport, connaître le vrai tarif</li>
+          <li><strong>Souk & Marché</strong> — Demander le prix, refuser un guide, négocier artisanat, détecter les arnaques</li>
+          <li><strong>Restaurant</strong> — Demander le menu avec prix, vérifier les suppléments, demander l'addition</li>
+          <li><strong>Hôtel & Riad</strong> — Négocier la chambre, vérifier si le petit-déjeuner est inclus</li>
+          <li><strong>Négociation</strong> — Phrases clés pour obtenir le prix juste, connaître ses droits</li>
+          <li><strong>Urgences</strong> — Appeler la police, trouver un médecin, signaler un vol</li>
+        </ul>
+        <h2>Phrases essentielles en darija</h2>
+        <dl>
+          <dt>بشحال هادا؟ — Bshhal hada?</dt><dd>Combien ça coûte ?</dd>
+          <dt>دور العداد عافاك — Dour l-3adad 3afak</dt><dd>Mettez le compteur s'il vous plaît</dd>
+          <dt>غالي بزاف، قول ليا الثمن الحقيقي — Ghali bzzaf</dt><dd>C'est trop cher, dites-moi le vrai prix</dd>
+          <dt>عرفت الثمن الحقيقي — 3rafet t-taman l-7aqiqi</dt><dd>Je connais le vrai prix</dd>
+          <dt>إلا ما كادرتيش، رانا غاديين — Ila ma kadrtish, rana ghadyin</dt><dd>Si vous ne pouvez pas, nous partons</dd>
+          <dt>ماشي محتاج مرشد شكراً — Mashi m7taj mrshad shukran</dt><dd>Je n'ai pas besoin de guide merci</dd>
+          <dt>الثمن ديال Tooristoo يقول... — T-taman d-Tooristoo yqul...</dt><dd>Le prix Tooristoo dit...</dd>
+          <dt>شكراً بزاف — Shukran bzzaf</dt><dd>Merci beaucoup</dd>
+          <dt>لاباس؟ — Labas?</dt><dd>Ça va ?</dd>
+          <dt>الحساب عافاك — L-7sab 3afak</dt><dd>L'addition s'il vous plaît</dd>
+        </dl>
+        <h2>Pourquoi apprendre le darija ?</h2>
+        <p>Le darija est la langue maternelle des Marocains. Quelques mots en darija transforment instantanément la relation avec les prestataires locaux, signalent que vous connaissez les prix réels et réduisent considérablement le risque d'arnaque. C'est la signature unique de Tooristoo.</p>
+        <a href="/app">Obtenir les phrases adaptées à ma situation avec l'IA</a> | <a href="/providers">Voir les prestataires certifiés</a>
+      </article>
+      <article data-page="/darija" lang="en">
+        <h1>100 Moroccan Darija Phrases — Negotiate and Travel in Morocco</h1>
+        <p>Complete guide of 100 essential phrases in Moroccan Darija with Latin transcription and translation in French, English, Spanish, German and Arabic. Essential to negotiate in Morocco like a local.</p>
+        <h2>Categories covered</h2>
+        <ul>
+          <li><strong>Taxi</strong> — Ask for the meter, negotiate airport fare, know the real rate</li>
+          <li><strong>Souk & Market</strong> — Ask the price, refuse a guide, negotiate crafts, detect scams</li>
+          <li><strong>Restaurant</strong> — Ask for menu with prices, check supplements, ask for the bill</li>
+          <li><strong>Hotel & Riad</strong> — Negotiate the room, check if breakfast is included</li>
+          <li><strong>Negotiation</strong> — Key phrases to get the fair price, know your rights</li>
+          <li><strong>Emergencies</strong> — Call the police, find a doctor, report a theft</li>
+        </ul>
+        <h2>Essential Darija phrases</h2>
+        <dl>
+          <dt>Bshhal hada? — بشحال هادا؟</dt><dd>How much does this cost?</dd>
+          <dt>Dour l-3adad 3afak — دور العداد عافاك</dt><dd>Turn on the meter please</dd>
+          <dt>Ghali bzzaf — غالي بزاف</dt><dd>Too expensive, tell me the real price</dd>
+          <dt>3rafet t-taman l-7aqiqi — عرفت الثمن الحقيقي</dt><dd>I know the real price</dd>
+          <dt>Ila ma kadrtish, rana ghadyin — إلا ما كادرتيش، رانا غاديين</dt><dd>If you can't, we're leaving</dd>
+          <dt>Mashi m7taj mrshad shukran — ماشي محتاج مرشد شكراً</dt><dd>I don't need a guide thank you</dd>
+        </dl>
+        <a href="/app">Get AI-adapted phrases for my situation</a> | <a href="/providers">See certified providers</a>
+      </article>
+      <article data-page="/darija" lang="es">
+        <h1>100 Frases en Darija Marroquí — Negociar y Viajar en Marruecos</h1>
+        <p>Guía completa de 100 frases esenciales en darija marroquí con transcripción latina y traducción. Indispensable para negociar en Marruecos como un local.</p>
+        <dl>
+          <dt>Bshhal hada? — بشحال هادا؟</dt><dd>¿Cuánto cuesta esto?</dd>
+          <dt>Dour l-3adad 3afak — دور العداد عافاك</dt><dd>Pon el taxímetro por favor</dd>
+          <dt>Ghali bzzaf — غالي بزاف</dt><dd>Muy caro, dime el precio real</dd>
+          <dt>3rafet t-taman l-7aqiqi — عرفت الثمن الحقيقي</dt><dd>Conozco el precio real</dd>
+          <dt>Ila ma kadrtish, rana ghadyin — إلا ما كادرتيش</dt><dd>Si no puede, nos vamos</dd>
+        </dl>
+        <a href="/app">Probar el coach IA</a>
+      </article>
+      <article data-page="/darija" lang="de">
+        <h1>100 Marokkanische Darija-Phrasen — Verhandeln und Reisen in Marokko</h1>
+        <p>Vollständiger Leitfaden mit 100 wesentlichen Phrasen auf Marokkanischem Darija mit lateinischer Transkription und Übersetzung. Unverzichtbar zum Verhandeln in Marokko.</p>
+        <dl>
+          <dt>Bshhal hada? — بشحال هادا؟</dt><dd>Wie viel kostet das?</dd>
+          <dt>Dour l-3adad 3afak — دور العداد عافاك</dt><dd>Schalten Sie das Taxameter ein bitte</dd>
+          <dt>Ghali bzzaf — غالي بزاف</dt><dd>Zu teuer, sagen Sie mir den echten Preis</dd>
+          <dt>3rafet t-taman l-7aqiqi — عرفت الثمن الحقيقي</dt><dd>Ich kenne den echten Preis</dd>
+        </dl>
+        <a href="/app">KI-Coach ausprobieren</a>
+      </article>
+      <article data-page="/darija" lang="ar" dir="rtl">
+        <h1>100 عبارة بالدارجة المغربية — للتفاوض والسفر في المغرب</h1>
+        <p>دليل شامل لـ100 عبارة أساسية بالدارجة المغربية مع النسخ اللاتيني والترجمة. لا غنى عنه للتفاوض في المغرب كالسكان المحليين.</p>
+        <dl>
+          <dt>بشحال هادا؟ — Bshhal hada?</dt><dd>كم يكلف هذا؟</dd>
+          <dt>دور العداد عافاك — Dour l-3adad 3afak</dt><dd>أشغل العداد من فضلك</dd>
+          <dt>عرفت الثمن الحقيقي — 3rafet t-taman l-7aqiqi</dt><dd>أعرف السعر الحقيقي</dd>
+        </dl>
+        <a href="/app">جرب المدرب الذكي</a>
+      </article>
+
+      <!-- PROVIDER CHARTER — multilingual -->
+      <article data-page="/charter" lang="fr">
+        <h1>Charte des Prestataires Certifiés Tooristoo — 7 Engagements Vérifiés</h1>
+        <p>Contrairement aux agrégateurs classiques qui référencent sans vérification, Tooristoo applique une charte d'engagement stricte. Chaque prestataire certifié au Maroc a signé et respecte ces 7 engagements de qualité et de transparence.</p>
+        <h2>Les 7 engagements des prestataires certifiés Tooristoo</h2>
+        <ol>
+          <li><strong>Prix officiels affichés</strong> — Le prix sur Tooristoo est le prix réel pratiqué, aucune majoration pour touristes étrangers. Tarifs vérifiés et mis à jour régulièrement.</li>
+          <li><strong>Pas de frais cachés</strong> — TVA incluse, pourboires non obligatoires, suppléments clairement indiqués à l'avance.</li>
+          <li><strong>Vérification terrain</strong> — Un membre de l'équipe Tooristoo a visité et testé le service en personne avant certification. Ré-évaluation annuelle obligatoire.</li>
+          <li><strong>Note minimale 3.5/5</strong> — Seuls les prestataires maintenant une note client ≥ 3,5/5 conservent leur certification.</li>
+          <li><strong>Contact garanti</strong> — Numéro de téléphone vérifié et opérationnel. Réponse sous 4h en haute saison.</li>
+          <li><strong>Anti-discrimination</strong> — Même service, même prix pour tous, locaux ou étrangers.</li>
+          <li><strong>Signalement traité sous 24h</strong> — Suspension immédiate si arnaque confirmée par 3 utilisateurs.</li>
+        </ol>
+        <h2>Processus de certification en 5 étapes</h2>
+        <ol>
+          <li>Candidature avec documents officiels</li>
+          <li>Vérification documentaire en 48h</li>
+          <li>Visite terrain anonyme par un inspecteur Tooristoo</li>
+          <li>Attribution du badge Tooristoo et publication</li>
+          <li>Suivi continu + ré-évaluation annuelle</li>
+        </ol>
+        <h2>Ce qui nous différencie des agrégateurs classiques</h2>
+        <p>Booking, TripAdvisor et Google Maps référencent sans vérification des prix. Tooristoo vérifie chaque prestataire sur le terrain, impose des prix transparents et surveille la qualité en continu. C'est la garantie zéro arnaque pour les touristes.</p>
+        <a href="/providers">Voir les prestataires certifiés</a> | <a href="/app">Analyser un prix avec l'IA</a>
+      </article>
+      <article data-page="/charter" lang="en">
+        <h1>Tooristoo Certified Provider Charter — 7 Verified Commitments</h1>
+        <p>Unlike classic aggregators that list without verification, Tooristoo enforces a strict commitment charter. Each certified provider in Morocco has signed and respects these 7 quality and transparency commitments.</p>
+        <h2>The 7 commitments of Tooristoo certified providers</h2>
+        <ol>
+          <li><strong>Official prices displayed</strong> — The price on Tooristoo is the real price charged, no markup for foreign tourists.</li>
+          <li><strong>No hidden fees</strong> — VAT included, tips not mandatory, supplements clearly stated in advance.</li>
+          <li><strong>Field verification</strong> — A Tooristoo team member visited and tested the service in person. Mandatory annual re-evaluation.</li>
+          <li><strong>Minimum rating 3.5/5</strong> — Only providers maintaining ≥ 3.5/5 keep their certification.</li>
+          <li><strong>Guaranteed contact</strong> — Verified phone number. Response within 4 hours during peak season.</li>
+          <li><strong>Anti-discrimination</strong> — Same service, same price for everyone, locals or foreigners.</li>
+          <li><strong>Reports handled within 24h</strong> — Immediate suspension if scam confirmed by 3 users.</li>
+        </ol>
+        <h2>What sets us apart from classic aggregators</h2>
+        <p>Booking, TripAdvisor and Google Maps list without price verification. Tooristoo verifies each provider on the ground, enforces transparent pricing and monitors quality continuously.</p>
+        <a href="/providers">See certified providers</a> | <a href="/app">Analyze a price with AI</a>
+      </article>
+      <article data-page="/charter" lang="es">
+        <h1>Carta de Proveedores Certificados Tooristoo — 7 Compromisos Verificados</h1>
+        <p>A diferencia de los agregadores clásicos, Tooristoo aplica una carta de compromiso estricta. Cada proveedor certificado en Marruecos ha firmado estos 7 compromisos de calidad y transparencia.</p>
+        <ol>
+          <li><strong>Precios oficiales mostrados</strong> — Sin recargo para turistas extranjeros.</li>
+          <li><strong>Sin cargos ocultos</strong> — IVA incluido, propinas no obligatorias.</li>
+          <li><strong>Verificación en terreno</strong> — Visita anónima obligatoria antes de certificación.</li>
+          <li><strong>Puntuación mínima 3.5/5</strong> — Control continuo de calidad.</li>
+          <li><strong>Contacto garantizado</strong> — Respuesta en 4h en temporada alta.</li>
+          <li><strong>Anti-discriminación</strong> — Mismo precio para todos.</li>
+          <li><strong>Denuncias tramitadas en 24h</strong> — Suspensión inmediata si se confirma estafa.</li>
+        </ol>
+        <a href="/providers">Ver proveedores certificados</a>
+      </article>
+      <article data-page="/charter" lang="de">
+        <h1>Tooristoo Zertifizierter Anbieter-Kodex — 7 Verifizierte Verpflichtungen</h1>
+        <p>Im Gegensatz zu klassischen Aggregatoren setzt Tooristoo eine strenge Verpflichtungscharta durch. Jeder zertifizierte Anbieter in Marokko hat diese 7 Qualitäts- und Transparenzverpflichtungen unterzeichnet.</p>
+        <ol>
+          <li><strong>Offizielle Preise angezeigt</strong> — Kein Aufschlag für ausländische Touristen.</li>
+          <li><strong>Keine versteckten Gebühren</strong> — MwSt. inklusive, Trinkgeld nicht obligatorisch.</li>
+          <li><strong>Feldverifizierung</strong> — Anonymer Besuch vor der Zertifizierung.</li>
+          <li><strong>Mindestbewertung 3,5/5</strong> — Kontinuierliche Qualitätskontrolle.</li>
+          <li><strong>Garantierter Kontakt</strong> — Antwort innerhalb von 4h in der Hochsaison.</li>
+          <li><strong>Antidiskriminierung</strong> — Gleicher Preis für alle.</li>
+          <li><strong>Meldungen innerhalb von 24h bearbeitet</strong> — Sofortige Sperrung bei bestätigtem Betrug.</li>
+        </ol>
+        <a href="/providers">Zertifizierte Anbieter ansehen</a>
+      </article>
+      <article data-page="/charter" lang="ar" dir="rtl">
+        <h1>ميثاق مزودي الخدمات المعتمدين من Tooristoo — 7 التزامات مُتحقق منها</h1>
+        <p>على خلاف المجمِّعات الكلاسيكية التي تُدرج بدون تحقق، يُطبق Tooristoo ميثاق التزام صارم. كل مزود خدمة معتمد في المغرب وقّع على هذه الالتزامات السبعة للجودة والشفافية.</p>
+        <ol>
+          <li><strong>أسعار رسمية معروضة</strong> — بدون رسوم إضافية للسياح الأجانب.</li>
+          <li><strong>بدون رسوم مخفية</strong> — ضريبة القيمة المضافة مشمولة.</li>
+          <li><strong>تحقق ميداني</strong> — زيارة مجهولة إلزامية قبل الاعتماد.</li>
+          <li><strong>تقييم أدنى 3.5/5</strong> — مراقبة مستمرة للجودة.</li>
+          <li><strong>تواصل مضمون</strong> — رد في 4 ساعات في الموسم السياحي.</li>
+          <li><strong>مكافحة التمييز</strong> — نفس السعر للجميع.</li>
+          <li><strong>معالجة البلاغات في 24 ساعة</strong> — تعليق فوري عند تأكيد الاحتيال.</li>
+        </ol>
+        <a href="/providers">اطلع على مزودي الخدمات المعتمدين</a>
       </article>
 
       <!-- APP — multilingual -->
