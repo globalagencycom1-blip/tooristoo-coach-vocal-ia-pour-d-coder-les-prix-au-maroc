@@ -19,7 +19,7 @@ export const translations = {
     hero_stat1_label: "Économies moyennes par voyageur",
     hero_stat2: "98%",
     hero_stat2_label: "Taux de précision tarifaire",
-    hero_stat2_note: "sur 12 000 analyses vérifiées",
+    hero_stat2_note: "sur 2 500 analyses vérifiées",
     hero_stat3: "500+",
     hero_stat3_label: "Voyageurs protégés",
     
