@@ -7,9 +7,26 @@ const REDIRECTS = {
   // French aliases
   '/prestataires': '/providers',
   '/alertes': '/alerts',
+  '/apropos': '/about',
+  '/a-propos': '/about',
+  '/tarifs': '/#pricing',
+  '/prix': '/#pricing',
+  // English aliases
+  '/home': '/',
+  '/negotiate': '/app',
+  '/coach': '/app',
+  '/phrasebook': '/darija',
+  '/charter': '/charter',
   // Ghost / phantom routes — redirect to home
   '/landing': '/',
-  // Normalize trailing slash (except root)
+  // Trailing slash normalization (except root)
+  '/providers/': '/providers',
+  '/alerts/': '/alerts',
+  '/about/': '/about',
+  '/faq/': '/faq',
+  '/blog/': '/blog',
+  '/darija/': '/darija',
+  '/charter/': '/charter',
 };
 
 /**
