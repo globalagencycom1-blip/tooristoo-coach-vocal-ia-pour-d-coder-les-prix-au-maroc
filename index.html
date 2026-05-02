@@ -1,64 +1,148 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="https://base44.com/logo_v2.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="description" content="Tooristoo - Coach vocal IA pour négocier les meilleurs prix au Maroc. Détection d'arnaques, stratégies de négociation et conseils touristiques." />
-    <meta name="keywords" content="négociation maroc, coach vocal IA, détection arnaque, prix maroc, arnaques touristiques" />
+
+    <title>Tooristoo - Coach Vocal IA pour Négocier les Meilleurs Prix au Maroc</title>
+    <meta name="description" content="Tooristoo est votre coach vocal IA pour analyser les prix, détecter les arnaques et négocier comme un local au Maroc. Gratuit, multilingue, disponible partout." />
+    <meta name="keywords" content="négociation maroc, coach vocal IA, détection arnaque touriste, prix taxi marrakech, arnaque maroc, négocier maroc, tooristoo" />
     <meta name="author" content="Tooristoo" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://tooristoo.com/" />
+
+    <!-- Canonical & sitemap -->
+    <link rel="canonical" href="https://www.tooristoo.com/" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!-- hreflang: une seule URL par page, multilingue via JS -->
+    <link rel="alternate" hreflang="fr" href="https://www.tooristoo.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.tooristoo.com/" />
+    <link rel="alternate" hreflang="es" href="https://www.tooristoo.com/" />
+    <link rel="alternate" hreflang="de" href="https://www.tooristoo.com/" />
+    <link rel="alternate" hreflang="ar" href="https://www.tooristoo.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.tooristoo.com/" />
     <meta property="og:title" content="Tooristoo - Coach Vocal IA pour Négocier les Meilleurs Prix au Maroc" />
-    <meta property="og:description" content="Analysez les prix en temps réel, détectez les arnaques et négociez comme un local au Maroc avec notre coach IA." />
-    <meta property="og:image" content="https://tooristoo.com/og-image.png" />
+    <meta property="og:description" content="Analysez les prix en temps réel, détectez les arnaques et négociez comme un local au Maroc avec notre coach IA vocal." />
+    <meta property="og:image" content="https://www.tooristoo.com/og-image.png" />
     <meta property="og:site_name" content="Tooristoo" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Tooristoo - Coach Vocal IA pour Négocier au Maroc" />
-    <meta name="twitter:description" content="Votre assistant IA pour négocier les meilleurs prix au Maroc" />
-    <meta name="twitter:image" content="https://tooristoo.com/og-image.png" />
+    <meta name="twitter:description" content="Votre assistant IA pour négocier les meilleurs prix au Maroc. Détection d'arnaques, phrases en darija, stratégies de négociation." />
+    <meta name="twitter:image" content="https://www.tooristoo.com/og-image.png" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@700;800;900&display=swap" as="style" />
-    <link rel="alternate" hreflang="fr" href="https://tooristoo.com/" />
-    <link rel="alternate" hreflang="en" href="https://tooristoo.com/en" />
-    <link rel="alternate" hreflang="es" href="https://tooristoo.com/es" />
-    <link rel="alternate" hreflang="de" href="https://tooristoo.com/de" />
-    <link rel="alternate" hreflang="ar" href="https://tooristoo.com/ar" />
-    <link rel="alternate" hreflang="x-default" href="https://tooristoo.com/" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@700;800;900&display=swap" /></noscript>
+
+    <!-- Structured Data: WebSite -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Website",
+      "@type": "WebSite",
       "name": "Tooristoo",
-      "url": "https://tooristoo.com/",
-      "description": "Coach vocal IA pour négocier les meilleurs prix au Maroc",
+      "url": "https://www.tooristoo.com/",
+      "description": "Coach vocal IA pour négocier les meilleurs prix et détecter les arnaques au Maroc",
+      "inLanguage": ["fr", "en", "es", "de", "ar"],
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://tooristoo.com/app"
-        }
+          "urlTemplate": "https://www.tooristoo.com/providers?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
       }
     }
     </script>
+
+    <!-- Structured Data: Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Tooristoo",
-      "url": "https://tooristoo.com/",
-      "logo": "https://tooristoo.com/logo.png",
-      "description": "Coach vocal IA pour analyser les prix, détecter les arnaques et négocier au Maroc"
+      "url": "https://www.tooristoo.com/",
+      "logo": "https://www.tooristoo.com/logo.png",
+      "description": "Coach vocal IA pour analyser les prix, détecter les arnaques et négocier au Maroc",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "contact@tooristoo.com",
+        "contactType": "customer support",
+        "availableLanguage": ["French", "English", "Spanish", "German", "Arabic"]
+      }
     }
     </script>
-    <title>Tooristoo - Coach Vocal IA pour Négocier les Meilleurs Prix au Maroc | Assistant Touristique</title>
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Tooristoo",
+      "url": "https://www.tooristoo.com/app",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "description": "Application mobile et web de coach vocal IA pour aider les touristes à négocier les prix et détecter les arnaques au Maroc. Disponible en français, anglais, espagnol, allemand et arabe.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "featureList": [
+        "Analyse des prix en temps réel",
+        "Détection d'arnaques touristiques",
+        "Phrases de négociation en darija",
+        "Répertoire de prestataires certifiés",
+        "Historique des négociations"
+      ],
+      "inLanguage": ["fr", "en", "es", "de", "ar"]
+    }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Pre-rendered content for crawlers that don't execute JS -->
+    <div id="root">
+      <header>
+        <nav>
+          <a href="/">Tooristoo</a>
+          <a href="/app">Application</a>
+          <a href="/providers">Prestataires certifiés</a>
+          <a href="/alerts">Alertes arnaques</a>
+          <a href="/blog">Blog</a>
+          <a href="/about">À propos</a>
+          <a href="/faq">FAQ</a>
+        </nav>
+      </header>
+      <main>
+        <h1>Tooristoo — Coach Vocal IA pour Négocier les Meilleurs Prix au Maroc</h1>
+        <p>Tooristoo est l'application de référence pour les touristes visitant le Maroc. Notre coach vocal IA analyse les prix en temps réel, détecte les tentatives d'arnaques et vous fournit les meilleures stratégies de négociation ainsi que des phrases exactes en darija marocain.</p>
+        <h2>Fonctionnalités principales</h2>
+        <ul>
+          <li>Analyse IA des prix des taxis, hôtels, restaurants, riads et excursions à Marrakech, Fès, Casablanca, Chefchaouen et dans toutes les grandes villes du Maroc</li>
+          <li>Détection automatique des arnaques touristiques les plus fréquentes</li>
+          <li>Phrases de négociation personnalisées en français, anglais, espagnol, allemand, arabe et darija</li>
+          <li>Répertoire de prestataires certifiés avec prix officiels transparents</li>
+          <li>Alertes communautaires sur les arnaques signalées</li>
+        </ul>
+        <h2>Pourquoi Tooristoo ?</h2>
+        <p>Les touristes au Maroc font face à des prix parfois multipliés par 5 à 10 par rapport aux tarifs locaux. Tooristoo vous protège en vous donnant les connaissances et les outils pour négocier équitablement et en toute confiance.</p>
+        <h2>Villes couvertes</h2>
+        <p>Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla, El Jadida.</p>
+        <h2>Disponible en 6 langues</h2>
+        <p>Français, English, Español, Deutsch, العربية, Darija marocaine.</p>
+        <p><a href="/app">Commencer gratuitement</a> | <a href="/providers">Voir les prestataires certifiés</a> | <a href="/blog">Lire le blog voyage Maroc</a></p>
+      </main>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
