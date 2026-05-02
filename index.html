@@ -195,6 +195,32 @@
         var htmlLang = {fr:'fr',en:'en',es:'es',de:'de',ar:'ar'}[lang] || 'fr';
         document.documentElement.lang = htmlLang;
         if (lang === 'ar') document.documentElement.dir = 'rtl';
+
+        // Update hreflang links to point to the correct page URL (not always home)
+        var hreflangLangs = ['fr','en','es','de','ar'];
+        var hreflangMap = {'fr':'fr','en':'en','es':'es','de':'de','ar':'ar'};
+        // Remove existing hreflang links
+        document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(function(el){ el.parentNode.removeChild(el); });
+        // Re-inject with correct URL
+        hreflangLangs.forEach(function(l) {
+          var link = document.createElement('link');
+          link.rel = 'alternate';
+          link.hreflang = hreflangMap[l];
+          link.href = canonical;
+          document.head.appendChild(link);
+        });
+        // x-default
+        var xdef = document.createElement('link');
+        xdef.rel = 'alternate';
+        xdef.hreflang = 'x-default';
+        xdef.href = canonical;
+        document.head.appendChild(xdef);
+        // ar-MA variant
+        var arma = document.createElement('link');
+        arma.rel = 'alternate';
+        arma.hreflang = 'ar-MA';
+        arma.href = canonical;
+        document.head.appendChild(arma);
       }
     })();
     </script>
