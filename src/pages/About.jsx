@@ -52,7 +52,7 @@ export default function About() {
           </ul>
           <h2>Notre impact</h2>
           <ul>
-            <li>50 000+ voyageurs accompagnés</li>
+            <li>500+ voyageurs accompagnés</li>
             <li>2 350 MAD d'économies moyennes par voyage</li>
             <li>98% de précision tarifaire sur les analyses vérifiées</li>
             <li>6 langues supportées : français, anglais, espagnol, allemand, arabe, darija</li>
