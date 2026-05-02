@@ -28,8 +28,8 @@ export const translations = {
     features_subtitle: "pour voyager sereinement au Maroc",
     feat1_title: "Coach Vocal IA en Temps Réel",
     feat1_desc: "Parlez naturellement, l'IA écoute et analyse instantanément la situation pour vous guider.",
-    feat2_title: "Détection d'Arnaques",
-    feat2_desc: "Algorithme anti-arnaque qui compare les prix pratiqués vs les prix réels du marché local.",
+    feat2_title: "Détection d'Abus de Prix",
+    feat2_desc: "Algorithme de détection des abus de prix qui compare les prix pratiqués vs les prix réels du marché local.",
     feat3_title: "Négocie Pour Vous",
     feat3_desc: "Stratégies de négociation personnalisées et phrases exactes à dire en fonction du contexte.",
     feat4_title: "Expert Local Partout",
@@ -115,7 +115,7 @@ export const translations = {
 
     // Testimonials
     testimonials_title: "Ils nous font confiance",
-    test1_text: "Grâce à Tooristoo, j'ai économisé beaucoup et évité plusieurs arnaques pendant mon séjour au Maroc. Indispensable !",
+    test1_text: "Grâce à Tooristoo, j'ai économisé beaucoup et évité plusieurs abus de prix pendant mon séjour au Maroc. Indispensable !",
     test1_name: "Julie",
     test1_origin: "France",
     test2_text: "The taxi analysis was spot on! They asked 300 MAD, Tooristoo told me the real price was 120-150 MAD. Saved 150 MAD instantly!",
@@ -1679,7 +1679,7 @@ export const translations = {
     feat1_title: "كوتش صوتي فالوقت الحقيقي",
     feat1_desc: "هضر بالطبيعي، AI كيسمع وكيحلل الوضعية فلحظة باش يرشدك.",
     feat2_title: "كاشف الأثمان الغالية",
-    feat2_desc: "خوارزمية مقارنة الأثمان المعروضة مع الأثمان الحقيقية فالسوق.",
+    feat2_desc: "خوارزمية كشف الأثمان الغالية تقارن الأثمان المعروضة مع الأثمان الحقيقية فالسوق.",
     feat3_title: "كينيگوسياو عليك",
     feat3_desc: "استراتيجيات تفاوض مخصصة وعبارات دقيقة حسب الوضعية.",
     feat4_title: "خبير محلي فكل بلاصة",
