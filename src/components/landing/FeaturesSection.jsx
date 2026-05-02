@@ -3,7 +3,7 @@ import { Mic, AlertTriangle, Handshake, MapPin, TrendingDown, CheckCircle } from
 import { useT } from '../../lib/i18n';
 
 const features = [
-  { icon: Mic, key: 'feat1', color: 'text-shield-green', bg: 'bg-shield-green/10' },
+  { icon: Mic, key: 'feat1', color: 'text-shield-green', bg: 'bg-shield-green/10', badge: '⭐ Unique' },
   { icon: AlertTriangle, key: 'feat2', color: 'text-red-400', bg: 'bg-red-500/10' },
   { icon: Handshake, key: 'feat3', color: 'text-blue-400', bg: 'bg-blue-500/10' },
   { icon: MapPin, key: 'feat4', color: 'text-shield-gold', bg: 'bg-shield-gold/10' },
@@ -38,11 +38,16 @@ export default function FeaturesSection({ lang }) {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map(({ icon: IconComp, key, color, bg }) => (
+            {features.map(({ icon: IconComp, key, color, bg, badge }) => (
               <div
                 key={key}
-                className="glass-card rounded-2xl p-6 hover:border-shield-green/20 transition-all group card-glow"
+                className={`glass-card rounded-2xl p-6 hover:border-shield-green/20 transition-all group card-glow ${badge ? 'border-shield-green/40' : ''}`}
               >
+                {badge && (
+                  <div className="inline-block mb-3 px-2 py-1 bg-shield-green/20 text-shield-green text-xs font-bold rounded-full">
+                    {badge}
+                  </div>
+                )}
                 <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                   <IconComp className={`w-6 h-6 ${color}`} />
                 </div>

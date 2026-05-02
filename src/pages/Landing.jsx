@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import HeroSection from '../components/landing/HeroSection';
 import FeaturesSection from '../components/landing/FeaturesSection';
 import AnalysisSection from '../components/landing/AnalysisSection';
+import VoiceCoachDemoSection from '../components/landing/VoiceCoachDemoSection';
 import PricingSection from '../components/landing/PricingSection';
 import TestimonialsSection from '../components/landing/TestimonialsSection';
 import CTASection from '../components/landing/CTASection';
@@ -23,6 +24,7 @@ export default function Landing() {
       <VoiceHeroSection lang={lang} />
       <FeaturesSection lang={lang} />
       <AnalysisSection lang={lang} />
+      <VoiceCoachDemoSection lang={lang} />
       <TestimonialsSection lang={lang} />
       <AlertsBanner />
       <PricingSection lang={lang} />
