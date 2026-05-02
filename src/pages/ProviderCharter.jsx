@@ -26,11 +26,9 @@ const CONTENT = {
     ],
     process_title: 'Processus de certification',
     process: [
-      { step: '1', title: 'Candidature', desc: 'Le prestataire soumet sa candidature avec documents officiels (registre du commerce, numéro de taxe, photos du lieu).' },
-      { step: '2', title: 'Vérification documentaire', desc: 'Notre équipe vérifie l\'authenticité des documents et la conformité légale en 48h.' },
-      { step: '3', title: 'Visite terrain', desc: 'Un inspecteur Tooristoo visite le lieu en client anonyme et évalue le service réel.' },
-      { step: '4', title: 'Certification', desc: 'Si conforme, le prestataire reçoit le badge Tooristoo et est publié sur la plateforme.' },
-      { step: '5', title: 'Suivi continu', desc: 'Ré-évaluation annuelle + surveillance des signalements communautaires en temps réel.' },
+       { step: '1', title: 'Visite terrain', desc: 'Un inspecteur Tooristoo visite le lieu en client anonyme et évalue le service réel.' },
+       { step: '2', title: 'Certification', desc: 'Si conforme, le prestataire reçoit le badge Tooristoo et est publié sur la plateforme.' },
+       { step: '3', title: 'Suivi continu', desc: 'Ré-évaluation annuelle + surveillance des signalements communautaires en temps réel.' },
     ],
     why_title: 'Pourquoi c\'est important pour vous',
     why: [
@@ -61,11 +59,9 @@ const CONTENT = {
     ],
     process_title: 'Certification process',
     process: [
-      { step: '1', title: 'Application', desc: 'The provider submits their application with official documents (trade register, tax number, venue photos).' },
-      { step: '2', title: 'Document verification', desc: 'Our team verifies document authenticity and legal compliance within 48h.' },
-      { step: '3', title: 'Field visit', desc: 'A Tooristoo inspector visits the venue as an anonymous customer and evaluates the real service.' },
-      { step: '4', title: 'Certification', desc: 'If compliant, the provider receives the Tooristoo badge and is published on the platform.' },
-      { step: '5', title: 'Ongoing monitoring', desc: 'Annual re-evaluation + real-time monitoring of community reports.' },
+       { step: '1', title: 'Field visit', desc: 'A Tooristoo inspector visits the venue as an anonymous customer and evaluates the real service.' },
+       { step: '2', title: 'Certification', desc: 'If compliant, the provider receives the Tooristoo badge and is published on the platform.' },
+       { step: '3', title: 'Ongoing monitoring', desc: 'Annual re-evaluation + real-time monitoring of community reports.' },
     ],
     why_title: 'Why this matters for you',
     why: [
@@ -96,11 +92,9 @@ const CONTENT = {
     ],
     process_title: 'Proceso de certificación',
     process: [
-      { step: '1', title: 'Candidatura', desc: 'El proveedor envía su solicitud con documentos oficiales.' },
-      { step: '2', title: 'Verificación documental', desc: 'Nuestro equipo verifica la autenticidad en 48h.' },
-      { step: '3', title: 'Visita de campo', desc: 'Un inspector Tooristoo visita el lugar como cliente anónimo.' },
-      { step: '4', title: 'Certificación', desc: 'Si cumple, el proveedor recibe el sello Tooristoo.' },
-      { step: '5', title: 'Seguimiento continuo', desc: 'Re-evaluación anual + vigilancia de denuncias.' },
+       { step: '1', title: 'Visita de campo', desc: 'Un inspector Tooristoo visita el lugar como cliente anónimo.' },
+       { step: '2', title: 'Certificación', desc: 'Si cumple, el proveedor recibe el sello Tooristoo.' },
+       { step: '3', title: 'Seguimiento continuo', desc: 'Re-evaluación anual + vigilancia de denuncias.' },
     ],
     why_title: 'Por qué importa para ti',
     why: [
