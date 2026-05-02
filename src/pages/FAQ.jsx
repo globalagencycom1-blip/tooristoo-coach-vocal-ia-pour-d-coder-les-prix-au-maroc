@@ -169,12 +169,12 @@ export default function FAQ() {
                       </div>
                     ))}
                   </div>
-                  <Link
-                    to="/#pricing"
+                  <a
+                    href="#pricing"
                     className="mt-4 inline-flex items-center gap-2 text-shield-green text-sm font-semibold hover:text-green-400 transition-colors"
                   >
                     {pt('faq_pricing_cta')}
-                  </Link>
+                  </a>
                 </div>
               )}
               <div className="space-y-3">
