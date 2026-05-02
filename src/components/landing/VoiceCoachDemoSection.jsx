@@ -86,13 +86,13 @@ export default function VoiceCoachDemoSection({ lang }) {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-shield-green/10 border border-shield-green/30 rounded-full text-shield-green text-sm font-medium mb-6">
             <Volume2 className="w-4 h-4" />
-            Le Différenciant Clé
+            {t('voice_coach_badge')}
           </div>
           <h2 className="font-poppins font-black text-4xl md:text-5xl text-white mb-4">
-            Coach Vocal <span className="text-gradient-green">Multilingue</span>
+            {t('voice_coach_title')} <span className="text-gradient-green">{t('voice_coach_title2')}</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Le seul coach vocal qui vous donne les phrases exactes EN AUDIO dans votre langue. Vous ne savez pas parler darija ? Pas de problème — Tooristoo parle pour vous.
+            {t('voice_coach_subtitle')}
           </p>
         </div>
 
@@ -102,8 +102,8 @@ export default function VoiceCoachDemoSection({ lang }) {
           <div className="md:col-span-2 lg:col-span-1 bg-gradient-to-br from-shield-green/20 to-shield-gold/20 border border-shield-green/40 rounded-2xl p-8 hover:border-shield-green/60 transition-all">
             <div className="flex items-start justify-between mb-4">
               <div>
-                <h3 className="font-poppins font-bold text-xl text-white mb-1">🇲🇦 Darija</h3>
-                <p className="text-sm text-gray-400">Darija Marocain — La langue locale</p>
+                <h3 className="font-poppins font-bold text-xl text-white mb-1">{t('voice_coach_darija_label')}</h3>
+                <p className="text-sm text-gray-400">{t('voice_coach_darija_desc')}</p>
               </div>
               <button
                 onClick={() => handlePlayAudio('darija')}
@@ -117,12 +117,12 @@ export default function VoiceCoachDemoSection({ lang }) {
               </button>
             </div>
             <p className="text-white font-medium leading-relaxed italic mb-4">
-              "السلام، التمن ديال الكوريس بين 120 و150 درهم، إلا كان مزيان لمك، ولا شكراً."
+              {t('voice_coach_darija_text')}
             </p>
             <p className="text-sm text-gray-300">
-              ✓ Prononciation native<br/>
-              ✓ Respect des usages locaux<br/>
-              ✓ Impression d'authenticité
+              {t('voice_coach_benefit1')}<br/>
+              {t('voice_coach_benefit2')}<br/>
+              {t('voice_coach_benefit3')}
             </p>
           </div>
 
@@ -153,25 +153,25 @@ export default function VoiceCoachDemoSection({ lang }) {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-shield-card border border-shield-border rounded-2xl p-6 text-center">
             <div className="text-3xl mb-3">🗣️</div>
-            <h4 className="font-poppins font-bold text-white mb-2">Audio Natif</h4>
-            <p className="text-sm text-gray-400">Écoutez comment prononcer chaque phrase avec accent naturel</p>
+            <h4 className="font-poppins font-bold text-white mb-2">{t('voice_coach_audio_native')}</h4>
+            <p className="text-sm text-gray-400">{t('voice_coach_audio_native_desc')}</p>
           </div>
           <div className="bg-shield-card border border-shield-border rounded-2xl p-6 text-center">
             <div className="text-3xl mb-3">🌍</div>
-            <h4 className="font-poppins font-bold text-white mb-2">6 Langues</h4>
-            <p className="text-sm text-gray-400">Français, anglais, espagnol, allemand, arabe et darija marocain</p>
+            <h4 className="font-poppins font-bold text-white mb-2">{t('voice_coach_six_languages')}</h4>
+            <p className="text-sm text-gray-400">{t('voice_coach_six_languages_desc')}</p>
           </div>
           <div className="bg-shield-card border border-shield-border rounded-2xl p-6 text-center">
             <div className="text-3xl mb-3">🎯</div>
-            <h4 className="font-poppins font-bold text-white mb-2">Aucune Barrière</h4>
-            <p className="text-sm text-gray-400">Vous ne parlez pas darija ? Tooristoo parle pour vous.</p>
+            <h4 className="font-poppins font-bold text-white mb-2">{t('voice_coach_no_barrier')}</h4>
+            <p className="text-sm text-gray-400">{t('voice_coach_no_barrier_desc')}</p>
           </div>
         </div>
 
         {/* CTA */}
         <div className="mt-12 text-center">
           <p className="text-gray-400 mb-6">
-            🔒 <strong>Unique à Tooristoo</strong> — Aucune autre plateforme n'offre le coaching vocal multilingue en temps réel avec traduction en darija
+            {t('voice_coach_unique')}
           </p>
         </div>
       </div>
