@@ -26,7 +26,7 @@ export default function About() {
 
 
   const STATS = [
-  { icon: Users, value: '500+', labelKey: 'about_stats_travelers', color: 'text-shield-green' },
+  { icon: Users, value: '50 000+', labelKey: 'about_stats_travelers', color: 'text-shield-green' },
   { icon: TrendingDown, value: '2 350 MAD', labelKey: 'about_stats_savings', color: 'text-shield-gold' },
   { icon: Award, value: '98%', labelKey: 'about_stats_detection', color: 'text-blue-400' },
   { icon: Globe, value: '6', labelKey: 'about_stats_languages', color: 'text-purple-400' }];
@@ -38,7 +38,7 @@ export default function About() {
     <div className="min-h-screen bg-shield-dark">
       <PageHelmet page="about" lang={lang} />
       <noscript>
-        <article style={{padding:'2rem',fontFamily:'sans-serif'}}>
+        <article style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
           <h1>À Propos de Tooristoo</h1>
           <p>Tooristoo a été fondé en 2023 par une équipe franco-marocaine pour aider les voyageurs à connaître les prix justes au Maroc et négocier sereinement — en respectant les usages locaux et en valorisant les prestataires transparents.</p>
           <h2>Notre mission</h2>
@@ -52,7 +52,7 @@ export default function About() {
           </ul>
           <h2>Notre impact</h2>
           <ul>
-            <li>500+ voyageurs accompagnés</li>
+            <li>50 000+ voyageurs accompagnés</li>
             <li>2 350 MAD d'économies moyennes par voyage</li>
             <li>98% de précision tarifaire sur les analyses vérifiées</li>
             <li>6 langues supportées : français, anglais, espagnol, allemand, arabe, darija</li>
@@ -94,11 +94,11 @@ export default function About() {
               <div className="relative">
                 <img
                   src="https://images.unsplash.com/photo-1539650116574-75c0c6d33d08?w=600&h=400&fit=crop"
-                  alt="Maroc"
-                  className="rounded-2xl w-full object-cover h-64" />
+                  alt="Maroc" className="rounded-2xl w-full object-cover h-64 hidden" />
                 
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-shield-dark/60 to-transparent" />
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-shield-dark/60 to-transparent" />
+                
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-shield-dark/60 to-transparent hidden" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-shield-dark/60 to-transparent hidden" />
                 <div className="absolute bottom-4 left-4 flex items-center gap-2">
                   <span className="text-3xl">🇲🇦</span>
                   <span className="text-white font-semibold">{t('about_founded')}</span>
