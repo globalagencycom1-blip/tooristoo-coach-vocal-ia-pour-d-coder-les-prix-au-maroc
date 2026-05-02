@@ -242,6 +242,13 @@ export default function PageHelmet({ page, lang = 'fr', extraSchemas = null }) {
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content="Tooristoo" />
       <meta property="og:locale" content={OG_LOCALE[lang] || 'fr_FR'} />
+      {/* Signal alternate languages to OG crawlers */}
+      {Object.entries(OG_LOCALE)
+        .filter(([l]) => l !== lang && l !== 'darija')
+        .map(([l, locale]) => (
+          <meta key={l} property="og:locale:alternate" content={locale} />
+        ))
+      }
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />

@@ -1,10 +1,15 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-// Maps legacy/duplicate paths to their canonical English equivalent
+// Maps legacy/duplicate paths to their canonical lowercase/English equivalent
+// Applied AFTER lowercasing, so keys must be lowercase
 const REDIRECTS = {
+  // French aliases
   '/prestataires': '/providers',
   '/alertes': '/alerts',
+  // Ghost / phantom routes — redirect to home
+  '/landing': '/',
+  // Normalize trailing slash (except root)
 };
 
 /**
