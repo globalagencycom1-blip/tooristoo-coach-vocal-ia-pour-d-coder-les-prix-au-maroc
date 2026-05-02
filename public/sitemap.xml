@@ -1,124 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- Home -->
   <url>
     <loc>https://www.tooristoo.com/</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.tooristoo.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.tooristoo.com/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.tooristoo.com/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.tooristoo.com/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.tooristoo.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://www.tooristoo.com/"/>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://www.tooristoo.com/"/>
+    <xhtml:link rel="alternate" hreflang="es"      href="https://www.tooristoo.com/"/>
+    <xhtml:link rel="alternate" hreflang="de"      href="https://www.tooristoo.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar"      href="https://www.tooristoo.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar-MA"   href="https://www.tooristoo.com/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/"/>
   </url>
 
+  <!-- App -->
   <url>
     <loc>https://www.tooristoo.com/app</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.tooristoo.com/app"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.tooristoo.com/app"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.tooristoo.com/app"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.tooristoo.com/app"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.tooristoo.com/app"/>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://www.tooristoo.com/app"/>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://www.tooristoo.com/app"/>
+    <xhtml:link rel="alternate" hreflang="es"      href="https://www.tooristoo.com/app"/>
+    <xhtml:link rel="alternate" hreflang="de"      href="https://www.tooristoo.com/app"/>
+    <xhtml:link rel="alternate" hreflang="ar"      href="https://www.tooristoo.com/app"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/app"/>
   </url>
 
+  <!-- Alerts — canonical English URL only (FR alias /alertes redirects here) -->
   <url>
     <loc>https://www.tooristoo.com/alerts</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.tooristoo.com/alerts"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.tooristoo.com/alerts"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.tooristoo.com/alerts"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.tooristoo.com/alerts"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.tooristoo.com/alerts"/>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://www.tooristoo.com/alerts"/>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://www.tooristoo.com/alerts"/>
+    <xhtml:link rel="alternate" hreflang="es"      href="https://www.tooristoo.com/alerts"/>
+    <xhtml:link rel="alternate" hreflang="de"      href="https://www.tooristoo.com/alerts"/>
+    <xhtml:link rel="alternate" hreflang="ar"      href="https://www.tooristoo.com/alerts"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/alerts"/>
   </url>
 
+  <!-- Providers — canonical English URL only (FR alias /prestataires redirects here) -->
   <url>
     <loc>https://www.tooristoo.com/providers</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.tooristoo.com/providers"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.tooristoo.com/providers"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.tooristoo.com/providers"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.tooristoo.com/providers"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.tooristoo.com/providers"/>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://www.tooristoo.com/providers"/>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://www.tooristoo.com/providers"/>
+    <xhtml:link rel="alternate" hreflang="es"      href="https://www.tooristoo.com/providers"/>
+    <xhtml:link rel="alternate" hreflang="de"      href="https://www.tooristoo.com/providers"/>
+    <xhtml:link rel="alternate" hreflang="ar"      href="https://www.tooristoo.com/providers"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/providers"/>
   </url>
 
+  <!-- Blog -->
   <url>
     <loc>https://www.tooristoo.com/blog</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.tooristoo.com/blog"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.tooristoo.com/blog"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.tooristoo.com/blog"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.tooristoo.com/blog"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.tooristoo.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://www.tooristoo.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://www.tooristoo.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="es"      href="https://www.tooristoo.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="de"      href="https://www.tooristoo.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="ar"      href="https://www.tooristoo.com/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/blog"/>
   </url>
 
+  <!-- FAQ -->
   <url>
     <loc>https://www.tooristoo.com/faq</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.tooristoo.com/faq"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.tooristoo.com/faq"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.tooristoo.com/faq"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.tooristoo.com/faq"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.tooristoo.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://www.tooristoo.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://www.tooristoo.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="es"      href="https://www.tooristoo.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="de"      href="https://www.tooristoo.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="ar"      href="https://www.tooristoo.com/faq"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/faq"/>
   </url>
 
+  <!-- About -->
   <url>
     <loc>https://www.tooristoo.com/about</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.tooristoo.com/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.tooristoo.com/about"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.tooristoo.com/about"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.tooristoo.com/about"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.tooristoo.com/about"/>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://www.tooristoo.com/about"/>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://www.tooristoo.com/about"/>
+    <xhtml:link rel="alternate" hreflang="es"      href="https://www.tooristoo.com/about"/>
+    <xhtml:link rel="alternate" hreflang="de"      href="https://www.tooristoo.com/about"/>
+    <xhtml:link rel="alternate" hreflang="ar"      href="https://www.tooristoo.com/about"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/about"/>
   </url>
 
+  <!-- Contact -->
   <url>
     <loc>https://www.tooristoo.com/contact</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://www.tooristoo.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://www.tooristoo.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="es"      href="https://www.tooristoo.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="de"      href="https://www.tooristoo.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="ar"      href="https://www.tooristoo.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tooristoo.com/contact"/>
   </url>
 
+  <!-- Privacy -->
   <url>
     <loc>https://www.tooristoo.com/privacy</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.4</priority>
   </url>
 
+  <!-- Terms -->
   <url>
     <loc>https://www.tooristoo.com/terms</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.4</priority>
   </url>
 
+  <!-- Legal Notice -->
   <url>
     <loc>https://www.tooristoo.com/legal</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.4</priority>
   </url>
 
 </urlset>

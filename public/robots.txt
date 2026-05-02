@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Private pages — do not index
+Disallow: /admin/
+Disallow: /profile
+Disallow: /profile/
+
+# Legacy French alias paths — canonical redirect handled by app
+Disallow: /alertes
+Disallow: /prestataires
+
+Sitemap: https://www.tooristoo.com/sitemap.xml
