@@ -87,32 +87,6 @@ export const translations = {
     alert5: "Faites attention aux faux sites de réservation",
     protection: "PROTECTION TOURISTE 24/7",
 
-    // Pricing
-    pricing_title: "Choisissez votre plan",
-    pricing_subtitle: "Commencez gratuitement, passez au pro quand vous en avez besoin",
-    plan_free: "Gratuit",
-    plan_voyageur: "Voyageur",
-    plan_pro: "Pro",
-    plan_free_price: "0€",
-    plan_voyageur_price: "5€",
-    plan_pro_price: "12€",
-    per_month: "/mois",
-    plan_free_feat1: "3 analyses par mois",
-    plan_free_feat2: "Alertes arnaques de base",
-    plan_free_feat3: "1 langue",
-    plan_voyageur_feat1: "Analyses illimitées",
-    plan_voyageur_feat2: "Coach vocal complet",
-    plan_voyageur_feat3: "6 langues",
-    plan_voyageur_feat4: "Historique 30 jours",
-    plan_voyageur_feat5: "Prestataires vérifiés",
-    plan_pro_feat1: "Tout Voyageur +",
-    plan_pro_feat2: "Analytics avancés",
-    plan_pro_feat3: "Support prioritaire",
-    plan_pro_feat4: "API access",
-    plan_pro_feat5: "Historique illimité",
-    choose_plan: "Choisir ce plan",
-    popular: "Populaire",
-
     // Testimonials
     testimonials_title: "Ils nous font confiance",
     test1_text: "Grâce à Tooristoo, j'ai économisé beaucoup et évité plusieurs abus de prix pendant mon séjour au Maroc. Indispensable !",
@@ -1988,12 +1962,14 @@ export const translations = {
     };
 
 import { analysisResultTranslations } from './analysis-result-translations.js';
+import { pricingTranslations } from './i18n-pricing.js';
 
 export const useT = (lang) => {
   return (key) => {
+    const p = pricingTranslations[lang] || pricingTranslations['fr'];
     const t = translations[lang] || translations['fr'];
     const ar = analysisResultTranslations[lang] || analysisResultTranslations['fr'];
-    return t[key] || translations['fr'][key] || ar[key] || analysisResultTranslations['fr'][key] || key;
+    return p[key] || t[key] || translations['fr'][key] || ar[key] || analysisResultTranslations['fr'][key] || key;
   };
 };
 
