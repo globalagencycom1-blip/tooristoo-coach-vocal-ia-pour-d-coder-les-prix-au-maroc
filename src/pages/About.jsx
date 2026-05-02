@@ -26,7 +26,7 @@ export default function About() {
 
 
   const STATS = [
-  { icon: Users, value: '50 000+', labelKey: 'about_stats_travelers', color: 'text-shield-green' },
+  { icon: Users, value: '500+', labelKey: 'about_stats_travelers', color: 'text-shield-green' },
   { icon: TrendingDown, value: '2 350 MAD', labelKey: 'about_stats_savings', color: 'text-shield-gold' },
   { icon: Award, value: '98%', labelKey: 'about_stats_detection', color: 'text-blue-400' },
   { icon: Globe, value: '6', labelKey: 'about_stats_languages', color: 'text-purple-400' }];
