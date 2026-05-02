@@ -4,13 +4,14 @@ import { base44 } from '@/api/base44Client';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 import { getProfileT } from '../lib/profile-translations';
+import { getPricingT } from '../lib/i18n-pricing';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function Profile() {
   const { lang, setLang } = useLang();
   const tBase = useT(lang);
-  const t = (key) => getProfileT(key, lang) !== key ? getProfileT(key, lang) : tBase(key);
+  const t = (key) => getProfileT(key, lang) !== key ? getProfileT(key, lang) : getPricingT(key, lang) !== key ? getPricingT(key, lang) : tBase(key);
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
   const [negotiations, setNegotiations] = useState([]);
@@ -68,7 +69,7 @@ export default function Profile() {
     free: {
       nameKey: 'plan_free',
       priceKey: 'plan_free_price',
-      featuresKey: ['plan_free_feat1', 'plan_free_feat2', 'plan_free_feat3'],
+      featuresKey: ['plan_free_feat1', 'plan_free_feat2', 'plan_free_feat3', 'plan_free_feat4', 'plan_free_feat5'],
       color: 'bg-gray-500',
     },
     voyageur: {
@@ -77,10 +78,10 @@ export default function Profile() {
       featuresKey: ['plan_voyageur_feat1', 'plan_voyageur_feat2', 'plan_voyageur_feat3', 'plan_voyageur_feat4', 'plan_voyageur_feat5'],
       color: 'bg-shield-green',
     },
-    pro: {
-      nameKey: 'plan_pro',
-      priceKey: 'plan_pro_price',
-      featuresKey: ['plan_pro_feat1', 'plan_pro_feat2', 'plan_pro_feat3', 'plan_pro_feat4', 'plan_pro_feat5'],
+    voyageur_plus: {
+      nameKey: 'plan_voyageur_plus',
+      priceKey: 'plan_voyageur_plus_price',
+      featuresKey: ['plan_voyageur_plus_feat1', 'plan_voyageur_plus_feat2', 'plan_voyageur_plus_feat3', 'plan_voyageur_plus_feat4', 'plan_voyageur_plus_feat5'],
       color: 'bg-shield-gold',
     },
   };
