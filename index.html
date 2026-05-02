@@ -124,20 +124,30 @@
     <script>
     (function(){
       var path = window.location.pathname.replace(/\/$/,'') || '/';
-      // Match /blog/:id as /blog
       if(path.match(/^\/blog\/.+/)) path = '/blog';
+      // Detect user language preference (localStorage > browser)
+      var saved = localStorage.getItem('negoshield_lang');
+      var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || 'fr').toLowerCase();
+      var lang = saved || (nav.startsWith('ar') ? 'ar' : nav.startsWith('de') ? 'de' : nav.startsWith('es') ? 'es' : nav.startsWith('en') ? 'en' : 'fr');
       document.addEventListener('DOMContentLoaded', function(){
-        var el = document.querySelector('#seo-static [data-page="'+path+'"]');
-        if(!el) el = document.querySelector('#seo-static [data-page="/"]');
+        // Prefer language-specific article, fallback to any article for the path
+        var el = document.querySelector('#seo-static [data-page="'+path+'"][lang="'+lang+'"]')
+               || document.querySelector('#seo-static [data-page="'+path+'"]');
+        if(!el && path !== '/') el = document.querySelector('#seo-static [data-page="/"][lang="'+lang+'"]')
+                                    || document.querySelector('#seo-static [data-page="/"]');
         if(el) el.style.display = 'block';
         var title = el ? el.querySelector('h1') : null;
         if(title) document.title = title.textContent + ' | Tooristoo';
+        // Set html lang from detected language
+        var htmlLang = {fr:'fr',en:'en',es:'es',de:'de',ar:'ar'}[lang] || 'fr';
+        document.documentElement.lang = htmlLang;
+        if(lang === 'ar') document.documentElement.dir = 'rtl';
       });
     })();
     </script>
     <div id="seo-static" aria-hidden="true">
-      <!-- HOME -->
-      <article data-page="/">
+      <!-- HOME — multilingual static content for crawlers -->
+      <article data-page="/" lang="fr">
         <h1>Tooristoo — Coach Vocal IA pour Négocier les Meilleurs Prix au Maroc</h1>
         <p>Tooristoo est le coach vocal IA qui analyse les prix en temps réel, détecte les arnaques touristiques et vous donne des phrases de négociation en darija pour Marrakech, Fès, Agadir, Casablanca et toutes les villes du Maroc.</p>
         <ul>
@@ -156,6 +166,53 @@
           <li>Recevez la fourchette de prix juste, le niveau de risque et les phrases exactes en darija pour négocier</li>
         </ol>
         <a href="/app">Essayer gratuitement</a> | <a href="/providers">Voir les prestataires certifiés</a> | <a href="/blog">Lire les guides de voyage Maroc</a>
+      </article>
+      <article data-page="/" lang="en">
+        <h1>Tooristoo — AI Voice Coach to Negotiate the Best Prices in Morocco</h1>
+        <p>Tooristoo is the AI voice coach that analyzes prices in real time, detects tourist scams and gives you negotiation phrases in Darija for Marrakech, Fes, Agadir, Casablanca and all cities in Morocco.</p>
+        <ul>
+          <li>AI price analysis for taxis, hotels, restaurants, riads, excursions</li>
+          <li>Automatic detection of the most common scams</li>
+          <li>Exact phrases in Moroccan Darija to negotiate</li>
+          <li>Certified providers with official transparent prices</li>
+          <li>Available in French, English, Spanish, German, Arabic</li>
+        </ul>
+        <h2>Cities covered</h2>
+        <p>Marrakech, Fes, Casablanca, Chefchaouen, Agadir, Tangier, Rabat, Meknes, Ouarzazate, Merzouga, Essaouira, Dakhla, El Jadida.</p>
+        <a href="/app">Try for free</a> | <a href="/providers">See certified providers</a> | <a href="/blog">Read Morocco travel guides</a>
+      </article>
+      <article data-page="/" lang="es">
+        <h1>Tooristoo — Coach de Voz IA para Negociar los Mejores Precios en Marruecos</h1>
+        <p>Tooristoo es el coach de voz IA que analiza precios en tiempo real, detecta estafas turísticas y te da frases de negociación en darija para Marrakech, Fez, Agadir, Casablanca y todas las ciudades de Marruecos.</p>
+        <ul>
+          <li>Análisis IA de precios para taxis, hoteles, restaurantes, riads, excursiones</li>
+          <li>Detección automática de las estafas más frecuentes</li>
+          <li>Frases exactas en darija marroquí para negociar</li>
+          <li>Proveedores certificados con precios oficiales transparentes</li>
+        </ul>
+        <a href="/app">Probar gratis</a> | <a href="/providers">Ver proveedores certificados</a>
+      </article>
+      <article data-page="/" lang="de">
+        <h1>Tooristoo — KI-Sprachcoach für die besten Preise in Marokko</h1>
+        <p>Tooristoo ist der KI-Sprachcoach, der Preise in Echtzeit analysiert, Touristenbetrug erkennt und Ihnen Verhandlungsphrasen auf Darija für Marrakesch, Fès, Agadir, Casablanca und alle Städte Marokkos liefert.</p>
+        <ul>
+          <li>KI-Preisanalyse für Taxis, Hotels, Restaurants, Riads, Ausflüge</li>
+          <li>Automatische Erkennung häufiger Betrugsfälle</li>
+          <li>Genaue Phrasen auf Marokkanischem Darija zum Verhandeln</li>
+          <li>Zertifizierte Anbieter mit offiziellen transparenten Preisen</li>
+        </ul>
+        <a href="/app">Kostenlos testen</a> | <a href="/providers">Zertifizierte Anbieter ansehen</a>
+      </article>
+      <article data-page="/" lang="ar" dir="rtl">
+        <h1>Tooristoo — مدرب صوتي ذكي للتفاوض على أفضل الأسعار في المغرب</h1>
+        <p>Tooristoo هو المدرب الصوتي الذكي الذي يحلل الأسعار في الوقت الفعلي ويكشف عمليات الاحتيال السياحية ويمنحك عبارات التفاوض بالدارجة لمراكش وفاس وأكادير والدار البيضاء وجميع مدن المغرب.</p>
+        <ul>
+          <li>تحليل ذكي للأسعار: تاكسي، فنادق، مطاعم، رياض، رحلات</li>
+          <li>كشف تلقائي لأكثر عمليات الاحتيال شيوعاً</li>
+          <li>عبارات دقيقة بالدارجة المغربية للتفاوض</li>
+          <li>مزودو خدمات معتمدون بأسعار رسمية شفافة</li>
+        </ul>
+        <a href="/app">جرب مجاناً</a> | <a href="/providers">اطلع على مزودي الخدمات المعتمدين</a>
       </article>
 
       <!-- ABOUT -->

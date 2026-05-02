@@ -6,7 +6,16 @@
 import { Helmet } from 'react-helmet-async';
 
 const BASE = 'https://www.tooristoo.com';
-const LANGS = ['fr', 'en', 'es', 'de', 'ar'];
+// Standard BCP-47 language codes for hreflang
+const HREFLANG_MAP = {
+  fr: 'fr',
+  en: 'en',
+  es: 'es',
+  de: 'de',
+  ar: 'ar',
+  // darija is not a standard BCP-47 code — mapped to ar-MA for SEO
+};
+const LANGS = Object.keys(HREFLANG_MAP);
 
 const META = {
   home: {
@@ -205,10 +214,15 @@ export default function PageHelmet({ page, lang = 'fr', extraSchema = null }) {
       {/* Canonical */}
       <link rel="canonical" href={canonical} />
 
-      {/* hreflang — same URL for all languages (SPA pattern) */}
+      {/* html lang attribute — updated per page/language */}
+      <html lang={HREFLANG_MAP[lang] || 'fr'} dir={lang === 'ar' || lang === 'darija' ? 'rtl' : 'ltr'} />
+
+      {/* hreflang — same URL for all languages (SPA with JS i18n pattern) */}
       {LANGS.map(l => (
-        <link key={l} rel="alternate" hreflang={l} href={canonical} />
+        <link key={l} rel="alternate" hreflang={HREFLANG_MAP[l]} href={canonical} />
       ))}
+      {/* ar-MA for Moroccan Arabic (darija) */}
+      <link rel="alternate" hreflang="ar-MA" href={canonical} />
       <link rel="alternate" hreflang="x-default" href={canonical} />
 
       {/* Schema.org */}
