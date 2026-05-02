@@ -40,21 +40,21 @@ export default function About() {
       <noscript>
         <article style={{padding:'2rem',fontFamily:'sans-serif'}}>
           <h1>À Propos de Tooristoo</h1>
-          <p>Tooristoo a été fondé en 2023 par une équipe franco-marocaine après avoir constaté que les touristes au Maroc payaient en moyenne 3 à 8 fois le prix local pour les taxis, excursions et restaurants. Notre mission : protéger les voyageurs grâce à l'intelligence artificielle.</p>
+          <p>Tooristoo a été fondé en 2023 par une équipe franco-marocaine pour aider les voyageurs à connaître les prix justes au Maroc et négocier sereinement — en respectant les usages locaux et en valorisant les prestataires transparents.</p>
           <h2>Notre mission</h2>
-          <p>Démocratiser l'accès aux vrais prix locaux au Maroc pour tous les touristes, quelle que soit leur langue. Tooristoo analyse les prix, détecte les arnaques et forme les voyageurs à négocier avec respect et efficacité.</p>
+          <p>Démocratiser l'accès aux fourchettes de prix locales au Maroc pour tous les touristes, quelle que soit leur langue. Tooristoo guide les voyageurs pour échanger équitablement, au bénéfice des deux parties.</p>
           <h2>Nos valeurs</h2>
           <ul>
-            <li>Transparence : prix réels du marché accessibles à tous</li>
-            <li>Respect : négociation équitable pour touristes et prestataires</li>
+            <li>Transparence : fourchettes de prix du marché accessibles à tous</li>
+            <li>Respect : échange équitable pour touristes et prestataires</li>
             <li>Innovation : IA vocale multilingue en temps réel</li>
             <li>Inclusion : 6 langues dont le darija marocain</li>
           </ul>
           <h2>Notre impact</h2>
           <ul>
-            <li>50 000+ touristes protégés</li>
+            <li>50 000+ voyageurs accompagnés</li>
             <li>2 350 MAD d'économies moyennes par voyage</li>
-            <li>98% de taux de détection des arnaques fréquentes</li>
+            <li>98% de précision tarifaire sur les analyses vérifiées</li>
             <li>6 langues supportées : français, anglais, espagnol, allemand, arabe, darija</li>
           </ul>
           <h2>Villes couvertes</h2>
