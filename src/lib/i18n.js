@@ -806,7 +806,7 @@ export const translations = {
     test3_name: "María",
     test3_origin: "España",
     cta_title: "¿Listo para explorar Marruecos con tranquilidad?",
-    cta_subtitle: "Únete a 50.000+ viajeros que descubren Marruecos informados y seguros",
+    cta_subtitle: "Únete a 500+ viajeros que descubren Marruecos informados y seguros",
     cta_btn: "Empezar Gratis",
     app_page_title: "Coach IA",
     app_page_subtitle: "Modo Turístico 🇲🇦",
