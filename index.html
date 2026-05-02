@@ -110,39 +110,50 @@
     </script>
   </head>
   <body>
-    <!-- Pre-rendered content for crawlers that don't execute JS -->
-    <div id="root">
-      <header>
-        <nav>
-          <a href="/">Tooristoo</a>
-          <a href="/app">Application</a>
-          <a href="/providers">Prestataires certifiés</a>
-          <a href="/alerts">Alertes arnaques</a>
-          <a href="/blog">Blog</a>
-          <a href="/about">À propos</a>
-          <a href="/faq">FAQ</a>
-        </nav>
-      </header>
-      <main>
-        <h1>Tooristoo — Coach Vocal IA pour Négocier les Meilleurs Prix au Maroc</h1>
-        <p>Tooristoo est l'application de référence pour les touristes visitant le Maroc. Notre coach vocal IA analyse les prix en temps réel, détecte les tentatives d'arnaques et vous fournit les meilleures stratégies de négociation ainsi que des phrases exactes en darija marocain.</p>
-        <h2>Fonctionnalités principales</h2>
-        <ul>
-          <li>Analyse IA des prix des taxis, hôtels, restaurants, riads et excursions à Marrakech, Fès, Casablanca, Chefchaouen et dans toutes les grandes villes du Maroc</li>
-          <li>Détection automatique des arnaques touristiques les plus fréquentes</li>
-          <li>Phrases de négociation personnalisées en français, anglais, espagnol, allemand, arabe et darija</li>
-          <li>Répertoire de prestataires certifiés avec prix officiels transparents</li>
-          <li>Alertes communautaires sur les arnaques signalées</li>
-        </ul>
-        <h2>Pourquoi Tooristoo ?</h2>
-        <p>Les touristes au Maroc font face à des prix parfois multipliés par 5 à 10 par rapport aux tarifs locaux. Tooristoo vous protège en vous donnant les connaissances et les outils pour négocier équitablement et en toute confiance.</p>
-        <h2>Villes couvertes</h2>
-        <p>Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla, El Jadida.</p>
-        <h2>Disponible en 6 langues</h2>
-        <p>Français, English, Español, Deutsch, العربية, Darija marocaine.</p>
-        <p><a href="/app">Commencer gratuitement</a> | <a href="/providers">Voir les prestataires certifiés</a> | <a href="/blog">Lire le blog voyage Maroc</a></p>
-      </main>
-    </div>
+    <div id="root"></div>
+    <!-- Per-page static content injected by JS for crawlers -->
+    <script>
+    (function() {
+      var path = window.location.pathname.replace(/\/$/, '') || '/';
+      var pages = {
+        '/': {
+          title: 'Tooristoo — Coach Vocal IA pour Négocier les Meilleurs Prix au Maroc',
+          h1: 'Tooristoo — Coach Vocal IA pour Négocier au Maroc',
+          content: '<p>Tooristoo est le coach vocal IA qui analyse les prix en temps réel, détecte les arnaques touristiques et vous donne des phrases de négociation en darija pour Marrakech, Fès, Agadir, Casablanca et toutes les villes du Maroc.</p><ul><li>Analyse IA des prix taxis, hôtels, restaurants, riads, excursions</li><li>Détection automatique des arnaques les plus fréquentes</li><li>Phrases exactes en darija marocain pour négocier</li><li>Prestataires certifiés avec prix officiels transparents</li><li>Disponible en français, anglais, espagnol, allemand, arabe</li></ul>'
+        },
+        '/about': {
+          title: 'À Propos de Tooristoo | Coach IA pour Négocier au Maroc',
+          h1: 'À Propos de Tooristoo',
+          content: '<p>Tooristoo a été fondé en 2023 par une équipe franco-marocaine après avoir constaté que les touristes au Maroc payaient en moyenne 3 à 8 fois le prix local pour les taxis, excursions et restaurants. Notre mission : protéger les voyageurs grâce à l\'intelligence artificielle.</p><h2>Notre mission</h2><p>Démocratiser l\'accès aux vrais prix locaux au Maroc pour tous les touristes, quelle que soit leur langue. Tooristoo analyse les prix, détecte les arnaques et forme les voyageurs à négocier avec respect et efficacité.</p><h2>Nos valeurs</h2><ul><li>Transparence : prix réels du marché accessibles à tous</li><li>Respect : négociation équitable pour touristes et prestataires</li><li>Innovation : IA vocale multilingue en temps réel</li><li>Inclusion : 6 langues dont le darija marocain</li></ul><h2>Impact</h2><p>Plus de 50 000 touristes protégés, 2 350 MAD d\'économies moyennes par voyage, 98% de détection des arnaques les plus fréquentes.</p>'
+        },
+        '/faq': {
+          title: 'FAQ — Questions Fréquentes sur Tooristoo | Coach IA Maroc',
+          h1: 'Questions Fréquentes sur Tooristoo',
+          content: '<dl><dt>Qu\'est-ce que Tooristoo ?</dt><dd>Tooristoo est une application de coach vocal IA qui aide les touristes à négocier les meilleurs prix au Maroc, détecter les arnaques et obtenir des phrases de négociation en darija marocain en temps réel.</dd><dt>Est-ce que Tooristoo est gratuit ?</dt><dd>Oui, Tooristoo propose un plan gratuit avec 3 analyses par jour. Les plans Voyageur et Pro offrent des analyses illimitées et des fonctionnalités avancées.</dd><dt>Dans quelles langues fonctionne Tooristoo ?</dt><dd>Tooristoo est disponible en français, anglais, espagnol, allemand, arabe et darija marocain.</dd><dt>Quelles villes du Maroc sont couvertes ?</dt><dd>Tooristoo couvre toutes les grandes villes : Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla et El Jadida.</dd><dt>Comment fonctionne la détection d\'arnaques ?</dt><dd>Notre IA analyse le prix demandé par rapport à une base de données de prix réels locaux. Si le prix demandé dépasse significativement la fourchette normale, une alerte est émise et une stratégie de négociation est proposée.</dd><dt>Quels types de services sont analysés ?</dt><dd>Taxis, hôtels, riads, restaurants, excursions, shopping et souks, transport, guides touristiques, spas et hammams.</dd><dt>Les prestataires certifiés Tooristoo sont-ils fiables ?</dt><dd>Oui, les prestataires certifiés ont été vérifiés par notre équipe. Ils s\'engagent à afficher des prix transparents et à respecter une charte de qualité.</dd><dt>Puis-je utiliser Tooristoo hors ligne ?</dt><dd>L\'analyse IA nécessite une connexion internet. Les phrases de négociation sauvegardées sont accessibles hors ligne.</dd></dl>'
+        },
+        '/providers': {
+          title: 'Prestataires Certifiés Tooristoo — Hôtels, Taxis, Restaurants Maroc',
+          h1: 'Prestataires Certifiés Tooristoo au Maroc',
+          content: '<p>Répertoire complet de prestataires vérifiés et certifiés Tooristoo au Maroc : hôtels, riads, taxis, restaurants, guides, excursions et spas avec prix officiels transparents à Marrakech, Fès, Casablanca, Agadir, Chefchaouen et dans tout le Maroc.</p><h2>Catégories de prestataires</h2><ul><li>Taxis et transport — tarifs officiels par trajet et par ville</li><li>Hôtels et riads — prix certifiés nuit/chambre</li><li>Restaurants et gastronomie — menus et fourchettes de prix</li><li>Guides touristiques — tarifs journée ou demi-journée</li><li>Excursions et activités — prix de groupe ou individuel</li><li>Spas et hammams — soins avec tarif transparent</li><li>Shopping et souks — articles avec prix de référence</li></ul><h2>Villes disponibles</h2><p>Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla, El Jadida.</p>'
+        },
+        '/alerts': {
+          title: 'Alertes Arnaques Touristiques au Maroc | Tooristoo',
+          h1: 'Alertes Arnaques Touristiques au Maroc',
+          content: '<p>Liste des arnaques les plus fréquentes signalées par la communauté Tooristoo au Maroc. Consultez ces alertes avant votre voyage pour voyager en toute sécurité.</p><h2>Arnaques fréquentes</h2><ul><li>Taxi sans compteur à l\'aéroport — prix jusqu\'à 10x le tarif normal</li><li>Faux guides non officiels dans les médinas de Fès et Marrakech</li><li>Surfacturation dans les restaurants en bord de place Djemaa el-Fna</li><li>Arnaques dans les souks : objets présentés comme "artisanat local" importés</li><li>Excursions désert proposées à des prix gonflés sans prestation réelle</li><li>Charmeurs de serpents et photographes réclamant paiement forcé</li><li>Faux offices de tourisme proposant des circuits non officiels</li></ul><h2>Conseils de protection</h2><p>Utilisez Tooristoo avant toute transaction pour vérifier les prix. Demandez toujours le prix avant d\'accepter un service. Préférez les prestataires certifiés Tooristoo.</p>'
+        },
+        '/blog': {
+          title: 'Blog Tooristoo — Guides de Voyage Maroc et Conseils Anti-Arnaque',
+          h1: 'Blog Tooristoo — Guides et Conseils pour Voyager au Maroc',
+          content: '<p>Découvrez nos guides complets pour voyager au Maroc sereinement : conseils anti-arnaque, stratégies de négociation, guides par ville et par catégorie de service.</p><h2>Thèmes couverts</h2><ul><li>Négociation — comment négocier les prix au Maroc comme un local</li><li>Villes — guides pratiques pour Marrakech, Fès, Casablanca, Chefchaouen, Agadir</li><li>Transport — taxis, bus, trains : prix réels et conseils</li><li>Hébergement — choisir entre hôtel, riad et auberge au bon prix</li><li>Gastronomie — restaurants authentiques vs pièges à touristes</li><li>Culture — comprendre les codes sociaux pour mieux négocier</li></ul>'
+        }
+      };
+      var page = pages[path] || pages['/'];
+      document.title = page.title;
+      var noscript = document.createElement('noscript');
+      noscript.innerHTML = '<article><h1>' + page.h1 + '</h1>' + page.content + '</article>';
+      document.body.insertBefore(noscript, document.getElementById('root'));
+    })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
