@@ -135,13 +135,20 @@ export default function NewsletterSection({ lang }) {
     }
     setError('');
     setLoading(true);
-    await base44.integrations.Core.SendEmail({
-      to: 'newsletter@tooristoo.com',
-      subject: `Nouvel abonné newsletter: ${email} [${lang}]`,
-      body: `Nouvel inscrit à la newsletter Tooristoo\nEmail: ${email}\nLangue: ${lang}\nDate: ${new Date().toISOString()}`,
-    });
-    setLoading(false);
-    setSuccess(true);
+    try {
+      await base44.integrations.Core.SendEmail({
+        to: 'newsletter@tooristoo.com',
+        subject: `Nouvel abonné newsletter: ${email} [${lang}]`,
+        body: `Nouvel inscrit à la newsletter Tooristoo\nEmail: ${email}\nLangue: ${lang}\nDate: ${new Date().toISOString()}`,
+      });
+      setEmail('');
+      setSuccess(true);
+    } catch (err) {
+      setError('Une erreur est survenue. Veuillez réessayer.');
+      console.error('Newsletter error:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
