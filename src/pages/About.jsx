@@ -92,13 +92,13 @@ export default function About() {
                 </div>
               </div>
               <div className="relative">
-                <img
-                  src="https://images.unsplash.com/photo-1539650116574-75c0c6d33d08?w=600&h=400&fit=crop"
-                  alt="Maroc" className="rounded-2xl w-full object-cover h-64 hidden" />
+                
+
                 
                 
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-shield-dark/60 to-transparent hidden" />
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-shield-dark/60 to-transparent hidden" />
+                
+                
+                
                 <div className="absolute bottom-4 left-4 flex items-center gap-2">
                   <span className="text-3xl">🇲🇦</span>
                   <span className="text-white font-semibold">{t('about_founded')}</span>
