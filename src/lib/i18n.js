@@ -715,7 +715,7 @@ export const translations = {
     hero_stat1_label: "Ahorro promedio por viajero",
     hero_stat2: "98%",
     hero_stat2_label: "Precisión tarifaria",
-    hero_stat3: "50k+",
+    hero_stat3: "500+",
     hero_stat3_label: "Viajeros protegidos",
     features_title: "Todo lo que necesitas",
     features_subtitle: "para viajar tranquilo en Marruecos",
