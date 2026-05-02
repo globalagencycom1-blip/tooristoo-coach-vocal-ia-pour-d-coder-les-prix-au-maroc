@@ -3,7 +3,7 @@ export const NEW_BLOG_ARTICLES_TRANSLATIONS = {
 
   'marrakech-top10-arnaques': {
     fr: {
-      title: 'Top 10 arnaques à Marrakech (et comment les éviter)',
+      title: 'Top 10 vigilance tarifaire à Marrakech (et comment les éviter)',
       excerpt: 'Les pratiques tarifaires courantes que chaque touriste devrait connaître, avec les vrais prix et les bonnes réponses en darija.',
       content: `Marrakech est une ville magnifique, mais certains quartiers concentrent des pratiques tarifaires que tout visiteur devrait connaître avant d'arriver.
 
@@ -38,7 +38,7 @@ Les rabatteurs dans les ruelles touchent 20–30 % de commission. Réservez touj
 Taux frauduleux + billets de 10 MAD glissés comme billets de 100. Changez uniquement en banque ou ATM officiel.`
     },
     en: {
-      title: 'Top 10 Scams in Marrakech (and How to Avoid Them)',
+      title: 'Top 10 Price Vigilance Tips in Marrakech (and How to Avoid Them)',
       excerpt: 'The most common tourist traps in Marrakech, with real prices and the right responses.',
       content: `Marrakech is magnificent, but some tourist areas concentrate pricing practices every visitor should know.
 
@@ -63,17 +63,17 @@ Taux frauduleux + billets de 10 MAD glissés comme billets de 100. Changez uniqu
 **10. Street currency exchange** — Bank or official ATM only.`
     },
     es: {
-      title: 'Top 10 estafas en Marrakech (y cómo evitarlas)',
+      title: 'Top 10 vigilancia tarifaria en Marrakech (y cómo evitarlas)',
       excerpt: 'Las trampas más comunes con precios reales y respuestas correctas.',
       content: `1. Taxi sin taxímetro: negocia 80 MAD. 2. "Guía gratis": "Shukran, ma mhtajch". 3. Té forzado: nunca con extraños. 4. Cooperativas falsas: verifica cartel oficial. 5. Restaurante sin precios: solo si ves precios. 6. Henna: di no si no la pediste. 7. Aceite de argán puro: 100–120 MAD/100ml cooperativa. 8. Fotos pagadas: no mires. 9. Riad caro: reserva directo. 10. Cambio en calle: solo banco.`
     },
     de: {
-      title: 'Top 10 Betrügereien in Marrakesch (und wie man sie vermeidet)',
+      title: 'Top 10 Preisüberwachungstipps in Marrakesch (und wie man sie vermeidet)',
       excerpt: 'Die häufigsten Touristenfallen mit echten Preisen und richtigen Antworten.',
       content: `1. Taxi ohne Taxameter: 80 MAD verhandeln. 2. "Kostenloser Führer": "Shukran, ma mhtajch". 3. Erzwungener Tee: niemals bei Fremden. 4. Falsche Kooperativen: offizielles Schild prüfen. 5. Restaurant ohne Preise: nur setzen wenn Preise sichtbar. 6. Henna: nein sagen. 7. Arganöl: 100–120 MAD/100ml zertifiziert. 8. Bezahlte Fotos: nicht hinschauen. 9. Überteurtes Riad: direkt buchen. 10. Straßenwechsel: nur Bank.`
     },
     ar: {
-      title: 'أفضل 10 ممارسات تسعير في مراكش (وكيفية التعامل معها)',
+      title: 'أفضل 10 نصائح يقظة سعرية في مراكش (وكيفية تجنبها)',
       excerpt: 'أكثر الفخاخ السياحية شيوعاً مع الأسعار الحقيقية والردود الصحيحة.',
       content: `1. تاكسي بدون عداد: تفاوض على 80 درهم. 2. "مرشد مجاني": "شكراً، ما محتاجش". 3. شاي مفروض: لا تقبل أبداً. 4. تعاونيات مزيفة: تحقق من العلامة الرسمية. 5. مطعم بدون أسعار: اجلس فقط إذا رأيت الأسعار. 6. حناء: قل لا. 7. زيت أرغان نقي: 100–120 درهم/100مل. 8. صور مدفوعة: لا تنظر. 9. رياض بضعف السعر: احجز مباشرة. 10. صرف في الشارع: بنك فقط.`
     },
