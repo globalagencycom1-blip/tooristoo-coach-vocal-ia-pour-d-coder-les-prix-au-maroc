@@ -32,10 +32,10 @@ export default function Footer({ lang }) {
                 <a href="/blog" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{lang === 'fr' ? 'Blog' : 'Blog'}</a>
               </li>
               <li>
-                <a href="/alertes" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{lang === 'fr' ? 'Alertes' : 'Alerts'}</a>
+                <a href="/alerts" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{lang === 'fr' ? 'Alertes' : 'Alerts'}</a>
               </li>
               <li>
-                <a href="/prestataires" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{lang === 'fr' ? 'Prestataires' : 'Providers'}</a>
+                <a href="/providers" className="text-gray-500 hover:text-shield-green text-sm transition-colors">{lang === 'fr' ? 'Prestataires' : 'Providers'}</a>
               </li>
             </ul>
           </div>
