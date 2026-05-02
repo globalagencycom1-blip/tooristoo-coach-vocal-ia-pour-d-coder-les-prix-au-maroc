@@ -372,13 +372,13 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
 **Souks d'Agadir** : Argan certifiée 100–150 MAD/100 ml (coopératives Biosphère).`
     },
     en: {
-      title: 'Scams in Agadir: What Tourists Don\'t See Coming',
-      excerpt: 'Specific traps in Agadir: beach, jet-ski, seafront restaurants.',
+      title: 'Agadir Jet-Skis & Beaches: Real Prices and Tourist Pitfalls',
+      excerpt: 'Discover real prices for beach activities and how to avoid overcharging.',
       content: `Jet-ski: 200–350 MAD negotiable (not 300–500 MAD). Watch for hidden "insurance". Seafront restaurants: always ask full-price menu. Camels: 50–80 MAD/15min, negotiate before mounting. Quad excursions: book via hotel (300–450 MAD) not beach touts (400–600 MAD).`
     },
     es: {
-      title: 'Estafas en Agadir: lo que los turistas no ven venir',
-      excerpt: 'Las trampas específicas de Agadir: playa, moto acuática, restaurantes de mar.',
+      title: 'Motos Acuáticas y Playas de Agadir: Precios Reales y Trampas',
+      excerpt: 'Descubre los precios reales para actividades de playa y cómo evitar la sobrefacturación.',
       content: `Moto acuática: 200–350 MAD negociable (no 300–500 MAD). Restaurantes Corniche: pide siempre carta completa. Camellos: 50–80 MAD/15min, negocia antes de montar. Quad: reserva en hotel (300–450 MAD) no en playa.`
     },
     de: {
@@ -387,13 +387,13 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
       content: `Jet-Ski: 200–350 MAD verhandelbar. Corniche-Restaurants: vollständige Speisekarte verlangen. Kamele: 50–80 MAD/15min vor dem Einsteigen verhandeln. Quad: über Hotel buchen (300–450 MAD).`
     },
     ar: {
-      title: 'عمليات الاحتيال في أكادير: ما لا يتوقعه السياح',
-      excerpt: 'الفخاخ الخاصة بأكادير: الشاطئ وسكي الماء والمطاعم.',
+      title: 'الجيت سكي وشواطئ أكادير: الأسعار الحقيقية والفخاخ السياحية',
+      excerpt: 'اكتشف الأسعار الحقيقية للأنشطة الشاطئية وكيفية تجنب الإفراط في الأسعار.',
       content: `سكي الماء: 200–350 درهم قابل للتفاوض. مطاعم الكورنيش: اطلب القائمة الكاملة دائماً. الجمال: 50–80 درهم/15 دقيقة، تفاوض قبل الركوب. رحلات الكواد: احجز من الفندق (300–450 درهم).`
     },
     darija: {
-      title: 'الحيل ديال أكادير: آش ما كيشوفوهش السياح',
-      excerpt: 'الفخاخ الخاصة بأكادير: الشاطئ والجيت سكي والمطاعم.',
+      title: 'الجيت سكي والشواطئ ديال أكادير: الأثمان الحقيقية والفخاخ',
+      excerpt: 'اكتشف الأثمان الحقيقية للنشاطات الشاطئية وكيفاش تتجنب الأثمان الغالية.',
       content: `الجيت سكي: 200–350 درهم قابل للفاوضة. مطاعم الكورنيش: اطلب دايما المنيو الكامل. الجمال: 50–80 درهم/15 دقيقة، فاوض قبل ما تركب. رحلات الكواد: احجز من الفندق (300–450 درهم).`
     }
   },
@@ -441,7 +441,7 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
 
   'marrakech-si-arnaque': {
     fr: {
-      title: 'Que faire si vous avez été arnaqué au Maroc ?',
+      title: 'Surfacturé au Maroc ? Les étapes pour vous protéger et vous faire rembourser',
       excerpt: 'Démarches concrètes en cas d\'arnaque : signalement, remboursement, police touristique.',
       content: `**Cas 1 : Surcharge légère (50–200 MAD)**
 Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur Tooristoo pour aider les autres.
@@ -462,27 +462,27 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
 **Signalement Tooristoo** : 3 confirmations d'utilisateurs → suspension du prestataire.`
     },
     en: {
-      title: 'What to Do If You Were Scammed in Morocco?',
+      title: 'Overcharged in Morocco? Steps to Protect Yourself and Get a Refund',
       excerpt: 'Concrete steps to follow: reporting, refund, tourist police.',
       content: `Minor overcharge (50–200 MAD): calmly refuse surplus, report on Tooristoo. Significant scam (200–2,000 MAD): ask for receipt (legally mandatory), photograph evidence, contact Tourist Brigade, Tourist Police Marrakech: +212 524 38 46 01. Serious scam: block card immediately, call police (19), contact embassy. Chargeback: 45–90 days, 70–85% success with evidence.`
     },
     es: {
-      title: '¿Qué hacer si te estafaron en Marruecos?',
+      title: '¿Sobrefacturado en Marruecos? Pasos para Protegerte y Obtener un Reembolso',
       excerpt: 'Pasos concretos: denuncia, reembolso, policía turística.',
       content: `Estafa leve: rechaza el exceso, denuncia en Tooristoo. Estafa significativa: pide recibo, fotografía todo, Policía Turística Marrakech: +212 524 38 46 01. Estafa grave: bloquea tarjeta, llama al 19, contacta embajada. Contracargo bancario: 45–90 días.`
     },
     de: {
-      title: 'Was tun wenn man in Marokko betrogen wurde?',
+      title: 'Überberechnet in Marokko? Schritte zum Schutz und zur Rückerstattung',
       excerpt: 'Konkrete Schritte: Meldung, Rückerstattung, Touristenpolizei.',
       content: `Leichter Aufschlag: ruhig ablehnen, bei Tooristoo melden. Erheblicher Betrug: Quittung verlangen, fotografieren, Touristenpolizei Marrakesch: +212 524 38 46 01. Schwerer Betrug: Karte sperren, Polizei (19), Botschaft. Rückbuchung: 45–90 Tage.`
     },
     ar: {
-      title: 'ماذا تفعل إذا تعرضت للاحتيال في المغرب؟',
+      title: 'تم إفراط في فرض عليك في المغرب؟ خطوات لحماية نفسك والحصول على استرجاع',
       excerpt: 'الخطوات الملموسة: الإبلاغ والاسترداد والشرطة السياحية.',
       content: `احتيال بسيط: ارفض الزيادة، أبلغ على Tooristoo. احتيال كبير: اطلب إيصالاً، التقط صوراً، شرطة سياحية مراكش: +212 524 38 46 01. احتيال خطير: احجب البطاقة، اتصل بـ 19، تواصل مع السفارة.`
     },
     darija: {
-      title: 'آش تدير إلا تنصبو عليك فالمغرب؟',
+      title: 'فرضو عليك الأثمان الغالية فالمغرب؟ الخطوات لحماية نفسك والحصول على رجعة',
       excerpt: 'الخطوات الملموسة: البلاغ والاسترداد والشرطة السياحية.',
       content: `نصب بسيط: ارفض الزيادة، سجل بلاغاً على Tooristoo. نصب كبير: اطلب وصل، صور المكان، الشرطة السياحية مراكش: +212 524 38 46 01. نصب خطير: حجب البطاقة، اتصل بـ 19، تواصل مع السفارة.`
     }
@@ -490,7 +490,7 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
 
   'tanger-arnaque-port': {
     fr: {
-      title: 'Arnaques à Tanger : les pièges du port et de la ville',
+      title: 'Port de Tanger : Guide des tarifs réels et des pièges touristiques',
       excerpt: 'Guide anti-arnaque pour arriver à Tanger par ferry et naviguer en toute sécurité.',
       content: `**À la descente du ferry** : Faux porteurs réclament 100–300 MAD — gardez vos bagages. "Change" au port : toujours frauduleux. Des "aides" pour la douane ne sont pas nécessaires.
 
@@ -501,27 +501,27 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
 **Excursions depuis Tanger** : Bus CTM vers Chefchaouen : 55–70 MAD (2 h 30). Grand taxi partagé : 80–100 MAD/place. Évitez les agences du port (300+ MAD pour le même trajet).`
     },
     en: {
-      title: 'Scams in Tangier: Traps at the Port and Around the City',
+      title: 'Tangier Port: Real Prices and Tourist Pitfalls Guide',
       excerpt: 'Anti-scam guide for arriving in Tangier by ferry.',
       content: `Fake porters at port: 100–300 MAD. Keep bags. Port currency exchange: always fraudulent. Taxi: 15–25 MAD centre. "Nice student" tour → shop trap: "Shukran, ma mhtajch mrshad". CTM bus to Chefchaouen: 55–70 MAD (2h30).`
     },
     es: {
-      title: 'Estafas en Tánger: las trampas del puerto y la ciudad',
+      title: 'Puerto de Tánger: Guía de Precios Reales y Trampas Turísticas',
       excerpt: 'Guía anti-estafa para llegar a Tánger en ferry.',
       content: `Falsos porteadores: 100–300 MAD. Guarda el equipaje. Cambio en puerto: siempre fraudulento. Taxi: 15–25 MAD centro. Bus CTM a Chefchaouen: 55–70 MAD (2h30).`
     },
     de: {
-      title: 'Betrügereien in Tanger: Fallen am Hafen und in der Stadt',
+      title: 'Hafen von Tanger: Echte Preise und Touristenfallen Leitfaden',
       excerpt: 'Anti-Betrug-Leitfaden für die Ankunft in Tanger per Fähre.',
       content: `Falsche Gepäckträger: 100–300 MAD. Gepäck behalten. Hafenwechsel: immer betrügerisch. Taxi: 15–25 MAD Zentrum. CTM-Bus nach Chefchaouen: 55–70 MAD (2,5h).`
     },
     ar: {
-      title: 'عمليات الاحتيال في طنجة: فخاخ الميناء والمدينة',
+      title: 'ميناء طنجة: دليل الأسعار الحقيقية والفخاخ السياحية',
       excerpt: 'دليل مكافحة الاحتيال للوصول إلى طنجة بالعبارة.',
       content: `حمالون وهميون: 100–300 درهم. احتفظ بأمتعتك. صرف العملة في الميناء دائماً احتيال. تاكسي: 15–25 درهم للمركز. حافلة CTM إلى شفشاون: 55–70 درهم (2.5 ساعة).`
     },
     darija: {
-      title: 'الحيل ديال طنجة: فخاخ الميناء والمدينة',
+      title: 'الميناء ديال طنجة: دليل الأثمان الحقيقية والفخاخ',
       excerpt: 'دليل ضد النصب للوصول لطنجة بالفيري.',
       content: `الحمالين الكاذبين: 100–300 درهم. حتفظ بالأمتعة ديالك. الصرف فالميناء دايما حيل. الطاكسي: 15–25 درهم للمركز. الحافلة CTM لشفشاون: 55–70 درهم (2.5 ساعات).`
     }
