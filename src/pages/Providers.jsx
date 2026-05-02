@@ -109,6 +109,31 @@ export default function Providers() {
 
   return (
     <div className="min-h-screen bg-shield-dark">
+      <noscript>
+        <article style={{padding:'2rem',fontFamily:'sans-serif'}}>
+          <h1>Prestataires Certifiés Tooristoo au Maroc</h1>
+          <p>Répertoire de prestataires vérifiés au Maroc : hôtels, riads, taxis, restaurants, guides, excursions et spas avec prix officiels à Marrakech, Fès, Casablanca, Agadir, Chefchaouen et dans tout le Maroc.</p>
+          <h2>Catégories disponibles</h2>
+          <ul>
+            <li>Taxis et transport — tarifs officiels par trajet</li>
+            <li>Hôtels et riads — prix certifiés par nuit</li>
+            <li>Restaurants et gastronomie — fourchettes de prix authentiques</li>
+            <li>Guides touristiques — tarifs journée ou demi-journée</li>
+            <li>Excursions et activités — prix individuels et de groupe</li>
+            <li>Spas et hammams — soins avec tarif transparent</li>
+            <li>Shopping et souks — articles avec prix de référence</li>
+          </ul>
+          <h2>Villes couvertes</h2>
+          <p>Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla, El Jadida.</p>
+          {providers.length > 0 && (
+            <ul>
+              {providers.slice(0, 30).map(p => (
+                <li key={p.id}><strong>{p.name}</strong> — {p.city} — {p.category} — {p.price}</li>
+              ))}
+            </ul>
+          )}
+        </article>
+      </noscript>
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDesc} />

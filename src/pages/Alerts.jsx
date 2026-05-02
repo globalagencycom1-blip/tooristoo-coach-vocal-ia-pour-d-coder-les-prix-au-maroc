@@ -32,6 +32,26 @@ export default function Alerts() {
 
   return (
     <div className="min-h-screen bg-shield-dark">
+      <noscript>
+        <article style={{padding:'2rem',fontFamily:'sans-serif'}}>
+          <h1>Alertes Arnaques Touristiques au Maroc</h1>
+          <p>Liste des arnaques les plus fréquentes signalées par la communauté Tooristoo. Consultez ces alertes avant votre voyage pour visiter le Maroc en toute sécurité.</p>
+          <h2>Arnaques fréquentes</h2>
+          <ul>
+            <li><strong>Taxi sans compteur à l'aéroport</strong> — Prix jusqu'à 10x le tarif normal. Toujours négocier le prix avant de monter ou exiger le compteur.</li>
+            <li><strong>Faux guides dans les médinas</strong> — Des inconnus proposent de vous guider dans la médina de Fès ou Marrakech puis réclament un paiement excessif. Utilisez uniquement des guides officiels.</li>
+            <li><strong>Surfacturation dans les restaurants de la place Jemaa el-Fna</strong> — Vérifiez les prix sur le menu avant de commander. Méfiez-vous des serveurs qui vous invitent à entrer.</li>
+            <li><strong>Arnaques dans les souks</strong> — Objets présentés comme "artisanat local" en réalité importés. Comparez les prix dans plusieurs boutiques avant d'acheter.</li>
+            <li><strong>Excursions désert surdimensionnées</strong> — Prix gonflés pour des excursions à Merzouga ou Ouarzazate. Réservez via un prestataire certifié Tooristoo.</li>
+            <li><strong>Charmeurs de serpents et artistes de rue</strong> — Placement forcé d'animaux puis réclamation de paiement. Refusez poliment tout contact non sollicité.</li>
+            <li><strong>Faux offices de tourisme</strong> — Boutiques se faisant passer pour des offices officiels. L'office de tourisme marocain est gratuit et officiel.</li>
+            <li><strong>Change illégal</strong> — Taux de change frauduleux proposés dans la rue. Utilisez uniquement les banques ou distributeurs officiels.</li>
+          </ul>
+          <h2>Comment se protéger</h2>
+          <p>Utilisez Tooristoo avant toute transaction pour vérifier les prix. Demandez toujours le prix avant d'accepter un service. Préférez les prestataires certifiés Tooristoo avec prix affichés.</p>
+          <p><a href="/app">Analyser un prix avec Tooristoo</a> | <a href="/providers">Voir les prestataires certifiés</a></p>
+        </article>
+      </noscript>
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDesc} />

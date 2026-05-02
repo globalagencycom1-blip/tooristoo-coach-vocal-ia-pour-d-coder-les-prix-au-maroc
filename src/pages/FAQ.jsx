@@ -109,6 +109,33 @@ export default function FAQ() {
         <meta property="og:description" content={pageDesc} />
         <link rel="canonical" href="https://www.tooristoo.com/faq" />
       </Helmet>
+      <noscript>
+        <article style={{padding:'2rem',fontFamily:'sans-serif'}}>
+          <h1>Questions Fréquentes sur Tooristoo</h1>
+          <dl>
+            <dt>Qu'est-ce que Tooristoo ?</dt>
+            <dd>Tooristoo est une application de coach vocal IA qui aide les touristes à négocier les meilleurs prix au Maroc, détecter les arnaques et obtenir des phrases de négociation en darija marocain en temps réel.</dd>
+            <dt>Est-ce que Tooristoo est gratuit ?</dt>
+            <dd>Oui, Tooristoo propose un plan gratuit avec 3 analyses par jour. Les plans Voyageur et Pro offrent des analyses illimitées et des fonctionnalités avancées.</dd>
+            <dt>Dans quelles langues fonctionne Tooristoo ?</dt>
+            <dd>Tooristoo est disponible en français, anglais, espagnol, allemand, arabe et darija marocain.</dd>
+            <dt>Quelles villes du Maroc sont couvertes ?</dt>
+            <dd>Tooristoo couvre toutes les grandes villes : Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla et El Jadida.</dd>
+            <dt>Comment fonctionne la détection d'arnaques ?</dt>
+            <dd>Notre IA analyse le prix demandé par rapport à une base de données de prix réels locaux. Si le prix demandé dépasse significativement la fourchette normale, une alerte est émise et une stratégie de négociation est proposée.</dd>
+            <dt>Quels types de services sont analysés ?</dt>
+            <dd>Taxis, hôtels, riads, restaurants, excursions, shopping et souks, transport, guides touristiques, spas et hammams.</dd>
+            <dt>Les prestataires certifiés Tooristoo sont-ils fiables ?</dt>
+            <dd>Oui, les prestataires certifiés ont été vérifiés par notre équipe. Ils s'engagent à afficher des prix transparents et à respecter une charte de qualité.</dd>
+            <dt>Puis-je utiliser Tooristoo hors ligne ?</dt>
+            <dd>L'analyse IA nécessite une connexion internet. Les phrases de négociation sauvegardées sont accessibles hors ligne.</dd>
+            <dt>Comment signaler une arnaque ?</dt>
+            <dd>Depuis l'application, après une analyse, vous pouvez signaler un prestataire frauduleux directement via le panneau de signalement communautaire.</dd>
+            <dt>Tooristoo fonctionne-t-il sur mobile ?</dt>
+            <dd>Oui, Tooristoo est une application web progressive (PWA) accessible sur iOS et Android depuis votre navigateur, sans installation requise.</dd>
+          </dl>
+        </article>
+      </noscript>
       <Navbar />
       <div className="max-w-3xl mx-auto px-4 pt-28 pb-20">
         {/* Header */}

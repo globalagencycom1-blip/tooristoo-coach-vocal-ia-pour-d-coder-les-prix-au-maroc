@@ -31,6 +31,8 @@ export default function Blog() {
   const pageTitle = lang === 'fr' ? 'Blog Tooristoo - Guides de Voyage Maroc | Conseils Anti-Arnaque' : lang === 'en' ? 'Tooristoo Blog - Morocco Travel Guides | Anti-Scam Tips' : lang === 'es' ? 'Blog Tooristoo - Guías de Viaje Marruecos | Consejos Anti-Estafa' : lang === 'de' ? 'Tooristoo Blog - Marokko Reiseführer | Anti-Betrug Tipps' : 'مدونة Tooristoo - أدلة السفر إلى المغرب | نصائح مكافحة الاحتيال';
   const pageDesc = lang === 'fr' ? 'Découvrez guides complets, conseils de voyage et stratégies anti-arnaque pour explorer le Maroc sereinement.' : lang === 'en' ? 'Discover comprehensive guides, travel tips and anti-scam strategies to explore Morocco safely.' : lang === 'es' ? 'Descubre guías completas, consejos de viaje y estrategias anti-estafa para explorar Marruecos con seguridad.' : lang === 'de' ? 'Entdecken Sie umfassende Leitfäden, Reisetipps und Anti-Betrug-Strategien zur sicheren Erkundung Marokkos.' : 'اكتشف أدلة شاملة ونصائح سفر واستراتيجيات مكافحة الاحتيال لاستكشاف المغرب بأمان.';
 
+  const allArticlesFr = getBlogArticles('fr');
+
   return (
     <div className="min-h-screen bg-shield-dark">
       <Helmet>
@@ -40,6 +42,20 @@ export default function Blog() {
         <meta property="og:description" content={pageDesc} />
         <link rel="canonical" href="https://www.tooristoo.com/blog" />
       </Helmet>
+      <noscript>
+        <article style={{padding:'2rem',fontFamily:'sans-serif'}}>
+          <h1>Blog Tooristoo — Guides de Voyage Maroc et Conseils Anti-Arnaque</h1>
+          <p>Guides pratiques, conseils de négociation et alertes arnaques pour voyager sereinement au Maroc.</p>
+          <ul>
+            {allArticlesFr.map(a => (
+              <li key={a.id}>
+                <a href={`/blog/${a.id}`}>{a.title}</a> — {a.city} — {new Date(a.date).toLocaleDateString('fr-FR')}
+                <p>{a.excerpt}</p>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </noscript>
       <Navbar />
       <div className="max-w-6xl mx-auto px-4 pt-28 pb-20">
         {/* Header */}
