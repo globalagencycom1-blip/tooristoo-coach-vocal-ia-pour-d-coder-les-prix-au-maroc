@@ -26,7 +26,7 @@ const CONTENT = {
     ],
     process_title: 'Processus de certification',
     process: [
-       { step: '1', title: 'Visite terrain', desc: 'Un inspecteur Tooristoo visite le lieu en client anonyme et évalue le service réel.' },
+       { step: '1', title: 'Visite terrain', desc: 'Un membre de l\'équipe Tooristoo a recherché et sélectionné le service en ligne. Ré-évaluation annuelle obligatoire.' },
        { step: '2', title: 'Certification', desc: 'Si conforme, le prestataire reçoit le badge Tooristoo et est publié sur la plateforme.' },
        { step: '3', title: 'Suivi continu', desc: 'Ré-évaluation annuelle + surveillance des signalements communautaires en temps réel.' },
     ],
@@ -59,7 +59,7 @@ const CONTENT = {
     ],
     process_title: 'Certification process',
     process: [
-       { step: '1', title: 'Field visit', desc: 'A Tooristoo inspector visits the venue as an anonymous customer and evaluates the real service.' },
+       { step: '1', title: 'Field visit', desc: 'A Tooristoo team member researched and selected the service online. Mandatory annual re-evaluation.' },
        { step: '2', title: 'Certification', desc: 'If compliant, the provider receives the Tooristoo badge and is published on the platform.' },
        { step: '3', title: 'Ongoing monitoring', desc: 'Annual re-evaluation + real-time monitoring of community reports.' },
     ],
@@ -92,7 +92,7 @@ const CONTENT = {
     ],
     process_title: 'Proceso de certificación',
     process: [
-       { step: '1', title: 'Visita de campo', desc: 'Un inspector Tooristoo visita el lugar como cliente anónimo.' },
+       { step: '1', title: 'Visita de campo', desc: 'Un miembro del equipo Tooristoo investigó y seleccionó el servicio en línea. Ré-evaluación anual obligatoria.' },
        { step: '2', title: 'Certificación', desc: 'Si cumple, el proveedor recibe el sello Tooristoo.' },
        { step: '3', title: 'Seguimiento continuo', desc: 'Re-evaluación anual + vigilancia de denuncias.' },
     ],
