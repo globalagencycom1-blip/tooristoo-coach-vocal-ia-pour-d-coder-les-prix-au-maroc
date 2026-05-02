@@ -24,7 +24,7 @@ export const BLOG_PAGE_TRANSLATIONS = {
     darija: 'فالمغرب'
   },
   guides_subtitle: {
-    fr: 'Découvrez nos guides complets sur les prix réels, les arnaques et la préparation de voyage.',
+    fr: 'Découvrez nos guides complets sur les prix réels, les abus de prix et la préparation de voyage.',
     en: 'Discover our comprehensive guides on real prices, scams, and travel preparation.',
     es: 'Descubre nuestras guías sobre precios reales, estafas y preparación de viajes.',
     de: 'Entdecken Sie unsere umfassenden Leitfäden zu echten Preisen, Betrügereien und Reisevorbereitung.',
