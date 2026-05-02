@@ -1,0 +1,81 @@
+// Pricing tab translations for the FAQ page
+// Plans: Free (0€/3 analyses), Voyageur (5€/50 analyses), Voyageur Plus (9€/100 analyses)
+
+export const FAQ_PRICING = {
+  fr: {
+    faq_cat_pricing: "Tarifs & Plans",
+    faq_q8: "Le plan gratuit est-il vraiment gratuit ?",
+    faq_a8: "Oui, totalement gratuit, sans carte de crédit. Il inclut 3 analyses IA par mois, coach vocal complet, 6 langues, historique 30 jours et prestataires vérifiés.",
+    faq_q9: "Quelle est la différence entre Voyageur et Voyageur Plus ?",
+    faq_a9: "Le plan Voyageur (5€/mois) offre 50 analyses, coach vocal, 6 langues, historique 30 jours et prestataires vérifiés. Le plan Voyageur Plus (9€/mois) offre 100 analyses avec les mêmes fonctionnalités.",
+    faq_pricing_intro: "Voici nos 3 plans adaptés à chaque type de voyageur :",
+    faq_plan_free_desc: "Plan Gratuit — 0€/mois : 3 analyses · Coach vocal · 6 langues · Historique 30 jours · Prestataires vérifiés",
+    faq_plan_voyageur_desc: "Plan Voyageur — 5€/mois : 50 analyses · Coach vocal · 6 langues · Historique 30 jours · Prestataires vérifiés",
+    faq_plan_voyageur_plus_desc: "Plan Voyageur Plus — 9€/mois ⭐ Populaire : 100 analyses · Coach vocal · 6 langues · Historique 30 jours · Prestataires vérifiés",
+    faq_pricing_cta: "Voir les plans sur la page d'accueil →",
+  },
+  en: {
+    faq_cat_pricing: "Pricing & Plans",
+    faq_q8: "Is the free plan really free?",
+    faq_a8: "Yes, completely free, no credit card needed. It includes 3 AI analyses per month, full voice coach, 6 languages, 30-day history and verified providers.",
+    faq_q9: "What is the difference between Traveler and Traveler Plus?",
+    faq_a9: "The Traveler plan (€5/month) offers 50 analyses, voice coach, 6 languages, 30-day history and verified providers. The Traveler Plus plan (€9/month) offers 100 analyses with the same features.",
+    faq_pricing_intro: "Here are our 3 plans for every type of traveler:",
+    faq_plan_free_desc: "Free Plan — €0/month: 3 analyses · Voice coach · 6 languages · 30-day history · Verified providers",
+    faq_plan_voyageur_desc: "Traveler Plan — €5/month: 50 analyses · Voice coach · 6 languages · 30-day history · Verified providers",
+    faq_plan_voyageur_plus_desc: "Traveler Plus Plan — €9/month ⭐ Popular: 100 analyses · Voice coach · 6 languages · 30-day history · Verified providers",
+    faq_pricing_cta: "See all plans on the homepage →",
+  },
+  es: {
+    faq_cat_pricing: "Precios & Planes",
+    faq_q8: "¿El plan gratuito es realmente gratis?",
+    faq_a8: "Sí, totalmente gratis, sin tarjeta de crédito. Incluye 3 análisis por mes, coach vocal completo, 6 idiomas, historial 30 días y proveedores verificados.",
+    faq_q9: "¿Cuál es la diferencia entre Viajero y Viajero Plus?",
+    faq_a9: "El plan Viajero (5€/mes) ofrece 50 análisis, coach vocal, 6 idiomas, historial 30 días y proveedores verificados. El plan Viajero Plus (9€/mes) ofrece 100 análisis con las mismas funciones.",
+    faq_pricing_intro: "Aquí nuestros 3 planes para cada tipo de viajero:",
+    faq_plan_free_desc: "Plan Gratis — 0€/mes: 3 análisis · Coach vocal · 6 idiomas · Historial 30 días · Proveedores verificados",
+    faq_plan_voyageur_desc: "Plan Viajero — 5€/mes: 50 análisis · Coach vocal · 6 idiomas · Historial 30 días · Proveedores verificados",
+    faq_plan_voyageur_plus_desc: "Plan Viajero Plus — 9€/mes ⭐ Popular: 100 análisis · Coach vocal · 6 idiomas · Historial 30 días · Proveedores verificados",
+    faq_pricing_cta: "Ver todos los planes en la página de inicio →",
+  },
+  de: {
+    faq_cat_pricing: "Preise & Pläne",
+    faq_q8: "Ist der kostenlose Plan wirklich kostenlos?",
+    faq_a8: "Ja, völlig kostenlos, ohne Kreditkarte. Er umfasst 3 KI-Analysen pro Monat, vollständiger Sprachcoach, 6 Sprachen, 30-Tage-Verlauf und verifizierte Anbieter.",
+    faq_q9: "Was ist der Unterschied zwischen Reisender und Reisender Plus?",
+    faq_a9: "Der Reisender-Plan (5€/Monat) bietet 50 Analysen, Sprachcoach, 6 Sprachen, 30-Tage-Verlauf und verifizierte Anbieter. Der Reisender Plus-Plan (9€/Monat) bietet 100 Analysen mit denselben Funktionen.",
+    faq_pricing_intro: "Hier unsere 3 Pläne für jeden Reisetyp:",
+    faq_plan_free_desc: "Kostenloser Plan — 0€/Monat: 3 Analysen · Sprachcoach · 6 Sprachen · 30-Tage-Verlauf · Verifizierte Anbieter",
+    faq_plan_voyageur_desc: "Reisender-Plan — 5€/Monat: 50 Analysen · Sprachcoach · 6 Sprachen · 30-Tage-Verlauf · Verifizierte Anbieter",
+    faq_plan_voyageur_plus_desc: "Reisender Plus-Plan — 9€/Monat ⭐ Beliebt: 100 Analysen · Sprachcoach · 6 Sprachen · 30-Tage-Verlauf · Verifizierte Anbieter",
+    faq_pricing_cta: "Alle Pläne auf der Startseite anzeigen →",
+  },
+  ar: {
+    faq_cat_pricing: "الأسعار والخطط",
+    faq_q8: "هل الخطة المجانية مجانية فعلاً؟",
+    faq_a8: "نعم، مجانية تماماً بدون بطاقة ائتمانية. تشمل 3 تحليلات شهرياً، مدرب صوتي كامل، 6 لغات، سجل 30 يوماً ومزودي خدمات موثوقين.",
+    faq_q9: "ما الفرق بين مسافر ومسافر Plus؟",
+    faq_a9: "خطة مسافر (5€/شهر) تقدم 50 تحليل، مدرب صوتي، 6 لغات، سجل 30 يوماً ومزودين موثوقين. خطة مسافر Plus (9€/شهر) تقدم 100 تحليل بنفس المزايا.",
+    faq_pricing_intro: "هنا خططنا الـ3 لكل نوع من المسافرين:",
+    faq_plan_free_desc: "الخطة المجانية — 0€/شهر: 3 تحليلات · مدرب صوتي · 6 لغات · سجل 30 يوم · مزودون موثوقون",
+    faq_plan_voyageur_desc: "خطة مسافر — 5€/شهر: 50 تحليل · مدرب صوتي · 6 لغات · سجل 30 يوم · مزودون موثوقون",
+    faq_plan_voyageur_plus_desc: "خطة مسافر Plus — 9€/شهر ⭐ الأكثر شعبية: 100 تحليل · مدرب صوتي · 6 لغات · سجل 30 يوم · مزودون موثوقون",
+    faq_pricing_cta: "عرض جميع الخطط على الصفحة الرئيسية ←",
+  },
+  darija: {
+    faq_cat_pricing: "الأثمان والفورمولات",
+    faq_q8: "واش الفورمول المجاني مجاني حقاً؟",
+    faq_a8: "إيه، بلاش تماماً، بلا كارطة بنكية. يتضمن 3 تحليلات فالشهر، كوتش صوتي كامل، 6 لغات، سجل 30 يوم وخدامة موثوقين.",
+    faq_q9: "شنو الفرق بين المسافر والمسافر Plus؟",
+    faq_a9: "فورمول المسافر (5€/شهر) كيقدم 50 تحليل، كوتش صوتي، 6 لغات، سجل 30 يوم وخدامة موثوقين. فورمول المسافر Plus (9€/شهر) كيقدم 100 تحليل بنفس المزايا.",
+    faq_pricing_intro: "هاو 3 فورمولات ديالنا لكل نوع من المسافرين:",
+    faq_plan_free_desc: "الفورمول المجاني — 0€/شهر: 3 تحليلات · كوتش صوتي · 6 لغات · سجل 30 يوم · خدامة موثوقين",
+    faq_plan_voyageur_desc: "فورمول المسافر — 5€/شهر: 50 تحليل · كوتش صوتي · 6 لغات · سجل 30 يوم · خدامة موثوقين",
+    faq_plan_voyageur_plus_desc: "فورمول المسافر Plus — 9€/شهر ⭐ الأكثر شعبية: 100 تحليل · كوتش صوتي · 6 لغات · سجل 30 يوم · خدامة موثوقين",
+    faq_pricing_cta: "شوف كل الفورمولات فالصفحة الرئيسية ←",
+  },
+};
+
+export function getFaqPricingT(key, lang = 'fr') {
+  return FAQ_PRICING[lang]?.[key] || FAQ_PRICING['fr']?.[key] || key;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, HelpCircle, Shield } from 'lucide-react';
+import { ChevronDown, ChevronUp, HelpCircle, Shield, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageHelmet from '../lib/seo-helmet';
 import Navbar from '../components/Navbar';
@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 import { getFaqExtended } from '../lib/faq-extended';
+import { FAQ_PRICING, getFaqPricingT } from '../lib/faq-pricing-translations';
 
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false);
@@ -37,6 +38,13 @@ export default function FAQ() {
   const { lang } = useLang();
   const t = useT(lang);
   const ext = getFaqExtended(lang);
+  const pt = (key) => getFaqPricingT(key, lang);
+
+  const pricingPlans = [
+    { desc: pt('faq_plan_free_desc'), popular: false },
+    { desc: pt('faq_plan_voyageur_desc'), popular: false },
+    { desc: pt('faq_plan_voyageur_plus_desc'), popular: true },
+  ];
 
   const FAQS = [
     {
@@ -57,10 +65,11 @@ export default function FAQ() {
       ],
     },
     {
-      cat: t('faq_cat3'),
+      cat: pt('faq_cat_pricing'),
+      pricing: true,
       items: [
-        { q: t('faq_q8'), a: t('faq_a8') },
-        { q: t('faq_q9'), a: t('faq_a9') },
+        { q: pt('faq_q8'), a: pt('faq_a8') },
+        { q: pt('faq_q9'), a: pt('faq_a9') },
         { q: t('faq_q10'), a: t('faq_a10') },
       ],
     },
@@ -143,8 +152,31 @@ export default function FAQ() {
             <div key={cat.cat}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-1 h-5 bg-shield-green rounded-full" />
-                <h2 className="font-poppins font-bold text-white text-lg">{cat.cat}</h2>
+                <h2 className="font-poppins font-bold text-white text-lg flex items-center gap-2">
+                  {cat.pricing && <Tag className="w-4 h-4 text-shield-green" />}
+                  {cat.cat}
+                </h2>
               </div>
+              {/* Pricing summary card */}
+              {cat.pricing && (
+                <div className="mb-4 bg-shield-card border border-shield-green/20 rounded-2xl p-5">
+                  <p className="text-gray-400 text-sm mb-4">{pt('faq_pricing_intro')}</p>
+                  <div className="space-y-3">
+                    {pricingPlans.map((plan, i) => (
+                      <div key={i} className={`flex items-start gap-2 text-sm rounded-xl px-3 py-2 ${plan.popular ? 'bg-shield-green/10 border border-shield-green/30' : 'bg-shield-dark/50'}`}>
+                        <span className="text-shield-green mt-0.5 flex-shrink-0">✓</span>
+                        <span className={plan.popular ? 'text-white' : 'text-gray-300'}>{plan.desc}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link
+                    to="/#pricing"
+                    className="mt-4 inline-flex items-center gap-2 text-shield-green text-sm font-semibold hover:text-green-400 transition-colors"
+                  >
+                    {pt('faq_pricing_cta')}
+                  </Link>
+                </div>
+              )}
               <div className="space-y-3">
                 {cat.items.map((item, i) => <FAQItem key={i} q={item.q} a={item.a} />)}
               </div>
