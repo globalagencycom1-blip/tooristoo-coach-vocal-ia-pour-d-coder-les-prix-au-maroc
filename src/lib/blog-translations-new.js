@@ -357,9 +357,9 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
     }
   },
 
-  'agadir-arnaque-plage': {
+  'agadir': {
     fr: {
-      title: 'Arnaques à Agadir : ce que les touristes ne voient pas venir',
+      title: 'Agadir : ce que les touristes ne voient pas venir',
       excerpt: 'Les pièges spécifiques à Agadir : plage, jet-ski, restaurants de bord de mer.',
       content: `**Jet-ski et activités nautiques** : Prix affiché 300–500 MAD/30 min. Prix négociable 200–350 MAD. Arnaque : "assurance obligatoire" 100 MAD non mentionnée. Demandez le prix TOUT COMPRIS.
 
@@ -377,22 +377,22 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
       content: `Jet-ski: 200–350 MAD negotiable (not 300–500 MAD). Watch for hidden "insurance". Seafront restaurants: always ask full-price menu. Camels: 50–80 MAD/15min, negotiate before mounting. Quad excursions: book via hotel (300–450 MAD) not beach touts (400–600 MAD).`
     },
     es: {
-      title: 'Motos Acuáticas y Playas de Agadir: Precios Reales y Trampas',
+      title: 'Agadir: Precios Reales y Trampas',
       excerpt: 'Descubre los precios reales para actividades de playa y cómo evitar la sobrefacturación.',
       content: `Moto acuática: 200–350 MAD negociable (no 300–500 MAD). Restaurantes Corniche: pide siempre carta completa. Camellos: 50–80 MAD/15min, negocia antes de montar. Quad: reserva en hotel (300–450 MAD) no en playa.`
     },
     de: {
-      title: 'Betrügereien in Agadir: Was Touristen nicht kommen sehen',
+      title: 'Agadir: Was Touristen nicht kommen sehen',
       excerpt: 'Spezifische Fallen in Agadir: Strand, Jet-Ski, Meeresrestaurants.',
       content: `Jet-Ski: 200–350 MAD verhandelbar. Corniche-Restaurants: vollständige Speisekarte verlangen. Kamele: 50–80 MAD/15min vor dem Einsteigen verhandeln. Quad: über Hotel buchen (300–450 MAD).`
     },
     ar: {
-      title: 'الجيت سكي وشواطئ أكادير: الأسعار الحقيقية والفخاخ السياحية',
+      title: 'أكادير: الأسعار الحقيقية والفخاخ السياحية',
       excerpt: 'اكتشف الأسعار الحقيقية للأنشطة الشاطئية وكيفية تجنب الإفراط في الأسعار.',
       content: `سكي الماء: 200–350 درهم قابل للتفاوض. مطاعم الكورنيش: اطلب القائمة الكاملة دائماً. الجمال: 50–80 درهم/15 دقيقة، تفاوض قبل الركوب. رحلات الكواد: احجز من الفندق (300–450 درهم).`
     },
     darija: {
-      title: 'الجيت سكي والشواطئ ديال أكادير: الأثمان الحقيقية والفخاخ',
+      title: 'أكادير: الأثمان الحقيقية والفخاخ',
       excerpt: 'اكتشف الأثمان الحقيقية للنشاطات الشاطئية وكيفاش تتجنب الأثمان الغالية.',
       content: `الجيت سكي: 200–350 درهم قابل للفاوضة. مطاعم الكورنيش: اطلب دايما المنيو الكامل. الجمال: 50–80 درهم/15 دقيقة، فاوض قبل ما تركب. رحلات الكواد: احجز من الفندق (300–450 درهم).`
     }
