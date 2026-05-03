@@ -1,38 +1,29 @@
 import React from 'react';
 import PageHelmet from '../lib/seo-helmet';
-import { Shield, Target, Heart, Users, Zap, Globe, Award, TrendingDown } from 'lucide-react';
+import { Shield, Target, Heart, Globe, Zap, MapPin, Users, Compass } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 import { Link } from 'react-router-dom';
 
-const TEAM = [
-{ name: 'Youssef Benali', roleKey: 'team_role1', flag: '🇲🇦', bioKey: 'team_bio1' },
-{ name: 'Sophie Martin', roleKey: 'team_role2', flag: '🇫🇷', bioKey: 'team_bio2' },
-{ name: 'Carlos Ruiz', roleKey: 'team_role3', flag: '🇪🇸', bioKey: 'team_bio3' },
-{ name: 'Amina Ouzzani', roleKey: 'team_role4', flag: '🇲🇦', bioKey: 'team_bio4' }];
-
-
 export default function About() {
   const { lang } = useLang();
   const t = useT(lang);
 
   const VALUES = [
-  { icon: Shield, titleKey: 'about_val1_title', descKey: 'about_val1_desc', color: 'text-shield-green', bg: 'bg-shield-green/10' },
-  { icon: Heart, titleKey: 'about_val2_title', descKey: 'about_val2_desc', color: 'text-red-400', bg: 'bg-red-500/10' },
-  { icon: Zap, titleKey: 'about_val3_title', descKey: 'about_val3_desc', color: 'text-shield-gold', bg: 'bg-shield-gold/10' },
-  { icon: Globe, titleKey: 'about_val4_title', descKey: 'about_val4_desc', color: 'text-blue-400', bg: 'bg-blue-500/10' }];
-
+    { icon: Shield, titleKey: 'about_val1_title', descKey: 'about_val1_desc', color: 'text-shield-green', bg: 'bg-shield-green/10' },
+    { icon: Heart, titleKey: 'about_val2_title', descKey: 'about_val2_desc', color: 'text-red-400', bg: 'bg-red-500/10' },
+    { icon: Zap, titleKey: 'about_val3_title', descKey: 'about_val3_desc', color: 'text-shield-gold', bg: 'bg-shield-gold/10' },
+    { icon: Globe, titleKey: 'about_val4_title', descKey: 'about_val4_desc', color: 'text-blue-400', bg: 'bg-blue-500/10' }
+  ];
 
   const STATS = [
-  { icon: Users, value: '500+', labelKey: 'about_stats_travelers', color: 'text-shield-green' },
-  { icon: TrendingDown, value: '2 350 MAD', labelKey: 'about_stats_savings', color: 'text-shield-gold' },
-  { icon: Award, value: '98%', labelKey: 'about_stats_detection', color: 'text-blue-400' },
-  { icon: Globe, value: '6', labelKey: 'about_stats_languages', color: 'text-purple-400' }];
-
-
-
+    { icon: Users, value: '500+', labelKey: 'about_stats_travelers', color: 'text-shield-green' },
+    { icon: Compass, value: '13', labelKey: 'about_stats_savings', color: 'text-shield-gold' },
+    { icon: MapPin, value: 'Sources', labelKey: 'about_stats_detection', color: 'text-blue-400' },
+    { icon: Globe, value: '6', labelKey: 'about_stats_languages', color: 'text-purple-400' }
+  ];
 
   return (
     <div className="min-h-screen bg-shield-dark">
@@ -40,23 +31,18 @@ export default function About() {
       <noscript>
         <article style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
           <h1>À Propos de Tooristoo</h1>
-          <p>Tooristoo a été fondé en 2023 par une équipe franco-marocaine pour aider les voyageurs à connaître les prix justes au Maroc et négocier sereinement — en respectant les usages locaux et en valorisant les prestataires transparents.</p>
+          <p>Tooristoo a ouvert son service en 2026 à Marrakech pour aider les voyageurs à connaître les fourchettes de prix locales au Maroc et négocier sereinement — en respectant les usages locaux et en valorisant les prestataires transparents.</p>
           <h2>Notre mission</h2>
-          <p>Démocratiser l'accès aux fourchettes de prix locales au Maroc pour tous les touristes, quelle que soit leur langue. Tooristoo guide les voyageurs pour échanger équitablement, au bénéfice des deux parties.</p>
+          <p>Démocratiser l'accès aux fourchettes de prix locales au Maroc pour tous les touristes, quelle que soit leur langue. Tooristoo guide les voyageurs pour échanger équitablement, au bénéfice des deux parties, avec une méthodologie publique et auditable.</p>
           <h2>Nos valeurs</h2>
           <ul>
-            <li>Transparence : fourchettes de prix du marché accessibles à tous</li>
+            <li>Transparence : méthodologie publique, sources documentées</li>
             <li>Respect : échange équitable pour touristes et prestataires</li>
             <li>Innovation : IA vocale multilingue en temps réel</li>
             <li>Inclusion : 6 langues dont le darija marocain</li>
           </ul>
-          <h2>Notre impact</h2>
-          <ul>
-            <li>50 000+ voyageurs accompagnés</li>
-            <li>2 350 MAD d'économies moyennes par voyage</li>
-            <li>98% de précision tarifaire sur les analyses vérifiées</li>
-            <li>6 langues supportées : français, anglais, espagnol, allemand, arabe, darija</li>
-          </ul>
+          <h2>Une initiative à taille humaine</h2>
+          <p>Tooristoo est aujourd'hui un projet à taille humaine, lancé en 2026. Plutôt que d'afficher une équipe gonflée, nous préférons être transparents : le service est porté par un fondateur engagé et une petite équipe d'appui, avec l'ambition de grandir au rythme de la qualité, pas de la communication.</p>
           <h2>Villes couvertes</h2>
           <p>Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla, El Jadida.</p>
         </article>
@@ -92,13 +78,6 @@ export default function About() {
                 </div>
               </div>
               <div className="relative">
-                
-
-                
-                
-                
-                
-                
                 <div className="absolute bottom-4 left-4 flex items-center gap-2">
                   <span className="text-3xl">🇲🇦</span>
                   <span className="text-white font-semibold">{t('about_founded')}</span>
@@ -112,7 +91,7 @@ export default function About() {
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
             {STATS.map(({ icon: IconComp, value, labelKey, color }) =>
-            <div key={labelKey} className="bg-shield-card border border-shield-border rounded-2xl p-6 text-center">
+              <div key={labelKey} className="bg-shield-card border border-shield-border rounded-2xl p-6 text-center">
                 <IconComp className={`w-6 h-6 mx-auto mb-3 ${color}`} />
                 <div className={`font-poppins font-black text-2xl ${color}`}>{value}</div>
                 <div className="text-xs text-gray-500 mt-1">{t(labelKey)}</div>
@@ -131,7 +110,7 @@ export default function About() {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {VALUES.map(({ icon: IconComp, titleKey, descKey, color, bg }) =>
-              <div key={titleKey} className="bg-shield-card border border-shield-border rounded-2xl p-6 hover:border-shield-green/20 transition-all">
+                <div key={titleKey} className="bg-shield-card border border-shield-border rounded-2xl p-6 hover:border-shield-green/20 transition-all">
                   <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center mb-4`}>
                     <IconComp className={`w-6 h-6 ${color}`} />
                   </div>
@@ -143,27 +122,68 @@ export default function About() {
           </div>
         </section>
 
-        {/* Team */}
-        
+        {/* Team — Initiative à taille humaine */}
+        <section className="py-16 px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-shield-card border border-shield-border rounded-2xl p-8 md:p-12">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-shield-green/10 flex items-center justify-center">
+                  <Users className="w-6 h-6 text-shield-green" />
+                </div>
+                <div>
+                  <h2 className="font-poppins font-bold text-2xl text-white">{t('about_team_title')}</h2>
+                  <p className="text-gray-500 text-sm mt-1">{t('about_team_subtitle')}</p>
+                </div>
+              </div>
+              <p className="text-gray-300 leading-relaxed mb-6">
+                {t('about_team_body')}
+              </p>
+              <div className="pt-4 border-t border-shield-border">
+                <p className="text-gray-400 mb-4">{t('about_team_cta')}</p>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-shield-green/10 text-shield-green font-medium hover:bg-shield-green/20 transition border border-shield-green/30">
+                  <Shield className="w-4 h-4" />
+                  {t('footer_contact')}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        {/* Lien vers la méthodologie */}
+        <section className="py-12 px-4 bg-[#0a1628]">
+          <div className="max-w-3xl mx-auto text-center">
+            <Compass className="w-8 h-8 text-shield-gold mx-auto mb-3" />
+            <h3 className="font-poppins font-bold text-xl text-white mb-3">
+              {lang === 'fr' && 'Comment travaillons-nous concrètement ?'}
+              {lang === 'en' && 'How do we work, concretely?'}
+              {lang === 'es' && '¿Cómo trabajamos, concretamente?'}
+              {lang === 'de' && 'Wie arbeiten wir konkret?'}
+              {lang === 'ar' && 'كيف نعمل، بشكل ملموس؟'}
+              {lang === 'darija' && 'كيفاش كنخدمو، بالضبط؟'}
+            </h3>
+            <p className="text-gray-400 mb-6 max-w-xl mx-auto">
+              {lang === 'fr' && 'Nous documentons publiquement notre méthodologie de sélection, nos sources et les limites actuelles du service.'}
+              {lang === 'en' && 'We publicly document our selection methodology, our sources and the current limits of the service.'}
+              {lang === 'es' && 'Documentamos públicamente nuestra metodología, fuentes y los límites actuales del servicio.'}
+              {lang === 'de' && 'Wir dokumentieren öffentlich unsere Auswahlmethodik, unsere Quellen und die aktuellen Grenzen des Dienstes.'}
+              {lang === 'ar' && 'نُوثّق علناً منهجية الاختيار ومصادرنا وحدود الخدمة الحالية.'}
+              {lang === 'darija' && 'كنوثقو علناً منهجية الاختيار ديالنا والمصادر وحدود الخدمة الحالية.'}
+            </p>
+            <Link
+              to="/methodology"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-shield-gold/10 text-shield-gold font-medium hover:bg-shield-gold/20 transition border border-shield-gold/30">
+              <Compass className="w-4 h-4" />
+              {lang === 'fr' && 'Voir notre méthodologie'}
+              {lang === 'en' && 'See our methodology'}
+              {lang === 'es' && 'Ver nuestra metodología'}
+              {lang === 'de' && 'Unsere Methodik ansehen'}
+              {lang === 'ar' && 'اطلع على منهجيتنا'}
+              {lang === 'darija' && 'شوف المنهجية ديالنا'}
+            </Link>
+          </div>
+        </section>
 
         {/* CTA */}
         <section className="py-16 px-4 bg-[#0a1628]">
@@ -173,7 +193,6 @@ export default function About() {
             <Link
               to="/app"
               className="inline-flex items-center gap-2 px-8 py-4 bg-shield-green text-black font-bold rounded-2xl hover:bg-green-400 transition-all btn-glow">
-              
               <Shield className="w-5 h-5" />
               {t('about_cta_btn')}
             </Link>
@@ -181,6 +200,6 @@ export default function About() {
         </section>
       </div>
       <Footer lang={lang} />
-    </div>);
-
+    </div>
+  );
 }
