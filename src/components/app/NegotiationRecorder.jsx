@@ -452,10 +452,18 @@ EXEMPLE AUTORISÉ:
 
       if (!isMountedRef.current) return;
 
-      onAnalysisComplete({
+      // Sanitize les sorties LLM avant affichage
+      // Filet de sécurité au cas où le modèle utiliserait encore du vocabulaire interdit
+      const sanitizedResult = {
         ...result,
+        ai_analysis: sanitizeLLMResponse(result.ai_analysis, lang),
+        strategy: sanitizeLLMResponse(result.strategy, lang),
+      };
+
+      onAnalysisComplete({
+        ...sanitizedResult,
         // rétro-compat avec ancien champ scam_detected si l'UI le consomme encore
-        scam_detected: result.price_anomaly ?? false,
+        scam_detected: sanitizedResult.price_anomaly ?? false,
         category,
         location,
         transcript: finalTranscriptRef.current.trim(),
