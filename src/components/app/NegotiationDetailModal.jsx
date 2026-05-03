@@ -45,7 +45,7 @@ export default function NegotiationDetailModal({ neg, lang, onClose }) {
           {neg.scam_detected && (
             <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl flex items-center gap-3">
               <XCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-              <p className="text-red-400 text-sm font-semibold">🚨 Arnaque détectée !</p>
+              <p className="text-red-400 text-sm font-semibold">🚨</p>
             </div>
           )}
 
