@@ -20,7 +20,7 @@ const NL = {
     success_title: 'Inscription confirmée ! ✅',
     success_msg: 'Votre email a été enregistré. Vous serez informé des futures alertes.',
     privacy: 'Pas de spam. Désinscription en 1 clic. Vos données sont sécurisées.',
-    count: '+12 400 voyageurs abonnés',
+    count: '+200 voyageurs abonnés',
   },
   en: {
     badge: '📬 Tooristoo Newsletter',
@@ -39,7 +39,7 @@ const NL = {
     success_title: 'Subscription confirmed! ✅',
     success_msg: 'Your email has been saved. You will be notified of future alerts.',
     privacy: 'No spam. Unsubscribe in 1 click. Your data is secure.',
-    count: '+12,400 travelers subscribed',
+    count: '+200 travelers subscribed',
   },
   es: {
     badge: '📬 Newsletter Tooristoo',
@@ -58,7 +58,7 @@ const NL = {
     success_title: '¡Suscripción confirmada! ✅',
     success_msg: 'Tu email ha sido guardado. Serás notificado de futuras alertas.',
     privacy: 'Sin spam. Cancelación en 1 clic. Tus datos están seguros.',
-    count: '+12.400 viajeros suscritos',
+    count: '+200 viajeros suscritos',
   },
   de: {
     badge: '📬 Tooristoo Newsletter',
@@ -77,7 +77,7 @@ const NL = {
     success_title: 'Anmeldung bestätigt! ✅',
     success_msg: 'Ihre E-Mail wurde gespeichert. Sie werden über zukünftige Warnungen benachrichtigt.',
     privacy: 'Kein Spam. Abmeldung mit 1 Klick. Ihre Daten sind sicher.',
-    count: '+12.400 Reisende abonniert',
+    count: '+200 Reisende abonniert',
   },
   ar: {
     badge: '📬 نشرة Tooristoo',
@@ -96,7 +96,7 @@ const NL = {
     success_title: 'تم التسجيل! ✅',
     success_msg: 'تم حفظ بريدك الإلكتروني. ستتم إخطارك بالتنبيهات المستقبلية.',
     privacy: 'لا رسائل مزعجة. إلغاء الاشتراك بنقرة واحدة. بياناتك آمنة.',
-    count: '+12,400 مسافر مشترك',
+    count: '+200 مسافر مشترك',
   },
   darija: {
     badge: '📬 نيوزليتر Tooristoo',
@@ -115,7 +115,7 @@ const NL = {
     success_title: 'تم التسجيل! ✅',
     success_msg: 'تم حفظ الإيميل ديالك. غادي تتنبهو بالتنبيهات الجوج.',
     privacy: 'بلا سبام. إلغاء الاشتراك بضغطة واحدة. البيانات ديالك آمنة.',
-    count: '+12,400 مسافر مشتركين',
+    count: '+200 مسافر مشتركين',
   },
 };
 
