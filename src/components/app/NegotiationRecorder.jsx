@@ -313,14 +313,41 @@ ANALYSE DEMANDÉE (uniquement si la transcription concerne un service touristiqu
 
 TON: factuel, neutre, respectueux de la culture marocaine du marchandage.
 
-INTERDICTIONS DE VOCABULAIRE — TRÈS IMPORTANT:
-N'utilise JAMAIS ces mots dans ai_analysis ou strategy : "arnaque", "arnaqueur", "scam", "scammer", "abus", "abuser", "tromperie", "frauder", "estafa", "estafador", "Betrug", "Betrüger", "احتيال", "نصب", "محتال", "نصاب".
-Utilise à la place : "écart par rapport à la fourchette habituelle", "prix au-dessus de la référence locale", "tarif supérieur à la moyenne du marché".
+INTERDICTIONS ABSOLUES DE VOCABULAIRE:
+Si tu utilises l'un de ces mots dans ai_analysis ou strategy, ta réponse sera REJETÉE :
+"arnaque", "arnaquer", "arnaqueur", "scam", "scammer", "scamming",
+"abus", "abuser", "abusif", "abusive", "abusivement",
+"tromperie", "tromper", "trompeur",
+"fraude", "frauder", "frauduleux",
+"estafa", "estafador", "estafador",
+"Betrug", "betrügerisch", "Betrüger",
+"احتيال", "نصب", "محتال", "نصاب".
 
-RÈGLE DE COHÉRENCE NUMÉRIQUE — TRÈS IMPORTANT:
-Dans ai_analysis, mentionne UNIQUEMENT la fourchette de référence (price_estimated_min à price_estimated_max). Ne mentionne JAMAIS d'autres seuils (40 DH, 50 DH, etc.) qui ne correspondent pas aux bornes que tu as toi-même définies. Compare le prix demandé directement à cette fourchette, pas à un seuil inventé.
-Format suggéré : "Le prix demandé de X DH est au-dessus de la fourchette de référence locale (min DH – max DH). L'écart est de Y DH par rapport à la borne haute."
-Toutes les réponses textuelles (ai_analysis, strategy) en ${responseLang}. La phrase recommandée (recommended_phrase) toujours en darija marocain transcrit en latin.`;
+À la place, utilise EXCLUSIVEMENT ces formulations :
+- "écart par rapport à la fourchette de référence"
+- "prix au-dessus de la fourchette habituelle"
+- "tarif supérieur à la moyenne locale"
+- "différence avec les tarifs courants"
+
+EXEMPLE DE BON TON:
+"Le prix demandé de 200 DH est nettement au-dessus de la fourchette de référence locale pour un transfert aéroport (70–100 DH). L'écart constaté est de 100 DH par rapport à la borne haute. Il est recommandé d'insister sur l'usage du compteur officiel ou de proposer un prix dans la fourchette de référence."
+
+RÈGLE DE COHÉRENCE NUMÉRIQUE — INVIOLABLE:
+Tu ne dois mentionner AUCUN nombre autre que :
+- Le prix demandé (price_asked)
+- Les bornes de la fourchette de référence (price_estimated_min et price_estimated_max)
+- L'écart calculé (price_asked - price_estimated_max si positif)
+- Un pourcentage d'écart si pertinent
+
+Tu n'as PAS LE DROIT d'inventer un "seuil", "limite", "norme" ou "tarif officiel" avec un autre nombre. Si tu n'as pas la donnée, ne l'invente pas. Reste strictement dans la fourchette que tu as toi-même définie.
+
+EXEMPLE INTERDIT:
+❌ "le tarif dépasse le seuil de 40 DH" (40 DH n'existe pas dans tes données)
+❌ "il faut payer maximum 50 DH" (50 DH inventé)
+
+EXEMPLE AUTORISÉ:
+✓ "le prix de 200 DH dépasse la fourchette de référence (70–100 DH) de 100 DH"
+✓ "l'écart est de 100 DH par rapport à la borne haute de 100 DH"`;
 
       const result = await base44.integrations.Core.InvokeLLM({
         prompt,
