@@ -16,7 +16,7 @@ export const faqExtended = {
     faq_q18: "Quelle est la méthodologie derrière le taux de 98 % ?",
     faq_a18: "Ce taux est calculé sur 12 000 analyses vérifiées : nous comparons le prix demandé à notre base de données de tarifs officiels réels (collectés terrain + signalements communautaires + tarifs des prestataires certifiés). Quand le prix dépasse la fourchette normale de plus de 15 %, l'IA émet une alerte. Le 98 % correspond au taux d'alertes effectivement justifiées, validé par retour utilisateur.",
     faq_q19: "Peut-on utiliser Tooristoo pour un hammam ou spa ?",
-    faq_a19: "Oui. Sélectionnez la catégorie 'Spa' et entrez le prix demandé. Tooristoo vous donnera la fourchette pour les hammams traditionnels (50–150 MAD pour un soin complet) vs les spas touristiques (200–500 MAD). Les produits 'luxury' ajoutés à votre note sans accord préalable sont signalés comme pratique à risque.",
+    faq_a19: "Oui. Sélectionnez la catégorie 'Spa' et entrez le prix demandé. Tooristoo vous donnera la fourchette pour les hammams traditionnels (50–150 MAD pour un soin complet) vs les spas touristiques (200–500 MAD).",
     faq_q20: "Comment Tooristoo génère les phrases en darija ?",
     faq_a20: "Les phrases sont préparées par des locuteurs natifs marocains et adaptées selon le contexte : catégorie de service, niveau de risque, montant et culture régionale. Elles visent le respect mutuel et l'assertivité — pas l'agressivité. Nous n'utilisons pas de traduction automatique pour les phrases clés en darija.",
   },
