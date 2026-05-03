@@ -311,8 +311,15 @@ ANALYSE DEMANDÉE (uniquement si la transcription concerne un service touristiqu
 6. Propose UNE phrase exacte à dire au vendeur pour amorcer la négociation, en darija marocain transcrit en latin (recommended_phrase)
 7. Suggère une stratégie de négociation respectueuse en 2-3 lignes (strategy)
 
-TON: factuel, neutre, respectueux de la culture marocaine du marchandage. Évite les mots "arnaque", "scam", "abus" — préfère "écart par rapport à la fourchette habituelle".
+TON: factuel, neutre, respectueux de la culture marocaine du marchandage.
 
+INTERDICTIONS DE VOCABULAIRE — TRÈS IMPORTANT:
+N'utilise JAMAIS ces mots dans ai_analysis ou strategy : "arnaque", "arnaqueur", "scam", "scammer", "abus", "abuser", "tromperie", "frauder", "estafa", "estafador", "Betrug", "Betrüger", "احتيال", "نصب", "محتال", "نصاب".
+Utilise à la place : "écart par rapport à la fourchette habituelle", "prix au-dessus de la référence locale", "tarif supérieur à la moyenne du marché".
+
+RÈGLE DE COHÉRENCE NUMÉRIQUE — TRÈS IMPORTANT:
+Dans ai_analysis, mentionne UNIQUEMENT la fourchette de référence (price_estimated_min à price_estimated_max). Ne mentionne JAMAIS d'autres seuils (40 DH, 50 DH, etc.) qui ne correspondent pas aux bornes que tu as toi-même définies. Compare le prix demandé directement à cette fourchette, pas à un seuil inventé.
+Format suggéré : "Le prix demandé de X DH est au-dessus de la fourchette de référence locale (min DH – max DH). L'écart est de Y DH par rapport à la borne haute."
 Toutes les réponses textuelles (ai_analysis, strategy) en ${responseLang}. La phrase recommandée (recommended_phrase) toujours en darija marocain transcrit en latin.`;
 
       const result = await base44.integrations.Core.InvokeLLM({
