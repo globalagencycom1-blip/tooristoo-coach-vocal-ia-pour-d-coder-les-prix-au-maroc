@@ -26,7 +26,89 @@ const LANG_NAME_FOR_PROMPT = {
 
 // Limite raisonnable pour éviter les transcripts énormes envoyés au LLM
 const MAX_TRANSCRIPT_CHARS = 2000;
+// Filtre de nettoyage des réponses LLM
+// Le modèle revient parfois à un vocabulaire accusatoire malgré le prompt.
+// Cette fonction sanitize la sortie pour garantir le ton défendable.
+const sanitizeLLMResponse = (text, lang = 'fr') => {
+  if (!text || typeof text !== 'string') return text;
 
+  // Dictionnaire de remplacements (clé = regex, valeur = remplacement)
+  const replacements = {
+    fr: [
+      [/\barnaque?s?\b/gi, 'écart de prix'],
+      [/\barnaqueurs?\b/gi, 'pratiquants de tarifs élevés'],
+      [/\barnaquer\b/gi, 'pratiquer un tarif élevé'],
+      [/\babusifs?\b/gi, 'au-dessus de la référence'],
+      [/\babusives?\b/gi, 'au-dessus de la référence'],
+      [/\babusivement\b/gi, 'au-dessus de la référence'],
+      [/\babus\b/gi, 'écart'],
+      [/\babuser\b/gi, 'pratiquer un écart'],
+      [/\bfrauduleux\b/gi, 'au-dessus de la fourchette'],
+      [/\btromper\b/gi, 'surfacturer'],
+      [/\btromperie\b/gi, 'écart tarifaire'],
+      [/seuil (d'|de l')?(arnaque|abus|fraude)( de \d+ ?(DH|MAD))?/gi, 'fourchette de référence'],
+      [/considéré comme (une |un )?(arnaque|abus|fraude|abusif)/gi, 'au-dessus de la fourchette de référence'],
+    ],
+    en: [
+      [/\bscams?\b/gi, 'price gap'],
+      [/\bscammers?\b/gi, 'overpricers'],
+      [/\bscamming\b/gi, 'overpricing'],
+      [/\babusive\b/gi, 'above reference'],
+      [/\babuse\b/gi, 'gap'],
+      [/\bfraudulent\b/gi, 'above the range'],
+      [/\bcheating\b/gi, 'overpricing'],
+      [/(scam|abuse|fraud) threshold( of \d+ ?(DH|MAD))?/gi, 'reference range'],
+    ],
+    es: [
+      [/\bestafas?\b/gi, 'diferencia de precio'],
+      [/\bestafadores?\b/gi, 'que cobran de más'],
+      [/\babusivos?\b/gi, 'por encima de la referencia'],
+      [/\babusivas?\b/gi, 'por encima de la referencia'],
+      [/\babuso\b/gi, 'diferencia'],
+      [/\bfraude\b/gi, 'diferencia de precio'],
+    ],
+    de: [
+      [/\bBetrug\b/gi, 'Preisabweichung'],
+      [/\bbetrügerisch\b/gi, 'über der Referenz'],
+      [/\bBetrüger\b/gi, 'Anbieter mit hohen Preisen'],
+      [/\bmissbräuchlich\b/gi, 'über der Referenz'],
+    ],
+    ar: [
+      [/احتيال/g, 'فرق سعري'],
+      [/نصب/g, 'فرق سعري'],
+      [/محتال/g, 'مزود بأسعار مرتفعة'],
+      [/نصاب/g, 'مزود بأسعار مرتفعة'],
+    ],
+    darija: [
+      [/احتيال/g, 'فرق فالثمن'],
+      [/نصب/g, 'فرق فالثمن'],
+      [/محتال/g, 'خادم بأثمان عالية'],
+      [/نصاب/g, 'خادم بأثمان عالية'],
+    ],
+  };
+
+  let cleaned = text;
+  const langReplacements = replacements[lang] || replacements.fr;
+
+  langReplacements.forEach(([pattern, replacement]) => {
+    cleaned = cleaned.replace(pattern, replacement);
+  });
+
+  // Suppression des chiffres inventés au format "seuil de XX DH" ou "limite de XX MAD"
+  // qui ne sont pas dans price_estimated_min/max
+  cleaned = cleaned.replace(/seuil (de |d')?\d+\s*(DH|MAD|درهم)/gi, 'fourchette de référence');
+  cleaned = cleaned.replace(/limite (de |d')?\d+\s*(DH|MAD|درهم)/gi, 'fourchette de référence');
+
+  // Nettoyage des doubles espaces résultants
+  cleaned = cleaned.replace(/\s+/g, ' ').trim();
+
+  // Nettoyage des "(.)" et autres restes d'éliminations
+  cleaned = cleaned.replace(/\(\s*\)/g, '');
+  cleaned = cleaned.replace(/\s+,/g, ',');
+  cleaned = cleaned.replace(/\s+\./g, '.');
+
+  return cleaned;
+};
 // Mots-clés de pré-filtrage côté client (couche de défense supplémentaire)
 // Si l'un de ces mots apparaît, on évite l'appel LLM et on retourne directement le refus
 const FORBIDDEN_KEYWORDS = [
