@@ -84,7 +84,7 @@ export default function NegotiationRecorder({ category, location, onAnalysisComp
 
     setIsAnalyzing(true);
     try {
-      const prompt = `Tu es NegoShield AI, expert en prix touristiques au Maroc.
+      const prompt = `Tu es Tooristoo, expert en prix touristiques au Maroc.
 
 SITUATION ACTUELLE:
 - Catégorie: ${category}
