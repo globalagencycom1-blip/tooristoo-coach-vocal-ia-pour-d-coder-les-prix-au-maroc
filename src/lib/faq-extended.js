@@ -34,7 +34,7 @@ export const faqExtended = {
     faq_q18: "What is the methodology behind the 98% detection rate?",
     faq_a18: "This rate is calculated across 12,000 verified analyses: we compare the asked price against our database of real official rates (field-collected, supplemented by community reports and certified provider pricing). When a price exceeds the normal range by more than 15%, the AI triggers an alert. The 98% reflects the proportion of alerts that were genuinely justified, validated through user feedback.",
     faq_q19: "Can I use Tooristoo to negotiate in a hammam or spa?",
-    faq_a19: "Yes. Select the 'Spa' category and enter the price asked. Tooristoo will give you the range for traditional hammams (50–150 MAD for a full treatment) vs tourist spas (200–500 MAD). Luxury products added to your bill without prior agreement are flagged as a high-risk practice.",
+    faq_a19: "Yes. Select the 'Spa' category and enter the price asked. Tooristoo will give you the range for traditional hammams (50–150 MAD for a full treatment) vs tourist spas (200–500 MAD).",
     faq_q20: "How does Tooristoo generate Darija phrases?",
     faq_a20: "Phrases are prepared by native Moroccan speakers and adapted to context: service category, risk level, amount and regional culture. They aim for mutual respect and assertiveness — not aggression. We do not use automatic translation for key Darija phrases.",
   },
