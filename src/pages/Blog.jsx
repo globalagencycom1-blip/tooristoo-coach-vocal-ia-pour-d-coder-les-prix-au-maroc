@@ -37,7 +37,7 @@ export default function Blog() {
       <PageHelmet page="blog" lang={lang} />
       <noscript>
         <article style={{padding:'2rem',fontFamily:'sans-serif'}}>
-          <h1>Blog Tooristoo — Guides de Voyage Maroc et Conseils Anti-Arnaque</h1>
+          <h1>Blog Tooristoo — Guides de Voyage Maroc et Conseils</h1>
           <p>Guides pratiques, conseils de négociation et alertes arnaques pour voyager sereinement au Maroc.</p>
           <ul>
             {allArticlesFr.map(a => (
