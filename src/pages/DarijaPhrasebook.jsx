@@ -21,16 +21,16 @@ const CATEGORIES = [
 
 const PHRASES = [
   // Greetings
-  { id: 1, cat: 'greetings', darija: 'السلام عليكم', latin: 'Salam 3likum', fr: 'Bonjour / Salut', en: 'Hello / Hi', es: 'Hola', de: 'Hallo' },
+  { id: 1, cat: 'greetings', darija: 'السلام عليكم', latin: 'Salam alikoum', fr: 'Bonjour / Salut', en: 'Hello / Hi', es: 'Hola', de: 'Hallo' },
   { id: 2, cat: 'greetings', darija: 'لاباس؟', latin: 'Labas?', fr: 'Ça va ?', en: 'How are you?', es: '¿Cómo estás?', de: 'Wie geht\'s?' },
-  { id: 3, cat: 'greetings', darija: 'شكراً بزاف', latin: 'Shukran bzzaf', fr: 'Merci beaucoup', en: 'Thank you very much', es: 'Muchas gracias', de: 'Vielen Dank' },
+  { id: 3, cat: 'greetings', darija: 'شكراً بزاف', latin: 'Choukran bzzaf', fr: 'Merci beaucoup', en: 'Thank you very much', es: 'Muchas gracias', de: 'Vielen Dank' },
   { id: 4, cat: 'greetings', darija: 'بسلامة', latin: 'Bslama', fr: 'Au revoir', en: 'Goodbye', es: 'Adiós', de: 'Auf Wiedersehen' },
   { id: 5, cat: 'greetings', darija: 'عافاك', latin: '3afak', fr: 'S\'il vous plaît', en: 'Please', es: 'Por favor', de: 'Bitte' },
-  { id: 6, cat: 'greetings', darija: 'لا شكراً', latin: 'La shukran', fr: 'Non merci', en: 'No thanks', es: 'No gracias', de: 'Nein danke' },
+  { id: 6, cat: 'greetings', darija: 'لا شكراً', latin: 'La choukran', fr: 'Non merci', en: 'No thanks', es: 'No gracias', de: 'Nein danke' },
   { id: 7, cat: 'greetings', darija: 'واش كتهضر الفرانساوية؟', latin: 'Wash kathddar l-fransawiya?', fr: 'Parlez-vous français ?', en: 'Do you speak French?', es: '¿Hablas francés?', de: 'Sprechen Sie Französisch?' },
 
   // Taxi
-  { id: 8, cat: 'taxi', darija: 'بشحال هاد الكورسة؟', latin: 'Bshhal had l-kursa?', fr: 'Combien coûte cette course ?', en: 'How much is this ride?', es: '¿Cuánto cuesta este trayecto?', de: 'Was kostet diese Fahrt?' },
+  { id: 8, cat: 'taxi', darija: 'بشحال هاد الكورسة؟', latin: 'Bshhal had l-corsa?', fr: 'Combien coûte cette course ?', en: 'How much is this ride?', es: '¿Cuánto cuesta este trayecto?', de: 'Was kostet diese Fahrt?' },
   { id: 9, cat: 'taxi', darija: 'دور العداد عافاك', latin: 'Dour l-3adad 3afak', fr: 'Mettez le compteur s\'il vous plaît', en: 'Turn on the meter please', es: 'Pon el taxímetro por favor', de: 'Schalten Sie das Taxameter ein bitte' },
   { id: 10, cat: 'taxi', darija: 'غالي بزاف، قول ليا الثمن الحقيقي', latin: 'Ghali bzzaf, qul liya t-taman l-haqiqi', fr: 'C\'est trop cher, dites-moi le vrai prix', en: 'Too expensive, tell me the real price', es: 'Muy caro, dime el precio real', de: 'Zu teuer, sagen Sie mir den echten Preis' },
   { id: 11, cat: 'taxi', darija: 'مشي هنا', latin: 'Mshi hna', fr: 'Arrêtez-vous ici', en: 'Stop here', es: 'Para aquí', de: 'Halten Sie hier an' },
@@ -42,8 +42,8 @@ const PHRASES = [
   { id: 15, cat: 'market', darija: 'غالي، قلل شوية', latin: 'Ghali, qllel shwiya', fr: 'C\'est trop cher, baissez un peu', en: 'Too expensive, lower a bit', es: 'Muy caro, baja un poco', de: 'Zu teuer, etwas günstiger bitte' },
   { id: 16, cat: 'market', darija: 'نعطيك... درهم', latin: 'N3tik... dirham', fr: 'Je vous donne... dirhams', en: 'I\'ll give you... dirhams', es: 'Te doy... dirhams', de: 'Ich gebe Ihnen... Dirham' },
   { id: 17, cat: 'market', darija: 'آخر ثمن؟', latin: 'Akher taman?', fr: 'Dernier prix ?', en: 'Final price?', es: '¿Último precio?', de: 'Letzter Preis?' },
-  { id: 18, cat: 'market', darija: 'ماشي محتاج مرشد شكراً', latin: 'Mashi m7taj mrshad shukran', fr: 'Je n\'ai pas besoin de guide merci', en: 'I don\'t need a guide thank you', es: 'No necesito guía gracias', de: 'Ich brauche keinen Führer danke' },
-  { id: 19, cat: 'market', darija: 'غير كنشوف، ماشي شاري دابا', latin: 'Ghir knshuf, mashi shari daba', fr: 'Je regarde juste, je n\'achète pas maintenant', en: 'Just looking, not buying now', es: 'Solo mirando, no compro ahora', de: 'Ich schaue nur, kaufe jetzt nicht' },
+  { id: 18, cat: 'market', darija: 'ماشي محتاج مرشد شكراً', latin: 'Mashi m7taj mrshad choukran', fr: 'Je n\'ai pas besoin de guide merci', en: 'I don\'t need a guide thank you', es: 'No necesito guía gracias', de: 'Ich brauche keinen Führer danke' },
+  { id: 19, cat: 'market', darija: 'غير كنشوف، ماشي شاري دابا', latin: 'Ghir knschouf, mashi shari daba', fr: 'Je regarde juste, je n\'achète pas maintenant', en: 'Just looking, not buying now', es: 'Solo mirando, no compro ahora', de: 'Ich schaue nur, kaufe jetzt nicht' },
   { id: 20, cat: 'market', darija: 'كيتصنع هنا؟', latin: 'Kitssn3 hna?', fr: 'C\'est fabriqué ici ?', en: 'Is this made here?', es: '¿Está fabricado aquí?', de: 'Ist das hier hergestellt?' },
 
   // Restaurant
@@ -57,28 +57,28 @@ const PHRASES = [
   { id: 26, cat: 'hotel', darija: 'بشحال الليلة؟', latin: 'Bshhal l-lila?', fr: 'Combien pour une nuit ?', en: 'How much per night?', es: '¿Cuánto por noche?', de: 'Wie viel pro Nacht?' },
   { id: 27, cat: 'hotel', darija: 'واش الفطور داخل؟', latin: 'Wash l-ftor dakhel?', fr: 'Le petit-déjeuner est inclus ?', en: 'Is breakfast included?', es: '¿El desayuno está incluido?', de: 'Ist das Frühstück inbegriffen?' },
   { id: 28, cat: 'hotel', darija: 'عندك بيت أرخص؟', latin: '3andak bit arkhas?', fr: 'Avez-vous une chambre moins chère ?', en: 'Do you have a cheaper room?', es: '¿Tiene habitación más barata?', de: 'Haben Sie ein günstigeres Zimmer?' },
-  { id: 29, cat: 'hotel', darija: 'متى خروج؟', latin: 'Mta l-khourouj?', fr: 'C\'est quand le check-out ?', en: 'When is check-out?', es: '¿Cuándo es el check-out?', de: 'Wann ist das Auschecken?' },
+  { id: 29, cat: 'hotel', darija: 'متى خروج؟', latin: 'Imta l-khourouj?', fr: 'C\'est quand le check-out ?', en: 'When is check-out?', es: '¿Cuándo es el check-out?', de: 'Wann ist das Auschecken?' },
 
   // Negotiation
   { id: 30, cat: 'negotiation', darija: 'هاد الثمن غالي على البراني', latin: 'Had taman ghali 3la l-barani', fr: 'Ce prix est trop élevé pour un étranger', en: 'This price is too high for a foreigner', es: 'Este precio es muy alto para un extranjero', de: 'Dieser Preis ist zu hoch für einen Ausländer' },
-  { id: 31, cat: 'negotiation', darija: 'عرفت الثمن الحقيقي', latin: '3rafet t-taman l-7aqiqi', fr: 'Je connais le vrai prix', en: 'I know the real price', es: 'Conozco el precio real', de: 'Ich kenne den echten Preis' },
+  { id: 31, cat: 'negotiation', darija: 'عرفت الثمن الحقيقي', latin: '3raft taman l-7aqiqi', fr: 'Je connais le vrai prix', en: 'I know the real price', es: 'Conozco el precio real', de: 'Ich kenne den echten Preis' },
   { id: 32, cat: 'negotiation', darija: 'إلا ما كادرتيش، رانا غاديين', latin: 'Ila ma kadrtish, rana ghadyin', fr: 'Si vous ne pouvez pas, nous partons', en: 'If you can\'t, we\'re leaving', es: 'Si no puede, nos vamos', de: 'Wenn Sie nicht können, gehen wir' },
-  { id: 33, cat: 'negotiation', darija: 'شفت هاد الشي بثمن أقل عند جيراني', latin: 'Shft had sh-shi b-taman aqal 3nd jrani', fr: 'J\'ai vu ça moins cher chez les voisins', en: 'I saw this cheaper next door', es: 'Vi esto más barato en el local de al lado', de: 'Ich habe das woanders günstiger gesehen' },
-  { id: 34, cat: 'negotiation', darija: 'ديرها بـ... ونجي معاك', latin: 'Dirha b... w nji m3ak', fr: 'Faites-le à ... et je reviens avec vous', en: 'Do it for ... and I\'ll come with you', es: 'Hazlo por... y vendré contigo', de: 'Machen Sie es für... und ich komme mit Ihnen' },
-  { id: 35, cat: 'negotiation', darija: 'هاد السعر مزيان ليا', latin: 'Had s-si3r mzyan liya', fr: 'Ce prix m\'arrange', en: 'This price works for me', es: 'Este precio me viene bien', de: 'Dieser Preis passt mir' },
-  { id: 36, cat: 'negotiation', darija: 'ما عنديش الصرف', latin: 'Ma 3ndish s-sarf', fr: 'Je n\'ai pas la monnaie', en: 'I don\'t have change', es: 'No tengo cambio', de: 'Ich habe kein Wechselgeld' },
-  { id: 37, cat: 'negotiation', darija: 'كاين التوصيل؟', latin: 'Kayen t-twssil?', fr: 'La livraison est incluse ?', en: 'Is delivery included?', es: '¿Incluye entrega?', de: 'Ist die Lieferung inbegriffen?' },
+  { id: 33, cat: 'negotiation', darija: 'شفت هاد الشي بثمن أقل عند جيراني', latin: 'Shft had shi b-taman aqal 3and jirani', fr: 'J\'ai vu ça moins cher chez les voisins', en: 'I saw this cheaper next door', es: 'Vi esto más barato en el local de al lado', de: 'Ich habe das woanders günstiger gesehen' },
+  { id: 34, cat: 'negotiation', darija: 'ديرها بـ... ونجي معاك', latin: 'Dir b... ou nji m3ak', fr: 'Faites-le à ... et je reviens avec vous', en: 'Do it for ... and I\'ll come with you', es: 'Hazlo por... y vendré contigo', de: 'Machen Sie es für... und ich komme mit Ihnen' },
+  { id: 35, cat: 'negotiation', darija: 'هاد السعر مزيان ليا', latin: 'Had taman mzyan liya', fr: 'Ce prix m\'arrange', en: 'This price works for me', es: 'Este precio me viene bien', de: 'Dieser Preis passt mir' },
+  { id: 36, cat: 'negotiation', darija: 'ما عنديش الصرف', latin: 'Ma 3andish sarf', fr: 'Je n\'ai pas la monnaie', en: 'I don\'t have change', es: 'No tengo cambio', de: 'Ich habe kein Wechselgeld' },
+  { id: 37, cat: 'negotiation', darija: 'كاين التوصيل؟', latin: 'Kayen twassil?', fr: 'La livraison est incluse ?', en: 'Is delivery included?', es: '¿Incluye entrega?', de: 'Ist die Lieferung inbegriffen?' },
 
   // Emergency
-  { id: 38, cat: 'emergency', darija: 'عيط عليا للبوليس', latin: '3iyyet 3liya l-buliss', fr: 'Appelez la police', en: 'Call the police', es: 'Llame a la policía', de: 'Rufen Sie die Polizei' },
+  { id: 38, cat: 'emergency', darija: 'عيط عليا للبوليس', latin: '3ayet liya l-bouliss', fr: 'Appelez la police', en: 'Call the police', es: 'Llame a la policía', de: 'Rufen Sie die Polizei' },
   { id: 39, cat: 'emergency', darija: 'محتاج طبيب', latin: 'M7taj tbib', fr: 'J\'ai besoin d\'un médecin', en: 'I need a doctor', es: 'Necesito un médico', de: 'Ich brauche einen Arzt' },
-  { id: 40, cat: 'emergency', darija: 'سرقوني', latin: 'Sraquni', fr: 'On m\'a volé', en: 'I\'ve been robbed', es: 'Me han robado', de: 'Ich wurde bestohlen' },
+  { id: 40, cat: 'emergency', darija: 'سرقوني', latin: 'Sraqouni', fr: 'On m\'a volé', en: 'I\'ve been robbed', es: 'Me han robado', de: 'Ich wurde bestohlen' },
   { id: 41, cat: 'emergency', darija: 'فين السفارة ديال...؟', latin: 'Fin s-sfara dial...?', fr: 'Où est l\'ambassade de... ?', en: 'Where is the ... embassy?', es: '¿Dónde está la embajada de...?', de: 'Wo ist die Botschaft von...?' },
   { id: 42, cat: 'emergency', darija: 'محتاج مساعدة', latin: 'M7taj msa3da', fr: 'J\'ai besoin d\'aide', en: 'I need help', es: 'Necesito ayuda', de: 'Ich brauche Hilfe' },
 
   // Bonus negotiation phrases
   { id: 43, cat: 'negotiation', darija: 'كنجيب معايا بزاف ديال السياح', latin: 'Knji3b m3aya bzzaf d-siyah', fr: 'J\'amène beaucoup de touristes avec moi', en: 'I bring many tourists with me', es: 'Traigo muchos turistas conmigo', de: 'Ich bringe viele Touristen mit' },
-  { id: 44, cat: 'negotiation', darija: 'الثمن ديال Tooristoo يقول...', latin: 'T-taman d-Tooristoo yqul...', fr: 'Le prix Tooristoo dit...', en: 'The Tooristoo price says...', es: 'El precio de Tooristoo dice...', de: 'Der Tooristoo-Preis sagt...' },
+  { id: 44, cat: 'negotiation', darija: 'الثمن ديال Tooristoo يقول...', latin: 'Taman d-Tooristoo yqul...', fr: 'Le prix Tooristoo dit...', en: 'The Tooristoo price says...', es: 'El precio de Tooristoo dice...', de: 'Der Tooristoo-Preis sagt...' },
   { id: 45, cat: 'negotiation', darija: 'واش كتعطي فاتورة؟', latin: 'Wash kt3ti fatura?', fr: 'Donnez-vous une facture ?', en: 'Do you give a receipt?', es: '¿Das recibo?', de: 'Geben Sie eine Quittung?' },
 
   // More market
@@ -86,8 +86,8 @@ const PHRASES = [
   { id: 47, cat: 'market', darija: 'بغيت نقارن الأثمان أولاً', latin: 'Bghit nqaren l-ttaman awwalan', fr: 'Je veux comparer les prix d\'abord', en: 'I want to compare prices first', es: 'Quiero comparar precios primero', de: 'Ich möchte zuerst Preise vergleichen' },
   { id: 48, cat: 'market', darija: 'بغيت تمن عادل', latin: 'Bghit taman 3adel', fr: 'Je veux un prix juste', en: 'I want a fair price', es: 'Quiero un precio justo', de: 'Ich möchte einen fairen Preis' },
   // More taxi
-  { id: 49, cat: 'taxi', darija: 'رقم الطاكسي علاش؟', latin: 'Rqam t-taxi 3lash?', fr: 'Quel est le numéro de la plaque ?', en: 'What is the plate number?', es: '¿Cuál es la matrícula?', de: 'Was ist das Kennzeichen?' },
-  { id: 50, cat: 'taxi', darija: 'فين هوا الطاكسي الرسمي؟', latin: 'Fin huwa t-taxi r-rasmi?', fr: 'Où est le taxi officiel ?', en: 'Where is the official taxi?', es: '¿Dónde está el taxi oficial?', de: 'Wo ist das offizielle Taxi?' },
+  { id: 49, cat: 'taxi', darija: 'رقم الطاكسي علاش؟', latin: 'Shhal raqam taxi?', fr: 'Quel est le numéro de la plaque ?', en: 'What is the plate number?', es: '¿Cuál es la matrícula?', de: 'Was ist das Kennzeichen?' },
+  { id: 50, cat: 'taxi', darija: 'فين هوا الطاكسي الرسمي؟', latin: 'Fin houwa taxi rasmi?', fr: 'Où est le taxi officiel ?', en: 'Where is the official taxi?', es: '¿Dónde está el taxi oficial?', de: 'Wo ist das offizielle Taxi?' },
 ];
 
 const UI = {
