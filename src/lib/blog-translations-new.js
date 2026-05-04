@@ -1,7 +1,7 @@
 // New pillar articles — imported in blog-translations.js
 export const NEW_BLOG_ARTICLES_TRANSLATIONS = {
 
-  'marrakech-top10-arnaques': {
+  'marrakech-top10-vigilance': {
     fr: {
       title: 'Top 10 vigilance tarifaire à Marrakech (et comment les éviter)',
       excerpt: 'Les pratiques tarifaires courantes que chaque touriste devrait connaître, avec les vrais prix et les bonnes réponses en darija.',
@@ -361,7 +361,7 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
     fr: {
       title: 'Agadir : ce que les touristes ne voient pas venir',
       excerpt: 'Les pièges spécifiques à Agadir : plage, jet-ski, restaurants de bord de mer.',
-      content: `**Jet-ski et activités nautiques** : Prix affiché 300–500 MAD/30 min. Prix négociable 200–350 MAD. Arnaque : "assurance obligatoire" 100 MAD non mentionnée. Demandez le prix TOUT COMPRIS.
+      content: `**Jet-ski et activités nautiques** : Prix affiché 300–500 MAD/30 min. Prix négociable 200–350 MAD. Vigilance : "assurance obligatoire" 100 MAD non mentionnée. Demandez le prix TOUT COMPRIS.
 
 **Restaurants bord de mer (Corniche)** : Poisson "frais" — vérifiez la date. 80 MAD peut devenir 250 MAD avec couverts + pain + eau. Demandez la carte avec TOUS les prix avant de vous asseoir.
 
@@ -488,10 +488,10 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
     }
   },
 
-  'tanger-arnaque-port': {
+  'tanger-vigilance-port': {
     fr: {
       title: 'Port de Tanger : Guide des tarifs réels et des pièges touristiques',
-      excerpt: 'Guide anti-arnaque pour arriver à Tanger par ferry et naviguer en toute sécurité.',
+      excerpt: 'Guide vigilance pour arriver à Tanger par ferry et naviguer en toute sécurité.',
       content: `**À la descente du ferry** : Faux porteurs réclament 100–300 MAD — gardez vos bagages. "Change" au port : toujours frauduleux. Des "aides" pour la douane ne sont pas nécessaires.
 
 **Taxi depuis le port** : Tanger Ville → centre : 15–25 MAD (compteur obligatoire). Tanger Med → Tanger centre : grand taxi 80–120 MAD (40 km).
