@@ -59,14 +59,14 @@ Deno.serve(async (req) => {
         avg_price_negotiated: avgNegotiated ? Math.round(avgNegotiated) : null,
         scam_rate: Math.round(scamRate * 100),
         sample_size: data.total,
-        alert: scamRate > 0.5 ? `⚠️ Taux d'arnaque élevé (${Math.round(scamRate * 100)}%) pour ${data.category} à ${data.city}` : null
+        alert: scamRate > 0.5 ? `⚠️ Taux de vigilance élevé (${Math.round(scamRate * 100)}%) pour ${data.category} à ${data.city}` : null
       });
     }
 
     // Générer un rapport d'analyse avec l'IA
     const reportPrompt = `Tu es l'analyste de prix de Tooristoo. Voici les données de négociation de la semaine passée au Maroc:
 
-${trends.map(t => `- ${t.city} / ${t.category}: prix moyen demandé ${t.avg_price_asked} DH, prix négocié ${t.avg_price_negotiated || 'N/A'} DH, taux arnaque ${t.scam_rate}% (${t.sample_size} cas)`).join('\n')}
+${trends.map(t => `- ${t.city} / ${t.category}: prix moyen demandé ${t.avg_price_asked} DH, prix négocié ${t.avg_price_negotiated || 'N/A'} DH, taux vigilance ${t.scam_rate}% (${t.sample_size} cas)`).join('\n')}
 
 Génère un résumé hebdomadaire concis des tendances, alertes importantes, et recommandations pour mettre à jour notre base de prix. Format: JSON avec summary, alerts, price_recommendations.`;
 
