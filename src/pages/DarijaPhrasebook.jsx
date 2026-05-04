@@ -33,7 +33,7 @@ const PHRASES = [
   { id: 8, cat: 'taxi', darija: 'بشحال هاد الكورسة؟', latin: 'Bshhal had l-corsa?', fr: 'Combien coûte cette course ?', en: 'How much is this ride?', es: '¿Cuánto cuesta este trayecto?', de: 'Was kostet diese Fahrt?' },
   { id: 9, cat: 'taxi', darija: 'دور العداد عافاك', latin: 'Dour l-3adad 3afak', fr: 'Mettez le compteur s\'il vous plaît', en: 'Turn on the meter please', es: 'Pon el taxímetro por favor', de: 'Schalten Sie das Taxameter ein bitte' },
   { id: 10, cat: 'taxi', darija: 'غالي بزاف، قول ليا الثمن الحقيقي', latin: 'Ghali bzzaf, qul liya t-taman l-haqiqi', fr: 'C\'est trop cher, dites-moi le vrai prix', en: 'Too expensive, tell me the real price', es: 'Muy caro, dime el precio real', de: 'Zu teuer, sagen Sie mir den echten Preis' },
-  { id: 11, cat: 'taxi', darija: 'مشي هنا', latin: 'Mshi hna', fr: 'Arrêtez-vous ici', en: 'Stop here', es: 'Para aquí', de: 'Halten Sie hier an' },
+  { id: 11, cat: 'taxi', darija: 'مشي هنا', latin: 'Hbess hna', fr: 'Arrêtez-vous ici', en: 'Stop here', es: 'Para aquí', de: 'Halten Sie hier an' },
   { id: 12, cat: 'taxi', darija: 'كيفاش نوصل ل...؟', latin: 'Kifash nwassil l...?', fr: 'Comment aller à... ?', en: 'How do I get to...?', es: '¿Cómo llego a...?', de: 'Wie komme ich zu...?' },
   { id: 13, cat: 'taxi', darija: 'الثمن ديال الطاكسي للمطار كم هو؟', latin: 'T-taman d-taxi l-l-matar kam hu?', fr: 'Quel est le tarif taxi pour l\'aéroport ?', en: 'What is the taxi fare to the airport?', es: '¿Cuánto cuesta el taxi al aeropuerto?', de: 'Was kostet das Taxi zum Flughafen?' },
 
