@@ -67,11 +67,11 @@ const META_BY_ROUTE = {
     ar: { title: 'ميثاق الالتزامات السبعة — مزودو Tooristoo المعتمدون في المغرب', desc: 'الالتزامات السبعة التي يتعهد بها كل مزود خدمات معتمد من Tooristoo في المغرب.' },
   },
   '/darija': {
-    fr: { title: '100 Phrases en Darija pour Négocier au Maroc | Transcription + Traductions — Tooristoo', desc: 'Apprenez les 100 phrases essentielles en darija marocain avec transcription latine et traduction en 5 langues. Indispensable pour négocier comme un local.' },
-    en: { title: '100 Darija Phrases to Negotiate in Morocco | Transcription + Translations — Tooristoo', desc: 'Learn the 100 essential Moroccan Darija phrases with Latin transcription and translations in 5 languages. Essential to negotiate like a local.' },
-    es: { title: '100 Frases en Darija para Negociar en Marruecos | Transcripción + Traducciones — Tooristoo', desc: 'Las 100 frases esenciales en darija marroquí con transcripción latina y traducciones. Para negociar en taxi, zoco, riad y restaurante como un local.' },
-    de: { title: '100 Darija-Phrasen für Verhandlungen in Marokko | Transkription + Übersetzungen — Tooristoo', desc: 'Die 100 wesentlichen marokkanischen Darija-Phrasen mit lateinischer Transkription. Zum Verhandeln in Taxi, Souk, Riad und Restaurant wie ein Einheimischer.' },
-    ar: { title: '100 عبارة بالدارجة للتفاوض في المغرب | نسخ لاتيني + ترجمات — Tooristoo', desc: '100 عبارة أساسية بالدارجة المغربية مع نسخ لاتيني وترجمات بـ5 لغات. للتفاوض في التاكسي والسوق والرياض والمطعم كالسكان المحليين.' },
+    fr: { title: '50 Phrases en Darija pour Négocier au Maroc | Transcription + Traductions — Tooristoo', desc: 'Apprenez les 50 phrases essentielles en darija marocain avec transcription latine et traduction en 5 langues. Indispensable pour négocier comme un local.' },
+    en: { title: '50 Darija Phrases to Negotiate in Morocco | Transcription + Translations — Tooristoo', desc: 'Learn the 50 essential Moroccan Darija phrases with Latin transcription and translations in 5 languages. Essential to negotiate like a local.' },
+    es: { title: '50 Frases en Darija para Negociar en Marruecos | Transcripción + Traducciones — Tooristoo', desc: 'Las 50 frases esenciales en darija marroquí con transcripción latina y traducciones. Para negociar en taxi, zoco, riad y restaurante como un local.' },
+    de: { title: '50 Darija-Phrasen für Verhandlungen in Marokko | Transkription + Übersetzungen — Tooristoo', desc: 'Die 50 wesentlichen marokkanischen Darija-Phrasen mit lateinischer Transkription. Zum Verhandeln in Taxi, Souk, Riad und Restaurant wie ein Einheimischer.' },
+    ar: { title: '50 عبارة بالدارجة للتفاوض في المغرب | نسخ لاتيني + ترجمات — Tooristoo', desc: '50 عبارة أساسية بالدارجة المغربية مع نسخ لاتيني وترجمات بـ5 لغات. للتفاوض في التاكسي والسوق والرياض والمطعم كالسكان المحليين.' },
   },
   '/app': {
     fr: { title: 'Coach IA Vocal | Analysez & Négociez les Meilleurs Prix au Maroc — Tooristoo', desc: 'Coach vocal IA en temps réel pour analyser les prix et négocier équitablement comme un local au Maroc.' },
