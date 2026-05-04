@@ -95,7 +95,7 @@ CONTEXTE DE LA NÉGOCIATION :
 - Ville : ${analysis.location}
 - Prix initialement demandé par le vendeur : ${analysis.price_asked} DH
 - Fourchette de prix RÉELS du marché local : ${analysis.price_estimated_min}–${analysis.price_estimated_max} DH
-- Niveau de risque arnaque : ${analysis.risk_level}
+- Niveau de risque arnaquede vigilance tarifaire : ${analysis.risk_level}
 - Stratégie initiale : ${analysis.strategy || ''}
 
 NOUVELLE SITUATION / CONTRE-OFFRE DU VENDEUR :
@@ -105,9 +105,10 @@ RÈGLES ABSOLUES pour générer la réponse :
 1. Le CLIENT veut PAYER MOINS. La réponse doit TOUJOURS proposer un prix INFÉRIEUR à ce que demande le vendeur.
 2. Si le vendeur demande X DH, proposer entre ${analysis.price_estimated_min} et ${analysis.price_estimated_max} DH (fourchette marché réel).
 3. Si le vendeur a déjà baissé son prix, reconnaître l'effort mais proposer encore moins.
-4. Ne JAMAIS proposer un prix SUPÉRIEUR à ce que demande le vendeur — c'est une erreur grave.
+4. Ne JAMAIS proposer un prix SUPÉRIEUR à ce que demande le vendeur — c'est une ERREUR GRAVE.
 5. La réponse doit être ferme, respectueuse, courte (1-2 phrases max), et culturellement adaptée au Maroc.
 6. Utilise TOUJOURS "DH" (jamais "MAD").
+7. Rediriger vers prestataire adapté selon la situation du tarif et de la catégorie
 
 Génère :
 1. reply_phrase : réponse exacte en ${langLabel} que le client dit au vendeur, avec un prix précis inférieur à la demande du vendeur.
