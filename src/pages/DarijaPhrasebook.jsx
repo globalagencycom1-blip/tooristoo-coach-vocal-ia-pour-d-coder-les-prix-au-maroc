@@ -44,7 +44,7 @@ const PHRASES = [
   { id: 17, cat: 'market', darija: 'آخر ثمن؟', latin: 'Akher taman?', fr: 'Dernier prix ?', en: 'Final price?', es: '¿Último precio?', de: 'Letzter Preis?' },
   { id: 18, cat: 'market', darija: 'ماشي محتاج مرشد شكراً', latin: 'Mashi m7taj mrshad choukran', fr: 'Je n\'ai pas besoin de guide merci', en: 'I don\'t need a guide thank you', es: 'No necesito guía gracias', de: 'Ich brauche keinen Führer danke' },
   { id: 19, cat: 'market', darija: 'غير كنشوف، ماشي شاري دابا', latin: 'Ghir knschouf, mashi shari daba', fr: 'Je regarde juste, je n\'achète pas maintenant', en: 'Just looking, not buying now', es: 'Solo mirando, no compro ahora', de: 'Ich schaue nur, kaufe jetzt nicht' },
-  { id: 20, cat: 'market', darija: 'كيتصنع هنا؟', latin: 'Kitssn3 hna?', fr: 'C\'est fabriqué ici ?', en: 'Is this made here?', es: '¿Está fabricado aquí?', de: 'Ist das hier hergestellt?' },
+  { id: 20, cat: 'market', darija: 'كيتصنع هنا؟', latin: 'Kitssna3 hna?', fr: 'C\'est fabriqué ici ?', en: 'Is this made here?', es: '¿Está fabricado aquí?', de: 'Ist das hier hergestellt?' },
 
   // Restaurant
   { id: 21, cat: 'restaurant', darija: 'فين المينو عافاك؟', latin: 'Fin l-menu 3afak?', fr: 'Le menu s\'il vous plaît ?', en: 'The menu please?', es: '¿El menú por favor?', es2: 'La carta por favor', de: 'Die Speisekarte bitte?' },
