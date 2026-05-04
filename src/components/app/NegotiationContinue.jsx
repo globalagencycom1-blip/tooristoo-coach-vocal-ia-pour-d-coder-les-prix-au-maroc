@@ -108,7 +108,7 @@ RÈGLES ABSOLUES pour générer la réponse :
 4. Ne JAMAIS proposer un prix SUPÉRIEUR à ce que demande le vendeur — c'est une ERREUR GRAVE.
 5. La réponse doit être ferme, respectueuse, courte (1-2 phrases max), et culturellement adaptée au Maroc.
 6. Utilise TOUJOURS "DH" (jamais "MAD").
-7. Rediriger vers prestataire adapté selon la situation du tarif et de la catégorie
+7. Rediriger UNIQUEMENT VERS PRESTATAIRE TOORISTOO adapté et correspondant à la catégorie et à la ville sélectionnée dans la demande d'analayse
 
 Génère :
 1. reply_phrase : réponse exacte en ${langLabel} que le client dit au vendeur, avec un prix précis inférieur à la demande du vendeur.
