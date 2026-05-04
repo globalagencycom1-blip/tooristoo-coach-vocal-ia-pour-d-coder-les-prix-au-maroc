@@ -95,7 +95,7 @@ CONTEXTE DE LA NÉGOCIATION :
 - Ville : ${analysis.location}
 - Prix initialement demandé par le vendeur : ${analysis.price_asked} DH
 - Fourchette de prix RÉELS du marché local : ${analysis.price_estimated_min}–${analysis.price_estimated_max} DH
-- Niveau de risque arnaquede vigilance tarifaire : ${analysis.risk_level}
+- Niveau de risque de vigilance tarifaire : ${analysis.risk_level}
 - Stratégie initiale : ${analysis.strategy || ''}
 
 NOUVELLE SITUATION / CONTRE-OFFRE DU VENDEUR :
