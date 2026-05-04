@@ -10,7 +10,7 @@ const CHATBOT_RESPONSES = {
     blog: 'Vous trouverez des guides utiles dans notre blog.',
     app: 'Voulez-vous essayer notre application IA?',
     pricing: 'Consultez nos tarifs pour voir les plans disponibles.',
-    help: 'Je peux vous aider avec des questions sur les prix, les arnaques, ou vous guider dans l\'app.',
+    help: 'Je peux vous aider avec des questions sur les prix, les abus, ou vous guider dans l\'app.',
   },
   en: {
     greeting: 'Hello! I\'m the Tooristoo assistant. How can I help you?',
@@ -96,7 +96,7 @@ export default function ChatBot({ lang = 'fr' }) {
       const response = await base44.integrations.Core.InvokeLLM({
         prompt: `Tu es l'assistant Tooristoo AI. L'utilisateur a écrit: "${userMessage}". 
 Réponds en ${lang === 'fr' ? 'français' : lang === 'en' ? 'anglais' : lang === 'es' ? 'espagnol' : lang === 'de' ? 'allemand' : 'arabe'} (1-2 phrases max).
-Si c'est une question sur les prix, les arnaques, ou l'app, aide l'utilisateur. Sinon, redirige poliment vers nos ressources.`,
+Si c'est une question sur les prix, les abus, ou l'app, aide l'utilisateur. Sinon, redirige poliment vers nos ressources.`,
       });
       return response;
     } catch {
