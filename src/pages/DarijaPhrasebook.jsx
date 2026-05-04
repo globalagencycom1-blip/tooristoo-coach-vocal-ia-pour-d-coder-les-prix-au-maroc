@@ -60,7 +60,7 @@ const PHRASES = [
   { id: 29, cat: 'hotel', darija: 'متى خروج؟', latin: 'Mta l-khourouj?', fr: 'C\'est quand le check-out ?', en: 'When is check-out?', es: '¿Cuándo es el check-out?', de: 'Wann ist das Auschecken?' },
 
   // Negotiation
-  { id: 30, cat: 'negotiation', darija: 'هاد الثمن غالي على البراني', latin: 'Had t-taman ghali 3la l-brani', fr: 'Ce prix est trop élevé pour un étranger', en: 'This price is too high for a foreigner', es: 'Este precio es muy alto para un extranjero', de: 'Dieser Preis ist zu hoch für einen Ausländer' },
+  { id: 30, cat: 'negotiation', darija: 'هاد الثمن غالي على البراني', latin: 'Had taman ghali 3la l-barani', fr: 'Ce prix est trop élevé pour un étranger', en: 'This price is too high for a foreigner', es: 'Este precio es muy alto para un extranjero', de: 'Dieser Preis ist zu hoch für einen Ausländer' },
   { id: 31, cat: 'negotiation', darija: 'عرفت الثمن الحقيقي', latin: '3rafet t-taman l-7aqiqi', fr: 'Je connais le vrai prix', en: 'I know the real price', es: 'Conozco el precio real', de: 'Ich kenne den echten Preis' },
   { id: 32, cat: 'negotiation', darija: 'إلا ما كادرتيش، رانا غاديين', latin: 'Ila ma kadrtish, rana ghadyin', fr: 'Si vous ne pouvez pas, nous partons', en: 'If you can\'t, we\'re leaving', es: 'Si no puede, nos vamos', de: 'Wenn Sie nicht können, gehen wir' },
   { id: 33, cat: 'negotiation', darija: 'شفت هاد الشي بثمن أقل عند جيراني', latin: 'Shft had sh-shi b-taman aqal 3nd jrani', fr: 'J\'ai vu ça moins cher chez les voisins', en: 'I saw this cheaper next door', es: 'Vi esto más barato en el local de al lado', de: 'Ich habe das woanders günstiger gesehen' },
