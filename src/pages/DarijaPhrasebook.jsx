@@ -48,14 +48,14 @@ const PHRASES = [
 
   // Restaurant
   { id: 21, cat: 'restaurant', darija: 'فين المينو عافاك؟', latin: 'Fin l-menu 3afak?', fr: 'Le menu s\'il vous plaît ?', en: 'The menu please?', es: '¿El menú por favor?', es2: 'La carta por favor', de: 'Die Speisekarte bitte?' },
-  { id: 22, cat: 'restaurant', darija: 'واش الأثمان كتاكلو فيها؟', latin: 'Wash l-taman kataklu fiha?', fr: 'Les prix sont inclus dedans ?', en: 'Are prices included?', es: '¿Los precios están incluidos?', de: 'Sind die Preise inbegriffen?' },
+  { id: 22, cat: 'restaurant', darija: 'واش الأثمان كتاكلو فيها؟', latin: 'Wash l-taman kataklou fiha?', fr: 'Les prix sont inclus dedans ?', en: 'Are prices included?', es: '¿Los precios están incluidos?', de: 'Sind die Preise inbegriffen?' },
   { id: 23, cat: 'restaurant', darija: 'الحساب عافاك', latin: 'L-7sab 3afak', fr: 'L\'addition s\'il vous plaît', en: 'The bill please', es: 'La cuenta por favor', de: 'Die Rechnung bitte' },
   { id: 24, cat: 'restaurant', darija: 'واش الخدمة داخلة؟', latin: 'Wash l-khdma daakhla?', fr: 'Le service est inclus ?', en: 'Is service included?', es: '¿El servicio está incluido?', de: 'Ist der Service inbegriffen?' },
   { id: 25, cat: 'restaurant', darija: 'بلا لحم عافاك', latin: 'Bla l7am 3afak', fr: 'Sans viande s\'il vous plaît', en: 'Without meat please', es: 'Sin carne por favor', de: 'Ohne Fleisch bitte' },
 
   // Hotel / Riad
   { id: 26, cat: 'hotel', darija: 'بشحال الليلة؟', latin: 'Bshhal l-lila?', fr: 'Combien pour une nuit ?', en: 'How much per night?', es: '¿Cuánto por noche?', de: 'Wie viel pro Nacht?' },
-  { id: 27, cat: 'hotel', darija: 'واش الفطور داخل؟', latin: 'Wash l-ftur dakhel?', fr: 'Le petit-déjeuner est inclus ?', en: 'Is breakfast included?', es: '¿El desayuno está incluido?', de: 'Ist das Frühstück inbegriffen?' },
+  { id: 27, cat: 'hotel', darija: 'واش الفطور داخل؟', latin: 'Wash l-ftor dakhel?', fr: 'Le petit-déjeuner est inclus ?', en: 'Is breakfast included?', es: '¿El desayuno está incluido?', de: 'Ist das Frühstück inbegriffen?' },
   { id: 28, cat: 'hotel', darija: 'عندك بيت أرخص؟', latin: '3andak bit arkhas?', fr: 'Avez-vous une chambre moins chère ?', en: 'Do you have a cheaper room?', es: '¿Tiene habitación más barata?', de: 'Haben Sie ein günstigeres Zimmer?' },
   { id: 29, cat: 'hotel', darija: 'متى خروج؟', latin: 'Mta l-khuruj?', fr: 'C\'est quand le check-out ?', en: 'When is check-out?', es: '¿Cuándo es el check-out?', de: 'Wann ist das Auschecken?' },
 
