@@ -1,5 +1,5 @@
 // BASE DE CONNAISSANCES DES PRIX — Tooristoo
-// Mise à jour: Avril 2026 — Sources: ONMT, enquêtes terrain, plateformes officielles
+// Mise à jour: Avril 2026 — Sources: ONMT, recherche documentaire publique, plateformes officielles
 // Mise à jour hebdomadaire automatique via les rapports de la communauté
 
 export const PRICING_LAST_UPDATED = '2026-04-30';
@@ -15,7 +15,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       airport_min: 70,
       airport_max: 100,
       tips: 'Insister sur le compteur. Trajet aéroport: 70-100 DH officiel. Prix nuit majorés 50%.',
-      scam_threshold: 40,
+      vigilance_threshold: 40,
       updated: '2026-04-30'
     },
     grand_taxi: {
@@ -25,7 +25,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 300,
       tourist_reasonable_max: 700,
       tips: 'Toujours négocier le prix avant le départ. Préférer CTM pour les longues distances.',
-      scam_threshold: 800,
+      vigilance_threshold: 800,
       updated: '2026-04-30'
     },
     riad: {
@@ -37,7 +37,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       luxury_min: 1000,
       luxury_max: 3000,
       tips: 'Réserver via booking.com pour comparer. Petit-déjeuner souvent inclus. Éviter les démarcheurs en rue.',
-      scam_threshold: 1500,
+      vigilance_threshold: 1500,
       updated: '2026-04-30'
     },
     hotel: {
@@ -47,7 +47,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 500,
       tourist_reasonable_max: 1000,
       tips: 'Prix officiels sur booking.com. Ne pas payer sans réservation confirmée.',
-      scam_threshold: 1200,
+      vigilance_threshold: 1200,
       updated: '2026-04-30'
     },
     restaurant: {
@@ -59,7 +59,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       gastronomic_min: 200,
       gastronomic_max: 400,
       tips: 'Éviter restaurants avec rabatteurs à Jemaa El Fna. Demander la carte avec prix avant de s\'asseoir.',
-      scam_threshold: 300,
+      vigilance_threshold: 300,
       updated: '2026-04-30'
     },
     guide: {
@@ -71,7 +71,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       full_day_min: 400,
       full_day_max: 700,
       tips: 'Exiger la carte officielle du guide agréé ONMT. Ne jamais suivre un guide non sollicité.',
-      scam_threshold: 800,
+      vigilance_threshold: 800,
       updated: '2026-04-30'
     },
     excursion: {
@@ -82,8 +82,8 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_max: 600,
       desert_min: 500,
       desert_max: 900,
-      tips: 'Vérifier si transport, repas et guide sont inclus. Agences certifiées Marrakech Médina.',
-      scam_threshold: 1000,
+      tips: 'Vérifier si transport, repas et guide sont inclus. Agences référencées Marrakech Médina.',
+      vigilance_threshold: 1000,
       updated: '2026-04-30'
     },
     shopping: {
@@ -93,7 +93,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 80,
       tourist_reasonable_max: 700,
       tips: 'Négocier 30-50% sur le premier prix. Coopératives: prix fixes honnêtes. Safran: 50-100 DH/g certifié.',
-      scam_threshold: 2000,
+      vigilance_threshold: 2000,
       updated: '2026-04-30'
     },
     spa: {
@@ -105,7 +105,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       luxury_min: 300,
       luxury_max: 600,
       tips: 'Demander le prix complet avant. Pourboire 20-30 DH apprécié pour le kessala.',
-      scam_threshold: 400,
+      vigilance_threshold: 400,
       updated: '2026-04-30'
     },
     montgolfiere: {
@@ -115,7 +115,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 1400,
       tourist_reasonable_max: 2000,
       tips: 'Prix tout compris (transport+champagne+certificat). Réserver directement chez l\'opérateur certifié.',
-      scam_threshold: 2500,
+      vigilance_threshold: 2500,
       updated: '2026-04-30'
     },
     transport: {
@@ -125,7 +125,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 90,
       tourist_reasonable_max: 200,
       tips: 'Prix fixe officiel. Acheter en ligne ou à la gare. Pas de négociation.',
-      scam_threshold: 250,
+      vigilance_threshold: 250,
       updated: '2026-04-30'
     }
   },
@@ -140,7 +140,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       airport_min: 60,
       airport_max: 90,
       tips: 'Compteur obligatoire. Fès El Bali très labyrinthique, taxis utiles. Prix nuit +50%.',
-      scam_threshold: 35,
+      vigilance_threshold: 35,
       updated: '2026-04-30'
     },
     riad: {
@@ -150,7 +150,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 350,
       tourist_reasonable_max: 700,
       tips: 'Fès moins cher que Marrakech. Inclure petit-déjeuner dans la négociation.',
-      scam_threshold: 1000,
+      vigilance_threshold: 1000,
       updated: '2026-04-30'
     },
     hotel: {
@@ -169,7 +169,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 70,
       tourist_reasonable_max: 150,
       tips: 'La cuisine fassi est réputée. Petit restaurants locaux: excellents et 40-80 DH.',
-      scam_threshold: 250,
+      vigilance_threshold: 250,
       updated: '2026-04-30'
     },
     guide: {
@@ -178,8 +178,8 @@ export const PRICING_KNOWLEDGE_BASE = {
       fair_price_max: 300,
       tourist_reasonable_min: 200,
       tourist_reasonable_max: 400,
-      tips: 'Guide INDISPENSABLE pour Fès El Bali. Carte officielle obligatoire. Éviter les faux guides.',
-      scam_threshold: 600,
+      tips: 'Guide INDISPENSABLE pour Fès El Bali. Carte officielle obligatoire. Vérifier l\'accréditation.',
+      vigilance_threshold: 600,
       updated: '2026-04-30'
     },
     shopping: {
@@ -189,7 +189,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 150,
       tourist_reasonable_max: 1200,
       tips: 'Cuir de Fès: qualité réputée mondiale. Tanneries: acheter directement. Zellige: coopératives.',
-      scam_threshold: 2000,
+      vigilance_threshold: 2000,
       updated: '2026-04-30'
     },
     excursion: {
@@ -199,7 +199,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 450,
       tourist_reasonable_max: 800,
       tips: '1h de route. Inclure entrée Volubilis (70 DH). Repas sur place ~80 DH.',
-      scam_threshold: 1000,
+      vigilance_threshold: 1000,
       updated: '2026-04-30'
     },
     spa: {
@@ -221,7 +221,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 8,
       tourist_reasonable_max: 15,
       tips: 'Petite ville, tout est accessible à pied. Taxi vers la gare routière: 10-15 DH.',
-      scam_threshold: 30,
+      vigilance_threshold: 30,
       updated: '2026-04-30'
     },
     riad: {
@@ -231,7 +231,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 250,
       tourist_reasonable_max: 500,
       tips: 'Destination moins chère. Petits riads familiaux très accueillants.',
-      scam_threshold: 800,
+      vigilance_threshold: 800,
       updated: '2026-04-30'
     },
     restaurant: {
@@ -241,7 +241,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 60,
       tourist_reasonable_max: 120,
       tips: 'Restaurants terrasses dans la médina bleue. Kefta, msemen, fromage local.',
-      scam_threshold: 180,
+      vigilance_threshold: 180,
       updated: '2026-04-30'
     },
     guide: {
@@ -283,7 +283,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       airport_min: 100,
       airport_max: 150,
       tips: 'Grands taxis aller/retour à négocier. Tramway: 7 DH fixe. Bus: 4 DH.',
-      scam_threshold: 50,
+      vigilance_threshold: 50,
       updated: '2026-04-30'
     },
     hotel: {
@@ -293,7 +293,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 500,
       tourist_reasonable_max: 1200,
       tips: 'Capitale économique. Quartiers: Maarif, Corniche, CFC pour les affaires.',
-      scam_threshold: 1500,
+      vigilance_threshold: 1500,
       updated: '2026-04-30'
     },
     restaurant: {
@@ -304,8 +304,8 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_max: 250,
       seafood_min: 150,
       seafood_max: 350,
-      tips: 'Corniche: fruits de mer frais. Quartier Maarif: restaurants variés. Éviter les terrasses touristiques surpayées.',
-      scam_threshold: 400,
+      tips: 'Corniche: fruits de mer frais. Quartier Maarif: restaurants variés. Vérifier les prix avant de s\'asseoir.',
+      vigilance_threshold: 400,
       updated: '2026-04-30'
     },
     guide: {
@@ -324,7 +324,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 90,
       tourist_reasonable_max: 200,
       tips: 'Train Casa-Marrakech: 120-200 DH. Casa-Rabat: 40-80 DH. Réserver en ligne.',
-      scam_threshold: 250,
+      vigilance_threshold: 250,
       updated: '2026-04-30'
     },
     excursion: {
@@ -347,8 +347,8 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_max: 25,
       airport_min: 80,
       airport_max: 120,
-      tips: 'Ville organisée et moderne. Compteur obligatoire. Éviter les hôtels qui proposent leurs propres transferts surpayés.',
-      scam_threshold: 50,
+      tips: 'Ville organisée et moderne. Compteur obligatoire. Comparer avec les transferts hôteliers.',
+      vigilance_threshold: 50,
       updated: '2026-04-30'
     },
     hotel: {
@@ -358,7 +358,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 400,
       tourist_reasonable_max: 900,
       tips: 'Vaste offre hôtelière compétitive. Corniche bien aménagée. Comparer sur booking.com.',
-      scam_threshold: 1200,
+      vigilance_threshold: 1200,
       updated: '2026-04-30'
     },
     restaurant: {
@@ -368,7 +368,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 100,
       tourist_reasonable_max: 200,
       tips: 'Port de pêche actif: poisson du jour. Marché municipal: poisson à 30-80 DH/kg.',
-      scam_threshold: 300,
+      vigilance_threshold: 300,
       updated: '2026-04-30'
     },
     excursion: {
@@ -378,7 +378,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 350,
       tourist_reasonable_max: 600,
       tips: 'Tiznit à 90km. Vallée du Souss. Huile d\'argan authentique en coopérative (60-120 DH/100ml).',
-      scam_threshold: 800,
+      vigilance_threshold: 800,
       updated: '2026-04-30'
     },
     shopping: {
@@ -419,8 +419,8 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_max: 20,
       port_min: 30,
       port_max: 60,
-      tips: 'Port international: attention aux arnaques à l\'arrivée du ferry. Négocier avant.',
-      scam_threshold: 40,
+      tips: 'Port international: rester vigilant à l\'arrivée du ferry. Négocier avant de monter.',
+      vigilance_threshold: 40,
       updated: '2026-04-30'
     },
     hotel: {
@@ -430,17 +430,17 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 300,
       tourist_reasonable_max: 700,
       tips: 'Hôtels Ville Nouvelle plus modernes. Médina: charme authentique mais plus basique.',
-      scam_threshold: 900,
+      vigilance_threshold: 900,
       updated: '2026-04-30'
     },
     restaurant: {
-      description: 'Repas (fruits de mer, minthe)',
+      description: 'Repas (fruits de mer, menthe)',
       fair_price_min: 60,
       fair_price_max: 120,
       tourist_reasonable_min: 80,
       tourist_reasonable_max: 170,
       tips: 'Pâtisseries marocaines excellentes. Thé à la menthe: 8-15 DH. Poisson du détroit.',
-      scam_threshold: 250,
+      vigilance_threshold: 250,
       updated: '2026-04-30'
     },
     guide: {
@@ -482,7 +482,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       airport_min: 80,
       airport_max: 120,
       tips: 'Tramway moderne (7 DH) très pratique. Capitale bien organisée. Compteur obligatoire.',
-      scam_threshold: 40,
+      vigilance_threshold: 40,
       updated: '2026-04-30'
     },
     hotel: {
@@ -501,7 +501,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 90,
       tourist_reasonable_max: 200,
       tips: 'Quartier Hassan et Agdal: bons restaurants modernes. Médina: couscous authentique.',
-      scam_threshold: 300,
+      vigilance_threshold: 300,
       updated: '2026-04-30'
     },
     guide: {
@@ -532,7 +532,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 12,
       tourist_reasonable_max: 20,
       tips: 'Petite ville. Grand taxis pour excursions: négocier ferme.',
-      scam_threshold: 35,
+      vigilance_threshold: 35,
       updated: '2026-04-30'
     },
     hotel: {
@@ -551,7 +551,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 65,
       tourist_reasonable_max: 130,
       tips: 'Petite ville calme. Restaurants en terrasse avec vue Atlas.',
-      scam_threshold: 180,
+      vigilance_threshold: 180,
       updated: '2026-04-30'
     },
     excursion: {
@@ -561,7 +561,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 380,
       tourist_reasonable_max: 700,
       tips: 'Paysages spectaculaires. Aït Benhaddou (UNESCO): 30 min. Entrée: 20 DH.',
-      scam_threshold: 900,
+      vigilance_threshold: 900,
       updated: '2026-04-30'
     },
     guide: {
@@ -592,7 +592,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 10,
       tourist_reasonable_max: 18,
       tips: 'Ville impériale moins touristique. Tarifs compétitifs. Compteur conseillé.',
-      scam_threshold: 30,
+      vigilance_threshold: 30,
       updated: '2026-04-30'
     },
     riad: {
@@ -611,7 +611,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 70,
       tourist_reasonable_max: 140,
       tips: 'Meknès connue pour ses olives et vins. Restaurant place Lahdim: vue sur porte Bab Mansour.',
-      scam_threshold: 200,
+      vigilance_threshold: 200,
       updated: '2026-04-30'
     },
     guide: {
@@ -669,7 +669,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 250,
       tourist_reasonable_max: 500,
       tips: 'Lever/coucher soleil: expérience sublime. 4x4: 300-500 DH. Chameau 1h: 150-200 DH.',
-      scam_threshold: 700,
+      vigilance_threshold: 700,
       updated: '2026-04-30'
     },
     bivouac: {
@@ -679,7 +679,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 300,
       tourist_reasonable_max: 600,
       tips: 'Inclure dîner berbère + musique gnaoua + petit-déjeuner. Comparer plusieurs camps.',
-      scam_threshold: 800,
+      vigilance_threshold: 800,
       updated: '2026-04-30'
     }
   },
@@ -797,7 +797,7 @@ export const PRICING_KNOWLEDGE_BASE = {
       tourist_reasonable_min: 90,
       tourist_reasonable_max: 180,
       tips: 'Port de pêche actif. Grillades sur le port: 60-100 DH repas complet. Excellent rapport qualité/prix.',
-      scam_threshold: 280,
+      vigilance_threshold: 280,
       updated: '2026-04-30'
     },
     guide: {
@@ -831,23 +831,64 @@ export const PRICING_KNOWLEDGE_BASE = {
 };
 
 // Mots-clés interdits — toutes les langues supportées
-// Tooristoo refuse toute analyse pour des services illégaux ou contraires à l'éthique
+// Tooristoo refuse toute analyse pour des services illégaux ou contraires à la loi marocaine
 export const PROHIBITED_KEYWORDS = {
-  fr: ['prostitution', 'escort', 'call girl', 'services sexuels', 'drogue', 'cannabis', 'cocaïne', 'hashish', 'haschich', 'kif', 'fille facile', 'pute', 'travailleuse du sexe', 'sexe tarifé', 'armes', 'explosif', 'humain', 'passeur', 'blanchiment', 'faux billet', 'contrefaçon', 'traite', 'esclave'],
-  en: ['prostitution', 'escort', 'call girl', 'sex service', 'sexual service', 'drug', 'cocaine', 'cannabis', 'hashish', 'weed', 'prostitute', 'whore', 'weapon', 'explosive', 'human trafficking', 'smuggling', 'money laundering', 'fake bill', 'counterfeit', 'slave'],
-  es: ['prostitución', 'escort', 'servicios sexuales', 'droga', 'cocaína', 'cannabis', 'hachís', 'puta', 'arma', 'explosivo', 'tráfico humano', 'lavado dinero', 'billete falso', 'contrafacción'],
-  de: ['prostitution', 'escort', 'sexuelle dienstleistungen', 'droge', 'kokain', 'cannabis', 'haschisch', 'hure', 'waffe', 'sprengstoff', 'menschenhandel', 'geldwäsche', 'falschgeld', 'fälschung'],
-  ar: ['دعارة', 'بغاء', 'عاهرة', 'خدمات جنسية', 'مخدرات', 'كوكايين', 'حشيش', 'قنب', 'أسلحة', 'متفجرات', 'اتجار بالبشر', 'تهريب', 'غسيل أموال', 'تزوير', 'رقيق'],
-  darija: ['بغاء', 'عاهرة', 'خدمات جنسية', 'مخدرات', 'كوكاين', 'حشيش', 'كيف', 'سلاح', 'تهريب', 'غسيل فلوس', 'تزوير']
+  fr: [
+    'prostitution', 'escort', 'call girl', 'services sexuels', 'sexe tarifé',
+    'fille facile', 'pute', 'travailleuse du sexe',
+    'drogue', 'cannabis', 'cocaïne', 'hashish', 'haschich', 'kif', 'shit', 'beuh',
+    'armes', 'explosif',
+    'traite humain', 'traite humaine', 'passeur',
+    'blanchiment', 'faux billet', 'contrefaçon', 'esclave',
+    'corruption', 'pot-de-vin'
+  ],
+  en: [
+    'prostitution', 'escort', 'call girl', 'sex service', 'sexual service', 'sex worker',
+    'prostitute', 'whore', 'hooker',
+    'drug', 'cocaine', 'cannabis', 'hashish', 'weed', 'marijuana', 'heroin',
+    'weapon', 'explosive',
+    'human trafficking', 'smuggling',
+    'money laundering', 'fake bill', 'counterfeit', 'slave',
+    'bribe', 'bribery'
+  ],
+  es: [
+    'prostitución', 'escort', 'servicios sexuales',
+    'droga', 'cocaína', 'cannabis', 'hachís',
+    'puta',
+    'arma', 'explosivo',
+    'tráfico humano', 'lavado dinero', 'billete falso', 'contrafacción',
+    'soborno'
+  ],
+  de: [
+    'prostitution', 'escort', 'sexuelle dienstleistungen',
+    'droge', 'kokain', 'cannabis', 'haschisch',
+    'hure',
+    'waffe', 'sprengstoff',
+    'menschenhandel', 'geldwäsche', 'falschgeld', 'fälschung',
+    'bestechung'
+  ],
+  ar: [
+    'دعارة', 'بغاء', 'عاهرة', 'خدمات جنسية',
+    'مخدرات', 'كوكايين', 'حشيش', 'قنب',
+    'أسلحة', 'متفجرات',
+    'اتجار بالبشر', 'تهريب', 'غسيل أموال', 'تزوير', 'رقيق',
+    'رشوة'
+  ],
+  darija: [
+    'بغاء', 'عاهرة', 'خدمات جنسية',
+    'مخدرات', 'كوكاين', 'حشيش', 'كيف',
+    'سلاح', 'تهريب', 'غسيل فلوس', 'تزوير',
+    'رشوة'
+  ]
 };
 
 export const PROHIBITED_RESPONSE = {
-  fr: 'Tooristoo est spécialisée dans les négociations pour services touristiques légaux au Maroc. Je ne peux pas analyser ce type de demande.',
-  en: 'Tooristoo specializes in negotiations for legal tourist services in Morocco. I cannot analyze this type of request.',
-  es: 'Tooristoo está especializada en negociaciones para servicios turísticos legales en Marruecos. No puedo analizar este tipo de solicitud.',
-  de: 'Tooristoo ist auf Verhandlungen für legale Tourismusdienstleistungen in Marokko spezialisiert. Ich kann diese Art von Anfrage nicht analysieren.',
-  ar: 'Tooristoo متخصصة في التفاوض على الخدمات السياحية المشروعة في المغرب. لا يمكنني تحليل هذا النوع من الطلبات.',
-  darija: 'Tooristoo متخصصة فالتفاوض على الخدمات السياحية المشروعة فالمغرب. ما يمكنيش نحلل هاد النوع من الطلبات.'
+  fr: 'Tooristoo n\'analyse pas les prix de transactions illégales ou contraires à la loi marocaine. Le service se concentre sur les services touristiques légaux : taxis, hébergements, restaurants, guides agréés, excursions, artisanat, spas. Pour toute urgence, composez le 19 (Police) ou le +212 524 38 46 01 (Police Touristique de Marrakech).',
+  en: 'Tooristoo does not analyze prices for illegal transactions or activities contrary to Moroccan law. The service covers only legal tourism services: taxis, accommodation, restaurants, licensed guides, excursions, crafts, spas. For emergencies, dial 19 (Police) or +212 524 38 46 01 (Marrakech Tourist Police).',
+  es: 'Tooristoo no analiza precios de transacciones ilegales o contrarias a la ley marroquí. El servicio cubre solo servicios turísticos legales: taxis, alojamiento, restaurantes, guías habilitados, excursiones, artesanía, spas. En emergencias, marca 19 (Policía) o +212 524 38 46 01 (Policía Turística de Marrakech).',
+  de: 'Tooristoo analysiert keine Preise für illegale oder gegen marokkanisches Recht verstoßende Transaktionen. Der Dienst deckt nur legale Tourismusdienstleistungen ab: Taxis, Unterkünfte, Restaurants, lizenzierte Guides, Ausflüge, Kunsthandwerk, Spas. Im Notfall wählen Sie 19 (Polizei) oder +212 524 38 46 01 (Touristenpolizei Marrakesch).',
+  ar: 'لا يقوم Tooristoo بتحليل أسعار المعاملات غير القانونية أو المخالفة للقانون المغربي. تغطي الخدمة فقط الخدمات السياحية القانونية: التاكسي، الإقامة، المطاعم، المرشدون المعتمدون، الرحلات، الحرف، السبا. في حالات الطوارئ، اتصل بـ 19 (الشرطة) أو +212 524 38 46 01 (شرطة السياحة بمراكش).',
+  darija: 'Tooristoo ما كيحللش الأثمان ديال المعاملات غير القانونية أو لي ضد القانون المغربي. الخدمة كتغطي غير الخدمات السياحية القانونية: طاكسي، إقامة، مطاعم، مرشدين معتمدين، نزهات، حرف، سبا. فالطوارئ، عيط على 19 (البوليس) ولا +212 524 38 46 01 (بوليس السياحة فمراكش).'
 };
 
 export function isProhibitedRequest(text, lang = 'fr') {
@@ -869,30 +910,40 @@ export function getPricingInfo(city, category) {
   return PRICING_KNOWLEDGE_BASE[city][category] || null;
 }
 
+// Génère un prompt de prix factuel à injecter dans le contexte LLM
+// Aligné avec la charte éditoriale Tooristoo : pas de "seuil d'arnaque", pas de "prix abusif".
+// On présente des fourchettes de référence et un seuil de vigilance neutre.
 export function formatPricingPrompt(city, category) {
   const info = getPricingInfo(city, category);
   if (!info) {
-    return `Pour ${city} - ${category}: aucune donnée spécifique disponible. Utiliser les prix de référence régionaux du Maroc.`;
+    return `Pour ${city} - ${category}: aucune donnée spécifique disponible. Utiliser les fourchettes de référence régionales du Maroc.`;
   }
   let prompt = `
 Pour ${city} - ${category} (${info.description}) — Mise à jour: ${info.updated || PRICING_LAST_UPDATED}:
-- Prix juste local: ${info.fair_price_min}-${info.fair_price_max} DH
-- Prix raisonnable pour touriste: ${info.tourist_reasonable_min}-${info.tourist_reasonable_max} DH
+- Fourchette de référence locale: ${info.fair_price_min}-${info.fair_price_max} DH
+- Fourchette raisonnable pour touriste: ${info.tourist_reasonable_min}-${info.tourist_reasonable_max} DH
 ${info.airport_min ? `- Transfert aéroport: ${info.airport_min}-${info.airport_max} DH` : ''}
-${info.luxury_min ? `- Version luxe: ${info.luxury_min}-${info.luxury_max} DH` : ''}
-${info.scam_threshold ? `- Seuil d'arnaque (prix abusif si supérieur): ${info.scam_threshold} DH` : ''}
-- Conseil expert: ${info.tips}
+${info.luxury_min ? `- Version premium: ${info.luxury_min}-${info.luxury_max} DH` : ''}
+${info.vigilance_threshold ? `- Seuil de vigilance (écart significatif au-dessus de la fourchette si dépassé): ${info.vigilance_threshold} DH` : ''}
+- Conseil pratique: ${info.tips}
+
+CONSIGNE DE FORMULATION:
+- Ne mentionne JAMAIS le mot "arnaque", "scam", "abus" ou "fraude" dans ton analyse.
+- Présente l'écart de manière factuelle: "X DH au-dessus de la fourchette de référence" ou "écart par rapport à la fourchette habituelle".
+- Si le prix demandé dépasse le seuil de vigilance, signale-le comme un "écart marqué" qui mérite la prudence du voyageur.
   `.trim();
   return prompt;
 }
 
 export function getAllCitiesPricingContext() {
   let context = `BASE DE CONNAISSANCES PRIX TOORISTOO — Mise à jour: ${PRICING_LAST_UPDATED}\n`;
-  context += `POLITIQUE: Refuser toute analyse de service illégal, immoral ou contraire à la loi marocaine.\n\n`;
+  context += `POLITIQUE: Refuser toute analyse de service illégal ou contraire à la loi marocaine.\n`;
+  context += `VOCABULAIRE OBLIGATOIRE: utiliser "écart", "fourchette de référence", "seuil de vigilance".\n`;
+  context += `VOCABULAIRE INTERDIT: "arnaque", "scam", "abus", "fraude", "tromperie".\n\n`;
   for (const [city, categories] of Object.entries(PRICING_KNOWLEDGE_BASE)) {
     context += `${city}:\n`;
     for (const [category, info] of Object.entries(categories)) {
-      context += `  - ${category} (${info.description}): ${info.fair_price_min}-${info.fair_price_max} DH (local), ${info.tourist_reasonable_min}-${info.tourist_reasonable_max} DH (touriste)${info.scam_threshold ? ` — ARNAQUE si >${ info.scam_threshold} DH` : ''}\n`;
+      context += `  - ${category} (${info.description}): ${info.fair_price_min}-${info.fair_price_max} DH (local), ${info.tourist_reasonable_min}-${info.tourist_reasonable_max} DH (touriste)${info.vigilance_threshold ? ` — vigilance si >${info.vigilance_threshold} DH` : ''}\n`;
     }
     context += '\n';
   }
