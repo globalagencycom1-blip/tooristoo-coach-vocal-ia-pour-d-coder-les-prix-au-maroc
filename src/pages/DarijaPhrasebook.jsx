@@ -101,8 +101,8 @@ const UI = {
 const SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: '100 Phrases en Darija Marocain pour Voyager et Négocier au Maroc',
-  description: 'Guide complet de 100 phrases essentielles en darija marocain avec transcription latine et traduction en 5 langues. Catégories : taxi, souk, restaurant, hôtel, négociation, urgences.',
+  headline: '50 Phrases en Darija Marocain pour Voyager et Négocier au Maroc',
+  description: 'Guide complet de 50 phrases essentielles en darija marocain avec transcription latine et traduction en 5 langues. Catégories : taxi, souk, restaurant, hôtel, négociation, urgences.',
   url: `${BASE}/darija`,
   author: { '@type': 'Organization', name: 'Tooristoo', url: BASE },
   publisher: { '@type': 'Organization', name: 'Tooristoo', logo: { '@type': 'ImageObject', url: `${BASE}/logo.png` } },
