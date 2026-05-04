@@ -7,7 +7,7 @@ export const PILLAR_LABELS = {
     ar: 'دليل الأسعار الحقيقية',
     darija: 'دليل الأسعار الحقيقية'
   },
-  arnaque: {
+  vigilance: {
     fr: 'Vigilance & protection',
     en: 'Safety & Protection',
     es: 'Seguridad y Protección',
