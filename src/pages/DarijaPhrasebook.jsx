@@ -22,7 +22,7 @@ const CATEGORIES = [
 const PHRASES = [
   // Greetings
   { id: 1, cat: 'greetings', darija: 'السلام عليكم', latin: 'Salam alikoum', fr: 'Bonjour / Salut', en: 'Hello / Hi', es: 'Hola', de: 'Hallo' },
-  { id: 2, cat: 'greetings', darija: 'لاباس؟', latin: 'Labas?', fr: 'Ça va ?', en: 'How are you?', es: '¿Cómo estás?', de: 'Wie geht\'s?' },
+  { id: 2, cat: 'greetings', darija: 'لاباس؟', latin: 'Lebess?', fr: 'Ça va ?', en: 'How are you?', es: '¿Cómo estás?', de: 'Wie geht\'s?' },
   { id: 3, cat: 'greetings', darija: 'شكراً بزاف', latin: 'Choukran bzzaf', fr: 'Merci beaucoup', en: 'Thank you very much', es: 'Muchas gracias', de: 'Vielen Dank' },
   { id: 4, cat: 'greetings', darija: 'بسلامة', latin: 'Bslama', fr: 'Au revoir', en: 'Goodbye', es: 'Adiós', de: 'Auf Wiedersehen' },
   { id: 5, cat: 'greetings', darija: 'عافاك', latin: '3afak', fr: 'S\'il vous plaît', en: 'Please', es: 'Por favor', de: 'Bitte' },
@@ -77,9 +77,9 @@ const PHRASES = [
   { id: 42, cat: 'emergency', darija: 'محتاج مساعدة', latin: 'M7taj msa3da', fr: 'J\'ai besoin d\'aide', en: 'I need help', es: 'Necesito ayuda', de: 'Ich brauche Hilfe' },
 
   // Bonus negotiation phrases
-  { id: 43, cat: 'negotiation', darija: 'كنجيب معايا بزاف ديال السياح', latin: 'Knji3b m3aya bzzaf d-siyah', fr: 'J\'amène beaucoup de touristes avec moi', en: 'I bring many tourists with me', es: 'Traigo muchos turistas conmigo', de: 'Ich bringe viele Touristen mit' },
+  { id: 43, cat: 'negotiation', darija: 'كنجيب معايا بزاف ديال السياح', latin: 'Knjib m3aya bzzaf d-siyah', fr: 'J\'amène beaucoup de touristes avec moi', en: 'I bring many tourists with me', es: 'Traigo muchos turistas conmigo', de: 'Ich bringe viele Touristen mit' },
   { id: 44, cat: 'negotiation', darija: 'الثمن ديال Tooristoo يقول...', latin: 'Taman d-Tooristoo yqoul...', fr: 'Le prix Tooristoo dit...', en: 'The Tooristoo price says...', es: 'El precio de Tooristoo dice...', de: 'Der Tooristoo-Preis sagt...' },
-  { id: 45, cat: 'negotiation', darija: 'واش كتعطي فاتورة؟', latin: 'Wash kata3ti fatura?', fr: 'Donnez-vous une facture ?', en: 'Do you give a receipt?', es: '¿Das recibo?', de: 'Geben Sie eine Quittung?' },
+  { id: 45, cat: 'negotiation', darija: 'واش كتعطي فاتورة؟', latin: 'Wash kata3ti fatoura?', fr: 'Donnez-vous une facture ?', en: 'Do you give a receipt?', es: '¿Das recibo?', de: 'Geben Sie eine Quittung?' },
 
   // More market
   { id: 46, cat: 'market', darija: 'واش هاد الصنعة مغربية؟', latin: 'Wash had sna3a maghribiya?', fr: 'Cet artisanat est marocain ?', en: 'Is this Moroccan crafts?', es: '¿Es artesanía marroquí?', de: 'Ist das marokkanisches Handwerk?' },
