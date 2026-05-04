@@ -81,7 +81,7 @@ const META_BY_ROUTE = {
     ar: { title: 'مدرب صوتي ذكي | حلل وتفاوض على أفضل الأسعار في المغرب — Tooristoo', desc: 'مدرب صوتي ذكي في الوقت الفعلي لتحليل الأسعار والتفاوض بشفافية في المغرب.' },
   },
   '/contact': {
-    fr: { title: 'Contactez Tooristoo — Support Client & Partenariats', desc: 'Contactez-nous pour toute question, partenariat ou signalement d\'arnaque. Email, téléphone, formulaire de contact.' },
+    fr: { title: 'Contactez Tooristoo — Support Client & Partenariats', desc: 'Contactez-nous pour toute question, partenariat ou signalement de vigilance. Email, téléphone, formulaire de contact.' },
     en: { title: 'Contact Tooristoo — Customer Support & Partnerships', desc: 'Get in touch with Tooristoo for questions, partnerships or reporting scams. Email, phone, contact form.' },
     es: { title: 'Contacta con Tooristoo — Soporte al Cliente & Asociaciones', desc: 'Ponte en contacto con Tooristoo para preguntas, asociaciones o reportar estafas.' },
     de: { title: 'Kontaktieren Sie Tooristoo — Kundensupport & Partnerschaften', desc: 'Kontaktieren Sie Tooristoo für Fragen, Partnerschaften oder Betrugsmeldungen.' },
