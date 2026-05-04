@@ -19,7 +19,7 @@ export default function About() {
   ];
 
   const STATS = [
-    { icon: Users, value: '500+', labelKey: 'about_stats_travelers', color: 'text-shield-green' },
+    { icon: Users, value: 'Voyageurs satisfaits', labelKey: 'about_stats_travelers', color: 'text-shield-green' },
     { icon: Compass, value: '13', labelKey: 'about_stats_savings', color: 'text-shield-gold' },
     { icon: MapPin, value: 'Sources', labelKey: 'about_stats_detection', color: 'text-blue-400' },
     { icon: Globe, value: '6', labelKey: 'about_stats_languages', color: 'text-purple-400' }
