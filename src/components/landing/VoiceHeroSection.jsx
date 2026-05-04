@@ -230,7 +230,7 @@ export default function VoiceHeroSection({ lang = 'fr' }) {
                     }`}>{step}</p>
                     <p className="text-xs text-gray-500 mt-0.5">
                       {i === 0 ? (lang === 'fr' ? 'En français, arabe, darija...' : lang === 'en' ? 'In any language...' : lang === 'es' ? 'En cualquier idioma...' : lang === 'de' ? 'In jeder Sprache...' : 'بأي لغة...') :
-                       i === 1 ? (lang === 'fr' ? 'Prix marché, arnaque détectée' : lang === 'en' ? 'Market price, scam detected' : lang === 'es' ? 'Precio de mercado, estafa detectada' : lang === 'de' ? 'Marktpreis, Betrug erkannt' : 'سعر السوق، احتيال مكتشف') :
+                       i === 1 ? (lang === 'fr' ? 'Prix marché, écart détecté' : lang === 'en' ? 'Market price, gap detected' : lang === 'es' ? 'Precio de mercado, diferencia detectada' : lang === 'de' ? 'Marktpreis, Abweichung erkannt' : 'سعر السوق، فرق مكتشف') :
                        (lang === 'fr' ? 'Phrase en français + Darija' : lang === 'en' ? 'Phrase in English + Darija' : lang === 'es' ? 'Frase en español + Darija' : lang === 'de' ? 'Phrase auf Deutsch + Darija' : 'عبارة بالعربية + الدارجة')}
                     </p>
                   </div>
