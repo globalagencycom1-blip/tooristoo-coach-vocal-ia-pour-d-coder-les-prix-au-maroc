@@ -82,8 +82,8 @@ const PHRASES = [
   { id: 45, cat: 'negotiation', darija: 'واش كتعطي فاتورة؟', latin: 'Wash kata3ti fatura?', fr: 'Donnez-vous une facture ?', en: 'Do you give a receipt?', es: '¿Das recibo?', de: 'Geben Sie eine Quittung?' },
 
   // More market
-  { id: 46, cat: 'market', darija: 'واش هاد الصنعة مغربية؟', latin: 'Wash had s-sna3a maghribiya?', fr: 'Cet artisanat est marocain ?', en: 'Is this Moroccan crafts?', es: '¿Es artesanía marroquí?', de: 'Ist das marokkanisches Handwerk?' },
-  { id: 47, cat: 'market', darija: 'بغيت نقارن الأثمان أولاً', latin: 'Bghit nqaren l-ttaman awwalan', fr: 'Je veux comparer les prix d\'abord', en: 'I want to compare prices first', es: 'Quiero comparar precios primero', de: 'Ich möchte zuerst Preise vergleichen' },
+  { id: 46, cat: 'market', darija: 'واش هاد الصنعة مغربية؟', latin: 'Wash had sna3a maghribiya?', fr: 'Cet artisanat est marocain ?', en: 'Is this Moroccan crafts?', es: '¿Es artesanía marroquí?', de: 'Ist das marokkanisches Handwerk?' },
+  { id: 47, cat: 'market', darija: 'بغيت نقارن الأثمان أولاً', latin: 'Bghit nqaren l-taman awalan', fr: 'Je veux comparer les prix d\'abord', en: 'I want to compare prices first', es: 'Quiero comparar precios primero', de: 'Ich möchte zuerst Preise vergleichen' },
   { id: 48, cat: 'market', darija: 'بغيت تمن عادل', latin: 'Bghit taman 3adel', fr: 'Je veux un prix juste', en: 'I want a fair price', es: 'Quiero un precio justo', de: 'Ich möchte einen fairen Preis' },
   // More taxi
   { id: 49, cat: 'taxi', darija: 'رقم الطاكسي علاش؟', latin: 'Shhal raqam taxi?', fr: 'Quel est le numéro de la plaque ?', en: 'What is the plate number?', es: '¿Cuál es la matrícula?', de: 'Was ist das Kennzeichen?' },
