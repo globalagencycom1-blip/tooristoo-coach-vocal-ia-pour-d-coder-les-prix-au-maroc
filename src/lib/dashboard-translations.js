@@ -149,7 +149,7 @@ export const dashboardTranslations = {
   de: {
     ai_coach: "KÜNSTLICHE INTELLIGENZ",
     smart_assistant: "dein intelligenter Assistent",
-    scams_avoided: "Betrügereien vermieden",
+    scams_avoided: "Tipps befolgt",
     negotiations: "Verhandlungen",
     total_savings: "Gesamteinsparungen",
     risk_distribution: "RISIKOVERTEILUNG",
@@ -161,7 +161,7 @@ export const dashboardTranslations = {
     saved_total: "insgesamt gespart",
     average_per_negotiation: "MAD durchschnittlich pro Verhandlung",
     potential_savings: "Potentielle Einsparungen",
-    scam_detected: "! Betrug erkannt",
+    scam_detected: "! Abweichung erkannt",
     price_above_market: "Preis über dem Markt",
     price_below_market: "Preis unter dem Markt",
     analysis: "ANALYSE",
