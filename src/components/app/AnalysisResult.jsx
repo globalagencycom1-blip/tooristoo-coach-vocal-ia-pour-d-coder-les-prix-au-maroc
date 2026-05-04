@@ -217,7 +217,7 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
       {/* Section 6: Continue Negotiation */}
       <NegotiationContinue analysis={analysis} lang={lang} />
 
-      {/* Section 7b: Anti-scam alerts */}
+      {/* Section 7b: Vigilance tips */}
       {analysis.scam_detected && (
         <div className="bg-red-950/30 border border-red-500/30 rounded-2xl p-4">
           <div className="flex items-center justify-between mb-3">
