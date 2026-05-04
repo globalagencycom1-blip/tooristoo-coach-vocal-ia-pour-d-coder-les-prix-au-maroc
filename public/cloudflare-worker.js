@@ -121,117 +121,65 @@ const HREFLANG_MAP = {
 export default {
   async fetch(request) {
     const url = new URL(request.url);
+    let pathname = url.pathname;
 
-    // ===============================
-    // 🔥 SITEMAP FORCÉ (FIX TOTAL)
-    // ===============================
-    if (url.pathname === "/sitemap.xml") {
-      const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-<url>
-  <loc>https://tooristoo.com/</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>1.0</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/app</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.9</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/alerts</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/providers</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/blog</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/faq</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.7</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/about</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.7</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/contact</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.6</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/privacy</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>yearly</changefreq>
-  <priority>0.4</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/terms</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>yearly</changefreq>
-  <priority>0.4</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/darija</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/charter</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.7</priority>
-</url>
-
-<url>
-  <loc>https://tooristoo.com/legal</loc>
-  <lastmod>2026-05-02</lastmod>
-  <changefreq>yearly</changefreq>
-  <priority>0.4</priority>
-</url>
-
-</urlset>`;
-
-      return new Response(xml, {
-        headers: {
-          "Content-Type": "application/xml",
-        },
+    // Redirect uppercase paths to lowercase (301)
+    if (pathname !== '/' && /[A-Z]/.test(pathname)) {
+      const lowerPathname = pathname.toLowerCase();
+      return new Response(null, {
+        status: 301,
+        headers: { Location: url.origin + lowerPathname + url.search + url.hash },
       });
     }
 
-    // ===============================
-    // ✅ LE RESTE DU SITE
-    // ===============================
-    return fetch(request);
+    // Fetch the original index.html
+    const response = await fetch(request);
+    let html = await response.text();
+
+    // Detect language from query param or default to 'fr'
+    const lang = url.searchParams.get('lang') || 'fr';
+    const route = pathname === '/' ? '/' : pathname;
+    const meta = META_BY_ROUTE[route]?.[lang];
+
+    if (meta) {
+      // Replace title
+      html = html.replace(
+        /<title>.*?<\/title>/,
+        `<title>${meta.title}</title>`
+      );
+
+      // Replace description
+      html = html.replace(
+        /<meta name="description"[^>]*>/,
+        `<meta name="description" content="${meta.desc.replace(/"/g, '&quot;')}">`
+      );
+
+      // Replace OG tags
+      html = html.replace(
+        /<meta property="og:title"[^>]*>/,
+        `<meta property="og:title" content="${meta.title.replace(/"/g, '&quot;')}"`
+      );
+      html = html.replace(
+        /<meta property="og:description"[^>]*>/,
+        `<meta property="og:description" content="${meta.desc.replace(/"/g, '&quot;')}"`
+      );
+
+      // Add hreflang links
+      let hreflangLinks = '';
+      for (const [l, code] of Object.entries(HREFLANG_MAP)) {
+        const href = `${url.origin}${route}?lang=${l}`;
+        hreflangLinks += `<link rel="alternate" hreflang="${code}" href="${href}" />\n`;
+      }
+      hreflangLinks += `<link rel="alternate" hreflang="x-default" href="${url.origin}${route}" />\n`;
+
+      // Insert hreflang before closing </head>
+      html = html.replace('</head>', hreflangLinks + '</head>');
+    }
+
+    return new Response(html, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: new Headers(response.headers),
+    });
   },
 };
