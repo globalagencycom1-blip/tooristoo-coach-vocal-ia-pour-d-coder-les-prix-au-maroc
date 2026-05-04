@@ -40,7 +40,7 @@ const PHRASES = [
   // Market / Souk
   { id: 14, cat: 'market', darija: 'بشحال هادا؟', latin: 'Bshhal hada?', fr: 'Combien ça coûte ?', en: 'How much is this?', es: '¿Cuánto cuesta?', de: 'Wie viel kostet das?' },
   { id: 15, cat: 'market', darija: 'غالي، قلل شوية', latin: 'Ghali, qllel shwiya', fr: 'C\'est trop cher, baissez un peu', en: 'Too expensive, lower a bit', es: 'Muy caro, baja un poco', de: 'Zu teuer, etwas günstiger bitte' },
-  { id: 16, cat: 'market', darija: 'نعطيك... درهم', latin: 'N3tik... dirham', fr: 'Je vous donne... dirhams', en: 'I\'ll give you... dirhams', es: 'Te doy... dirhams', de: 'Ich gebe Ihnen... Dirham' },
+  { id: 16, cat: 'market', darija: 'نعطيك... درهم', latin: 'N3tik... dirhams', fr: 'Je vous donne... dirhams', en: 'I\'ll give you... dirhams', es: 'Te doy... dirhams', de: 'Ich gebe Ihnen... Dirham' },
   { id: 17, cat: 'market', darija: 'آخر ثمن؟', latin: 'Akher taman?', fr: 'Dernier prix ?', en: 'Final price?', es: '¿Último precio?', de: 'Letzter Preis?' },
   { id: 18, cat: 'market', darija: 'ماشي محتاج مرشد شكراً', latin: 'Mashi m7taj mrshad choukran', fr: 'Je n\'ai pas besoin de guide merci', en: 'I don\'t need a guide thank you', es: 'No necesito guía gracias', de: 'Ich brauche keinen Führer danke' },
   { id: 19, cat: 'market', darija: 'غير كنشوف، ماشي شاري دابا', latin: 'Ghir knschouf, mashi shari daba', fr: 'Je regarde juste, je n\'achète pas maintenant', en: 'Just looking, not buying now', es: 'Solo mirando, no compro ahora', de: 'Ich schaue nur, kaufe jetzt nicht' },
