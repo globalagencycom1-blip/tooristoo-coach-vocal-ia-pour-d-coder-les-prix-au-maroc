@@ -57,7 +57,7 @@ const PHRASES = [
   { id: 26, cat: 'hotel', darija: 'بشحال الليلة؟', latin: 'Bshhal l-lila?', fr: 'Combien pour une nuit ?', en: 'How much per night?', es: '¿Cuánto por noche?', de: 'Wie viel pro Nacht?' },
   { id: 27, cat: 'hotel', darija: 'واش الفطور داخل؟', latin: 'Wash l-ftor dakhel?', fr: 'Le petit-déjeuner est inclus ?', en: 'Is breakfast included?', es: '¿El desayuno está incluido?', de: 'Ist das Frühstück inbegriffen?' },
   { id: 28, cat: 'hotel', darija: 'عندك بيت أرخص؟', latin: '3andak bit arkhas?', fr: 'Avez-vous une chambre moins chère ?', en: 'Do you have a cheaper room?', es: '¿Tiene habitación más barata?', de: 'Haben Sie ein günstigeres Zimmer?' },
-  { id: 29, cat: 'hotel', darija: 'متى خروج؟', latin: 'Mta l-khuruj?', fr: 'C\'est quand le check-out ?', en: 'When is check-out?', es: '¿Cuándo es el check-out?', de: 'Wann ist das Auschecken?' },
+  { id: 29, cat: 'hotel', darija: 'متى خروج؟', latin: 'Mta l-khourouj?', fr: 'C\'est quand le check-out ?', en: 'When is check-out?', es: '¿Cuándo es el check-out?', de: 'Wann ist das Auschecken?' },
 
   // Negotiation
   { id: 30, cat: 'negotiation', darija: 'هاد الثمن غالي على البراني', latin: 'Had t-taman ghali 3la l-brani', fr: 'Ce prix est trop élevé pour un étranger', en: 'This price is too high for a foreigner', es: 'Este precio es muy alto para un extranjero', de: 'Dieser Preis ist zu hoch für einen Ausländer' },
