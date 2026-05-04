@@ -79,7 +79,7 @@ const PHRASES = [
   // Bonus negotiation phrases
   { id: 43, cat: 'negotiation', darija: 'كنجيب معايا بزاف ديال السياح', latin: 'Knji3b m3aya bzzaf d-siyah', fr: 'J\'amène beaucoup de touristes avec moi', en: 'I bring many tourists with me', es: 'Traigo muchos turistas conmigo', de: 'Ich bringe viele Touristen mit' },
   { id: 44, cat: 'negotiation', darija: 'الثمن ديال Tooristoo يقول...', latin: 'Taman d-Tooristoo yqoul...', fr: 'Le prix Tooristoo dit...', en: 'The Tooristoo price says...', es: 'El precio de Tooristoo dice...', de: 'Der Tooristoo-Preis sagt...' },
-  { id: 45, cat: 'negotiation', darija: 'واش كتعطي فاتورة؟', latin: 'Wash kt3ti fatura?', fr: 'Donnez-vous une facture ?', en: 'Do you give a receipt?', es: '¿Das recibo?', de: 'Geben Sie eine Quittung?' },
+  { id: 45, cat: 'negotiation', darija: 'واش كتعطي فاتورة؟', latin: 'Wash kata3ti fatura?', fr: 'Donnez-vous une facture ?', en: 'Do you give a receipt?', es: '¿Das recibo?', de: 'Geben Sie eine Quittung?' },
 
   // More market
   { id: 46, cat: 'market', darija: 'واش هاد الصنعة مغربية؟', latin: 'Wash had s-sna3a maghribiya?', fr: 'Cet artisanat est marocain ?', en: 'Is this Moroccan crafts?', es: '¿Es artesanía marroquí?', de: 'Ist das marokkanisches Handwerk?' },
