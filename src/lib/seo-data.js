@@ -83,7 +83,7 @@ export const seoData = {
   '/alerts': {
     fr: {
       title: 'Conseils de vigilance - Tooristoo',
-      description: 'Alertes et conseils pour éviter les arnaques touristiques au Maroc. Apprenez à identifier les escroqueries courantes et les prix gonflés.',
+      description: 'Alertes et conseils pour connaître les fourchettes locales touristiques au Maroc. Apprenez à identifier les escroqueries courantes et les prix gonflés.',
       keywords: 'alertes arnaques, escroqueries maroc, prix gonflés, protection touriste',
     },
     en: {
