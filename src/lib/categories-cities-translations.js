@@ -11,7 +11,7 @@ export const CATEGORIES_DATA = [
   { value: 'artisanat',  fr: 'Artisanat & Souvenirs',     en: 'Crafts & Souvenirs',         es: 'Artesanía & Souvenirs',       de: 'Handwerk & Souvenirs',        ar: 'صناعة تقليدية وهدايا', darija: 'صناعة تقليدية وهدايا' },
   { value: 'bus',        fr: 'Bus & Intercités',          en: 'Bus & Intercity',            es: 'Bus & Interurbano',           de: 'Bus & Fernbus',               ar: 'حافلة بين المدن',    darija: 'طوبيس بين المدن' },
   { value: 'train',      fr: 'Train & ONCF',              en: 'Train & ONCF',               es: 'Tren & ONCF',                 de: 'Zug & ONCF',                  ar: 'قطار والـ ONCF',     darija: 'قطار والـ ONCF' },
-  { value: 'other',      fr: 'Autre service',             en: 'Other service',              es: 'Otro servicio',               de: 'Anderer Service',             ar: 'خدمة أخرى',          darija: 'خدمة أخرى' },
+  { value: 'autre',      fr: 'Autre service',             en: 'Other service',              es: 'Otro servicio',               de: 'Anderer Service',             ar: 'خدمة أخرى',          darija: 'خدمة أخرى' },
 ];
 
 export const CITIES_DATA = [
