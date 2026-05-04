@@ -1,98 +1,149 @@
-# Setup Cloudflare Worker pour Tooristoo SEO
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
 
-## Étape 1 : Créer le Worker sur Cloudflare
+    // ===============================
+    // ✅ 1. BYPASS FICHIERS CRITIQUES
+    // ===============================
+    if (
+      url.pathname === "/sitemap.xml" ||
+      url.pathname === "/robots.txt" ||
+      url.pathname.startsWith("/.well-known")
+    ) {
+      return fetch(request);
+    }
 
-1. Aller sur **https://dash.cloudflare.com**
-2. Sélectionner votre domaine `tooristoo.com`
-3. **Workers** → **Create Application** → **Create Service**
-4. Nommer : `tooristoo-seo`
-5. Copier le contenu de `public/cloudflare-worker.js` dans l'éditeur
-6. **Deploy**
+    // ===============================
+    // ✅ 2. REDIRECT MAJUSCULES → MINUSCULES (SEO)
+    // ===============================
+    if (url.pathname.match(/[A-Z]/)) {
+      const lowerPath = url.pathname.toLowerCase();
+      return Response.redirect(
+        `${url.origin}${lowerPath}${url.search}`,
+        301
+      );
+    }
 
-## Étape 2 : Créer le fichier `wrangler.toml`
+    // ===============================
+    // ✅ 3. DETECTION LANGUE
+    // ===============================
+    const lang = url.searchParams.get("lang") || "fr";
 
-```toml
-name = "tooristoo-seo"
-main = "src/index.js"
-compatibility_date = "2024-01-01"
+    const supportedLangs = ["fr", "en", "es", "de", "ar"];
+    const currentLang = supportedLangs.includes(lang) ? lang : "fr";
 
-[[routes]]
-pattern = "tooristoo.com/*"
-zone_name = "tooristoo.com"
-```
+    // ===============================
+    // ✅ 4. FETCH PAGE ORIGINALE
+    // ===============================
+    const response = await fetch(request);
 
-## Étape 3 : Déployer avec Wrangler (optionnel, mais recommandé)
+    // Si ce n'est pas du HTML → ne pas modifier
+    const contentType = response.headers.get("content-type") || "";
+    if (!contentType.includes("text/html")) {
+      return response;
+    }
 
-```bash
-# Installer wrangler
-npm install -D wrangler
+    let html = await response.text();
 
-# Déployer
-wrangler deploy
-```
+    // ===============================
+    // ✅ 5. SEO DATA PAR PAGE
+    // ===============================
+    const path = url.pathname;
 
-## Étape 4 : Vérifier les résultats
+    const seoData = {
+      "/": {
+        fr: {
+          title: "Tooristoo - Négociez comme un local au Maroc",
+          description:
+            "Coach IA vocal pour négocier prix taxis, souks, immobilier et éviter les arnaques au Maroc.",
+        },
+        en: {
+          title: "Tooristoo - Negotiate like a local in Morocco",
+          description:
+            "AI voice coach to negotiate taxis, souks, real estate and avoid scams in Morocco.",
+        },
+      },
 
-```bash
-# Tester une route
-curl -I https://tooristoo.com/about
+      "/about": {
+        fr: {
+          title: "À propos - Tooristoo",
+          description:
+            "Découvrez Tooristoo, le coach IA qui vous aide à éviter les arnaques au Maroc.",
+        },
+        en: {
+          title: "About - Tooristoo",
+          description:
+            "Learn about Tooristoo, the AI coach helping you avoid scams in Morocco.",
+        },
+      },
+    };
 
-# Vérifier le <title>
-curl https://tooristoo.com/about | grep "<title>"
+    const defaultSEO = {
+      fr: {
+        title: "Tooristoo - Guide intelligent Maroc",
+        description:
+          "Votre assistant intelligent pour voyager et négocier au Maroc.",
+      },
+      en: {
+        title: "Tooristoo - Smart Morocco Guide",
+        description:
+          "Your smart assistant for traveling and negotiating in Morocco.",
+      },
+    };
 
-# Vérifier les hreflang
-curl https://tooristoo.com/about | grep "hreflang"
+    const seo =
+      seoData[path]?.[currentLang] ||
+      defaultSEO[currentLang] ||
+      defaultSEO["fr"];
 
-# Vérifier les redirects 301
-curl -I https://tooristoo.com/About
-# Doit retourner : HTTP 301 → tooristoo.com/about
-```
+    // ===============================
+    // ✅ 6. INJECTION SEO
+    // ===============================
 
-## Ce que le Worker fait :
+    html = html.replace(
+      /<title>.*?<\/title>/i,
+      `<title>${seo.title}</title>`
+    );
 
-✅ Réécrit `<title>` unique par route + langue  
-✅ Réécrit `<meta description>` unique par route + langue  
-✅ Réécrit `<meta og:title>` et `<meta og:description>`  
-✅ Ajoute des balises `<link rel="alternate" hreflang="...">` vers les 5 langues  
-✅ Redirige 301 : `/About` → `/about`, `/Providers` → `/providers`, etc.  
-✅ Détecte la langue via `?lang=fr|en|es|de|ar`  
+    html = html.replace(
+      /<meta name="description".*?>/i,
+      `<meta name="description" content="${seo.description}">`
+    );
 
-## Paramètres de langue
+    html = html.replace(
+      /<meta property="og:title".*?>/i,
+      `<meta property="og:title" content="${seo.title}">`
+    );
 
-```
-https://tooristoo.com/about?lang=fr  → Français
-https://tooristoo.com/about?lang=en  → English
-https://tooristoo.com/about?lang=es  → Español
-https://tooristoo.com/about?lang=de  → Deutsch
-https://tooristoo.com/about?lang=ar  → العربية
-```
+    html = html.replace(
+      /<meta property="og:description".*?>/i,
+      `<meta property="og:description" content="${seo.description}">`
+    );
 
-## Crawlers et LLM
+    // ===============================
+    // ✅ 7. HREFLANG (MULTI-LANGUES)
+    // ===============================
 
-Google, OpenAI, Perplexity, Gemini voient maintenant :
-- ✅ `<title>` unique par route
-- ✅ `<meta description>` unique par route
-- ✅ `<meta og:title>` et `<meta og:description>` correctes
-- ✅ `<link rel="alternate" hreflang="...">` pointant vers les vraies URLs linguistiques
-- ✅ Redirects 301 pour /About → /about
+    const baseUrl = url.origin + path;
 
-## Next Steps
+    const hreflangLinks = `
+<link rel="alternate" hreflang="fr" href="${baseUrl}?lang=fr" />
+<link rel="alternate" hreflang="en" href="${baseUrl}?lang=en" />
+<link rel="alternate" hreflang="es" href="${baseUrl}?lang=es" />
+<link rel="alternate" hreflang="de" href="${baseUrl}?lang=de" />
+<link rel="alternate" hreflang="ar" href="${baseUrl}?lang=ar" />
+<link rel="alternate" hreflang="x-default" href="${baseUrl}" />
+`;
 
-1. **Meta tags + hreflang** : ✅ Worker Cloudflare
-2. **Contenu textuel dans le HTML** : Vérifier que `index.html` contient le contenu `<noscript>` (déjà présent)
-3. **Sitemap.xml** : À demander à Base44 ou générer manuellement
-4. **robots.txt** : À nettoyer (voir ci-dessous)
+    html = html.replace("</head>", `${hreflangLinks}</head>`);
 
-## Robots.txt à nettoyer
-
-```
-User-agent: *
-Allow: /
-
-Disallow: /admin/
-Disallow: /profile/
-
-Sitemap: https://tooristoo.com/sitemap.xml
-```
-
-Supprimer les lignes qui bloquent `/Providers`, `/About`, etc. (les majuscules sont maintenant redirigées)
+    // ===============================
+    // ✅ 8. RESPONSE PROPRE
+    // ===============================
+    return new Response(html, {
+      headers: {
+        "Content-Type": "text/html; charset=UTF-8",
+      },
+    });
+  },
+};
