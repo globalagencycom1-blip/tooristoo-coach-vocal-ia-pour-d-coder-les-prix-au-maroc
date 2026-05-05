@@ -59,7 +59,7 @@ const CONTENT = {
     ],
     process_title: 'Certification process',
     process: [
-       { step: '1', title: 'Field visit', desc: 'A Tooristoo team member researched and selected the service online. Mandatory annual re-evaluation.' },
+       { step: '1', title: 'Selection', desc: 'A Tooristoo team member researched and selected the service online. Mandatory annual re-evaluation.' },
        { step: '2', title: 'Certification', desc: 'If compliant, the provider receives the Tooristoo badge and is published on the platform.' },
        { step: '3', title: 'Ongoing monitoring', desc: 'Annual re-evaluation + real-time monitoring of community reports.' },
     ],
