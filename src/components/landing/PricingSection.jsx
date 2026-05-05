@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Check, Zap } from 'lucide-react';
+import { Check, Zap, Loader2 } from 'lucide-react';
 import { useT } from '../../lib/i18n';
 import { getPricingT } from '../../lib/pricing-plans-translations';
+import { base44 } from '@/api/base44Client';
 
 export default function PricingSection({ lang }) {
   const t = useT(lang);
   const p = (key) => getPricingT(key, lang);
+  const [loadingPlan, setLoadingPlan] = useState(null);
+
+  const handleSubscribe = async (planKey) => {
+    // Vérifier si on est dans un iframe (app preview Base44)
+    if (window.self !== window.top) {
+      alert('Le paiement fonctionne uniquement depuis l\'application publiée. Ouvrez tooristoo.com pour vous abonner.');
+      return;
+    }
+
+    setLoadingPlan(planKey);
+    try {
+      const response = await base44.functions.invoke('stripeCheckout', {
+        plan: planKey,
+        success_url: `${window.location.origin}/?payment=success`,
+        cancel_url: `${window.location.origin}/?payment=cancelled`,
+      });
+      if (response.data?.url) {
+        window.location.href = response.data.url;
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('Une erreur est survenue. Veuillez réessayer.');
+    } finally {
+      setLoadingPlan(null);
+    }
+  };
 
   const plans = [
     {
@@ -21,6 +48,7 @@ export default function PricingSection({ lang }) {
         p('plan_free_feat5'),
       ],
       popular: false,
+      isPaid: false,
       cta: '/app',
     },
     {
@@ -35,7 +63,7 @@ export default function PricingSection({ lang }) {
         p('plan_voyageur_feat5'),
       ],
       popular: false,
-      cta: '/app',
+      isPaid: true,
     },
     {
       key: 'voyageur_plus',
@@ -49,7 +77,7 @@ export default function PricingSection({ lang }) {
         p('plan_voyageur_plus_feat5'),
       ],
       popular: true,
-      cta: '/app',
+      isPaid: true,
     },
   ];
 
@@ -99,16 +127,30 @@ export default function PricingSection({ lang }) {
                 ))}
               </ul>
 
-              <Link
-                to={plan.cta}
-                className={`block text-center py-3 rounded-xl font-semibold transition-all text-sm ${
-                  plan.popular
-                    ? 'bg-shield-green text-black hover:bg-green-400 btn-glow'
-                    : 'border border-shield-border text-gray-300 hover:border-shield-green/50 hover:text-shield-green'
-                }`}
-              >
-                {p('choose_plan')}
-              </Link>
+              {plan.isPaid ? (
+                <button
+                  onClick={() => handleSubscribe(plan.key)}
+                  disabled={loadingPlan === plan.key}
+                  className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold transition-all text-sm disabled:opacity-60 disabled:cursor-not-allowed ${
+                    plan.popular
+                      ? 'bg-shield-green text-black hover:bg-green-400 btn-glow'
+                      : 'border border-shield-border text-gray-300 hover:border-shield-green/50 hover:text-shield-green'
+                  }`}
+                >
+                  {loadingPlan === plan.key ? (
+                    <><Loader2 className="w-4 h-4 animate-spin" /> Chargement...</>
+                  ) : (
+                    p('choose_plan')
+                  )}
+                </button>
+              ) : (
+                <Link
+                  to="/app"
+                  className="block text-center py-3 rounded-xl font-semibold transition-all text-sm border border-shield-border text-gray-300 hover:border-shield-green/50 hover:text-shield-green"
+                >
+                  {p('choose_plan')}
+                </Link>
+              )}
             </div>
           ))}
         </div>
