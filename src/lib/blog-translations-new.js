@@ -387,7 +387,7 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
       content: `Jet-Ski: 200–350 MAD verhandelbar. Corniche-Restaurants: vollständige Speisekarte verlangen. Kamele: 50–80 MAD/15min vor dem Einsteigen verhandeln. Quad: über Hotel buchen (300–450 MAD).`
     },
     ar: {
-      title: 'أكادير: الأسعار الحقيقية والفخاخ السياحية',
+      title: 'أكادير: الأسعار الحقيقية وردود الأفعال الجيدة',
       excerpt: 'اكتشف الأسعار الحقيقية للأنشطة الشاطئية وكيفية تجنب الإفراط في الأسعار.',
       content: `سكي الماء: 200–350 درهم قابل للتفاوض. مطاعم الكورنيش: اطلب القائمة الكاملة دائماً. الجمال: 50–80 درهم/15 دقيقة، تفاوض قبل الركوب. رحلات الكواد: احجز من الفندق (300–450 درهم).`
     },
