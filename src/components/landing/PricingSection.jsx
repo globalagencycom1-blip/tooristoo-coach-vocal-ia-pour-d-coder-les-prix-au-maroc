@@ -86,7 +86,7 @@ export default function PricingSection({ lang }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="font-poppins font-black text-4xl md:text-5xl text-white">{t('pricing_title')}</h2>
-          <p className="mt-4 text-gray-400 text-lg">Commencez gratuitement, passez au plan Voyageur ou Voyageur Plus quand vous en avez besoin</p>
+          <p className="mt-4 text-gray-400 text-lg">Commencez gratuitement, passez au plan Voyageur ou au plan Voyageur Plus quand vous en avez besoin</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
