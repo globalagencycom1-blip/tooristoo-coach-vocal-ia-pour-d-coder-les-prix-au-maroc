@@ -132,7 +132,7 @@ const buildSchemas = (page) => {
           '@context': 'https://schema.org',
           '@type': 'MobileApplication',
           '@id': `${BASE}/app#mobileapp`,
-          name: 'Tooristoo — Coach IA Vocal',
+          name: 'Tooristoo — Coach IA Vocal Négociateur',
           url: `${BASE}/app`,
           applicationCategory: 'TravelApplication',
           operatingSystem: 'iOS, Android, Web',
