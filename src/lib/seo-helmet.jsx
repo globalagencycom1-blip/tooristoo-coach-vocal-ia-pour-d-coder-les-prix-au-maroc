@@ -136,7 +136,7 @@ const buildSchemas = (page) => {
           url: `${BASE}/app`,
           applicationCategory: 'TravelApplication',
           operatingSystem: 'iOS, Android, Web',
-          description: 'Coach vocal IA en temps réel pour analyser les prix et négocier équitablement comme un local au Maroc.',
+          description: 'Coach vocal IA négociateur en temps réel pour analyser les prix et négocier équitablement comme un local au Maroc.',
           offers: [
             { '@type': 'Offer', name: 'Gratuit', price: '0', priceCurrency: 'EUR', description: '3 analyses par jour' },
             { '@type': 'Offer', name: 'Voyageur', price: '5', priceCurrency: 'EUR', description: '50 analyses par mois' },
