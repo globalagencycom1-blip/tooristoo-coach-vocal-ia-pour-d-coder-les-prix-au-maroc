@@ -27,7 +27,7 @@ const CONTENT = {
     process_title: 'Processus de certification',
     process: [
        { step: '1', title: 'Sélection', desc: 'Un membre de l\'équipe Tooristoo a recherché et sélectionné le service en ligne. Ré-évaluation annuelle obligatoire.' },
-       { step: '2', title: 'Conformité', desc: 'Si conforme, le prestataire reçoit le badge Tooristoo et est publié sur la plateforme.' },
+       { step: '2', title: 'Conformité', desc: 'Si conforme, le prestataire reçoit le badge (Référencé) Tooristoo et est publié sur la plateforme.' },
        { step: '3', title: 'Suivi continu', desc: 'Ré-évaluation annuelle + surveillance des signalements communautaires en temps réel.' },
     ],
     why_title: 'Pourquoi c\'est important pour vous',
