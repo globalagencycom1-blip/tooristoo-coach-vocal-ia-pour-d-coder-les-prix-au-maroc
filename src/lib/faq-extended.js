@@ -32,7 +32,7 @@ export const faqExtended = {
     faq_q17: "My riad refuses to lower its price. What should I do?",
     faq_a17: "It's entirely your right to leave. Best technique: show the Tooristoo analysis with reference prices, propose a fair price, and if refused, stand up and start leaving — riads often call you back. Stay calm, pay only what was initially agreed. Document interactions in writing if possible.",
     faq_q18: "What is the methodology behind the 98% detection rate?",
-    faq_a18: "This rate is calculated across 12,000 verified analyses: we compare the asked price against our database of real official rates (field-collected, supplemented by community reports and certified provider pricing). When a price exceeds the normal range by more than 15%, the AI triggers an alert. The 98% reflects the proportion of alerts that were genuinely justified, validated through user feedback.",
+    faq_a18: "This rate is calculated across 12,000 verified analyses: we compare the asked price against our database of real official rates (field-collected, supplemented by community reports and certified provider pricing). When a price exceeds the normal range by more than 15%, the AI triggers an alert. The 98% reflects the proportion of alerts that were genuinely justified.",
     faq_q19: "Can I use Tooristoo to negotiate in a hammam or spa?",
     faq_a19: "Yes. Select the 'Spa' category and enter the price asked. Tooristoo will give you the range for traditional hammams (50–150 MAD for a full treatment) vs tourist spas (200–500 MAD).",
     faq_q20: "How does Tooristoo generate Darija phrases?",
