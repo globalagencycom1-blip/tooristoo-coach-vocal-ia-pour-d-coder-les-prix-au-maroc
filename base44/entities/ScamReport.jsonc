@@ -16,7 +16,7 @@
     },
     "location": {
       "type": "string",
-      "description": "Localisation de l'arnaque"
+      "description": "Localisation de l'\u00e9cart de prix"
     },
     "price_asked": {
       "type": "number",
