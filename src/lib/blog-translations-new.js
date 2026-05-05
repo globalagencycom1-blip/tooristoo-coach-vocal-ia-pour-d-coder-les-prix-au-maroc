@@ -96,9 +96,9 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
 **Les phrases qui fonctionnent (en darija)**
 - "Bshhal hada?" — Combien ça coûte ?
 - "Ghali bzzaf" — C'est trop cher
-- "3rafet t-taman l-haqiqi" — Je connais le vrai prix
+- "3raft taman l-haqiqi" — Je connais le vrai prix
 - "Ila ma kadrtish, rana ghadyin" — Si vous ne pouvez pas, on part
-- "Shukran bzzaf, n-rja3 f-ukhra" — Merci, je reviendrai (technique de sortie)
+- "Choukran bzzaf, n-rja3 f-ukhra" — Merci, je reviendrai (technique de sortie)
 
 **Ce qui accélère la baisse du prix**
 1. Payer en cash (éviter les cartes = −10 %)
