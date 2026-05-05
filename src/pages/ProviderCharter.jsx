@@ -71,7 +71,7 @@ const CONTENT = {
     ],
     become_title: 'Are you a provider in Morocco?',
     become_desc: 'Join our certified network. Tooristoo certification gives you access to thousands of qualified international tourists actively seeking trusted providers.',
-    become_btn: 'Apply for certification',
+    become_btn: 'Apply for listing',
     cta_title: 'Ready to travel with confidence?',
     cta_btn: 'See certified providers',
   },
