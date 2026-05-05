@@ -36,8 +36,8 @@ export const BLOG_ARTICLE_TRANSLATIONS = {
     en: 'Our AI coach guides you in real-time during your negotiations in Morocco.',
     es: 'Nuestro entrenador de IA te guía en tiempo real durante tus negociaciones en Marruecos.',
     de: 'Unser KI-Coach leitet Sie in Echtzeit durch Ihre Verhandlungen in Marokko.',
-    ar: 'يرشدك مدربنا الذكي في الوقت الفعلي أثناء تفاوضاتك في المغرب.',
-    darija: 'الكوتش ديال الذكاء الاصطناعي ديالنا يوجهك فالوقت الفعلي فالفاوضات ديالك فالمغرب.'
+    ar: 'يوجهك مدرب التفاوض بالذكاء الاصطناعي لدينا في الوقت الفعلي أثناء مفاوضاتك في المغرب.',
+    darija: 'الكوتش ديال التفاوض بالذكاء الاصطناعي ديالنا كيوجهك ف الوقت الحقيقي أثناء المفاوضات ديالك فالمغرب.'
   },
   try_now: {
     fr: 'Essayer maintenant',
