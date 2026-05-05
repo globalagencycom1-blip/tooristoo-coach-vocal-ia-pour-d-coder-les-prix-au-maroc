@@ -14,7 +14,7 @@ export const faqExtended = {
     faq_q17: "Mon riad refuse de baisser son prix. Que faire ?",
     faq_a17: "C'est votre droit absolu de partir. La meilleure technique : montrez l'analyse Tooristoo avec les prix de référence, proposez un prix juste, et si refus, levez-vous et commencez à partir — les riads rappellent souvent. Si vous êtes déjà dans le riad, restez calme et payez ce qui était convenu. Documentez par messages écrits si possible. La Brigade Touristique peut être contactée en cas de litige persistant.",
     faq_q18: "Quelle est la méthodologie derrière le taux de 98 % ?",
-    faq_a18: "Ce taux est calculé sur 12 000 analyses vérifiées : nous comparons le prix demandé à notre base de données de tarifs officiels réels (collectés terrain + signalements communautaires + tarifs des prestataires certifiés). Quand le prix dépasse la fourchette normale de plus de 15 %, l'IA émet une alerte. Le 98 % correspond au taux d'alertes effectivement justifiées, validé par retour utilisateur.",
+    faq_a18: "Ce taux est calculé sur 12 000 analyses vérifiées : nous comparons le prix demandé à notre base de données de tarifs officiels réels (collectés terrain + signalements communautaires + tarifs des prestataires certifiés). Quand le prix dépasse la fourchette normale de plus de 15 %, l'IA émet une alerte. Le 98 % correspond au taux d'alertes effectivement justifiées.",
     faq_q19: "Peut-on utiliser Tooristoo pour un hammam ou spa ?",
     faq_a19: "Oui. Sélectionnez la catégorie 'Spa' et entrez le prix demandé. Tooristoo vous donnera la fourchette pour les hammams traditionnels (50–150 MAD pour un soin complet) vs les spas touristiques (200–500 MAD).",
     faq_q20: "Comment Tooristoo génère les phrases en darija ?",
