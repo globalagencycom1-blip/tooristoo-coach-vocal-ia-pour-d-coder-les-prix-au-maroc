@@ -184,7 +184,7 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
 
 **Official 2026 fares**: Grand taxi to Casa-Port: 300–350 MAD. Train CNE: 43 MAD (35 min). Shared taxi seat: 30–40 MAD.
 
-**Classic trap**: "Broken meter", offer at 600 MAD. Response: "La, bghit l-3adad ou lfafq qbel".`
+**Classic trap**: "Broken meter", offer at 600 MAD. Response: "La, bghit l-3adad ou lwafq qbel".`
     },
     es: {
       title: 'Precios reales taxi aeropuerto Casablanca (Mohammed V) 2026',
