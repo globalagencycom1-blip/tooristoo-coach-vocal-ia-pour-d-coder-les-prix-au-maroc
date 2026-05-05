@@ -506,9 +506,9 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
       content: `Beware unofficial "porters" at port: 100–300 MAD claimed. Keep your bags. Port currency exchange has poor rates: prefer bank or ATM. Taxi: 15–25 MAD centre with meter. "Nice student" tour leads to a shop: "Shukran, ma mhtajch mrshad". CTM bus to Chefchaouen: 55–70 MAD (2h30). Prefer recognised agencies over port touts (300+ MAD for same trip).`
     },
     es: {
-      title: 'Puerto de Tánger: Guía de Precios Reales y Trampas Turísticas',
-      excerpt: 'Guía anti-estafa para llegar a Tánger en ferry.',
-      content: `Falsos porteadores: 100–300 MAD. Guarda el equipaje. Cambio en puerto: siempre fraudulento. Taxi: 15–25 MAD centro. Bus CTM a Chefchaouen: 55–70 MAD (2h30).`
+      title: 'Puerto de Tánger: guía de precios y buenos hábitos',
+      excerpt: 'Guía práctica para llegar a Tánger en ferry y moverse por la ciudad.',
+      content: `Cuidado con los "porteadores" no oficiales: 100–300 MAD. Conserva el equipaje. Cambio en puerto: tarifas desfavorables, prefiere banco. Taxi: 15–25 MAD centro con taxímetro. Bus CTM a Chefchaouen: 55–70 MAD (2h30). Prefiere agencias reconocidas a captadores del puerto.`
     },
     de: {
       title: 'Hafen von Tanger: Echte Preise und Touristenfallen Leitfaden',
