@@ -27,7 +27,7 @@ export const PRIVACY_TRANSLATIONS = {
       },
       {
         title: "5. Durées de conservation",
-        content: `Nous appliquons le principe de minimisation des données (Art. 5.1.e RGPD) :\n\n• **Données de compte :** durée de l'abonnement + 3 ans après résiliation\n• **Données de négociation :** 24 mois, puis anonymisées\n• **Transcriptions textuelles :** < 60 secondes (traitement uniquement), résultat conservé 24 mois\n• **Logs de connexion :** 12 mois (exigence légale)\n• **Signalements d'arnaques :** 36 mois ou jusqu'à demande de suppression\n• **Suppression de compte :** effective sous 30 jours`
+        content: `Nous appliquons le principe de minimisation des données (Art. 5.1.e RGPD) :\n\n• **Données de compte :** durée de l'abonnement + 3 ans après résiliation\n• **Données de négociation :** 24 mois, puis anonymisées\n• **Transcriptions textuelles :** < 60 secondes (traitement uniquement), résultat conservé 24 mois\n• **Logs de connexion :** 12 mois (exigence légale)\n• **Signalements d'écarts de prix :** 36 mois ou jusqu'à demande de suppression\n• **Suppression de compte :** effective sous 30 jours`
       },
       {
         title: "6. Partage des données",
