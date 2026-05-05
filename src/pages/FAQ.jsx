@@ -112,7 +112,7 @@ export default function FAQ() {
             <dt>Qu'est-ce que Tooristoo ?</dt>
             <dd>Tooristoo est une application de coach vocal IA négociateur qui aide les touristes à négocier les meilleurs prix au Maroc, détecter les arnaques et obtenir des phrases de négociation en darija marocain en temps réel.</dd>
             <dt>Est-ce que Tooristoo est gratuit ?</dt>
-            <dd>Oui, Tooristoo propose un plan gratuit avec 3 analyses par jour. Les plans Voyageur et Pro offrent des analyses illimitées et des fonctionnalités avancées.</dd>
+            <dd>Oui, Tooristoo propose un plan gratuit avec 3 analyses par jour. Les plans Voyageur et Voyageur Plus offrent 50 et 100 analyses par mois.</dd>
             <dt>Dans quelles langues fonctionne Tooristoo ?</dt>
             <dd>Tooristoo est disponible en français, anglais, espagnol, allemand, arabe et darija marocain.</dd>
             <dt>Quelles villes du Maroc sont couvertes ?</dt>
