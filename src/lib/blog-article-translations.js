@@ -32,12 +32,12 @@ export const BLOG_ARTICLE_TRANSLATIONS = {
     darija: 'واش احتاج ليك الساعدة فالفاوضة؟'
   },
   ai_coach_desc: {
-    fr: 'Notre coach IA vous guide en temps réel lors de vos négociations au Maroc.',
-    en: 'Our AI coach guides you in real-time during your negotiations in Morocco.',
-    es: 'Nuestro entrenador de IA te guía en tiempo real durante tus negociaciones en Marruecos.',
-    de: 'Unser KI-Coach leitet Sie in Echtzeit durch Ihre Verhandlungen in Marokko.',
-    ar: 'يوجهك مدرب التفاوض بالذكاء الاصطناعي لدينا في الوقت الفعلي أثناء مفاوضاتك في المغرب.',
-    darija: 'الكوتش ديال التفاوض بالذكاء الاصطناعي ديالنا كيوجهك ف الوقت الحقيقي أثناء المفاوضات ديالك فالمغرب.'
+    fr: 'Notre coach IA négociateur vous guide en temps réel lors de vos négociations au Maroc.',
+    en: 'Our AI negotiation coach guides you in real time during your negotiations in Morocco.',
+    es: 'Nuestro coach de negociación con IA te guía en tiempo real durante tus negociaciones en Marruecos.',
+    de: 'Unser KI-Verhandlungscoach begleitet Sie in Echtzeit bei Ihren Verhandlungen in Marokko..',
+    ar: 'مدربنا الذكي للتفاوض يرشدك في الوقت الفعلي أثناء مفاوضاتك في المغرب.',
+    darija: 'كوتش التفاوض بالذكاء الاصطناعي ديالنا كيهديك فالوقت الحقيقي فمفاوضاتك فالمغرب.'
   },
   try_now: {
     fr: 'Essayer maintenant',
