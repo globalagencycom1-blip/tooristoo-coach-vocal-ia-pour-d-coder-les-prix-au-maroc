@@ -11,7 +11,7 @@ export const NEW_BLOG_ARTICLES_TRANSLATIONS = {
 Prix demandé : 300–500 MAD. Prix réel : 70–100 MAD. Réponse : "Dour l-3adad 3afak" (mets le compteur). Sinon négociez 80 MAD ferme avant de monter.
 
 **2. Le "guide gratuit" vers une boutique**
-Un inconnu vous offre une visite, vous finissez dans un tapis-shop sous pression. Refus poli : "Shukran, ma mhtajch" (merci, je n'ai pas besoin).
+Un inconnu vous offre une visite, vous finissez dans un tapis-shop sous pression. Refus poli : "Choukran, ma mhtajch" (merci, je n'ai pas besoin).
 
 **3. Le thé forcé (500–2000 MAD)**
 Invitation "amicale", salon fermé, facture exorbitante. Ne jamais accepter un thé chez un inconnu rencontré dans la rue.
@@ -44,7 +44,7 @@ Taux frauduleux + billets de 10 MAD glissés comme billets de 100. Changez uniqu
 
 **1. Taxi without meter from the airport** — Asked: 300–500 MAD. Real: 70–100 MAD. Say "Dour l-3adad 3afak". Or negotiate 80 MAD before getting in.
 
-**2. The "free guide" toward a shop** — Polite refusal: "Shukran, ma mhtajch".
+**2. The "free guide" toward a shop** — Polite refusal: "Choukran, ma mhtajch".
 
 **3. Forced tea (500–2,000 MAD)** — Never accept tea from a stranger met on the street.
 
@@ -502,7 +502,7 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
     en: {
       title: 'Tangier Port: Price Range Guide and Good Reflexes',
       excerpt: 'Practical guide for arriving in Tangier by ferry and navigating the city.',
-      content: `Beware unofficial "porters" at port: 100–300 MAD claimed. Keep your bags. Port currency exchange has poor rates: prefer bank or ATM. Taxi: 15–25 MAD centre with meter. "Nice student" tour leads to a shop: "Shukran, ma mhtajch mrshad". CTM bus to Chefchaouen: 55–70 MAD (2h30). Prefer recognised agencies over port touts (300+ MAD for same trip).`
+      content: `Beware unofficial "porters" at port: 100–300 MAD claimed. Keep your bags. Port currency exchange has poor rates: prefer bank or ATM. Taxi: 15–25 MAD centre with meter. "Nice student" tour leads to a shop: "Choukran, ma mhtajch mrshad". CTM bus to Chefchaouen: 55–70 MAD (2h30). Prefer recognised agencies over port touts (300+ MAD for same trip).`
     },
     es: {
       title: 'Puerto de Tánger: guía de precios y buenos hábitos',
