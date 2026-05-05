@@ -361,8 +361,8 @@ Si un taxi vous indique que son compteur est cassé, vous pouvez demander : "La,
 
   'agadir-vigilance-plage': {
     fr: {
-      title: 'Agadir : ce que les touristes ne voient pas venir',
-      excerpt: 'Les pièges spécifiques à Agadir : plage, jet-ski, restaurants de bord de mer.',
+      title: 'Agadir : prix réels des activités balnéaires et bons réflexes',
+      excerpt: 'Les fourchettes de prix à connaître à Agadir : plage, jet-ski, restaurants de bord de mer.',
       content: `**Jet-ski et activités nautiques** : Prix affiché 300–500 MAD/30 min. Prix négociable 200–350 MAD. Vigilance : "assurance obligatoire" 100 MAD non mentionnée. Demandez le prix TOUT COMPRIS.
 
 **Restaurants bord de mer (Corniche)** : Poisson "frais" — vérifiez la date. 80 MAD peut devenir 250 MAD avec couverts + pain + eau. Demandez la carte avec TOUS les prix avant de vous asseoir.
