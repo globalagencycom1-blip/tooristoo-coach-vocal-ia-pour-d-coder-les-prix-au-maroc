@@ -1644,7 +1644,7 @@ Bei kleinerem Budget bieten einige Hotels einen Studentenbegleiter (50-100 MAD) 
   // NEW PILLAR ARTICLES — imported from blog-translations-new.js
   ...NEW_BLOG_ARTICLES_TRANSLATIONS,
 
-  // CHEFCHAOUEN - PHOTOS (anciennement "ARNAQUE PHOTO")
+  // CHEFCHAOUEN - PHOTOS
   'chefchaouen-vigilance-photo': {
     fr: {
       title: 'Chefchaouen : guide des photos respectueuses et bons réflexes',
