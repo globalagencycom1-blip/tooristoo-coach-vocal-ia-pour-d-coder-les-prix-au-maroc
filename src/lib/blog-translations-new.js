@@ -177,8 +177,8 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
 **Prix selon destination**
 - Casa-Port : 300–350 MAD | Ain Diab / Corniche : 350–400 MAD | Rabat : 400–500 MAD en taxi partagé (60–70 MAD/place)
 
-**Le piège classique**
-"Compteur cassé", offre à 600 MAD. Réponse : "La, bghit l-3adad ou lwafq qbel" (non, je veux le compteur et l'accord avant).`
+**À retenir**
+Si un taxi vous indique que son compteur est cassé, vous pouvez demander : "La, bghit l-3adad ou lfafq qbel" (non, je veux le compteur et l'accord avant). Sinon, fixez le prix par écrit avant de monter.`
     },
     en: {
       title: 'Real Casablanca Airport Taxi Prices (Mohammed V) 2026',
