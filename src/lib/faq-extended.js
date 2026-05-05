@@ -23,8 +23,8 @@ export const faqExtended = {
   en: {
     faq_q13: "What should I do if I already paid an inflated price?",
     faq_a13: "Stay calm. For a minor overcharge (under 200 MAD), calmly refuse the surplus and leave. For larger amounts, ask for a receipt (legally mandatory in Morocco), contact the Tourist Brigade in Marrakech or Fes medinas, or call Marrakech Tourist Police at +212 524 38 46 01. Also report the incident on Tooristoo to help other travelers.",
-    faq_q14: "How do I report a scam with Tooristoo?",
-    faq_a14: "After each analysis, a 'Report' button lets you submit a community report with location, service type and amount. Once 3 users confirm the same incident, the provider is suspended from our certified directory. Your reports also improve the detection algorithm.",
+    faq_q14: "How do I report a price gap with Tooristoo?",
+    faq_a14: "After each analysis, a 'Report' button lets you submit a community report with location, service type and amount. Once 3 users confirm the same incident, the provider is suspended from our directory. Your reports also improve the detection algorithm.",    
     faq_q15: "Does Tooristoo work in the desert without network coverage?",
     faq_a15: "Partially. Real-time AI analysis requires internet. However, Tooristoo automatically saves past analyses, Darija negotiation phrases and reference prices locally on your device — accessible offline. Check your desert excursion prices before leaving covered areas.",
     faq_q16: "Do the analyzed prices include Ramadan and high season variations?",
@@ -41,8 +41,8 @@ export const faqExtended = {
   es: {
     faq_q13: "¿Qué hacer si ya pagué un precio inflado?",
     faq_a13: "Mantén la calma. Para un cargo menor (menos de 200 MAD), rechaza el exceso y vete. Para importes mayores, pide recibo (obligatorio legalmente), contacta la Brigada Turística en Marrakech o Fez, o llama a la Policía Turística de Marrakech al +212 524 38 46 01.",
-    faq_q14: "¿Cómo denunciar una estafa con Tooristoo?",
-    faq_a14: "Después de cada análisis, un botón 'Denunciar' permite enviar un informe comunitario. Con 3 confirmaciones de usuarios, el proveedor queda suspendido del directorio certificado.",
+    faq_q14: "¿Cómo señalar una diferencia de precio con Tooristoo?",
+    faq_a14: "Después de cada análisis, un botón 'Señalar' permite enviar un informe comunitario. Con 3 confirmaciones de usuarios, el proveedor queda suspendido del directorio.",   
     faq_q15: "¿Funciona Tooristoo en el desierto sin cobertura?",
     faq_a15: "Parcialmente. El análisis IA en tiempo real requiere internet. Sin embargo, Tooristoo guarda análisis pasados, frases de negociación en darija y precios de referencia localmente en tu dispositivo — accesibles sin conexión.",
     faq_q16: "¿Los precios incluyen Ramadán y temporada alta?",
@@ -59,7 +59,7 @@ export const faqExtended = {
   de: {
     faq_q13: "Was tun wenn ich bereits einen überhöhten Preis bezahlt habe?",
     faq_a13: "Ruhig bleiben. Bei kleinem Aufschlag (unter 200 MAD), ruhig ablehnen und gehen. Bei größeren Beträgen Quittung verlangen, Touristenbrigade kontaktieren oder Touristenpolizei Marrakesch anrufen: +212 524 38 46 01.",
-    faq_q14: "Wie melde ich einen Betrug mit Tooristoo?",
+    faq_q14: "Wie melde ich eine Preisabweichung mit Tooristoo?",
     faq_a14: "Nach jeder Analyse gibt es eine 'Melden'-Schaltfläche. Bei 3 Bestätigungen wird der Anbieter aus unserem Verzeichnis gesperrt.",
     faq_q15: "Funktioniert Tooristoo in der Wüste ohne Netz?",
     faq_a15: "Teilweise. Echtzeit-KI braucht Internet. Aber frühere Analysen, Darija-Phrasen und Referenzpreise werden lokal gespeichert — offline verfügbar.",
@@ -77,8 +77,8 @@ export const faqExtended = {
   ar: {
     faq_q13: "ماذا أفعل إذا دفعت بالفعل سعراً مبالغاً فيه؟",
     faq_a13: "ابقَ هادئاً. للرسوم الصغيرة (أقل من 200 درهم)، ارفض الزيادة وغادر. للمبالغ الأكبر، اطلب إيصالاً (إلزامي قانوناً)، اتصل بالشرطة السياحية مراكش: +212 524 38 46 01.",
-    faq_q14: "كيف أبلغ عن احتيال باستخدام Tooristoo؟",
-    faq_a14: "بعد كل تحليل، زر 'إبلاغ' يتيح تقديم تقرير. عند 3 تأكيدات من المستخدمين، يُعلق المزود من دليلنا المعتمد.",
+    faq_q14: "كيف أبلغ عن فرق سعر مع Tooristoo؟",
+    faq_a14: "بعد كل تحليل، زر 'إبلاغ' يتيح تقديم تقرير. عند 3 تأكيدات من المستخدمين، يُعلق المزود من دليلنا.",    
     faq_q15: "هل يعمل Tooristoo في الصحراء بدون شبكة؟",
     faq_a15: "جزئياً. التحليل الفوري يحتاج إنترنت. لكن التحليلات السابقة وعبارات الدارجة والأسعار المرجعية محفوظة محلياً — متاحة دون اتصال.",
     faq_q16: "هل تشمل الأسعار المحللة رمضان والموسم العالي؟",
@@ -95,8 +95,8 @@ export const faqExtended = {
   darija: {
     faq_q13: "آش تدير إلا خلصت ثمن غالي بالفعل؟",
     faq_a13: "بقا هادئ. إلا كانت الزيادة صغيرة (أقل من 200 درهم)، ارفض الزيادة ومشي. إلا كانت كبيرة، اطلب وصل (واجب قانوني)، اتصل بالشرطة السياحية ديال مراكش: +212 524 38 46 01.",
-    faq_q14: "كيفاش تبلغ على نصب مع Tooristoo؟",
-    faq_a14: "بعد كل تحليل، زر 'بلاغ' كيخليك تقدم تقرير. مع 3 تأكيدات من المستخدمين، كيتوقف الخادم من القائمة ديالنا.",
+    faq_q14: "كيفاش نسجل بلاغ على فرق فالأثمان مع Tooristoo؟",
+    faq_a14: "بعد كل تحليل، الزر ديال 'سجل بلاغ' كيخليك تقدم تقرير. منين 3 مستخدمين كيأكدو نفس الحادثة، المزود كيتعلق من الدليل ديالنا.",
     faq_q15: "واش Tooristoo كيخدم فالصحراء بلا نت؟",
     faq_a15: "شوية. التحليل الفوري محتاج إنترنت. لكن التحليلات السابقة وجمل الدارجة والأثمان المرجعية مخزنة محلياً فجهازك — كتخدم بلا اتصال.",
     faq_q16: "واش الأثمان كتشمل رمضان والموسم العالي؟",
