@@ -496,7 +496,7 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
 
 **Taxi depuis le port** : Tanger Ville → centre : 15–25 MAD (compteur obligatoire). Tanger Med → Tanger centre : grand taxi 80–120 MAD (40 km).
 
-**La "Tour de Tanger"** : Un "étudiant sympa" vous guide vers une boutique. Réponse : "Shukran, ma mhtajch mrshad".
+**La "Tour de Tanger"** : Un "étudiant sympa" vous guide vers une boutique. Réponse : "Choukran, ma mhtajch mrshad".
 
 **Excursions depuis Tanger** : Bus CTM vers Chefchaouen : 55–70 MAD (2 h 30). Grand taxi partagé : 80–100 MAD/place. Évitez les agences du port (300+ MAD pour le même trajet).`
     },
