@@ -51,7 +51,7 @@ const CONTENT = {
     commitments: [
       { icon: '💶', title: 'Official prices displayed', desc: 'The price listed on Tooristoo is the real price charged. No markup for foreign tourists. Rates verified and regularly updated by our team.' },
       { icon: '📋', title: 'No hidden fees', desc: 'No unmentioned surcharges. VAT included, tips not mandatory, specific supplements clearly stated in advance.' },
-      { icon: '✅', title: 'Verification', desc: 'A Tooristoo team member visited and tested the service in person before certification. Mandatory monthly re-evaluation.' },
+      { icon: '✅', title: 'Verification', desc: 'A member of the Tooristoo team has researched and selected the online service. Annual re-evaluation required.' },
       { icon: '⭐', title: 'Minimum rating 4.0/5', desc: 'Only providers maintaining a ≥ 4.0/5 customer rating keep their certification. Below this threshold: warning then downgrade.' },
       { icon: '📞', title: 'Guaranteed contact', desc: 'Verified and operational phone number. Response within 4 hours for customer requests during peak tourist season.' },
       { icon: '🤝', title: 'Equal welcome for all', desc: 'The same service, the same quality, and the same listed prices for every customer — whether a regular local or an international visitor.' },
