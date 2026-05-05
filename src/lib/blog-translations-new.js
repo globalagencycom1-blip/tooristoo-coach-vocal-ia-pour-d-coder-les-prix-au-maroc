@@ -65,12 +65,12 @@ Taux frauduleux + billets de 10 MAD glissés comme billets de 100. Changez uniqu
     es: {
       title: 'Top 10 vigilancia tarifaria en Marrakech (y cómo evitarlas)',
       excerpt: 'Las situaciones tarifarias más comunes con rangos de referencia y respuestas correctas.',
-      content: `1. Taxi sin taxímetro: negocia 80 MAD. 2. "Guía gratis": "Shukran, ma mhtajch". 3. Té forzado: nunca con extraños. 4. Cooperativas falsas: verifica cartel oficial. 5. Restaurante sin precios: solo si ves precios. 6. Henna: di no si no la pediste. 7. Aceite de argán puro: 100–120 MAD/100ml cooperativa. 8. Fotos pagadas: no mires. 9. Riad caro: reserva directo. 10. Cambio en calle: solo banco.`
+      content: `1. Taxi sin taxímetro: negocia 80 MAD. 2. "Guía gratis": "Choukran, ma mhtajch". 3. Té forzado: nunca con extraños. 4. Cooperativas falsas: verifica cartel oficial. 5. Restaurante sin precios: solo si ves precios. 6. Henna: di no si no la pediste. 7. Aceite de argán puro: 100–120 MAD/100ml cooperativa. 8. Fotos pagadas: no mires. 9. Riad caro: reserva directo. 10. Cambio en calle: solo banco.`
     },
     de: {
       title: 'Top 10 Preisüberwachungstipps in Marrakesch (und wie man sie vermeidet)',
       excerpt: 'Die häufigsten Preissituationen mit Referenzspannen und richtigen Antworten.',
-      content: `1. Taxi ohne Taxameter: 80 MAD verhandeln. 2. "Kostenloser Führer": "Shukran, ma mhtajch". 3. Erzwungener Tee: niemals bei Fremden. 4. Falsche Kooperativen: offizielles Schild prüfen. 5. Restaurant ohne Preise: nur setzen wenn Preise sichtbar. 6. Henna: nein sagen. 7. Arganöl: 100–120 MAD/100ml zertifiziert. 8. Bezahlte Fotos: nicht hinschauen. 9. Überteurtes Riad: direkt buchen. 10. Straßenwechsel: nur Bank.`
+      content: `1. Taxi ohne Taxameter: 80 MAD verhandeln. 2. "Kostenloser Führer": "Choukran, ma mhtajch". 3. Erzwungener Tee: niemals bei Fremden. 4. Falsche Kooperativen: offizielles Schild prüfen. 5. Restaurant ohne Preise: nur setzen wenn Preise sichtbar. 6. Henna: nein sagen. 7. Arganöl: 100–120 MAD/100ml zertifiziert. 8. Bezahlte Fotos: nicht hinschauen. 9. Überteurtes Riad: direkt buchen. 10. Straßenwechsel: nur Bank.`
     },
     ar: {
       title: 'أفضل 10 نصائح يقظة سعرية في مراكش (وكيفية تجنبها)',
