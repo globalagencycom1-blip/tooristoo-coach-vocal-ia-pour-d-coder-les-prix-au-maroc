@@ -26,9 +26,9 @@ const CONTENT = {
     ],
     process_title: 'Processus de certification',
     process: [
-       { step: '1', title: 'Sélection', desc: 'Un membre de l\'équipe Tooristoo a recherché et sélectionné le service en ligne. Ré-évaluation annuelle obligatoire.' },
-       { step: '2', title: 'Conformité', desc: 'Si conforme, le prestataire reçoit le badge (Référencé) Tooristoo et est publié sur la plateforme.' },
-       { step: '3', title: 'Suivi continu', desc: 'Ré-évaluation annuelle + surveillance des signalements communautaires en temps réel.' },
+      { step: '1', title: 'Sélection', desc: 'Un membre de l\'équipe Tooristoo a recherché et sélectionné le service en ligne. Ré-évaluation annuelle obligatoire.' },
+      { step: '2', title: 'Conformité', desc: 'Si conforme, le prestataire reçoit le badge (Référencé) Tooristoo et est publié sur la plateforme.' },
+      { step: '3', title: 'Suivi continu', desc: 'Ré-évaluation annuelle + surveillance des signalements communautaires en temps réel.' },
     ],
     why_title: 'Pourquoi c\'est important pour vous',
     why: [
@@ -49,19 +49,19 @@ const CONTENT = {
     intro: 'Unlike standard aggregators that list without verification, Tooristoo enforces a strict commitment charter. Each certified provider has signed and respects these 7 commitments.',
     commitments_title: '7 Certified Commitments',
     commitments: [
-{ "icon": "💶", "title": "Official prices displayed", "desc": "The price shown on Tooristoo is the actual price charged. No markup for foreign tourists. Prices are verified and regularly updated by our team." },
-  { "icon": "📋", "title": "No hidden fees", "desc": "No extra charges not mentioned on the listing. VAT included, tips not mandatory, and any specific surcharges are clearly indicated in advance." },
-  { "icon": "✅", "title": "Verification", "desc": "A member of the Tooristoo team has researched and selected the service online. Annual re-evaluation is mandatory." },
-  { "icon": "⭐", "title": "Minimum rating 4.0/5", "desc": "Only providers maintaining a customer rating ≥ 4.0/5 remain listed. Below this threshold: warning followed by downgrading." },
-  { "icon": "📞", "title": "Guaranteed contact", "desc": "Verified and operational phone number. Response within 4 hours to customer inquiries during peak tourist season." },
-  { "icon": "🤝", "title": "Same service for everyone", "desc": "The same service, quality, and displayed prices for every customer, whether a local regular or a foreign visitor." },
-  { "icon": "🔔", "title": "Reports handled", "desc": "In case of a report validated by 3 users, the provider is contacted within 24 hours and, if necessary, temporarily suspended during the investigation." }
+      { "icon": "💶", "title": "Official prices displayed", "desc": "The price shown on Tooristoo is the actual price charged. No markup for foreign tourists. Prices are verified and regularly updated by our team." },
+      { "icon": "📋", "title": "No hidden fees", "desc": "No extra charges not mentioned on the listing. VAT included, tips not mandatory, and any specific surcharges are clearly indicated in advance." },
+      { "icon": "✅", "title": "Verification", "desc": "A member of the Tooristoo team has researched and selected the service online. Annual re-evaluation is mandatory." },
+      { "icon": "⭐", "title": "Minimum rating 4.0/5", "desc": "Only providers maintaining a customer rating ≥ 4.0/5 remain listed. Below this threshold: warning followed by downgrading." },
+      { "icon": "📞", "title": "Guaranteed contact", "desc": "Verified and operational phone number. Response within 4 hours to customer inquiries during peak tourist season." },
+      { "icon": "🤝", "title": "Same service for everyone", "desc": "The same service, quality, and displayed prices for every customer, whether a local regular or a foreign visitor." },
+      { "icon": "🔔", "title": "Reports handled", "desc": "In case of a report validated by 3 users, the provider is contacted within 24 hours and, if necessary, temporarily suspended during the investigation." }
     ],
     process_title: 'Certification process',
     process: [
-       { step: '1', title: 'Selection', desc: 'A Tooristoo team member researched and selected the service online. Mandatory annual re-evaluation.' },
-       { step: '2', title: 'Compliance', desc: 'If compliant, the provider receives the Tooristoo badge and is published on the platform.' },
-       { step: '3', title: 'Ongoing monitoring', desc: 'Annual re-evaluation + real-time monitoring of community reports.' },
+      { "step": "1", "title": "Selection", "desc": "A member of the Tooristoo team has researched and selected the service online. Annual re-evaluation is mandatory." },
+      { "step": "2", "title": "Compliance", "desc": "If compliant, the provider receives the Tooristoo (Listed) badge and is published on the platform." },
+      { "step": "3", "title": "Continuous monitoring", "desc": "Annual re-evaluation + real-time monitoring of community reports." }
     ],
     why_title: 'Why this matters for you',
     why: [
@@ -82,19 +82,19 @@ const CONTENT = {
     intro: 'A diferencia de los agregadores clásicos que listan sin verificación, Tooristoo aplica una carta de compromiso estricta. Cada proveedor certificado ha firmado y respeta estos 7 compromisos.',
     commitments_title: '7 Compromisos Certificados',
     commitments: [
-  { "icon": "💶", "title": "Precios oficiales mostrados", "desc": "El precio indicado en Tooristoo es el precio real aplicado. Sin recargos para turistas extranjeros. Precios verificados y actualizados regularmente por nuestro equipo." },
-  { "icon": "📋", "title": "Sin cargos ocultos", "desc": "Ningún cargo adicional no mencionado en la ficha. IVA incluido, propinas no obligatorias y suplementos específicos claramente indicados con antelación." },
-  { "icon": "✅", "title": "Verificación", "desc": "Un miembro del equipo de Tooristoo ha investigado y seleccionado el servicio en línea. Reevaluación anual obligatoria." },
-  { "icon": "⭐", "title": "Calificación mínima 4.0/5", "desc": "Solo los proveedores que mantienen una calificación de clientes ≥ 4,0/5 permanecen listados. Por debajo de este umbral: advertencia y posterior descenso en el ranking." },
-  { "icon": "📞", "title": "Contacto garantizado", "desc": "Número de teléfono verificado y operativo. Respuesta en menos de 4 horas a las solicitudes de clientes durante la temporada alta turística." },
-  { "icon": "🤝", "title": "Mismo trato para todos", "desc": "El mismo servicio, la misma calidad y los mismos precios mostrados para cada cliente, ya sea un habitual local o un visitante extranjero." },
-  { "icon": "🔔", "title": "Reportes gestionados", "desc": "En caso de un reporte validado por 3 usuarios, el proveedor es contactado en menos de 24 horas y, si es necesario, suspendido temporalmente durante la investigación." }
+      { "icon": "💶", "title": "Precios oficiales mostrados", "desc": "El precio indicado en Tooristoo es el precio real aplicado. Sin recargos para turistas extranjeros. Precios verificados y actualizados regularmente por nuestro equipo." },
+      { "icon": "📋", "title": "Sin cargos ocultos", "desc": "Ningún cargo adicional no mencionado en la ficha. IVA incluido, propinas no obligatorias y suplementos específicos claramente indicados con antelación." },
+      { "icon": "✅", "title": "Verificación", "desc": "Un miembro del equipo de Tooristoo ha investigado y seleccionado el servicio en línea. Reevaluación anual obligatoria." },
+      { "icon": "⭐", "title": "Calificación mínima 4.0/5", "desc": "Solo los proveedores que mantienen una calificación de clientes ≥ 4,0/5 permanecen listados. Por debajo de este umbral: advertencia y posterior descenso en el ranking." },
+      { "icon": "📞", "title": "Contacto garantizado", "desc": "Número de teléfono verificado y operativo. Respuesta en menos de 4 horas a las solicitudes de clientes durante la temporada alta turística." },
+      { "icon": "🤝", "title": "Mismo trato para todos", "desc": "El mismo servicio, la misma calidad y los mismos precios mostrados para cada cliente, ya sea un habitual local o un visitante extranjero." },
+      { "icon": "🔔", "title": "Reportes gestionados", "desc": "En caso de un reporte validado por 3 usuarios, el proveedor es contactado en menos de 24 horas y, si es necesario, suspendido temporalmente durante la investigación." }
     ],
     process_title: 'Proceso de certificación',
     process: [
-       { step: '1', title: 'Visita de campo', desc: 'Un miembro del equipo Tooristoo investigó y seleccionó el servicio en línea. Ré-evaluación anual obligatoria.' },
-       { step: '2', title: 'Certificación', desc: 'Si cumple, el proveedor recibe el sello Tooristoo.' },
-       { step: '3', title: 'Seguimiento continuo', desc: 'Re-evaluación anual + vigilancia de denuncias.' },
+      { step: '1', title: 'Visita de campo', desc: 'Un miembro del equipo Tooristoo investigó y seleccionó el servicio en línea. Ré-evaluación anual obligatoria.' },
+      { step: '2', title: 'Certificación', desc: 'Si cumple, el proveedor recibe el sello Tooristoo.' },
+      { step: '3', title: 'Seguimiento continuo', desc: 'Re-evaluación anual + vigilancia de denuncias.' },
     ],
     why_title: 'Por qué importa para ti',
     why: [
