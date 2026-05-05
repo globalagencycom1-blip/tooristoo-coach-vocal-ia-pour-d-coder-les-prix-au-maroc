@@ -69,7 +69,7 @@ Taux frauduleux + billets de 10 MAD glissés comme billets de 100. Changez uniqu
     },
     de: {
       title: 'Top 10 Preisüberwachungstipps in Marrakesch (und wie man sie vermeidet)',
-      excerpt: 'Die häufigsten Touristenfallen mit echten Preisen und richtigen Antworten.',
+      excerpt: 'Die häufigsten Preissituationen mit Referenzspannen und richtigen Antworten.',
       content: `1. Taxi ohne Taxameter: 80 MAD verhandeln. 2. "Kostenloser Führer": "Shukran, ma mhtajch". 3. Erzwungener Tee: niemals bei Fremden. 4. Falsche Kooperativen: offizielles Schild prüfen. 5. Restaurant ohne Preise: nur setzen wenn Preise sichtbar. 6. Henna: nein sagen. 7. Arganöl: 100–120 MAD/100ml zertifiziert. 8. Bezahlte Fotos: nicht hinschauen. 9. Überteurtes Riad: direkt buchen. 10. Straßenwechsel: nur Bank.`
     },
     ar: {
