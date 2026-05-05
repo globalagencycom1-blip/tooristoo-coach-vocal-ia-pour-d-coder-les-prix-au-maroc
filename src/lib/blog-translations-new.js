@@ -357,7 +357,7 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
     }
   },
 
-  'agadir': {
+  'agadir-vigilance-plage': {
     fr: {
       title: 'Agadir : ce que les touristes ne voient pas venir',
       excerpt: 'Les pièges spécifiques à Agadir : plage, jet-ski, restaurants de bord de mer.',
