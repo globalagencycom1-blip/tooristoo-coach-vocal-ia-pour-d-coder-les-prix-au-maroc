@@ -5,7 +5,7 @@ import { base44 } from '@/api/base44Client';
 const LABELS = {
   fr: {
     title: 'Limite mensuelle atteinte',
-    subtitle: 'Vous avez utilisé vos 3 analyses gratuites ce mois-ci. Passez au plan Voyageur pour continuer.',
+    subtitle: 'Vous avez utilisé vos 3 analyses gratuites ce mois-ci. Passez au plan Voyageur ou Voyageur Plus pour continuer.',
     voyageur: 'Plan Voyageur — 5€/mois',
     voyageur_desc: '50 analyses par mois',
     voyageur_plus: 'Plan Voyageur+ — 9€/mois',
@@ -15,7 +15,7 @@ const LABELS = {
   },
   en: {
     title: 'Monthly limit reached',
-    subtitle: 'You have used your 3 free analyses this month. Upgrade to Traveler plan to continue.',
+    subtitle: 'You have used your 3 free analyses this month. Upgrade to the Traveler or Traveler Plus plan to continue.',
     voyageur: 'Traveler Plan — €5/month',
     voyageur_desc: '50 analyses per month',
     voyageur_plus: 'Traveler+ Plan — €9/month',
@@ -25,7 +25,7 @@ const LABELS = {
   },
   es: {
     title: 'Límite mensual alcanzado',
-    subtitle: 'Has usado tus 3 análisis gratuitos este mes. Actualiza al plan Viajero para continuar.',
+    subtitle: 'Has usado tus 3 análisis gratuitos este mes. Cambia al plan Viajero o Viajero Plus para continuar.',
     voyageur: 'Plan Viajero — 5€/mes',
     voyageur_desc: '50 análisis por mes',
     voyageur_plus: 'Plan Viajero+ — 9€/mes',
@@ -35,7 +35,7 @@ const LABELS = {
   },
   de: {
     title: 'Monatslimit erreicht',
-    subtitle: 'Sie haben Ihre 3 kostenlosen Analysen diesen Monat verbraucht. Upgraden Sie auf den Reisenden-Plan.',
+    subtitle: 'Sie haben Ihre 3 kostenlosen Analysen diesen Monat verbraucht. Wechseln Sie zum Reisende- oder Reisende-Plus-Tarif, um fortzufahren.',
     voyageur: 'Reisender-Plan — 5€/Monat',
     voyageur_desc: '50 Analysen pro Monat',
     voyageur_plus: 'Reisender+-Plan — 9€/Monat',
@@ -45,7 +45,7 @@ const LABELS = {
   },
   ar: {
     title: 'تم الوصول إلى الحد الشهري',
-    subtitle: 'لقد استخدمت تحليلاتك الثلاث المجانية هذا الشهر. قم بالترقية لمتابعة.',
+    subtitle: 'لقد استخدمت تحليلاتك الثلاث المجانية هذا الشهر. انتقِل إلى باقة المسافر أو المسافر بلس للمتابعة.',
     voyageur: 'خطة المسافر — 5€/شهر',
     voyageur_desc: '50 تحليل شهرياً',
     voyageur_plus: 'خطة المسافر+ — 9€/شهر',
@@ -55,7 +55,7 @@ const LABELS = {
   },
   darija: {
     title: 'وصلتي للحد الشهري',
-    subtitle: 'استعملتي التحليلات المجانية ديال الشهر. ارتقي للفورمول المسافر باش تكمل.',
+    subtitle: 'استعملتي التحليلات المجانية ديال الشهر. بدّل لبلان المسافر أو المسافر بلس باش تكمل.',
     voyageur: 'فورمول المسافر — 5€/شهر',
     voyageur_desc: '50 تحليل فالشهر',
     voyageur_plus: 'فورمول المسافر+ — 9€/شهر',
