@@ -192,11 +192,13 @@ async function handleRequest(request) {
   // Cache court pour permettre des mises à jour rapides
   newHeaders.set('cache-control', 'public, max-age=300, s-maxage=300');
 
-  return new Response(html, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: newHeaders,
-  });
+const newHeaders = new Headers(response.headers);
+newHeaders.set("Content-Type", "text/html; charset=UTF-8");
+
+return new Response(html, {
+  status: 200,
+  headers: newHeaders,
+});
 }
 
 export default {
