@@ -372,12 +372,12 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
 **Souks d'Agadir** : Argan certifiée 100–150 MAD/100 ml (coopératives Biosphère).`
     },
     en: {
-      title: 'Agadir Jet-Skis & Beaches: Real Prices and Tourist Pitfalls',
+      title: 'Agadir: Real Prices for Beach Activities and Good Reflexes',
       excerpt: 'Discover real prices for beach activities and how to avoid overcharging.',
       content: `Jet-ski: 200–350 MAD negotiable (not 300–500 MAD). Watch for hidden "insurance". Seafront restaurants: always ask full-price menu. Camels: 50–80 MAD/15min, negotiate before mounting. Quad excursions: book via hotel (300–450 MAD) not beach touts (400–600 MAD).`
     },
     es: {
-      title: 'Agadir: Precios Reales y Trampas',
+      title: 'Agadir: precios reales y buenos hábitos',
       excerpt: 'Descubre los precios reales para actividades de playa y cómo evitar la sobrefacturación.',
       content: `Moto acuática: 200–350 MAD negociable (no 300–500 MAD). Restaurantes Corniche: pide siempre carta completa. Camellos: 50–80 MAD/15min, negocia antes de montar. Quad: reserva en hotel (300–450 MAD) no en playa.`
     },
