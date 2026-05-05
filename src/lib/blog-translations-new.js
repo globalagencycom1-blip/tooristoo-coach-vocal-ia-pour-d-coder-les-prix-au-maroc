@@ -443,25 +443,33 @@ Si un taxi vous indique que son compteur est cassé, vous pouvez demander : "La,
 
   'marrakech-si-vigilance': {
     fr: {
-      title: 'Surfacturé au Maroc ? Les étapes pour vous protéger et vous faire rembourser',
-      excerpt: 'Démarches concrètes en cas d\'arnaque : signalement, remboursement, police touristique.',
-      content: `**Cas 1 : Surcharge légère (50–200 MAD)**
-Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur Tooristoo pour aider les autres.
+      title: 'Surfacturé au Maroc ? Les étapes pour vous protéger et obtenir un remboursement',
+      excerpt: 'Démarches concrètes en cas de litige tarifaire : signalement, remboursement, police touristique.',
+      content: `**Cas 1 : Surcoût léger (50–200 MAD)**
+- Refusez calmement de payer le surplus
+- Montrez le prix affiché ou la fourchette de référence
+- Signalez le prestataire sur Tooristoo pour aider la communauté
 
-**Cas 2 : Arnaque significative (200–2 000 MAD)**
-1. Demandez un reçu (obligatoire légalement)
-2. Photographiez le lieu, la personne, le produit
+**Cas 2 : Surcoût significatif (200–2 000 MAD)**
+1. Demandez un reçu — c'est une obligation légale au Maroc
+2. Photographiez le lieu, la facture, le produit ou service
 3. Contactez la Brigade Touristique
-4. Police Touristique
-5. Portez plainte au commissariat — conservez le numéro de dépôt
+4. Police Touristique de Marrakech
+5. Si nécessaire, déposez plainte au commissariat — conservez le numéro de dépôt
 
-**Cas 3 : Vol ou arnaque grave (carte bancaire, excursion non fournie)**
-1. Blocage carte immédiat (votre banque)
-2. Plainte police (urgences : 19)
-3. Contactez votre ambassade
-4. Procédure chargeback (rétrofacturation) : 45–90 jours, taux succès 70–85 %
+**Cas 3 : Litige grave (carte bancaire compromise, excursion non fournie)**
+1. Bloquez votre carte immédiatement (votre banque)
+2. Plainte police (numéro d'urgence : 19)
+3. Contactez votre ambassade ou consulat
+4. Procédure de chargeback (rétrofacturation) : 45–90 jours, taux de succès 70–85 % avec preuves
 
-**Signalement Tooristoo** : 3 confirmations d'utilisateurs → suspension du prestataire.`
+**Numéros utiles**
+- Police nationale : 19
+- SAMU : 15
+- Police Touristique de Marrakech : +212 524 38 46 01
+
+**Signalement Tooristoo**
+3 confirmations indépendantes d'un même prestataire entraînent sa suspension de notre annuaire, le temps d'une vérification approfondie. Votre signalement aide concrètement les voyageurs suivants.`
     },
     en: {
       title: 'Overcharged in Morocco? Steps to Protect Yourself and Get a Refund',
