@@ -333,7 +333,7 @@ export const BLOG_ARTICLES_TRANSLATIONS = {
     }
   },
 
-  // MARRAKECH - GUIDES (anciennement "ARNAQUES - GUIDE")
+  // MARRAKECH - GUIDES
   'mmarrakech-vigilance-guide': {
     fr: {
       title: 'Choisir un guide à Marrakech : tarifs et bonnes pratiques 2026',
