@@ -1,7 +1,7 @@
 // New pillar articles — imported in blog-translations.js
 export const NEW_BLOG_ARTICLES_TRANSLATIONS = {
 
-  'marrakech-top10-vigilance': {
+  'marrakech-top10-vigilances': {
     fr: {
       title: 'Top 10 vigilance tarifaire à Marrakech (et comment les éviter)',
       excerpt: 'Les pratiques tarifaires courantes que chaque touriste devrait connaître, avec les vrais prix et les bonnes réponses en darija.',
