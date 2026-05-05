@@ -492,7 +492,7 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
     fr: {
       title: 'Port de Tanger : Guide des tarifs réels et des pièges touristiques',
       excerpt: 'Guide vigilance pour arriver à Tanger par ferry et naviguer en toute sécurité.',
-      content: `**À la descente du ferry** : Faux porteurs réclament 100–300 MAD — gardez vos bagages. "Change" au port : toujours frauduleux. Des "aides" pour la douane ne sont pas nécessaires.
+      content: `**À la descente du ferry** : Méfiez-vous des "porteurs" non officiels qui réclament 100–300 MAD — gardez vos bagages. Évitez le change au port : taux défavorables, privilégiez la banque ou un DAB. Vous n'avez pas besoin d'"aide" pour la douane.
 
 **Taxi depuis le port** : Tanger Ville → centre : 15–25 MAD (compteur obligatoire). Tanger Med → Tanger centre : grand taxi 80–120 MAD (40 km).
 
