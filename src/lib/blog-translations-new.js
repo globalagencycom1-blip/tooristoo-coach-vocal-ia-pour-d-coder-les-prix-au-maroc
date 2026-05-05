@@ -511,9 +511,9 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
       content: `Cuidado con los "porteadores" no oficiales: 100–300 MAD. Conserva el equipaje. Cambio en puerto: tarifas desfavorables, prefiere banco. Taxi: 15–25 MAD centro con taxímetro. Bus CTM a Chefchaouen: 55–70 MAD (2h30). Prefiere agencias reconocidas a captadores del puerto.`
     },
     de: {
-      title: 'Hafen von Tanger: Echte Preise und Touristenfallen Leitfaden',
-      excerpt: 'Anti-Betrug-Leitfaden für die Ankunft in Tanger per Fähre.',
-      content: `Falsche Gepäckträger: 100–300 MAD. Gepäck behalten. Hafenwechsel: immer betrügerisch. Taxi: 15–25 MAD Zentrum. CTM-Bus nach Chefchaouen: 55–70 MAD (2,5h).`
+      title: 'Hafen von Tanger: Preisspannen-Leitfaden und bewährte Reflexe',
+      excerpt: 'Praktischer Leitfaden für die Ankunft in Tanger per Fähre und Bewegung in der Stadt.',
+      content: `Vorsicht vor inoffiziellen "Gepäckträgern": 100–300 MAD. Gepäck behalten. Hafenwechsel ungünstig, Bank oder Geldautomat bevorzugen. Taxi: 15–25 MAD Zentrum mit Taxameter. CTM-Bus nach Chefchaouen: 55–70 MAD (2,5h). Anerkannte Agenturen statt Hafenwerber bevorzugen.`
     },
     ar: {
       title: 'ميناء طنجة: دليل الأسعار الحقيقية والفخاخ السياحية',
