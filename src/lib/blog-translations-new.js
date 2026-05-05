@@ -516,9 +516,9 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
       content: `Vorsicht vor inoffiziellen "Gepäckträgern": 100–300 MAD. Gepäck behalten. Hafenwechsel ungünstig, Bank oder Geldautomat bevorzugen. Taxi: 15–25 MAD Zentrum mit Taxameter. CTM-Bus nach Chefchaouen: 55–70 MAD (2,5h). Anerkannte Agenturen statt Hafenwerber bevorzugen.`
     },
     ar: {
-      title: 'ميناء طنجة: دليل الأسعار الحقيقية والفخاخ السياحية',
-      excerpt: 'دليل مكافحة الاحتيال للوصول إلى طنجة بالعبارة.',
-      content: `حمالون وهميون: 100–300 درهم. احتفظ بأمتعتك. صرف العملة في الميناء دائماً احتيال. تاكسي: 15–25 درهم للمركز. حافلة CTM إلى شفشاون: 55–70 درهم (2.5 ساعة).`
+      title: 'ميناء طنجة: دليل نطاقات الأسعار والعادات الجيدة',
+      excerpt: 'دليل عملي للوصول إلى طنجة بالعبارة والتنقل في المدينة.',
+      content: `احذر "الحمالين" غير الرسميين: 100–300 درهم. احتفظ بأمتعتك. صرف العملة في الميناء غير مواتٍ، فضّل البنك أو الصراف الآلي. تاكسي: 15–25 درهم للمركز بالعداد. حافلة CTM إلى شفشاون: 55–70 درهم (2.5 ساعة). فضّل الوكالات المعترف بها على المروجين في الميناء.`
     },
     darija: {
       title: 'الميناء ديال طنجة: دليل الأثمان الحقيقية والفخاخ',
