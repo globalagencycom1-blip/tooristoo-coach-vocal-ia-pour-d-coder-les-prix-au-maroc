@@ -19,7 +19,7 @@ const CONTENT = {
       { icon: '💶', title: 'Prix officiels affichés', desc: 'Le prix annoncé sur Tooristoo est le prix réel pratiqué. Aucune majoration pour les touristes étrangers. Tarifs vérifiés et mis à jour régulièrement par notre équipe.' },
       { icon: '📋', title: 'Pas de frais cachés', desc: 'Aucun supplément non mentionné sur la fiche. TVA incluse, pourboires non obligatoires, suppléments spécifiques clairement indiqués à l\'avance.' },
       { icon: '✅', title: 'Vérification', desc: 'Un membre de l\'équipe Tooristoo a recherché et sélectionné le service en ligne. Ré-évaluation annuelle obligatoire.' },
-      { icon: '⭐', title: 'Note minimale 4.0/5', desc: 'Seuls les prestataires maintenant une note client ≥ 4,0/5 conservent leur certification. Sous ce seuil : avertissement puis déclassement.' },
+      { icon: '⭐', title: 'Note minimale 4.0/5', desc: 'Seuls les prestataires maintenant une note client ≥ 4,0/5 conservent leur référencement. Sous ce seuil : avertissement puis déclassement.' },
       { icon: '📞', title: 'Contact garanti', desc: 'Numéro de téléphone vérifié et opérationnel. Réponse sous 4h aux demandes clients en haute saison touristique.' },
       { icon: '🤝', title: 'Accueil identique pour tous', desc: 'Le même service, la même qualité et les mêmes tarifs affichés pour chaque client, qu\'il soit habitué local ou visiteur étranger.' },
       { icon: '🔔', title: 'Signalement traité', desc: 'En cas de signalement validé par 3 utilisateurs, le prestataire est contacté sous 24h et, si nécessaire, temporairement suspendu le temps d\'investigation.' },
