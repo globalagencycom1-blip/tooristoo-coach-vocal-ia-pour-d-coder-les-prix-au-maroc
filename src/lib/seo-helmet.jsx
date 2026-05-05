@@ -27,11 +27,11 @@ const META = {
     ar: { title: 'Tooristoo — مدرب صوتي ذكي للتفاوض على أفضل الأسعار في المغرب', desc: 'حلّل الأسعار في الوقت الفعلي وتفاوض على السعر العادل كالسكان المحليين في المغرب — بدون مفاجآت.' },
   },
   app: {
-    fr: { title: 'Coach IA Vocal | Analysez & Négociez les Meilleurs Prix au Maroc — Tooristoo', desc: 'Coach vocal IA en temps réel pour analyser les prix et négocier équitablement comme un local au Maroc.' },
-    en: { title: 'AI Voice Coach | Analyze & Negotiate Best Prices in Morocco — Tooristoo', desc: 'Real-time AI voice coach to analyze prices and negotiate fairly like a local in Morocco.' },
-    es: { title: 'Coach de Voz IA | Analiza y Negocia los Mejores Precios en Marruecos — Tooristoo', desc: 'Coach de voz IA en tiempo real para analizar precios y negociar con equidad en Marruecos.' },
-    de: { title: 'KI-Sprachcoach | Preise analysieren & verhandeln in Marokko — Tooristoo', desc: 'KI-Sprachcoach in Echtzeit zum Analysieren von Preisen und fairen Verhandeln in Marokko.' },
-    ar: { title: 'مدرب صوتي ذكي | حلل وتفاوض على أفضل الأسعار في المغرب — Tooristoo', desc: 'مدرب صوتي ذكي في الوقت الفعلي لتحليل الأسعار والتفاوض بشفافية في المغرب — معرفة السعر العادل قبل أي معاملة.' },
+    fr: { title: 'Coach IA Vocal Négociateur | Analysez & Négociez les Meilleurs Prix au Maroc — Tooristoo', desc: 'Coach vocal IA en temps réel pour analyser les prix et négocier équitablement comme un local au Maroc.' },
+    en: { title: 'AI Voice Negotiation Coach | Analyze & Negotiate Best Prices in Morocco — Tooristoo', desc: 'Real-time AI voice coach to analyze prices and negotiate fairly like a local in Morocco.' },
+    es: { title: 'Coach de negociación por voz con IA | Analiza y Negocia los Mejores Precios en Marruecos — Tooristoo', desc: 'Coach de voz IA en tiempo real para analizar precios y negociar con equidad en Marruecos.' },
+    de: { title: 'KI-Sprachverhandlungscoach | Preise analysieren & verhandeln in Marokko — Tooristoo', desc: 'KI-Sprachcoach in Echtzeit zum Analysieren von Preisen und fairen Verhandeln in Marokko.' },
+    ar: { title: 'مدرب تفاوض صوتي بالذكاء الاصطناعي | حلل وتفاوض على أفضل الأسعار في المغرب — Tooristoo', desc: 'مدرب صوتي ذكي في الوقت الفعلي لتحليل الأسعار والتفاوض بشفافية في المغرب — معرفة السعر العادل قبل أي معاملة.' },
   },
   faq: {
     fr: { title: 'FAQ — Questions Fréquentes sur Tooristoo | Coach IA Maroc', desc: 'Réponses aux questions fréquentes sur Tooristoo : fonctionnement, langues, villes, plan gratuit, protection des prix au Maroc.' },
