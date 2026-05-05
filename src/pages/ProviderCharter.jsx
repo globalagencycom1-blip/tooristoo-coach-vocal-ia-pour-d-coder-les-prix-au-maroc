@@ -38,7 +38,7 @@ const CONTENT = {
     ],
     become_title: 'Vous êtes prestataire au Maroc ?',
     become_desc: 'Rejoignez notre réseau référencé. Le référencement Tooristoo vous donne accès à des milliers de touristes internationaux qualifiés qui cherchent activement des prestataires de confiance.',
-    become_btn: 'Postuler à la certification',
+    become_btn: 'Postuler au référencement',
     cta_title: 'Prêt à voyager en toute confiance ?',
     cta_btn: 'Voir les prestataires certifiés',
   },
