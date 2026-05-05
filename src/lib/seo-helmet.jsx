@@ -114,9 +114,9 @@ const buildSchemas = (page) => {
           operatingSystem: 'iOS, Android, Web',
           description: 'Coach vocal IA pour négocier les meilleurs prix et voyager sereinement au Maroc. Disponible en 6 langues dont le darija marocain.',
           offers: [
-            { '@type': 'Offer', name: 'Gratuit', price: '0', priceCurrency: 'EUR', description: '3 analyses par jour' },
-            { '@type': 'Offer', name: 'Voyageur', price: '5', priceCurrency: 'EUR', description: 'Analyses illimitées' },
-            { '@type': 'Offer', name: 'Pro', price: '12', priceCurrency: 'EUR', description: 'Tout Voyageur + analytics avancés' },
+            { '@type': 'Offer', name: 'Gratuit', price: '0', priceCurrency: 'EUR', description: '3 analyses par mois' },
+            { '@type': 'Offer', name: 'Voyageur', price: '5', priceCurrency: 'EUR', description: '50 analyses par mois' },
+            { '@type': 'Offer', name: 'Voyageur Plus', price: '9', priceCurrency: 'EUR', description: '100 analyses par mois' },
           ],
           featureList: ['Analyse des prix en temps réel', 'Alertes prix anormaux', 'Phrases de négociation en darija', 'Répertoire de prestataires certifiés', 'Historique des négociations'],
           inLanguage: ['fr', 'en', 'es', 'de', 'ar'],
@@ -139,8 +139,8 @@ const buildSchemas = (page) => {
           description: 'Coach vocal IA en temps réel pour analyser les prix et négocier équitablement comme un local au Maroc.',
           offers: [
             { '@type': 'Offer', name: 'Gratuit', price: '0', priceCurrency: 'EUR', description: '3 analyses par jour' },
-            { '@type': 'Offer', name: 'Voyageur', price: '5', priceCurrency: 'EUR', description: 'Analyses illimitées' },
-            { '@type': 'Offer', name: 'Pro', price: '12', priceCurrency: 'EUR', description: 'Tout Voyageur + analytics avancés' },
+            { '@type': 'Offer', name: 'Voyageur', price: '5', priceCurrency: 'EUR', description: '50 analyses par mois' },
+            { '@type': 'Offer', name: 'Voyageur Plus', price: '9', priceCurrency: 'EUR', description: '100 analyses par mois' },
           ],
           featureList: ['Analyse de prix en temps réel', 'Alertes prix anormaux', 'Phrases en darija', 'Prestataires certifiés', 'Historique des négociations'],
           inLanguage: ['fr', 'en', 'es', 'de', 'ar'],
