@@ -469,7 +469,7 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
     es: {
       title: '¿Sobrefacturado en Marruecos? Pasos para Protegerte y Obtener un Reembolso',
       excerpt: 'Pasos concretos: denuncia, reembolso, policía turística.',
-      content: `Estafa leve: rechaza el exceso, denuncia en Tooristoo. Estafa significativa: pide recibo, fotografía todo, Policía Turística Marrakech: +212 524 38 46 01. Estafa grave: bloquea tarjeta, llama al 19, contacta embajada. Contracargo bancario: 45–90 días.`
+      content: `Sobrecoste leve: rechaza el exceso, denuncia en Tooristoo. Sobrecoste significativo: pide recibo, fotografía todo, Policía Turística Marrakech: +212 524 38 46 01. Caso grave: bloquea tarjeta, llama al 19, contacta embajada. Contracargo bancario: 45–90 días.`
     },
     de: {
       title: 'Überberechnet in Marokko? Schritte zum Schutz und zur Rückerstattung',
