@@ -30,11 +30,7 @@ const META_BY_ROUTE = {
     title: 'À Propos de Tooristoo — Initiative Née à Marrakech pour la Vigilance Tarifaire',
     desc: 'Découvrez l\'histoire et la mission de Tooristoo, l\'initiative à échelle humaine qui aide les voyageurs à connaître les fourchettes de prix au Maroc.',
   },
-  '/methodology': {
-    title: 'Méthodologie Tooristoo — Comment Nous Établissons les Fourchettes de Prix',
-    desc: 'Notre méthodologie publique : avis Google ≥ 4,0/5 sur 50+ commentaires, sources officielles, mise à jour trimestrielle, transparence totale.',
-  },
-  '/charter': {
+ '/charter': {
     title: 'Charte des 7 Engagements — Tooristoo',
     desc: 'Les 7 engagements concrets de Tooristoo : sources vérifiables, recherche approfondie, note Google ≥ 4,0/5, mise à jour trimestrielle, signalement communautaire.',
   },
