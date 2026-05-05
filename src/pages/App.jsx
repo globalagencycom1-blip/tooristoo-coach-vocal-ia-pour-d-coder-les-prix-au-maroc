@@ -11,6 +11,8 @@ import NegotiationForm from '../components/app/NegotiationForm';
 import AnalysisResult from '../components/app/AnalysisResult';
 import Dashboard from '../components/app/Dashboard';
 import DashboardStats from '../components/app/DashboardStats';
+import AuthGate from '../components/app/AuthGate';
+import PlanLimitGate from '../components/app/PlanLimitGate';
 
 const TABS = [
   { id: 'coach', icon: Mic, labelKey: 'nav_app' },
@@ -27,6 +29,8 @@ export default function AppPage() {
   const [analysis, setAnalysis] = useState(null);
   const [negotiations, setNegotiations] = useState([]);
   const [profile, setProfile] = useState(null);
+  const [user, setUser] = useState(null);
+  const [authChecked, setAuthChecked] = useState(false);
   const [category, setCategory] = useState('taxi');
   const [location, setLocation] = useState('Marrakech');
   const [priceAsked, setPriceAsked] = useState('');
@@ -36,28 +40,57 @@ export default function AppPage() {
   }, []);
 
   const loadData = async () => {
-    const user = await base44.auth.me().catch(() => null);
-    if (!user) return;
+    const currentUser = await base44.auth.me().catch(() => null);
+    setUser(currentUser);
+    setAuthChecked(true);
+    if (!currentUser) return;
 
-    const serverNegs = await base44.entities.Negotiation.filter({ user_email: user.email }, '-created_date', 50).catch(() => []);
-    // Flatten data field if present (SDK returns { id, data: {...} } structure)
+    const serverNegs = await base44.entities.Negotiation.filter({ user_email: currentUser.email }, '-created_date', 50).catch(() => []);
     const flatNegs = serverNegs.map(n => n.data ? { id: n.id, created_date: n.created_date, ...n.data } : n);
     setNegotiations(flatNegs);
 
-    const profiles = await base44.entities.UserProfile.filter({ user_email: user.email }).catch(() => []);
+    const profiles = await base44.entities.UserProfile.filter({ user_email: currentUser.email }).catch(() => []);
     if (profiles.length > 0) {
       setProfile(profiles[0]);
     } else {
-      const newProfile = await base44.entities.UserProfile.create({ user_email: user.email, plan: 'free', language: lang });
+      const newProfile = await base44.entities.UserProfile.create({ user_email: currentUser.email, plan: 'free', language: lang });
       setProfile(newProfile);
     }
+  };
+
+  // Vérification limite plan free
+  const isLimitReached = () => {
+    if (!profile) return false;
+    if (profile.plan === 'free') {
+      return (profile.monthly_analyses_used || 0) >= 3;
+    }
+    return false;
+  };
+
+  const getAnalysesLabel = () => {
+    if (!profile) return '';
+    if (profile.plan === 'free') {
+      const remaining = Math.max(0, 3 - (profile.monthly_analyses_used || 0));
+      const labels = { fr: `${remaining} analyse${remaining !== 1 ? 's' : ''} restante${remaining !== 1 ? 's' : ''}`, en: `${remaining} analysis remaining`, es: `${remaining} análisis restantes`, de: `${remaining} Analysen verbleibend`, ar: `${remaining} تحليلات متبقية`, darija: `${remaining} تحليلات متبقية` };
+      return labels[lang] || labels.fr;
+    }
+    if (profile.plan === 'voyageur') {
+      const remaining = Math.max(0, 50 - (profile.monthly_analyses_used || 0));
+      const labels = { fr: `${remaining}/50 analyses`, en: `${remaining}/50 analyses`, es: `${remaining}/50 análisis`, de: `${remaining}/50 Analysen`, ar: `${remaining}/50 تحليل`, darija: `${remaining}/50 تحليل` };
+      return labels[lang] || labels.fr;
+    }
+    if (profile.plan === 'voyageur_plus' || profile.plan === 'pro') {
+      const remaining = Math.max(0, 100 - (profile.monthly_analyses_used || 0));
+      const labels = { fr: `${remaining}/100 analyses`, en: `${remaining}/100 analyses`, es: `${remaining}/100 análisis`, de: `${remaining}/100 Analysen`, ar: `${remaining}/100 تحليل`, darija: `${remaining}/100 تحليل` };
+      return labels[lang] || labels.fr;
+    }
+    return '';
   };
 
   const handleAnalysisComplete = async (result) => {
     setAnalysis(result);
     setActiveTab('coach');
 
-    const user = await base44.auth.me().catch(() => null);
     if (!user) return;
 
     const saved = await base44.entities.Negotiation.create({
@@ -68,11 +101,14 @@ export default function AppPage() {
     setNegotiations(prev => [saved, ...prev]);
 
     if (profile) {
-      await base44.entities.UserProfile.update(profile.id, {
+      const updatedProfile = {
         total_negotiations: (profile.total_negotiations || 0) + 1,
         total_savings: (profile.total_savings || 0) + (result.savings || 0),
         scams_avoided: (profile.scams_avoided || 0) + (result.scam_detected ? 1 : 0),
-      });
+        monthly_analyses_used: (profile.monthly_analyses_used || 0) + 1,
+      };
+      await base44.entities.UserProfile.update(profile.id, updatedProfile);
+      setProfile(prev => ({ ...prev, ...updatedProfile }));
     }
   };
 
@@ -116,19 +152,24 @@ export default function AppPage() {
         {/* Content */}
         {activeTab === 'coach' && (
           <div className="bg-shield-card border border-shield-border rounded-2xl p-6">
-            {analysis ? (
+            {/* Auth Gate */}
+            {authChecked && !user ? (
+              <AuthGate lang={lang} />
+            ) : analysis ? (
               <AnalysisResult analysis={analysis} lang={lang} onReset={handleReset} />
+            ) : isLimitReached() ? (
+              <PlanLimitGate lang={lang} />
             ) : (
               <>
                 {/* Analyses restantes */}
-                <div className="flex justify-center mb-6">
-                  <div className="px-5 py-2.5 rounded-full text-sm text-gray-300 font-medium"
-                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    {profile?.plan === 'free'
-                      ? `${Math.max(0, 3 - (profile?.monthly_analyses_used || 0))} ${lang === 'fr' ? 'analyses restantes aujourd\'hui' : lang === 'en' ? 'analyses remaining today' : lang === 'es' ? 'análisis restantes hoy' : lang === 'de' ? 'Analysen verbleibend heute' : lang === 'ar' ? 'التحليلات المتبقية اليوم' : 'تحليلات متبقية اليوم'}`
-                      : lang === 'fr' ? '∞ analyses illimitées' : '∞ unlimited analyses'}
+                {profile && (
+                  <div className="flex justify-center mb-6">
+                    <div className="px-5 py-2.5 rounded-full text-sm font-medium"
+                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: profile.plan === 'free' ? '#d1d5db' : '#22c55e' }}>
+                      {getAnalysesLabel()}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Input mode toggle */}
                 <div className="flex items-center justify-center gap-6 mb-6">

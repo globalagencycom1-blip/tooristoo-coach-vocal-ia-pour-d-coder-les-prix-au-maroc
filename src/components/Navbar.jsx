@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Shield, Menu, X, Globe, UserCircle } from 'lucide-react';
+import { Shield, Menu, X, Globe, UserCircle, LogIn, LogOut } from 'lucide-react';
 import { useLang } from '../lib/LanguageContext';
 import { useT } from '../lib/i18n';
 import { getNavbarT } from '../lib/navbar-translations';
+import { base44 } from '@/api/base44Client';
 
 const LANGS = [
   { code: 'fr', label: 'FR', name: 'Français', flag: '🇫🇷' },
@@ -19,7 +20,18 @@ export default function Navbar() {
   const t = useT(lang);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const location = useLocation();
+
+  useEffect(() => {
+    base44.auth.me().then(setCurrentUser).catch(() => setCurrentUser(null));
+  }, []);
+
+  const handleLogin = () => base44.auth.redirectToLogin(window.location.href);
+  const handleLogout = () => base44.auth.logout('/');
+
+  const loginLabel = { fr: 'Se connecter', en: 'Sign in', es: 'Iniciar sesión', de: 'Anmelden', ar: 'دخول', darija: 'دخول' };
+  const logoutLabel = { fr: 'Déconnexion', en: 'Sign out', es: 'Cerrar sesión', de: 'Abmelden', ar: 'خروج', darija: 'خروج' };
 
   const navLinks = [
     { href: '/', label: t('nav_home') },
@@ -91,18 +103,39 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link
-              to="/profile"
-              className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-shield-border/50 hover:bg-shield-border text-gray-300 hover:text-white text-sm transition-all"
-            >
-              <UserCircle className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/app"
-              className="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-shield-green text-black font-semibold text-sm rounded-xl hover:bg-green-400 transition-all btn-glow"
-            >
-              {t('get_started')}
-            </Link>
+            {currentUser ? (
+              <>
+                <Link
+                  to="/profile"
+                  className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-shield-border/50 hover:bg-shield-border text-gray-300 hover:text-white text-sm transition-all"
+                >
+                  <UserCircle className="w-4 h-4" />
+                  <span className="max-w-[80px] truncate">{currentUser.full_name?.split(' ')[0] || 'Profil'}</span>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-shield-border text-gray-400 hover:text-white text-sm transition-all"
+                >
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={handleLogin}
+                  className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-shield-border text-gray-300 hover:text-white text-sm transition-all"
+                >
+                  <LogIn className="w-4 h-4" />
+                  {loginLabel[lang] || loginLabel.fr}
+                </button>
+                <Link
+                  to="/app"
+                  className="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-shield-green text-black font-semibold text-sm rounded-xl hover:bg-green-400 transition-all btn-glow"
+                >
+                  {t('get_started')}
+                </Link>
+              </>
+            )}
 
             {/* Mobile menu */}
             <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden text-gray-300 hover:text-white">
@@ -125,21 +158,42 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link
-            to="/profile"
-            onClick={() => setMobileOpen(false)}
-            className="flex items-center gap-2 text-gray-300 hover:text-shield-green py-2 text-sm font-medium"
-          >
-            <UserCircle className="w-4 h-4" />
-            Profil
-          </Link>
-          <Link
-            to="/app"
-            className="block w-full text-center px-4 py-2.5 bg-shield-green text-black font-semibold rounded-xl"
-            onClick={() => setMobileOpen(false)}
-          >
-            {t('get_started')}
-          </Link>
+          {currentUser ? (
+            <>
+              <Link
+                to="/profile"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2 text-gray-300 hover:text-shield-green py-2 text-sm font-medium"
+              >
+                <UserCircle className="w-4 h-4" />
+                {currentUser.full_name?.split(' ')[0] || 'Profil'}
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 text-gray-400 hover:text-white py-2 text-sm font-medium"
+              >
+                <LogOut className="w-4 h-4" />
+                {logoutLabel[lang] || logoutLabel.fr}
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={handleLogin}
+                className="flex items-center gap-2 text-gray-300 hover:text-shield-green py-2 text-sm font-medium"
+              >
+                <LogIn className="w-4 h-4" />
+                {loginLabel[lang] || loginLabel.fr}
+              </button>
+              <Link
+                to="/app"
+                className="block w-full text-center px-4 py-2.5 bg-shield-green text-black font-semibold rounded-xl"
+                onClick={() => setMobileOpen(false)}
+              >
+                {t('get_started')}
+              </Link>
+            </>
+          )}
         </div>
       )}
 
