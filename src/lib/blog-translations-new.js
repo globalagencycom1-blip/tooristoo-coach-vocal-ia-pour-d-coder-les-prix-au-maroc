@@ -20,7 +20,7 @@ Invitation "amicale", salon fermé, facture exorbitante. Ne jamais accepter un t
 Elles imitent les coopératives officielles mais ne sont pas certifiées. Vérifiez le panneau officiel ou passez via Tooristoo.
 
 **5. Le restaurant sans prix affiché sur Jemaa el-Fna**
-Asseyez-vous seulement si vous voyez les prix. Sinon demandez : "Fin hiya l-qima?" (Où sont les prix?).
+Asseyez-vous seulement si vous voyez les prix. Sinon demandez : "Fin houwa l-taman?" (Où sont les prix?).
 
 **6. L'arnaque du henné**
 Une femme vous pose du henné "gratuitement" en rue, puis réclame 200–500 MAD. Dites non si vous ne l'avez pas demandé.
