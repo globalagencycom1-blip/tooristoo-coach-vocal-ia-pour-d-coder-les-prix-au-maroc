@@ -22,6 +22,7 @@ import LegalNotice from './pages/LegalNotice';
 import Profile from './pages/Profile';
 import AdminProviders from './pages/AdminProviders';
 import ProviderCharter from './pages/ProviderCharter';
+import Methodology from './pages/Methodology';
 import DarijaPhrasebook from './pages/DarijaPhrasebook';
 import ChatBot from './components/ChatBot';
 import CookieBanner from './components/CookieBanner';
