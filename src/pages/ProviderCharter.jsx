@@ -82,13 +82,13 @@ const CONTENT = {
     intro: 'A diferencia de los agregadores clásicos que listan sin verificación, Tooristoo aplica una carta de compromiso estricta. Cada proveedor certificado ha firmado y respeta estos 7 compromisos.',
     commitments_title: '7 Compromisos Certificados',
     commitments: [
-      { icon: '💶', title: 'Precios oficiales mostrados', desc: 'El precio en Tooristoo es el precio real practicado. Sin recargo para turistas extranjeros.' },
-      { icon: '📋', title: 'Sin cargos ocultos', desc: 'Sin suplementos no mencionados. IVA incluido, propinas no obligatorias.' },
-      { icon: '✅', title: 'Verificación', desc: 'Un miembro del equipo Tooristoo visitó y probó el servicio antes de la certificación. Ré-evaluación mensual obligatoria.' },
-      { icon: '⭐', title: 'Puntuación mínima 4.0/5', desc: 'Solo los proveedores con nota ≥ 4,0/5 mantienen su certificación.' },
-      { icon: '📞', title: 'Contacto garantizado', desc: 'Número de teléfono verificado y operacional.' },
-      { icon: '🤝', title: 'Acogida igual para todos', desc: 'El mismo servicio, la misma calidad y los mismos precios para cada cliente, sea local habitual o visitante extranjero.' },
-      { icon: '🔔', title: 'Reclamaciones tramitadas', desc: 'Si una reclamación es validada por 3 usuarios, el proveedor es contactado en 24h y, si es necesario, suspendido temporalmente.' },
+  { "icon": "💶", "title": "Precios oficiales mostrados", "desc": "El precio indicado en Tooristoo es el precio real aplicado. Sin recargos para turistas extranjeros. Precios verificados y actualizados regularmente por nuestro equipo." },
+  { "icon": "📋", "title": "Sin cargos ocultos", "desc": "Ningún cargo adicional no mencionado en la ficha. IVA incluido, propinas no obligatorias y suplementos específicos claramente indicados con antelación." },
+  { "icon": "✅", "title": "Verificación", "desc": "Un miembro del equipo de Tooristoo ha investigado y seleccionado el servicio en línea. Reevaluación anual obligatoria." },
+  { "icon": "⭐", "title": "Calificación mínima 4.0/5", "desc": "Solo los proveedores que mantienen una calificación de clientes ≥ 4,0/5 permanecen listados. Por debajo de este umbral: advertencia y posterior descenso en el ranking." },
+  { "icon": "📞", "title": "Contacto garantizado", "desc": "Número de teléfono verificado y operativo. Respuesta en menos de 4 horas a las solicitudes de clientes durante la temporada alta turística." },
+  { "icon": "🤝", "title": "Mismo trato para todos", "desc": "El mismo servicio, la misma calidad y los mismos precios mostrados para cada cliente, ya sea un habitual local o un visitante extranjero." },
+  { "icon": "🔔", "title": "Reportes gestionados", "desc": "En caso de un reporte validado por 3 usuarios, el proveedor es contactado en menos de 24 horas y, si es necesario, suspendido temporalmente durante la investigación." }
     ],
     process_title: 'Proceso de certificación',
     process: [
