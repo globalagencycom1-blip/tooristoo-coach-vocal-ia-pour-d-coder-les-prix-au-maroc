@@ -1,9 +1,86 @@
+# robots.txt — Tooristoo
+# https://www.tooristoo.com
+
+# ============================================================
+# Règles par défaut pour tous les crawlers
+# ============================================================
 User-agent: *
 Allow: /
 
-# Block admin / private routes
+# Routes privées et techniques
 Disallow: /admin/
 Disallow: /profile
 Disallow: /profile/
+Disallow: /api/
+Disallow: /functions/
 
+# ============================================================
+# Crawlers IA explicitement autorisés
+# (Bonne pratique 2026 pour être cité par les LLM)
+# ============================================================
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /profile
+Disallow: /api/
+
+# OpenAI / SearchGPT (recherche web ChatGPT)
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /profile
+Disallow: /api/
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /profile
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin/
+Disallow: /profile
+Disallow: /api/
+
+# Google AI / Gemini
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /profile
+Disallow: /api/
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /profile
+Disallow: /api/
+
+# Microsoft / Copilot
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /profile
+Disallow: /api/
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+Disallow: /admin/
+Disallow: /profile
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /profile
+Disallow: /api/
+
+# ============================================================
+# Sitemap
+# ============================================================
 Sitemap: https://www.tooristoo.com/sitemap.xml
