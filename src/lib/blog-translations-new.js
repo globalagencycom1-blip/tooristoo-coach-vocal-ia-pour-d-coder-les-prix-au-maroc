@@ -474,7 +474,7 @@ Si un taxi vous indique que son compteur est cassé, vous pouvez demander : "La,
     en: {
       title: 'Overcharged in Morocco? Steps to Protect Yourself and Get a Refund',
       excerpt: 'Concrete steps to follow: reporting, refund, tourist police.',
-      content: `Minor overcharge (50–200 MAD): calmly refuse surplus, report on Tooristoo. Significant scam (200–2,000 MAD): ask for receipt (legally mandatory), photograph evidence, contact Tourist Brigade, Tourist Police Marrakech: +212 524 38 46 01. Serious scam: block card immediately, call police (19), contact embassy. Chargeback: 45–90 days, 70–85% success with evidence.`
+      content: `Minor overcharge (50–200 MAD): calmly refuse surplus, report on Tooristoo. Significant case (200–2,000 MAD): ask for receipt (legally mandatory), photograph evidence, contact Tourist Brigade, Tourist Police Marrakech: +212 524 38 46 01. Serious case: block card immediately, call police (19), contact embassy. Chargeback: 45–90 days, 70–85% success with evidence.`
     },
     es: {
       title: '¿Sobrefacturado en Marruecos? Pasos para Protegerte y Obtener un Reembolso',
