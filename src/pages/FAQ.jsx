@@ -126,7 +126,7 @@ export default function FAQ() {
             <dt>Puis-je utiliser Tooristoo hors ligne ?</dt>
             <dd>L'analyse IA nécessite une connexion internet. Les phrases de négociation sauvegardées sont accessibles hors ligne.</dd>
             <dt>Comment signaler un écart de prix ?</dt>
-            <dd>Depuis l'application, après une analyse, vous pouvez signaler un prestataire frauduleux directement via le panneau de signalement communautaire.</dd>
+            <dd>Depuis l'application, après une analyse, vous pouvez soumettre un signalement communautaire concernant un prestataire dont les prix s'écartent des fourchettes de référence.</dd>
             <dt>Tooristoo fonctionne-t-il sur mobile ?</dt>
             <dd>Oui, Tooristoo est une application web progressive (PWA) accessible sur iOS et Android depuis votre navigateur, sans installation requise.</dd>
           </dl>
