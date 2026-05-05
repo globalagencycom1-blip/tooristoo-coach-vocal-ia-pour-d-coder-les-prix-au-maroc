@@ -13,7 +13,7 @@ const CONTENT = {
     title: 'Charte des Prestataires Certifiés Tooristoo',
     subtitle: 'Les engagements concrets qui distinguent nos partenaires des autres',
     badge: 'Différenciateur clé',
-    intro: 'Contrairement aux agrégateurs classiques qui référencent sans vérification, Tooristoo applique une charte d\'engagement stricte. Chaque prestataire certifié a signé et respecte ces 7 engagements.',
+    intro: 'Contrairement aux agrégateurs classiques qui référencent sans vérification, Tooristoo applique une charte d\'engagement stricte.',
     commitments_title: '7 Engagements Certifiés',
     commitments: [
       { icon: '💶', title: 'Prix officiels affichés', desc: 'Le prix annoncé sur Tooristoo est le prix réel pratiqué. Aucune majoration pour les touristes étrangers. Tarifs vérifiés et mis à jour régulièrement par notre équipe.' },
@@ -24,7 +24,7 @@ const CONTENT = {
       { icon: '🤝', title: 'Accueil identique pour tous', desc: 'Le même service, la même qualité et les mêmes tarifs affichés pour chaque client, qu\'il soit habitué local ou visiteur étranger.' },
       { icon: '🔔', title: 'Signalement traité', desc: 'En cas de signalement validé par 3 utilisateurs, le prestataire est contacté sous 24h et, si nécessaire, temporairement suspendu le temps d\'investigation.' },
     ],
-    process_title: 'Processus de référencement',
+    process_title: 'Processus de certification',
     process: [
        { step: '1', title: 'Sélection', desc: 'Un membre de l\'équipe Tooristoo a recherché et sélectionné le service en ligne. Ré-évaluation annuelle obligatoire.' },
        { step: '2', title: 'Conformité', desc: 'Si conforme, le prestataire reçoit le badge Tooristoo et est publié sur la plateforme.' },
@@ -37,7 +37,7 @@ const CONTENT = {
       { title: 'Soutenir l\'économie locale transparente', desc: 'Nos partenaires certifiés sont des acteurs locaux engagés dans une démarche de qualité et de confiance.' },
     ],
     become_title: 'Vous êtes prestataire au Maroc ?',
-    become_desc: 'Rejoignez notre réseau référencé. Le référencement Tooristoo vous donne accès à des milliers de touristes internationaux qualifiés qui cherchent activement des prestataires de confiance.',
+    become_desc: 'Rejoignez notre réseau certifié. La certficication Tooristoo vous donne accès à des milliers de touristes internationaux qualifiés qui cherchent activement des prestataires de confiance.',
     become_btn: 'Postuler au référencement',
     cta_title: 'Prêt à voyager en toute confiance ?',
     cta_btn: 'Voir les prestataires certifiés',
