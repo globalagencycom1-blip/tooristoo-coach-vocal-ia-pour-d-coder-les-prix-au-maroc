@@ -5,8 +5,8 @@ export const faqExtended = {
   fr: {
     faq_q13: "Que faire si j'ai déjà payé un prix gonflé ?",
     faq_a13: "Gardez votre calme. Pour une surcharge légère (moins de 200 MAD), refusez de payer le surplus et partez. Pour des montants plus importants, demandez un reçu (obligatoire légalement au Maroc), contactez la Brigade Touristique dans les médinas de Marrakech ou Fès, ou appelez la Police Touristique de Marrakech au +212 524 38 46 01. Signalez aussi l'incident sur Tooristoo pour aider les autres voyageurs.",
-    faq_q14: "Comment signaler une arnaque avec Tooristoo ?",
-    faq_a14: "Après chaque analyse dans l'application, un bouton 'Signaler' vous permet de soumettre un signalement communautaire avec la localisation, le type de service et le montant. Dès que 3 utilisateurs confirment le même incident, le prestataire est suspendu de notre annuaire certifié. Vos signalements améliorent aussi l'algorithme de détection.",
+    faq_q14: "Comment signaler un écart de prix avec Tooristoo ?",
+    faq_a14: "Après chaque analyse dans l'application, un bouton 'Signaler' vous permet de soumettre un signalement communautaire avec la localisation, le type de service et le montant. Dès que 3 utilisateurs confirment le même incident, le prestataire est suspendu de notre annuaire référencé. Vos signalements améliorent aussi l'algorithme de détection.",   
     faq_q15: "Tooristoo fonctionne-t-il dans le désert sans réseau ?",
     faq_a15: "Partiellement. L'analyse IA en temps réel nécessite internet. Cependant, Tooristoo sauvegarde automatiquement les analyses passées, les phrases de négociation en darija et les prix de référence en local sur votre appareil — accessibles hors ligne. Nous recommandons de consulter les prix de votre excursion désert avant de quitter la zone couverte.",
     faq_q16: "Les prix analysés incluent-ils le Ramadan et la haute saison ?",
