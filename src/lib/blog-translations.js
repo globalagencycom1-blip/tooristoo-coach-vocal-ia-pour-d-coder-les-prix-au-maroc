@@ -523,7 +523,7 @@ Personen, die Sie auf der Straße ansprechen und eine Tour ohne sichtbare Akkred
     }
   },
 
-  // MARRAKECH - SHOPPING (anciennement "ARNAQUES - SHOPPING")
+  // MARRAKECH - SHOPPING
   'marrakech-vigilance-shopping': {
     fr: {
       title: 'Shopping à Marrakech : valoriser l\'artisanat et négocier juste',
