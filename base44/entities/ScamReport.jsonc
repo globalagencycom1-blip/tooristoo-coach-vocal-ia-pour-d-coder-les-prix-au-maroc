@@ -99,6 +99,14 @@
           "user_condition": {
             "role": "admin"
           }
+        },
+        {
+          "data.status": {
+            "$in": [
+              "pending",
+              "verified"
+            ]
+          }
         }
       ]
     },
