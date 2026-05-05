@@ -117,15 +117,15 @@ export default function FAQ() {
             <dd>Tooristoo est disponible en français, anglais, espagnol, allemand, arabe et darija marocain.</dd>
             <dt>Quelles villes du Maroc sont couvertes ?</dt>
             <dd>Tooristoo couvre toutes les grandes villes : Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla et El Jadida.</dd>
-            <dt>Comment fonctionne la détection d'arnaques ?</dt>
-            <dd>Notre IA analyse le prix demandé par rapport à une base de données de prix réels locaux. Si le prix demandé dépasse significativement la fourchette normale, une alerte est émise et une stratégie de négociation est proposée.</dd>
+            <dt>Comment fonctionne l'analyse de prix ?</dt>
+            <dd>Notre IA analyse le prix demandé par rapport à des fourchettes de référence par ville et par catégorie de service. Si le prix dépasse significativement la fourchette habituelle, un signal de vigilance s'affiche avec une stratégie de négociation adaptée.</dd>
             <dt>Quels types de services sont analysés ?</dt>
             <dd>Taxis, hôtels, riads, restaurants, excursions, shopping et souks, transport, guides touristiques, spas et hammams.</dd>
             <dt>Les prestataires certifiés Tooristoo sont-ils fiables ?</dt>
             <dd>Oui, les prestataires certifiés ont été vérifiés par notre équipe. Ils s'engagent à afficher des prix transparents et à respecter une charte de qualité.</dd>
             <dt>Puis-je utiliser Tooristoo hors ligne ?</dt>
             <dd>L'analyse IA nécessite une connexion internet. Les phrases de négociation sauvegardées sont accessibles hors ligne.</dd>
-            <dt>Comment signaler une arnaque ?</dt>
+            <dt>Comment signaler un écart de prix ?</dt>
             <dd>Depuis l'application, après une analyse, vous pouvez signaler un prestataire frauduleux directement via le panneau de signalement communautaire.</dd>
             <dt>Tooristoo fonctionne-t-il sur mobile ?</dt>
             <dd>Oui, Tooristoo est une application web progressive (PWA) accessible sur iOS et Android depuis votre navigateur, sans installation requise.</dd>
