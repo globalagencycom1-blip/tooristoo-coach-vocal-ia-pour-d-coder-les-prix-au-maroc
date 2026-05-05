@@ -138,9 +138,9 @@ export default function DarijaPhrasebook() {
   return (
     <div className="min-h-screen bg-shield-dark">
       <Helmet>
-        <title>100 Phrases en Darija Marocain — Négocier & Voyager au Maroc | Tooristoo</title>
-        <meta name="description" content="100 phrases essentielles en darija marocain avec transcription latine et traduction FR/EN/ES/DE/AR. Taxi, souk, restaurant, hôtel, négociation, urgences. Voyagez au Maroc comme un local." />
-        <meta property="og:title" content="100 Phrases en Darija Marocain pour Voyager au Maroc | Tooristoo" />
+        <title>50 Phrases en Darija Marocain — Négocier & Voyager au Maroc | Tooristoo</title>
+        <meta name="description" content="50 phrases essentielles en darija marocain avec transcription latine et traduction FR/EN/ES/DE/AR. Taxi, souk, restaurant, hôtel, négociation, urgences. Voyagez au Maroc comme un local." />
+        <meta property="og:title" content="50 Phrases en Darija Marocain pour Voyager au Maroc | Tooristoo" />
         <meta property="og:description" content="Le guide de référence des phrases en darija pour touristes. Transcription latine + 5 traductions. Indispensable pour négocier au Maroc." />
         <meta property="og:url" content={`${BASE}/darija`} />
         <meta property="og:type" content="article" />
