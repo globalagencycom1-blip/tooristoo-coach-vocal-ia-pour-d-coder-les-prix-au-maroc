@@ -501,9 +501,9 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
 **Excursions depuis Tanger** : Bus CTM vers Chefchaouen : 55–70 MAD (2 h 30). Grand taxi partagé : 80–100 MAD/place. Évitez les agences du port (300+ MAD pour le même trajet).`
     },
     en: {
-      title: 'Tangier Port: Real Prices and Tourist Pitfalls Guide',
-      excerpt: 'Anti-scam guide for arriving in Tangier by ferry.',
-      content: `Fake porters at port: 100–300 MAD. Keep bags. Port currency exchange: always fraudulent. Taxi: 15–25 MAD centre. "Nice student" tour → shop trap: "Shukran, ma mhtajch mrshad". CTM bus to Chefchaouen: 55–70 MAD (2h30).`
+      title: 'Tangier Port: Price Range Guide and Good Reflexes',
+      excerpt: 'Practical guide for arriving in Tangier by ferry and navigating the city.',
+      content: `Beware unofficial "porters" at port: 100–300 MAD claimed. Keep your bags. Port currency exchange has poor rates: prefer bank or ATM. Taxi: 15–25 MAD centre with meter. "Nice student" tour leads to a shop: "Shukran, ma mhtajch mrshad". CTM bus to Chefchaouen: 55–70 MAD (2h30). Prefer recognised agencies over port touts (300+ MAD for same trip).`
     },
     es: {
       title: 'Puerto de Tánger: Guía de Precios Reales y Trampas Turísticas',
