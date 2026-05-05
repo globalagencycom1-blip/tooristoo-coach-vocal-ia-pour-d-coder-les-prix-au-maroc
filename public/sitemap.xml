@@ -21,14 +21,6 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Methodology - page-pilier du repivot stratégique -->
-  <url>
-    <loc>https://www.tooristoo.com/methodology</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
   <!-- Charter - 7 engagements -->
   <url>
     <loc>https://www.tooristoo.com/charter</loc>
@@ -94,12 +86,12 @@
   </url>
 
   <!-- ============================================================ -->
-  <!-- ARTICLES DE BLOG                                               -->
+  <!-- ARTICLES DE BLOG (21 articles)                                 -->
   <!-- ============================================================ -->
 
   <!-- Marrakech : top 10 vigilance tarifaire (article-pilier) -->
   <url>
-    <loc>https://www.tooristoo.com/blog/marrakech-top10-vigilance</loc>
+    <loc>https://www.tooristoo.com/blog/marrakech-top10-vigilances</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -134,7 +126,7 @@
     <loc>https://www.tooristoo.com/blog/marrakech-vigilance-guide</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
   <!-- Marrakech : valoriser l'artisanat -->
@@ -142,7 +134,7 @@
     <loc>https://www.tooristoo.com/blog/marrakech-vigilance-shopping</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
   <!-- Marrakech : préparation complète -->
@@ -153,9 +145,17 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Marrakech : préparation saisonnière -->
+  <url>
+    <loc>https://www.tooristoo.com/blog/marrakech-preparation-saisonnier</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Marrakech : recours en cas de litige -->
   <url>
-    <loc>https://www.tooristoo.com/blog/marrakech-si-arnaque</loc>
+    <loc>https://www.tooristoo.com/blog/marrakech-si-vigilance</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -206,7 +206,7 @@
     <loc>https://www.tooristoo.com/blog/chefchaouen-vigilance-photo</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
   <!-- Tanger : guide du port -->
@@ -219,7 +219,7 @@
 
   <!-- Agadir : activités balnéaires -->
   <url>
-    <loc>https://www.tooristoo.com/blog/agadir</loc>
+    <loc>https://www.tooristoo.com/blog/agadir-vigilance-plage</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -258,7 +258,7 @@
   </url>
 
   <!-- ============================================================ -->
-  <!-- PAGES LÉGALES (priorité faible mais nécessaires)              -->
+  <!-- PAGES LÉGALES                                                  -->
   <!-- ============================================================ -->
 
   <url>
