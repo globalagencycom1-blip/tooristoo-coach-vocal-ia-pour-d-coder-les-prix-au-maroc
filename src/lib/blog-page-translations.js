@@ -23,13 +23,13 @@ export const BLOG_PAGE_TRANSLATIONS = {
     ar: 'في المغرب',
     darija: 'فالمغرب'
   },
-  guides_subtitle: {
-    fr: 'Découvrez nos guides complets sur les prix réels, les abus de prix et la préparation de voyage.',
-    en: 'Discover our comprehensive guides on real prices, scams, and travel preparation.',
-    es: 'Descubre nuestras guías sobre precios reales, estafas y preparación de viajes.',
-    de: 'Entdecken Sie unsere umfassenden Leitfäden zu echten Preisen, Betrügereien und Reisevorbereitung.',
-    ar: 'اكتشف أدلتنا الشاملة حول الأسعار الحقيقية والعمليات الاحتيالية والتحضير للسفر.',
-    darija: 'اكتشف الأدلة ديالنا على الأسعار الحقيقية والحيل والتحضير للسفر.'
+guides_subtitle: {
+    fr: 'Découvrez nos guides complets sur les prix réels, la vigilance tarifaire et la préparation de voyage.',
+    en: 'Discover our comprehensive guides on real prices, price vigilance, and travel preparation.',
+    es: 'Descubre nuestras guías sobre precios reales, vigilancia tarifaria y preparación de viajes.',
+    de: 'Entdecken Sie unsere umfassenden Leitfäden zu echten Preisen, Preisvigilanz und Reisevorbereitung.',
+    ar: 'اكتشف أدلتنا الشاملة حول الأسعار الحقيقية واليقظة السعرية والتحضير للسفر.',
+    darija: 'اكتشف الأدلة ديالنا على الأسعار الحقيقية واليقظة السعرية والتحضير للسفر.'
   },
   pillars_label: {
     fr: 'Piliers',
