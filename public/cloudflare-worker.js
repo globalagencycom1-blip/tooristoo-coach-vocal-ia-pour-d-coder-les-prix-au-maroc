@@ -19,11 +19,11 @@
 // Meta tags par route (en français — langue principale du marché Tooristoo)
 const META_BY_ROUTE = {
   '/': {
-    title: 'Tooristoo — Coach Vocal IA pour Décoder les Prix au Maroc',
+    title: 'Tooristoo — Coach Vocal IA négociateur pour Décoder les Prix au Maroc',
     desc: 'Coach vocal IA pour décoder les prix et négocier comme un local au Maroc. Analyse en temps réel, multilingue, fourchettes de prix par ville.',
   },
   '/app': {
-    title: 'Coach Vocal IA Tooristoo | Décoder les Prix au Maroc en Temps Réel',
+    title: 'Coach Vocal IA négociateur Tooristoo | Décoder les Prix au Maroc en Temps Réel',
     desc: 'Coach vocal IA en temps réel pour décoder les prix et négocier sereinement comme un local au Maroc.',
   },
   '/about': {
@@ -35,7 +35,7 @@ const META_BY_ROUTE = {
     desc: 'Les 7 engagements concrets de Tooristoo : sources vérifiables, recherche approfondie, note Google ≥ 4,0/5, mise à jour trimestrielle, signalement communautaire.',
   },
   '/faq': {
-    title: 'FAQ Tooristoo — Questions Fréquentes sur le Coach Vocal IA Maroc',
+    title: 'FAQ Tooristoo — Questions Fréquentes sur le Coach Vocal IA négociteur Maroc',
     desc: 'Réponses aux questions fréquentes sur Tooristoo : fonctionnement, langues supportées, villes couvertes, plan gratuit, méthodologie de prix.',
   },
   '/providers': {
