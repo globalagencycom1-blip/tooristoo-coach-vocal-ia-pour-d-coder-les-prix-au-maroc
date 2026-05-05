@@ -139,7 +139,7 @@ export default function ProviderCharter() {
     <div className="min-h-screen bg-shield-dark">
       <Helmet>
         <title>{c.title} | Tooristoo</title>
-        <meta name="description" content="7 engagements vérifiés sur le terrain : prix transparents, pas de frais cachés, visite anonyme avant certification. Ce qui distingue Tooristoo des agrégateurs classiques." />
+        <meta name="description" content="7 engagements vérifiés sur le terrain : prix transparents, pas de frais cachés, vérification en ligne avant référencement et certification, note basée sur Google, contact prestataire direct par téléphone, accueil et même prix pour tous, traitement et vérification de signalement. Ce qui distingue Tooristoo des agrégateurs classiques." />
         <meta property="og:title" content={`${c.title} | Tooristoo`} />
         <meta property="og:description" content={c.intro} />
         <meta property="og:url" content={`${BASE}/charter`} />
