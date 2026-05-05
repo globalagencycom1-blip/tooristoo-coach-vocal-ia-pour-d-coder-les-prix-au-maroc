@@ -3,39 +3,42 @@ export const NEW_BLOG_ARTICLES_TRANSLATIONS = {
 
   'marrakech-top10-vigilances': {
     fr: {
-      title: 'Top 10 vigilance tarifaire à Marrakech (et comment les éviter)',
-      excerpt: 'Les pratiques tarifaires courantes que chaque touriste devrait connaître, avec les vrais prix et les bonnes réponses en darija.',
-      content: `Marrakech est une ville magnifique, mais certains quartiers concentrent des pratiques tarifaires que tout visiteur devrait connaître avant d'arriver.
+      title: 'Top 10 vigilance tarifaire à Marrakech (et comment réagir sereinement)',
+      excerpt: 'Les pratiques tarifaires courantes que chaque touriste devrait connaître, avec les fourchettes de référence et les bonnes réponses en darija.',
+      content: `Marrakech est une ville magnifique. Comme dans toute grande destination touristique du monde, certains quartiers concentrent des pratiques tarifaires qu'il vaut mieux connaître avant d'arriver. Voici les 10 situations les plus fréquentes et les bons réflexes.
 
 **1. Le taxi sans compteur depuis l'aéroport**
-Prix demandé : 300–500 MAD. Prix réel : 70–100 MAD. Réponse : "Dour l-3adad 3afak" (mets le compteur). Sinon négociez 80 MAD ferme avant de monter.
+Prix souvent demandé : 300–500 MAD. Fourchette de référence : 70–100 MAD. Réponse : "Dour l-3adad 3afak" (mets le compteur). Sinon, négociez 80 MAD avant de monter.
 
 **2. Le "guide gratuit" vers une boutique**
-Un inconnu vous offre une visite, vous finissez dans un tapis-shop sous pression. Refus poli : "Choukran, ma mhtajch" (merci, je n'ai pas besoin).
+Un inconnu propose une visite, qui se termine dans un commerce avec pression d'achat. Refus poli : "Shukran, ma mhtajch" (merci, je n'ai pas besoin).
 
-**3. Le thé forcé (500–2000 MAD)**
-Invitation "amicale", salon fermé, facture exorbitante. Ne jamais accepter un thé chez un inconnu rencontré dans la rue.
+**3. Le thé dans une arrière-boutique**
+Invitation cordiale, salon fermé, addition élevée à la fin. Si vous n'avez pas demandé le thé, vous n'avez pas à le payer. Privilégiez les cafés avec carte des prix affichée.
 
 **4. Les fausses coopératives d'artisanat**
-Elles imitent les coopératives officielles mais ne sont pas certifiées. Vérifiez le panneau officiel ou passez via Tooristoo.
+Certaines boutiques imitent les coopératives officielles sans en avoir le statut. Vérifiez le panneau officiel "Maison de l'Artisan" ou consultez les coopératives référencées sur Tooristoo.
 
-**5. Le restaurant sans prix affiché sur Jemaa el-Fna**
-Asseyez-vous seulement si vous voyez les prix. Sinon demandez : "Fin houwa l-taman?" (Où sont les prix?).
+**5. Le restaurant sans prix affiché à Jemaa el-Fna**
+Asseyez-vous seulement si les prix sont visibles — c'est une obligation légale. Sinon, demandez : "Fin hiya l-qima?" (où sont les prix ?).
 
-**6. L'arnaque du henné**
-Une femme vous pose du henné "gratuitement" en rue, puis réclame 200–500 MAD. Dites non si vous ne l'avez pas demandé.
+**6. Le henné non sollicité**
+Une personne pose du henné sur votre main "en cadeau", puis demande 200–500 MAD. Si vous n'avez pas demandé, retirez votre main poliment dès le début.
 
-**7. L'huile d'argan mélangée**
-85 % des boutiques vendront de l'argan coupée. Prix réel argan pure : 150–200 MAD/100 ml. Coopérative certifiée : 100–120 MAD.
+**7. L'huile d'argan diluée**
+Beaucoup de boutiques touristiques vendent de l'huile d'argan mélangée. Fourchette de référence pour l'huile pure 100 % : 100–150 MAD/100 ml en coopérative certifiée. Privilégiez les coopératives officielles labellisées.
 
 **8. La photo payante à Jemaa el-Fna**
-Dresseurs de serpents et musiciens demandent 50–200 MAD pour une photo non sollicitée. Ne les regardez pas si vous ne voulez pas payer.
+Charmeurs de serpents et musiciens demandent 50–200 MAD pour une photo non sollicitée. Détournez le regard si vous ne souhaitez pas payer — la photo crée l'obligation.
 
-**9. Le riad "coup de cœur" au double du prix**
-Les rabatteurs dans les ruelles touchent 20–30 % de commission. Réservez toujours en direct ou via une plateforme.
+**9. Le riad "coup de cœur" présenté par un rabatteur**
+Les rabatteurs dans les ruelles touchent 20–30 % de commission. Réservez toujours en direct ou via une plateforme reconnue (Booking, Airbnb).
 
 **10. Le change dans la rue**
-Taux frauduleux + billets de 10 MAD glissés comme billets de 100. Changez uniquement en banque ou ATM officiel.`
+Taux défavorables et risques de billets de faible valeur glissés. Changez uniquement en banque, en bureau de change agréé ou aux DAB officiels.
+
+**Pour aller plus loin**
+Tooristoo référence des prestataires sélectionnés selon une méthodologie publique (note Google ≥ 4,0/5 sur 50+ avis). Consultez la liste depuis l'application avant de réserver.`
     },
     en: {
       title: 'Top 10 Price Vigilance Tips in Marrakech (and How to Avoid Them)',
