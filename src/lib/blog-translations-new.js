@@ -64,7 +64,7 @@ Taux frauduleux + billets de 10 MAD glissés comme billets de 100. Changez uniqu
     },
     es: {
       title: 'Top 10 vigilancia tarifaria en Marrakech (y cómo evitarlas)',
-      excerpt: 'Las trampas más comunes con precios reales y respuestas correctas.',
+      excerpt: 'Las situaciones tarifarias más comunes con rangos de referencia y respuestas correctas.',
       content: `1. Taxi sin taxímetro: negocia 80 MAD. 2. "Guía gratis": "Shukran, ma mhtajch". 3. Té forzado: nunca con extraños. 4. Cooperativas falsas: verifica cartel oficial. 5. Restaurante sin precios: solo si ves precios. 6. Henna: di no si no la pediste. 7. Aceite de argán puro: 100–120 MAD/100ml cooperativa. 8. Fotos pagadas: no mires. 9. Riad caro: reserva directo. 10. Cambio en calle: solo banco.`
     },
     de: {
