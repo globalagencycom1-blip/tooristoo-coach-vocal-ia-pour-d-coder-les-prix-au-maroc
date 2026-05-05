@@ -439,7 +439,7 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
     }
   },
 
-  'marrakech-si-arnaque': {
+  'marrakech-si-vigilance': {
     fr: {
       title: 'Surfacturé au Maroc ? Les étapes pour vous protéger et vous faire rembourser',
       excerpt: 'Démarches concrètes en cas d\'arnaque : signalement, remboursement, police touristique.',
