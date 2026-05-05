@@ -104,7 +104,7 @@ const CONTENT = {
     ],
     become_title: '¿Eres proveedor en Marruecos?',
     become_desc: 'Únete a nuestra red certificada y accede a miles de turistas internacionales cualificados.',
-    become_btn: 'Solicitar la certificación',
+    become_btn: 'Solicitar el registro',
     cta_title: '¿Listo para viajar con confianza?',
     cta_btn: 'Ver proveedores certificados',
   },
