@@ -1641,6 +1641,250 @@ Bei kleinerem Budget bieten einige Hotels einen Studentenbegleiter (50-100 MAD) 
     }
   },
 
+// MARRAKECH - PRÉPARATION SAISONNIÈRE
+  'marrakech-preparation-saisonnier': {
+    fr: {
+      title: 'Marrakech selon les saisons : quand partir et que prévoir',
+      excerpt: 'Climat, fréquentation, prix : guide pratique pour choisir la meilleure période pour visiter Marrakech.',
+      content: `Marrakech se vit différemment selon la saison. Voici ce qu'il faut savoir pour bien préparer votre voyage.
+
+**Printemps (mars-mai) — La saison idéale**
+- Climat : 18-28°C, ensoleillé, idéal pour la médina et les excursions
+- Fréquentation : forte (haute saison)
+- Hébergement : prix au plus haut de la fourchette (riad confort 500-700 MAD/nuit)
+- À prévoir : tenue mi-saison, crème solaire, réservation 3-4 semaines à l'avance
+
+**Été (juin-août) — Pour les amateurs de chaleur**
+- Climat : 35-45°C en journée, 20-25°C la nuit
+- Fréquentation : modérée (touristes européens en juillet-août)
+- Hébergement : -15 à -25 % par rapport au printemps
+- À prévoir : sortir tôt le matin et après 17h, hydratation, riad avec piscine recommandé
+- Bon plan : excursion Atlas (Imlil, Setti Fatma) pour fuir la chaleur
+
+**Automne (septembre-novembre) — Le meilleur compromis**
+- Climat : 20-30°C, ensoleillé, soirées fraîches
+- Fréquentation : forte en octobre, plus calme en novembre
+- Hébergement : prix médian (riad confort 400-550 MAD/nuit)
+- À prévoir : tenue mi-saison, idéal pour les longues marches en médina
+
+**Hiver (décembre-février) — La saison cachée**
+- Climat : 10-20°C en journée, 5-10°C la nuit, pluies occasionnelles
+- Fréquentation : faible (sauf fêtes de fin d'année)
+- Hébergement : -25 à -35 % par rapport au printemps
+- À prévoir : pull et veste, riad avec chauffage indispensable
+- Bon plan : excursion Ouzoud (cascades) magnifiques en cette saison
+
+**Périodes à anticiper**
+- Ramadan (dates variables) : rythme de vie différent — voir notre article dédié
+- Aïd al-Fitr et Aïd al-Adha : commerces fermés 2-3 jours, hébergement +30 %
+- Marathon de Marrakech (janvier) : hôtels saturés, réserver 2 mois avant
+- Festival des Arts Populaires (juillet) : ambiance unique, hébergement +20 %
+
+**Bonnes pratiques toute l'année**
+- Vérifier les avis Google récents (saisonnalité affecte le service)
+- Réserver hébergement 3-4 semaines à l'avance en haute saison
+- Prévoir un budget tampon : la haute saison majore tous les prix de 20-30 %`
+    },
+    en: {
+      title: 'Marrakech by Season: When to Visit and What to Pack',
+      excerpt: 'Climate, crowds, prices: practical guide to choosing the best time to visit Marrakech.',
+      content: `Marrakech feels different in each season. Here's what to know to plan your trip well.
+
+**Spring (March-May) — The ideal season**
+- Climate: 18-28°C, sunny, perfect for medina and excursions
+- Crowds: high (peak season)
+- Accommodation: top of the price range (comfort riad 500-700 MAD/night)
+- Pack: mid-season clothing, sunscreen, book 3-4 weeks ahead
+
+**Summer (June-August) — For heat lovers**
+- Climate: 35-45°C daytime, 20-25°C at night
+- Crowds: moderate (European tourists July-August)
+- Accommodation: -15 to -25% vs spring
+- Pack: go out early morning and after 5pm, stay hydrated, riad with pool recommended
+- Tip: Atlas excursion (Imlil, Setti Fatma) to escape the heat
+
+**Autumn (September-November) — The best compromise**
+- Climate: 20-30°C, sunny, cool evenings
+- Crowds: high in October, calmer in November
+- Accommodation: median prices (comfort riad 400-550 MAD/night)
+- Pack: mid-season clothing, ideal for long medina walks
+
+**Winter (December-February) — The hidden season**
+- Climate: 10-20°C daytime, 5-10°C nights, occasional rain
+- Crowds: low (except year-end holidays)
+- Accommodation: -25 to -35% vs spring
+- Pack: sweater and jacket, riad with heating essential
+- Tip: Ouzoud waterfalls excursion is stunning in winter
+
+**Periods to anticipate**
+- Ramadan (variable dates): different daily rhythm — see our dedicated article
+- Eid al-Fitr and Eid al-Adha: shops closed 2-3 days, accommodation +30%
+- Marrakech Marathon (January): hotels full, book 2 months ahead
+- Popular Arts Festival (July): unique atmosphere, accommodation +20%
+
+**Year-round good practices**
+- Check recent Google reviews (seasonality affects service)
+- Book accommodation 3-4 weeks ahead in high season
+- Plan a budget buffer: high season raises all prices by 20-30%`
+    },
+    es: {
+      title: 'Marrakech según las estaciones: cuándo ir y qué llevar',
+      excerpt: 'Clima, afluencia, precios: guía práctica para elegir la mejor época para visitar Marrakech.',
+      content: `Marrakech se vive diferente según la estación. Aquí lo que debes saber para preparar bien tu viaje.
+
+**Primavera (marzo-mayo) — La estación ideal**
+- Clima: 18-28°C, soleado, ideal para medina y excursiones
+- Afluencia: alta (temporada alta)
+- Alojamiento: tope del rango (riad confort 500-700 MAD/noche)
+- A llevar: ropa de entretiempo, protector solar, reservar 3-4 semanas antes
+
+**Verano (junio-agosto) — Para amantes del calor**
+- Clima: 35-45°C de día, 20-25°C de noche
+- Afluencia: moderada (turistas europeos julio-agosto)
+- Alojamiento: -15 a -25% respecto a primavera
+- A llevar: salir temprano y después de las 17h, hidratación, riad con piscina recomendado
+
+**Otoño (septiembre-noviembre) — El mejor compromiso**
+- Clima: 20-30°C, soleado, noches frescas
+- Afluencia: alta en octubre, más tranquila en noviembre
+- Alojamiento: precio medio (riad confort 400-550 MAD/noche)
+
+**Invierno (diciembre-febrero) — La estación oculta**
+- Clima: 10-20°C de día, 5-10°C de noche, lluvias ocasionales
+- Afluencia: baja (excepto fiestas de fin de año)
+- Alojamiento: -25 a -35% respecto a primavera
+- A llevar: jersey y chaqueta, riad con calefacción imprescindible
+
+**Períodos a anticipar**
+- Ramadán: ritmo diferente — ver nuestro artículo dedicado
+- Eid al-Fitr y Eid al-Adha: comercios cerrados 2-3 días, alojamiento +30%
+- Maratón de Marrakech (enero): hoteles saturados
+- Festival de Artes Populares (julio): ambiente único, +20%
+
+**Buenas prácticas todo el año**
+- Verificar reseñas Google recientes
+- Reservar 3-4 semanas antes en temporada alta
+- Prever un margen presupuestario: alta temporada +20-30%`
+    },
+    de: {
+      title: 'Marrakesch je nach Saison: Wann reisen und was einpacken',
+      excerpt: 'Klima, Andrang, Preise: praktischer Leitfaden zur besten Reisezeit für Marrakesch.',
+      content: `Marrakesch fühlt sich in jeder Jahreszeit anders an. Hier, was Sie zur guten Reiseplanung wissen sollten.
+
+**Frühling (März-Mai) — Die ideale Saison**
+- Klima: 18-28°C, sonnig, ideal für Medina und Ausflüge
+- Andrang: hoch (Hochsaison)
+- Unterkunft: Spitze der Spanne (Komfort-Riad 500-700 MAD/Nacht)
+- Einpacken: Übergangskleidung, Sonnenschutz, 3-4 Wochen vorher buchen
+
+**Sommer (Juni-August) — Für Hitzeliebhaber**
+- Klima: 35-45°C tagsüber, 20-25°C nachts
+- Andrang: mäßig (europäische Touristen Juli-August)
+- Unterkunft: -15 bis -25% gegenüber Frühling
+- Einpacken: früh morgens und nach 17 Uhr ausgehen, Riad mit Pool empfohlen
+
+**Herbst (September-November) — Der beste Kompromiss**
+- Klima: 20-30°C, sonnig, kühle Abende
+- Andrang: hoch im Oktober, ruhiger im November
+- Unterkunft: mittlerer Preis (Komfort-Riad 400-550 MAD/Nacht)
+
+**Winter (Dezember-Februar) — Die versteckte Saison**
+- Klima: 10-20°C tagsüber, 5-10°C nachts, gelegentlich Regen
+- Andrang: niedrig (außer Jahresende)
+- Unterkunft: -25 bis -35% gegenüber Frühling
+- Einpacken: Pullover und Jacke, Riad mit Heizung unverzichtbar
+
+**Zu antizipierende Zeiträume**
+- Ramadan: anderer Lebensrhythmus — siehe dedizierter Artikel
+- Eid al-Fitr und Eid al-Adha: Geschäfte 2-3 Tage geschlossen, Unterkunft +30%
+- Marrakesch-Marathon (Januar): Hotels ausgebucht
+- Festival der Volkskünste (Juli): einzigartige Atmosphäre, +20%
+
+**Ganzjährig bewährte Praktiken**
+- Aktuelle Google-Bewertungen prüfen
+- Unterkunft 3-4 Wochen vorher buchen in Hochsaison
+- Budgetreserve einplanen: Hochsaison +20-30%`
+    },
+    ar: {
+      title: 'مراكش حسب الفصول: متى تزورها وماذا تحضر',
+      excerpt: 'المناخ والازدحام والأسعار: دليل عملي لاختيار أفضل وقت لزيارة مراكش.',
+      content: `تُعاش مراكش بشكل مختلف حسب الموسم. إليك ما يجب معرفته للتخطيط الجيد لرحلتك.
+
+**الربيع (مارس-مايو) — الموسم المثالي**
+- المناخ: 18-28°م، مشمس، مثالي للمدينة القديمة والرحلات
+- الازدحام: مرتفع (موسم الذروة)
+- الإقامة: أعلى النطاق (رياض مريح 500-700 درهم/ليلة)
+- التحضير: ملابس متوسطة، واقي شمس، الحجز قبل 3-4 أسابيع
+
+**الصيف (يونيو-أغسطس) — لمحبي الحرارة**
+- المناخ: 35-45°م نهاراً، 20-25°م ليلاً
+- الازدحام: متوسط (سياح أوروبيون يوليو-أغسطس)
+- الإقامة: -15 إلى -25% مقارنة بالربيع
+- التحضير: الخروج صباحاً وبعد الساعة 5 مساءً، رياض بمسبح موصى به
+
+**الخريف (سبتمبر-نوفمبر) — أفضل توافق**
+- المناخ: 20-30°م، مشمس، أمسيات منعشة
+- الازدحام: مرتفع في أكتوبر، أهدأ في نوفمبر
+- الإقامة: السعر المتوسط (رياض مريح 400-550 درهم/ليلة)
+
+**الشتاء (ديسمبر-فبراير) — الموسم الخفي**
+- المناخ: 10-20°م نهاراً، 5-10°م ليلاً، أمطار عرضية
+- الازدحام: منخفض (باستثناء أعياد نهاية السنة)
+- الإقامة: -25 إلى -35% مقارنة بالربيع
+- التحضير: كنزة وسترة، رياض بتدفئة ضروري
+
+**فترات للتحضير لها**
+- رمضان: إيقاع حياة مختلف — انظر مقالنا المخصص
+- عيد الفطر والأضحى: المحلات مغلقة 2-3 أيام، الإقامة +30%
+- ماراثون مراكش (يناير): الفنادق ممتلئة
+- مهرجان الفنون الشعبية (يوليو): أجواء فريدة، +20%
+
+**ممارسات جيدة طوال السنة**
+- التحقق من تقييمات Google الحديثة
+- الحجز قبل 3-4 أسابيع في موسم الذروة
+- تخطيط هامش ميزانية: موسم الذروة +20-30%`
+    },
+    darija: {
+      title: 'مراكش حسب الفصول: فوقاش تمشي وآش تحضر',
+      excerpt: 'الجو والازدحام والأسعار: دليل عملي باش تختار أحسن وقت لزيارة مراكش.',
+      content: `مراكش كتعاش بشكل مختلف حسب الموسم. هاكي آش خاصك تعرف باش تحضر مزيان للرحلة ديالك.
+
+**الربيع (مارس-ماي) — الموسم المثالي**
+- الجو: 18-28°، مشمس، مثالي للمدينة والرحلات
+- الازدحام: مرتفع (موسم الذروة)
+- الإقامة: أعلى النطاق (رياض مريح 500-700 درهم/ليلة)
+- آش تحضر: لباس متوسط، واقي الشمس، الحجز قبل 3-4 أسابيع
+
+**الصيف (يونيو-أغسطس) — لي كيحبو السخانة**
+- الجو: 35-45° فالنهار، 20-25° فالليل
+- الازدحام: متوسط (سياح أوروبيين يوليوز-أغسطس)
+- الإقامة: -15 ل -25% مقارنة بالربيع
+- آش تحضر: خرج بكري وبعد 17 ديال العشية، رياض بالبيسين مزيان
+
+**الخريف (سبتمبر-نوفمبر) — أحسن توافق**
+- الجو: 20-30°، مشمس، الأمسيات باردة
+- الازدحام: مرتفع فأكتوبر، أهدأ فنوفمبر
+- الإقامة: السعر المتوسط (رياض مريح 400-550 درهم/ليلة)
+
+**الشتاء (ديسمبر-فبراير) — الموسم المخفي**
+- الجو: 10-20° فالنهار، 5-10° فالليل، الشتا أحياناً
+- الازدحام: ضعيف (ما عدا أعياد نهاية السنة)
+- الإقامة: -25 ل -35% مقارنة بالربيع
+- آش تحضر: تريكو وكبوط، رياض فيه التدفئة ضروري
+
+**فترات خاصك تحضر ليها**
+- رمضان: إيقاع الحياة مختلف — شوف المقال المخصص
+- عيد الفطر والأضحى: الحوانيت مسدودة 2-3 أيام، الإقامة +30%
+- ماراطون مراكش (يناير): الفنادق ممتلئة
+- مهرجان الفنون الشعبية (يوليوز): أجواء فريدة، +20%
+
+**ممارسات جيدة طول السنة**
+- شوف تقييمات Google الحديثة
+- احجز قبل 3-4 أسابيع فموسم الذروة
+- خطط لهامش ميزانية: موسم الذروة +20-30%`
+    }
+  },
+
   // NEW PILLAR ARTICLES — imported from blog-translations-new.js
   ...NEW_BLOG_ARTICLES_TRANSLATIONS,
 
