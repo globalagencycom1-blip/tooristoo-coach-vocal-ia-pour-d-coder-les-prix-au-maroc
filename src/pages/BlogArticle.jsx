@@ -78,7 +78,7 @@ export default function BlogArticle() {
       name: article.city,
       address: { '@type': 'PostalAddress', addressCountry: 'MA' },
     },
-    keywords: `${article.city}, ${article.category}, Maroc, arnaque, négociation, prix, tourisme`,
+    keywords: `${article.city}, ${article.category}, Maroc, vigilance tarifaire, négociation, prix, tourisme`,
     articleSection: article.pillar,
     isPartOf: { '@type': 'Blog', name: 'Tooristoo Blog', url: `${BASE}/blog` },
   };
