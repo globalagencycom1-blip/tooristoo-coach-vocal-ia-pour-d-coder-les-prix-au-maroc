@@ -92,9 +92,9 @@ const CONTENT = {
     ],
     process_title: 'Proceso de certificación',
     process: [
-      { step: '1', title: 'Visita de campo', desc: 'Un miembro del equipo Tooristoo investigó y seleccionó el servicio en línea. Ré-evaluación anual obligatoria.' },
-      { step: '2', title: 'Certificación', desc: 'Si cumple, el proveedor recibe el sello Tooristoo.' },
-      { step: '3', title: 'Seguimiento continuo', desc: 'Re-evaluación anual + vigilancia de denuncias.' },
+      { step: '1', title: 'Selección', desc: 'Un miembro del equipo Tooristoo investigó y seleccionó el servicio en línea. Ré-evaluación anual obligatoria.' },
+      { step: '2', title: 'Conformidad', desc: 'Si cumple con los requisitos, el proveedor recibe la insignia Tooristoo (Referenciado) y se publica en la plataforma.' },
+      { step: '3', title: 'Seguimiento continuo', desc: 'Reevaluación anual + supervisión en tiempo real de los reportes de la comunidad.' },
     ],
     why_title: 'Por qué importa para ti',
     why: [
