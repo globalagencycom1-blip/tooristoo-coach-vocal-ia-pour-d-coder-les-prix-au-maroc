@@ -448,8 +448,8 @@ Refusez calmement de payer le surplus. Montrez le prix affiché. Signalez sur To
 **Cas 2 : Arnaque significative (200–2 000 MAD)**
 1. Demandez un reçu (obligatoire légalement)
 2. Photographiez le lieu, la personne, le produit
-3. Contactez la Brigade Touristique (médinas de Marrakech et Fès)
-4. Police Touristique Marrakech : +212 524 38 46 01
+3. Contactez la Brigade Touristique
+4. Police Touristique
 5. Portez plainte au commissariat — conservez le numéro de dépôt
 
 **Cas 3 : Vol ou arnaque grave (carte bancaire, excursion non fournie)**
