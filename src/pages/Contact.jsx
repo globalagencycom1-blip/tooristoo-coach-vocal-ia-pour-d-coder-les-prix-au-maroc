@@ -24,16 +24,6 @@ export default function Contact() {
       label: lang === 'fr' ? 'Email' : lang === 'en' ? 'Email' : lang === 'es' ? 'Correo' : lang === 'de' ? 'E-Mail' : lang === 'ar' ? 'البريد' : 'البريد',
       value: 'contact@tooristoo.com',
     },
-    {
-      icon: MapPin,
-      label: lang === 'fr' ? 'Adresse' : lang === 'en' ? 'Address' : lang === 'es' ? 'Dirección' : lang === 'de' ? 'Adresse' : lang === 'ar' ? 'العنوان' : 'العنوان',
-      value: '10 rue du Colisée, 75008 Paris',
-    },
-    {
-      icon: Phone,
-      label: lang === 'fr' ? 'Téléphone' : lang === 'en' ? 'Phone' : lang === 'es' ? 'Teléfono' : lang === 'de' ? 'Telefon' : lang === 'ar' ? 'الهاتف' : 'الهاتف',
-      value: '+33 7 55 85 52 54',
-    },
   ];
 
   return (
