@@ -84,7 +84,7 @@ export default function Contact() {
             </button>
             {submitted && (
               <div className="p-3 bg-shield-green/20 border border-shield-green/50 rounded-xl text-shield-green text-sm text-center">
-                {lang === 'fr' ? 'Message envoyé! Merci de nous contacter.' : lang === 'en' ? 'Message sent! Thank you for contacting us.' : lang === 'es' ? '¡Mensaje enviado! Gracias por contactarnos.' : lang === 'de' ? 'Nachricht gesendet! Danke, dass Sie uns kontaktieren.' : lang === 'ar' ? 'تم إرسال الرسالة! شكراً لتواصلك معنا.' : 'الرسالة تبعتت! شكراً على التواصل.'}
+                {lang === 'fr' ? 'Message envoyé! Merci de nous avoir contacté. Nous vous répondrons sous 48h' : lang === 'en' ? 'Message sent! Thank you for contacting us.' : lang === 'es' ? '¡Mensaje enviado! Gracias por contactarnos.' : lang === 'de' ? 'Nachricht gesendet! Danke, dass Sie uns kontaktieren.' : lang === 'ar' ? 'تم إرسال الرسالة! شكراً لتواصلك معنا.' : 'الرسالة تبعتت! شكراً على التواصل.'}
               </div>
             )}
           </form>
