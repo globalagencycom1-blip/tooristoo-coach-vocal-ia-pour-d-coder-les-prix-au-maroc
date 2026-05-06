@@ -3,8 +3,8 @@ import Stripe from 'npm:stripe@14';
 const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY'));
 
 const PRICES = {
-  voyageur: 'price_1TTdG34Z53yr9gqpBgitpaSV',
-  voyageur_plus: 'price_1TTdG34Z53yr9gqp9KsNumVg',
+  voyageur: 'price_1TUAHNL7F4DvPq7SLuE3bgOs',
+  voyageur_plus: 'price_1TUAJ8L7F4DvPq7SDTYw5byC',
 };
 
 Deno.serve(async (req) => {
