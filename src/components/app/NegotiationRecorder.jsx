@@ -114,13 +114,21 @@ const sanitizeLLMResponse = (text, lang = 'fr') => {
 const FORBIDDEN_KEYWORDS = [
   // Drogues (toutes langues)
   'hashish', 'haschich', 'hash', 'cannabis', 'weed', 'marijuana', 'cocaine', 'cocaïne',
-  'heroin', 'héroïne', 'kif', 'shit', 'beuh', 'ecstasy', 'mdma', 'lsd',
+  'heroin', 'héroïne', 'kif', 'shit', 'beuh', 'ecstasy', 'mdma', 'lsd','stupéfiants', 'produits stupéfiants', 'dealer', 'deal', 'trafic de drogue',
+  'ecstasy', 'mdma', 'lsd', 'amphétamine', 'crack',
   // Services sexuels
   'prostitute', 'prostituée', 'prostituta', 'prostituierte',
-  'escort', 'escorte', 'hooker',
+  'escort', 'escorte', 'hooker','escort girl', 'massage érotique', 'massage sensuel', 'massage avec finition',
+  'plan cul', 'rdv tarifé', 'rdv discret', 'prestations adultes',
+  'maison close', 'bordel', 'proxénétisme', 'proxénète',
   // Faux papiers
   'fake passport', 'faux passeport', 'pasaporte falso', 'gefälschter pass',
   'fake visa', 'faux visa', 'faux papiers', 'fake document',
+  // Autres services
+  'kalachnikov', 'pistolet', 'fusil', 'munition', 'arme à feu',
+  'trafic d’êtres humains', 'réseau de passeurs', 'migration clandestine',
+  'fraude', 'escroquerie', 'arnaque', 'faux documents', 'faux papiers',
+  'usurpation', 'usurpation d’identité','corrompre', 'commission occulte', 'dessous-de-table'
 ];
 
 // Réponse standard de refus (structure conforme au schéma JSON attendu)
