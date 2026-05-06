@@ -399,6 +399,7 @@ ANALYSE DEMANDÉE (uniquement si la transcription concerne un service touristiqu
 5. Rédige une analyse pédagogique et neutre (ai_analysis), sans accusation
 6. Propose UNE phrase exacte à dire au vendeur pour amorcer la négociation, en darija marocain transcrit en latin (recommended_phrase)
 7. Suggère une stratégie de négociation respectueuse en 2-3 lignes (strategy)
+8. Toujours proposer UNIQUEMENT un prestataire correspondant à la ville et la catégorie (et jamais proposer UN PRESTATAIRE QUI N'EST PAS RÉFÉRENCÉ) et mentionner le prestataire (provider_name,provider_url)
 
 TON: factuel, neutre, respectueux de la culture marocaine du marchandage.
 
