@@ -123,12 +123,11 @@ const FORBIDDEN_KEYWORDS = [
   'maison close', 'bordel', 'proxénétisme', 'proxénète',
   // Faux papiers
   'fake passport', 'faux passeport', 'pasaporte falso', 'gefälschter pass',
-  'fake visa', 'faux visa', 'faux papiers', 'fake document',
+  'fake visa', 'faux visa', 'faux papiers', 'fake document','faux documents',
   // Autres services
   'kalachnikov', 'pistolet', 'fusil', 'munition', 'arme à feu',
   'trafic d’êtres humains', 'réseau de passeurs', 'migration clandestine',
-  'fraude', 'escroquerie', 'arnaque', 'faux documents', 'faux papiers',
-  'usurpation', 'usurpation d’identité','corrompre', 'commission occulte', 'dessous-de-table'
+  'fraude', 'escroquerie', 'arnaque','usurpation', 'usurpation d’identité','corrompre', 'commission occulte', 'dessous-de-table'
 ];
 
 // Réponse standard de refus (structure conforme au schéma JSON attendu)
