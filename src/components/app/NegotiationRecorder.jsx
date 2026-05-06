@@ -393,7 +393,7 @@ Si l'un de ces cas est détecté, renvoie EXACTEMENT cette structure :
 
 ANALYSE DEMANDÉE (uniquement si la transcription concerne un service touristique légal):
 1. Extrais le prix exact demandé par le vendeur (en MAD si mentionné)
-2. Compare ce prix à la fourchette de référence locale pour cette catégorie et cette ville
+2. Compare ce prix à la fourchette de référence locale de PricingKnowledge pour cette catégorie et cette ville
 3. Évalue le niveau d'écart par rapport à cette fourchette (low / medium / high)
 4. Identifie tout indicateur de pratique commerciale problématique (price_anomaly = true si écart significatif et inhabituel)
 5. Rédige une analyse pédagogique et neutre (ai_analysis), sans accusation
