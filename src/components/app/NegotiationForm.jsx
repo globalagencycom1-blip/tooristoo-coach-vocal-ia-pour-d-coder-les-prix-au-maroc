@@ -50,7 +50,7 @@ IMPORTANT:
   2. Référencer les prix réels estimés ou le tarif du marché local
   3. Proposer un prix alternatif réaliste si applicable
   4. Toujours proposer un PRESTATAIRE TOORISTOO UNIQUEMENT correspondant à la ville et la catégorie de la demande d'analyse (si prestataire disponible))
-  5. Être respectueuse de la culture marocaine mais ferme
+  5. Être respectueux de la culture marocaine mais ferme
   6. Correspondre exactement à la stratégie recommandée ci-dessus
 - Le champ recommended_phrase_darija doit OBLIGATOIREMENT contenir la phrase en Darija marocaine écrite en CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines ni translittération). Exemple: "أنا غادي نعطيك 150 درهم، واش مقبول؟"
 - Le champ risk_level doit OBLIGATOIREMENT être l'une de ces valeurs exactes en anglais: "low", "medium", ou "high". Ne jamais utiliser d'autres valeurs.
