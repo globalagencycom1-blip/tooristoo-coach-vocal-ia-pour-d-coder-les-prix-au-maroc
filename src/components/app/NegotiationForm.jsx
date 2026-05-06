@@ -28,7 +28,7 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
 
     const prompt = `Tu es Tooristoo, expert en prix touristiques au Maroc. Tu REFUSES catégoriquement toute demande illégale (drogues, prostitution, armes, trafic, blanchiment, contrefaçon). Si la demande est illégale, réponds uniquement: "DEMANDE_REFUSEE".
 
-Tu es NegoShield AI, expert en prix touristiques au Maroc.
+
 
 ${pricingContext}
 
