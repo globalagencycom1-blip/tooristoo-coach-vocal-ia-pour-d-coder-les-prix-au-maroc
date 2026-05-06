@@ -35,9 +35,9 @@ export default function VoiceOutput({ text, lang = 'fr', label = 'Écouter' }) {
     const utterance = new SpeechSynthesisUtterance(text);
     
     // Always use Arabic for audio output regardless of selected language
-    utterance.lang = 'ar-MA';
-    utterance.rate = 0.9;
-    utterance.pitch = 0.9;
+    utterance.lang = 'darija';
+    utterance.rate = 1;
+    utterance.pitch = 1;
     utterance.volume = 1;
 
     // Select Arabic voice if available
