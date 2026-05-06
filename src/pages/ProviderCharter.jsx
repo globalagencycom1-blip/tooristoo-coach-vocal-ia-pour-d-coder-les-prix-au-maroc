@@ -227,7 +227,7 @@ export default function ProviderCharter() {
           <h3 className="font-poppins font-bold text-white text-xl mb-2">{c.become_title}</h3>
           <p className="text-gray-400 text-sm mb-6 max-w-md mx-auto">{c.become_desc}</p>
           <a
-            href="mailto:certification@tooristoo.com"
+            href="mailto:contac@tooristoo.com"
             className="inline-flex items-center gap-2 px-6 py-3 bg-shield-gold/10 border border-shield-gold/40 text-shield-gold font-bold rounded-xl hover:bg-shield-gold/20 transition-all"
           >
             {c.become_btn}
