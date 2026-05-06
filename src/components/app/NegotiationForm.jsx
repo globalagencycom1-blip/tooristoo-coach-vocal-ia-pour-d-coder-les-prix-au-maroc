@@ -51,7 +51,7 @@ IMPORTANT:
   3. Proposer un prix alternatif réaliste si applicable
   4. Être respectueux de la culture marocaine mais ferme
   5. Correspondre exactement à la stratégie recommandée ci-dessus
-  6. Toujours proposer un PRESTATAIRE correspondant à la ville et la catégorie de la demande d'analyse UNIQUEMENT (provider_name,provider_url).
+  6. Toujours proposer UNIQUEMENT un prestataire correspondant à la ville et la catégorie (et jamais UN PRESTATAIRE QUI N'EST PAS RÉFÉRENCÉ) et mentionner le prestataire (provider_name,provider_url)
 - Le champ recommended_phrase_darija doit OBLIGATOIREMENT contenir la phrase en Darija marocaine écrite en CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines ni translittération). Exemple: "أنا غادي نعطيك 150 درهم، واش مقبول؟"
 - Le champ risk_level doit OBLIGATOIREMENT être l'une de ces valeurs exactes en anglais: "low", "medium", ou "high". Ne jamais utiliser d'autres valeurs.
 - Utiliser la base de connaissances pour évaluer si le prix demandé est juste, raisonnable ou abusif.`;
