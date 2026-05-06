@@ -872,7 +872,14 @@ export const PROHIBITED_KEYWORDS = {
     'puta',
     'arma', 'explosivo',
     'tráfico humano', 'lavado dinero', 'billete falso', 'contrafacción',
-    'soborno'
+    'soborno','servicios para adultos', 'masaje erótico', 'final feliz',
+    'sexo pagado', 'burdel', 'proxeneta',
+    'tráfico de drogas', 'traficante', 'éxtasis', 'mdma', 'lsd',
+    'anfetamina', 'crack',
+    'pistola', 'arma de fuego', 'munición',
+    'inmigración ilegal', 'traficante de personas',
+    'estafa', 'fraude', 'documentos falsos', 'robo de identidad',
+    'pago ilegal', 'comisión ilegal'
   ],
   de: [
     'prostitution', 'escort', 'sexuelle dienstleistungen',
