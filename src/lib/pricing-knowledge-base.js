@@ -858,7 +858,13 @@ export const PROHIBITED_KEYWORDS = {
     'weapon', 'explosive',
     'human trafficking', 'smuggling',
     'money laundering', 'fake bill', 'counterfeit', 'slave',
-    'bribe', 'bribery'
+    'bribe', 'bribery','adult services', 'erotic massage', 'sensual massage', 'happy ending',
+    'paid sex', 'sex for money', 'brothel', 'pimp', 'pimping',
+    'drug dealing', 'drug trafficking', 'dealer', 'ecstasy', 'mdma', 'lsd','amphetamine', 'crack cocaine',
+    'gun', 'firearm', 'pistol', 'rifle', 'ammo', 'ammunition',
+    'illegal immigration', 'people smuggler', 'smuggler network',
+    'scam', 'fraud', 'identity theft', 'fake documents', 'forged documents',
+    'kickback', 'under the table payment'
   ],
   es: [
     'prostitución', 'escort', 'servicios sexuales',
