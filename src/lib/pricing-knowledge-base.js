@@ -887,7 +887,14 @@ export const PROHIBITED_KEYWORDS = {
     'hure',
     'waffe', 'sprengstoff',
     'menschenhandel', 'geldwäsche', 'falschgeld', 'fälschung',
-    'bestechung'
+    'bestechung','erotische massage', 'happy end massage', 'bezahlter sex',
+    'bordell', 'zuhälter',
+    'drogenhandel', 'dealer', 'ecstasy', 'mdma', 'lsd',
+    'amphetamin', 'crack',
+    'schusswaffe', 'pistole', 'gewehr', 'munition',
+    'illegale einwanderung', 'schleuser', 'schleusernetzwerk',
+    'betrug', 'identitätsdiebstahl', 'gefälschte dokumente',
+    'schmiergeld', 'illegale zahlung'
   ],
   ar: [
     'دعارة', 'بغاء', 'عاهرة', 'خدمات جنسية',
