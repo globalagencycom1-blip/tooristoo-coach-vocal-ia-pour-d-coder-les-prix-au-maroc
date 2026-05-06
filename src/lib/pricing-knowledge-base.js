@@ -840,7 +840,16 @@ export const PROHIBITED_KEYWORDS = {
     'armes', 'explosif',
     'traite humain', 'traite humaine', 'passeur',
     'blanchiment', 'faux billet', 'contrefaçon', 'esclave',
-    'corruption', 'pot-de-vin'
+    'corruption', 'pot-de-vin','escort girl', 'massage érotique', 'massage sensuel', 'massage avec finition',
+    'plan cul', 'rdv tarifé', 'rdv discret', 'prestations adultes',
+    'maison close', 'bordel', 'proxénétisme', 'proxénète',
+    'stupéfiants', 'produits stupéfiants', 'dealer', 'deal', 'trafic de drogue',
+    'ecstasy', 'mdma', 'lsd', 'amphétamine', 'crack',
+    'kalachnikov', 'pistolet', 'fusil', 'munition', 'arme à feu',
+    'trafic d’êtres humains', 'réseau de passeurs', 'migration clandestine',
+    'fraude', 'escroquerie', 'arnaque', 'faux documents', 'faux papiers',
+    'usurpation', 'usurpation d’identité',
+    'corrompre', 'commission occulte', 'dessous-de-table'
   ],
   en: [
     'prostitution', 'escort', 'call girl', 'sex service', 'sexual service', 'sex worker',
