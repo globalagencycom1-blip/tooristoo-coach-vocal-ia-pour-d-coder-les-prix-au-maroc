@@ -69,7 +69,7 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
     - recommended_phrase (string): phrase exacte en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'arabe (caractères arabes)' : lang === 'darija' ? 'Darija (caractères arabes)' : 'Français'} à dire au vendeur
     - strategy (string): stratégie recommandée en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija' : 'Français'}
     - vendor_trust_score (number 1-5)
-    - provider_name (string): nom d'un prestataire tooristoo recommandé uniquement
+    - provider_name (string): nom d'un prestataire tooristoo recommandé UNIQUEMENT
     - provider_url (string): lien Google Maps ou site pour ce prestataire à ${location || 'Marrakech'}
     - savings (number): économies potentielles si prix MAD demandé est connu, sinon 0
     - recommended_phrase_darija (string): OBLIGATOIREMENT la phrase en Darija marocaine écrite en CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines ni translittération). Exemple: "أنا غادي نعطيك 150 درهم، واش مقبول؟"
