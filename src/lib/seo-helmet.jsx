@@ -118,7 +118,7 @@ const buildSchemas = (page) => {
           offers: [
             { '@type': 'Offer', name: 'Gratuit', price: '0', priceCurrency: 'EUR', description: '3 analyses par mois' },
             { '@type': 'Offer', name: 'Voyageur', price: '5', priceCurrency: 'EUR', description: '50 analyses par mois' },
-            { '@type': 'Offer', name: 'Voyageur Plus', price: '9', priceCurrency: 'EUR', description: '100 analyses par mois' },
+            { '@type': 'Offer', name: 'Voyageur+', price: '9', priceCurrency: 'EUR', description: '100 analyses par mois' },
           ],
           featureList: ['Analyse de prix en temps réel', 'Fourchettes de référence par ville', 'Phrases de négociation en darija', 'Annuaire de prestataires sélectionnés', 'Historique des analyses'],
           inLanguage: ['fr', 'en', 'es', 'de', 'ar', 'ar-MA'],
