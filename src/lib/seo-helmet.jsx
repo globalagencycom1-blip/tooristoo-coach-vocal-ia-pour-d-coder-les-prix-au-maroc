@@ -207,7 +207,7 @@ const buildSchemas = (page) => {
             '@context': 'https://schema.org',
             ...ORG,
             founder: [
-              { '@type': 'Person', name: 'Azeddine Maghraoui', jobTitle: 'Fondateur', description: 'Créateur de Tooristoo, initiative dédiée à la vigilance tarifaire au Maroc.' },
+              { '@type': 'Person', name: 'Azeddine M.', jobTitle: 'Fondateur', description: 'Créateur de Tooristoo, initiative dédiée à la vigilance tarifaire au Maroc.' },
             ],
             // numberOfEmployees retiré (claim non vérifiable)
             // award retiré (claim non vérifiable)
