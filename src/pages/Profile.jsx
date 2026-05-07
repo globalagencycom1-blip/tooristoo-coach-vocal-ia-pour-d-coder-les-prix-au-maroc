@@ -172,27 +172,6 @@ export default function Profile() {
                     </div>
                   </div>
 
-                  {/* Destination */}
-                  {isEditing ? (
-                    <div className="p-4 bg-shield-border/30 rounded-xl">
-                      <p className="text-xs text-gray-500 mb-2">{t('profile_destination')}</p>
-                      <input
-                        type="text"
-                        value={editData.destination || ''}
-                        onChange={(e) => setEditData({ ...editData, destination: e.target.value })}
-                        className="w-full bg-shield-dark border border-shield-border rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-shield-green"
-                        placeholder="Maroc"
-                      />
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-between p-4 bg-shield-border/30 rounded-xl">
-                      <div>
-                        <p className="text-xs text-gray-500 mb-1">{t('profile_destination')}</p>
-                        <p className="text-white font-medium">{profile?.destination || 'Maroc'}</p>
-                      </div>
-                    </div>
-                  )}
-
                   {/* Plan Badge */}
                   <div className="p-4 bg-shield-green/10 border border-shield-green/30 rounded-xl">
                     <div className="flex items-center justify-between">
