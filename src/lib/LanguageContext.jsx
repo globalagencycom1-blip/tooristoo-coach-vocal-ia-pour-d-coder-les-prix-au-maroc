@@ -5,7 +5,7 @@ const LanguageContext = createContext();
 
 // Maps browser language codes to supported app languages
 function detectBrowserLang() {
-  const saved = localStorage.getItem('negoshield_lang');
+  const saved = localStorage.getItem('tooristoo_lang');
   if (saved) return saved;
   const nav = (navigator.language || navigator.languages?.[0] || 'fr').toLowerCase();
   if (nav.startsWith('ar')) return 'ar';
