@@ -29,9 +29,7 @@
     "email"
   ],
   "rls": {
-    "create": {
-      "created_by": "{{user.email}}"
-    },
+    "create": null,
     "read": {
       "user_condition": {
         "role": "admin"
@@ -43,11 +41,6 @@
       }
     },
     "delete": {
-      "user_condition": {
-        "role": "admin"
-      }
-    },
-    "write": {
       "user_condition": {
         "role": "admin"
       }
