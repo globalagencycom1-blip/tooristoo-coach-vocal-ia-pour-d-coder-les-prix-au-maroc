@@ -12,7 +12,7 @@
         "voyageur",
         "voyageur+"
       ],
-      "default": "free"
+      "default": "gratuit"
     },
     "language": {
       "type": "string",
