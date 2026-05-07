@@ -88,7 +88,7 @@ export default function NegotiationContinue({ analysis, lang }) {
     setIsAnalyzing(true);
     setReply(null);
 
-    const prompt = `Tu es NegoShield AI, expert en négociation touristique au Maroc.
+    const prompt = `Tu es Tooristoo, expert en négociation touristique au Maroc.
 
 CONTEXTE DE LA NÉGOCIATION :
 - Catégorie de service : ${analysis.category}
