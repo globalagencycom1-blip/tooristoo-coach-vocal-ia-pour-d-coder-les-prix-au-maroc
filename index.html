@@ -227,7 +227,7 @@
       var path = window.location.pathname.replace(/\/$/, '') || '/';
       if (path.match(/^\/blog\/.+/)) path = '/blog';
       path = path.toLowerCase();
-      var saved = localStorage.getItem('negoshield_lang');
+      var saved = localStorage.getItem('tooristoo_lang');
       var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || 'fr').toLowerCase();
       var lang = saved || (nav.startsWith('ar') ? 'ar' : nav.startsWith('de') ? 'de' : nav.startsWith('es') ? 'es' : nav.startsWith('en') ? 'en' : 'fr');
       document.addEventListener('DOMContentLoaded', function(){
