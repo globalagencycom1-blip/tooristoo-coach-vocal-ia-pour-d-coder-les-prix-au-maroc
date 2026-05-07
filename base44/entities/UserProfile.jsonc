@@ -8,7 +8,7 @@
     "plan": {
       "type": "string",
       "enum": [
-        "free",
+        "gratuit",
         "voyageur",
         "voyageur+"
       ],
