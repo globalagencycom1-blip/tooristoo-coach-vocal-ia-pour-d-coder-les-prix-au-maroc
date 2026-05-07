@@ -41,10 +41,6 @@
     "monthly_analyses_used": {
       "type": "number",
       "default": 0
-    },
-    "destination": {
-      "type": "string",
-      "default": "Maroc"
     }
   },
   "required": [
