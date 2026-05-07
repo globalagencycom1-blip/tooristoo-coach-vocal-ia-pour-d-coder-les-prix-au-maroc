@@ -19,7 +19,7 @@ export function LanguageProvider({ children }) {
   const [lang, setLang] = useState(() => detectBrowserLang());
 
   useEffect(() => {
-    localStorage.setItem('negoshield_lang', lang);
+    localStorage.setItem('tooristoo_lang', lang);
     document.documentElement.dir = isRTL(lang) ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
   }, [lang]);
