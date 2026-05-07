@@ -259,23 +259,6 @@ export default function Profile() {
                       <option value="darija">Darija</option>
                     </select>
                   </div>
-
-                  {/* Destination */}
-                  <div>
-                    <p className="text-sm text-gray-400 mb-3">{t('profile_main_destination')}</p>
-                    <input
-                      type="text"
-                      value={editData.destination || profile?.destination || ''}
-                      onChange={(e) => setEditData({ ...editData, destination: e.target.value })}
-                      onBlur={() => {
-                        if (profile && editData.destination) {
-                          base44.entities.UserProfile.update(profile.id, { destination: editData.destination });
-                        }
-                      }}
-                      className="w-full bg-shield-border/50 border border-shield-border rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-shield-green"
-                      placeholder="Maroc"
-                    />
-                  </div>
                 </div>
               </div>
             )}
