@@ -34,13 +34,13 @@ export default function VoiceOutput({ text, lang = 'fr', label = 'Écouter' }) {
 
     const utterance = new SpeechSynthesisUtterance(text);
     
-    // Always use Darija for audio output regardless of selected language
+    // Always use Arabic for audio output regardless of selected language
     utterance.lang = 'darija';
     utterance.rate = 1;
     utterance.pitch = 1;
     utterance.volume = 1;
 
-    // Select Darija voice if available
+    // Select Arabic voice if available
     const voices = window.speechSynthesis.getVoices();
     const preferredVoice = voices.find(v => v.lang === 'darija') ||
       voices.find(v => v.lang === 'darija') ||
