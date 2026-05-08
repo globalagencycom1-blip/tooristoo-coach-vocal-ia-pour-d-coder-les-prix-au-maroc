@@ -62,7 +62,7 @@ export default function VoiceCoachDemoSection({ lang }) {
       // Use Web Speech API for text-to-speech
       const utterance = new SpeechSynthesisUtterance(phrase.text);
       utterance.lang = lang === 'darija' ? 'ar-MA' : lang === 'fr' ? 'fr-FR' : lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : lang === 'de' ? 'de-DE' : 'ar-SA';
-      utterance.rate = 0.9;
+      utterance.rate = 1;
       utterance.pitch = 1;
 
       utterance.onend = () => {
