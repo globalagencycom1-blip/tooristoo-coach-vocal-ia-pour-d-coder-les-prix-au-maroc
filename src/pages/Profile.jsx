@@ -9,10 +9,10 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 // ─── Normalise le plan (gère les anciens slugs) ───────────────────────────────
-// 'pro' et 'voyageur_plus' sont le même plan — on normalise vers 'voyageur_plus'
+// 'pro' et 'voyageur+' sont le même plan — on normalise vers 'voyageur+'
 function normalizePlan(plan) {
   if (!plan) return 'free';
-  if (plan === 'pro') return 'voyageur_plus';
+  if (plan === 'pro') return 'voyageur+';
   return plan;
 }
 
@@ -44,8 +44,8 @@ export default function Profile() {
         const p = profiles[0];
         // Normalise le plan au chargement et met à jour en base si nécessaire
         if (p.plan === 'pro') {
-          p.plan = 'voyageur_plus';
-          base44.entities.UserProfile.update(p.id, { plan: 'voyageur_plus' }).catch(() => {});
+          p.plan = 'voyageur+';
+          base44.entities.UserProfile.update(p.id, { plan: 'voyageur+' }).catch(() => {});
         }
         setProfile(p);
         setEditData({ language: p.language || lang, destination: p.destination || 'Maroc' });
