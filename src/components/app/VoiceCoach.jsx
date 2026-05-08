@@ -1,104 +1,169 @@
 import React, { useState, useRef } from 'react';
-import { Mic, Square, Shield, Loader2, Zap } from 'lucide-react';
+import { Mic, Square, Shield, Loader2, Zap, AlertTriangle, X } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
 import { CATEGORIES_DATA, CITIES_DATA } from '../../lib/categories-cities-translations';
 
+// ─── Filtre requêtes illégales ────────────────────────────────────────────────
+const MOTS_INTERDITS_ILLEGAL = [
+  'prostitu', 'escort', 'pute', 'drogue', 'cannabis', 'cocaïne', 'cocaine',
+  'haschich', 'hashish', 'kif', 'deal', 'dealer', 'trafic', 'arme', 'weapon',
+  'sexe tarifé', 'passe', 'maquereau', 'proxénét',
+  'prostitut', 'drug', 'weed', 'heroin', 'gun',
+  'شرموطة', 'قحبة', 'مخدرات',
+];
+
+function isRequeteIllegale(texte) {
+  if (!texte) return false;
+  const t = texte.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  return MOTS_INTERDITS_ILLEGAL.some(mot =>
+    t.includes(mot.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
+  );
+}
+
+// ─── Filtre input insuffisant ─────────────────────────────────────────────────
+function isInputInsuffisant(texte, prixDemande) {
+  if (prixDemande && Number(prixDemande) > 0) return false; // prix renseigné = suffisant
+  if (!texte || !texte.trim()) return true;
+  const mots = texte.trim().split(/\s+/).filter(Boolean);
+  const soloNombre = /^\d+$/.test(texte.trim());
+  return mots.length < 3 || soloNombre;
+}
+
+// ─── Prompt système unifié ────────────────────────────────────────────────────
+function buildPrompt({ category, location, priceAsked, text, lang }) {
+  const langLabel = {
+    fr: 'Français', en: 'English', es: 'Español',
+    de: 'Deutsch', ar: 'Arabe', darija: 'Darija marocaine (caractères arabes)',
+  }[lang] || 'Français';
+
+  return `Tu es Tooristoo Coach, expert en tarifs touristiques au Maroc.
+
+RÈGLES ABSOLUES :
+- N'utilise JAMAIS les mots : arnaque, escroc, fraude, tromperie, voleur, escroquerie, malhonnête. Remplace-les par : "écart de prix", "tarif non standard", "surfacturation", "écart tarifaire".
+- Ne fais JAMAIS de jugement moral sur le prestataire.
+- Utilise TOUJOURS "DH" (jamais "MAD") dans tous les champs texte.
+- Si la demande décrit une activité illégale ou hors tourisme, réponds UNIQUEMENT : {"erreur":"hors_champ"}
+- Si le contexte est trop vague pour analyser, réponds UNIQUEMENT : {"erreur":"contexte_insuffisant"}
+
+SITUATION À ANALYSER :
+- Catégorie : ${category || 'taxi'}
+- Ville : ${location || 'Marrakech'}
+- Prix demandé : ${priceAsked ? priceAsked + ' DH' : 'non spécifié'}
+- Description : ${text || 'aucune description'}
+
+Réponds en JSON avec ces champs exactement :
+- price_estimated_min (number) : prix minimum réel du marché en DH
+- price_estimated_max (number) : prix maximum réel du marché en DH
+- risk_level (string) : EXACTEMENT "low", "medium" ou "high" — rien d'autre
+- ai_analysis (string) : analyse factuelle en ${langLabel}, sans mots interdits
+- recommended_phrase (string) : phrase exacte à dire au prestataire en ${langLabel}
+- recommended_phrase_darija (string) : OBLIGATOIREMENT en caractères arabes uniquement — jamais de translittération latine. Ex: "أنا غادي نعطيك 100 درهم، واش مقبول؟"
+- strategy (string) : conseils de négociation en ${langLabel}
+- vendor_trust_score (number 1-5)
+- savings (number) : économie potentielle en DH (0 si prix non spécifié)`;
+}
+
+// ─── Composant ────────────────────────────────────────────────────────────────
 export default function VoiceCoach({ lang, onAnalysisComplete, category: defaultCategory, location: defaultLocation, priceAsked }) {
   const t = useT(lang);
   const l = lang || 'fr';
-  const [isListening, setIsListening] = useState(false);
-  const [transcript, setTranscript] = useState('');
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [category, setCategory] = useState(defaultCategory || 'taxi');
-  const [location, setLocation] = useState(defaultLocation || 'Marrakech');
-  const recognitionRef = useRef(null);
 
+  const [isListening, setIsListening]   = useState(false);
+  const [transcript, setTranscript]     = useState('');
+  const [isAnalyzing, setIsAnalyzing]   = useState(false);
+  const [category, setCategory]         = useState(defaultCategory || 'taxi');
+  const [location, setLocation]         = useState(defaultLocation || 'Marrakech');
+  const [popup, setPopup]               = useState(null); // null | 'illegal' | 'insufficient'
+  const recognitionRef                  = useRef(null);
+
+  // ── Reconnaissance vocale ──
   const startListening = () => {
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-      alert('La reconnaissance vocale n\'est pas supportée par votre navigateur. Utilisez le formulaire ci-dessous.');
+      alert(t('speech_not_supported') || 'La reconnaissance vocale n\'est pas supportée. Utilisez le mode Texte.');
       return;
     }
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-    recognition.continuous = true;
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SR();
+    recognition.continuous    = true;
     recognition.interimResults = true;
     const langMap = { fr: 'fr-FR', en: 'en-US', es: 'es-ES', de: 'de-DE', ar: 'ar-MA', darija: 'ar-MA' };
     recognition.lang = langMap[lang] || 'fr-FR';
-    
+
     recognition.onresult = (event) => {
-      let finalTranscript = '';
+      let final = '';
       for (let i = event.resultIndex; i < event.results.length; i++) {
-        if (event.results[i].isFinal) {
-          finalTranscript += event.results[i][0].transcript;
-        }
+        if (event.results[i].isFinal) final += event.results[i][0].transcript;
       }
-      if (finalTranscript) setTranscript(prev => prev + ' ' + finalTranscript);
+      if (final) setTranscript(prev => (prev + ' ' + final).trim());
     };
     recognition.onerror = () => setIsListening(false);
-    recognition.onend = () => setIsListening(false);
-    
+    recognition.onend   = () => setIsListening(false);
     recognition.start();
     recognitionRef.current = recognition;
     setIsListening(true);
   };
 
   const stopListening = () => {
-    if (recognitionRef.current) {
-      recognitionRef.current.stop();
-      recognitionRef.current = null;
-    }
+    recognitionRef.current?.stop();
+    recognitionRef.current = null;
     setIsListening(false);
   };
 
+  // ── Analyse IA ──
   const analyzeWithAI = async (text) => {
-    setIsAnalyzing(true);
-    const prompt = `Tu es Tooristoo, un expert en prix touristiques au Maroc. 
-    Analyse cette situation de négociation:
-    Catégorie: ${category || 'taxi'}
-    Ville: ${location || 'Marrakech'}
-    Prix demandé: ${priceAsked || 'non spécifié'} MAD
-    Description: ${text}
-    
-    Réponds en JSON avec:
-    - price_estimated_min (number): prix minimum réel du marché en MAD
-    - price_estimated_max (number): prix maximum réel du marché en MAD
-    - risk_level: "low" | "medium" | "high"
-    - scam_detected (boolean)
-    - ai_analysis (string): analyse détaillée en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}
-    - recommended_phrase (string): phrase exacte en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'arabe (caractères arabes)' : lang === 'darija' ? 'Darija (caractères arabes)' : 'Français'} à dire au vendeur
-    - strategy (string): stratégie recommandée en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija' : 'Français'}
-    - vendor_trust_score (number 1-5)
-    - provider_name (string): nom d'un prestataire tooristoo recommandé UNIQUEMENT
-    - provider_url (string): lien Google Maps ou site pour ce prestataire à ${location || 'Marrakech'}
-    - savings (number): économies potentielles si prix MAD demandé est connu, sinon 0
-    - recommended_phrase_darija (string): OBLIGATOIREMENT la phrase en Darija marocaine écrite en CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines ni translittération). Exemple: "أنا غادي نعطيك 150 درهم، واش مقبول؟"
-    IMPORTANT: risk_level doit OBLIGATOIREMENT être exactement "low", "medium", ou "high" en anglais, rien d'autre.
-    IMPORTANT: Utilise TOUJOURS "DH" (jamais "MAD") pour mentionner les prix dans tous les champs texte (ai_analysis, strategy, recommended_phrase, recommended_phrase_darija).`;
+    // 1. Filtre illégal
+    const fullText = `${text} ${category}`;
+    if (isRequeteIllegale(fullText)) {
+      setPopup('illegal');
+      return;
+    }
 
-    const result = await base44.integrations.Core.InvokeLLM({
-      prompt,
-      response_json_schema: {
-        type: 'object',
-        properties: {
-          price_estimated_min: { type: 'number' },
-          price_estimated_max: { type: 'number' },
-          risk_level: { type: 'string', enum: ['low', 'medium', 'high'] },
-          scam_detected: { type: 'boolean' },
-          ai_analysis: { type: 'string' },
-          recommended_phrase: { type: 'string' },
-          strategy: { type: 'string' },
-          vendor_trust_score: { type: 'number' },
-          provider_name: { type: 'string' },
-          provider_url: { type: 'string' },
-          savings: { type: 'number' },
-          recommended_phrase_darija: { type: 'string' },
+    // 2. Filtre input insuffisant
+    if (isInputInsuffisant(text, priceAsked)) {
+      setPopup('insufficient');
+      return;
+    }
+
+    setIsAnalyzing(true);
+    try {
+      const prompt = buildPrompt({ category, location, priceAsked, text, lang });
+
+      const result = await base44.integrations.Core.InvokeLLM({
+        prompt,
+        response_json_schema: {
+          type: 'object',
+          properties: {
+            price_estimated_min:       { type: 'number' },
+            price_estimated_max:       { type: 'number' },
+            risk_level:                { type: 'string', enum: ['low', 'medium', 'high'] },
+            ai_analysis:               { type: 'string' },
+            recommended_phrase:        { type: 'string' },
+            recommended_phrase_darija: { type: 'string' },
+            strategy:                  { type: 'string' },
+            vendor_trust_score:        { type: 'number' },
+            savings:                   { type: 'number' },
+          }
         }
-      }
-    });
-    
-    setIsAnalyzing(false);
-    onAnalysisComplete({ ...result, transcript: text, category, location, price_asked: priceAsked ? Number(priceAsked) : 0 });
+      });
+
+      // Vérifie si l'IA a quand même renvoyé une erreur
+      if (result?.erreur === 'hors_champ')         { setPopup('illegal');      return; }
+      if (result?.erreur === 'contexte_insuffisant'){ setPopup('insufficient'); return; }
+
+      onAnalysisComplete({
+        ...result,
+        transcript: text,
+        category,
+        location,
+        price_asked: priceAsked ? Number(priceAsked) : 0,
+        indice_prestataire: result.vendor_trust_score ?? null,
+      });
+    } catch (err) {
+      console.error('Erreur analyse IA :', err);
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
 
   const handleAnalyze = () => {
@@ -106,9 +171,57 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
     analyzeWithAI(transcript);
   };
 
+  // ── Labels popup selon langue ──
+  const popupContent = {
+    illegal: {
+      icon: '🛡️',
+      title: lang === 'en' ? 'Outside our scope' : lang === 'es' ? 'Fuera de nuestro ámbito' : lang === 'de' ? 'Außerhalb unseres Bereichs' : lang === 'ar' ? 'خارج نطاق خدمتنا' : 'Hors de notre champ',
+      message: lang === 'en' ? 'Tooristoo only analyses legal tourist services: taxis, accommodation, restaurants, guides, crafts and excursions.' :
+               lang === 'es' ? 'Tooristoo solo analiza servicios turísticos legales: taxis, alojamiento, restaurantes, guías, artesanía y excursiones.' :
+               lang === 'de' ? 'Tooristoo analysiert nur legale Touristendienstleistungen: Taxis, Unterkünfte, Restaurants, Guides, Kunsthandwerk und Ausflüge.' :
+               lang === 'ar' ? 'Tooristoo يحلل فقط الخدمات السياحية القانونية: سيارات الأجرة والإقامة والمطاعم والمرشدين والحرف والرحلات.' :
+               'Tooristoo analyse uniquement les services touristiques légaux : taxis, hébergements, restaurants, guides, artisanat et excursions.',
+      btn: lang === 'en' ? 'Understood' : lang === 'es' ? 'Entendido' : lang === 'de' ? 'Verstanden' : lang === 'ar' ? 'حسناً' : 'Compris',
+    },
+    insufficient: {
+      icon: '💬',
+      title: lang === 'en' ? 'More details needed' : lang === 'es' ? 'Se necesitan más detalles' : lang === 'de' ? 'Mehr Details erforderlich' : lang === 'ar' ? 'تحتاج إلى مزيد من التفاصيل' : 'Précisez la situation',
+      message: lang === 'en' ? 'Describe the situation in a few words: the service, the location and the price asked. Example: "Taxi to the airport in Marrakech, 300 DH"' :
+               lang === 'es' ? 'Describe la situación en pocas palabras: el servicio, el lugar y el precio pedido. Ejemplo: "Taxi al aeropuerto en Marrakech, 300 DH"' :
+               lang === 'de' ? 'Beschreiben Sie die Situation kurz: den Service, den Ort und den verlangten Preis. Beispiel: "Taxi zum Flughafen in Marrakesch, 300 DH"' :
+               lang === 'ar' ? 'صف الوضع ببضع كلمات: الخدمة والمكان والسعر المطلوب. مثال: "تاكسي إلى المطار في مراكش، 300 درهم"' :
+               'Décrivez la situation en quelques mots : le service, le lieu et le prix demandé. Ex : "Taxi pour l\'aéroport à Marrakech, 300 DH"',
+      btn: lang === 'en' ? 'Try again' : lang === 'es' ? 'Reintentar' : lang === 'de' ? 'Erneut versuchen' : lang === 'ar' ? 'حاول مجدداً' : 'Réessayer',
+    },
+  };
+
   return (
     <div className="space-y-6">
-      {/* Category & City selectors */}
+
+      {/* ── Popup illégal / insuffisant ── */}
+      {popup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-shield-card border border-shield-border rounded-2xl p-6 max-w-sm w-full shadow-2xl">
+            <div className="text-center mb-4">
+              <span className="text-4xl">{popupContent[popup].icon}</span>
+            </div>
+            <h3 className="text-white font-bold text-base text-center mb-3">
+              {popupContent[popup].title}
+            </h3>
+            <p className="text-gray-400 text-sm text-center leading-relaxed mb-5">
+              {popupContent[popup].message}
+            </p>
+            <button
+              onClick={() => setPopup(null)}
+              className="w-full py-3 bg-shield-green text-black font-bold rounded-xl hover:bg-green-400 transition-all"
+            >
+              {popupContent[popup].btn}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ── Sélecteurs catégorie + ville ── */}
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label className="text-xs text-gray-400 mb-1 block">{t('select_category')}</label>
@@ -136,7 +249,7 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
         </div>
       </div>
 
-      {/* Mic Button */}
+      {/* ── Bouton micro ── */}
       <div className="flex flex-col items-center py-8">
         <div className="relative mb-6">
           {isListening && (
@@ -153,15 +266,13 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
                 : 'bg-gradient-to-br from-shield-green to-green-600 btn-glow hover:scale-105'
             }`}
           >
-            {isListening ? (
-              <Square className="w-10 h-10 text-white" />
-            ) : (
-              <Mic className="w-12 h-12 text-black" />
-            )}
+            {isListening
+              ? <Square className="w-10 h-10 text-white" />
+              : <Mic className="w-12 h-12 text-black" />
+            }
           </button>
         </div>
 
-        {/* Wave bars */}
         {isListening && (
           <div className="flex items-center gap-1 h-10 mb-3">
             {Array(12).fill(0).map((_, i) => (
@@ -180,7 +291,7 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
         {isListening && <p className="text-shield-green text-xs mt-1 animate-pulse">{t('app_speak')}</p>}
       </div>
 
-      {/* Transcript */}
+      {/* ── Transcription ── */}
       {transcript && (
         <div className="bg-shield-card border border-shield-border rounded-xl p-4">
           <div className="flex items-center gap-2 mb-2">
@@ -197,7 +308,7 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
         </div>
       )}
 
-      {/* Analyze Button */}
+      {/* ── Bouton analyser ── */}
       {(transcript || priceAsked) && (
         <button
           onClick={handleAnalyze}
@@ -205,26 +316,21 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
           className="w-full py-4 bg-shield-green text-black font-bold rounded-xl hover:bg-green-400 transition-all btn-glow flex items-center justify-center gap-2 disabled:opacity-50"
         >
           {isAnalyzing ? (
-            <>
-              <Loader2 className="w-5 h-5 animate-spin" />
-              {t('analyzing')}
-            </>
+            <><Loader2 className="w-5 h-5 animate-spin" />{t('analyzing')}</>
           ) : (
-            <>
-              <Zap className="w-5 h-5" />
-              {t('analyze_btn')}
-            </>
+            <><Zap className="w-5 h-5" />{t('analyze_btn')}</>
           )}
         </button>
       )}
 
-      {/* AI greeting */}
+      {/* ── Message d'accueil IA ── */}
       <div className="flex items-start gap-3 p-4 bg-shield-card/50 rounded-xl border border-shield-border">
         <div className="w-8 h-8 rounded-full bg-shield-green/20 flex items-center justify-center flex-shrink-0">
           <Shield className="w-4 h-4 text-shield-green" />
         </div>
         <p className="text-sm text-gray-400 leading-relaxed">{t('app_greeting')}</p>
       </div>
+
     </div>
   );
 }
