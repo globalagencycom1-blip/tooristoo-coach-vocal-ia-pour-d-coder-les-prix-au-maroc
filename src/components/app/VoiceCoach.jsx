@@ -112,36 +112,35 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
 
   // ── Analyse IA ──
   const analyzeWithAI = async (text) => {
-    // 1. Filtre illégal — utilise isProhibitedRequest de pricing-knowledge-base
+    // 1. Filtre illégal
     const fullText = `${text} ${category}`;
     if (isProhibitedRequest(fullText, lang)) {
       setPopup('illegal');
       return;
     }
 
-    // 2. Filtre input insuffisant
-    if (isInputInsuffisant(text, priceAsked)) {
+    // 2. Extrait le prix depuis la transcription si c'est un solo nombre
+    //    Ex: transcription = "300" → extractedPrice = 300
+    const extractedPrice = extractPriceFromTranscript(text);
+    const effectivePriceAsked = priceAsked || extractedPrice || null;
+
+    // 3. Filtre input insuffisant (plus souple en mode vocal)
+    if (isInputInsuffisant(text, effectivePriceAsked)) {
       setPopup('insufficient');
       return;
     }
 
     setIsAnalyzing(true);
     try {
-      // 3. analyzeNegotiation orchestre tout :
-      //    - fourchettes depuis PRICING_KNOWLEDGE_BASE (pas d'hallucination)
-      //    - prestataires certifiés depuis Provider (base de données réelle)
-      //    - LLM uniquement pour analyse texte + stratégie + phrase darija
-      //    - sanitize automatique des mots interdits
       const result = await analyzeNegotiation({
         category,
         city:        location,
-        priceAsked,
+        priceAsked:  effectivePriceAsked,
         transcript:  text,
         description: text,
         lang,
       });
 
-      // Si analyzeNegotiation a détecté un refus (illégal détecté côté LLM aussi)
       if (result?.refused) {
         setPopup('illegal');
         return;
@@ -149,10 +148,10 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
 
       onAnalysisComplete({
         ...result,
-        transcript: text,
+        transcript:  text,
         category,
         location,
-        price_asked: priceAsked ? Number(priceAsked) : 0,
+        price_asked: effectivePriceAsked ? Number(effectivePriceAsked) : 0,
       });
     } catch (err) {
       console.error('Erreur analyse IA :', err);
