@@ -74,12 +74,12 @@ export default function AppPage() {
       const labels = { fr: `${remaining} analyse${remaining !== 1 ? 's' : ''} restante${remaining !== 1 ? 's' : ''}`, en: `${remaining} analysis remaining`, es: `${remaining} análisis restantes`, de: `${remaining} Analysen verbleibend`, ar: `${remaining} تحليلات متبقية`, darija: `${remaining} تحليلات متبقية` };
       return labels[lang] || labels.fr;
     }
-    if (profile.plan === 'voyageur' || profile.plan === 'voyageur') {
+    if (profile.plan === 'voyageur') {
       const remaining = Math.max(0, 50 - (profile.monthly_analyses_used || 0));
       const labels = { fr: `${remaining}/50 analyses`, en: `${remaining}/50 analyses`, es: `${remaining}/50 análisis`, de: `${remaining}/50 Analysen`, ar: `${remaining}/50 تحليل`, darija: `${remaining}/50 تحليل` };
       return labels[lang] || labels.fr;
     }
-    if (profile.plan === 'voyageur_plus') {
+    if (profile.plan === 'voyageur_plus' || profile.plan === 'pro') {
       const remaining = Math.max(0, 100 - (profile.monthly_analyses_used || 0));
       const labels = { fr: `${remaining}/100 analyses`, en: `${remaining}/100 analyses`, es: `${remaining}/100 análisis`, de: `${remaining}/100 Analysen`, ar: `${remaining}/100 تحليل`, darija: `${remaining}/100 تحليل` };
       return labels[lang] || labels.fr;
