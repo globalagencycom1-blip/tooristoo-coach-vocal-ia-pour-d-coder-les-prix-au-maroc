@@ -1,6 +1,6 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Search, Copy, CheckCheck, Volume2, VolumeX, Loader2, MessageCircle, Shield } from 'lucide-react';
+import { Search, Copy, CheckCheck, Volume2, VolumeX, MessageCircle, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -75,75 +75,69 @@ function normalizeDarija(text) {
     .toLowerCase();
 }
 
-// ─── Composant VoiceButton (intégré, pas d'import externe) ───────────────────
+// ─── Fallback TTS (synchrone, compatible mobile) ─────────────────────────────
+function fallbackTTS(text, setStatus) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'ar-MA';
+  utt.rate = 0.9;
+  const voices = window.speechSynthesis.getVoices();
+  const voice = voices.find(v => v.lang === 'ar-MA') || voices.find(v => v.lang.startsWith('ar'));
+  if (voice) utt.voice = voice;
+  utt.onstart = () => setStatus('playing');
+  utt.onend   = () => setStatus('idle');
+  utt.onerror = () => setStatus('idle');
+  window.speechSynthesis.speak(utt);
+}
+
+// ─── Composant VoiceButton — compatible iOS/Android ──────────────────────────
+// IMPORTANT : pas d'async/await dans handleClick — iOS coupe le lien
+// avec le geste utilisateur si le handler est async, bloquant audio.play()
 function VoiceButton({ darija }) {
-  const [status, setStatus] = useState('idle'); // idle | loading | playing
+  const [status, setStatus] = useState('idle'); // idle | playing
   const audioRef = useRef(null);
-  const preloaded = useRef(false);
 
-  const getMp3 = useCallback(() => {
-    return DARIJA_AUDIO_MAP[normalizeDarija(darija)] || null;
-  }, [darija]);
+  const getMp3 = () => DARIJA_AUDIO_MAP[normalizeDarija(darija)] || null;
 
-  const handleMouseEnter = useCallback(() => {
-    if (preloaded.current) return;
-    const f = getMp3();
-    if (!f) return;
-    const link = document.createElement('link');
-    link.rel = 'preload'; link.as = 'audio';
-    link.href = `${AUDIO_BASE_URL}/${f}`;
-    document.head.appendChild(link);
-    preloaded.current = true;
-  }, [getMp3]);
-
-  const playTTS = useCallback(() => {
-    return new Promise((resolve, reject) => {
-      if (!window.speechSynthesis) { reject(); return; }
-      window.speechSynthesis.cancel();
-      const utt = new SpeechSynthesisUtterance(darija);
-      utt.lang = 'ar-MA'; utt.rate = 0.9;
-      const voices = window.speechSynthesis.getVoices();
-      const v = voices.find(v => v.lang === 'ar-MA') || voices.find(v => v.lang.startsWith('ar'));
-      if (v) utt.voice = v;
-      utt.onstart = () => setStatus('playing');
-      utt.onend   = () => { setStatus('idle'); resolve(); };
-      utt.onerror = reject;
-      window.speechSynthesis.speak(utt);
-    });
-  }, [darija]);
-
-  const handleClick = useCallback(async () => {
+  const handleClick = () => {
+    // Stop si déjà en lecture
     if (status === 'playing') {
-      audioRef.current?.pause();
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        audioRef.current = null;
+      }
       window.speechSynthesis?.cancel();
       setStatus('idle');
       return;
     }
-    setStatus('loading');
+
     const filename = getMp3();
-    try {
-      if (filename) {
-        await new Promise((resolve, reject) => {
-          const audio = new Audio(`${AUDIO_BASE_URL}/${filename}`);
-          audioRef.current = audio;
-          audio.onplay  = () => setStatus('playing');
-          audio.onended = () => { setStatus('idle'); resolve(); };
-          audio.onerror = () => reject(new Error('mp3_failed'));
-          audio.play().catch(reject);
+
+    if (filename) {
+      // new Audio() + .play() appelés SYNCHRONIQUEMENT dans le handler
+      const audio = new Audio(`${AUDIO_BASE_URL}/${filename}`);
+      audioRef.current = audio;
+      audio.load(); // requis sur iOS Safari
+      const p = audio.play();
+      if (p !== undefined) {
+        setStatus('playing');
+        p.then(() => {
+          audio.onended = () => setStatus('idle');
+        }).catch(() => {
+          audioRef.current = null;
+          fallbackTTS(darija, setStatus);
         });
-      } else {
-        await playTTS();
       }
-    } catch {
-      try { await playTTS(); }
-      catch { setStatus('idle'); }
+    } else {
+      fallbackTTS(darija, setStatus);
     }
-  }, [status, getMp3, playTTS]);
+  };
 
   return (
     <button
       onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
       className={`flex-shrink-0 p-2 rounded-lg transition-all opacity-60 hover:opacity-100
         ${status === 'playing'
           ? 'text-shield-green bg-shield-green/10'
@@ -151,11 +145,9 @@ function VoiceButton({ darija }) {
         }`}
       title={status === 'playing' ? 'Arrêter' : 'Écouter la prononciation'}
     >
-      {status === 'loading'
-        ? <Loader2 className="w-4 h-4 animate-spin" />
-        : status === 'playing'
-          ? <VolumeX className="w-4 h-4" />
-          : <Volume2 className="w-4 h-4" />
+      {status === 'playing'
+        ? <VolumeX className="w-4 h-4" />
+        : <Volume2 className="w-4 h-4" />
       }
     </button>
   );
