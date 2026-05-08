@@ -19,8 +19,9 @@ export default function Dashboard({ lang, profile, negotiations }) {
   const [selected, setSelected] = useState(null);
 
   // Cumul réel de tous les écarts constatés
-  const totalSavings  = negotiations.reduce((acc, n) => acc + computeSavings(n), 0);
-  const scamsAvoided  = negotiations.filter(n => n.scam_detected).length;
+  const totalSavings   = negotiations.reduce((acc, n) => acc + computeSavings(n), 0);
+  // Nombre d'analyses où un écart a été détecté
+  const overpriceCount = negotiations.filter(n => computeSavings(n) > 0).length;
 
   const stats = [
     {
@@ -37,8 +38,12 @@ export default function Dashboard({ lang, profile, negotiations }) {
     },
     {
       icon: AlertTriangle,
-      label: t('scams_avoided'),
-      value: scamsAvoided,
+      label: lang === 'en' ? 'Overprices detected' :
+             lang === 'es' ? 'Sobreprecios detectados' :
+             lang === 'de' ? 'Überhöhte Preise' :
+             lang === 'ar' ? 'أسعار مرتفعة مكتشفة' :
+             'Écarts détectés',
+      value: overpriceCount,
       color: 'text-red-400',
     },
   ];
