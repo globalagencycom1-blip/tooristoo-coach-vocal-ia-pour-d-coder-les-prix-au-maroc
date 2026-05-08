@@ -1,10 +1,16 @@
 import React from 'react';
-import { CheckCircle, XCircle, AlertTriangle, Star, ExternalLink, RefreshCw, Shield, ChevronLeft, TrendingDown } from 'lucide-react';
+import { CheckCircle, XCircle, AlertTriangle, Star, ExternalLink, RefreshCw, Shield, ChevronLeft, TrendingDown, Phone, MapPin } from 'lucide-react';
 import { useT } from '../../lib/i18n';
 import { getCategoryLabel, getCityLabel } from '../../lib/categories-cities-translations';
 import ScamReportingPanel from './ScamReportingPanel';
 import VoiceOutput from './VoiceOutput';
 import NegotiationContinue from './NegotiationContinue';
+
+// Helper pour récupérer la description multilingue d'un prestataire
+const getProviderDesc = (p, lang) => {
+  if (!p) return '';
+  return p[`desc_${lang}`] || p.desc_fr || p.desc_en || '';
+};
 
 export default function AnalysisResult({ analysis, lang, onReset }) {
   const t = useT(lang);
@@ -208,9 +214,7 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
                 </div>
               </div>
             )}
-
-
-          </div>
+            </div>
         </div>
       )}
 
@@ -251,31 +255,145 @@ export default function AnalysisResult({ analysis, lang, onReset }) {
         </div>
       )}
 
-      {/* Section 8: Provider */}
-      {analysis.provider_name && (
-        <div className="bg-shield-card border border-shield-gold/20 rounded-2xl p-4">
-          <div className="flex items-center gap-2 mb-3">
-            <Shield className="w-4 h-4 text-shield-gold" />
-            <h3 className="text-xs font-bold text-shield-gold uppercase tracking-wider">{t('recommended_providers')}</h3>
-          </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-white font-semibold text-sm">{analysis.provider_name}</p>
-              <p className="text-xs text-gray-400 mt-0.5">{t('provider_verified')}</p>
+      {/* Section 8: Prestataire référencé Tooristoo */}
+      {!analysis.refused && (
+        <>
+          {analysis.main_provider ? (
+            <div className="bg-shield-card border border-shield-gold/30 rounded-2xl p-4">
+              <div className="flex items-center gap-2 mb-3">
+                <Shield className="w-4 h-4 text-shield-gold" />
+                <h3 className="text-xs font-bold text-shield-gold uppercase tracking-wider">
+                  {t('recommended_providers')}
+                </h3>
+              </div>
+
+              {/* Carte du prestataire principal */}
+              <div className="space-y-3">
+                {/* Header : nom + note */}
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h4 className="text-white font-bold text-sm leading-tight">
+                        {analysis.main_provider.name}
+                      </h4>
+                      {analysis.main_provider.certified && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-shield-green/10 border border-shield-green/40 text-shield-green text-[10px] font-semibold rounded-full whitespace-nowrap">
+                          <CheckCircle className="w-2.5 h-2.5" />
+                          {t('provider_verified')}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 mt-1">
+                      <MapPin className="w-3 h-3 text-gray-500" />
+                      <span className="text-xs text-gray-500">
+                        {getCityLabel(analysis.main_provider.city, lang)} · {getCategoryLabel(analysis.main_provider.category, lang)}
+                      </span>
+                    </div>
+                  </div>
+                  {analysis.main_provider.rating && (
+                    <div className="flex items-center gap-1 flex-shrink-0">
+                      <Star className="w-3.5 h-3.5 text-shield-gold fill-shield-gold" />
+                      <span className="text-white font-bold text-sm">
+                        {analysis.main_provider.rating}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Description multilingue */}
+                {getProviderDesc(analysis.main_provider, lang) && (
+                  <p className="text-xs text-gray-400 leading-relaxed">
+                    {getProviderDesc(analysis.main_provider, lang)}
+                  </p>
+                )}
+
+                {/* Prix de référence du prestataire */}
+                {analysis.main_provider.price && (
+                  <p className="text-xs text-shield-green font-semibold">
+                    {t('providers_official_price')} {analysis.main_provider.price}
+                  </p>
+                )}
+
+                {/* Boutons d'action */}
+                <div className="flex flex-wrap items-center gap-2">
+                  {analysis.main_provider.phone && (
+                    <a
+                      href={`tel:${analysis.main_provider.phone}`}
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-shield-border/50 hover:bg-shield-border text-gray-300 hover:text-white text-xs rounded-lg transition-all"
+                    >
+                      <Phone className="w-3 h-3" />
+                      {analysis.main_provider.phone}
+                    </a>
+                  )}
+                  {analysis.main_provider.url && (
+                    <a
+                      href={analysis.main_provider.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-shield-gold/10 border border-shield-gold/30 text-shield-gold text-xs font-semibold rounded-lg hover:bg-shield-gold/20 transition-all"
+                    >
+                      {t('view_provider')}
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Bouton "Voir les autres" si plus d'un prestataire dispo */}
+              {analysis.other_providers_count > 0 && (
+                <div className="mt-4 pt-3 border-t border-shield-border">
+                  <a
+                    href={`/providers?city=${encodeURIComponent(analysis.location)}&category=${encodeURIComponent(analysis.category)}`}
+                    className="flex items-center justify-between gap-2 px-3 py-2 bg-shield-green/5 hover:bg-shield-green/10 border border-shield-green/20 hover:border-shield-green/40 text-shield-green text-xs font-semibold rounded-lg transition-all"
+                  >
+                    <span>
+                      {lang === 'en' ? `See ${analysis.other_providers_count} other listed provider${analysis.other_providers_count > 1 ? 's' : ''}` :
+                       lang === 'es' ? `Ver ${analysis.other_providers_count} otro${analysis.other_providers_count > 1 ? 's' : ''} proveedor${analysis.other_providers_count > 1 ? 'es' : ''}` :
+                       lang === 'de' ? `${analysis.other_providers_count} weitere Anbieter ansehen` :
+                       lang === 'ar' ? `شاهد ${analysis.other_providers_count} مزود${analysis.other_providers_count > 1 ? 'ين آخرين' : ' آخر'}` :
+                       lang === 'darija' ? `شوف ${analysis.other_providers_count} ${analysis.other_providers_count > 1 ? 'مزودين خرين' : 'مزود آخر'}` :
+                       `Voir ${analysis.other_providers_count} autre${analysis.other_providers_count > 1 ? 's' : ''} prestataire${analysis.other_providers_count > 1 ? 's' : ''} référencé${analysis.other_providers_count > 1 ? 's' : ''}`
+                      }
+                    </span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              )}
             </div>
-            {analysis.provider_url && (
+          ) : (
+            // Aucun prestataire référencé pour cette catégorie+ville
+            <div className="bg-shield-card border border-shield-border rounded-2xl p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Shield className="w-4 h-4 text-gray-500" />
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider">
+                  {t('recommended_providers')}
+                </h3>
+              </div>
+              <p className="text-xs text-gray-400 leading-relaxed mb-3">
+                {lang === 'en' ? `Tooristoo doesn't have any certified ${analysis.category} listed in ${analysis.location} yet. Our directory is growing — check back soon.` :
+                 lang === 'es' ? `Tooristoo aún no tiene ningún ${analysis.category} certificado en ${analysis.location}. Nuestro directorio está creciendo — vuelve pronto.` :
+                 lang === 'de' ? `Tooristoo hat noch keinen zertifizierten ${analysis.category} in ${analysis.location}. Unser Verzeichnis wächst — schauen Sie bald wieder vorbei.` :
+                 lang === 'ar' ? `Tooristoo ليس لديه بعد أي ${analysis.category} معتمد في ${analysis.location}. دليلنا في تطور — عد قريباً.` :
+                 lang === 'darija' ? `Tooristoo معندوش بعدا ${analysis.category} معتمد ف${analysis.location}. الدليل ديالنا كيكبر — عاود زور قريباً.` :
+                 `Tooristoo n'a pas encore de ${analysis.category} certifié référencé à ${analysis.location}. Notre annuaire grandit progressivement — revenez bientôt.`
+                }
+              </p>
               <a
-                href={analysis.provider_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-2 bg-shield-gold/10 border border-shield-gold/30 text-shield-gold text-xs font-semibold rounded-lg hover:bg-shield-gold/20 transition-colors"
+                href="/providers"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-shield-green/10 hover:bg-shield-green/20 border border-shield-green/30 text-shield-green text-xs font-semibold rounded-lg transition-all"
               >
-                {t('view_provider')}
+                {lang === 'en' ? 'Browse all listed providers' :
+                 lang === 'es' ? 'Ver todos los proveedores' :
+                 lang === 'de' ? 'Alle Anbieter ansehen' :
+                 lang === 'ar' ? 'تصفح جميع المزودين' :
+                 lang === 'darija' ? 'شوف جميع المزودين' :
+                 'Voir tous les prestataires Tooristoo'
+                }
                 <ExternalLink className="w-3 h-3" />
               </a>
-            )}
-          </div>
-        </div>
+            </div>
+          )}
+        </>
       )}
 
       {/* Section 10: Community Scam Reporting */}
