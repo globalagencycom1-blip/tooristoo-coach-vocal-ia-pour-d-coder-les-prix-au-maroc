@@ -62,7 +62,7 @@ export default function PricingSection({ lang }) {
         p('plan_voyageur_feat4'),
         p('plan_voyageur_feat5'),
       ],
-      popular: false,
+      popular: true,
       isPaid: true,
     },
     {
@@ -76,7 +76,7 @@ export default function PricingSection({ lang }) {
         p('plan_voyageur_plus_feat4'),
         p('plan_voyageur_plus_feat5'),
       ],
-      popular: true,
+      popular: false,
       isPaid: true,
     },
   ];
