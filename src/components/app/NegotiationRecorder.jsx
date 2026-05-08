@@ -3,6 +3,7 @@ import { Mic, MicOff, Loader2, Copy, Send, AlertCircle, Check, RotateCcw } from 
 import { useT } from '../../lib/i18n';
 import { getRecorderT } from '../../lib/recorder-translations';
 import { analyzeNegotiation } from '../../lib/pricing-knowledge-base';
+import { CATEGORIES_DATA, CITIES_DATA } from '../../lib/categories-cities-translations';
 
 const SPEECH_LANG_MAP = {
   fr: 'fr-FR',
