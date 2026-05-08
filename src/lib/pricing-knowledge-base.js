@@ -1,839 +1,1045 @@
 // BASE DE CONNAISSANCES DES PRIX — Tooristoo
-// Mise à jour: Avril 2026 — Sources: ONMT, recherche documentaire publique, plateformes officielles
-// Mise à jour hebdomadaire automatique via les rapports de la communauté
+// Mise à jour: Mai 2026 — Sources: ONMT, CTM, ONCF, Booking.com,
+// Google Maps local guides, rapports communautaires Tooristoo, tarifs officiels 2026.
 
 import { base44 } from '@/api/base44Client';
 
-export const PRICING_LAST_UPDATED = '2026-04-30';
+export const PRICING_LAST_UPDATED = '2026-05-08';
 
 export const PRICING_KNOWLEDGE_BASE = {
+
+  // ════════════════════════════════════════════════════════
   Marrakech: {
     taxi: {
-      description: 'Petit taxi intra-ville (compteur)',
+      description: 'Petit taxi intra-ville (compteur obligatoire)',
       fair_price_min: 10,
-      fair_price_max: 15,
+      fair_price_max: 20,
       tourist_reasonable_min: 15,
-      tourist_reasonable_max: 20,
+      tourist_reasonable_max: 30,
       airport_min: 70,
-      airport_max: 100,
-      tips: 'Insister sur le compteur. Trajet aéroport: 70-100 DH officiel. Prix nuit majorés 50%.',
-      vigilance_threshold: 40,
-      updated: '2026-04-30'
+      airport_max: 120,
+      night_surcharge: '+50% après 20h',
+      tips: 'Exiger le compteur systématiquement. Trajet aéroport Menara → Médina/Guéliz : 70–120 DH selon heure. Prix nuit majorés 50%. Éviter les taxis non agréés à la sortie de l\'aéroport.',
+      vigilance_threshold: 150,
+      updated: '2026-05-08',
     },
     grand_taxi: {
-      description: 'Grand taxi longue distance',
+      description: 'Grand taxi longue distance ou excursion privée',
+      fair_price_min: 250,
+      fair_price_max: 600,
+      tourist_reasonable_min: 350,
+      tourist_reasonable_max: 800,
+      tips: 'Négocier le prix AVANT de monter. Marrakech → Essaouira partagé : 80–120 DH/pers. En privatif : 300–500 DH. Préférer CTM pour longues distances.',
+      vigilance_threshold: 1000,
+      updated: '2026-05-08',
+    },
+    riad: {
+      description: 'Nuit dans un riad traditionnel (chambre double, pdj inclus)',
+      fair_price_min: 350,
+      fair_price_max: 700,
+      tourist_reasonable_min: 450,
+      tourist_reasonable_max: 1000,
+      luxury_min: 1200,
+      luxury_max: 4000,
+      tips: 'Réserver via Booking.com pour comparer. Petit-déjeuner généralement inclus. Éviter les rabatteurs en médina qui touchent des commissions.',
+      vigilance_threshold: 1500,
+      updated: '2026-05-08',
+    },
+    hotel: {
+      description: 'Hôtel 3–4 étoiles (Guéliz / Hivernage)',
+      fair_price_min: 400,
+      fair_price_max: 800,
+      tourist_reasonable_min: 500,
+      tourist_reasonable_max: 1200,
+      tips: 'Prix officiels affichés sur les plateformes. Quartier Guéliz plus moderne et calme.',
+      vigilance_threshold: 1500,
+      updated: '2026-05-08',
+    },
+    restaurant: {
+      description: 'Repas complet (entrée + plat + boisson)',
+      fair_price_min: 70,
+      fair_price_max: 140,
+      tourist_reasonable_min: 100,
+      tourist_reasonable_max: 200,
+      gastronomic_min: 250,
+      gastronomic_max: 500,
+      tips: 'Éviter les restaurants avec rabatteurs place Jemaa El Fna. Demander la carte avec prix avant de s\'asseoir. Restaurants locaux dans les ruelles : 50–80 DH repas complet.',
+      vigilance_threshold: 350,
+      updated: '2026-05-08',
+    },
+    guide: {
+      description: 'Guide officiel agréé ONMT (demi-journée)',
+      fair_price_min: 250,
+      fair_price_max: 400,
+      tourist_reasonable_min: 300,
+      tourist_reasonable_max: 500,
+      full_day_min: 450,
+      full_day_max: 750,
+      tips: 'Exiger la carte officielle de guide agréé ONMT. Ne jamais suivre un "guide" non sollicité dans la médina. Journée complète : 450–750 DH.',
+      vigilance_threshold: 900,
+      updated: '2026-05-08',
+    },
+    excursion: {
+      description: 'Excursion journée (Atlas, Ourika, Ouzoud, Aït Benhaddou)',
+      fair_price_min: 280,
+      fair_price_max: 500,
+      tourist_reasonable_min: 380,
+      tourist_reasonable_max: 650,
+      desert_min: 550,
+      desert_max: 1000,
+      tips: 'Vérifier si transport, repas et guide sont inclus. Cascades d\'Ouzoud : 280–400 DH/pers en groupe. En privé : 600–900 DH. Aït Benhaddou (UNESCO) : entrée 20 DH.',
+      vigilance_threshold: 1200,
+      updated: '2026-05-08',
+    },
+    shopping: {
+      description: 'Artisanat souk (tapis, cuir, céramique, épices)',
+      fair_price_min: 50,
+      fair_price_max: 600,
+      tourist_reasonable_min: 80,
+      tourist_reasonable_max: 900,
+      tips: 'Négocier 30–50% sur le premier prix. Coopératives : prix fixes honnêtes. Safran certifié : 50–100 DH/g. Méfiez-vous du "safran" à 10 DH/g (colorant).',
+      vigilance_threshold: 2500,
+      updated: '2026-05-08',
+    },
+    spa: {
+      description: 'Hammam traditionnel + gommage (1h30)',
+      fair_price_min: 100,
+      fair_price_max: 180,
+      tourist_reasonable_min: 140,
+      tourist_reasonable_max: 280,
+      luxury_min: 350,
+      luxury_max: 700,
+      tips: 'Demander le prix complet avant d\'entrer. Pourboire 20–30 DH apprécié pour le kessala. Hammams populaires locaux : 15–30 DH (sans massage).',
+      vigilance_threshold: 500,
+      updated: '2026-05-08',
+    },
+    montgolfiere: {
+      description: 'Vol en montgolfière au lever du soleil (1h)',
+      fair_price_min: 1300,
+      fair_price_max: 1800,
+      tourist_reasonable_min: 1500,
+      tourist_reasonable_max: 2200,
+      tips: 'Prix tout compris : transport hôtel A/R, vol 1h, champagne, certificat. Réserver directement chez opérateur certifié. Éviter les intermédiaires de la médina.',
+      vigilance_threshold: 2800,
+      updated: '2026-05-08',
+    },
+    transport: {
+      description: 'Bus CTM / Supratours inter-villes',
+      fair_price_min: 80,
+      fair_price_max: 220,
+      tourist_reasonable_min: 90,
+      tourist_reasonable_max: 220,
+      tips: 'Prix fixe officiel, pas de négociation. Marrakech → Casablanca : 120–150 DH. Marrakech → Agadir : 100–130 DH. Acheter en ligne ou à la gare.',
+      vigilance_threshold: 280,
+      updated: '2026-05-08',
+    },
+  },
+
+  // ════════════════════════════════════════════════════════
+  Fès: {
+    taxi: {
+      description: 'Petit taxi intra-ville (compteur)',
+      fair_price_min: 8,
+      fair_price_max: 15,
+      tourist_reasonable_min: 12,
+      tourist_reasonable_max: 20,
+      airport_min: 60,
+      airport_max: 100,
+      night_surcharge: '+50% après 20h',
+      tips: 'Compteur obligatoire. Fès El Bali très labyrinthique : taxis utiles aux portes. Aéroport Fès-Saïss → centre : 60–100 DH.',
+      vigilance_threshold: 40,
+      updated: '2026-05-08',
+    },
+    grand_taxi: {
+      description: 'Grand taxi longue distance Fès',
       fair_price_min: 200,
       fair_price_max: 500,
       tourist_reasonable_min: 300,
       tourist_reasonable_max: 700,
-      tips: 'Toujours négocier le prix avant le départ. Préférer CTM pour les longues distances.',
-      vigilance_threshold: 800,
-      updated: '2026-04-30'
+      tips: 'Fès → Meknès partagé : 25–40 DH/pers. Fès → Chefchaouen : 80–120 DH/pers partagé.',
+      vigilance_threshold: 900,
+      updated: '2026-05-08',
     },
     riad: {
-      description: 'Nuit dans un riad traditionnel (2 personnes)',
-      fair_price_min: 300,
-      fair_price_max: 600,
-      tourist_reasonable_min: 400,
-      tourist_reasonable_max: 900,
-      luxury_min: 1000,
-      luxury_max: 3000,
-      tips: 'Réserver via booking.com pour comparer. Petit-déjeuner souvent inclus. Éviter les démarcheurs en rue.',
-      vigilance_threshold: 1500,
-      updated: '2026-04-30'
+      description: 'Nuit dans un riad médina de Fès',
+      fair_price_min: 280,
+      fair_price_max: 550,
+      tourist_reasonable_min: 380,
+      tourist_reasonable_max: 750,
+      tips: 'Fès légèrement moins cher que Marrakech. Inclure petit-déjeuner dans la négociation.',
+      vigilance_threshold: 1100,
+      updated: '2026-05-08',
     },
     hotel: {
-      description: 'Hôtel 3-4 étoiles (Guéliz/Hivernage)',
-      fair_price_min: 350,
-      fair_price_max: 700,
-      tourist_reasonable_min: 500,
-      tourist_reasonable_max: 1000,
-      tips: 'Prix officiels sur booking.com. Ne pas payer sans réservation confirmée.',
-      vigilance_threshold: 1200,
-      updated: '2026-04-30'
-    },
-    restaurant: {
-      description: 'Repas complet (entrée + plat + boisson)',
-      fair_price_min: 60,
-      fair_price_max: 120,
-      tourist_reasonable_min: 90,
-      tourist_reasonable_max: 180,
-      gastronomic_min: 200,
-      gastronomic_max: 400,
-      tips: 'Éviter restaurants avec rabatteurs à Jemaa El Fna. Demander la carte avec prix avant de s\'asseoir.',
-      vigilance_threshold: 300,
-      updated: '2026-04-30'
-    },
-    guide: {
-      description: 'Guide officiel certifié (demi-journée)',
-      fair_price_min: 200,
-      fair_price_max: 350,
-      tourist_reasonable_min: 250,
-      tourist_reasonable_max: 450,
-      full_day_min: 400,
-      full_day_max: 700,
-      tips: 'Exiger la carte officielle du guide agréé ONMT. Ne jamais suivre un guide non sollicité.',
-      vigilance_threshold: 800,
-      updated: '2026-04-30'
-    },
-    excursion: {
-      description: 'Excursion journée (Atlas, Ourika, Ouzoud)',
-      fair_price_min: 250,
-      fair_price_max: 450,
-      tourist_reasonable_min: 350,
-      tourist_reasonable_max: 600,
-      desert_min: 500,
-      desert_max: 900,
-      tips: 'Vérifier si transport, repas et guide sont inclus. Agences référencées Marrakech Médina.',
-      vigilance_threshold: 1000,
-      updated: '2026-04-30'
-    },
-    shopping: {
-      description: 'Artisanat (tapis, cuir, céramique)',
-      fair_price_min: 50,
-      fair_price_max: 500,
-      tourist_reasonable_min: 80,
-      tourist_reasonable_max: 700,
-      tips: 'Négocier 30-50% sur le premier prix. Coopératives: prix fixes honnêtes. Safran: 50-100 DH/g certifié.',
-      vigilance_threshold: 2000,
-      updated: '2026-04-30'
-    },
-    spa: {
-      description: 'Hammam/Massage traditionnel (1h30)',
-      fair_price_min: 80,
-      fair_price_max: 150,
-      tourist_reasonable_min: 120,
-      tourist_reasonable_max: 250,
-      luxury_min: 300,
-      luxury_max: 600,
-      tips: 'Demander le prix complet avant. Pourboire 20-30 DH apprécié pour le kessala.',
-      vigilance_threshold: 400,
-      updated: '2026-04-30'
-    },
-    montgolfiere: {
-      description: 'Vol en montgolfière (lever soleil)',
-      fair_price_min: 1200,
-      fair_price_max: 1800,
-      tourist_reasonable_min: 1400,
-      tourist_reasonable_max: 2000,
-      tips: 'Prix tout compris (transport+champagne+certificat). Réserver directement chez l\'opérateur certifié.',
-      vigilance_threshold: 2500,
-      updated: '2026-04-30'
-    },
-    transport: {
-      description: 'Bus CTM / Supratours (Marrakech-autres villes)',
-      fair_price_min: 80,
-      fair_price_max: 200,
-      tourist_reasonable_min: 90,
-      tourist_reasonable_max: 200,
-      tips: 'Prix fixe officiel. Acheter en ligne ou à la gare. Pas de négociation.',
-      vigilance_threshold: 250,
-      updated: '2026-04-30'
-    }
-  },
-
-  Fès: {
-    taxi: {
-      description: 'Petit taxi intra-ville',
-      fair_price_min: 8,
-      fair_price_max: 12,
-      tourist_reasonable_min: 10,
-      tourist_reasonable_max: 18,
-      airport_min: 60,
-      airport_max: 90,
-      tips: 'Compteur obligatoire. Fès El Bali très labyrinthique, taxis utiles. Prix nuit +50%.',
-      vigilance_threshold: 35,
-      updated: '2026-04-30'
-    },
-    riad: {
-      description: 'Nuit dans un riad médina',
-      fair_price_min: 250,
-      fair_price_max: 500,
-      tourist_reasonable_min: 350,
-      tourist_reasonable_max: 700,
-      tips: 'Fès moins cher que Marrakech. Inclure petit-déjeuner dans la négociation.',
-      vigilance_threshold: 1000,
-      updated: '2026-04-30'
-    },
-    hotel: {
-      description: 'Hôtel Ville Nouvelle',
+      description: 'Hôtel Ville Nouvelle Fès',
       fair_price_min: 300,
-      fair_price_max: 600,
+      fair_price_max: 650,
       tourist_reasonable_min: 400,
-      tourist_reasonable_max: 800,
-      tips: 'Ville Nouvelle plus moderne et calme. Prix officiels sur les plateformes.',
-      updated: '2026-04-30'
+      tourist_reasonable_max: 850,
+      tips: 'Ville Nouvelle plus moderne et calme. Prix officiels sur les plateformes de réservation.',
+      updated: '2026-05-08',
     },
     restaurant: {
       description: 'Repas traditionnel fassi',
-      fair_price_min: 50,
-      fair_price_max: 100,
-      tourist_reasonable_min: 70,
-      tourist_reasonable_max: 150,
-      tips: 'La cuisine fassi est réputée. Petit restaurants locaux: excellents et 40-80 DH.',
-      vigilance_threshold: 250,
-      updated: '2026-04-30'
+      fair_price_min: 55,
+      fair_price_max: 110,
+      tourist_reasonable_min: 80,
+      tourist_reasonable_max: 160,
+      tips: 'La cuisine fassi est réputée parmi les meilleures du Maroc. Petits restaurants locaux : 40–80 DH. Bastions touristiques place Rcif : plus chers.',
+      vigilance_threshold: 280,
+      updated: '2026-05-08',
     },
     guide: {
-      description: 'Guide officiel médina de Fès',
-      fair_price_min: 150,
-      fair_price_max: 300,
-      tourist_reasonable_min: 200,
-      tourist_reasonable_max: 400,
-      tips: 'Guide INDISPENSABLE pour Fès El Bali. Carte officielle obligatoire. Vérifier l\'accréditation.',
-      vigilance_threshold: 600,
-      updated: '2026-04-30'
+      description: 'Guide officiel médina de Fès (INDISPENSABLE)',
+      fair_price_min: 180,
+      fair_price_max: 320,
+      tourist_reasonable_min: 250,
+      tourist_reasonable_max: 450,
+      full_day_min: 400,
+      full_day_max: 650,
+      tips: 'Guide INDISPENSABLE pour Fès El Bali. Carte officielle ONMT obligatoire. Demi-journée : 180–320 DH.',
+      vigilance_threshold: 700,
+      updated: '2026-05-08',
+    },
+    excursion: {
+      description: 'Excursion Volubilis + Moulay Idriss depuis Fès',
+      fair_price_min: 380,
+      fair_price_max: 650,
+      tourist_reasonable_min: 480,
+      tourist_reasonable_max: 850,
+      tips: 'Volubilis (UNESCO) : entrée 70 DH. Moulay Idriss : ville sainte, accès gratuit. Transport + guide : 380–650 DH.',
+      vigilance_threshold: 1100,
+      updated: '2026-05-08',
     },
     shopping: {
       description: 'Cuir, zellige, broderie fassi',
       fair_price_min: 100,
-      fair_price_max: 800,
+      fair_price_max: 900,
       tourist_reasonable_min: 150,
-      tourist_reasonable_max: 1200,
-      tips: 'Cuir de Fès: qualité réputée mondiale. Tanneries: acheter directement. Zellige: coopératives.',
-      vigilance_threshold: 2000,
-      updated: '2026-04-30'
-    },
-    excursion: {
-      description: 'Excursion Volubilis + Meknès',
-      fair_price_min: 350,
-      fair_price_max: 600,
-      tourist_reasonable_min: 450,
-      tourist_reasonable_max: 800,
-      tips: '1h de route. Inclure entrée Volubilis (70 DH). Repas sur place ~80 DH.',
-      vigilance_threshold: 1000,
-      updated: '2026-04-30'
+      tourist_reasonable_max: 1300,
+      tips: 'Cuir de Fès : qualité mondiale. Tanneries Chouara : acheter directement dans les boutiques attenantes. Zellige : coopératives artisanales. Négocier 30–40%.',
+      vigilance_threshold: 2500,
+      updated: '2026-05-08',
     },
     spa: {
       description: 'Hammam traditionnel Fès',
-      fair_price_min: 40,
-      fair_price_max: 100,
-      tourist_reasonable_min: 60,
-      tourist_reasonable_max: 150,
-      tips: 'Hammams populaires locaux: 15-30 DH. Hammams touristiques: 80-200 DH avec gommage.',
-      updated: '2026-04-30'
-    }
+      fair_price_min: 50,
+      fair_price_max: 120,
+      tourist_reasonable_min: 80,
+      tourist_reasonable_max: 180,
+      tips: 'Hammams populaires locaux : 15–30 DH. Hammams touristiques avec gommage : 80–200 DH.',
+      updated: '2026-05-08',
+    },
+    transport: {
+      description: 'Train ONCF / Bus CTM Fès',
+      fair_price_min: 80,
+      fair_price_max: 200,
+      tourist_reasonable_min: 90,
+      tourist_reasonable_max: 200,
+      tips: 'Fès → Casablanca train : 110–160 DH. Fès → Marrakech CTM : 160–200 DH.',
+      updated: '2026-05-08',
+    },
   },
 
+  // ════════════════════════════════════════════════════════
   Chefchaouen: {
     taxi: {
-      description: 'Trajet intra-ville (petite ville)',
+      description: 'Taxi intra-ville (petite ville, tout accessible à pied)',
       fair_price_min: 5,
-      fair_price_max: 10,
-      tourist_reasonable_min: 8,
-      tourist_reasonable_max: 15,
-      tips: 'Petite ville, tout est accessible à pied. Taxi vers la gare routière: 10-15 DH.',
-      vigilance_threshold: 30,
-      updated: '2026-04-30'
+      fair_price_max: 12,
+      tourist_reasonable_min: 10,
+      tourist_reasonable_max: 18,
+      tips: 'Petite ville : médina accessible à pied. Taxi vers gare routière : 10–15 DH. Grand taxi → Tétouan : 40–60 DH/pers partagé.',
+      vigilance_threshold: 35,
+      updated: '2026-05-08',
     },
     riad: {
-      description: 'Nuit dans un riad bleu',
+      description: 'Nuit dans un riad bleu (chambre double)',
+      fair_price_min: 200,
+      fair_price_max: 420,
+      tourist_reasonable_min: 280,
+      tourist_reasonable_max: 550,
+      tips: 'Destination moins chère que Marrakech. Petits riads familiaux très accueillants. Réserver à l\'avance en juillet–août.',
+      vigilance_threshold: 850,
+      updated: '2026-05-08',
+    },
+    hotel: {
+      description: 'Hôtel standard Chefchaouen',
       fair_price_min: 180,
       fair_price_max: 380,
       tourist_reasonable_min: 250,
       tourist_reasonable_max: 500,
-      tips: 'Destination moins chère. Petits riads familiaux très accueillants.',
-      vigilance_threshold: 800,
-      updated: '2026-04-30'
+      tips: 'Offre limitée, réserver tôt. Plusieurs guesthouses de charme dans la médina bleue.',
+      updated: '2026-05-08',
     },
     restaurant: {
       description: 'Repas (spécialités rifaines)',
-      fair_price_min: 40,
-      fair_price_max: 90,
-      tourist_reasonable_min: 60,
-      tourist_reasonable_max: 120,
-      tips: 'Restaurants terrasses dans la médina bleue. Kefta, msemen, fromage local.',
-      vigilance_threshold: 180,
-      updated: '2026-04-30'
+      fair_price_min: 45,
+      fair_price_max: 95,
+      tourist_reasonable_min: 65,
+      tourist_reasonable_max: 130,
+      tips: 'Kefta, msemen, fromage de chèvre local, miel du Rif. Terrasses avec vue médina bleue. Prix très raisonnables.',
+      vigilance_threshold: 200,
+      updated: '2026-05-08',
     },
     guide: {
       description: 'Guide randonnée Rif + médina',
-      fair_price_min: 100,
-      fair_price_max: 220,
-      tourist_reasonable_min: 150,
-      tourist_reasonable_max: 300,
-      tips: 'Randonnées: Jbel El Kelaa, Cascades Ras El Ma. Guides locaux compétents.',
-      updated: '2026-04-30'
-    },
-    excursion: {
-      description: 'Randonnée demi-journée',
       fair_price_min: 120,
       fair_price_max: 250,
       tourist_reasonable_min: 180,
       tourist_reasonable_max: 350,
-      tips: 'Forêt de cèdres, cascades. Inclure repas local dans la négociation.',
-      updated: '2026-04-30'
+      tips: 'Randonnées : Jbel El Kelaa (2 027 m), Cascades Ras El Ma. Guides locaux compétents.',
+      updated: '2026-05-08',
+    },
+    excursion: {
+      description: 'Randonnée demi-journée / journée Rif',
+      fair_price_min: 150,
+      fair_price_max: 300,
+      tourist_reasonable_min: 200,
+      tourist_reasonable_max: 420,
+      tips: 'Forêt de cèdres à 1h. Cascades Akchour : demi-journée. Inclure repas local dans la négociation.',
+      updated: '2026-05-08',
     },
     shopping: {
-      description: 'Artisanat (laine, cuir, épices)',
+      description: 'Artisanat (laine, cuir, épices du Rif)',
       fair_price_min: 30,
-      fair_price_max: 300,
+      fair_price_max: 350,
       tourist_reasonable_min: 50,
-      tourist_reasonable_max: 450,
-      tips: 'Tapis rifains de qualité. Fromage de chèvre local: 30-60 DH. Épices: prix fixes.',
-      updated: '2026-04-30'
-    }
+      tourist_reasonable_max: 500,
+      tips: 'Tapis rifains de qualité. Fromage de chèvre : 30–60 DH. Négocier 20–30%.',
+      updated: '2026-05-08',
+    },
+    transport: {
+      description: 'Bus CTM Chefchaouen',
+      fair_price_min: 60,
+      fair_price_max: 150,
+      tourist_reasonable_min: 70,
+      tourist_reasonable_max: 150,
+      tips: 'Chefchaouen → Fès : 80–120 DH. Chefchaouen → Tanger : 60–90 DH. CTM recommandé.',
+      updated: '2026-05-08',
+    },
   },
 
+  // ════════════════════════════════════════════════════════
   Casablanca: {
     taxi: {
       description: 'Petit taxi intra-ville (compteur)',
       fair_price_min: 12,
-      fair_price_max: 20,
+      fair_price_max: 22,
       tourist_reasonable_min: 15,
-      tourist_reasonable_max: 30,
-      airport_min: 100,
-      airport_max: 150,
-      tips: 'Grands taxis aller/retour à négocier. Tramway: 7 DH fixe. Bus: 4 DH.',
-      vigilance_threshold: 50,
-      updated: '2026-04-30'
+      tourist_reasonable_max: 35,
+      airport_min: 250,
+      airport_max: 350,
+      tips: 'Compteur obligatoire. Aéroport Mohammed V → centre : train ONCF 45 DH (recommandé) ou grand taxi 250–350 DH. Tramway : 7 DH fixe. Bus : 4 DH.',
+      vigilance_threshold: 60,
+      updated: '2026-05-08',
     },
     hotel: {
-      description: 'Hôtel d\'affaires 3-4 étoiles',
-      fair_price_min: 400,
-      fair_price_max: 900,
-      tourist_reasonable_min: 500,
-      tourist_reasonable_max: 1200,
-      tips: 'Capitale économique. Quartiers: Maarif, Corniche, CFC pour les affaires.',
-      vigilance_threshold: 1500,
-      updated: '2026-04-30'
+      description: 'Hôtel d\'affaires 3–4 étoiles',
+      fair_price_min: 450,
+      fair_price_max: 950,
+      tourist_reasonable_min: 550,
+      tourist_reasonable_max: 1300,
+      tips: 'Capitale économique. Quartiers : Maarif, Corniche, CFC. Réserver en ligne.',
+      vigilance_threshold: 1800,
+      updated: '2026-05-08',
     },
     restaurant: {
-      description: 'Restaurant (ambiance moderne)',
-      fair_price_min: 90,
-      fair_price_max: 180,
-      tourist_reasonable_min: 120,
-      tourist_reasonable_max: 250,
-      seafood_min: 150,
-      seafood_max: 350,
-      tips: 'Corniche: fruits de mer frais. Quartier Maarif: restaurants variés. Vérifier les prix avant de s\'asseoir.',
-      vigilance_threshold: 400,
-      updated: '2026-04-30'
+      description: 'Restaurant (ambiance moderne / fruits de mer)',
+      fair_price_min: 100,
+      fair_price_max: 200,
+      tourist_reasonable_min: 130,
+      tourist_reasonable_max: 280,
+      seafood_min: 180,
+      seafood_max: 400,
+      tips: 'Corniche : fruits de mer frais excellents. Quartier Maarif : restaurants variés. Vérifier la carte avant de s\'asseoir.',
+      vigilance_threshold: 500,
+      updated: '2026-05-08',
     },
     guide: {
-      description: 'Guide ville (Hassan II, Habous)',
-      fair_price_min: 150,
-      fair_price_max: 300,
-      tourist_reasonable_min: 200,
-      tourist_reasonable_max: 400,
-      tips: 'Mosquée Hassan II: visite guidée officielle 120 DH. Quartier Habous intéressant.',
-      updated: '2026-04-30'
-    },
-    transport: {
-      description: 'Train ONCF (Casa-autres villes)',
-      fair_price_min: 80,
-      fair_price_max: 200,
-      tourist_reasonable_min: 90,
-      tourist_reasonable_max: 200,
-      tips: 'Train Casa-Marrakech: 120-200 DH. Casa-Rabat: 40-80 DH. Réserver en ligne.',
-      vigilance_threshold: 250,
-      updated: '2026-04-30'
+      description: 'Guide ville (Mosquée Hassan II, Habous)',
+      fair_price_min: 180,
+      fair_price_max: 350,
+      tourist_reasonable_min: 250,
+      tourist_reasonable_max: 450,
+      tips: 'Mosquée Hassan II : visite guidée officielle 120 DH (entrée incluse). Quartier Habous : intéressant.',
+      updated: '2026-05-08',
     },
     excursion: {
-      description: 'Excursion côte Atlantique',
-      fair_price_min: 200,
-      fair_price_max: 400,
-      tourist_reasonable_min: 300,
-      tourist_reasonable_max: 500,
-      tips: 'El Jadida et Azemmour à 1h. Asilah à 2h.',
-      updated: '2026-04-30'
-    }
-  },
-
-  Agadir: {
-    taxi: {
-      description: 'Petit taxi intra-ville',
-      fair_price_min: 10,
-      fair_price_max: 15,
-      tourist_reasonable_min: 15,
-      tourist_reasonable_max: 25,
-      airport_min: 80,
-      airport_max: 120,
-      tips: 'Ville organisée et moderne. Compteur obligatoire. Comparer avec les transferts hôteliers.',
-      vigilance_threshold: 50,
-      updated: '2026-04-30'
-    },
-    hotel: {
-      description: 'Hôtel balnéaire (bord de mer)',
-      fair_price_min: 280,
-      fair_price_max: 600,
-      tourist_reasonable_min: 400,
-      tourist_reasonable_max: 900,
-      tips: 'Vaste offre hôtelière compétitive. Corniche bien aménagée. Comparer sur booking.com.',
-      vigilance_threshold: 1200,
-      updated: '2026-04-30'
-    },
-    restaurant: {
-      description: 'Restaurant fruits de mer/poisson',
-      fair_price_min: 70,
-      fair_price_max: 140,
-      tourist_reasonable_min: 100,
-      tourist_reasonable_max: 200,
-      tips: 'Port de pêche actif: poisson du jour. Marché municipal: poisson à 30-80 DH/kg.',
-      vigilance_threshold: 300,
-      updated: '2026-04-30'
-    },
-    excursion: {
-      description: 'Excursion Souss + Arganiers',
+      description: 'Excursion côte Atlantique (El Jadida, Azemmour)',
       fair_price_min: 250,
       fair_price_max: 450,
       tourist_reasonable_min: 350,
       tourist_reasonable_max: 600,
-      tips: 'Tiznit à 90km. Vallée du Souss. Huile d\'argan authentique en coopérative (60-120 DH/100ml).',
-      vigilance_threshold: 800,
-      updated: '2026-04-30'
-    },
-    shopping: {
-      description: 'Souk artisanat + argan',
-      fair_price_min: 30,
-      fair_price_max: 400,
-      tourist_reasonable_min: 50,
-      tourist_reasonable_max: 600,
-      tips: 'Souk El Had: vaste et animé. Argan bio coopérative: prix officiels. Bijoux berbères.',
-      updated: '2026-04-30'
-    },
-    spa: {
-      description: 'Thalasso / Hammam balnéaire',
-      fair_price_min: 150,
-      fair_price_max: 350,
-      tourist_reasonable_min: 200,
-      tourist_reasonable_max: 500,
-      tips: 'Nombreux centres thalasso sur la Corniche. Tarifs affichés. Comparer plusieurs.',
-      updated: '2026-04-30'
+      tips: 'El Jadida (UNESCO) à 1h. Azemmour à 1h10. Asilah à 2h30.',
+      updated: '2026-05-08',
     },
     transport: {
-      description: 'Bus CTM Agadir-Marrakech',
+      description: 'Train ONCF Casa inter-villes',
+      fair_price_min: 80,
+      fair_price_max: 250,
+      tourist_reasonable_min: 90,
+      tourist_reasonable_max: 250,
+      tips: 'Casa → Rabat : 40–80 DH. Casa → Marrakech : 130–200 DH. Casa → Fès : 110–160 DH. Réserver sur oncf.ma.',
+      vigilance_threshold: 300,
+      updated: '2026-05-08',
+    },
+    shopping: {
+      description: 'Shopping moderne (Maarif, Morocco Mall)',
       fair_price_min: 100,
-      fair_price_max: 150,
-      tourist_reasonable_min: 110,
-      tourist_reasonable_max: 150,
-      tips: '3h30 de route. CTM fiable. Départs fréquents.',
-      updated: '2026-04-30'
-    }
+      fair_price_max: 1000,
+      tourist_reasonable_min: 100,
+      tourist_reasonable_max: 1000,
+      tips: 'Prix fixes dans les centres commerciaux. Marché Derb Omar : textile en gros.',
+      updated: '2026-05-08',
+    },
   },
 
+  // ════════════════════════════════════════════════════════
+  Agadir: {
+    taxi: {
+      description: 'Petit taxi intra-ville (compteur)',
+      fair_price_min: 10,
+      fair_price_max: 18,
+      tourist_reasonable_min: 15,
+      tourist_reasonable_max: 28,
+      airport_min: 80,
+      airport_max: 150,
+      tips: 'Ville moderne bien organisée. Compteur obligatoire. Aéroport Al Massira → centre : 80–150 DH.',
+      vigilance_threshold: 60,
+      updated: '2026-05-08',
+    },
+    hotel: {
+      description: 'Hôtel balnéaire (bord de mer / Corniche)',
+      fair_price_min: 300,
+      fair_price_max: 650,
+      tourist_reasonable_min: 420,
+      tourist_reasonable_max: 950,
+      tips: 'Haute saison (juillet–août) : prix majorés 30–50%. Comparer sur Booking.',
+      vigilance_threshold: 1400,
+      updated: '2026-05-08',
+    },
+    restaurant: {
+      description: 'Restaurant fruits de mer / poisson frais',
+      fair_price_min: 80,
+      fair_price_max: 160,
+      tourist_reasonable_min: 110,
+      tourist_reasonable_max: 230,
+      tips: 'Port de pêche actif. Poisson du jour : 30–80 DH/kg. Restaurants port : excellent rapport qualité/prix.',
+      vigilance_threshold: 380,
+      updated: '2026-05-08',
+    },
+    excursion: {
+      description: 'Excursion Vallée du Souss + Arganiers + Tiznit',
+      fair_price_min: 280,
+      fair_price_max: 500,
+      tourist_reasonable_min: 380,
+      tourist_reasonable_max: 680,
+      tips: 'Tiznit à 90 km : bijouterie berbère. Coopérative d\'argan : huile bio authentique 60–120 DH/100 ml.',
+      vigilance_threshold: 900,
+      updated: '2026-05-08',
+    },
+    shopping: {
+      description: 'Souk El Had + artisanat + argan',
+      fair_price_min: 30,
+      fair_price_max: 500,
+      tourist_reasonable_min: 50,
+      tourist_reasonable_max: 700,
+      tips: 'Souk El Had (dimanche) : le plus grand du Maroc. Argan bio en coopérative : prix officiels. Négocier 25–35%.',
+      updated: '2026-05-08',
+    },
+    spa: {
+      description: 'Thalasso / Hammam balnéaire Agadir',
+      fair_price_min: 180,
+      fair_price_max: 400,
+      tourist_reasonable_min: 250,
+      tourist_reasonable_max: 580,
+      tips: 'Nombreux centres thalasso Corniche. Tarifs affichés, comparer plusieurs. Formule journée souvent plus avantageuse.',
+      updated: '2026-05-08',
+    },
+    transport: {
+      description: 'Bus CTM Agadir inter-villes',
+      fair_price_min: 100,
+      fair_price_max: 180,
+      tourist_reasonable_min: 110,
+      tourist_reasonable_max: 180,
+      tips: 'Agadir → Marrakech : 100–130 DH, 3h30. Agadir → Casablanca : 160–200 DH, 6h.',
+      updated: '2026-05-08',
+    },
+    guide: {
+      description: 'Guide Agadir (Kasbah, Médina Polizzi)',
+      fair_price_min: 150,
+      fair_price_max: 280,
+      tourist_reasonable_min: 200,
+      tourist_reasonable_max: 380,
+      tips: 'Kasbah d\'Agadir : vue panoramique. Médina Polizzi : artisanat. Demi-journée : 150–280 DH.',
+      updated: '2026-05-08',
+    },
+  },
+
+  // ════════════════════════════════════════════════════════
   Tanger: {
     taxi: {
       description: 'Petit taxi intra-ville',
       fair_price_min: 8,
-      fair_price_max: 12,
+      fair_price_max: 15,
       tourist_reasonable_min: 12,
-      tourist_reasonable_max: 20,
+      tourist_reasonable_max: 22,
       port_min: 30,
-      port_max: 60,
-      tips: 'Port international: rester vigilant à l\'arrivée du ferry. Négocier avant de monter.',
-      vigilance_threshold: 40,
-      updated: '2026-04-30'
+      port_max: 70,
+      tips: 'Port international : rester vigilant à l\'arrivée du ferry. Négocier AVANT de monter. Port → médina : 30–50 DH. Port → Ville Nouvelle : 40–70 DH.',
+      vigilance_threshold: 50,
+      updated: '2026-05-08',
+    },
+    grand_taxi: {
+      description: 'Grand taxi Tanger longue distance',
+      fair_price_min: 80,
+      fair_price_max: 300,
+      tourist_reasonable_min: 120,
+      tourist_reasonable_max: 400,
+      tips: 'Tanger → Chefchaouen partagé : 60–90 DH/pers. Tanger → Tétouan : 25–40 DH/pers. TGV Tanger-Casa : 149–189 DH.',
+      updated: '2026-05-08',
     },
     hotel: {
-      description: 'Hôtel (Médina / Ville Nouvelle)',
-      fair_price_min: 200,
-      fair_price_max: 500,
-      tourist_reasonable_min: 300,
-      tourist_reasonable_max: 700,
-      tips: 'Hôtels Ville Nouvelle plus modernes. Médina: charme authentique mais plus basique.',
-      vigilance_threshold: 900,
-      updated: '2026-04-30'
+      description: 'Hôtel (Médina / Ville Nouvelle / bord mer)',
+      fair_price_min: 220,
+      fair_price_max: 550,
+      tourist_reasonable_min: 320,
+      tourist_reasonable_max: 750,
+      tips: 'Hôtels Ville Nouvelle plus modernes. Quartier Malabata : hôtels balnéaires. TGV a dynamisé la ville, prix en hausse.',
+      vigilance_threshold: 1000,
+      updated: '2026-05-08',
     },
     restaurant: {
-      description: 'Repas (fruits de mer, menthe)',
-      fair_price_min: 60,
-      fair_price_max: 120,
-      tourist_reasonable_min: 80,
-      tourist_reasonable_max: 170,
-      tips: 'Pâtisseries marocaines excellentes. Thé à la menthe: 8-15 DH. Poisson du détroit.',
-      vigilance_threshold: 250,
-      updated: '2026-04-30'
+      description: 'Repas (fruits de mer, cuisine hispano-marocaine)',
+      fair_price_min: 65,
+      fair_price_max: 130,
+      tourist_reasonable_min: 90,
+      tourist_reasonable_max: 190,
+      tips: 'Poisson du détroit de Gibraltar excellent. Thé à la menthe : 8–15 DH. Médina : cuisine traditionnelle moins chère.',
+      vigilance_threshold: 300,
+      updated: '2026-05-08',
     },
     guide: {
-      description: 'Guide Kasbah + Médina Tanger',
-      fair_price_min: 100,
-      fair_price_max: 250,
-      tourist_reasonable_min: 150,
-      tourist_reasonable_max: 350,
-      tips: 'Kasbah, Cap Spartel, Grottes d\'Hercule. Histoire riche Franco-hispanique.',
-      updated: '2026-04-30'
+      description: 'Guide Kasbah + Médina + Cap Spartel',
+      fair_price_min: 120,
+      fair_price_max: 280,
+      tourist_reasonable_min: 180,
+      tourist_reasonable_max: 380,
+      tips: 'Kasbah, Grottes d\'Hercule, Cap Spartel. Histoire franco-hispanique riche. Demi-journée médina : 120–250 DH.',
+      updated: '2026-05-08',
     },
     excursion: {
-      description: 'Excursion Asilah / Cap Spartel',
-      fair_price_min: 200,
-      fair_price_max: 400,
-      tourist_reasonable_min: 280,
-      tourist_reasonable_max: 500,
-      tips: 'Asilah 45km: ville d\'art murale. Cap Spartel: vue détroit de Gibraltar.',
-      updated: '2026-04-30'
+      description: 'Excursion Asilah + Cap Spartel + Grottes Hercule',
+      fair_price_min: 220,
+      fair_price_max: 420,
+      tourist_reasonable_min: 300,
+      tourist_reasonable_max: 550,
+      tips: 'Asilah 45 km : ville d\'art murale. Cap Spartel : confluence Atlantique/Méditerranée. Grottes Hercule : entrée 25 DH.',
+      updated: '2026-05-08',
     },
     shopping: {
       description: 'Artisanat médina Tanger',
       fair_price_min: 50,
-      fair_price_max: 400,
+      fair_price_max: 500,
       tourist_reasonable_min: 80,
-      tourist_reasonable_max: 600,
-      tips: 'Babouches, cuir, épices. Moins cher que Marrakech. Négocier 30-40%.',
-      updated: '2026-04-30'
-    }
+      tourist_reasonable_max: 700,
+      tips: 'Babouches, cuir, épices. Légèrement moins cher que Marrakech. Négocier 25–40%.',
+      updated: '2026-05-08',
+    },
+    transport: {
+      description: 'TGV Al Boraq + CTM Tanger',
+      fair_price_min: 90,
+      fair_price_max: 260,
+      tourist_reasonable_min: 100,
+      tourist_reasonable_max: 260,
+      tips: 'TGV Tanger → Casa : 149–189 DH, 2h10. CTM Tanger → Rabat : 120–150 DH. Ferry Tanger → Tarifa : 35–60 €.',
+      updated: '2026-05-08',
+    },
   },
 
+  // ════════════════════════════════════════════════════════
   Rabat: {
     taxi: {
-      description: 'Petit taxi Rabat (Capitale)',
+      description: 'Petit taxi Rabat (capitale administrative)',
       fair_price_min: 10,
-      fair_price_max: 15,
-      tourist_reasonable_min: 15,
-      tourist_reasonable_max: 22,
-      airport_min: 80,
-      airport_max: 120,
-      tips: 'Tramway moderne (7 DH) très pratique. Capitale bien organisée. Compteur obligatoire.',
-      vigilance_threshold: 40,
-      updated: '2026-04-30'
-    },
-    hotel: {
-      description: 'Hôtel Capitale 3-4 étoiles',
-      fair_price_min: 300,
-      fair_price_max: 700,
-      tourist_reasonable_min: 400,
-      tourist_reasonable_max: 900,
-      tips: 'Agdal et Hassan pour les hôtels d\'affaires. Médina pour l\'authenticité.',
-      updated: '2026-04-30'
-    },
-    restaurant: {
-      description: 'Repas Rabat',
-      fair_price_min: 70,
-      fair_price_max: 150,
-      tourist_reasonable_min: 90,
-      tourist_reasonable_max: 200,
-      tips: 'Quartier Hassan et Agdal: bons restaurants modernes. Médina: couscous authentique.',
-      vigilance_threshold: 300,
-      updated: '2026-04-30'
-    },
-    guide: {
-      description: 'Guide Sites Royaux Rabat',
-      fair_price_min: 120,
-      fair_price_max: 280,
-      tourist_reasonable_min: 150,
-      tourist_reasonable_max: 380,
-      tips: 'Tour Hassan, Mausolée Mohammed V, Kasbah Oudayas, Chellah. Journée complète ~400 DH.',
-      updated: '2026-04-30'
-    },
-    excursion: {
-      description: 'Excursion Salé + Chellah',
-      fair_price_min: 150,
-      fair_price_max: 300,
-      tourist_reasonable_min: 200,
-      tourist_reasonable_max: 400,
-      tips: 'Salé en face de Rabat (Bou Regreg). Chellah: ruines romaines + cigognes.',
-      updated: '2026-04-30'
-    }
-  },
-
-  Ouarzazate: {
-    taxi: {
-      description: 'Taxi Ouarzazate (Ville du Cinéma)',
-      fair_price_min: 8,
-      fair_price_max: 12,
-      tourist_reasonable_min: 12,
-      tourist_reasonable_max: 20,
-      tips: 'Petite ville. Grand taxis pour excursions: négocier ferme.',
-      vigilance_threshold: 35,
-      updated: '2026-04-30'
-    },
-    hotel: {
-      description: 'Hôtel / Guesthouse Ouarzazate',
-      fair_price_min: 180,
-      fair_price_max: 400,
-      tourist_reasonable_min: 280,
-      tourist_reasonable_max: 600,
-      tips: 'Porte du désert, prix très compétitifs. Belle offre de kasbahs reconverties.',
-      updated: '2026-04-30'
-    },
-    restaurant: {
-      description: 'Repas (tajine, couscous)',
-      fair_price_min: 45,
-      fair_price_max: 90,
-      tourist_reasonable_min: 65,
-      tourist_reasonable_max: 130,
-      tips: 'Petite ville calme. Restaurants en terrasse avec vue Atlas.',
-      vigilance_threshold: 180,
-      updated: '2026-04-30'
-    },
-    excursion: {
-      description: 'Excursion Vallée Dades/Gorges Todra',
-      fair_price_min: 280,
-      fair_price_max: 500,
-      tourist_reasonable_min: 380,
-      tourist_reasonable_max: 700,
-      tips: 'Paysages spectaculaires. Aït Benhaddou (UNESCO): 30 min. Entrée: 20 DH.',
-      vigilance_threshold: 900,
-      updated: '2026-04-30'
-    },
-    guide: {
-      description: 'Guide Studios Cinéma + Kasbah',
-      fair_price_min: 80,
-      fair_price_max: 200,
-      tourist_reasonable_min: 120,
-      tourist_reasonable_max: 300,
-      tips: 'Studios Atlas: entrée 130 DH. Kasbah Taourirt: entrée 30 DH.',
-      updated: '2026-04-30'
-    },
-    shopping: {
-      description: 'Artisanat kasbahs (tapis, bijoux)',
-      fair_price_min: 100,
-      fair_price_max: 500,
-      tourist_reasonable_min: 150,
-      tourist_reasonable_max: 700,
-      tips: 'Tapis berbères de qualité. Bijoux touaregs. Négocier 30-40%.',
-      updated: '2026-04-30'
-    }
-  },
-
-  Meknès: {
-    taxi: {
-      description: 'Taxi Meknès (Ville Impériale)',
-      fair_price_min: 8,
-      fair_price_max: 12,
-      tourist_reasonable_min: 10,
-      tourist_reasonable_max: 18,
-      tips: 'Ville impériale moins touristique. Tarifs compétitifs. Compteur conseillé.',
-      vigilance_threshold: 30,
-      updated: '2026-04-30'
-    },
-    riad: {
-      description: 'Nuit riad / maison d\'hôtes Meknès',
-      fair_price_min: 180,
-      fair_price_max: 380,
-      tourist_reasonable_min: 250,
-      tourist_reasonable_max: 550,
-      tips: 'Moins cher que Fès et Marrakech pour qualité équivalente.',
-      updated: '2026-04-30'
-    },
-    restaurant: {
-      description: 'Repas Meknès (cuisine rifaine)',
-      fair_price_min: 50,
-      fair_price_max: 100,
-      tourist_reasonable_min: 70,
-      tourist_reasonable_max: 140,
-      tips: 'Meknès connue pour ses olives et vins. Restaurant place Lahdim: vue sur porte Bab Mansour.',
-      vigilance_threshold: 200,
-      updated: '2026-04-30'
-    },
-    guide: {
-      description: 'Guide Médina Impériale Meknès',
-      fair_price_min: 120,
-      fair_price_max: 260,
-      tourist_reasonable_min: 150,
-      tourist_reasonable_max: 360,
-      tips: 'Bab El Mansour, Mausolée Moulay Ismail, Hri Souani. Médina plus facile que Fès.',
-      updated: '2026-04-30'
-    },
-    excursion: {
-      description: 'Visite Volubilis + Moulay Idriss',
-      fair_price_min: 220,
-      fair_price_max: 380,
-      tourist_reasonable_min: 300,
-      tourist_reasonable_max: 520,
-      tips: 'Volubilis (UNESCO): 30 min, entrée 70 DH. Moulay Idriss: ville sainte, gratuit.',
-      updated: '2026-04-30'
-    }
-  },
-
-  Merzouga: {
-    taxi: {
-      description: 'Taxi/transfert Merzouga',
-      fair_price_min: 5,
-      fair_price_max: 10,
-      tourist_reasonable_min: 10,
-      tourist_reasonable_max: 20,
-      tips: 'Village du désert. Grand taxi depuis Errachidia: 60-100 DH.',
-      updated: '2026-04-30'
-    },
-    guesthouse: {
-      description: 'Guesthouse / Riad Sahara',
-      fair_price_min: 150,
-      fair_price_max: 300,
-      tourist_reasonable_min: 200,
-      tourist_reasonable_max: 500,
-      tips: 'Options simples (150 DH) ou luxe (500+ DH). Inclure demi-pension dans la négociation.',
-      updated: '2026-04-30'
-    },
-    restaurant: {
-      description: 'Repas Merzouga',
-      fair_price_min: 35,
-      fair_price_max: 80,
-      tourist_reasonable_min: 50,
-      tourist_reasonable_max: 120,
-      tips: 'Choix limité. Tajine berbère: 50-80 DH. Couscous vendredi: spécialité.',
-      updated: '2026-04-30'
-    },
-    excursion: {
-      description: 'Excursion dunes Erg Chebbi (chameau+coucher soleil)',
-      fair_price_min: 180,
-      fair_price_max: 350,
-      tourist_reasonable_min: 250,
-      tourist_reasonable_max: 500,
-      tips: 'Lever/coucher soleil: expérience sublime. 4x4: 300-500 DH. Chameau 1h: 150-200 DH.',
-      vigilance_threshold: 700,
-      updated: '2026-04-30'
-    },
-    bivouac: {
-      description: 'Nuit en bivouac dans les dunes (tout compris)',
-      fair_price_min: 200,
-      fair_price_max: 400,
-      tourist_reasonable_min: 300,
-      tourist_reasonable_max: 600,
-      tips: 'Inclure dîner berbère + musique gnaoua + petit-déjeuner. Comparer plusieurs camps.',
-      vigilance_threshold: 800,
-      updated: '2026-04-30'
-    }
-  },
-
-  Dakhla: {
-    taxi: {
-      description: 'Taxi Dakhla (Sahara Atlantique)',
-      fair_price_min: 10,
-      fair_price_max: 15,
+      fair_price_max: 18,
       tourist_reasonable_min: 15,
       tourist_reasonable_max: 25,
-      tips: 'Ville s\'étendant sur une péninsule. Distances parfois grandes.',
-      updated: '2026-04-30'
+      airport_min: 80,
+      airport_max: 130,
+      tips: 'Tramway moderne (7 DH) très pratique, couvre la plupart des sites. Compteur obligatoire. Capitale bien organisée.',
+      vigilance_threshold: 45,
+      updated: '2026-05-08',
     },
     hotel: {
-      description: 'Hôtel bord de lagon',
-      fair_price_min: 280,
-      fair_price_max: 600,
-      tourist_reasonable_min: 380,
-      tourist_reasonable_max: 800,
-      tips: 'Destination kitesurfing en plein essor. Réserver à l\'avance en haute saison (nov-avr).',
-      updated: '2026-04-30'
+      description: 'Hôtel 3–4 étoiles (Agdal / Hassan)',
+      fair_price_min: 320,
+      fair_price_max: 750,
+      tourist_reasonable_min: 420,
+      tourist_reasonable_max: 950,
+      tips: 'Agdal et Hassan pour hôtels d\'affaires. Médina et Kasbah Oudayas pour l\'authenticité.',
+      updated: '2026-05-08',
     },
     restaurant: {
-      description: 'Restaurant fruits de mer (port actif)',
-      fair_price_min: 70,
-      fair_price_max: 140,
+      description: 'Repas Rabat (cuisine moderne + traditionnelle)',
+      fair_price_min: 75,
+      fair_price_max: 160,
       tourist_reasonable_min: 100,
-      tourist_reasonable_max: 200,
-      tips: 'Port de pêche majeur. Homard, poulpe, daurade à prix imbattables directement au port.',
-      updated: '2026-04-30'
-    },
-    excursion: {
-      description: 'Lagon + Îles Gandaous + Stand-up paddle',
-      fair_price_min: 220,
-      fair_price_max: 420,
-      tourist_reasonable_min: 320,
-      tourist_reasonable_max: 580,
-      tips: 'Eaux turquoise du lagon. Flamants roses. Organiser via hôtel ou camp kite.',
-      updated: '2026-04-30'
-    },
-    activite: {
-      description: 'Kitesurf leçon (2-3h)',
-      fair_price_min: 250,
-      fair_price_max: 450,
-      tourist_reasonable_min: 300,
-      tourist_reasonable_max: 550,
-      tips: 'Spot classé parmi les meilleurs mondiaux. Plusieurs écoles certifiées IKO.',
-      updated: '2026-04-30'
-    }
-  },
-
-  'El Jadida': {
-    taxi: {
-      description: 'Taxi El Jadida (Côte Atlantique)',
-      fair_price_min: 8,
-      fair_price_max: 12,
-      tourist_reasonable_min: 12,
-      tourist_reasonable_max: 18,
-      tips: 'Petite ville côtière. Distances courtes dans le centre.',
-      updated: '2026-04-30'
-    },
-    hotel: {
-      description: 'Hôtel côtier El Jadida',
-      fair_price_min: 220,
-      fair_price_max: 480,
-      tourist_reasonable_min: 320,
-      tourist_reasonable_max: 650,
-      tips: 'Moins cher qu\'Agadir pour plage similaire. Citerne Portugaise (UNESCO) à visiter.',
-      updated: '2026-04-30'
-    },
-    restaurant: {
-      description: 'Restaurant fruits de mer / huîtres',
-      fair_price_min: 60,
-      fair_price_max: 120,
-      tourist_reasonable_min: 80,
-      tourist_reasonable_max: 160,
-      tips: 'Huîtres de Oualidia: spécialité régionale, 50-100 DH la douzaine. Poisson frais port.',
-      updated: '2026-04-30'
+      tourist_reasonable_max: 230,
+      tips: 'Quartier Hassan et Agdal : bons restaurants modernes. Médina : couscous authentique 50–90 DH.',
+      vigilance_threshold: 350,
+      updated: '2026-05-08',
     },
     guide: {
-      description: 'Guide Cité Portugaise UNESCO',
-      fair_price_min: 80,
-      fair_price_max: 180,
-      tourist_reasonable_min: 120,
-      tourist_reasonable_max: 260,
-      tips: 'Citerne Portugaise: 10 DH entrée. Remparts et bastions historiques.',
-      updated: '2026-04-30'
-    }
-  },
-
-  Essaouira: {
-    taxi: {
-      description: 'Taxi Essaouira (Cité des Alizés)',
-      fair_price_min: 10,
-      fair_price_max: 15,
-      tourist_reasonable_min: 15,
-      tourist_reasonable_max: 22,
-      tips: 'Petite ville pittoresque. Remparts accessibles à pied. Calèches: 50-80 DH/h.',
-      updated: '2026-04-30'
-    },
-    hotel: {
-      description: 'Hôtel / Riad Essaouira',
-      fair_price_min: 270,
-      fair_price_max: 550,
-      tourist_reasonable_min: 380,
-      tourist_reasonable_max: 750,
-      tips: 'Ville du vent. Réserver à l\'avance pour Gnaoua Festival (juin). Prix doublent en festival.',
-      updated: '2026-04-30'
-    },
-    restaurant: {
-      description: 'Poisson grillé / fruits de mer port',
-      fair_price_min: 70,
-      fair_price_max: 130,
-      tourist_reasonable_min: 90,
-      tourist_reasonable_max: 180,
-      tips: 'Port de pêche actif. Grillades sur le port: 60-100 DH repas complet. Excellent rapport qualité/prix.',
-      vigilance_threshold: 280,
-      updated: '2026-04-30'
-    },
-    guide: {
-      description: 'Guide Médina + Remparts Essaouira',
-      fair_price_min: 100,
-      fair_price_max: 230,
-      tourist_reasonable_min: 150,
-      tourist_reasonable_max: 320,
-      tips: 'Skala de la ville: vue mer gratuite. Médina UNESCO. Ville bohème et artistique.',
-      updated: '2026-04-30'
-    },
-    shopping: {
-      description: 'Bois de thuya + artisanat local',
-      fair_price_min: 80,
-      fair_price_max: 400,
-      tourist_reasonable_min: 120,
-      tourist_reasonable_max: 600,
-      tips: 'Thuya: bois rare local sculpté. Coopératives de femmes argan: prix officiels.',
-      updated: '2026-04-30'
+      description: 'Guide Sites Royaux Rabat (demi-journée)',
+      fair_price_min: 150,
+      fair_price_max: 300,
+      tourist_reasonable_min: 200,
+      tourist_reasonable_max: 420,
+      tips: 'Tour Hassan, Mausolée Mohammed V (gratuit), Kasbah Oudayas, Chellah (entrée 70 DH). Journée complète : 350–550 DH.',
+      updated: '2026-05-08',
     },
     excursion: {
-      description: 'Excursion îles Purpuraires + plage',
+      description: 'Excursion Salé + Chellah + côte',
       fair_price_min: 180,
       fair_price_max: 350,
       tourist_reasonable_min: 250,
       tourist_reasonable_max: 480,
-      tips: 'Îles ornithologiques (balbuzards). Plage immense: windsurf et kite.',
-      updated: '2026-04-30'
-    }
-  }
+      tips: 'Salé en face de Rabat (Bou Regreg). Chellah : ruines romaines + cigognes. Plage de Témara à 15 km.',
+      updated: '2026-05-08',
+    },
+    transport: {
+      description: 'Train ONCF Rabat inter-villes',
+      fair_price_min: 40,
+      fair_price_max: 160,
+      tourist_reasonable_min: 45,
+      tourist_reasonable_max: 160,
+      tips: 'Rabat → Casa : 40–80 DH, 1h. Rabat → Fès : 90–130 DH, 3h. Rabat → Tanger TGV : 130–160 DH.',
+      updated: '2026-05-08',
+    },
+    shopping: {
+      description: 'Artisanat Rabat (tapis, poterie, maroquinerie)',
+      fair_price_min: 80,
+      fair_price_max: 600,
+      tourist_reasonable_min: 120,
+      tourist_reasonable_max: 900,
+      tips: 'Tapis de Rabat : renommée internationale. Ensemble artisanal officiel : prix fixes affichés.',
+      updated: '2026-05-08',
+    },
+  },
+
+  // ════════════════════════════════════════════════════════
+  Ouarzazate: {
+    taxi: {
+      description: 'Taxi Ouarzazate (Ville du Cinéma)',
+      fair_price_min: 8,
+      fair_price_max: 15,
+      tourist_reasonable_min: 12,
+      tourist_reasonable_max: 22,
+      tips: 'Petite ville tranquille. Grands taxis pour excursions : négocier ferme. Aéroport → centre : 40–70 DH.',
+      vigilance_threshold: 40,
+      updated: '2026-05-08',
+    },
+    hotel: {
+      description: 'Hôtel / Kasbah guesthouse Ouarzazate',
+      fair_price_min: 200,
+      fair_price_max: 450,
+      tourist_reasonable_min: 300,
+      tourist_reasonable_max: 650,
+      tips: 'Porte du désert, prix très compétitifs. Belle offre de kasbahs reconverties. Vue Atlas souvent incluse.',
+      updated: '2026-05-08',
+    },
+    restaurant: {
+      description: 'Repas (tajine, couscous, mrouzia)',
+      fair_price_min: 50,
+      fair_price_max: 100,
+      tourist_reasonable_min: 70,
+      tourist_reasonable_max: 150,
+      tips: 'Restaurants en terrasse avec vue Atlas. Cuisine berbère authentique. Prix très raisonnables.',
+      vigilance_threshold: 200,
+      updated: '2026-05-08',
+    },
+    guide: {
+      description: 'Guide Studios Cinéma + Kasbah Taourirt',
+      fair_price_min: 100,
+      fair_price_max: 220,
+      tourist_reasonable_min: 150,
+      tourist_reasonable_max: 320,
+      tips: 'Studios Atlas : entrée 130 DH (Gladiator, Lawrence d\'Arabie). Kasbah Taourirt : entrée 30 DH.',
+      updated: '2026-05-08',
+    },
+    excursion: {
+      description: 'Excursion Vallée Dades / Gorges Todra / Aït Benhaddou',
+      fair_price_min: 300,
+      fair_price_max: 550,
+      tourist_reasonable_min: 420,
+      tourist_reasonable_max: 750,
+      tips: 'Aït Benhaddou (UNESCO) : 30 min, entrée 20 DH. Gorges du Todra : 2h. En privatif : 420–750 DH/jour.',
+      vigilance_threshold: 1000,
+      updated: '2026-05-08',
+    },
+    shopping: {
+      description: 'Artisanat kasbahs (tapis berbères, bijoux touaregs)',
+      fair_price_min: 100,
+      fair_price_max: 600,
+      tourist_reasonable_min: 150,
+      tourist_reasonable_max: 900,
+      tips: 'Tapis berbères de qualité. Bijoux touaregs en argent. Rose de Dades séchée : 30–60 DH/100g. Négocier 30–40%.',
+      updated: '2026-05-08',
+    },
+    transport: {
+      description: 'Bus CTM Ouarzazate',
+      fair_price_min: 80,
+      fair_price_max: 200,
+      tourist_reasonable_min: 90,
+      tourist_reasonable_max: 200,
+      tips: 'Ouarzazate → Marrakech : 80–110 DH, 4h (col Tizi n\'Tichka). Ouarzazate → Zagora : 60–80 DH.',
+      updated: '2026-05-08',
+    },
+  },
+
+  // ════════════════════════════════════════════════════════
+  Meknès: {
+    taxi: {
+      description: 'Taxi Meknès (Ville Impériale moins touristique)',
+      fair_price_min: 7,
+      fair_price_max: 12,
+      tourist_reasonable_min: 10,
+      tourist_reasonable_max: 18,
+      tips: 'Ville impériale moins touristique = moins de surfacturation. Meknès → Volubilis grand taxi : 15–25 DH/pers partagé.',
+      vigilance_threshold: 32,
+      updated: '2026-05-08',
+    },
+    riad: {
+      description: 'Nuit riad / maison d\'hôtes Meknès',
+      fair_price_min: 200,
+      fair_price_max: 420,
+      tourist_reasonable_min: 280,
+      tourist_reasonable_max: 600,
+      tips: 'Moins cher que Fès et Marrakech pour qualité équivalente. Bonne alternative.',
+      updated: '2026-05-08',
+    },
+    restaurant: {
+      description: 'Repas Meknès (olives, vins, cuisine rifaine)',
+      fair_price_min: 50,
+      fair_price_max: 110,
+      tourist_reasonable_min: 70,
+      tourist_reasonable_max: 160,
+      tips: 'Meknès connue pour ses olives et vins (vignobles Guerrouane). Restaurant place Lahdim : vue Bab Mansour.',
+      vigilance_threshold: 220,
+      updated: '2026-05-08',
+    },
+    guide: {
+      description: 'Guide Médina Impériale Meknès',
+      fair_price_min: 150,
+      fair_price_max: 280,
+      tourist_reasonable_min: 200,
+      tourist_reasonable_max: 400,
+      tips: 'Bab El Mansour (plus belle porte du Maroc), Mausolée Moulay Ismail, Hri Souani. Médina plus accessible que Fès.',
+      updated: '2026-05-08',
+    },
+    excursion: {
+      description: 'Visite Volubilis (UNESCO) + Moulay Idriss',
+      fair_price_min: 250,
+      fair_price_max: 420,
+      tourist_reasonable_min: 320,
+      tourist_reasonable_max: 560,
+      tips: 'Volubilis : ruines romaines, entrée 70 DH, 30 min de Meknès. Moulay Idriss : ville sainte, accès libre.',
+      updated: '2026-05-08',
+    },
+    transport: {
+      description: 'Train ONCF / Bus CTM Meknès',
+      fair_price_min: 40,
+      fair_price_max: 150,
+      tourist_reasonable_min: 45,
+      tourist_reasonable_max: 150,
+      tips: 'Meknès → Fès : 30–50 DH, 45 min en train. Meknès → Casa : 90–130 DH.',
+      updated: '2026-05-08',
+    },
+    shopping: {
+      description: 'Artisanat Meknès (broderie, poterie, olives)',
+      fair_price_min: 50,
+      fair_price_max: 400,
+      tourist_reasonable_min: 80,
+      tourist_reasonable_max: 600,
+      tips: 'Broderie de Meknès réputée. Olives marinées : 15–30 DH/kg. Prix plus bas que Marrakech.',
+      updated: '2026-05-08',
+    },
+  },
+
+  // ════════════════════════════════════════════════════════
+  Merzouga: {
+    taxi: {
+      description: 'Taxi / transfert Merzouga (village désert)',
+      fair_price_min: 5,
+      fair_price_max: 15,
+      tourist_reasonable_min: 10,
+      tourist_reasonable_max: 25,
+      tips: 'Village du désert. Grand taxi depuis Errachidia : 70–120 DH/pers. Depuis Rissani (15 km) : 30–50 DH.',
+      updated: '2026-05-08',
+    },
+    guesthouse: {
+      description: 'Guesthouse / Riad Sahara Merzouga',
+      fair_price_min: 180,
+      fair_price_max: 380,
+      tourist_reasonable_min: 250,
+      tourist_reasonable_max: 580,
+      luxury_min: 600,
+      luxury_max: 1500,
+      tips: 'Options simples (180 DH) ou luxe avec piscine (700+ DH). Inclure demi-pension dans la négociation.',
+      updated: '2026-05-08',
+    },
+    restaurant: {
+      description: 'Repas Merzouga (cuisine berbère)',
+      fair_price_min: 40,
+      fair_price_max: 90,
+      tourist_reasonable_min: 60,
+      tourist_reasonable_max: 130,
+      tips: 'Choix limité en dehors des hôtels. Tajine berbère : 50–90 DH. Couscous vendredi : spécialité.',
+      updated: '2026-05-08',
+    },
+    excursion: {
+      description: 'Excursion dunes Erg Chebbi (chameau + coucher soleil)',
+      fair_price_min: 200,
+      fair_price_max: 400,
+      tourist_reasonable_min: 280,
+      tourist_reasonable_max: 550,
+      tips: 'Chameau 1h30 A/R : 150–250 DH/pers. 4x4 dans les dunes : 300–500 DH/véhicule. Lever/coucher soleil : expérience unique.',
+      vigilance_threshold: 750,
+      updated: '2026-05-08',
+    },
+    bivouac: {
+      description: 'Nuit en bivouac dans les dunes (tout compris)',
+      fair_price_min: 250,
+      fair_price_max: 450,
+      tourist_reasonable_min: 350,
+      tourist_reasonable_max: 650,
+      luxury_min: 700,
+      luxury_max: 1800,
+      tips: 'Inclure : dîner berbère + musique gnaoua + petit-déjeuner + nuit tente. Comparer plusieurs camps. Luxe avec lit : 700–1 800 DH/pers.',
+      vigilance_threshold: 900,
+      updated: '2026-05-08',
+    },
+    guide: {
+      description: 'Guide désert Merzouga (4x4 + dunes)',
+      fair_price_min: 300,
+      fair_price_max: 600,
+      tourist_reasonable_min: 400,
+      tourist_reasonable_max: 800,
+      tips: 'Journée 4x4 + guide : lacs Dayet Srji (flamants roses), villages nomades, sources. 400–800 DH/véhicule (4 pers max).',
+      updated: '2026-05-08',
+    },
+  },
+
+  // ════════════════════════════════════════════════════════
+  Dakhla: {
+    taxi: {
+      description: 'Taxi Dakhla (Sahara Atlantique)',
+      fair_price_min: 10,
+      fair_price_max: 18,
+      tourist_reasonable_min: 15,
+      tourist_reasonable_max: 28,
+      tips: 'Ville étendue sur une péninsule. Aéroport → centre : 40–70 DH.',
+      updated: '2026-05-08',
+    },
+    hotel: {
+      description: 'Hôtel / camp bord de lagon',
+      fair_price_min: 300,
+      fair_price_max: 650,
+      tourist_reasonable_min: 420,
+      tourist_reasonable_max: 900,
+      tips: 'Destination kitesurfing en plein essor. Réserver à l\'avance en haute saison (novembre–avril). Camps kite souvent tout inclus.',
+      updated: '2026-05-08',
+    },
+    restaurant: {
+      description: 'Restaurant fruits de mer (port très actif)',
+      fair_price_min: 70,
+      fair_price_max: 150,
+      tourist_reasonable_min: 100,
+      tourist_reasonable_max: 220,
+      tips: 'Port de pêche majeur. Homard, poulpe, daurade, crevettes à prix imbattables directement au port.',
+      updated: '2026-05-08',
+    },
+    excursion: {
+      description: 'Lagon + Îles Gandaous + SUP + sandboard',
+      fair_price_min: 250,
+      fair_price_max: 450,
+      tourist_reasonable_min: 350,
+      tourist_reasonable_max: 620,
+      tips: 'Eaux turquoise du lagon. Flamants roses, dauphins. SUP : 150–250 DH/2h. Sandboard dunes : 100–180 DH.',
+      updated: '2026-05-08',
+    },
+    activite: {
+      description: 'Kitesurf leçon (2–3h) — spot mondial classé',
+      fair_price_min: 280,
+      fair_price_max: 500,
+      tourist_reasonable_min: 350,
+      tourist_reasonable_max: 620,
+      tips: 'Spot classé parmi les 3 meilleurs mondiaux. Plusieurs écoles certifiées IKO. Forfait semaine : 1 200–2 000 DH.',
+      updated: '2026-05-08',
+    },
+    spa: {
+      description: 'Spa / massage Dakhla',
+      fair_price_min: 150,
+      fair_price_max: 350,
+      tourist_reasonable_min: 200,
+      tourist_reasonable_max: 450,
+      tips: 'Offre spa en développement. Massages sportifs après sessions kite : 150–280 DH/h.',
+      updated: '2026-05-08',
+    },
+    transport: {
+      description: 'Bus CTM Dakhla (très longue distance)',
+      fair_price_min: 200,
+      fair_price_max: 350,
+      tourist_reasonable_min: 220,
+      tourist_reasonable_max: 350,
+      tips: 'Dakhla → Agadir : ~1 200 km, 220–280 DH, 16–18h. Dakhla → Laâyoune : 180–220 DH. Vol RAM recommandé si budget disponible.',
+      updated: '2026-05-08',
+    },
+  },
+
+  // ════════════════════════════════════════════════════════
+  'El Jadida': {
+    taxi: {
+      description: 'Taxi El Jadida (Côte Atlantique)',
+      fair_price_min: 8,
+      fair_price_max: 14,
+      tourist_reasonable_min: 12,
+      tourist_reasonable_max: 20,
+      tips: 'Petite ville côtière agréable. Grand taxi El Jadida → Casablanca : 35–50 DH/pers partagé.',
+      updated: '2026-05-08',
+    },
+    hotel: {
+      description: 'Hôtel côtier El Jadida',
+      fair_price_min: 240,
+      fair_price_max: 520,
+      tourist_reasonable_min: 330,
+      tourist_reasonable_max: 700,
+      tips: 'Alternative moins chère qu\'Agadir. Citerne Portugaise (UNESCO) à visiter absolument.',
+      updated: '2026-05-08',
+    },
+    restaurant: {
+      description: 'Restaurant fruits de mer / huîtres d\'Oualidia',
+      fair_price_min: 65,
+      fair_price_max: 130,
+      tourist_reasonable_min: 90,
+      tourist_reasonable_max: 180,
+      tips: 'Huîtres de Oualidia (20 km) : spécialité régionale, 60–100 DH la douzaine. Poisson frais du port.',
+      updated: '2026-05-08',
+    },
+    guide: {
+      description: 'Guide Cité Portugaise UNESCO + remparts',
+      fair_price_min: 100,
+      fair_price_max: 200,
+      tourist_reasonable_min: 150,
+      tourist_reasonable_max: 290,
+      tips: 'Citerne Portugaise : entrée 10 DH, chef-d\'œuvre architectural XVIème siècle. Demi-journée : 100–200 DH.',
+      updated: '2026-05-08',
+    },
+    excursion: {
+      description: 'Excursion Oualidia + côte atlantique',
+      fair_price_min: 150,
+      fair_price_max: 320,
+      tourist_reasonable_min: 220,
+      tourist_reasonable_max: 420,
+      tips: 'Oualidia : lagune, huîtres, flamants roses. Azemmour (30 km) : ville blanche sur l\'Oum Er-Rbia.',
+      updated: '2026-05-08',
+    },
+    transport: {
+      description: 'Bus CTM El Jadida',
+      fair_price_min: 40,
+      fair_price_max: 100,
+      tourist_reasonable_min: 50,
+      tourist_reasonable_max: 100,
+      tips: 'El Jadida → Casablanca : 40–60 DH, 1h30. El Jadida → Marrakech : 80–110 DH, 3h.',
+      updated: '2026-05-08',
+    },
+  },
+
+  // ════════════════════════════════════════════════════════
+  Essaouira: {
+    taxi: {
+      description: 'Taxi Essaouira (Cité des Alizés)',
+      fair_price_min: 10,
+      fair_price_max: 18,
+      tourist_reasonable_min: 15,
+      tourist_reasonable_max: 25,
+      tips: 'Petite ville pittoresque. Remparts et médina accessibles à pied. Calèches : 50–80 DH/h.',
+      updated: '2026-05-08',
+    },
+    hotel: {
+      description: 'Hôtel / Riad Essaouira',
+      fair_price_min: 300,
+      fair_price_max: 600,
+      tourist_reasonable_min: 400,
+      tourist_reasonable_max: 820,
+      tips: 'Réserver très à l\'avance pour le Festival Gnaoua (juin) : prix triplent. Hors festival : tarifs raisonnables.',
+      updated: '2026-05-08',
+    },
+    restaurant: {
+      description: 'Poisson grillé / fruits de mer port',
+      fair_price_min: 70,
+      fair_price_max: 140,
+      tourist_reasonable_min: 95,
+      tourist_reasonable_max: 200,
+      tips: 'Port de pêche actif. Grillades sur le port : repas complet 60–100 DH, excellent. Restaurants remparts : plus chers mais vue mer.',
+      vigilance_threshold: 300,
+      updated: '2026-05-08',
+    },
+    guide: {
+      description: 'Guide Médina + Remparts Essaouira (UNESCO)',
+      fair_price_min: 120,
+      fair_price_max: 260,
+      tourist_reasonable_min: 170,
+      tourist_reasonable_max: 360,
+      tips: 'Skala de la ville : vue mer gratuite. Médina UNESCO, ancienne Mogador portugaise. Demi-journée : 120–260 DH.',
+      updated: '2026-05-08',
+    },
+    excursion: {
+      description: 'Excursion plage + îles Purpuraires + forêt thuya',
+      fair_price_min: 200,
+      fair_price_max: 380,
+      tourist_reasonable_min: 280,
+      tourist_reasonable_max: 520,
+      tips: 'Îles ornithologiques (balbuzards pêcheurs). Grande plage : windsurf et kite. Forêt de thuya : artisanat unique.',
+      updated: '2026-05-08',
+    },
+    shopping: {
+      description: 'Bois de thuya + artisanat local',
+      fair_price_min: 80,
+      fair_price_max: 500,
+      tourist_reasonable_min: 120,
+      tourist_reasonable_max: 750,
+      tips: 'Thuya : bois précieux local sculpté. Coopératives de femmes argan : prix officiels affichés. Négocier 20–30% dans souks.',
+      updated: '2026-05-08',
+    },
+    spa: {
+      description: 'Hammam / spa Essaouira',
+      fair_price_min: 80,
+      fair_price_max: 180,
+      tourist_reasonable_min: 120,
+      tourist_reasonable_max: 260,
+      tips: 'Plusieurs spas dans la médina. Hammam populaire : 20–40 DH. Avec soins argan : 150–300 DH.',
+      updated: '2026-05-08',
+    },
+    transport: {
+      description: 'Bus Essaouira (CTM / Supratours)',
+      fair_price_min: 70,
+      fair_price_max: 120,
+      tourist_reasonable_min: 80,
+      tourist_reasonable_max: 120,
+      tips: 'Essaouira → Marrakech : 70–90 DH, 2h30. Essaouira → Agadir : 80–100 DH, 3h. Supratours recommandé.',
+      updated: '2026-05-08',
+    },
+  },
 };
 
-// Mots-clés interdits — toutes les langues supportées
-// Tooristoo refuse toute analyse pour des services illégaux ou contraires à la loi marocaine
+// ─────────────────────────────────────────────────────────────────────────────
+// MOTS-CLÉS INTERDITS — toutes les langues supportées
+// Tooristoo refuse toute analyse pour des services illégaux ou contraires
+// à la loi marocaine
+// ─────────────────────────────────────────────────────────────────────────────
 export const PROHIBITED_KEYWORDS = {
   fr: [
     'prostitution', 'escort', 'call girl', 'services sexuels', 'sexe tarifé',
@@ -842,15 +1048,15 @@ export const PROHIBITED_KEYWORDS = {
     'armes', 'explosif',
     'traite humain', 'traite humaine', 'passeur',
     'blanchiment', 'faux billet', 'contrefaçon', 'esclave',
-    'corruption', 'pot-de-vin','escort girl', 'massage érotique', 'massage sensuel', 'massage avec finition',
+    'corruption', 'pot-de-vin', 'escort girl', 'massage érotique', 'massage sensuel', 'massage avec finition',
     'plan cul', 'rdv tarifé', 'rdv discret', 'prestations adultes',
     'maison close', 'bordel', 'proxénétisme', 'proxénète',
     'stupéfiants', 'produits stupéfiants', 'dealer', 'deal', 'trafic de drogue',
     'ecstasy', 'mdma', 'lsd', 'amphétamine', 'crack',
     'kalachnikov', 'pistolet', 'fusil', 'munition', 'arme à feu',
-    'trafic d’êtres humains', 'réseau de passeurs', 'migration clandestine',
+    'trafic d\'êtres humains', 'réseau de passeurs', 'migration clandestine',
     'fraude', 'escroquerie', 'arnaque', 'faux documents', 'faux papiers',
-    'usurpation', 'usurpation d’identité',
+    'usurpation', 'usurpation d\'identité',
     'corrompre', 'commission occulte', 'dessous-de-table'
   ],
   en: [
@@ -860,9 +1066,9 @@ export const PROHIBITED_KEYWORDS = {
     'weapon', 'explosive',
     'human trafficking', 'smuggling',
     'money laundering', 'fake bill', 'counterfeit', 'slave',
-    'bribe', 'bribery','adult services', 'erotic massage', 'sensual massage', 'happy ending',
+    'bribe', 'bribery', 'adult services', 'erotic massage', 'sensual massage', 'happy ending',
     'paid sex', 'sex for money', 'brothel', 'pimp', 'pimping',
-    'drug dealing', 'drug trafficking', 'dealer', 'ecstasy', 'mdma', 'lsd','amphetamine', 'crack cocaine',
+    'drug dealing', 'drug trafficking', 'dealer', 'ecstasy', 'mdma', 'lsd', 'amphetamine', 'crack cocaine',
     'gun', 'firearm', 'pistol', 'rifle', 'ammo', 'ammunition',
     'illegal immigration', 'people smuggler', 'smuggler network',
     'scam', 'fraud', 'identity theft', 'fake documents', 'forged documents',
@@ -870,14 +1076,12 @@ export const PROHIBITED_KEYWORDS = {
   ],
   es: [
     'prostitución', 'escort', 'servicios sexuales',
-    'droga', 'cocaína', 'cannabis', 'hachís',
-    'puta',
+    'droga', 'cocaína', 'cannabis', 'hachís', 'puta',
     'arma', 'explosivo',
-    'tráfico humano', 'lavado dinero', 'billete falso', 'contrafacción',
-    'soborno','servicios para adultos', 'masaje erótico', 'final feliz',
+    'tráfico humano', 'lavado dinero', 'billete falso', 'contrafacción', 'soborno',
+    'servicios para adultos', 'masaje erótico', 'final feliz',
     'sexo pagado', 'burdel', 'proxeneta',
-    'tráfico de drogas', 'traficante', 'éxtasis', 'mdma', 'lsd',
-    'anfetamina', 'crack',
+    'tráfico de drogas', 'traficante', 'éxtasis', 'mdma', 'lsd', 'anfetamina', 'crack',
     'pistola', 'arma de fuego', 'munición',
     'inmigración ilegal', 'traficante de personas',
     'estafa', 'fraude', 'documentos falsos', 'robo de identidad',
@@ -885,24 +1089,34 @@ export const PROHIBITED_KEYWORDS = {
   ],
   de: [
     'prostitution', 'escort', 'sexuelle dienstleistungen',
-    'droge', 'kokain', 'cannabis', 'haschisch',
-    'hure',
+    'droge', 'kokain', 'cannabis', 'haschisch', 'hure',
     'waffe', 'sprengstoff',
-    'menschenhandel', 'geldwäsche', 'falschgeld', 'fälschung',
-    'bestechung','erotische massage', 'happy end massage', 'bezahlter sex',
+    'menschenhandel', 'geldwäsche', 'falschgeld', 'fälschung', 'bestechung',
+    'erotische massage', 'happy end massage', 'bezahlter sex',
     'bordell', 'zuhälter',
-    'drogenhandel', 'dealer', 'ecstasy', 'mdma', 'lsd',
-    'amphetamin', 'crack',
+    'drogenhandel', 'dealer', 'ecstasy', 'mdma', 'lsd', 'amphetamin', 'crack',
     'schusswaffe', 'pistole', 'gewehr', 'munition',
     'illegale einwanderung', 'schleuser', 'schleusernetzwerk',
     'betrug', 'identitätsdiebstahl', 'gefälschte dokumente',
     'schmiergeld', 'illegale zahlung'
   ],
   ar: [
-    'دعارة', 'بغاء', 'عاهرة', 'خدمات جنسية', 'مخدرات', 'كوكايين', 'حشيش', 'قنب', 'أسلحة', 'متفجرات', 'اتجار بالبشر', 'تهريب', 'غسيل أموال', 'تزوير', 'رقيق', 'رشوة', 'دعارة سرية', 'جنس مقابل المال', 'تدليك إيروتيكي', 'بيت دعارة', 'قواد','تجارة المخدرات', 'مروج مخدرات', 'إكستازي', 'إم دي إم إيه', 'إل إس دي','مسدس', 'بندقية', 'ذخيرة', 'سلاح ناري','هجرة غير شرعية', 'مهرب بشر','احتيال', 'نصب', 'سرقة هوية', 'وثائق مزورة','رشوة مالية', 'دفع غير قانوني'
+    'دعارة', 'بغاء', 'عاهرة', 'خدمات جنسية', 'مخدرات', 'كوكايين', 'حشيش', 'قنب',
+    'أسلحة', 'متفجرات', 'اتجار بالبشر', 'تهريب', 'غسيل أموال', 'تزوير', 'رقيق', 'رشوة',
+    'دعارة سرية', 'جنس مقابل المال', 'تدليك إيروتيكي', 'بيت دعارة', 'قواد',
+    'تجارة المخدرات', 'مروج مخدرات', 'إكستازي', 'إم دي إم إيه', 'إل إس دي',
+    'مسدس', 'بندقية', 'ذخيرة', 'سلاح ناري',
+    'هجرة غير شرعية', 'مهرب بشر',
+    'احتيال', 'نصب', 'سرقة هوية', 'وثائق مزورة', 'رشوة مالية', 'دفع غير قانوني'
   ],
   darija: [
-    'بغاء', 'عاهرة', 'خدمات جنسية', 'مخدرات', 'كوكاين', 'حشيش', 'كيف', 'سلاح', 'تهريب', 'غسيل فلوس', 'تزوير', 'رشوة','دعارة سرية', 'جنس مقابل المال', 'تدليك إيروتيكي', 'بيت دعارة', 'قواد','تجارة المخدرات', 'مروج مخدرات', 'إكستازي', 'إم دي إم إيه', 'إل إس دي','مسدس', 'بندقية', 'ذخيرة', 'سلاح ناري','هجرة غير شرعية', 'مهرب بشر','احتيال', 'نصب', 'سرقة هوية', 'وثائق مزورة','رشوة مالية', 'دفع غير قانوني'
+    'بغاء', 'عاهرة', 'خدمات جنسية', 'مخدرات', 'كوكاين', 'حشيش', 'كيف', 'سلاح', 'تهريب',
+    'غسيل فلوس', 'تزوير', 'رشوة',
+    'دعارة سرية', 'جنس مقابل المال', 'تدليك إيروتيكي', 'بيت دعارة', 'قواد',
+    'تجارة المخدرات', 'مروج مخدرات', 'إكستازي', 'إم دي إم إيه', 'إل إس دي',
+    'مسدس', 'بندقية', 'ذخيرة', 'سلاح ناري',
+    'هجرة غير شرعية', 'مهرب بشر',
+    'احتيال', 'نصب', 'سرقة هوية', 'وثائق مزورة', 'رشوة مالية', 'دفع غير قانوني'
   ]
 };
 
@@ -934,9 +1148,6 @@ export function getPricingInfo(city, category) {
   return PRICING_KNOWLEDGE_BASE[city][category] || null;
 }
 
-// Génère un prompt de prix factuel à injecter dans le contexte LLM
-// Aligné avec la charte éditoriale Tooristoo : pas de "seuil d'arnaque", pas de "prix abusif".
-// On présente des fourchettes de référence et un seuil de vigilance neutre.
 export function formatPricingPrompt(city, category) {
   const info = getPricingInfo(city, category);
   if (!info) {
@@ -948,13 +1159,13 @@ Pour ${city} - ${category} (${info.description}) — Mise à jour: ${info.update
 - Fourchette raisonnable pour touriste: ${info.tourist_reasonable_min}-${info.tourist_reasonable_max} DH
 ${info.airport_min ? `- Transfert aéroport: ${info.airport_min}-${info.airport_max} DH` : ''}
 ${info.luxury_min ? `- Version premium: ${info.luxury_min}-${info.luxury_max} DH` : ''}
-${info.vigilance_threshold ? `- Seuil de vigilance (écart significatif au-dessus de la fourchette si dépassé): ${info.vigilance_threshold} DH` : ''}
+${info.vigilance_threshold ? `- Seuil de vigilance (écart significatif si dépassé): ${info.vigilance_threshold} DH` : ''}
 - Conseil pratique: ${info.tips}
 
 CONSIGNE DE FORMULATION:
 - Ne mentionne JAMAIS le mot "arnaque", "scam", "abus" ou "fraude" dans ton analyse.
-- Présente l'écart de manière factuelle: "X DH au-dessus de la fourchette de référence" ou "écart par rapport à la fourchette habituelle".
-- Si le prix demandé dépasse le seuil de vigilance, signale-le comme un "écart marqué" qui mérite la prudence du voyageur.
+- Présente l'écart de manière factuelle: "X DH au-dessus de la fourchette de référence".
+- Si le prix demandé dépasse le seuil de vigilance, signale-le comme un "écart marqué".
   `.trim();
   return prompt;
 }
@@ -974,24 +1185,9 @@ export function getAllCitiesPricingContext() {
   return context;
 }
 
-// =========================================================================
-// ============== AJOUTÉ — analyzeNegotiation (RAG pattern) ===============
-// =========================================================================
-// Fonction centrale qui orchestre toute l'analyse :
-//   1. Lit la fourchette dans PRICING_KNOWLEDGE_BASE (en mémoire, gratuit)
-//   2. Lit les prestataires dans Provider (filtre certified+active+rating>=4.0)
-//   3. Appelle le LLM uniquement pour : analyse texte + stratégie + phrase darija
-//   4. Valide et complète la réponse pour qu'elle soit toujours intégrale
-//   5. Applique le filet anti-vocabulaire
-//
-// Avantages :
-//   - Plus d'hallucination de prix ni de prestataires
-//   - Coût LLM réduit (le LLM ne génère plus les chiffres)
-//   - Réponses jamais incomplètes (validation stricte)
-//   - Cohérence avec la Charte (certified=true, rating>=4.0)
-// =========================================================================
-
-// ----- Filet anti-vocabulaire (multi-langues) ---------------------------
+// ─────────────────────────────────────────────────────────────────────────────
+// FILET ANTI-VOCABULAIRE (multi-langues)
+// ─────────────────────────────────────────────────────────────────────────────
 const VOCAB_REPLACEMENTS = {
   fr: [
     [/\barnaque?s?\b/gi, 'écart de prix'],
@@ -1062,7 +1258,9 @@ function sanitizeText(text, lang = 'fr') {
   return cleaned;
 }
 
-// ----- Récupération des prestataires depuis la base Provider -----------
+// ─────────────────────────────────────────────────────────────────────────────
+// RÉCUPÉRATION PRESTATAIRES
+// ─────────────────────────────────────────────────────────────────────────────
 async function fetchProviders(category, city) {
   try {
     const all = await base44.entities.Provider.filter(
@@ -1078,7 +1276,9 @@ async function fetchProviders(category, city) {
   }
 }
 
-// ----- Réponse de refus (transactions illégales) ------------------------
+// ─────────────────────────────────────────────────────────────────────────────
+// RÉPONSE DE REFUS
+// ─────────────────────────────────────────────────────────────────────────────
 function buildRefusal(lang) {
   return {
     refused: true,
@@ -1095,7 +1295,6 @@ function buildRefusal(lang) {
   };
 }
 
-// ----- Noms de langues pour les prompts ---------------------------------
 const LANG_NAME = {
   fr: 'français',
   en: 'English',
@@ -1105,7 +1304,6 @@ const LANG_NAME = {
   darija: 'الدارجة المغربية',
 };
 
-// ----- Schéma JSON attendu par le LLM -----------------------------------
 const LLM_SCHEMA = {
   type: 'object',
   properties: {
@@ -1119,36 +1317,20 @@ const LLM_SCHEMA = {
   required: ['risk_level', 'ai_analysis', 'strategy', 'recommended_phrase', 'recommended_phrase_darija'],
 };
 
-// =========================================================================
+// ─────────────────────────────────────────────────────────────────────────────
 // FONCTION PRINCIPALE — analyzeNegotiation
-// =========================================================================
-// Inputs :
-//   { category, city, priceAsked, description, transcript, lang }
-// Output : objet enrichi pour AnalysisResult.jsx avec :
-//   refused, price_estimated_min, price_estimated_max, risk_level,
-//   ai_analysis, strategy, recommended_phrase, recommended_phrase_darija,
-//   main_provider (objet complet ou null), other_providers_count (number)
-// =========================================================================
-
+// ─────────────────────────────────────────────────────────────────────────────
 export async function analyzeNegotiation({ category, city, priceAsked, description, transcript, lang = 'fr' }) {
-  // 1) Pré-filtre côté client (drogues, prostitution, etc.)
   const userText = `${category} ${description || ''} ${transcript || ''}`;
   if (isProhibitedRequest(userText, lang)) {
-    return {
-      ...buildRefusal(lang),
-      category,
-      location: city,
-      price_asked: 0,
-    };
+    return { ...buildRefusal(lang), category, location: city, price_asked: 0 };
   }
 
-  // 2) Lecture en parallèle : prix (mémoire, instantané) + prestataires (réseau)
   const [pricing, providers] = await Promise.all([
     Promise.resolve(getPricingInfo(city, category)),
     fetchProviders(category, city),
   ]);
 
-  // 3) Construction du prompt LLM avec données injectées (RAG)
   const responseLang = LANG_NAME[lang] || LANG_NAME.fr;
   const userInput = transcript
     ? `Transcription de la conversation entendue : "${transcript}"`
@@ -1202,8 +1384,8 @@ Si la situation concerne : drogues, prostitution, faux documents, contrebande, c
 {
   "refused": true,
   "risk_level": "high",
-  "ai_analysis": "Tooristoo n'analyse pas les prix de transactions illégales ou contraires à la loi marocaine. Si vous êtes témoin d'une situation préoccupante, contactez la police locale.",
-  "strategy": "Tooristoo se limite aux services touristiques légaux. Pour toute urgence, composez le 19 (Police) ou le +212 524 38 46 01 (Police Touristique de Marrakech).",
+  "ai_analysis": "Tooristoo n'analyse pas les prix de transactions illégales ou contraires à la loi marocaine.",
+  "strategy": "Pour toute urgence, composez le 19 (Police) ou le +212 524 38 46 01 (Police Touristique de Marrakech).",
   "recommended_phrase": "—",
   "recommended_phrase_darija": "—"
 }
@@ -1212,29 +1394,16 @@ Si la situation concerne : drogues, prostitution, faux documents, contrebande, c
 RÈGLES IMPORTANTES :
 ═══════════════════════════════════════════════════════════
 
-⛔ INTERDIT : tu ne dois PAS proposer ni mentionner de prestataires (riads, taxis, restaurants, hôtels, guides). Tooristoo gère cela séparément à partir de sa base de données vérifiée. Tu ignores complètement ce sujet.
+⛔ INTERDIT : ne pas proposer ni mentionner de prestataires. Tooristoo gère cela séparément.
+⛔ INTERDIT : ne pas inventer de prix. Utiliser EXCLUSIVEMENT les chiffres ci-dessus.
+⛔ VOCABULAIRE INTERDIT : "arnaque", "arnaquer", "arnaqueur", "scam", "scammer",
+"abus", "abusif", "abusive", "tromperie", "fraude", "frauduleux",
+"estafa", "Betrug", "betrügerisch", "احتيال", "نصب", "محتال", "نصاب".
 
-⛔ INTERDIT : tu ne dois PAS inventer de prix. Utilise EXCLUSIVEMENT les chiffres de la section "DONNÉES VÉRIFIÉES" ci-dessus.
-
-⛔ INTERDICTIONS DE VOCABULAIRE (réponse REJETÉE si tu utilises ces mots) :
-"arnaque", "arnaquer", "arnaqueur", "scam", "scammer", "scamming",
-"abus", "abuser", "abusif", "abusive", "abusivement",
-"tromperie", "tromper", "trompeur", "fraude", "frauder", "frauduleux",
-"estafa", "estafador", "Betrug", "betrügerisch", "Betrüger",
-"احتيال", "نصب", "محتال", "نصاب".
-
-✅ À la place, utilise EXCLUSIVEMENT :
-- "écart par rapport à la fourchette de référence"
-- "prix au-dessus de la fourchette habituelle"
-- "tarif supérieur à la moyenne locale"
-
+✅ Utiliser : "écart par rapport à la fourchette de référence", "prix au-dessus de la fourchette", "tarif supérieur à la moyenne locale".
 ✅ TON : factuel, neutre, respectueux de la culture marocaine du marchandage.
-✅ FORMAT DH OBLIGATOIRE : utilise toujours "DH" et jamais "MAD" dans les textes.
+✅ FORMAT : utiliser "DH" et jamais "MAD" dans les textes.`;
 
-EXEMPLE DE BON ai_analysis :
-"Le prix demandé de 200 DH est nettement au-dessus de la fourchette de référence locale pour un transfert aéroport (70–100 DH). L'écart constaté est de 100 DH par rapport à la borne haute. Il est recommandé d'insister sur l'usage du compteur officiel ou de proposer un prix dans la fourchette de référence."`;
-
-  // 4) Appel LLM (avec gestion d'erreur stricte)
   let llmResult;
   try {
     llmResult = await base44.integrations.Core.InvokeLLM({
@@ -1243,14 +1412,15 @@ EXEMPLE DE BON ai_analysis :
     });
   } catch (err) {
     console.error('LLM error:', err);
-    // Fallback : on renvoie au moins la fourchette + prestataire (sans analyse LLM)
     return {
       refused: false,
       price_estimated_min: pricing ? pricing.fair_price_min : 0,
       price_estimated_max: pricing ? pricing.fair_price_max : 0,
       risk_level: 'medium',
       scam_detected: false,
-      ai_analysis: lang === 'en' ? 'Analysis temporarily unavailable. Reference range shown above.' : "Analyse temporairement indisponible. La fourchette de référence est affichée ci-dessus.",
+      ai_analysis: lang === 'en'
+        ? 'Analysis temporarily unavailable. Reference range shown above.'
+        : 'Analyse temporairement indisponible. La fourchette de référence est affichée ci-dessus.',
       strategy: '—',
       recommended_phrase: '—',
       recommended_phrase_darija: '—',
@@ -1262,7 +1432,6 @@ EXEMPLE DE BON ai_analysis :
     };
   }
 
-  // 5) Si le LLM refuse explicitement
   if (llmResult.refused === true) {
     return {
       ...buildRefusal(lang),
@@ -1274,8 +1443,6 @@ EXEMPLE DE BON ai_analysis :
     };
   }
 
-  // 6) Validation + complétion : la fourchette VIENT TOUJOURS de PRICING_KNOWLEDGE_BASE
-  // Le LLM ne peut PAS écraser ces chiffres
   const priceMin = pricing ? pricing.fair_price_min : 0;
   const priceMax = pricing ? pricing.fair_price_max : 0;
 
