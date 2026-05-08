@@ -1321,31 +1321,37 @@ const LLM_SCHEMA = {
 // FONCTION PRINCIPALE — analyzeNegotiation
 // ─────────────────────────────────────────────────────────────────────────────
 export async function analyzeNegotiation({ category, city, priceAsked, description, transcript, lang = 'fr' }) {
+
+  // 1) Pré-filtre illégal
   const userText = `${category} ${description || ''} ${transcript || ''}`;
   if (isProhibitedRequest(userText, lang)) {
     return { ...buildRefusal(lang), category, location: city, price_asked: 0 };
   }
 
+  // 2) Lecture en parallèle : prix + prestataires
   const [pricing, providers] = await Promise.all([
     Promise.resolve(getPricingInfo(city, category)),
     fetchProviders(category, city),
   ]);
 
+  // 3) Détection du sous-type de service dans la description
+  const fullContext = `${description || ''} ${transcript || ''}`.toLowerCase();
+
+  const isAirport = /a[eé]ro|airport|matar|مطار|menara|m[eé]nara|rak\b|vol\b|flight/.test(fullContext);
+  const isNight   = /nuit|night|soir|minuit|noche|nacht|ليل|tard/.test(fullContext);
+  const isLuxury  = /luxe|luxury|premium|palace|palais|5.?[eé]toiles|5 stars/.test(fullContext);
+
+  // 4) Construction du bloc de prix contextuel
   const responseLang = LANG_NAME[lang] || LANG_NAME.fr;
   const userInput = transcript
-    ? `Transcription de la conversation entendue : "${transcript}"`
+    ? `Transcription : "${transcript}"`
     : `Description : "${description || '(aucune)'}"`;
-
-  // ── Détection du sous-type (aéroport, nuit, luxe) pour affiner la fourchette ──
-  const fullContext = `${description || ''} ${transcript || ''}`.toLowerCase();
-  const isAirport = /a[eé]ro|airport|matar|مطار|menara|ménara|rak\b/.test(fullContext);
-  const isNight   = /nuit|night|soir|minuit|noche|nacht|ليل/.test(fullContext);
-  const isLuxury  = /luxe|luxury|premium|palace|palais/.test(fullContext);
 
   let pricingBlock;
   if (pricing) {
-    // Choisit la fourchette la plus pertinente selon le contexte
+    // Sélectionne la fourchette la plus adaptée au contexte
     let refMin, refMax, refLabel;
+
     if (isAirport && pricing.airport_min) {
       refMin   = pricing.airport_min;
       refMax   = pricing.airport_max;
@@ -1357,86 +1363,77 @@ export async function analyzeNegotiation({ category, city, priceAsked, descripti
     } else {
       refMin   = pricing.tourist_reasonable_min;
       refMax   = pricing.tourist_reasonable_max;
-      refLabel = 'Fourchette raisonnable touriste';
+      refLabel = 'Fourchette touriste averti';
     }
 
-    // Seuil de vigilance adapté : 2× la borne haute de référence si pas défini
-    const vigilance = pricing.vigilance_threshold || refMax * 2;
-
-    // Majoration nuit si applicable
-    const nightNote = isNight && pricing.night_surcharge
-      ? `\n- Majoration nuit applicable : ${pricing.night_surcharge}`
+    const vigilance = pricing.vigilance_threshold || Math.round(refMax * 2.5);
+    const nightNote = (isNight && pricing.night_surcharge)
+      ? `\n- ⚠️ Majoration nuit applicable : ${pricing.night_surcharge}`
       : '';
 
     pricingBlock = `
-FOURCHETTE DE RÉFÉRENCE (depuis PricingKnowledge — données vérifiées) :
+DONNÉES DE PRIX VÉRIFIÉES :
 - Service : ${pricing.description}
 - Fourchette locale de base : ${pricing.fair_price_min}–${pricing.fair_price_max} DH
-- ${refLabel} : ${refMin}–${refMax} DH  ← UTILISE CETTE FOURCHETTE POUR TON ANALYSE
-- Seuil de vigilance : ${vigilance} DH (écart marqué si dépassé)${nightNote}
-- Conseil : ${pricing.tips}
+- ✅ FOURCHETTE DE RÉFÉRENCE À UTILISER : ${refLabel} → ${refMin}–${refMax} DH
+- Seuil de vigilance : ${vigilance} DH${nightNote}
+- Conseil terrain : ${pricing.tips}
 
-IMPORTANT : Le contexte indique ${isAirport ? 'un trajet AÉROPORT' : isLuxury ? 'une prestation PREMIUM' : 'un trajet standard'}.
-Utilise la fourchette "${refLabel}" (${refMin}–${refMax} DH) comme référence principale, PAS la fourchette de base.`;
+CONTEXTE DÉTECTÉ : ${isAirport ? '🛫 Trajet AÉROPORT' : isLuxury ? '⭐ Prestation PREMIUM' : '🚕 Trajet standard'}.
+→ Base ton analyse sur "${refLabel}" (${refMin}–${refMax} DH), PAS sur la fourchette de base.`;
+
   } else {
     pricingBlock = `
 FOURCHETTE DE RÉFÉRENCE : non disponible pour cette catégorie + ville.
-→ Estime prudemment à partir de tes connaissances générales du Maroc, en restant conservateur.`;
+→ Estime prudemment à partir de tes connaissances générales du Maroc.`;
   }
 
-  const prompt = `Tu es Tooristoo, expert en fourchettes de prix locales au Maroc. Tu aides les voyageurs à comprendre si un prix proposé est aligné avec les références locales et tu suggères une stratégie de négociation respectueuse.
+  // 5) Prompt LLM
+  const prompt = `Tu es Tooristoo, expert en tarifs touristiques locaux au Maroc.
 
 ═══════════════════════════════════════════════════════════
-DONNÉES VÉRIFIÉES (utilise EXCLUSIVEMENT ces chiffres, n'invente rien) :
+SITUATION À ANALYSER :
 ═══════════════════════════════════════════════════════════
-
-Catégorie : ${category}
-Ville     : ${city}
+Catégorie    : ${category}
+Ville        : ${city}
 Prix demandé : ${priceAsked || 'non précisé'} DH
 ${userInput}
+
 ${pricingBlock}
 
 ═══════════════════════════════════════════════════════════
-TON TRAVAIL — Génère UNIQUEMENT ces 5 champs en ${responseLang} :
+TON TRAVAIL — 5 champs en ${responseLang} :
 ═══════════════════════════════════════════════════════════
 
 1. **risk_level** : "low" / "medium" / "high"
-   - Base-toi sur la fourchette indiquée comme référence principale dans les données ci-dessus
-   - "low" si prix demandé ≤ borne haute de la fourchette de référence principale
-   - "medium" si prix demandé entre borne haute et seuil de vigilance
-   - "high" si prix demandé ≥ seuil de vigilance OU > 2× borne haute de référence
-2. **ai_analysis** : analyse pédagogique en 2-3 phrases, factuelle et neutre
-3. **strategy** : stratégie de négociation respectueuse en 2-3 phrases
-4. **recommended_phrase** : phrase EXACTE à dire au vendeur en ${responseLang}, courte et naturelle
-5. **recommended_phrase_darija** : phrase EXACTE en darija marocaine ÉCRITE EN CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines). Exemple correct : "أنا غادي نعطيك 150 درهم، واش مقبول؟"
+   - Compare le prix demandé avec la FOURCHETTE DE RÉFÉRENCE indiquée ci-dessus (pas la fourchette de base)
+   - "low"    : prix ≤ borne haute de la fourchette de référence
+   - "medium" : prix entre borne haute et seuil de vigilance
+   - "high"   : prix > seuil de vigilance OU > 2× borne haute de référence
+
+2. **ai_analysis** : 2–3 phrases factuelles. Mentionner la fourchette de référence correcte (ex: "70–120 DH pour un transfert aéroport"). Ne jamais mentionner la fourchette de base si elle n'est pas pertinente.
+
+3. **strategy** : 2–3 conseils de négociation respectueux et adaptés au contexte.
+
+4. **recommended_phrase** : phrase exacte à dire au prestataire en ${responseLang}, courte et naturelle.
+
+5. **recommended_phrase_darija** : même phrase en darija marocaine, CARACTÈRES ARABES UNIQUEMENT.
+   Exemple : "أنا غادي نعطيك 100 درهم، واش مقبول؟"
 
 ═══════════════════════════════════════════════════════════
-GARDE-FOUS — REFUS NON NÉGOCIABLES :
+RÈGLES ABSOLUES :
 ═══════════════════════════════════════════════════════════
-Si la situation concerne : drogues, prostitution, faux documents, contrebande, contrefaçons, animaux protégés, mineurs, ou corruption d'agents publics → renvoie :
-{
-  "refused": true,
-  "risk_level": "high",
-  "ai_analysis": "Tooristoo n'analyse pas les prix de transactions illégales ou contraires à la loi marocaine.",
-  "strategy": "Pour toute urgence, composez le 19 (Police) ou le +212 524 38 46 01 (Police Touristique de Marrakech).",
-  "recommended_phrase": "—",
-  "recommended_phrase_darija": "—"
-}
+⛔ Ne JAMAIS utiliser : "arnaque", "scam", "abus", "fraude", "tromperie", "escroquerie",
+   "estafa", "Betrug", "احتيال", "نصب", "محتال".
+✅ Utiliser : "écart par rapport à la fourchette de référence", "tarif supérieur à la moyenne".
+⛔ Ne pas inventer de prix. Utiliser EXCLUSIVEMENT les chiffres fournis ci-dessus.
+⛔ Ne pas mentionner de prestataires (géré séparément par Tooristoo).
+✅ Toujours écrire "DH", jamais "MAD".
 
-═══════════════════════════════════════════════════════════
-RÈGLES IMPORTANTES :
-═══════════════════════════════════════════════════════════
+Si la demande concerne une activité illégale → renvoyer :
+{ "refused": true, "risk_level": "high", "ai_analysis": "Tooristoo n'analyse pas les transactions illégales.", "strategy": "Contactez le 19 (Police) ou +212 524 38 46 01.", "recommended_phrase": "—", "recommended_phrase_darija": "—" }`;
 
-⛔ INTERDIT : ne pas proposer ni mentionner de prestataires. Tooristoo gère cela séparément.
-⛔ INTERDIT : ne pas inventer de prix. Utiliser EXCLUSIVEMENT les chiffres ci-dessus.
-⛔ VOCABULAIRE INTERDIT : "arnaque", "arnaquer", "arnaqueur", "scam", "scammer",
-"abus", "abusif", "abusive", "tromperie", "fraude", "frauduleux",
-"estafa", "Betrug", "betrügerisch", "احتيال", "نصب", "محتال", "نصاب".
-
-✅ Utiliser : "écart par rapport à la fourchette de référence", "prix au-dessus de la fourchette", "tarif supérieur à la moyenne locale".
-✅ TON : factuel, neutre, respectueux de la culture marocaine du marchandage.
-✅ FORMAT : utiliser "DH" et jamais "MAD" dans les textes.`;
-
+  // 6) Appel LLM
   let llmResult;
   try {
     llmResult = await base44.integrations.Core.InvokeLLM({
@@ -1465,34 +1462,51 @@ RÈGLES IMPORTANTES :
     };
   }
 
+  // 7) Refus explicite du LLM
   if (llmResult.refused === true) {
     return {
       ...buildRefusal(lang),
       ai_analysis: llmResult.ai_analysis || getProhibitedResponse(lang),
-      strategy: llmResult.strategy || getProhibitedResponse(lang),
+      strategy:    llmResult.strategy    || getProhibitedResponse(lang),
       category,
       location: city,
       price_asked: 0,
     };
   }
 
-  const priceMin = pricing ? pricing.fair_price_min : 0;
-  const priceMax = pricing ? pricing.fair_price_max : 0;
+  // 8) Fourchette affichée = fourchette contextuelle (pas la fourchette de base)
+  // On recalcule ici pour être cohérent avec ce qu'on a envoyé au LLM
+  let displayMin, displayMax;
+  if (pricing) {
+    if (isAirport && pricing.airport_min) {
+      displayMin = pricing.airport_min;
+      displayMax = pricing.airport_max;
+    } else if (isLuxury && pricing.luxury_min) {
+      displayMin = pricing.luxury_min;
+      displayMax = pricing.luxury_max;
+    } else {
+      displayMin = pricing.tourist_reasonable_min;
+      displayMax = pricing.tourist_reasonable_max;
+    }
+  } else {
+    displayMin = 0;
+    displayMax = 0;
+  }
 
   return {
     refused: false,
-    price_estimated_min: priceMin,
-    price_estimated_max: priceMax,
+    price_estimated_min: displayMin,
+    price_estimated_max: displayMax,
     risk_level: ['low', 'medium', 'high'].includes(llmResult.risk_level) ? llmResult.risk_level : 'medium',
     scam_detected: false,
-    ai_analysis: sanitizeText(llmResult.ai_analysis || '—', lang),
-    strategy: sanitizeText(llmResult.strategy || '—', lang),
-    recommended_phrase: sanitizeText(llmResult.recommended_phrase || '—', lang),
-    recommended_phrase_darija: llmResult.recommended_phrase_darija || '—',
-    main_provider: providers.length > 0 ? providers[0] : null,
+    ai_analysis:               sanitizeText(llmResult.ai_analysis              || '—', lang),
+    strategy:                  sanitizeText(llmResult.strategy                 || '—', lang),
+    recommended_phrase:        sanitizeText(llmResult.recommended_phrase       || '—', lang),
+    recommended_phrase_darija: llmResult.recommended_phrase_darija             || '—',
+    main_provider:        providers.length > 0 ? providers[0] : null,
     other_providers_count: Math.max(0, providers.length - 1),
     category,
-    location: city,
+    location:    city,
     price_asked: Number(priceAsked) || 0,
   };
 }
