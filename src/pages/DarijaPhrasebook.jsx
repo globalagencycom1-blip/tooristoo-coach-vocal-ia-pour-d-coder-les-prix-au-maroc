@@ -75,33 +75,67 @@ function normalizeDarija(text) {
     .toLowerCase();
 }
 
-// ─── Fallback TTS (synchrone, compatible mobile) ─────────────────────────────
-function fallbackTTS(text, setStatus) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const utt = new SpeechSynthesisUtterance(text);
-  utt.lang = 'ar-MA';
-  utt.rate = 0.9;
-  const voices = window.speechSynthesis.getVoices();
-  const voice = voices.find(v => v.lang === 'ar-MA') || voices.find(v => v.lang.startsWith('ar'));
-  if (voice) utt.voice = voice;
-  utt.onstart = () => setStatus('playing');
-  utt.onend   = () => setStatus('idle');
-  utt.onerror = () => setStatus('idle');
-  window.speechSynthesis.speak(utt);
+// ─── Préchargement des voix TTS au démarrage (fix Safari iOS) ────────────────
+// Safari iOS charge les voix de façon asynchrone. On force le chargement
+// dès que le module est importé, avant tout clic utilisateur.
+if (typeof window !== 'undefined' && window.speechSynthesis) {
+  // Déclenche le chargement des voix
+  window.speechSynthesis.getVoices();
+  // Safari iOS nécessite aussi cet event
+  window.speechSynthesis.onvoiceschanged = () => {
+    window.speechSynthesis.getVoices();
+  };
 }
 
-// ─── Composant VoiceButton — compatible iOS/Android ──────────────────────────
-// IMPORTANT : pas d'async/await dans handleClick — iOS coupe le lien
-// avec le geste utilisateur si le handler est async, bloquant audio.play()
+// ─── Fallback TTS — fix Safari iOS ───────────────────────────────────────────
+function fallbackTTS(text, setStatus) {
+  const synth = window.speechSynthesis;
+  if (!synth) return;
+
+  synth.cancel();
+
+  const speak = () => {
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.rate   = 0.85;
+    utt.volume = 1;
+
+    // Safari iOS : on tente d'abord ar-MA, sinon ar, sinon on laisse le
+    // navigateur choisir (il lira quand même le texte arabe)
+    const voices = synth.getVoices();
+    const voice  = voices.find(v => v.lang === 'ar-MA')
+                || voices.find(v => v.lang === 'ar-SA')
+                || voices.find(v => v.lang.startsWith('ar'));
+    if (voice) {
+      utt.voice = voice;
+      utt.lang  = voice.lang;
+    } else {
+      // Pas de voix arabe dispo — Safari iOS lira quand même avec voix par défaut
+      utt.lang = 'ar';
+    }
+
+    utt.onstart = () => setStatus('playing');
+    utt.onend   = () => setStatus('idle');
+    utt.onerror = () => setStatus('idle');
+    synth.speak(utt);
+  };
+
+  // Safari iOS : si les voix ne sont pas encore chargées, on attend
+  if (synth.getVoices().length > 0) {
+    speak();
+  } else {
+    synth.onvoiceschanged = () => { speak(); };
+  }
+}
+
+// ─── Composant VoiceButton — compatible iOS Safari / Android ─────────────────
 function VoiceButton({ darija }) {
-  const [status, setStatus] = useState('idle'); // idle | playing
+  const [status, setStatus] = useState('idle');
   const audioRef = useRef(null);
 
   const getMp3 = () => DARIJA_AUDIO_MAP[normalizeDarija(darija)] || null;
 
   const handleClick = () => {
-    // Stop si déjà en lecture
+    // Stop
     if (status === 'playing') {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -116,10 +150,10 @@ function VoiceButton({ darija }) {
     const filename = getMp3();
 
     if (filename) {
-      // new Audio() + .play() appelés SYNCHRONIQUEMENT dans le handler
+      // MP3 dispo : lecture directe, synchrone dans le handler
       const audio = new Audio(`${AUDIO_BASE_URL}/${filename}`);
       audioRef.current = audio;
-      audio.load(); // requis sur iOS Safari
+      audio.load();
       const p = audio.play();
       if (p !== undefined) {
         setStatus('playing');
@@ -131,6 +165,8 @@ function VoiceButton({ darija }) {
         });
       }
     } else {
+      // Pas de MP3 : TTS directement
+      setStatus('playing');
       fallbackTTS(darija, setStatus);
     }
   };
