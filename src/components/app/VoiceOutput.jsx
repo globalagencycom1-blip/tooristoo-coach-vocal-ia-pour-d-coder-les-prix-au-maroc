@@ -150,7 +150,7 @@ export default function VoiceOutput({ text, lang = 'fr', label = 'Écouter', siz
       window.speechSynthesis.cancel();
       const utt = new SpeechSynthesisUtterance(darijaText);
       utt.lang = 'ar-MA';
-      utt.rate = 0.9;
+      utt.rate = 1;
       utt.pitch = 1;
       utt.volume = 1;
       const voices = window.speechSynthesis.getVoices();
