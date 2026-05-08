@@ -1336,16 +1336,48 @@ export async function analyzeNegotiation({ category, city, priceAsked, descripti
     ? `Transcription de la conversation entendue : "${transcript}"`
     : `Description : "${description || '(aucune)'}"`;
 
+  // ── Détection du sous-type (aéroport, nuit, luxe) pour affiner la fourchette ──
+  const fullContext = `${description || ''} ${transcript || ''}`.toLowerCase();
+  const isAirport = /a[eé]ro|airport|matar|مطار|menara|ménara|rak\b/.test(fullContext);
+  const isNight   = /nuit|night|soir|minuit|noche|nacht|ليل/.test(fullContext);
+  const isLuxury  = /luxe|luxury|premium|palace|palais/.test(fullContext);
+
   let pricingBlock;
   if (pricing) {
+    // Choisit la fourchette la plus pertinente selon le contexte
+    let refMin, refMax, refLabel;
+    if (isAirport && pricing.airport_min) {
+      refMin   = pricing.airport_min;
+      refMax   = pricing.airport_max;
+      refLabel = 'Transfert aéroport';
+    } else if (isLuxury && pricing.luxury_min) {
+      refMin   = pricing.luxury_min;
+      refMax   = pricing.luxury_max;
+      refLabel = 'Version premium / luxe';
+    } else {
+      refMin   = pricing.tourist_reasonable_min;
+      refMax   = pricing.tourist_reasonable_max;
+      refLabel = 'Fourchette raisonnable touriste';
+    }
+
+    // Seuil de vigilance adapté : 2× la borne haute de référence si pas défini
+    const vigilance = pricing.vigilance_threshold || refMax * 2;
+
+    // Majoration nuit si applicable
+    const nightNote = isNight && pricing.night_surcharge
+      ? `\n- Majoration nuit applicable : ${pricing.night_surcharge}`
+      : '';
+
     pricingBlock = `
 FOURCHETTE DE RÉFÉRENCE (depuis PricingKnowledge — données vérifiées) :
-- ${pricing.description}
-- Borne basse : ${pricing.fair_price_min} DH
-- Borne haute : ${pricing.fair_price_max} DH
-- Fourchette raisonnable touriste : ${pricing.tourist_reasonable_min}-${pricing.tourist_reasonable_max} DH${pricing.vigilance_threshold ? `
-- Seuil de vigilance : ${pricing.vigilance_threshold} DH (écart marqué au-dessus)` : ''}${pricing.tips ? `
-- Conseil : ${pricing.tips}` : ''}`;
+- Service : ${pricing.description}
+- Fourchette locale de base : ${pricing.fair_price_min}–${pricing.fair_price_max} DH
+- ${refLabel} : ${refMin}–${refMax} DH  ← UTILISE CETTE FOURCHETTE POUR TON ANALYSE
+- Seuil de vigilance : ${vigilance} DH (écart marqué si dépassé)${nightNote}
+- Conseil : ${pricing.tips}
+
+IMPORTANT : Le contexte indique ${isAirport ? 'un trajet AÉROPORT' : isLuxury ? 'une prestation PREMIUM' : 'un trajet standard'}.
+Utilise la fourchette "${refLabel}" (${refMin}–${refMax} DH) comme référence principale, PAS la fourchette de base.`;
   } else {
     pricingBlock = `
 FOURCHETTE DE RÉFÉRENCE : non disponible pour cette catégorie + ville.
@@ -1369,9 +1401,10 @@ TON TRAVAIL — Génère UNIQUEMENT ces 5 champs en ${responseLang} :
 ═══════════════════════════════════════════════════════════
 
 1. **risk_level** : "low" / "medium" / "high"
-   - "low" si prix demandé ≤ borne haute touriste
-   - "medium" si entre borne haute touriste et seuil de vigilance
-   - "high" si prix demandé ≥ seuil de vigilance OU > 2× borne haute
+   - Base-toi sur la fourchette indiquée comme référence principale dans les données ci-dessus
+   - "low" si prix demandé ≤ borne haute de la fourchette de référence principale
+   - "medium" si prix demandé entre borne haute et seuil de vigilance
+   - "high" si prix demandé ≥ seuil de vigilance OU > 2× borne haute de référence
 2. **ai_analysis** : analyse pédagogique en 2-3 phrases, factuelle et neutre
 3. **strategy** : stratégie de négociation respectueuse en 2-3 phrases
 4. **recommended_phrase** : phrase EXACTE à dire au vendeur en ${responseLang}, courte et naturelle
