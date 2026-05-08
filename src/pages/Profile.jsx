@@ -9,10 +9,10 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 // ─── Normalise le plan (gère les anciens slugs) ───────────────────────────────
-// 'pro' et 'voyageur+' sont le même plan — on normalise vers 'voyageur+'
+// 'pro' et 'voyageur_plus' sont le même plan — on normalise vers 'voyageur_plus'
 function normalizePlan(plan) {
   if (!plan) return 'free';
-  if (plan === 'pro') return 'voyageur+';
+  if (plan === 'pro') return 'voyageur_plus';
   return plan;
 }
 
@@ -44,8 +44,8 @@ export default function Profile() {
         const p = profiles[0];
         // Normalise le plan au chargement et met à jour en base si nécessaire
         if (p.plan === 'pro') {
-          p.plan = 'voyageur+';
-          base44.entities.UserProfile.update(p.id, { plan: 'voyageur+' }).catch(() => {});
+          p.plan = 'voyageur_plus';
+          base44.entities.UserProfile.update(p.id, { plan: 'voyageur_plus' }).catch(() => {});
         }
         setProfile(p);
         setEditData({ language: p.language || lang, destination: p.destination || 'Maroc' });
@@ -87,14 +87,14 @@ export default function Profile() {
     },
     voyageur: {
       label: { fr: 'Voyageur', en: 'Traveler', es: 'Viajero', de: 'Reisender', ar: 'مسافر', darija: 'مسافر' },
-      price: { fr: '5 €/mois', en: '€5/mo', es: '5 €/mes', de: '5 €/Mo.', ar: '5 €/شهر', darija: '5 €/شهر' },
+      price: { fr: '4,99 €/mois', en: '€4.99/mo', es: '4,99 €/mes', de: '4,99 €/Mo.', ar: '4,99 €/شهر', darija: '4,99 €/شهر' },
       color: 'border-shield-green',
       icon:  '✈️',
       featuresKey: ['plan_voyageur_feat1','plan_voyageur_feat2','plan_voyageur_feat3','plan_voyageur_feat4','plan_voyageur_feat5'],
     },
     voyageur_plus: {
       label: { fr: 'Voyageur+', en: 'Traveler+', es: 'Viajero+', de: 'Reisender+', ar: 'مسافر+', darija: 'مسافر+' },
-      price: { fr: '9 €/mois', en: '€9/mo', es: '9 €/mes', de: '9 €/Mo.', ar: '9 €/شهر', darija: '9 €/شهر' },
+      price: { fr: '9,99 €/mois', en: '€9.99/mo', es: '9,99 €/mes', de: '9,99 €/Mo.', ar: '9,99 €/شهر', darija: '9,99 €/شهر' },
       color: 'border-shield-gold',
       icon:  '⭐',
       featuresKey: ['plan_voyageur_plus_feat1','plan_voyageur_plus_feat2','plan_voyageur_plus_feat3','plan_voyageur_plus_feat4','plan_voyageur_plus_feat5'],
