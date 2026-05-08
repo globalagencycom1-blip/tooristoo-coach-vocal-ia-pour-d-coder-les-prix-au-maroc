@@ -14,6 +14,17 @@ import DashboardStats from '../components/app/DashboardStats';
 import AuthGate from '../components/app/AuthGate';
 import PlanLimitGate from '../components/app/PlanLimitGate';
 
+// Formate le slug du plan pour l'affichage
+function formatPlanLabel(plan) {
+  const labels = {
+    free:          'Free',
+    voyageur:      'Voyageur',
+    voyageur_plus: 'Voyageur Plus',
+    pro:           'Voyageur Plus',
+  };
+  return labels[plan] || plan;
+}
+
 const TABS = [
   { id: 'coach',     icon: Mic,           labelKey: 'nav_app' },
   { id: 'dashboard', icon: LayoutDashboard, labelKey: 'dashboard_title' },
