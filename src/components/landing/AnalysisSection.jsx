@@ -24,7 +24,7 @@ export default function AnalysisSection({ lang }) {
     const voices = window.speechSynthesis.getVoices();
     const arabicVoice = voices.find(v => v.lang.startsWith('darija'));
     if (arabicVoice) utterance.voice = arabicVoice;
-    utterance.lang = 'ar-MA';
+    utterance.lang = 'fr';
     utterance.rate = 1;
     utterance.onend = () => setSpeaking(false);
     utterance.onerror = () => setSpeaking(false);
