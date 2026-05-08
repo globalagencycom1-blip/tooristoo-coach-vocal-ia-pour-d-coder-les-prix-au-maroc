@@ -112,9 +112,9 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
 
   // ── Analyse IA ──
   const analyzeWithAI = async (text) => {
-    // 1. Filtre illégal
+    // 1. Filtre illégal — utilise isProhibitedRequest de pricing-knowledge-base
     const fullText = `${text} ${category}`;
-    if (isRequeteIllegale(fullText)) {
+    if (isProhibitedRequest(fullText, lang)) {
       setPopup('illegal');
       return;
     }
@@ -127,29 +127,25 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
 
     setIsAnalyzing(true);
     try {
-      const prompt = buildPrompt({ category, location, priceAsked, text, lang });
-
-      const result = await base44.integrations.Core.InvokeLLM({
-        prompt,
-        response_json_schema: {
-          type: 'object',
-          properties: {
-            price_estimated_min:       { type: 'number' },
-            price_estimated_max:       { type: 'number' },
-            risk_level:                { type: 'string', enum: ['low', 'medium', 'high'] },
-            ai_analysis:               { type: 'string' },
-            recommended_phrase:        { type: 'string' },
-            recommended_phrase_darija: { type: 'string' },
-            strategy:                  { type: 'string' },
-            vendor_trust_score:        { type: 'number' },
-            savings:                   { type: 'number' },
-          }
-        }
+      // 3. analyzeNegotiation orchestre tout :
+      //    - fourchettes depuis PRICING_KNOWLEDGE_BASE (pas d'hallucination)
+      //    - prestataires certifiés depuis Provider (base de données réelle)
+      //    - LLM uniquement pour analyse texte + stratégie + phrase darija
+      //    - sanitize automatique des mots interdits
+      const result = await analyzeNegotiation({
+        category,
+        city:        location,
+        priceAsked,
+        transcript:  text,
+        description: text,
+        lang,
       });
 
-      // Vérifie si l'IA a quand même renvoyé une erreur
-      if (result?.erreur === 'hors_champ')         { setPopup('illegal');      return; }
-      if (result?.erreur === 'contexte_insuffisant'){ setPopup('insufficient'); return; }
+      // Si analyzeNegotiation a détecté un refus (illégal détecté côté LLM aussi)
+      if (result?.refused) {
+        setPopup('illegal');
+        return;
+      }
 
       onAnalysisComplete({
         ...result,
@@ -157,7 +153,6 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
         category,
         location,
         price_asked: priceAsked ? Number(priceAsked) : 0,
-        indice_prestataire: result.vendor_trust_score ?? null,
       });
     } catch (err) {
       console.error('Erreur analyse IA :', err);
