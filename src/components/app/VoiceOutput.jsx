@@ -7,7 +7,7 @@ const LANGUAGE_CONFIG = {
   es: { code: 'es-ES', name: 'Español', messages: { loading: 'Cargando...', stop: 'Detener', title: 'Detener' } },
   de: { code: 'de-DE', name: 'Deutsch', messages: { loading: 'Wird geladen...', stop: 'Stoppen', title: 'Stoppen' } },
   ar: { code: 'ar-SA', name: 'العربية', messages: { loading: 'جاري التحميل...', stop: 'إيقاف', title: 'إيقاف' } },
-  darija: { code: 'fr-MA', name: 'Darija', messages: { loading: 'كيتحمل...', stop: 'وقف', title: 'وقف' } },
+  darija: { code: 'ar-MA', name: 'Darija', messages: { loading: 'كيتحمل...', stop: 'وقف', title: 'وقف' } },
 };
 
 export default function VoiceOutput({ text, lang = 'fr', label = 'Écouter' }) {
