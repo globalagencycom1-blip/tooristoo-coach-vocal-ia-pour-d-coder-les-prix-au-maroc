@@ -8,21 +8,31 @@ import { getPricingT } from '../lib/i18n-pricing';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+// ─── Normalise le plan (gère les anciens slugs) ───────────────────────────────
+// 'pro' et 'voyageur_plus' sont le même plan — on normalise vers 'voyageur_plus'
+function normalizePlan(plan) {
+  if (!plan) return 'free';
+  if (plan === 'pro') return 'voyageur_plus';
+  return plan;
+}
+
 export default function Profile() {
   const { lang, setLang } = useLang();
   const tBase = useT(lang);
-  const t = (key) => getProfileT(key, lang) !== key ? getProfileT(key, lang) : getPricingT(key, lang) !== key ? getPricingT(key, lang) : tBase(key);
-  const [user, setUser] = useState(null);
-  const [profile, setProfile] = useState(null);
-  const [negotiations, setNegotiations] = useState([]);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editData, setEditData] = useState({});
-  const [activeSection, setActiveSection] = useState('info');
-  const [loading, setLoading] = useState(true);
+  const t = (key) =>
+    getProfileT(key, lang) !== key ? getProfileT(key, lang) :
+    getPricingT(key, lang)  !== key ? getPricingT(key, lang)  :
+    tBase(key);
 
-  useEffect(() => {
-    loadData();
-  }, []);
+  const [user,          setUser]          = useState(null);
+  const [profile,       setProfile]       = useState(null);
+  const [negotiations,  setNegotiations]  = useState([]);
+  const [isEditing,     setIsEditing]     = useState(false);
+  const [editData,      setEditData]      = useState({});
+  const [activeSection, setActiveSection] = useState('info');
+  const [loading,       setLoading]       = useState(true);
+
+  useEffect(() => { loadData(); }, []);
 
   const loadData = async () => {
     try {
@@ -31,14 +41,19 @@ export default function Profile() {
 
       const profiles = await base44.entities.UserProfile.filter({ user_email: currentUser.email }).catch(() => []);
       if (profiles.length > 0) {
-        setProfile(profiles[0]);
-        setEditData({
-          language: profiles[0].language || lang,
-          destination: profiles[0].destination || 'Maroc',
-        });
+        const p = profiles[0];
+        // Normalise le plan au chargement et met à jour en base si nécessaire
+        if (p.plan === 'pro') {
+          p.plan = 'voyageur_plus';
+          base44.entities.UserProfile.update(p.id, { plan: 'voyageur_plus' }).catch(() => {});
+        }
+        setProfile(p);
+        setEditData({ language: p.language || lang, destination: p.destination || 'Maroc' });
       }
 
-      const negs = await base44.entities.Negotiation.filter({ user_email: currentUser.email }, '-created_date', 10).catch(() => []);
+      const negs = await base44.entities.Negotiation.filter(
+        { user_email: currentUser.email }, '-created_date', 10
+      ).catch(() => []);
       setNegotiations(negs.map(n => n.data ? { id: n.id, created_date: n.created_date, ...n.data } : n));
     } catch (err) {
       console.error('Error loading profile data:', err);
@@ -51,9 +66,7 @@ export default function Profile() {
     if (!profile) return;
     try {
       await base44.entities.UserProfile.update(profile.id, editData);
-      if (editData.language && editData.language !== lang) {
-        setLang(editData.language);
-      }
+      if (editData.language && editData.language !== lang) setLang(editData.language);
       setProfile({ ...profile, ...editData });
       setIsEditing(false);
     } catch (err) {
@@ -61,35 +74,43 @@ export default function Profile() {
     }
   };
 
-  const handleLogout = async () => {
-    await base44.auth.logout('/');
-  };
+  const handleLogout = async () => { await base44.auth.logout('/'); };
 
+  // ─── Définition des plans — couvre TOUS les slugs possibles ──────────────────
   const PLAN_DETAILS = {
     free: {
-      nameKey: 'plan_free',
-      priceKey: 'plan_free_price',
-      featuresKey: ['plan_free_feat1', 'plan_free_feat2', 'plan_free_feat3', 'plan_free_feat4', 'plan_free_feat5'],
-      color: 'bg-gray-500',
+      label: { fr: 'Gratuit', en: 'Free', es: 'Gratuito', de: 'Kostenlos', ar: 'مجاني', darija: 'مجاني' },
+      price: { fr: '0 €', en: '€0', es: '0 €', de: '0 €', ar: '0 €', darija: '0 €' },
+      color: 'border-gray-500',
+      icon:  '🔓',
+      featuresKey: ['plan_free_feat1','plan_free_feat2','plan_free_feat3','plan_free_feat4','plan_free_feat5'],
     },
     voyageur: {
-      nameKey: 'plan_voyageur',
-      priceKey: 'plan_voyageur_price',
-      featuresKey: ['plan_voyageur_feat1', 'plan_voyageur_feat2', 'plan_voyageur_feat3', 'plan_voyageur_feat4', 'plan_voyageur_feat5'],
-      color: 'bg-shield-green',
+      label: { fr: 'Voyageur', en: 'Traveler', es: 'Viajero', de: 'Reisender', ar: 'مسافر', darija: 'مسافر' },
+      price: { fr: '4,99 €/mois', en: '€4.99/mo', es: '4,99 €/mes', de: '4,99 €/Mo.', ar: '4,99 €/شهر', darija: '4,99 €/شهر' },
+      color: 'border-shield-green',
+      icon:  '✈️',
+      featuresKey: ['plan_voyageur_feat1','plan_voyageur_feat2','plan_voyageur_feat3','plan_voyageur_feat4','plan_voyageur_feat5'],
     },
     voyageur_plus: {
-      nameKey: 'plan_voyageur_plus',
-      priceKey: 'plan_voyageur_plus_price',
-      featuresKey: ['plan_voyageur_plus_feat1', 'plan_voyageur_plus_feat2', 'plan_voyageur_plus_feat3', 'plan_voyageur_plus_feat4', 'plan_voyageur_plus_feat5'],
-      color: 'bg-shield-gold',
+      label: { fr: 'Voyageur+', en: 'Traveler+', es: 'Viajero+', de: 'Reisender+', ar: 'مسافر+', darija: 'مسافر+' },
+      price: { fr: '9,99 €/mois', en: '€9.99/mo', es: '9,99 €/mes', de: '9,99 €/Mo.', ar: '9,99 €/شهر', darija: '9,99 €/شهر' },
+      color: 'border-shield-gold',
+      icon:  '⭐',
+      featuresKey: ['plan_voyageur_plus_feat1','plan_voyageur_plus_feat2','plan_voyageur_plus_feat3','plan_voyageur_plus_feat4','plan_voyageur_plus_feat5'],
     },
   };
+
+  // Plan normalisé pour l'affichage
+  const currentPlanKey = normalizePlan(profile?.plan);
+  const currentPlan    = PLAN_DETAILS[currentPlanKey] || PLAN_DETAILS.free;
+  const planLabel      = currentPlan.label[lang] || currentPlan.label.fr;
+  const planPrice      = currentPlan.price[lang] || currentPlan.price.fr;
 
   if (loading) {
     return (
       <div className="min-h-screen bg-shield-dark flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-shield-green border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-8 h-8 border-4 border-shield-green border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -98,6 +119,7 @@ export default function Profile() {
     <div className="min-h-screen bg-shield-dark">
       <Navbar />
       <div className="max-w-5xl mx-auto px-4 pt-24 pb-16">
+
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-shield-green/10 border border-shield-green/30 mb-4">
@@ -108,13 +130,14 @@ export default function Profile() {
         </div>
 
         <div className="grid md:grid-cols-4 gap-6">
-          {/* Sidebar Navigation */}
+
+          {/* Sidebar */}
           <div className="md:col-span-1">
             <div className="bg-shield-card border border-shield-border rounded-2xl p-4 space-y-2 sticky top-24">
               {[
-                { id: 'info', icon: User, labelKey: 'profile_info' },
-                { id: 'preferences', icon: Settings, labelKey: 'profile_preferences' },
-                { id: 'history', icon: History, labelKey: 'profile_history' },
+                { id: 'info',         icon: User,       labelKey: 'profile_info' },
+                { id: 'preferences',  icon: Settings,   labelKey: 'profile_preferences' },
+                { id: 'history',      icon: History,    labelKey: 'profile_history' },
                 { id: 'subscription', icon: CreditCard, labelKey: 'profile_subscription' },
               ].map(item => (
                 <button
@@ -133,9 +156,10 @@ export default function Profile() {
             </div>
           </div>
 
-          {/* Main Content */}
+          {/* Contenu principal */}
           <div className="md:col-span-3 space-y-6">
-            {/* Personal Info Section */}
+
+            {/* ── Informations Personnelles ── */}
             {activeSection === 'info' && (
               <div className="bg-shield-card border border-shield-border rounded-2xl p-8">
                 <div className="flex items-center justify-between mb-6">
@@ -153,16 +177,14 @@ export default function Profile() {
                 </div>
 
                 <div className="space-y-4">
-                  {/* Name */}
-                  <div className="flex items-center justify-between p-4 bg-shield-border/30 rounded-xl">
-                    <div>
-                      <p className="text-xs text-gray-500 mb-1">{t('profile_name')}</p>
-                      <p className="text-white font-medium">{user?.full_name}</p>
-                    </div>
+                  {/* Nom */}
+                  <div className="p-4 bg-shield-border/30 rounded-xl">
+                    <p className="text-xs text-gray-500 mb-1">{t('profile_name')}</p>
+                    <p className="text-white font-medium">{user?.full_name}</p>
                   </div>
 
                   {/* Email */}
-                  <div className="flex items-center justify-between p-4 bg-shield-border/30 rounded-xl">
+                  <div className="p-4 bg-shield-border/30 rounded-xl">
                     <div className="flex items-center gap-2">
                       <Mail className="w-4 h-4 text-shield-green" />
                       <div>
@@ -172,20 +194,22 @@ export default function Profile() {
                     </div>
                   </div>
 
-                  {/* Plan Badge */}
-                  <div className="p-4 bg-shield-green/10 border border-shield-green/30 rounded-xl">
+                  {/* Plan badge — affiche le plan normalisé */}
+                  <div className={`p-4 bg-shield-green/10 border ${currentPlan.color} rounded-xl`}>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Zap className="w-4 h-4 text-shield-gold" />
                         <div>
                           <p className="text-xs text-gray-400 mb-1">{t('profile_plan')}</p>
-                          <p className="text-white font-bold capitalize">{profile?.plan}</p>
+                          <p className="text-white font-bold">{planLabel}</p>
                         </div>
                       </div>
                       <div className="text-right">
                         <p className="text-xs text-gray-400">{t('profile_member_since')}</p>
                         <p className="text-sm text-white">
-                          {profile?.created_date ? new Date(profile.created_date).toLocaleDateString(lang) : '—'}
+                          {profile?.created_date
+                            ? new Date(profile.created_date).toLocaleDateString(lang)
+                            : '—'}
                         </p>
                       </div>
                     </div>
@@ -204,52 +228,45 @@ export default function Profile() {
               </div>
             )}
 
-            {/* Preferences Section */}
+            {/* ── Préférences ── */}
             {activeSection === 'preferences' && (
               <div className="bg-shield-card border border-shield-border rounded-2xl p-8">
                 <h2 className="font-poppins font-bold text-2xl text-white flex items-center gap-2 mb-6">
                   <Settings className="w-6 h-6 text-shield-green" />
                   {t('profile_preferences')}
                 </h2>
-
-                <div className="space-y-4">
-                  {/* Language */}
-                  <div>
-                    <p className="text-sm text-gray-400 mb-3 flex items-center gap-2">
-                      <Globe className="w-4 h-4 text-shield-green" />
-                      {t('profile_language')}
-                    </p>
-                    <select
-                      value={editData.language || lang}
-                      onChange={(e) => {
-                        setEditData({ ...editData, language: e.target.value });
-                        setLang(e.target.value);
-                        if (profile) {
-                          base44.entities.UserProfile.update(profile.id, { language: e.target.value });
-                        }
-                      }}
-                      className="w-full bg-shield-border/50 border border-shield-border rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-shield-green"
-                    >
-                      <option value="fr">Français</option>
-                      <option value="en">English</option>
-                      <option value="es">Español</option>
-                      <option value="de">Deutsch</option>
-                      <option value="ar">العربية</option>
-                      <option value="darija">Darija</option>
-                    </select>
-                  </div>
+                <div>
+                  <p className="text-sm text-gray-400 mb-3 flex items-center gap-2">
+                    <Globe className="w-4 h-4 text-shield-green" />
+                    {t('profile_language')}
+                  </p>
+                  <select
+                    value={editData.language || lang}
+                    onChange={e => {
+                      setEditData({ ...editData, language: e.target.value });
+                      setLang(e.target.value);
+                      if (profile) base44.entities.UserProfile.update(profile.id, { language: e.target.value });
+                    }}
+                    className="w-full bg-shield-border/50 border border-shield-border rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-shield-green"
+                  >
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="de">Deutsch</option>
+                    <option value="ar">العربية</option>
+                    <option value="darija">Darija</option>
+                  </select>
                 </div>
               </div>
             )}
 
-            {/* History Section */}
+            {/* ── Historique ── */}
             {activeSection === 'history' && (
               <div className="bg-shield-card border border-shield-border rounded-2xl p-8">
                 <h2 className="font-poppins font-bold text-2xl text-white flex items-center gap-2 mb-6">
                   <History className="w-6 h-6 text-shield-green" />
                   {t('profile_history')}
                 </h2>
-
                 {negotiations.length > 0 ? (
                   <div className="space-y-3">
                     {negotiations.map((neg, idx) => (
@@ -262,9 +279,9 @@ export default function Profile() {
                             </p>
                           </div>
                           <div className="text-right">
-                            <p className="text-sm font-bold text-shield-green">{neg.price_asked} MAD</p>
+                            <p className="text-sm font-bold text-shield-green">{neg.price_asked} DH</p>
                             {neg.savings > 0 && (
-                              <p className="text-xs text-green-400">💰 {neg.savings} MAD {t('profile_saved')}</p>
+                              <p className="text-xs text-green-400">💰 {neg.savings} DH {t('profile_saved')}</p>
                             )}
                           </div>
                         </div>
@@ -277,39 +294,37 @@ export default function Profile() {
               </div>
             )}
 
-            {/* Subscription Section */}
+            {/* ── Abonnement ── */}
             {activeSection === 'subscription' && (
               <div className="space-y-6">
-                {/* Current Plan */}
                 <div className="bg-shield-card border border-shield-border rounded-2xl p-8">
                   <h2 className="font-poppins font-bold text-2xl text-white flex items-center gap-2 mb-6">
                     <CreditCard className="w-6 h-6 text-shield-green" />
                     {t('profile_current_plan')}
                   </h2>
 
-                  {profile && PLAN_DETAILS[profile.plan] && (
-                    <div className={`p-6 rounded-xl ${PLAN_DETAILS[profile.plan].color} bg-opacity-10 border border-current`}>
-                      <div className="flex items-center gap-3 mb-4">
-                        <Zap className="w-6 h-6" />
-                        <div>
-                          <h3 className="font-bold text-xl text-white capitalize">{profile.plan}</h3>
-                          <p className="text-sm text-gray-400">{t(PLAN_DETAILS[profile.plan].priceKey)}/{t('per_month')}</p>
-                        </div>
+                  {/* Carte plan actuel — toujours affichée */}
+                  <div className={`p-6 rounded-xl border ${currentPlan.color} bg-white/5`}>
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-2xl">{currentPlan.icon}</span>
+                      <div>
+                        <h3 className="font-bold text-xl text-white">{planLabel}</h3>
+                        <p className="text-sm text-gray-400">{planPrice}</p>
                       </div>
-                      <ul className="space-y-2">
-                        {PLAN_DETAILS[profile.plan].featuresKey.map((featureKey, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm text-gray-300">
-                            <span className="text-shield-green">✓</span>
-                            {t(featureKey)}
-                          </li>
-                        ))}
-                      </ul>
                     </div>
-                  )}
+                    <ul className="space-y-2">
+                      {currentPlan.featuresKey.map((key, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-sm text-gray-300">
+                          <span className="text-shield-green">✓</span>
+                          {t(key)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
-                {/* Upgrade CTA */}
-                {profile?.plan === 'free' && (
+                {/* CTA upgrade — seulement si free ou voyageur */}
+                {(currentPlanKey === 'free' || currentPlanKey === 'voyageur') && (
                   <div className="bg-gradient-to-r from-shield-green/20 to-shield-gold/20 border border-shield-green/30 rounded-2xl p-8 text-center">
                     <h3 className="font-bold text-xl text-white mb-2">{t('profile_upgrade_title')}</h3>
                     <p className="text-gray-400 mb-6">{t('profile_upgrade_desc')}</p>
@@ -324,10 +339,11 @@ export default function Profile() {
                 )}
               </div>
             )}
+
           </div>
         </div>
 
-        {/* Logout Button */}
+        {/* Déconnexion */}
         <div className="mt-8 text-center">
           <button
             onClick={handleLogout}
@@ -337,6 +353,7 @@ export default function Profile() {
             {t('profile_logout')}
           </button>
         </div>
+
       </div>
       <Footer lang={lang} />
     </div>
