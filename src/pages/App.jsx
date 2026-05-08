@@ -14,7 +14,7 @@ import DashboardStats from '../components/app/DashboardStats';
 import AuthGate from '../components/app/AuthGate';
 import PlanLimitGate from '../components/app/PlanLimitGate';
 
-// Formate le slug du plan pour l'affichage
+// ─── Formate le slug du plan pour l'affichage ─────────────────────────────────
 function formatPlanLabel(plan) {
   const labels = {
     free:          'Free',
@@ -26,9 +26,9 @@ function formatPlanLabel(plan) {
 }
 
 const TABS = [
-  { id: 'coach',     icon: Mic,           labelKey: 'nav_app' },
+  { id: 'coach',     icon: Mic,             labelKey: 'nav_app' },
   { id: 'dashboard', icon: LayoutDashboard, labelKey: 'dashboard_title' },
-  { id: 'history',   icon: History,        labelKey: 'history_title' },
+  { id: 'history',   icon: History,         labelKey: 'history_title' },
 ];
 
 export default function AppPage() {
@@ -36,16 +36,16 @@ export default function AppPage() {
   const t  = useT(lang);
   const dt = (key) => getDashboardT(key, lang);
 
-  const [activeTab,   setActiveTab]   = useState('coach');
-  const [inputMode,   setInputMode]   = useState('voice');
-  const [analysis,    setAnalysis]    = useState(null);
-  const [negotiations,setNegotiations]= useState([]);
-  const [profile,     setProfile]     = useState(null);
-  const [user,        setUser]        = useState(null);
-  const [authChecked, setAuthChecked] = useState(false);
-  const [category,    setCategory]    = useState('taxi');
-  const [location,    setLocation]    = useState('Marrakech');
-  const [priceAsked,  setPriceAsked]  = useState('');
+  const [activeTab,    setActiveTab]    = useState('coach');
+  const [inputMode,    setInputMode]    = useState('voice');
+  const [analysis,     setAnalysis]     = useState(null);
+  const [negotiations, setNegotiations] = useState([]);
+  const [profile,      setProfile]      = useState(null);
+  const [user,         setUser]         = useState(null);
+  const [authChecked,  setAuthChecked]  = useState(false);
+  const [category,     setCategory]     = useState('taxi');
+  const [location,     setLocation]     = useState('Marrakech');
+  const [priceAsked,   setPriceAsked]   = useState('');
 
   useEffect(() => { loadData(); }, []);
 
@@ -151,7 +151,6 @@ export default function AppPage() {
         {/* ── Contenu ── */}
         {activeTab === 'coach' && (
           <div className="bg-shield-card border border-shield-border rounded-2xl p-6">
-
             {authChecked && !user ? (
               <AuthGate lang={lang} />
             ) : analysis ? (
@@ -176,7 +175,7 @@ export default function AppPage() {
                   </div>
                 )}
 
-                {/* ── Toggle Vocal / Texte — même style que L'App ── */}
+                {/* ── Toggle Vocal / Texte ── */}
                 <div className="flex gap-1 bg-shield-dark border border-shield-border rounded-2xl p-1 mb-6">
                   <button
                     onClick={() => setInputMode('voice')}
@@ -197,7 +196,6 @@ export default function AppPage() {
                         : 'text-gray-400 hover:text-white'
                     }`}
                   >
-                    {/* Icône Texte */}
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                     </svg>
@@ -229,13 +227,13 @@ export default function AppPage() {
           <Dashboard lang={lang} profile={profile} negotiations={negotiations} />
         )}
 
-        {/* Plan badge */}
+        {/* ── Plan badge ── */}
         {profile && (
           <div className="mt-4 flex items-center justify-between p-3 bg-shield-card border border-shield-border rounded-xl">
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4 text-shield-green" />
               <span className="text-xs text-gray-400">
-                Plan: <span className="text-white font-semibold capitalize">{profile.plan}</span>
+                Plan: <span className="text-white font-semibold">{formatPlanLabel(profile.plan)}</span>
               </span>
             </div>
             {profile.plan === 'free' && (
