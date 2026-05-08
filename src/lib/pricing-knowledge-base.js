@@ -2,6 +2,8 @@
 // Mise à jour: Avril 2026 — Sources: ONMT, recherche documentaire publique, plateformes officielles
 // Mise à jour hebdomadaire automatique via les rapports de la communauté
 
+import { base44 } from '@/api/base44Client';
+
 export const PRICING_LAST_UPDATED = '2026-04-30';
 
 export const PRICING_KNOWLEDGE_BASE = {
@@ -970,4 +972,327 @@ export function getAllCitiesPricingContext() {
     context += '\n';
   }
   return context;
+}
+
+// =========================================================================
+// ============== AJOUTÉ — analyzeNegotiation (RAG pattern) ===============
+// =========================================================================
+// Fonction centrale qui orchestre toute l'analyse :
+//   1. Lit la fourchette dans PRICING_KNOWLEDGE_BASE (en mémoire, gratuit)
+//   2. Lit les prestataires dans Provider (filtre certified+active+rating>=4.0)
+//   3. Appelle le LLM uniquement pour : analyse texte + stratégie + phrase darija
+//   4. Valide et complète la réponse pour qu'elle soit toujours intégrale
+//   5. Applique le filet anti-vocabulaire
+//
+// Avantages :
+//   - Plus d'hallucination de prix ni de prestataires
+//   - Coût LLM réduit (le LLM ne génère plus les chiffres)
+//   - Réponses jamais incomplètes (validation stricte)
+//   - Cohérence avec la Charte (certified=true, rating>=4.0)
+// =========================================================================
+
+// ----- Filet anti-vocabulaire (multi-langues) ---------------------------
+const VOCAB_REPLACEMENTS = {
+  fr: [
+    [/\barnaque?s?\b/gi, 'écart de prix'],
+    [/\barnaqueurs?\b/gi, 'pratiquants de tarifs élevés'],
+    [/\barnaquer\b/gi, 'pratiquer un tarif élevé'],
+    [/\babusifs?\b/gi, 'au-dessus de la référence'],
+    [/\babusives?\b/gi, 'au-dessus de la référence'],
+    [/\babusivement\b/gi, 'au-dessus de la référence'],
+    [/\babus\b/gi, 'écart'],
+    [/\babuser\b/gi, 'pratiquer un écart'],
+    [/\bfrauduleux\b/gi, 'au-dessus de la fourchette'],
+    [/\btromper\b/gi, 'surfacturer'],
+    [/\btromperie\b/gi, 'écart tarifaire'],
+    [/seuil (d'|de l')?(arnaque|abus|fraude)( de \d+ ?(DH|MAD))?/gi, 'fourchette de référence'],
+    [/considéré comme (une |un )?(arnaque|abus|fraude|abusif)/gi, 'au-dessus de la fourchette de référence'],
+  ],
+  en: [
+    [/\bscams?\b/gi, 'price gap'],
+    [/\bscammers?\b/gi, 'overpricers'],
+    [/\bscamming\b/gi, 'overpricing'],
+    [/\babusive\b/gi, 'above reference'],
+    [/\babuse\b/gi, 'gap'],
+    [/\bfraudulent\b/gi, 'above the range'],
+    [/\bcheating\b/gi, 'overpricing'],
+    [/(scam|abuse|fraud) threshold( of \d+ ?(DH|MAD))?/gi, 'reference range'],
+  ],
+  es: [
+    [/\bestafas?\b/gi, 'diferencia de precio'],
+    [/\bestafadores?\b/gi, 'que cobran de más'],
+    [/\babusivos?\b/gi, 'por encima de la referencia'],
+    [/\babusivas?\b/gi, 'por encima de la referencia'],
+    [/\babuso\b/gi, 'diferencia'],
+    [/\bfraude\b/gi, 'diferencia de precio'],
+  ],
+  de: [
+    [/\bBetrug\b/gi, 'Preisabweichung'],
+    [/\bbetrügerisch\b/gi, 'über der Referenz'],
+    [/\bBetrüger\b/gi, 'Anbieter mit hohen Preisen'],
+    [/\bmissbräuchlich\b/gi, 'über der Referenz'],
+  ],
+  ar: [
+    [/احتيال/g, 'فرق سعري'],
+    [/نصب/g, 'فرق سعري'],
+    [/محتال/g, 'مزود بأسعار مرتفعة'],
+    [/نصاب/g, 'مزود بأسعار مرتفعة'],
+  ],
+  darija: [
+    [/احتيال/g, 'فرق فالثمن'],
+    [/نصب/g, 'فرق فالثمن'],
+    [/محتال/g, 'خادم بأثمان عالية'],
+    [/نصاب/g, 'خادم بأثمان عالية'],
+  ],
+};
+
+function sanitizeText(text, lang = 'fr') {
+  if (!text || typeof text !== 'string') return text;
+  let cleaned = text;
+  const rules = VOCAB_REPLACEMENTS[lang] || VOCAB_REPLACEMENTS.fr;
+  rules.forEach(([pattern, replacement]) => {
+    cleaned = cleaned.replace(pattern, replacement);
+  });
+  cleaned = cleaned.replace(/seuil (de |d')?\d+\s*(DH|MAD|درهم)/gi, 'fourchette de référence');
+  cleaned = cleaned.replace(/limite (de |d')?\d+\s*(DH|MAD|درهم)/gi, 'fourchette de référence');
+  cleaned = cleaned.replace(/\s+/g, ' ').trim();
+  cleaned = cleaned.replace(/\(\s*\)/g, '');
+  cleaned = cleaned.replace(/\s+,/g, ',');
+  cleaned = cleaned.replace(/\s+\./g, '.');
+  return cleaned;
+}
+
+// ----- Récupération des prestataires depuis la base Provider -----------
+async function fetchProviders(category, city) {
+  try {
+    const all = await base44.entities.Provider.filter(
+      { category, city, certified: true, active: true },
+      '-rating',
+      50
+    );
+    if (!all || all.length === 0) return [];
+    return all.filter((p) => Number(p.rating) >= 4.0);
+  } catch (err) {
+    console.warn('Provider fetch error:', err);
+    return [];
+  }
+}
+
+// ----- Réponse de refus (transactions illégales) ------------------------
+function buildRefusal(lang) {
+  return {
+    refused: true,
+    price_estimated_min: 0,
+    price_estimated_max: 0,
+    risk_level: 'high',
+    scam_detected: false,
+    ai_analysis: getProhibitedResponse(lang),
+    recommended_phrase: '—',
+    recommended_phrase_darija: '—',
+    strategy: getProhibitedResponse(lang),
+    main_provider: null,
+    other_providers_count: 0,
+  };
+}
+
+// ----- Noms de langues pour les prompts ---------------------------------
+const LANG_NAME = {
+  fr: 'français',
+  en: 'English',
+  es: 'español',
+  de: 'Deutsch',
+  ar: 'العربية',
+  darija: 'الدارجة المغربية',
+};
+
+// ----- Schéma JSON attendu par le LLM -----------------------------------
+const LLM_SCHEMA = {
+  type: 'object',
+  properties: {
+    risk_level: { type: 'string', enum: ['low', 'medium', 'high'] },
+    ai_analysis: { type: 'string' },
+    strategy: { type: 'string' },
+    recommended_phrase: { type: 'string' },
+    recommended_phrase_darija: { type: 'string' },
+    refused: { type: 'boolean' },
+  },
+  required: ['risk_level', 'ai_analysis', 'strategy', 'recommended_phrase', 'recommended_phrase_darija'],
+};
+
+// =========================================================================
+// FONCTION PRINCIPALE — analyzeNegotiation
+// =========================================================================
+// Inputs :
+//   { category, city, priceAsked, description, transcript, lang }
+// Output : objet enrichi pour AnalysisResult.jsx avec :
+//   refused, price_estimated_min, price_estimated_max, risk_level,
+//   ai_analysis, strategy, recommended_phrase, recommended_phrase_darija,
+//   main_provider (objet complet ou null), other_providers_count (number)
+// =========================================================================
+
+export async function analyzeNegotiation({ category, city, priceAsked, description, transcript, lang = 'fr' }) {
+  // 1) Pré-filtre côté client (drogues, prostitution, etc.)
+  const userText = `${category} ${description || ''} ${transcript || ''}`;
+  if (isProhibitedRequest(userText, lang)) {
+    return {
+      ...buildRefusal(lang),
+      category,
+      location: city,
+      price_asked: 0,
+    };
+  }
+
+  // 2) Lecture en parallèle : prix (mémoire, instantané) + prestataires (réseau)
+  const [pricing, providers] = await Promise.all([
+    Promise.resolve(getPricingInfo(city, category)),
+    fetchProviders(category, city),
+  ]);
+
+  // 3) Construction du prompt LLM avec données injectées (RAG)
+  const responseLang = LANG_NAME[lang] || LANG_NAME.fr;
+  const userInput = transcript
+    ? `Transcription de la conversation entendue : "${transcript}"`
+    : `Description : "${description || '(aucune)'}"`;
+
+  let pricingBlock;
+  if (pricing) {
+    pricingBlock = `
+FOURCHETTE DE RÉFÉRENCE (depuis PricingKnowledge — données vérifiées) :
+- ${pricing.description}
+- Borne basse : ${pricing.fair_price_min} DH
+- Borne haute : ${pricing.fair_price_max} DH
+- Fourchette raisonnable touriste : ${pricing.tourist_reasonable_min}-${pricing.tourist_reasonable_max} DH${pricing.vigilance_threshold ? `
+- Seuil de vigilance : ${pricing.vigilance_threshold} DH (écart marqué au-dessus)` : ''}${pricing.tips ? `
+- Conseil : ${pricing.tips}` : ''}`;
+  } else {
+    pricingBlock = `
+FOURCHETTE DE RÉFÉRENCE : non disponible pour cette catégorie + ville.
+→ Estime prudemment à partir de tes connaissances générales du Maroc, en restant conservateur.`;
+  }
+
+  const prompt = `Tu es Tooristoo, expert en fourchettes de prix locales au Maroc. Tu aides les voyageurs à comprendre si un prix proposé est aligné avec les références locales et tu suggères une stratégie de négociation respectueuse.
+
+═══════════════════════════════════════════════════════════
+DONNÉES VÉRIFIÉES (utilise EXCLUSIVEMENT ces chiffres, n'invente rien) :
+═══════════════════════════════════════════════════════════
+
+Catégorie : ${category}
+Ville     : ${city}
+Prix demandé : ${priceAsked || 'non précisé'} DH
+${userInput}
+${pricingBlock}
+
+═══════════════════════════════════════════════════════════
+TON TRAVAIL — Génère UNIQUEMENT ces 5 champs en ${responseLang} :
+═══════════════════════════════════════════════════════════
+
+1. **risk_level** : "low" / "medium" / "high"
+   - "low" si prix demandé ≤ borne haute touriste
+   - "medium" si entre borne haute touriste et seuil de vigilance
+   - "high" si prix demandé ≥ seuil de vigilance OU > 2× borne haute
+2. **ai_analysis** : analyse pédagogique en 2-3 phrases, factuelle et neutre
+3. **strategy** : stratégie de négociation respectueuse en 2-3 phrases
+4. **recommended_phrase** : phrase EXACTE à dire au vendeur en ${responseLang}, courte et naturelle
+5. **recommended_phrase_darija** : phrase EXACTE en darija marocaine ÉCRITE EN CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines). Exemple correct : "أنا غادي نعطيك 150 درهم، واش مقبول؟"
+
+═══════════════════════════════════════════════════════════
+GARDE-FOUS — REFUS NON NÉGOCIABLES :
+═══════════════════════════════════════════════════════════
+Si la situation concerne : drogues, prostitution, faux documents, contrebande, contrefaçons, animaux protégés, mineurs, ou corruption d'agents publics → renvoie :
+{
+  "refused": true,
+  "risk_level": "high",
+  "ai_analysis": "Tooristoo n'analyse pas les prix de transactions illégales ou contraires à la loi marocaine. Si vous êtes témoin d'une situation préoccupante, contactez la police locale.",
+  "strategy": "Tooristoo se limite aux services touristiques légaux. Pour toute urgence, composez le 19 (Police) ou le +212 524 38 46 01 (Police Touristique de Marrakech).",
+  "recommended_phrase": "—",
+  "recommended_phrase_darija": "—"
+}
+
+═══════════════════════════════════════════════════════════
+RÈGLES IMPORTANTES :
+═══════════════════════════════════════════════════════════
+
+⛔ INTERDIT : tu ne dois PAS proposer ni mentionner de prestataires (riads, taxis, restaurants, hôtels, guides). Tooristoo gère cela séparément à partir de sa base de données vérifiée. Tu ignores complètement ce sujet.
+
+⛔ INTERDIT : tu ne dois PAS inventer de prix. Utilise EXCLUSIVEMENT les chiffres de la section "DONNÉES VÉRIFIÉES" ci-dessus.
+
+⛔ INTERDICTIONS DE VOCABULAIRE (réponse REJETÉE si tu utilises ces mots) :
+"arnaque", "arnaquer", "arnaqueur", "scam", "scammer", "scamming",
+"abus", "abuser", "abusif", "abusive", "abusivement",
+"tromperie", "tromper", "trompeur", "fraude", "frauder", "frauduleux",
+"estafa", "estafador", "Betrug", "betrügerisch", "Betrüger",
+"احتيال", "نصب", "محتال", "نصاب".
+
+✅ À la place, utilise EXCLUSIVEMENT :
+- "écart par rapport à la fourchette de référence"
+- "prix au-dessus de la fourchette habituelle"
+- "tarif supérieur à la moyenne locale"
+
+✅ TON : factuel, neutre, respectueux de la culture marocaine du marchandage.
+✅ FORMAT DH OBLIGATOIRE : utilise toujours "DH" et jamais "MAD" dans les textes.
+
+EXEMPLE DE BON ai_analysis :
+"Le prix demandé de 200 DH est nettement au-dessus de la fourchette de référence locale pour un transfert aéroport (70–100 DH). L'écart constaté est de 100 DH par rapport à la borne haute. Il est recommandé d'insister sur l'usage du compteur officiel ou de proposer un prix dans la fourchette de référence."`;
+
+  // 4) Appel LLM (avec gestion d'erreur stricte)
+  let llmResult;
+  try {
+    llmResult = await base44.integrations.Core.InvokeLLM({
+      prompt,
+      response_json_schema: LLM_SCHEMA,
+    });
+  } catch (err) {
+    console.error('LLM error:', err);
+    // Fallback : on renvoie au moins la fourchette + prestataire (sans analyse LLM)
+    return {
+      refused: false,
+      price_estimated_min: pricing ? pricing.fair_price_min : 0,
+      price_estimated_max: pricing ? pricing.fair_price_max : 0,
+      risk_level: 'medium',
+      scam_detected: false,
+      ai_analysis: lang === 'en' ? 'Analysis temporarily unavailable. Reference range shown above.' : "Analyse temporairement indisponible. La fourchette de référence est affichée ci-dessus.",
+      strategy: '—',
+      recommended_phrase: '—',
+      recommended_phrase_darija: '—',
+      main_provider: providers.length > 0 ? providers[0] : null,
+      other_providers_count: Math.max(0, providers.length - 1),
+      category,
+      location: city,
+      price_asked: Number(priceAsked) || 0,
+    };
+  }
+
+  // 5) Si le LLM refuse explicitement
+  if (llmResult.refused === true) {
+    return {
+      ...buildRefusal(lang),
+      ai_analysis: llmResult.ai_analysis || getProhibitedResponse(lang),
+      strategy: llmResult.strategy || getProhibitedResponse(lang),
+      category,
+      location: city,
+      price_asked: 0,
+    };
+  }
+
+  // 6) Validation + complétion : la fourchette VIENT TOUJOURS de PRICING_KNOWLEDGE_BASE
+  // Le LLM ne peut PAS écraser ces chiffres
+  const priceMin = pricing ? pricing.fair_price_min : 0;
+  const priceMax = pricing ? pricing.fair_price_max : 0;
+
+  return {
+    refused: false,
+    price_estimated_min: priceMin,
+    price_estimated_max: priceMax,
+    risk_level: ['low', 'medium', 'high'].includes(llmResult.risk_level) ? llmResult.risk_level : 'medium',
+    scam_detected: false,
+    ai_analysis: sanitizeText(llmResult.ai_analysis || '—', lang),
+    strategy: sanitizeText(llmResult.strategy || '—', lang),
+    recommended_phrase: sanitizeText(llmResult.recommended_phrase || '—', lang),
+    recommended_phrase_darija: llmResult.recommended_phrase_darija || '—',
+    main_provider: providers.length > 0 ? providers[0] : null,
+    other_providers_count: Math.max(0, providers.length - 1),
+    category,
+    location: city,
+    price_asked: Number(priceAsked) || 0,
+  };
 }
