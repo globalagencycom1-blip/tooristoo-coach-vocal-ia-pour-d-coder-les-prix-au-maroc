@@ -75,81 +75,115 @@ function normalizeDarija(text) {
     .toLowerCase();
 }
 
-// ─── VoiceButton — Safari iOS compatible via Google TTS URL ──────────────────
+// ─── VoiceButton — desktop + iOS Safari ──────────────────────────────────────
 //
-// Safari iOS bloque speechSynthesis dans les PWA/WebViews.
-// Solution : on génère une URL MP3 Google Translate TTS et on la joue
-// via un élément <audio> rendu dans le DOM — la seule méthode fiable sur iOS.
+// Stratégie :
+//   1. MP3 local si disponible  → new Audio() + .play() synchrone dans le clic
+//   2. Pas de MP3               → speechSynthesis (desktop/Android)
+//                                 OU élément <audio> Google TTS (iOS Safari)
 //
-// Priorité :
-//   1. MP3 pré-enregistré local  (quand disponible)
-//   2. Google Translate TTS URL  (fallback immédiat, fonctionne sur iOS)
+// Détection iOS : on teste userAgent une seule fois au chargement du module.
 
-function googleTtsUrl(text) {
-  return `https://translate.google.com/translate_tts?ie=UTF-8&tl=ar&client=tw-ob&q=${encodeURIComponent(text)}`;
-}
+const IS_IOS = typeof navigator !== 'undefined' &&
+  /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 function VoiceButton({ darija }) {
-  const [status, setStatus] = useState('idle'); // idle | playing
-  const [audioSrc, setAudioSrc] = useState(null);
-  const audioElRef = useRef(null);
+  const [status, setStatus]   = useState('idle'); // idle | playing
+  const audioRef              = useRef(null);      // référence à l'élément <audio> du DOM
+  const iosAudioRef           = useRef(null);      // nœud DOM <audio> pour iOS
 
   const getMp3 = () => DARIJA_AUDIO_MAP[normalizeDarija(darija)] || null;
 
+  // ── Lecture via speechSynthesis (desktop + Android) ──
+  const playTTS = () => {
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+    synth.cancel();
+    const utt  = new SpeechSynthesisUtterance(darija);
+    utt.lang   = 'ar-MA';
+    utt.rate   = 0.85;
+    const voices = synth.getVoices();
+    const voice  = voices.find(v => v.lang === 'ar-MA')
+                || voices.find(v => v.lang === 'ar-SA')
+                || voices.find(v => v.lang.startsWith('ar'));
+    if (voice) utt.voice = voice;
+    utt.onstart = () => setStatus('playing');
+    utt.onend   = () => setStatus('idle');
+    utt.onerror = () => setStatus('idle');
+    synth.speak(utt);
+  };
+
+  // ── Lecture via <audio> DOM (iOS Safari) ──
+  // L'élément <audio> est toujours rendu dans le DOM (ref).
+  // Sur iOS, .play() doit être appelé DIRECTEMENT dans le handler du clic,
+  // donc on change le src puis on appelle .play() immédiatement — sans await.
+  const playIOS = (src) => {
+    const el = iosAudioRef.current;
+    if (!el) return;
+    el.src = src;
+    el.load();
+    const p = el.play();
+    setStatus('playing');
+    if (p !== undefined) {
+      p.catch(() => setStatus('idle'));
+    }
+  };
+
   const handleClick = () => {
-    // Stop
+    // ── Stop ──
     if (status === 'playing') {
-      if (audioElRef.current) {
-        audioElRef.current.pause();
-        audioElRef.current.currentTime = 0;
+      if (IS_IOS) {
+        const el = iosAudioRef.current;
+        if (el) { el.pause(); el.currentTime = 0; }
+      } else {
+        audioRef.current?.pause();
+        window.speechSynthesis?.cancel();
       }
       setStatus('idle');
-      setAudioSrc(null);
       return;
     }
 
-    // Choisit la source : MP3 local ou Google TTS
     const filename = getMp3();
-    const src = filename
-      ? `${AUDIO_BASE_URL}/${filename}`
-      : googleTtsUrl(darija);
 
-    setAudioSrc(src);
-    setStatus('playing');
-    // La lecture démarre via onCanPlay sur l'élément <audio> ci-dessous
-  };
-
-  const handleCanPlay = () => {
-    audioElRef.current?.play().catch(() => {
-      setStatus('idle');
-      setAudioSrc(null);
-    });
-  };
-
-  const handleEnded = () => {
-    setStatus('idle');
-    setAudioSrc(null);
-  };
-
-  const handleError = () => {
-    setStatus('idle');
-    setAudioSrc(null);
+    if (filename) {
+      // MP3 local dispo — même logique desktop et iOS
+      const src   = `${AUDIO_BASE_URL}/${filename}`;
+      if (IS_IOS) {
+        playIOS(src);
+      } else {
+        const audio = new Audio(src);
+        audioRef.current = audio;
+        audio.load();
+        const p = audio.play();
+        setStatus('playing');
+        if (p !== undefined) {
+          p.then(() => { audio.onended = () => setStatus('idle'); })
+           .catch(() => { playTTS(); });
+        }
+      }
+    } else {
+      // Pas de MP3
+      if (IS_IOS) {
+        // Google TTS : URL mp3 publique, fonctionne sur Safari iOS
+        const src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=ar&client=tw-ob&q=${encodeURIComponent(darija)}`;
+        playIOS(src);
+      } else {
+        playTTS();
+      }
+    }
   };
 
   return (
     <>
-      {/* Élément audio dans le DOM — requis par Safari iOS */}
-      {audioSrc && (
-        <audio
-          ref={audioElRef}
-          src={audioSrc}
-          onCanPlay={handleCanPlay}
-          onEnded={handleEnded}
-          onError={handleError}
-          playsInline
-          style={{ display: 'none' }}
-        />
-      )}
+      {/* Élément audio persistant dans le DOM — requis par Safari iOS.
+          playsInline empêche le passage en plein écran sur iPhone. */}
+      <audio
+        ref={iosAudioRef}
+        playsInline
+        onEnded={() => setStatus('idle')}
+        onError={() => setStatus('idle')}
+        style={{ display: 'none' }}
+      />
 
       <button
         onClick={handleClick}
