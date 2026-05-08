@@ -1,67 +1,22 @@
 import React, { useState, useRef } from 'react';
-import { Mic, Square, Shield, Loader2, Zap, AlertTriangle, X } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
+import { Mic, Square, Shield, Loader2, Zap } from 'lucide-react';
 import { useT } from '../../lib/i18n';
+import { analyzeNegotiation, isProhibitedRequest } from '../../lib/pricing-knowledge-base';
 import { CATEGORIES_DATA, CITIES_DATA } from '../../lib/categories-cities-translations';
 
-// ─── Filtre requêtes illégales ────────────────────────────────────────────────
-const MOTS_INTERDITS_ILLEGAL = [
-  'prostitu', 'escort', 'pute', 'drogue', 'cannabis', 'cocaïne', 'cocaine',
-  'haschich', 'hashish', 'kif', 'deal', 'dealer', 'trafic', 'arme', 'weapon',
-  'sexe tarifé', 'passe', 'maquereau', 'proxénét',
-  'prostitut', 'drug', 'weed', 'heroin', 'gun',
-  'شرموطة', 'قحبة', 'مخدرات',
-];
-
-function isRequeteIllegale(texte) {
-  if (!texte) return false;
-  const t = texte.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  return MOTS_INTERDITS_ILLEGAL.some(mot =>
-    t.includes(mot.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
-  );
+// ─── Extrait le prix depuis la transcription si c'est un solo nombre ──────────
+function extractPriceFromTranscript(texte) {
+  if (!texte) return null;
+  const match = texte.trim().match(/^(\d+)(\s*(DH|MAD|درهم|dirhams?))?$/i);
+  return match ? Number(match[1]) : null;
 }
 
 // ─── Filtre input insuffisant ─────────────────────────────────────────────────
 function isInputInsuffisant(texte, prixDemande) {
-  if (prixDemande && Number(prixDemande) > 0) return false; // prix renseigné = suffisant
+  if (prixDemande && Number(prixDemande) > 0) return false;
   if (!texte || !texte.trim()) return true;
-  const mots = texte.trim().split(/\s+/).filter(Boolean);
-  const soloNombre = /^\d+$/.test(texte.trim());
-  return mots.length < 3 || soloNombre;
-}
-
-// ─── Prompt système unifié ────────────────────────────────────────────────────
-function buildPrompt({ category, location, priceAsked, text, lang }) {
-  const langLabel = {
-    fr: 'Français', en: 'English', es: 'Español',
-    de: 'Deutsch', ar: 'Arabe', darija: 'Darija marocaine (caractères arabes)',
-  }[lang] || 'Français';
-
-  return `Tu es Tooristoo Coach, expert en tarifs touristiques au Maroc.
-
-RÈGLES ABSOLUES :
-- N'utilise JAMAIS les mots : arnaque, escroc, fraude, tromperie, voleur, escroquerie, malhonnête. Remplace-les par : "écart de prix", "tarif non standard", "surfacturation", "écart tarifaire".
-- Ne fais JAMAIS de jugement moral sur le prestataire.
-- Utilise TOUJOURS "DH" (jamais "MAD") dans tous les champs texte.
-- Si la demande décrit une activité illégale ou hors tourisme, réponds UNIQUEMENT : {"erreur":"hors_champ"}
-- Si le contexte est trop vague pour analyser, réponds UNIQUEMENT : {"erreur":"contexte_insuffisant"}
-
-SITUATION À ANALYSER :
-- Catégorie : ${category || 'taxi'}
-- Ville : ${location || 'Marrakech'}
-- Prix demandé : ${priceAsked ? priceAsked + ' DH' : 'non spécifié'}
-- Description : ${text || 'aucune description'}
-
-Réponds en JSON avec ces champs exactement :
-- price_estimated_min (number) : prix minimum réel du marché en DH
-- price_estimated_max (number) : prix maximum réel du marché en DH
-- risk_level (string) : EXACTEMENT "low", "medium" ou "high" — rien d'autre
-- ai_analysis (string) : analyse factuelle en ${langLabel}, sans mots interdits
-- recommended_phrase (string) : phrase exacte à dire au prestataire en ${langLabel}
-- recommended_phrase_darija (string) : OBLIGATOIREMENT en caractères arabes uniquement — jamais de translittération latine. Ex: "أنا غادي نعطيك 100 درهم، واش مقبول؟"
-- strategy (string) : conseils de négociation en ${langLabel}
-- vendor_trust_score (number 1-5)
-- savings (number) : économie potentielle en DH (0 si prix non spécifié)`;
+  if (extractPriceFromTranscript(texte)) return false; // solo nombre = prix valide
+  return texte.trim().split(/\s+/).filter(Boolean).length < 2;
 }
 
 // ─── Composant ────────────────────────────────────────────────────────────────
@@ -112,49 +67,45 @@ export default function VoiceCoach({ lang, onAnalysisComplete, category: default
 
   // ── Analyse IA ──
   const analyzeWithAI = async (text) => {
-    // 1. Filtre illégal
-    const fullText = `${text} ${category}`;
-    if (isProhibitedRequest(fullText, lang)) {
+    // 1. Filtre illégal — isProhibitedRequest vient de pricing-knowledge-base
+    if (isProhibitedRequest(`${text} ${category}`, lang)) {
       setPopup('illegal');
       return;
     }
 
-    // 2. Extrait le prix depuis la transcription si c'est un solo nombre
-    //    Ex: transcription = "300" → extractedPrice = 300
-    const extractedPrice = extractPriceFromTranscript(text);
-    const effectivePriceAsked = priceAsked || extractedPrice || null;
+    // 2. Extrait le prix si la transcription est un solo nombre ("300")
+    const extractedPrice    = extractPriceFromTranscript(text);
+    const effectivePrice    = priceAsked || extractedPrice || null;
 
-    // 3. Filtre input insuffisant (plus souple en mode vocal)
-    if (isInputInsuffisant(text, effectivePriceAsked)) {
+    // 3. Filtre insuffisant
+    if (isInputInsuffisant(text, effectivePrice)) {
       setPopup('insufficient');
       return;
     }
 
     setIsAnalyzing(true);
     try {
+      // 4. analyzeNegotiation orchestre tout (fourchettes + prestataires + LLM)
       const result = await analyzeNegotiation({
         category,
         city:        location,
-        priceAsked:  effectivePriceAsked,
+        priceAsked:  effectivePrice,
         transcript:  text,
         description: text,
         lang,
       });
 
-      if (result?.refused) {
-        setPopup('illegal');
-        return;
-      }
+      if (result?.refused) { setPopup('illegal'); return; }
 
       onAnalysisComplete({
         ...result,
         transcript:  text,
         category,
         location,
-        price_asked: effectivePriceAsked ? Number(effectivePriceAsked) : 0,
+        price_asked: effectivePrice ? Number(effectivePrice) : 0,
       });
     } catch (err) {
-      console.error('Erreur analyse IA :', err);
+      console.error('Erreur analyse vocale :', err);
     } finally {
       setIsAnalyzing(false);
     }
