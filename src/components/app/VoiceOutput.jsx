@@ -42,8 +42,8 @@ export default function VoiceOutput({ text, lang = 'fr', label = 'Écouter' }) {
 
     // Select Arabic voice if available
     const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(v => v.lang === 'darija') ||
-      voices.find(v => v.lang === 'darija') ||
+    const preferredVoice = voices.find(v => v.lang === 'ar-MA') ||
+      voices.find(v => v.lang === 'ar-MA') ||
       voices.find(v => v.lang.startsWith('ar'));
 
     if (preferredVoice) {
