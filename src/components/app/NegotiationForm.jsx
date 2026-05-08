@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Loader2, Zap } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
 import { useT } from '../../lib/i18n';
-import { formatPricingPrompt, getAllCitiesPricingContext, isProhibitedRequest, getProhibitedResponse } from '../../lib/pricing-knowledge-base';
+import { analyzeNegotiation } from '../../lib/pricing-knowledge-base';
 import { CATEGORIES_DATA, CITIES_DATA } from '../../lib/categories-cities-translations';
 
 export default function NegotiationForm({ lang, onAnalysisComplete }) {
@@ -10,81 +9,40 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
   const l = lang || 'fr';
   const [form, setForm] = useState({ category: 'taxi', location: 'Marrakech', price_asked: '', description: '' });
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Vérification des demandes non acceptables (toutes langues)
-    const combined = `${form.category} ${form.description}`;
-    if (isProhibitedRequest(combined, lang)) {
-      alert(getProhibitedResponse(lang));
-      return;
-    }
-    
+    setError(null);
     setIsAnalyzing(true);
 
-    const pricingInfo = formatPricingPrompt(form.location, form.category);
-    const pricingContext = getAllCitiesPricingContext();
+    try {
+      const result = await analyzeNegotiation({
+        category: form.category,
+        city: form.location,
+        priceAsked: form.price_asked,
+        description: form.description,
+        lang,
+      });
 
-    const prompt = `Tu es Tooristoo, expert en prix touristiques au Maroc. Tu REFUSES catégoriquement toute demande illégale (drogues, prostitution, armes, trafic, blanchiment, contrefaçon). Si la demande est illégale, réponds uniquement: "DEMANDE_REFUSEE".
-
-
-
-${pricingContext}
-
-SITUATION ACTUELLE:
-- Catégorie: ${form.category}
-- Ville: ${form.location}
-- Prix demandé: ${form.price_asked} MAD
-- Description: ${form.description}
-
-INFORMATIONS SPÉCIFIQUES:
-${pricingInfo}
-
-Analyse cette demande de négociation et donne une réponse en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'Arabe' : lang === 'darija' ? 'Darija marocaine' : 'Français'}.
-
-IMPORTANT:
-- Utilise TOUJOURS "DH" (et jamais "MAD") pour mentionner les prix dans tous les champs texte (ai_analysis, strategy, recommended_phrase, recommended_phrase_darija).
-- Le champ recommended_phrase doit être une phrase EXACTE, ASSERTIVE et NATURELLE en ${lang === 'en' ? 'English' : lang === 'es' ? 'Español' : lang === 'de' ? 'Deutsch' : lang === 'ar' ? 'arabe (caractères arabes)' : lang === 'darija' ? 'Darija (caractères arabes)' : 'Français'} que le client peut dire directement au vendeur. Elle doit:
-  1. Être spécifique à cette situation exacte (pas générique)
-  2. Référencer les prix réels estimés ou le tarif du marché local
-  3. Proposer un prix alternatif réaliste si applicable
-  4. Être respectueux de la culture marocaine mais ferme
-  5. Correspondre exactement à la stratégie recommandée ci-dessus
-  6. Toujours proposer UNIQUEMENT un prestataire correspondant à la ville et la catégorie (et jamais proposer UN PRESTATAIRE QUI N'EST PAS RÉFÉRENCÉ) et mentionner le prestataire (provider_name,provider_url)
-- Le champ recommended_phrase_darija doit OBLIGATOIREMENT contenir la phrase en Darija marocaine écrite en CARACTÈRES ARABES UNIQUEMENT (jamais en lettres latines ni translittération). Exemple: "أنا غادي نعطيك 150 درهم، واش مقبول؟"
-- Le champ risk_level doit OBLIGATOIREMENT être l'une de ces valeurs exactes en anglais: "low", "medium", ou "high". Ne jamais utiliser d'autres valeurs.
-- Utiliser la base de connaissances pour évaluer si le prix demandé est juste, raisonnable ou abusif.`;
-
-    const result = await base44.integrations.Core.InvokeLLM({
-      prompt,
-      response_json_schema: {
-      type: 'object',
-      properties: {
-      price_estimated_min: { type: 'number' },
-      price_estimated_max: { type: 'number' },
-      risk_level: { type: 'string', enum: ['low', 'medium', 'high'] },
-      scam_detected: { type: 'boolean' },
-      ai_analysis: { type: 'string' },
-      recommended_phrase: { type: 'string' },
-      recommended_phrase_darija: { type: 'string' },
-      strategy: { type: 'string' },
-      vendor_trust_score: { type: 'number' },
-      provider_name: { type: 'string' },
-      provider_url: { type: 'string' },
-      savings: { type: 'number' },
-      }
-      }
-    });
-
-    setIsAnalyzing(false);
-    onAnalysisComplete({
-      ...result,
-      category: form.category,
-      location: form.location,
-      price_asked: Number(form.price_asked),
-      transcript: form.description,
-    });
+      onAnalysisComplete({
+        ...result,
+        transcript: form.description,
+        timestamp: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error('Analysis error:', err);
+      setError(
+        lang === 'en' ? 'Analysis failed. Please try again.' :
+        lang === 'es' ? 'El análisis falló. Inténtalo de nuevo.' :
+        lang === 'de' ? 'Analyse fehlgeschlagen. Bitte erneut versuchen.' :
+        lang === 'ar' ? 'فشل التحليل. حاول مرة أخرى.' :
+        lang === 'darija' ? 'التحليل ما خدامش. عاود جرّب.' :
+        'Analyse impossible. Réessayez.'
+      );
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
 
   return (
@@ -134,6 +92,12 @@ IMPORTANT:
         />
         <p className="text-xs text-gray-500 mt-1.5">{t('form_help_text')}</p>
       </div>
+
+      {error && (
+        <div className="p-3 bg-red-950/30 border border-red-500/30 rounded-lg text-xs text-red-400">
+          {error}
+        </div>
+      )}
 
       <button
         type="submit"
