@@ -22,7 +22,7 @@ export default function AnalysisSection({ lang }) {
     const utterance = new SpeechSynthesisUtterance(text);
     // Prefer Arabic voice for Darija
     const voices = window.speechSynthesis.getVoices();
-    const arabicVoice = voices.find(v => v.lang.startsWith('ar'));
+    const arabicVoice = voices.find(v => v.lang.startsWith('darija'));
     if (arabicVoice) utterance.voice = arabicVoice;
     utterance.lang = 'darija';
     utterance.rate = 1;
