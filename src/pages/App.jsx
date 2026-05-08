@@ -164,7 +164,7 @@ export default function AppPage() {
                 {/* Analyses restantes */}
                 {profile && (
                   <div className="flex justify-center mb-6">
-                    <div className="px-5 py-2.5 rounded-full text-sm font-medium"
+                    <div className="bg-shield-card border border-shield-border rounded-2xl p-6"
                       style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: profile.plan === 'free' ? '#d1d5db' : '#22c55e' }}>
                       {getAnalysesLabel()}
                     </div>
