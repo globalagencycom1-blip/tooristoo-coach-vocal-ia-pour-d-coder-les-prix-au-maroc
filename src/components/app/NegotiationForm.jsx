@@ -1,67 +1,16 @@
 import React, { useState } from 'react';
-import { Loader2, Zap, Shield } from 'lucide-react';
+import { Loader2, Zap } from 'lucide-react';
 import { useT } from '../../lib/i18n';
-import { base44 } from '@/api/base44Client';
+import { analyzeNegotiation, isProhibitedRequest } from '../../lib/pricing-knowledge-base';
 import { CATEGORIES_DATA, CITIES_DATA } from '../../lib/categories-cities-translations';
 
-// ─── Filtre requêtes illégales ────────────────────────────────────────────────
-const MOTS_INTERDITS_ILLEGAL = [
-  'prostitu', 'escort', 'pute', 'drogue', 'cannabis', 'cocaïne', 'cocaine',
-  'haschich', 'hashish', 'kif', 'deal', 'dealer', 'trafic', 'arme', 'weapon',
-  'sexe tarifé', 'passe', 'maquereau', 'proxénét',
-  'prostitut', 'drug', 'weed', 'heroin', 'gun',
-  'شرموطة', 'قحبة', 'مخدرات',
-];
-
-function isRequeteIllegale(texte) {
-  if (!texte) return false;
-  const t = texte.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  return MOTS_INTERDITS_ILLEGAL.some(mot =>
-    t.includes(mot.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
-  );
-}
-
-// ─── Filtre input insuffisant ─────────────────────────────────────────────────
+// ─── Filtre input insuffisant (côté client, avant appel) ─────────────────────
 function isInputInsuffisant(description, prixDemande) {
   if (prixDemande && Number(prixDemande) > 0) return false;
   if (!description || !description.trim()) return true;
   const mots = description.trim().split(/\s+/).filter(Boolean);
   const soloNombre = /^\d+$/.test(description.trim());
   return mots.length < 3 || soloNombre;
-}
-
-// ─── Prompt unifié (identique à VoiceCoach) ───────────────────────────────────
-function buildPrompt({ category, location, priceAsked, text, lang }) {
-  const langLabel = {
-    fr: 'Français', en: 'English', es: 'Español',
-    de: 'Deutsch', ar: 'Arabe', darija: 'Darija marocaine (caractères arabes)',
-  }[lang] || 'Français';
-
-  return `Tu es Tooristoo Coach, expert en tarifs touristiques au Maroc.
-
-RÈGLES ABSOLUES :
-- N'utilise JAMAIS les mots : arnaque, escroc, fraude, tromperie, voleur, escroquerie, malhonnête. Remplace-les par : "écart de prix", "tarif non standard", "surfacturation", "écart tarifaire".
-- Ne fais JAMAIS de jugement moral sur le prestataire.
-- Utilise TOUJOURS "DH" (jamais "MAD") dans tous les champs texte.
-- Si la demande décrit une activité illégale ou hors tourisme, réponds UNIQUEMENT : {"erreur":"hors_champ"}
-- Si le contexte est trop vague pour analyser, réponds UNIQUEMENT : {"erreur":"contexte_insuffisant"}
-
-SITUATION À ANALYSER :
-- Catégorie : ${category || 'taxi'}
-- Ville : ${location || 'Marrakech'}
-- Prix demandé : ${priceAsked ? priceAsked + ' DH' : 'non spécifié'}
-- Description : ${text || 'aucune description'}
-
-Réponds en JSON avec ces champs exactement :
-- price_estimated_min (number) : prix minimum réel du marché en DH
-- price_estimated_max (number) : prix maximum réel du marché en DH
-- risk_level (string) : EXACTEMENT "low", "medium" ou "high" — rien d'autre
-- ai_analysis (string) : analyse factuelle en ${langLabel}, sans mots interdits
-- recommended_phrase (string) : phrase exacte à dire au prestataire en ${langLabel}
-- recommended_phrase_darija (string) : OBLIGATOIREMENT en caractères arabes uniquement — jamais de translittération latine. Ex: "أنا غادي نعطيك 100 درهم، واش مقبول؟"
-- strategy (string) : conseils de négociation en ${langLabel}
-- vendor_trust_score (number 1-5)
-- savings (number) : économie potentielle en DH (0 si prix non spécifié)`;
 }
 
 // ─── Composant ────────────────────────────────────────────────────────────────
@@ -76,9 +25,10 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 1. Filtre illégal
+    // 1. Filtre illégal — utilise isProhibitedRequest de pricing-knowledge-base
+    //    (liste exhaustive multi-langues déjà définie dedans)
     const fullText = `${form.description} ${form.category}`;
-    if (isRequeteIllegale(fullText)) {
+    if (isProhibitedRequest(fullText, lang)) {
       setPopup('illegal');
       return;
     }
@@ -91,44 +41,29 @@ export default function NegotiationForm({ lang, onAnalysisComplete }) {
 
     setIsAnalyzing(true);
     try {
-      const prompt = buildPrompt({
-        category:   form.category,
-        location:   form.location,
-        priceAsked: form.price_asked,
-        text:       form.description,
+      // 3. analyzeNegotiation orchestre tout :
+      //    - fourchettes depuis PRICING_KNOWLEDGE_BASE (pas d'hallucination)
+      //    - prestataires certifiés depuis Provider (base de données réelle)
+      //    - LLM uniquement pour analyse texte + stratégie + phrase darija
+      //    - sanitize automatique des mots interdits
+      const result = await analyzeNegotiation({
+        category:    form.category,
+        city:        form.location,
+        priceAsked:  form.price_asked,
+        description: form.description,
         lang,
       });
 
-      const result = await base44.integrations.Core.InvokeLLM({
-        prompt,
-        response_json_schema: {
-          type: 'object',
-          properties: {
-            price_estimated_min:       { type: 'number' },
-            price_estimated_max:       { type: 'number' },
-            risk_level:                { type: 'string', enum: ['low', 'medium', 'high'] },
-            ai_analysis:               { type: 'string' },
-            recommended_phrase:        { type: 'string' },
-            recommended_phrase_darija: { type: 'string' },
-            strategy:                  { type: 'string' },
-            vendor_trust_score:        { type: 'number' },
-            savings:                   { type: 'number' },
-          }
-        }
-      });
-
-      // Vérifie si l'IA a quand même renvoyé une erreur
-      if (result?.erreur === 'hors_champ')          { setPopup('illegal');      return; }
-      if (result?.erreur === 'contexte_insuffisant') { setPopup('insufficient'); return; }
+      // Si analyzeNegotiation a détecté un refus (illégal détecté côté LLM aussi)
+      if (result?.refused) {
+        setPopup('illegal');
+        return;
+      }
 
       onAnalysisComplete({
         ...result,
-        transcript:          form.description,
-        category:            form.category,
-        location:            form.location,
-        price_asked:         form.price_asked ? Number(form.price_asked) : 0,
-        indice_prestataire:  result.vendor_trust_score ?? null,
-        timestamp:           new Date().toISOString(),
+        transcript: form.description,
+        timestamp:  new Date().toISOString(),
       });
     } catch (err) {
       console.error('Erreur analyse IA :', err);
