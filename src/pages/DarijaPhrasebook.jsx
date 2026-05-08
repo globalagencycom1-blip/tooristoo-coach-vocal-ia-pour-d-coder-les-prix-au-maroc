@@ -75,117 +75,97 @@ function normalizeDarija(text) {
     .toLowerCase();
 }
 
-// ─── Préchargement des voix TTS au démarrage (fix Safari iOS) ────────────────
-// Safari iOS charge les voix de façon asynchrone. On force le chargement
-// dès que le module est importé, avant tout clic utilisateur.
-if (typeof window !== 'undefined' && window.speechSynthesis) {
-  // Déclenche le chargement des voix
-  window.speechSynthesis.getVoices();
-  // Safari iOS nécessite aussi cet event
-  window.speechSynthesis.onvoiceschanged = () => {
-    window.speechSynthesis.getVoices();
-  };
+// ─── VoiceButton — Safari iOS compatible via Google TTS URL ──────────────────
+//
+// Safari iOS bloque speechSynthesis dans les PWA/WebViews.
+// Solution : on génère une URL MP3 Google Translate TTS et on la joue
+// via un élément <audio> rendu dans le DOM — la seule méthode fiable sur iOS.
+//
+// Priorité :
+//   1. MP3 pré-enregistré local  (quand disponible)
+//   2. Google Translate TTS URL  (fallback immédiat, fonctionne sur iOS)
+
+function googleTtsUrl(text) {
+  return `https://translate.google.com/translate_tts?ie=UTF-8&tl=ar&client=tw-ob&q=${encodeURIComponent(text)}`;
 }
 
-// ─── Fallback TTS — fix Safari iOS ───────────────────────────────────────────
-function fallbackTTS(text, setStatus) {
-  const synth = window.speechSynthesis;
-  if (!synth) return;
-
-  synth.cancel();
-
-  const speak = () => {
-    const utt = new SpeechSynthesisUtterance(text);
-    utt.rate   = 0.85;
-    utt.volume = 1;
-
-    // Safari iOS : on tente d'abord ar-MA, sinon ar, sinon on laisse le
-    // navigateur choisir (il lira quand même le texte arabe)
-    const voices = synth.getVoices();
-    const voice  = voices.find(v => v.lang === 'ar-MA')
-                || voices.find(v => v.lang === 'ar-SA')
-                || voices.find(v => v.lang.startsWith('ar'));
-    if (voice) {
-      utt.voice = voice;
-      utt.lang  = voice.lang;
-    } else {
-      // Pas de voix arabe dispo — Safari iOS lira quand même avec voix par défaut
-      utt.lang = 'ar';
-    }
-
-    utt.onstart = () => setStatus('playing');
-    utt.onend   = () => setStatus('idle');
-    utt.onerror = () => setStatus('idle');
-    synth.speak(utt);
-  };
-
-  // Safari iOS : si les voix ne sont pas encore chargées, on attend
-  if (synth.getVoices().length > 0) {
-    speak();
-  } else {
-    synth.onvoiceschanged = () => { speak(); };
-  }
-}
-
-// ─── Composant VoiceButton — compatible iOS Safari / Android ─────────────────
 function VoiceButton({ darija }) {
-  const [status, setStatus] = useState('idle');
-  const audioRef = useRef(null);
+  const [status, setStatus] = useState('idle'); // idle | playing
+  const [audioSrc, setAudioSrc] = useState(null);
+  const audioElRef = useRef(null);
 
   const getMp3 = () => DARIJA_AUDIO_MAP[normalizeDarija(darija)] || null;
 
   const handleClick = () => {
     // Stop
     if (status === 'playing') {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-        audioRef.current = null;
+      if (audioElRef.current) {
+        audioElRef.current.pause();
+        audioElRef.current.currentTime = 0;
       }
-      window.speechSynthesis?.cancel();
       setStatus('idle');
+      setAudioSrc(null);
       return;
     }
 
+    // Choisit la source : MP3 local ou Google TTS
     const filename = getMp3();
+    const src = filename
+      ? `${AUDIO_BASE_URL}/${filename}`
+      : googleTtsUrl(darija);
 
-    if (filename) {
-      // MP3 dispo : lecture directe, synchrone dans le handler
-      const audio = new Audio(`${AUDIO_BASE_URL}/${filename}`);
-      audioRef.current = audio;
-      audio.load();
-      const p = audio.play();
-      if (p !== undefined) {
-        setStatus('playing');
-        p.then(() => {
-          audio.onended = () => setStatus('idle');
-        }).catch(() => {
-          audioRef.current = null;
-          fallbackTTS(darija, setStatus);
-        });
-      }
-    } else {
-      // Pas de MP3 : TTS directement
-      setStatus('playing');
-      fallbackTTS(darija, setStatus);
-    }
+    setAudioSrc(src);
+    setStatus('playing');
+    // La lecture démarre via onCanPlay sur l'élément <audio> ci-dessous
+  };
+
+  const handleCanPlay = () => {
+    audioElRef.current?.play().catch(() => {
+      setStatus('idle');
+      setAudioSrc(null);
+    });
+  };
+
+  const handleEnded = () => {
+    setStatus('idle');
+    setAudioSrc(null);
+  };
+
+  const handleError = () => {
+    setStatus('idle');
+    setAudioSrc(null);
   };
 
   return (
-    <button
-      onClick={handleClick}
-      className={`flex-shrink-0 p-2 rounded-lg transition-all opacity-60 hover:opacity-100
-        ${status === 'playing'
-          ? 'text-shield-green bg-shield-green/10'
-          : 'text-gray-400 hover:text-white bg-shield-border/50 hover:bg-shield-border'
-        }`}
-      title={status === 'playing' ? 'Arrêter' : 'Écouter la prononciation'}
-    >
-      {status === 'playing'
-        ? <VolumeX className="w-4 h-4" />
-        : <Volume2 className="w-4 h-4" />
-      }
-    </button>
+    <>
+      {/* Élément audio dans le DOM — requis par Safari iOS */}
+      {audioSrc && (
+        <audio
+          ref={audioElRef}
+          src={audioSrc}
+          onCanPlay={handleCanPlay}
+          onEnded={handleEnded}
+          onError={handleError}
+          playsInline
+          style={{ display: 'none' }}
+        />
+      )}
+
+      <button
+        onClick={handleClick}
+        className={`flex-shrink-0 p-2 rounded-lg transition-all opacity-60 hover:opacity-100
+          ${status === 'playing'
+            ? 'text-shield-green bg-shield-green/10'
+            : 'text-gray-400 hover:text-white bg-shield-border/50 hover:bg-shield-border'
+          }`}
+        title={status === 'playing' ? 'Arrêter' : 'Écouter la prononciation'}
+      >
+        {status === 'playing'
+          ? <VolumeX className="w-4 h-4" />
+          : <Volume2 className="w-4 h-4" />
+        }
+      </button>
+    </>
   );
 }
 
