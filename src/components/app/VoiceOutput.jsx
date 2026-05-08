@@ -44,7 +44,7 @@ export default function VoiceOutput({ text, lang = 'fr', label = 'Écouter' }) {
     const voices = window.speechSynthesis.getVoices();
     const preferredVoice = voices.find(v => v.lang === 'ar-MA') ||
       voices.find(v => v.lang === 'ar-MA') ||
-      voices.find(v => v.lang.startsWith('darija'));
+      voices.find(v => v.lang.startsWith('ar-MA'));
 
     if (preferredVoice) {
       utterance.voice = preferredVoice;
