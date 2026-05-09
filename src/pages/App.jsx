@@ -155,7 +155,6 @@ export default function AppPage() {
             ) : analysis ? (
               <AnalysisResult analysis={analysis} lang={lang} onReset={handleReset} />
             ) : isLimitReached() ? (
-              // ── SEULE MODIFICATION : passage de profile en prop ──
               <PlanLimitGate lang={lang} profile={profile} />
             ) : (
               <>
@@ -236,11 +235,11 @@ export default function AppPage() {
               </span>
             </div>
             {(profile.plan === 'free' || profile.plan === 'voyageur') && (
-              <a href="/#pricing" className="flex items-center gap-1 text-xs text-shield-gold hover:text-yellow-300">
-                {profile.plan === 'free'
-                  ? `Passer Voyageur`
-                  : `Passer Voyageur+`
-                }
+              <a
+                href={profile.plan === 'free' ? '/#pricing-voyageur' : '/#pricing-voyageur-plus'}
+                className="flex items-center gap-1 text-xs text-shield-gold hover:text-yellow-300"
+              >
+                {profile.plan === 'free' ? 'Passer Voyageur' : 'Passer Voyageur+'}
                 <ChevronRight className="w-3 h-3" />
               </a>
             )}
