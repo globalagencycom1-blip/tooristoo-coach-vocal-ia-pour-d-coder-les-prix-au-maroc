@@ -5,28 +5,31 @@ import { useT } from '../../lib/i18n';
 import { getPricingT } from '../../lib/pricing-plans-translations';
 import { base44 } from '@/api/base44Client';
 
+// ─── Map plan.key → id d'ancre ───────────────────────────────────────────────
+const PLAN_ANCHOR = {
+  free:          'pricing-free',
+  voyageur:      'pricing-voyageur',
+  voyageur_plus: 'pricing-voyageur-plus',
+};
+
 export default function PricingSection({ lang }) {
   const t = useT(lang);
   const p = (key) => getPricingT(key, lang);
   const [loadingPlan, setLoadingPlan] = useState(null);
 
   const handleSubscribe = async (planKey) => {
-    // Vérifier si on est dans un iframe (app preview Base44)
     if (window.self !== window.top) {
       alert('Le paiement fonctionne uniquement depuis l\'application publiée. Ouvrez tooristoo.com pour vous abonner.');
       return;
     }
-
     setLoadingPlan(planKey);
     try {
       const response = await base44.functions.invoke('stripeCheckout', {
         plan: planKey,
         success_url: `${window.location.origin}/?payment=success`,
-        cancel_url: `${window.location.origin}/?payment=cancelled`,
+        cancel_url:  `${window.location.origin}/?payment=cancelled`,
       });
-      if (response.data?.url) {
-        window.location.href = response.data.url;
-      }
+      if (response.data?.url) window.location.href = response.data.url;
     } catch (error) {
       console.error('Checkout error:', error);
       alert('Une erreur est survenue. Veuillez réessayer.');
@@ -40,13 +43,7 @@ export default function PricingSection({ lang }) {
       key: 'free',
       name: p('plan_free'),
       price: p('plan_free_price'),
-      features: [
-        p('plan_free_feat1'),
-        p('plan_free_feat2'),
-        p('plan_free_feat3'),
-        p('plan_free_feat4'),
-        p('plan_free_feat5'),
-      ],
+      features: [p('plan_free_feat1'), p('plan_free_feat2'), p('plan_free_feat3'), p('plan_free_feat4'), p('plan_free_feat5')],
       popular: false,
       isPaid: false,
       cta: '/app',
@@ -55,13 +52,7 @@ export default function PricingSection({ lang }) {
       key: 'voyageur',
       name: p('plan_voyageur'),
       price: p('plan_voyageur_price'),
-      features: [
-        p('plan_voyageur_feat1'),
-        p('plan_voyageur_feat2'),
-        p('plan_voyageur_feat3'),
-        p('plan_voyageur_feat4'),
-        p('plan_voyageur_feat5'),
-      ],
+      features: [p('plan_voyageur_feat1'), p('plan_voyageur_feat2'), p('plan_voyageur_feat3'), p('plan_voyageur_feat4'), p('plan_voyageur_feat5')],
       popular: true,
       isPaid: true,
     },
@@ -69,13 +60,7 @@ export default function PricingSection({ lang }) {
       key: 'voyageur_plus',
       name: p('plan_voyageur_plus'),
       price: p('plan_voyageur_plus_price'),
-      features: [
-        p('plan_voyageur_plus_feat1'),
-        p('plan_voyageur_plus_feat2'),
-        p('plan_voyageur_plus_feat3'),
-        p('plan_voyageur_plus_feat4'),
-        p('plan_voyageur_plus_feat5'),
-      ],
+      features: [p('plan_voyageur_plus_feat1'), p('plan_voyageur_plus_feat2'), p('plan_voyageur_plus_feat3'), p('plan_voyageur_plus_feat4'), p('plan_voyageur_plus_feat5')],
       popular: false,
       isPaid: true,
     },
@@ -86,13 +71,16 @@ export default function PricingSection({ lang }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="font-poppins font-black text-4xl md:text-5xl text-white">{t('pricing_title')}</h2>
-          <p className="mt-4 text-gray-400 text-lg">Commencez gratuitement, passez au plan Voyageur ou au plan Voyageur Plus quand vous en avez besoin</p>
+          <p className="mt-4 text-gray-400 text-lg">
+            Commencez gratuitement, passez au plan Voyageur ou au plan Voyageur Plus quand vous en avez besoin
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {plans.map(plan => (
             <div
               key={plan.key}
+              id={PLAN_ANCHOR[plan.key]}
               className={`relative rounded-2xl p-6 flex flex-col transition-all ${
                 plan.popular
                   ? 'bg-shield-green/5 border-2 border-shield-green card-glow md:scale-105'
@@ -137,11 +125,10 @@ export default function PricingSection({ lang }) {
                       : 'border border-shield-border text-gray-300 hover:border-shield-green/50 hover:text-shield-green'
                   }`}
                 >
-                  {loadingPlan === plan.key ? (
-                    <><Loader2 className="w-4 h-4 animate-spin" /> Chargement...</>
-                  ) : (
-                    p('choose_plan')
-                  )}
+                  {loadingPlan === plan.key
+                    ? <><Loader2 className="w-4 h-4 animate-spin" /> Chargement...</>
+                    : p('choose_plan')
+                  }
                 </button>
               ) : (
                 <Link
