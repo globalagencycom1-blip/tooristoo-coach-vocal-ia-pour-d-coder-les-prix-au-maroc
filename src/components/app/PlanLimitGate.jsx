@@ -128,19 +128,19 @@ export default function PlanLimitGate({ lang = 'fr', profile }) {
             <button
               onClick={() => handleSubscribe('voyageur')}
               disabled={loadingPlan === 'voyageur'}
-              className="flex items-center justify-between w-full px-5 py-4 bg-shield-green/10 border-2 border-shield-green rounded-xl hover:bg-shield-green/20 transition-all disabled:opacity-60"
+              className="flex flex-col w-full px-5 py-4 bg-shield-green/10 border-2 border-shield-green rounded-xl hover:bg-shield-green/20 transition-all disabled:opacity-60 text-left"
             >
-              <div className="text-left">
+              <div className="flex items-center justify-between w-full mb-1">
                 <div className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-shield-green" />
+                  <Zap className="w-4 h-4 text-shield-green flex-shrink-0" />
                   <span className="text-white font-bold text-sm">{l.voyageur}</span>
                 </div>
-                <span className="text-gray-400 text-xs ml-6">{l.voyageur_desc}</span>
+                {loadingPlan === 'voyageur'
+                  ? <Loader2 className="w-4 h-4 text-shield-green animate-spin" />
+                  : <span className="text-xs bg-shield-green text-black font-bold px-2 py-0.5 rounded-full whitespace-nowrap">{l.recommended}</span>
+                }
               </div>
-              {loadingPlan === 'voyageur'
-                ? <Loader2 className="w-4 h-4 text-shield-green animate-spin" />
-                : <span className="text-xs bg-shield-green text-black font-bold px-2 py-0.5 rounded-full">{l.recommended}</span>
-              }
+              <span className="text-gray-400 text-xs ml-6">{l.voyageur_desc}</span>
             </button>
 
             <button
