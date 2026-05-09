@@ -7,7 +7,7 @@ const LABELS = {
     title:             'Limite mensuelle atteinte',
     subtitle_free:     'Vous avez utilisé vos 3 analyses gratuites ce mois-ci. Passez au plan Voyageur pour continuer.',
     subtitle_voyageur: 'Vous avez utilisé vos 50 analyses ce mois-ci. Passez au plan Voyageur+ pour continuer.',
-    voyageur:          'Plan Voyageur — 5€/mois',
+    voyageur:          'Voyageur — 5€/mois',
     voyageur_desc:     '50 analyses par mois',
     voyageur_plus:     'Plan Voyageur+ — 9€/mois',
     voyageur_plus_desc:'100 analyses par mois',
@@ -19,7 +19,7 @@ const LABELS = {
     title:             'Monthly limit reached',
     subtitle_free:     'You have used your 3 free analyses this month. Upgrade to the Traveler plan to continue.',
     subtitle_voyageur: 'You have used your 50 analyses this month. Upgrade to Traveler+ to continue.',
-    voyageur:          'Traveler Plan — €5/month',
+    voyageur:          'Voyageur — €5/month',
     voyageur_desc:     '50 analyses per month',
     voyageur_plus:     'Traveler+ Plan — €9/month',
     voyageur_plus_desc:'100 analyses per month',
@@ -31,7 +31,7 @@ const LABELS = {
     title:             'Límite mensual alcanzado',
     subtitle_free:     'Has usado tus 3 análisis gratuitos este mes. Cambia al plan Viajero para continuar.',
     subtitle_voyageur: 'Has usado tus 50 análisis este mes. Cambia al plan Viajero+ para continuar.',
-    voyageur:          'Plan Viajero — 5€/mes',
+    voyageur:          'Viajero — 5€/mes',
     voyageur_desc:     '50 análisis por mes',
     voyageur_plus:     'Plan Viajero+ — 9€/mes',
     voyageur_plus_desc:'100 análisis por mes',
@@ -131,13 +131,13 @@ export default function PlanLimitGate({ lang = 'fr', profile }) {
               className="flex flex-col w-full px-5 py-4 bg-shield-green/10 border-2 border-shield-green rounded-xl hover:bg-shield-green/20 transition-all disabled:opacity-60 text-left"
             >
               <div className="flex items-center justify-between w-full mb-1">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 min-w-0">
                   <Zap className="w-4 h-4 text-shield-green flex-shrink-0" />
-                  <span className="text-white font-bold text-sm">{l.voyageur}</span>
+                  <span className="text-white font-bold text-sm whitespace-nowrap">{l.voyageur}</span>
                 </div>
                 {loadingPlan === 'voyageur'
-                  ? <Loader2 className="w-4 h-4 text-shield-green animate-spin" />
-                  : <span className="text-xs bg-shield-green text-black font-bold px-2 py-0.5 rounded-full whitespace-nowrap">{l.recommended}</span>
+                  ? <Loader2 className="w-4 h-4 text-shield-green animate-spin flex-shrink-0" />
+                  : <span className="text-xs bg-shield-green text-black font-bold px-2 py-0.5 rounded-full whitespace-nowrap flex-shrink-0 ml-2">{l.recommended}</span>
                 }
               </div>
               <span className="text-gray-400 text-xs ml-6">{l.voyageur_desc}</span>
