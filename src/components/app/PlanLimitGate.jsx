@@ -1,259 +1,138 @@
-import React, { useState, useEffect } from 'react';
-import { Shield, Mic, LayoutDashboard, History, ChevronRight } from 'lucide-react';
-import PageHelmet from '../lib/seo-helmet';
+import React, { useState } from 'react';
+import { Zap, Lock, Loader2 } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
-import { useLang } from '../lib/LanguageContext';
-import { useT } from '../lib/i18n';
-import { getDashboardT } from '../lib/dashboard-translations';
-import Navbar from '../components/Navbar';
-import VoiceCoach from '../components/app/VoiceCoach';
-import NegotiationForm from '../components/app/NegotiationForm';
-import AnalysisResult from '../components/app/AnalysisResult';
-import Dashboard from '../components/app/Dashboard';
-import DashboardStats from '../components/app/DashboardStats';
-import AuthGate from '../components/app/AuthGate';
-import PlanLimitGate from '../components/app/PlanLimitGate';
 
-// ─── Formate le slug du plan pour l'affichage ─────────────────────────────────
-function formatPlanLabel(plan) {
-  const labels = {
-    free:          'Free',
-    voyageur:      'Voyageur',
-    voyageur_plus: 'Voyageur Plus',
-    pro:           'Voyageur Plus',
-  };
-  return labels[plan] || plan;
-}
+const LABELS = {
+  fr: {
+    title: 'Limite mensuelle atteinte',
+    subtitle: 'Vous avez utilisé vos 3 analyses gratuites ce mois-ci. Passez au plan Voyageur ou Voyageur+ pour continuer.',
+    voyageur: 'Plan Voyageur — 5€/mois',
+    voyageur_desc: '50 analyses par mois',
+    voyageur_plus: 'Plan Voyageur+ — 9€/mois',
+    voyageur_plus_desc: '100 analyses par mois',
+    loading: 'Chargement...',
+    iframe_warning: 'Le paiement fonctionne uniquement depuis l\'application publiée.',
+  },
+  en: {
+    title: 'Monthly limit reached',
+    subtitle: 'You have used your 3 free analyses this month. Upgrade to the Traveler or Traveler+ plan to continue.',
+    voyageur: 'Traveler Plan — €5/month',
+    voyageur_desc: '50 analyses per month',
+    voyageur_plus: 'Traveler+ Plan — €9/month',
+    voyageur_plus_desc: '100 analyses per month',
+    loading: 'Loading...',
+    iframe_warning: 'Payment only works from the published app.',
+  },
+  es: {
+    title: 'Límite mensual alcanzado',
+    subtitle: 'Has usado tus 3 análisis gratuitos este mes. Cambia al plan Viajero o Viajero+ para continuar.',
+    voyageur: 'Plan Viajero — 5€/mes',
+    voyageur_desc: '50 análisis por mes',
+    voyageur_plus: 'Plan Viajero+ — 9€/mes',
+    voyageur_plus_desc: '100 análisis por mes',
+    loading: 'Cargando...',
+    iframe_warning: 'El pago solo funciona desde la app publicada.',
+  },
+  de: {
+    title: 'Monatslimit erreicht',
+    subtitle: 'Sie haben Ihre 3 kostenlosen Analysen diesen Monat verbraucht. Wechseln Sie zum Tarif Reisender oder Reisender+, um fortzufahren.',
+    voyageur: 'Reisender-Plan — 5€/Monat',
+    voyageur_desc: '50 Analysen pro Monat',
+    voyageur_plus: 'Reisender+-Plan — 9€/Monat',
+    voyageur_plus_desc: '100 Analysen pro Monat',
+    loading: 'Lädt...',
+    iframe_warning: 'Zahlung funktioniert nur in der veröffentlichten App.',
+  },
+  ar: {
+    title: 'تم الوصول إلى الحد الشهري',
+    subtitle: 'لقد استخدمت تحليلاتك الثلاث المجانية هذا الشهر. انتقِل إلى باقة المسافر أو المسافر+ للمتابعة.',
+    voyageur: 'خطة المسافر — 5€/شهر',
+    voyageur_desc: '50 تحليل شهرياً',
+    voyageur_plus: 'خطة المسافر+ — 9€/شهر',
+    voyageur_plus_desc: '100 تحليل شهرياً',
+    loading: 'جاري التحميل...',
+    iframe_warning: 'الدفع يعمل فقط من التطبيق المنشور.',
+  },
+  darija: {
+    title: 'وصلتي للحد الشهري',
+    subtitle: 'استعملتي التحليلات المجانية ديال الشهر. بدّل لباقة المسافر ولا المسافر+ باش تكمل.',
+    voyageur: 'فورمول المسافر — 5€/شهر',
+    voyageur_desc: '50 تحليل فالشهر',
+    voyageur_plus: 'فورمول المسافر+ — 9€/شهر',
+    voyageur_plus_desc: '100 تحليل فالشهر',
+    loading: 'كيتحمل...',
+    iframe_warning: 'الدفع خدام غير من التطبيق المنشور.',
+  },
+};
 
-const TABS = [
-  { id: 'coach',     icon: Mic,             labelKey: 'nav_app' },
-  { id: 'dashboard', icon: LayoutDashboard, labelKey: 'dashboard_title' },
-  { id: 'history',   icon: History,         labelKey: 'history_title' },
-];
+export default function PlanLimitGate({ lang = 'fr' }) {
+  const l = LABELS[lang] || LABELS.fr;
+  const [loadingPlan, setLoadingPlan] = useState(null);
 
-export default function AppPage() {
-  const { lang } = useLang();
-  const t  = useT(lang);
-  const dt = (key) => getDashboardT(key, lang);
-
-  const [activeTab,    setActiveTab]    = useState('coach');
-  const [inputMode,    setInputMode]    = useState('voice');
-  const [analysis,     setAnalysis]     = useState(null);
-  const [negotiations, setNegotiations] = useState([]);
-  const [profile,      setProfile]      = useState(null);
-  const [user,         setUser]         = useState(null);
-  const [authChecked,  setAuthChecked]  = useState(false);
-  const [category,     setCategory]     = useState('taxi');
-  const [location,     setLocation]     = useState('Marrakech');
-  const [priceAsked,   setPriceAsked]   = useState('');
-
-  useEffect(() => { loadData(); }, []);
-
-  const loadData = async () => {
-    const currentUser = await base44.auth.me().catch(() => null);
-    setUser(currentUser);
-    setAuthChecked(true);
-    if (!currentUser) return;
-
-    const serverNegs = await base44.entities.Negotiation.filter(
-      { user_email: currentUser.email }, '-created_date', 50
-    ).catch(() => []);
-    setNegotiations(serverNegs.map(n => n.data ? { id: n.id, created_date: n.created_date, ...n.data } : n));
-
-    const profiles = await base44.entities.UserProfile.filter({ user_email: currentUser.email }).catch(() => []);
-    if (profiles.length > 0) {
-      setProfile(profiles[0]);
-    } else {
-      const newProfile = await base44.entities.UserProfile.create({
-        user_email: currentUser.email, plan: 'free', language: lang,
+  const handleSubscribe = async (plan) => {
+    if (window.self !== window.top) {
+      alert(l.iframe_warning);
+      return;
+    }
+    setLoadingPlan(plan);
+    try {
+      const response = await base44.functions.invoke('stripeCheckout', {
+        plan,
+        success_url: `${window.location.origin}/app?payment=success`,
+        cancel_url: `${window.location.origin}/app`,
       });
-      setProfile(newProfile);
+      if (response.data?.url) {
+        window.location.href = response.data.url;
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoadingPlan(null);
     }
   };
-
-  const isLimitReached = () => {
-    if (!profile) return false;
-    return profile.plan === 'free' && (profile.monthly_analyses_used || 0) >= 3;
-  };
-
-  const getAnalysesLabel = () => {
-    if (!profile) return '';
-    const used = profile.monthly_analyses_used || 0;
-    if (profile.plan === 'free') {
-      const r = Math.max(0, 3 - used);
-      return { fr: `${r} analyse${r !== 1 ? 's' : ''} restante${r !== 1 ? 's' : ''}`, en: `${r} analysis remaining`, es: `${r} análisis restantes`, de: `${r} Analysen verbleibend`, ar: `${r} تحليلات متبقية`, darija: `${r} تحليلات متبقية` }[lang] || `${r} restantes`;
-    }
-    const max = (profile.plan === 'voyageur') ? 50 : 100;
-    const r   = Math.max(0, max - used);
-    return `${r}/${max} analyses`;
-  };
-
-  const handleAnalysisComplete = async (result) => {
-    setAnalysis(result);
-    setActiveTab('coach');
-    if (!user) return;
-
-    // Calcule l'écart réel : savings ou price_asked - price_estimated_max
-    const ecart = result.savings > 0
-      ? result.savings
-      : (result.price_asked > 0 && result.price_estimated_max > 0)
-        ? Math.max(0, result.price_asked - result.price_estimated_max)
-        : 0;
-
-    const saved = await base44.entities.Negotiation.create({
-      ...result,
-      savings:    ecart,
-      user_email: user.email,
-      language:   lang,
-    });
-    setNegotiations(prev => [saved, ...prev]);
-
-    if (profile) {
-      const upd = {
-        total_negotiations:    (profile.total_negotiations    || 0) + 1,
-        total_savings:         (profile.total_savings         || 0) + ecart,
-        scams_avoided:         (profile.scams_avoided         || 0) + (result.scam_detected ? 1 : 0),
-        monthly_analyses_used: (profile.monthly_analyses_used || 0) + 1,
-      };
-      await base44.entities.UserProfile.update(profile.id, upd);
-      setProfile(prev => ({ ...prev, ...upd }));
-    }
-  };
-
-  const handleReset = () => setAnalysis(null);
 
   return (
-    <div className="min-h-screen bg-shield-dark">
-      <PageHelmet page="app" lang={lang} />
-      <Navbar />
-
-      <div className="max-w-2xl mx-auto px-4 pt-20 pb-24">
-
-        {/* Header */}
-        <div className="text-center py-6">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <Shield className="w-6 h-6 text-shield-green" />
-            <h1 className="font-poppins font-bold text-white text-xl">{t('app_page_title')}</h1>
-          </div>
-          <p className="text-shield-green text-sm">{t('app_page_subtitle')}</p>
+    <div className="bg-shield-card border border-shield-border rounded-2xl p-8 text-center">
+      <div className="flex justify-center mb-4">
+        <div className="w-16 h-16 rounded-full bg-shield-gold/10 border border-shield-gold/30 flex items-center justify-center">
+          <Lock className="w-8 h-8 text-shield-gold" />
         </div>
+      </div>
 
-        {/* ── Tabs L'App / Tableau de Bord / Historique ── */}
-        <div className="flex gap-1 bg-shield-card border border-shield-border rounded-2xl p-1 mb-6">
-          {TABS.map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold transition-all ${
-                activeTab === tab.id
-                  ? 'bg-shield-green text-black'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              <tab.icon className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">
-                {tab.labelKey === 'recorder_tab' ? dt(tab.labelKey) : t(tab.labelKey)}
-              </span>
-            </button>
-          ))}
-        </div>
+      <h2 className="font-poppins font-bold text-white text-xl mb-3">{l.title}</h2>
+      <p className="text-gray-400 text-sm mb-8 max-w-sm mx-auto">{l.subtitle}</p>
 
-        {/* ── Contenu ── */}
-        {activeTab === 'coach' && (
-          <div className="bg-shield-card border border-shield-border rounded-2xl p-6">
-            {authChecked && !user ? (
-              <AuthGate lang={lang} />
-            ) : analysis ? (
-              <AnalysisResult analysis={analysis} lang={lang} onReset={handleReset} />
-            ) : isLimitReached() ? (
-              <PlanLimitGate lang={lang} profile={profile} />
-            ) : (
-              <>
-                {/* Analyses restantes */}
-                {profile && (
-                  <div className="flex justify-center mb-6">
-                    <div
-                      className="px-5 py-2.5 rounded-full text-sm font-medium"
-                      style={{
-                        background: 'rgba(255,255,255,0.06)',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        color: profile.plan === 'free' ? '#d1d5db' : '#22c55e',
-                      }}
-                    >
-                      {getAnalysesLabel()}
-                    </div>
-                  </div>
-                )}
-
-                {/* ── Toggle Vocal / Texte ── */}
-                <div className="flex gap-1 bg-shield-dark border border-shield-border rounded-2xl p-1 mb-6">
-                  <button
-                    onClick={() => setInputMode('voice')}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                      inputMode === 'voice'
-                        ? 'bg-shield-green text-black'
-                        : 'text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    <Mic className="w-4 h-4" />
-                    {t('input_mode_voice')}
-                  </button>
-                  <button
-                    onClick={() => setInputMode('form')}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                      inputMode === 'form'
-                        ? 'bg-shield-green text-black'
-                        : 'text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                    {t('input_mode_text')}
-                  </button>
-                </div>
-
-                {inputMode === 'voice' ? (
-                  <VoiceCoach
-                    lang={lang}
-                    onAnalysisComplete={handleAnalysisComplete}
-                    category={category}
-                    location={location}
-                    priceAsked={priceAsked}
-                  />
-                ) : (
-                  <NegotiationForm lang={lang} onAnalysisComplete={handleAnalysisComplete} />
-                )}
-              </>
-            )}
-          </div>
-        )}
-
-        {activeTab === 'dashboard' && (
-          <DashboardStats lang={lang} profile={profile} negotiations={negotiations} />
-        )}
-
-        {activeTab === 'history' && (
-          <Dashboard lang={lang} profile={profile} negotiations={negotiations} />
-        )}
-
-        {/* ── Plan badge ── */}
-        {profile && (
-          <div className="mt-4 flex items-center justify-between p-3 bg-shield-card border border-shield-border rounded-xl">
+      <div className="flex flex-col gap-3 max-w-sm mx-auto">
+        <button
+          onClick={() => handleSubscribe('voyageur_plus')}
+          disabled={loadingPlan === 'voyageur_plus'}
+          className="flex items-center justify-between w-full px-5 py-4 bg-shield-green/10 border-2 border-shield-green rounded-xl hover:bg-shield-green/20 transition-all disabled:opacity-60"
+        >
+          <div className="text-left">
             <div className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-shield-green" />
-              <span className="text-xs text-gray-400">
-                Plan: <span className="text-white font-semibold">{formatPlanLabel(profile.plan)}</span>
-              </span>
+              <Zap className="w-4 h-4 text-shield-green" />
+              <span className="text-white font-bold text-sm">{l.voyageur_plus}</span>
             </div>
-            {profile.plan === 'free' && (
-              <a href="/#pricing" className="flex items-center gap-1 text-xs text-shield-gold hover:text-yellow-300">
-                {t('upgrade_btn')} <ChevronRight className="w-3 h-3" />
-              </a>
-            )}
+            <span className="text-gray-400 text-xs ml-6">{l.voyageur_plus_desc}</span>
           </div>
-        )}
+          {loadingPlan === 'voyageur_plus' ? (
+            <Loader2 className="w-4 h-4 text-shield-green animate-spin" />
+          ) : (
+            <span className="text-xs bg-shield-green text-black font-bold px-2 py-0.5 rounded-full">⭐</span>
+          )}
+        </button>
 
+        <button
+          onClick={() => handleSubscribe('voyageur')}
+          disabled={loadingPlan === 'voyageur'}
+          className="flex items-center justify-between w-full px-5 py-4 border border-shield-border rounded-xl hover:border-shield-green/50 transition-all disabled:opacity-60"
+        >
+          <div className="text-left">
+            <div className="font-semibold text-gray-300 text-sm">{l.voyageur}</div>
+            <div className="text-gray-500 text-xs">{l.voyageur_desc}</div>
+          </div>
+          {loadingPlan === 'voyageur' && <Loader2 className="w-4 h-4 text-gray-400 animate-spin" />}
+        </button>
       </div>
     </div>
   );
