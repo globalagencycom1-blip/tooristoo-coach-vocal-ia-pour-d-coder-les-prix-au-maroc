@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLang } from '../lib/LanguageContext';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/landing/HeroSection';
@@ -16,6 +16,19 @@ import Footer from '../components/Footer';
 
 export default function Landing() {
   const { lang } = useLang();
+
+  useEffect(() => {
+    // Lit l'ancre stockée par AppPage et scrolle vers la carte pricing
+    const anchor = sessionStorage.getItem('scrollTo');
+    if (anchor) {
+      sessionStorage.removeItem('scrollTo');
+      // Attend que la page soit rendue avant de scroller
+      setTimeout(() => {
+        const el = document.getElementById(anchor);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 600);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-shield-dark">
