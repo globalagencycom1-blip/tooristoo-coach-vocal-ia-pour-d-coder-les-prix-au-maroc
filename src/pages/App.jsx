@@ -235,9 +235,13 @@ export default function AppPage() {
                 Plan: <span className="text-white font-semibold">{formatPlanLabel(profile.plan)}</span>
               </span>
             </div>
-            {profile.plan === 'free' && (
+            {(profile.plan === 'free' || profile.plan === 'voyageur') && (
               <a href="/#pricing" className="flex items-center gap-1 text-xs text-shield-gold hover:text-yellow-300">
-                {t('upgrade_btn')} <ChevronRight className="w-3 h-3" />
+                {profile.plan === 'free'
+                  ? `Passer Voyageur`
+                  : `Passer Voyageur+`
+                }
+                <ChevronRight className="w-3 h-3" />
               </a>
             )}
           </div>
