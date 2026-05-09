@@ -240,12 +240,8 @@ export default function AppPage() {
                 onClick={(e) => {
                   e.preventDefault();
                   const anchor = profile.plan === 'free' ? 'pricing-voyageur' : 'pricing-voyageur-plus';
-                  // Navigue vers la page d'accueil puis scrolle vers l'ancre
-                  window.location.href = `/#${anchor}`;
-                  setTimeout(() => {
-                    const el = document.getElementById(anchor);
-                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  }, 300);
+                  sessionStorage.setItem('scrollTo', anchor);
+                  window.location.href = '/';
                 }}
                 className="flex items-center gap-1 text-xs text-shield-gold hover:text-yellow-300"
               >
