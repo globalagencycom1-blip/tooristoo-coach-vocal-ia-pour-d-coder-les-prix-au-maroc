@@ -166,7 +166,7 @@ export default function AppPage() {
             ) : analysis ? (
               <AnalysisResult analysis={analysis} lang={lang} onReset={handleReset} />
             ) : isLimitReached() ? (
-              <PlanLimitGate lang={lang} />
+              <PPlanLimitGate lang={lang} profile={profile} />
             ) : (
               <>
                 {/* Analyses restantes */}
