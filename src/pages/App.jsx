@@ -236,7 +236,17 @@ export default function AppPage() {
             </div>
             {(profile.plan === 'free' || profile.plan === 'voyageur') && (
               <a
-                href={profile.plan === 'free' ? '/#pricing-voyageur' : '/#pricing-voyageur-plus'}
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const anchor = profile.plan === 'free' ? 'pricing-voyageur' : 'pricing-voyageur-plus';
+                  // Navigue vers la page d'accueil puis scrolle vers l'ancre
+                  window.location.href = `/#${anchor}`;
+                  setTimeout(() => {
+                    const el = document.getElementById(anchor);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }, 300);
+                }}
                 className="flex items-center gap-1 text-xs text-shield-gold hover:text-yellow-300"
               >
                 {profile.plan === 'free' ? 'Passer Voyageur' : 'Passer Voyageur+'}
