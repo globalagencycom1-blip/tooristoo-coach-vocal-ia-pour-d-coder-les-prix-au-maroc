@@ -14,7 +14,6 @@ import DashboardStats from '../components/app/DashboardStats';
 import AuthGate from '../components/app/AuthGate';
 import PlanLimitGate from '../components/app/PlanLimitGate';
 
-// ─── Formate le slug du plan pour l'affichage ─────────────────────────────────
 function formatPlanLabel(plan) {
   const labels = {
     free:          'Free',
@@ -128,7 +127,7 @@ export default function AppPage() {
           <p className="text-shield-green text-sm">{t('app_page_subtitle')}</p>
         </div>
 
-        {/* ── Tabs L'App / Tableau de Bord / Historique ── */}
+        {/* Tabs */}
         <div className="flex gap-1 bg-shield-card border border-shield-border rounded-2xl p-1 mb-6">
           {TABS.map(tab => (
             <button
@@ -148,7 +147,7 @@ export default function AppPage() {
           ))}
         </div>
 
-        {/* ── Contenu ── */}
+        {/* Contenu */}
         {activeTab === 'coach' && (
           <div className="bg-shield-card border border-shield-border rounded-2xl p-6">
             {authChecked && !user ? (
@@ -156,10 +155,10 @@ export default function AppPage() {
             ) : analysis ? (
               <AnalysisResult analysis={analysis} lang={lang} onReset={handleReset} />
             ) : isLimitReached() ? (
-              <PlanLimitGate lang={lang} />
+              // ── SEULE MODIFICATION : passage de profile en prop ──
+              <PlanLimitGate lang={lang} profile={profile} />
             ) : (
               <>
-                {/* Analyses restantes */}
                 {profile && (
                   <div className="flex justify-center mb-6">
                     <div
@@ -175,7 +174,7 @@ export default function AppPage() {
                   </div>
                 )}
 
-                {/* ── Toggle Vocal / Texte ── */}
+                {/* Toggle Vocal / Texte */}
                 <div className="flex gap-1 bg-shield-dark border border-shield-border rounded-2xl p-1 mb-6">
                   <button
                     onClick={() => setInputMode('voice')}
@@ -227,7 +226,7 @@ export default function AppPage() {
           <Dashboard lang={lang} profile={profile} negotiations={negotiations} />
         )}
 
-        {/* ── Plan badge ── */}
+        {/* Plan badge */}
         {profile && (
           <div className="mt-4 flex items-center justify-between p-3 bg-shield-card border border-shield-border rounded-xl">
             <div className="flex items-center gap-2">
