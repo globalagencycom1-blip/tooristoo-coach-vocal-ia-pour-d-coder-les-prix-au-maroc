@@ -93,25 +93,15 @@ export default function AppPage() {
     setActiveTab('coach');
     if (!user) return;
 
-    // Calcule l'écart réel : savings ou price_asked - price_estimated_max
-    const ecart = result.savings > 0
-      ? result.savings
-      : (result.price_asked > 0 && result.price_estimated_max > 0)
-        ? Math.max(0, result.price_asked - result.price_estimated_max)
-        : 0;
-
     const saved = await base44.entities.Negotiation.create({
-      ...result,
-      savings:    ecart,
-      user_email: user.email,
-      language:   lang,
+      ...result, user_email: user.email, language: lang,
     });
     setNegotiations(prev => [saved, ...prev]);
 
     if (profile) {
       const upd = {
         total_negotiations:    (profile.total_negotiations    || 0) + 1,
-        total_savings:         (profile.total_savings         || 0) + ecart,
+        total_savings:         (profile.total_savings         || 0) + (result.savings || 0),
         scams_avoided:         (profile.scams_avoided         || 0) + (result.scam_detected ? 1 : 0),
         monthly_analyses_used: (profile.monthly_analyses_used || 0) + 1,
       };
@@ -166,7 +156,7 @@ export default function AppPage() {
             ) : analysis ? (
               <AnalysisResult analysis={analysis} lang={lang} onReset={handleReset} />
             ) : isLimitReached() ? (
-              <PPlanLimitGate lang={lang} profile={profile} />
+              <PlanLimitGate lang={lang} />
             ) : (
               <>
                 {/* Analyses restantes */}
