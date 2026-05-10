@@ -1,0 +1,9 @@
+{
+  "name": "Tooristoo \u2014 Coach Vocal IA pour D\u00e9coder les Prix au Maroc",
+  "site": {
+    "installCommand": "npm install",
+    "buildCommand": "npm run build",
+    "serveCommand": "npm run dev",
+    "outputDirectory": "./dist"
+  }
+}
