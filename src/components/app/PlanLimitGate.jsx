@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Zap, Lock, Loader2 } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
+import TrustBadges from '@/components/TrustBadges';
 
 const LABELS = {
   fr: {
@@ -203,6 +204,10 @@ export default function PlanLimitGate({ lang = 'fr', profile }) {
           />
         )}
       </div>
+
+      {/* ✅ Badges de confiance — affiché sous les boutons de paiement */}
+      <TrustBadges variant="full" className="mt-6" />
+
     </div>
   );
 }
