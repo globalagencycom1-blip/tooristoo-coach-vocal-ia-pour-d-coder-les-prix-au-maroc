@@ -304,10 +304,10 @@ export const getDashboardT = (key, lang) => {
 
 export const getCategoryName = (category, lang) => {
   const categories = {
-    fr: { taxi: 'Taxi', hotel: 'Hôtel', riad: 'Riad', restaurant: 'Restaurant', excursion: 'Excursion', shopping: 'Shopping', transport: 'Transport', guide: 'Guide', spa: 'Spa', other: 'Autre' },
-    en: { taxi: 'Taxi', hotel: 'Hotel', riad: 'Riad', restaurant: 'Restaurant', excursion: 'Excursion', shopping: 'Shopping', transport: 'Transport', guide: 'Guide', spa: 'Spa', other: 'Other' },
-    es: { taxi: 'Taxi', hotel: 'Hotel', riad: 'Riad', restaurant: 'Restaurante', excursion: 'Excursión', shopping: 'Compras', transport: 'Transporte', guide: 'Guía', spa: 'Spa', other: 'Otro' },
-    de: { taxi: 'Taxi', hotel: 'Hotel', riad: 'Riad', restaurant: 'Restaurant', excursion: 'Ausflug', shopping: 'Shopping', transport: 'Transport', guide: 'Führer', spa: 'Spa', other: 'Sonstige' },
+    fr: { taxi: 'Taxi', hotel: 'Hôtel', riad: 'Riad', restaurant: 'Restaurant', excursion: 'Excursion', shopping: 'Shopping', transport: 'Transport', guide: 'Guide', spa: 'Spa', activite: 'Activité' },
+    en: { taxi: 'Taxi', hotel: 'Hotel', riad: 'Riad', restaurant: 'Restaurant', excursion: 'Excursion', shopping: 'Shopping', transport: 'Transport', guide: 'Guide', spa: 'Spa', other: 'Activity' },
+    es: { taxi: 'Taxi', hotel: 'Hotel', riad: 'Riad', restaurant: 'Restaurante', excursion: 'Excursión', shopping: 'Compras', transport: 'Transporte', guide: 'Guía', spa: 'Spa', other: 'Actividad' },
+    de: { taxi: 'Taxi', hotel: 'Hotel', riad: 'Riad', restaurant: 'Restaurant', excursion: 'Ausflug', shopping: 'Shopping', transport: 'Transport', guide: 'Führer', spa: 'Spa', other: 'Aktivität' },
     ar: { taxi: 'طاكسي', hotel: 'فندق', riad: 'رياض', restaurant: 'مطعم', excursion: 'نزهة', shopping: 'تسوق', transport: 'نقل', guide: 'مرشد', spa: 'سبا', other: 'أخرى' },
     darija: { taxi: 'طاكسي', hotel: 'فندق', riad: 'رياض', restaurant: 'مطعم', excursion: 'نزهة', shopping: 'تسوق', transport: 'نقل', guide: 'مرشد', spa: 'سبا', other: 'أخرى' },
   };
