@@ -10,15 +10,19 @@ import { useT } from '../lib/i18n';
 const CITIES = ['Marrakech', 'Fès', 'Casablanca', 'Chefchaouen', 'Agadir', 'Tanger', 'Rabat', 'Meknès', 'Ouarzazate', 'Merzouga', 'Essaouira', 'Dakhla', 'El Jadida'];
 
 const CATEGORIES = [
-  { key: 'taxi',        labels: { fr: 'Taxi', en: 'Taxi', es: 'Taxi', de: 'Taxi', ar: 'تاكسي', darija: 'طاكسي' } },
-  { key: 'hotel',       labels: { fr: 'Hôtel & Séjour', en: 'Hotel & Stay', es: 'Hotel & Estancia', de: 'Hotel & Aufenthalt', ar: 'فندق وإقامة', darija: 'فندق وسكن' } },
-  { key: 'riad',        labels: { fr: 'Riad & Logement', en: 'Riad & Accommodation', es: 'Riad & Alojamiento', de: 'Riad & Unterkunft', ar: 'رياض وإيواء', darija: 'رياض وسكن' } },
-  { key: 'restaurant',  labels: { fr: 'Restaurant & Gastronomie', en: 'Restaurant & Gastronomy', es: 'Restaurante & Gastronomía', de: 'Restaurant & Gastronomie', ar: 'مطعم وأكل', darija: 'ريسطو وماكلة' } },
-  { key: 'excursion',   labels: { fr: 'Excursion & Activité', en: 'Excursion & Activity', es: 'Excursión & Actividad', de: 'Ausflug & Aktivität', ar: 'رحلة ونشاط', darija: 'نزهة ونشاط' } },
-  { key: 'shopping',    labels: { fr: 'Shopping & Souk', en: 'Shopping & Souk', es: 'Compras & Zoco', de: 'Einkaufen & Souk', ar: 'تسوق وسوق', darija: 'شوبينغ وسوق' } },
-  { key: 'transport',   labels: { fr: 'Transport & Navette', en: 'Transport & Shuttle', es: 'Transporte & Lanzadera', de: 'Transport & Shuttle', ar: 'نقل وحافلة', darija: 'تراسبور وناڤيت' } },
-  { key: 'guide',       labels: { fr: 'Guide & Service', en: 'Guide & Service', es: 'Guía & Servicio', de: 'Reiseführer & Service', ar: 'مرشد وخدمة', darija: 'ڭيد وخدمة' } },
-  { key: 'spa',         labels: { fr: 'Spa & Relaxation', en: 'Spa & Relaxation', es: 'Spa & Relajación', de: 'Spa & Entspannung', ar: 'سبا واسترخاء', darija: 'سبا وراحة' } },
+  { key: 'taxi',       labels: { fr: 'Taxi',                     en: 'Taxi',                    es: 'Taxi',                    de: 'Taxi',                      ar: 'تاكسي',                  darija: 'طاكسي' } },
+  { key: 'hotel',      labels: { fr: 'Hôtel & Séjour',           en: 'Hotel & Stay',            es: 'Hotel & Estancia',        de: 'Hotel & Aufenthalt',        ar: 'فندق وإقامة',            darija: 'فندق وسكن' } },
+  { key: 'riad',       labels: { fr: 'Riad & Logement',          en: 'Riad & Accommodation',    es: 'Riad & Alojamiento',      de: 'Riad & Unterkunft',         ar: 'رياض وإيواء',            darija: 'رياض وسكن' } },
+  { key: 'restaurant', labels: { fr: 'Restaurant & Gastronomie', en: 'Restaurant & Gastronomy', es: 'Restaurante & Gastronomía', de: 'Restaurant & Gastronomie', ar: 'مطعم وأكل',             darija: 'ريسطو وماكلة' } },
+  { key: 'excursion',  labels: { fr: 'Excursion & Activité',     en: 'Excursion & Activity',    es: 'Excursión & Actividad',   de: 'Ausflug & Aktivität',       ar: 'رحلة ونشاط',             darija: 'نزهة ونشاط' } },
+  { key: 'shopping',   labels: { fr: 'Shopping & Souk',          en: 'Shopping & Souk',         es: 'Compras & Zoco',          de: 'Einkaufen & Souk',          ar: 'تسوق وسوق',              darija: 'شوبينغ وسوق' } },
+  { key: 'transport',  labels: { fr: 'Transport & Navette',      en: 'Transport & Shuttle',     es: 'Transporte & Lanzadera',  de: 'Transport & Shuttle',       ar: 'نقل وحافلة',             darija: 'تراسبور وناڤيت' } },
+  { key: 'guide',      labels: { fr: 'Guide & Service',          en: 'Guide & Service',         es: 'Guía & Servicio',         de: 'Reiseführer & Service',     ar: 'مرشد وخدمة',             darija: 'ڭيد وخدمة' } },
+  { key: 'spa',        labels: { fr: 'Spa & Relaxation',         en: 'Spa & Relaxation',        es: 'Spa & Relajación',        de: 'Spa & Entspannung',         ar: 'سبا واسترخاء',           darija: 'سبا وراحة' } },
+  { key: 'artisanat',  labels: { fr: 'Artisanat & Souvenirs',    en: 'Crafts & Souvenirs',      es: 'Artesanía & Souvenirs',   de: 'Handwerk & Souvenirs',      ar: 'صناعة تقليدية وهدايا',   darija: 'صناعة تقليدية وهدايا' } },
+  { key: 'bus',        labels: { fr: 'Bus & Intercités',         en: 'Bus & Intercity',         es: 'Bus & Interurbano',       de: 'Bus & Fernbus',             ar: 'حافلة بين المدن',        darija: 'طوبيس بين المدن' } },
+  { key: 'train',      labels: { fr: 'Train & ONCF',             en: 'Train & ONCF',            es: 'Tren & ONCF',             de: 'Zug & ONCF',                ar: 'قطار والـ ONCF',         darija: 'قطار والـ ONCF' } },
+  { key: 'activite',      labels: { fr: 'Activité',            en: 'Activity',           es: 'Actividad',           de: 'Aktivität',           ar: 'نشاط',              darija: 'نشاط' } },
 ];
 
 function getDesc(p, lang) {
@@ -103,8 +107,6 @@ export default function Providers() {
     return cityMatch && catMatch && searchMatch;
   });
 
-
-
   return (
     <div className="min-h-screen bg-shield-dark">
       <noscript>
@@ -120,6 +122,9 @@ export default function Providers() {
             <li>Excursions et activités — prix individuels et de groupe</li>
             <li>Spas et hammams — soins avec tarif transparent</li>
             <li>Shopping et souks — articles avec prix de référence</li>
+            <li>Artisanat et souvenirs — prix de référence</li>
+            <li>Bus intercités — tarifs CTM et Supratours</li>
+            <li>Train ONCF — tarifs officiels</li>
           </ul>
           <h2>Villes couvertes</h2>
           <p>Marrakech, Fès, Casablanca, Chefchaouen, Agadir, Tanger, Rabat, Meknès, Ouarzazate, Merzouga, Essaouira, Dakhla, El Jadida.</p>
