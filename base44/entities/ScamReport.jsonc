@@ -101,12 +101,7 @@
           }
         },
         {
-          "data.status": {
-            "$in": [
-              "pending",
-              "verified"
-            ]
-          }
+          "data.status": "verified"
         }
       ]
     },
