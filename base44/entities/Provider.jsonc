@@ -39,8 +39,7 @@
         "spa",
         "artisanat",
         "bus",
-        "train",
-        "autre"
+        "train"
       ],
       "description": "Catégorie du service"
     },
