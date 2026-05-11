@@ -5,7 +5,12 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { SEED_PROVIDERS } from '../lib/providers-seed';
 
-const CATEGORIES = ['taxi','hotel','riad','restaurant','excursion','shopping','transport','guide','spa'];
+const CATEGORIES = [
+  'taxi','hotel','riad','restaurant','excursion',
+  'shopping','transport','guide','spa',
+  'artisanat','bus','train','activite'
+];
+
 const CITIES = ['Marrakech','Fès','Casablanca','Chefchaouen','Agadir','Tanger','Rabat','Meknès','Ouarzazate','Merzouga','Essaouira','Dakhla','El Jadida'];
 const LANGS = ['fr','en','es','de','ar','darija'];
 
@@ -226,7 +231,7 @@ export default function AdminProviders() {
 
         {/* Stats bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-          {CATEGORIES.slice(0,4).map(cat => (
+          {CATEGORIES.slice(0, 4).map(cat => (
             <div key={cat} className="bg-shield-card border border-shield-border rounded-xl p-3 text-center">
               <p className="text-shield-green font-bold text-lg">{providers.filter(p => p.category === cat).length}</p>
               <p className="text-gray-500 text-xs capitalize">{cat}</p>
