@@ -14,7 +14,7 @@ const CATEGORIES = [
   { key: 'hotel',      labels: { fr: 'Hôtel & Séjour',           en: 'Hotel & Stay',            es: 'Hotel & Estancia',        de: 'Hotel & Aufenthalt',        ar: 'فندق وإقامة',            darija: 'فندق وسكن' } },
   { key: 'riad',       labels: { fr: 'Riad & Logement',          en: 'Riad & Accommodation',    es: 'Riad & Alojamiento',      de: 'Riad & Unterkunft',         ar: 'رياض وإيواء',            darija: 'رياض وسكن' } },
   { key: 'restaurant', labels: { fr: 'Restaurant & Gastronomie', en: 'Restaurant & Gastronomy', es: 'Restaurante & Gastronomía', de: 'Restaurant & Gastronomie', ar: 'مطعم وأكل',             darija: 'ريسطو وماكلة' } },
-  { key: 'excursion',  labels: { fr: 'Excursion & Activité',     en: 'Excursion & Activity',    es: 'Excursión & Actividad',   de: 'Ausflug & Aktivität',       ar: 'رحلة ونشاط',             darija: 'نزهة ونشاط' } },
+  { key: 'excursion',  labels: { fr: 'Excursion',                en: 'Excursion',               es: 'Excursión',               de: 'Ausflug',                   ar: 'رحلة',                  darija: 'نزهة' } },
   { key: 'shopping',   labels: { fr: 'Shopping & Souk',          en: 'Shopping & Souk',         es: 'Compras & Zoco',          de: 'Einkaufen & Souk',          ar: 'تسوق وسوق',              darija: 'شوبينغ وسوق' } },
   { key: 'transport',  labels: { fr: 'Transport & Navette',      en: 'Transport & Shuttle',     es: 'Transporte & Lanzadera',  de: 'Transport & Shuttle',       ar: 'نقل وحافلة',             darija: 'تراسبور وناڤيت' } },
   { key: 'guide',      labels: { fr: 'Guide & Service',          en: 'Guide & Service',         es: 'Guía & Servicio',         de: 'Reiseführer & Service',     ar: 'مرشد وخدمة',             darija: 'ڭيد وخدمة' } },
