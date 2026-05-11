@@ -13,7 +13,8 @@
         "shopping",
         "transport",
         "guide",
-        "spa"
+        "spa",
+        "activite"
       ],
       "description": "Service category"
     },
