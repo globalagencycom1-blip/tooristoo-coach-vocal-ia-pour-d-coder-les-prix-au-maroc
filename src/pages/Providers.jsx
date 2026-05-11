@@ -22,7 +22,7 @@ const CATEGORIES = [
   { key: 'artisanat',  labels: { fr: 'Artisanat & Souvenirs',    en: 'Crafts & Souvenirs',      es: 'Artesanía & Souvenirs',   de: 'Handwerk & Souvenirs',      ar: 'صناعة تقليدية وهدايا',   darija: 'صناعة تقليدية وهدايا' } },
   { key: 'bus',        labels: { fr: 'Bus & Intercités',         en: 'Bus & Intercity',         es: 'Bus & Interurbano',       de: 'Bus & Fernbus',             ar: 'حافلة بين المدن',        darija: 'طوبيس بين المدن' } },
   { key: 'train',      labels: { fr: 'Train & ONCF',             en: 'Train & ONCF',            es: 'Tren & ONCF',             de: 'Zug & ONCF',                ar: 'قطار والـ ONCF',         darija: 'قطار والـ ONCF' } },
-  { key: 'activite',      labels: { fr: 'Activité',            en: 'Activity',           es: 'Actividad',           de: 'Aktivität',           ar: 'نشاط',              darija: 'نشاط' } },
+  { key: 'activite',   labels: { fr: 'Activité',                 en: 'Activity',                es: 'Actividad',               de: 'Aktivität',                 ar: 'نشاط',                 darija: 'نشاط' } },
 ];
 
 function getDesc(p, lang) {
