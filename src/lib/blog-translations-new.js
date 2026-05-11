@@ -284,7 +284,7 @@ Si un taxi vous indique que son compteur est cassé, vous pouvez demander : "La,
 **Comportement respectueux**
 - Ne mangez pas / ne buvez pas / ne fumez pas en public le jour
 - Habillez-vous de façon couverte dans les médinas
-- "Mbruk 3lik chi-Ramadan" = Bonne continuation du Ramadan`
+- "Mabrouk 3lik chi-Ramadan" = Bonne continuation du Ramadan`
     },
     en: {
       title: 'Travelling to Morocco During Ramadan: What You Need to Know',
