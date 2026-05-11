@@ -33,14 +33,14 @@
         "riad",
         "restaurant",
         "excursion",
+        "activite",
         "shopping",
-        "transport",
         "guide",
         "spa",
         "artisanat",
+        "transport",
         "bus",
-        "train",
-        "activite"
+        "train"
       ],
       "description": "Catégorie du service"
     },
