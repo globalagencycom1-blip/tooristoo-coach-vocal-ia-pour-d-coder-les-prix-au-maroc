@@ -40,7 +40,7 @@
         "artisanat",
         "bus",
         "train",
-        "autre"
+        "activité"
       ],
       "description": "Catégorie du service"
     },
