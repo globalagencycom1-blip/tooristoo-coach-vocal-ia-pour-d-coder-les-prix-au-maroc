@@ -10,13 +10,13 @@
       "type": "string",
       "enum": [
         "Marrakech",
-        "Fès",
+        "F\u00e8s",
         "Casablanca",
         "Chefchaouen",
         "Agadir",
         "Tanger",
         "Rabat",
-        "Meknès",
+        "Mekn\u00e8s",
         "Ouarzazate",
         "Merzouga",
         "Essaouira",
@@ -33,20 +33,16 @@
         "riad",
         "restaurant",
         "excursion",
-        "activite",
         "shopping",
-        "guide",
-        "spa",
-        "artisanat",
         "transport",
-        "bus",
-        "train"
+        "guide",
+        "spa"
       ],
-      "description": "Catégorie du service"
+      "description": "Cat\u00e9gorie du service"
     },
     "desc_fr": {
       "type": "string",
-      "description": "Description en français"
+      "description": "Description en fran\u00e7ais"
     },
     "desc_en": {
       "type": "string",
@@ -78,7 +74,7 @@
     },
     "phone": {
       "type": "string",
-      "description": "Numéro de téléphone"
+      "description": "Num\u00e9ro de t\u00e9l\u00e9phone"
     },
     "url": {
       "type": "string",
@@ -87,7 +83,7 @@
     "certified": {
       "type": "boolean",
       "default": true,
-      "description": "Prestataire certifié Tooristoo"
+      "description": "Prestataire certifi\u00e9 Tooristoo"
     },
     "active": {
       "type": "boolean",
@@ -107,7 +103,16 @@
       }
     },
     "read": {
-      "data.active": true
+      "$or": [
+        {
+          "data.active": true
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
     },
     "update": {
       "user_condition": {
@@ -115,6 +120,11 @@
       }
     },
     "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "write": {
       "user_condition": {
         "role": "admin"
       }
