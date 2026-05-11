@@ -10,13 +10,13 @@
       "type": "string",
       "enum": [
         "Marrakech",
-        "F\u00e8s",
+        "Fès",
         "Casablanca",
         "Chefchaouen",
         "Agadir",
         "Tanger",
         "Rabat",
-        "Mekn\u00e8s",
+        "Meknès",
         "Ouarzazate",
         "Merzouga",
         "Essaouira",
@@ -36,13 +36,17 @@
         "shopping",
         "transport",
         "guide",
-        "spa"
+        "spa",
+        "artisanat",
+        "bus",
+        "train",
+        "autre"
       ],
-      "description": "Cat\u00e9gorie du service"
+      "description": "Catégorie du service"
     },
     "desc_fr": {
       "type": "string",
-      "description": "Description en fran\u00e7ais"
+      "description": "Description en français"
     },
     "desc_en": {
       "type": "string",
@@ -74,7 +78,7 @@
     },
     "phone": {
       "type": "string",
-      "description": "Num\u00e9ro de t\u00e9l\u00e9phone"
+      "description": "Numéro de téléphone"
     },
     "url": {
       "type": "string",
@@ -83,7 +87,7 @@
     "certified": {
       "type": "boolean",
       "default": true,
-      "description": "Prestataire certifi\u00e9 Tooristoo"
+      "description": "Prestataire certifié Tooristoo"
     },
     "active": {
       "type": "boolean",
