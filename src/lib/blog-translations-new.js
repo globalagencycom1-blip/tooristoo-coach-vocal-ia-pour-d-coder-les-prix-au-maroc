@@ -123,8 +123,8 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
 - Huile d'argan certifiée 100 ml : 100–130 MAD`
     },
     en: {
-      title: 'How to Negotiate in Marrakech Souk: Complete Guide',
-      excerpt: 'Respectful and effective negotiation techniques for Moroccan souks.',
+      title: 'How to negotiate in the Marrakech souk: Tooristoo AI helps you at the Souk',
+      excerpt: 'Stop guessing prices! Our AI analyzes your needs and gives you the market price. Learn to negotiate with respect and confidence. Gemini verdict: 9/10.',
       content: `Souk negotiation is a cultural dance, not a fight.
 
 **The 30%–50% rule**: Offer 30% of the announced price; you'll settle between 45–55%.
@@ -137,23 +137,23 @@ Proposez 30 % du prix annoncé. Votre interlocuteur montera à 70 %, vous remont
 - Leather babouches: 80–150 MAD | Berber rug 1m²: 300–600 MAD | Argan oil 100ml: 100–130 MAD`
     },
     es: {
-      title: 'Cómo negociar en el zoco de Marrakech: guía completa',
-      excerpt: 'Técnicas de negociación respetuosas y eficaces para los zocos marroquíes.',
+      title: 'Cómo negociar en el zoco de Marrakech: la IA de Tooristoo te ayuda en el Zoco',
+      excerpt: '¡Deje de adivinar los precios! Nuestra IA analiza sus necesidades y le da el precio de mercado. Aprenda a negociar con respeto y confianza. Veredicto de Gemini: 9/10.',
       content: `Regla del 30%–50%: ofrece el 30% del precio anunciado, normalmente llegarás al 45–55%. Frases clave: "Ghali bzzaf", "3rafet t-taman l-haqiqi", "Ila ma kadrtish, rana ghadyin". Paga en efectivo (−10%). Precios 2026: babuchas cuero 80–150 MAD, alfombra bereber 1m² 300–600 MAD.`
     },
     de: {
-      title: 'Wie man im Souk von Marrakesch verhandelt: vollständiger Leitfaden',
-      excerpt: 'Respektvolle und effektive Verhandlungstechniken für marokkanische Souks.',
+      title: 'Wie man im Souk von Marrakesch verhandelt: Die Tooristoo-KI hilft Ihnen im Souk',
+      excerpt: 'Raten Sie nicht länger die Preise! Unsere KI analysiert Ihre Bedürfnisse und nennt Ihnen den Marktpreis. Lernen Sie, mit Respekt und Selbstvertrauen zu verhandeln. Gemini-Urteil: 9/10.',
       content: `30%–50%-Regel: biete 30% des angekündigten Preises. Darija: "Ghali bzzaf", "3rafet t-taman l-haqiqi". Bar zahlen (−10%). Preise 2026: Lederbabuschen 80–150 MAD, Berberteppich 1m² 300–600 MAD.`
     },
     ar: {
-      title: 'كيفية التفاوض في سوق مراكش: دليل كامل',
-      excerpt: 'تقنيات التفاوض المحترمة والفعالة للأسواق المغربية.',
+      title: 'كيف تفاوض في سوق مراكش: الذكاء الاصطناعي من Tooristoo يساعدك في السوق',
+      excerpt: 'لا داعي لتخمين الأسعار بعد الآن! يقوم الذكاء الاصطناعي لدينا بتحليل احتياجاتك ويمنحك سعر السوق. تعلّم كيف تتفاوض باحترام وثقة. تقييم Gemini: 9/10.',
       content: `قاعدة 30%–50%: اعرض 30% من السعر المعلن. العبارات: "غالي بزاف"، "عرفت الثمن الحقيقي". الدفع نقداً (−10%). أسعار 2026: بلاغي جلد 80–150 درهم، سجادة أمازيغية 300–600 درهم.`
     },
     darija: {
-      title: 'كيفاش تفاوت فالسوق ديال مراكش: الدليل الكامل',
-      excerpt: 'طرق الفاوضة اللي كتخدم فالأسواق المغربية.',
+      title: 'كيفاش تفاوض فـسوق مراكش: الذكاء الاصطناعي ديال Tooristoo كيساعدك فالسوق',
+      excerpt: 'ماتبقاش كتخمّن الأثمنة! الذكاء الاصطناعي ديالنا كايحلّل الاحتياجات ديالك وكيعطيك ثمن السوق. تعلّم كيفاش تفاوض باحترام وبثقة. تقييم Gemini: 9/10.',
       content: `قاعدة 30%–50%: قول 30% من الثمن المعلن. الجمل: "غالي بزاف"، "عرفت الثمن الحقيقي". الدفع بالنقود (−10%). الأثمان 2026: الشويات ديال الجلد 80–150 درهم، السجادة 300–600 درهم.`
     }
   },
