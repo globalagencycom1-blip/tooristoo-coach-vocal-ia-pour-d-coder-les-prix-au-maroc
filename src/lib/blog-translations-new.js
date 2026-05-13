@@ -89,7 +89,7 @@ Tooristoo référence des prestataires sélectionnés selon une méthodologie pu
 
   'marrakech-negocier-souk': {
     fr: {
-      title: 'Comment négocier au souk de Marrakech : guide complet',
+      title: 'Comment négocier au souk de Marrakech : L'IA Tooristoo vous aide au Souk',
       excerpt: 'Techniques de négociation respectueuses et efficaces pour les souks marocains.',
       content: `La négociation au souk est une danse culturelle, pas un combat.
 
